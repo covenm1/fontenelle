@@ -1,17 +1,33 @@
 var React = require('react');
 var Router = require('react-router');
+var TransitionGroup = require('./timeoutTransitionGroup.jsx');
+
+var util = require('util');
 
 var Route = Router.Route,
-	DefaultRoute = Router.DefaultRoute,
+		DefaultRoute = Router.DefaultRoute,
   	NotFoundRoute = Router.NotFoundRoute,
   	RouteHandler = Router.RouteHandler,
   	Link = Router.Link;
 
 
-var Home = require('../home/index.jsx');
+var forest = require('../forest/index.jsx'),
+		conservation = require('../conservation/index.jsx'),
+		programs = require('../programs/index.jsx'),
+		education = require('../education/index.jsx'),
+		raptorRecovery = require('../raptor-recovery/index.jsx');
+
+var slide_names = [ 'forest' , 'conservation' , 'programs', 'education', 'raptor-recovery'];
+var slide_count = 0;
+
+var hotkey = require('react-hotkey');
+
+hotkey.activate();
+
 
 var App = React.createClass({
-	mixins: [Router.State], 
+	mixins: [Router.State, Router.Navigation, hotkey.Mixin('handleKeyDown')], 
+
 	getHandlerKey: function () {
 		var childDepth = 1; // assuming App is top-level route
 		var key = this.getRoutes()[childDepth].name;
@@ -19,38 +35,97 @@ var App = React.createClass({
 		if (id) { key += id; }
 		return key;
 	},
+
 	getInitialState: function () { 
 		return {  };
 	},
 
-	componentDidMount: function(){ },
+	componentDidMount: function(){
+	},
+
+	onClickRight: function(){
+		console.log('onClickRight:');
+		if (slide_count ==  slide_names.length ) {
+			slide_count = 0;
+		} else {
+			slide_count++;
+		}
+		console.log(' slide_count: ' + slide_count);
+		console.log(' slide_names[slide_count% slide_names.length ]: ' + slide_names[slide_count% slide_names.length ]);
+
+		this.transitionTo(slide_names[slide_count% slide_names.length ]);
+	},
+
+	onClickLeft: function(){
+
+		console.log('onClickLeft:');
+		if (slide_count == 0) {
+			slide_count = slide_names.length - 1;
+		} else {
+			slide_count--;
+		}
+		
+
+		console.log(' slide_count: ' + slide_count);
+		console.log(' slide_names[slide_count% slide_names.length ]: ' + slide_names[slide_count% slide_names.length ]);
+
+		this.transitionTo(slide_names[slide_count% slide_names.length ]);
+	},
+
+	handleKeyDown: function(e) {
+		console.log('handleKeyDown: ' + util.inspect(e.key));
+		var self = this;
+	  if (e.key === 'ArrowLeft') {
+			if (slide_count == 0) {
+				slide_count = slide_names.length - 1;
+			} else {
+				slide_count--;
+			}
+			this.transitionTo(slide_names[slide_count% slide_names.length ]);
+	  } else if (e.key === 'ArrowRight') {
+			if (slide_count ==  slide_names.length ) {
+				slide_count = 0;
+			} else {
+				slide_count++;
+			}
+			this.transitionTo(slide_names[slide_count% slide_names.length ]);
+	  }
+	},
 
 	render: function () {
 		var self = this;
-
+		var name = this.getRoutes().reverse()[0].name;
+		console.log("names: " + name);
 		return (
-		  <div>
-		    <header id="header">
-		    	<h1>Fontenelle</h1>	
+		  <div className="fontenelle">
+		    <header>
+		        <a href="/" className="logo"><img src="/img/logo.png" alt="" /></a>
+		        <span className="menu">
+		            <a href="javascript.void(0)" className="link">Found Bird</a>
+		            <a href="javascript.void(0)" className="link">Donate</a>
+		        </span>
 		    </header>
 		    <div className="main_content">
-		      <RouteHandler key={this.getHandlerKey()}  />
+		    	<TransitionGroup enterTimeout={500} leaveTimeout={500} transitionName="example">
+		      	<RouteHandler key={name}/>
+		      </TransitionGroup>
+		     	<div className="slide_controls">
+		     		<span className="left slider_button" onClick={self.onClickLeft}>Left</span>
+		     		<span className="right slider_button" onClick={self.onClickRight}>Right</span>
+		     	</div>
 		    </div>
-
-		    <footer>
-		        <div className="contact-info">
-		          <p className="copyright">&copy;  2015, Fontelle Forest. All rights reserved.</p>
-		        </div>
-
-		    </footer>
 		  </div>
 		);
 	}
 });
 
 var routes = (
-  <Route handler={App} path="/">
-    <DefaultRoute handler={Home} />
+  <Route handler={App}>
+    <Route name="forest" path="/" handler={forest} addHandlerKey={true}/>
+    <Route name="conservation" path="/conservation" handler={conservation} addHandlerKey={true}/>
+    <Route name="programs" path="/programs" handler={programs} addHandlerKey={true} />
+    <Route name="education" path="/education" handler={education} addHandlerKey={true} />
+    <Route name="raptor-recovery" path="/raptor-recovery" handler={raptorRecovery} addHandlerKey={true} />
   </Route>
 );
 

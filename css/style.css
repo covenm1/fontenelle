@@ -82,7 +82,6 @@ header {
     left: 0;
     z-index: 99999;
     color: #fff;
-    background: rgba(0,0,0,0.5);
     padding: 0 30px;
     width: 100%;
     height: 60px;
@@ -111,6 +110,39 @@ header p {
 }
 
 /* Video Pages */
+
+.fontenelle, .main_content, .video_container {
+    height: 100%;
+}
+
+#video-background { 
+  position: absolute;
+  bottom: 50%; 
+  right: 50%;
+  transform: translateX(50%) translateY(50%);
+  min-width: 100%; 
+  min-height: 100%; 
+  width: auto; 
+  height: auto;
+  /*z-index: -1000; */
+  overflow: hidden
+}
+
+.slide_controls {
+  position: absolute;
+  bottom: 0;
+  z-index: 1000;
+}
+
+.slide_controls .slider_button {
+    padding: 0 15px;
+    cursor: pointer;
+    transition: 0.15s ease-out;
+}
+
+.slide_controls .slider_button:hover {
+    opacity: 0.8;
+}
 
 .screen {
     position: relative;
@@ -509,4 +541,44 @@ footer img {
 	display: table;
 }
 
+.example-enter {
+  opacity: 0.01;
+  transition: opacity .5s ease-out;
+}
+
+.example-enter.example-enter-active {
+  opacity: 1;
+}
+
+.example-leave {
+  opacity: 1;
+  transition: opacity .5s ease-out;
+}
+
+.example-leave.example-leave-active {
+  opacity: 0.01;
+}
+
+.video-container {
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.content_container {
+  z-index: 1;
+  position: relative;
+  display: table;
+  width: 100%;
+  height: 100%;
+}
+
+.content_container .content_wrapper {
+    display: table-cell;
+    vertical-align: middle;
+}
+.content_container .content_wrapper img {
+  display: table;
+  margin: auto;
+}
 /* End Codrops Header Style */
