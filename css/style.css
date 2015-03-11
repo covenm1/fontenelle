@@ -111,7 +111,7 @@ header p {
 
 /* Video Pages */
 
-.fontenelle, .main_content, .video_container {
+.fontenelle, .main_content, .video_container, .page, .router {
     height: 100%;
 }
 

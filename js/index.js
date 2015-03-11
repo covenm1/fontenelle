@@ -23,8 +23,6 @@ var slide_count = 0;
 
 var hotkey = require('react-hotkey');
 
-hotkey.activate();
-
 
 var App = React.createClass({displayName: "App",
 	mixins: [Router.State, Router.Navigation, hotkey.Mixin('handleKeyDown')], 
@@ -39,6 +37,10 @@ var App = React.createClass({displayName: "App",
 
 	getInitialState: function () { 
 		return {  };
+	},
+
+	componentWillMount: function () {
+	    // hotkey.activate();  
 	},
 
 	componentDidMount: function(){
@@ -107,7 +109,7 @@ var App = React.createClass({displayName: "App",
 		        )
 		    ), 
 		    React.createElement("div", {className: "main_content"}, 
-		    	React.createElement(TransitionGroup, {enterTimeout: 500, leaveTimeout: 500, transitionName: "example"}, 
+		    	React.createElement(TransitionGroup, {enterTimeout: 500, leaveTimeout: 500, transitionName: "example", className: "router", component: "div"}, 
 		      	React.createElement(RouteHandler, {key: name})
 		      ), 
 		     	React.createElement("div", {className: "slide_controls"}, 
@@ -318,14 +320,19 @@ var Main = React.createClass({displayName: "Main",
 
     if (self.state.loaded == true) {
       return (
-        React.createElement("div", {className: "video-container"}, 
-          React.createElement("video", {id: "video-background", className: "video-wrap", poster: "/img/loop_one.jpg", autoPlay: true, muted: "muted", loop: true}, 
-            React.createElement("source", {src: "/videos/loop_one.webm", type: "video/webm"})
-          ), 
-          React.createElement("div", {className: "content_container"}, 
-            React.createElement("div", {className: "content_wrapper"}, 
-              React.createElement("img", {src: "/img/forest.png"})
+        React.createElement("div", {className: "page"}, 
+          React.createElement("div", {className: "video-container"}, 
+            React.createElement("video", {id: "video-background", className: "video-wrap", poster: "/img/loop_one.jpg", autoPlay: true, muted: "muted", loop: true}, 
+              React.createElement("source", {src: "/videos/loop_one.webm", type: "video/webm"})
+            ), 
+            React.createElement("div", {className: "content_container"}, 
+              React.createElement("div", {className: "content_wrapper"}, 
+                React.createElement("img", {src: "/img/forest.png"})
+              )
             )
+          ), 
+          React.createElement("div", {className: "main_wrapper"}, 
+            React.createElement("img", {src: "/img/map.png"})
           )
         )
       )

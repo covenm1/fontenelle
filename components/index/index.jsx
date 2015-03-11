@@ -22,8 +22,6 @@ var slide_count = 0;
 
 var hotkey = require('react-hotkey');
 
-hotkey.activate();
-
 
 var App = React.createClass({
 	mixins: [Router.State, Router.Navigation, hotkey.Mixin('handleKeyDown')], 
@@ -38,6 +36,10 @@ var App = React.createClass({
 
 	getInitialState: function () { 
 		return {  };
+	},
+
+	componentWillMount: function () {
+	    // hotkey.activate();  
 	},
 
 	componentDidMount: function(){
@@ -106,7 +108,7 @@ var App = React.createClass({
 		        </span>
 		    </header>
 		    <div className="main_content">
-		    	<TransitionGroup enterTimeout={500} leaveTimeout={500} transitionName="example">
+		    	<TransitionGroup enterTimeout={500} leaveTimeout={500} transitionName="example" className="router" component="div">
 		      	<RouteHandler key={name}/>
 		      </TransitionGroup>
 		     	<div className="slide_controls">

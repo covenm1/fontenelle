@@ -7,6 +7,8 @@ var Router = require('react-router');
 
 require('velocity-animate/velocity.ui');
 
+require('../../js/svg-pan-zoom.min.js');
+
 var poster_image;
 var Main = React.createClass({
   mixins: [ Router.State ],
@@ -38,14 +40,19 @@ var Main = React.createClass({
 
     if (self.state.loaded == true) {
       return (
-        <div className='video-container'>
-          <video id="video-background" className="video-wrap" poster="/img/loop_one.jpg" autoPlay muted="muted" loop>
-            <source src="/videos/loop_one.webm" type="video/webm" />
-          </video>
-          <div className="content_container">
-            <div className="content_wrapper">
-              <img src="/img/forest.png" />
+        <div className="page">
+          <div className='video-container'>
+            <video id="video-background" className="video-wrap" poster="/img/loop_one.jpg" autoPlay muted="muted" loop>
+              <source src="/videos/loop_one.webm" type="video/webm" />
+            </video>
+            <div className="content_container">
+              <div className="content_wrapper">
+                <img src="/img/forest.png" />
+              </div>
             </div>
+          </div>
+          <div className="main_wrapper">
+            <img src="/img/map.png" />
           </div>
         </div>
       )
