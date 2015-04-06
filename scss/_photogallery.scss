@@ -1,0 +1,39 @@
+.photogallery_wrapper {
+	width: 100%;
+	overflow-x: scroll;
+	.photogallery {
+		height: 600px;
+
+		.photo {
+			height: 300px;
+			width: 450px;
+			background-size: cover;
+			background-position: center;
+			display: inline-block;
+			vertical-align: middle;
+
+			.description_container {
+				display: table;
+				height: 100%;
+				width: 100%;
+				text-align: center;
+				background: rgba(142,49,20,0.7);
+				opacity: 0;
+				transition: 0.15s ease-out;
+
+				.description {
+					display: table-cell;
+				  	vertical-align: middle;
+
+				  	padding: 15px;
+				}
+			}
+
+			&:hover {
+				.description_container {
+					opacity: 1;
+				}
+			}
+		}
+	}
+}

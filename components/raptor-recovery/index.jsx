@@ -45,10 +45,12 @@ var Main = React.createClass({
 
     if (self.state.loaded == true) {
       return (
-        <div className='video-container'>
-          <video id="video-background" className="video-wrap" poster="/img/loop_two.jpg" autoPlay muted="muted" loop>
-            <source src="/videos/loop_five.mp4" type="video/mp4" />
-          </video>
+        <div className='page'>
+          <div className='video-container'>
+            <video id="video-background" className="video-wrap" poster="/img/loop_two.jpg" autoPlay muted="muted" loop>
+              <source src="/videos/loop_five.mp4" type="video/mp4" />
+            </video>
+          </div>
         </div>
       )
     } else {

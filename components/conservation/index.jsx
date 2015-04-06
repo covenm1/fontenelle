@@ -43,26 +43,28 @@ var Main = React.createClass({
   render: function() {
     var self = this;
 
-    if (self.state.loaded == true) {
+    // if (self.state.loaded == true) {
       return (
-        <div className='video-container'>
-          <video id="video-background" className="video-wrap" poster="/img/loop_two.jpg" autoPlay muted="muted" loop>
-            <source src="/videos/loop_two.webm" type="video/webm" />
-          </video>
-          <div className="content_container">
-            <div className="content_wrapper">
-              <img src="/img/conservation.png" />
+        <div className="page">
+          <div className='video-container'>
+            <video id="video-background" className="video-wrap" poster="/img/loop_two.jpg" autoPlay muted="muted" loop>
+              <source src="/videos/loop_two.webm" type="video/webm" />
+            </video>
+            <div className="content_container">
+              <div className="content_wrapper">
+                <img src="/img/conservation.png" />
+              </div>
             </div>
           </div>
         </div>
       )
-    } else {
-      return (
-        <div className="preloader">
-          <h1>Loading...</h1>
-        </div>
-      )
-    }
+    // } else {
+    //   return (
+    //     <div className="preloader">
+    //       <h1>Loading...</h1>
+    //     </div>
+    //   )
+    // }
   }
 });
 

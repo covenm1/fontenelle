@@ -47,13 +47,15 @@ var Main = React.createClass({displayName: "Main",
 
     if (self.state.loaded == true) {
       return (
-        React.createElement("div", {className: "video-container"}, 
-          React.createElement("video", {id: "video-background", className: "video-wrap", poster: "/img/loop_three.jpg", autoPlay: true, muted: "muted", loop: true}, 
-            React.createElement("source", {src: "/videos/loop_three.webm", type: "video/webm"})
-          ), 
-          React.createElement("div", {className: "content_container"}, 
-            React.createElement("div", {className: "content_wrapper"}, 
-              React.createElement("img", {src: "/img/programs.png"})
+        React.createElement("div", {className: "page"}, 
+          React.createElement("div", {className: "video-container"}, 
+            React.createElement("video", {id: "video-background", className: "video-wrap", poster: "/img/loop_three.jpg", autoPlay: true, muted: "muted", loop: true}, 
+              React.createElement("source", {src: "/videos/loop_three.webm", type: "video/webm"})
+            ), 
+            React.createElement("div", {className: "content_container"}, 
+              React.createElement("div", {className: "content_wrapper"}, 
+                React.createElement("img", {src: "/img/programs.png"})
+              )
             )
           )
         )

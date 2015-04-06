@@ -1,0 +1,18 @@
+[																				
+	{
+		"name": "Critters on the Move",	
+		"age": "All",	
+		"science_standards": ["SC2.1.1.a", "SC2.1.1.d", "SC2.3.2.b" ],
+		"series": [ "Nature On-the-Go", "Fontenelle Forest" ],
+		"duration": "1 hour",
+		"description": "Have an up-close meet and greet with a few of our educational animals. Learn what different animal groups have in common and what makes them each unique as you observe their features and behaviors. This program provides an opportunity to introduce students to nature by providing “eye to eye” contact with multiple educational animals. Students will learn about each animal’s habits and habitats as they interact with live animals in their classroom.",
+	},
+	{
+		"name": "Mud Pies for Preschools",	
+		"age": "Pre-K",	
+		"science_standards": [ "SC2.1.1.a", "SC2.1.1.d", "SC2.3.2.b" ],
+		"series": ["Fontenelle Forest" ],
+		"duration": "2 hours",
+		"description": "Bring your preschool class for a unique Mud Pies experience. Centers will be set up related to the weekly topic or topics can be developed based on your learning.",
+	}
+]

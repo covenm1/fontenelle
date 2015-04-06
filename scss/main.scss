@@ -1,0 +1,18 @@
+$orange: #a14616;
+
+
+@import "base";
+
+@import "map";
+
+@import "photogallery";
+
+@import "fonts";
+
+.page.velocity-animating {
+	position: absolute;
+	top: 0;
+}
+.marker {
+	font-family: 'PermanentMarkerPro', Helvetica, Arial, Sans-Serif;
+}

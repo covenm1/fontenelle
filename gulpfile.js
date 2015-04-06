@@ -45,7 +45,7 @@ gulp.task('build-reacts-production', folders(srcFolder, function(folder){
 }));
 
 // Compile Our Production Sass
-gulp.task('build-styles', function() {
+gulp.task('build-styles-production', function() {
   return gulp.src('./scss/*.scss')
           .pipe(sass({
             style: 'compact'
@@ -58,7 +58,7 @@ gulp.task('build-styles', function() {
 });
 
 // Compile Our for Development
-gulp.task('build-dev-styles', function() {
+gulp.task('build-styles', function() {
 
   return gulp.src('./scss/*.scss')
           .pipe(sourcemaps.init())
@@ -68,18 +68,17 @@ gulp.task('build-dev-styles', function() {
             }))
           .pipe(sourcemaps.write())
           .pipe(autoprefixer())
-          .pipe(gulp.dest('./css'))
-          .pipe(livereload());
+          .pipe(gulp.dest('./css'));
 });
 
 
 // Watch Files For Changes
 gulp.task('watch', function() {
-    livereload.listen();
+    // livereload.listen();
     gulp.watch('components/**/*.jsx', ['build-reacts']);
-    gulp.watch('scss/**/*.scss', ['build-styles', 'build-dev-styles']);
+    gulp.watch('scss/**/*.scss', ['build-styles']);
 });
 
 // Default Task
-gulp.task('default', ['build-styles', 'build-dev-styles', 'build-reacts', 'watch' ]);
-gulp.task('default', ['build-styles', 'build-dev-styles', 'build-reacts', 'build-reacts-production' ]);
+gulp.task('default', ['build-styles', 'build-reacts', 'watch' ]);
+gulp.task('build', ['build-styles-production', 'build-styles', 'build-reacts', 'build-reacts-production' ]);

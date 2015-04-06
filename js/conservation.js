@@ -44,26 +44,28 @@ var Main = React.createClass({displayName: "Main",
   render: function() {
     var self = this;
 
-    if (self.state.loaded == true) {
+    // if (self.state.loaded == true) {
       return (
-        React.createElement("div", {className: "video-container"}, 
-          React.createElement("video", {id: "video-background", className: "video-wrap", poster: "/img/loop_two.jpg", autoPlay: true, muted: "muted", loop: true}, 
-            React.createElement("source", {src: "/videos/loop_two.webm", type: "video/webm"})
-          ), 
-          React.createElement("div", {className: "content_container"}, 
-            React.createElement("div", {className: "content_wrapper"}, 
-              React.createElement("img", {src: "/img/conservation.png"})
+        React.createElement("div", {className: "page"}, 
+          React.createElement("div", {className: "video-container"}, 
+            React.createElement("video", {id: "video-background", className: "video-wrap", poster: "/img/loop_two.jpg", autoPlay: true, muted: "muted", loop: true}, 
+              React.createElement("source", {src: "/videos/loop_two.webm", type: "video/webm"})
+            ), 
+            React.createElement("div", {className: "content_container"}, 
+              React.createElement("div", {className: "content_wrapper"}, 
+                React.createElement("img", {src: "/img/conservation.png"})
+              )
             )
           )
         )
       )
-    } else {
-      return (
-        React.createElement("div", {className: "preloader"}, 
-          React.createElement("h1", null, "Loading...")
-        )
-      )
-    }
+    // } else {
+    //   return (
+    //     <div className="preloader">
+    //       <h1>Loading...</h1>
+    //     </div>
+    //   )
+    // }
   }
 });
 

@@ -1,28 +1,49 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 var React = require('react'),
     request = require('superagent'),
-    util = require('util');
-var Velocity = require('velocity-animate/velocity');
-var InlineSVG = require('react-inlinesvg');
-var Router = require('react-router');
-var TWEEN = require('tween.js');
+    util = require('util'),
+    Velocity = require('velocity-animate/velocity'),
+    InlineSVG = require('react-inlinesvg'),
+    Router = require('react-router'),
+    TWEEN = require('tween.js');
 
 require('velocity-animate/velocity.ui');
 
-require('../../js/svg-pan-zoom.js');
-
-// require('../../js/tweenjs-0.6.0.combined.js');
-
 require('../../js/requestanimationframe.js');
 
-var poster_image;
+var poster_image, map_image;
 
-var panZoom;
+var photogallery = require('../../js/photogallery.json');
+
+/**
+ * Randomize array element order in-place.
+ * Using Fisher-Yates shuffle algorithm.
+ */
+function shuffleArray(array) {
+    for (var i = array.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
+    return array;
+}
 
 var Main = React.createClass({displayName: "Main",
   mixins: [ Router.State ],
   getInitialState: function() {
-    return { pre_count: 0, panZoom: {}, windowWidth: window.innerWidth };
+    return { 
+      windowWidth: window.innerWidth,
+      width: 100,
+      left: 0,
+      top: -6,
+      easing: TWEEN.Easing.Exponential.Out,
+      duration: 750,
+      drawer: [],
+      photogallery: shuffleArray(photogallery),
+      hover: '',
+      area: ''
+    };
   },
 
 
@@ -34,7 +55,10 @@ var Main = React.createClass({displayName: "Main",
     poster_image = new Image();
     poster_image.onload = self.onLoad;
     poster_image.src = "/img/loop_one.jpg";
-  },
+    map_image = new Image();
+    map_image.onload = self.onMapLoad;
+    map_image.src = "/img/big_map.png";
+  }, 
 
   componentWillUnmount: function() {
     window.removeEventListener('resize', this.handleResize);
@@ -42,66 +66,28 @@ var Main = React.createClass({displayName: "Main",
 
   handleResize: function(e) {
     this.setState({windowWidth: window.innerWidth});
-    panZoom.resize();
   },
 
   onLoad: function() {
     var self = this;
-    var tmp_pre_count = self.state.pre_count;
-    tmp_pre_count++;
-    if (tmp_pre_count == 1) {
-      self.setState({loaded: true, pre_count: tmp_pre_count}); 
-      // self.svgPan();
-
-    } else {
-      self.setState({pre_count: tmp_pre_count}); 
-    }
+    self.setState({loaded: true}); 
   },
 
-  svgPan: function() {
-    beforePan = function(oldPan, newPan){
-      var stopHorizontal = false
-        , stopVertical = false
-        , gutterWidth = 100
-        , gutterHeight = 100
-          // Computed variables
-        , sizes = this.getSizes()
-        , leftLimit = -((sizes.viewBox.x + sizes.viewBox.width) * sizes.realZoom) + gutterWidth
-        , rightLimit = sizes.width - gutterWidth - (sizes.viewBox.x * sizes.realZoom)
-        , topLimit = -((sizes.viewBox.y + sizes.viewBox.height) * sizes.realZoom) + gutterHeight
-        , bottomLimit = sizes.height - gutterHeight - (sizes.viewBox.y * sizes.realZoom)
-
-      customPan = {}
-      customPan.x = Math.max(leftLimit, Math.min(rightLimit, newPan.x))
-      customPan.y = Math.max(topLimit, Math.min(bottomLimit, newPan.y))
-
-      return customPan
-    }
-
-    // Expose to window namespace for testing purposes
-    panZoom = svgPanZoom('#limit-svg', {
-      zoomEnabled: true
-    , panEnabled: true
-    , controlIconsEnabled: false
-    , fit: 1
-    , center: 1
-    , beforePan: beforePan
-    });
-    
-    // self.setState({ panZoom: panZoom });
+  onMapLoad: function() {
+    var self = this;
+    self.setState({mapLoaded: true}); 
   },
 
-  panAndZoom: function(){
-    panZoom.zoomAtPoint(3, {x: 50, y: 50});
-  },
-  tweenPanAndZoom: function(){ 
-    console.log('tweenPanAndZoom');
-    
-    var tween = new TWEEN.Tween( { z: panZoom.getZoom(), x:  panZoom.getPan().x, y: panZoom.getPan().y } )
-    .to( { x: panZoom.getPan().x , y: panZoom.getPan().y + 100 , z: 3 }, 2000 )
-    .easing( TWEEN.Easing.Quadratic.InOut )
+
+  reset: function(){ 
+    var self = this;
+    console.log('natureCenter');
+    self.setState({ drawer: [] });
+    var tween = new TWEEN.Tween( { width: self.state.width, left:  self.state.left, top: self.state.top } )
+    .to( { width: 100, left:  0, top: 0 }, self.state.duration )
+    .easing( self.state.easing )
     .onUpdate( function () {
-      panZoom.zoomAtPoint( this.z, {x: this.x , y: this.y});
+      self.setState( { width: this.width, left: this.left , top: this.top});
     })
     .start();
    
@@ -115,35 +101,299 @@ var Main = React.createClass({displayName: "Main",
     }
   },
 
-  resetZoom: function(){
-    panZoom.fit();
-    panZoom.center();
+  natureCenter: function(){ 
+    var self = this;
+    console.log('natureCenter');
+
+    var drawer = [
+      {
+        title: "The Nature Center",
+        description: "This 25000 square foot building is the home to classrooms, rotating exhibits, and the Fontenelle Forest main offices. Stop by the front desk to grab a map and check the ranger board for the latest on wildlife activity.",
+        image: "/img/map_photos/small/1NatureCenterWinter.jpg"
+      },
+      {
+        title: "Acorn Acres",
+        description: "Just outside the Nature Center, this natural playscape offers children a unique place for unstructured play and outdoor learning",
+        image: "/img/map_photos/small/2AcornAcresFall.jpg"
+      },
+      {
+        title: "Habitat Hollow",
+        description: "This short, level trail is a great option when you want a short jaunt off the boardwalk. ",
+        image: "/img/map_photos/small/2RiverviewBoardwalkSummer2.jpg"
+      },
+      {
+        title: "Riverview Boardwalk",
+        description: "Recommended for all first time visitors, the wooden boardwalk’s three interconnected loops make for a pleasant, mud-free hike in any weather. This barrier-free trail is also well suited to baby strollers.",
+        image: "/img/map_photos/small/4NorthernFloodplainsFall.jpg"
+      }
+    ];
+
+    self.setState({ drawer: drawer, area: 'natureCenter' });
+
+    var tween = new TWEEN.Tween( { width: self.state.width, left:  self.state.left, top: self.state.top } )
+    .to( { width: 364, left:  -33, top: -36 }, self.state.duration )
+    .easing( self.state.easing )
+    .onUpdate( function () {
+      self.setState( { width: this.width, left: this.left , top: this.top});
+    })
+    .start();
+   
+    animate();
+   
+    function animate() {
+   
+      requestAnimationFrame( animate ); // js/RequestAnimationFrame.js needs to be included too.
+      TWEEN.update();
+   
+    }
   },
 
-  getZoom: function(){
-    console.log('getZoom(): ' + panZoom.getZoom());
+
+  greatMarsh: function(){ 
+    var self = this;
+    console.log('greatMarsh');
+
+    var drawer = [
+      {
+        title: "Trailheads at the Wetlands Learning Center",
+        description: "With 5 trailheads nearby, the Wetlands Learning center is a great spot to park and while you discover a new trail.",
+        image: "/img/map_photos/small/1NatureCenterWinter.jpg"
+      },
+      {
+        title: "Gifford Memorial Boardwalk",
+        description: "This level, barrier free trail takes you on a half mile journey through wetland and cottonwoods to the observation blind.",
+        image: "/img/map_photos/small/2AcornAcresFall.jpg"
+      },
+      {
+        title: "Observation Blind",
+        description: "Looks out over the Great Marsh, which is a “river scar” marking a former channel of the Missouri.",
+        image: "/img/map_photos/small/2RiverviewBoardwalkSummer2.jpg"
+      }
+    ];
+
+    self.setState({ drawer: drawer, area: 'greatMarsh' });
+
+
+    var tween = new TWEEN.Tween( { width: self.state.width, left:  self.state.left, top: self.state.top } )
+    .to( { width: 266, left:  -128, top: -88 }, self.state.duration )
+    .easing( self.state.easing )
+    .onUpdate( function () {
+      self.setState( { width: this.width, left: this.left , top: this.top});
+    })
+    .start();
+    
+    animate();
+   
+    function animate() {
+   
+      requestAnimationFrame( animate ); // js/RequestAnimationFrame.js needs to be included too.
+      TWEEN.update();
+   
+    }
   },
 
-  getPan: function(){
-    console.log('getPan(): ' + util.inspect(panZoom.getPan()));
+  northernFloodplains: function(){ 
+    var self = this;
+    console.log('northernFloodplains');
+
+    var drawer = [
+      {
+        title: "Camp Gifford",
+        description: "A young Henry Fonda spent time with other scouts at Camp Gifford. You can still see concrete bunkhouse foundations from Stream Trail.",
+        image: "/img/map_photos/small/4NorthernFloodplainsFall.jpg"
+      },
+      {
+        title: "Stream Trail",
+        description: "Hike along the stream where you can see beavers, frogs, and other wildlife.",
+        image: "/img/map_photos/small/5ChildsHollowWinter2.jpg"
+      },
+      {
+        title: "Cottonwood Trail",
+        description: "A level trail across the floodplain where you can find giant cottonwood trees.",
+        image: "/img/map_photos/small/1NatureCenterWinter.jpg"
+      }
+    ];
+
+    self.setState({ drawer: drawer, area: 'northernFloodplains' });
+
+
+    var tween = new TWEEN.Tween( { width: self.state.width, left:  self.state.left, top: self.state.top } )
+    .to( { width: 290, left:  -83, top: -40 }, self.state.duration )
+    .easing( self.state.easing )
+    .onUpdate( function () {
+      self.setState( { width: this.width, left: this.left , top: this.top});
+    })
+    .start();
+   
+    animate();
+   
+    function animate() {
+   
+      requestAnimationFrame( animate ); // js/RequestAnimationFrame.js needs to be included too.
+      TWEEN.update();
+   
+    }
   },
 
-  getSizes: function(){
-    console.log('getSizes(): ' + util.inspect(panZoom.getSizes()));
+  northernUplands: function(){ 
+    var self = this;
+    console.log('northernUplands');
+
+    var drawer = [
+      {
+        title: "Earth Lodges",
+        description: "Along the ridges of Oak Trail and Hawthorn Trail you can find depressions that mark 1000 year old sites of Native American earth lodges.",
+        image: "/img/map_photos/small/2AcornAcresFall.jpg"
+      },
+      {
+        title: "Scenic, ridge-top Oak Trail",
+        description: "A bit over a mile long with plenty of vertical travel, Oak Trail can give you a workout. The trail follows a ridge with scenic views and 250 year old Burr Oak trees.",
+        image: "/img/map_photos/small/2RiverviewBoardwalkSummer2.jpg"
+      },
+      {
+        title: "Child’s MIll",
+        description: "",
+        image: "/img/map_photos/small/4NorthernFloodplainsFall.jpg"
+      }
+    ];
+
+    self.setState({ drawer: drawer, area: 'northernUplands' });
+
+    var tween = new TWEEN.Tween( { width: self.state.width, left:  self.state.left, top: self.state.top } )
+    .to( { width: 261, left:  -42, top: -47 }, self.state.duration )
+    .easing( self.state.easing )
+    .onUpdate( function () {
+      self.setState( { width: this.width, left: this.left , top: this.top});
+    })
+    .start();
+   
+    animate();
+   
+    function animate() {
+   
+      requestAnimationFrame( animate ); // js/RequestAnimationFrame.js needs to be included too.
+      TWEEN.update();
+   
+    }
   },
 
-  printPanZoom: function(){
-    console.log('panZoom: ' + util.inspect(panZoom));
+  southernUplands: function(){ 
+    var self = this;
+    console.log('southernUplands');
+
+    var drawer = [
+      {
+        title: "Mormon Hollow",
+        description: "Follow a deep ravine along traces of a Mormon Pioneer trail blazed in the summer of 1846.",
+        image: "/img/map_photos/small/1NatureCenterWinter.jpg"
+      },
+      {
+        title: "Springs and streams",
+        description: "Along Morman Hollow’s trail you can find springs and miniature waterfalls.",
+        image: "/img/map_photos/small/2AcornAcresFall.jpg"
+      },
+      {
+        title: "History Trail",
+        description: "",
+        image: "/img/map_photos/small/2RiverviewBoardwalkSummer2.jpg"
+      }
+    ];
+
+    self.setState({ drawer: drawer, area: 'southernUplands' });
+
+    var tween = new TWEEN.Tween( { width: self.state.width, left:  self.state.left, top: self.state.top } )
+    .to( { width: 297, left:  -110, top: -102 }, self.state.duration )
+    .easing( self.state.easing )
+    .onUpdate( function () {
+      self.setState( { width: this.width, left: this.left , top: this.top});
+    })
+    .start();
+   
+    animate();
+   
+    function animate() {
+   
+      requestAnimationFrame( animate ); // js/RequestAnimationFrame.js needs to be included too.
+      TWEEN.update();
+   
+    }
   },
 
-  getCTM: function(){
-    console.log('getCTM(): ' + util.inspect(panZoom.viewport));
+  hoverClass: function(index){
+    console.log("hoverClass " + index);
+    this.setState({hover: "hover_"+index});
+  },
+
+  hoverLeave: function(){
+    this.setState({hover: ''});
+    console.log("hoverLeave" );
   },
 
   render: function() {
     var self = this;
 
     if (self.state.loaded == true) {
+      var styles = {
+        width: self.state.width + "%",
+        marginLeft: self.state.left + "%",
+        marginTop: self.state.top + "%"
+      }
+      var little_map_buttons = self.state.drawer.map(function(object, index) {
+        return (
+          React.createElement("span", {className: "circle_button small small_"+index, onMouseEnter: self.hoverClass.bind(self,index), onMouseLeave: self.hoverLeave})
+        )
+      });
+
+      var drawer = self.state.drawer.map(function(object, index) {
+        var item_style = {
+          backgroundImage: "url("+object.image+")",
+        };
+        return (
+          React.createElement("li", {className: "drawer_item big_"+index, onMouseEnter: self.hoverClass.bind(self,index), onMouseLeave: self.hoverLeave}, 
+            React.createElement("div", {className: "drawer_image", style: item_style}), 
+            React.createElement("div", {className: "drawer_content"}, 
+              React.createElement("h3", {className: "marker"}, object.title), 
+              React.createElement("p", null, object.description)
+            )
+          )
+        )
+      });
+ 
+      var photogallery = self.state.photogallery.map(function(object) {
+        var photoStyles = {
+          backgroundImage: 'url('+object.image + ')',
+        }
+        return (
+          React.createElement("div", {className: "photo", style: photoStyles}, 
+            React.createElement("div", {className: "description_container"}, 
+              React.createElement("div", {className: "description"}, 
+                React.createElement("h4", {className: "name"}, object.name), 
+                React.createElement("p", null, object.description)
+              )
+            )
+          )
+        ) 
+      });
+
+      var photogalleryStyles = {
+        width: Math.ceil(photogallery.length/2) * 450 +"px"
+      };
+
+      var map_class = "map_wrapper";
+
+      if (self.state.drawer.length) {
+        map_class = map_class + " open";
+      }
+
+      if (self.state.area.length) {
+        map_class = map_class + " " + self.state.area;
+      }
+
+      if (self.state.hover.length) {
+        map_class = map_class + " " + self.state.hover;
+      }
+
+
       return (
         React.createElement("div", {className: "page"}, 
           React.createElement("div", {className: "video-container"}, 
@@ -156,18 +406,52 @@ var Main = React.createClass({displayName: "Main",
               )
             )
           ), 
-          React.createElement("div", {className: "main_wrapper"}, 
-            React.createElement(InlineSVG, {src: "/img/limit-svg.svg", uniquifyIDs: false, onLoad: self.svgPan}), 
-            React.createElement("div", {className: "buttons"}, 
-              React.createElement("p", {onClick: self.panAndZoom}, "Pan and Zoom"), 
-              React.createElement("p", {onClick: self.tweenPanAndZoom}, "Tween Pan and Zoom"), 
-              React.createElement("p", {onClick: self.resetZoom}, "Reset"), 
-              React.createElement("p", {onClick: self.getZoom}, "getZoom"), 
-              React.createElement("p", {onClick: self.getPan}, "getPan"), 
-              React.createElement("p", {onClick: self.getSizes}, "getSizes"), 
-              React.createElement("p", {onClick: self.getCTM}, "getCTM"), 
-              React.createElement("p", {onClick: self.printPanZoom}, "printPanZoom Object")
+          React.createElement("div", {className: "page_container"}, 
+            React.createElement("div", {className: "image_container"}, 
+              React.createElement("img", {src: "/img/forest/top.jpg"})
+            ), 
+            React.createElement("div", {className: "photogallery_wrapper"}, 
+              React.createElement("div", {className: "photogallery", style: photogalleryStyles}, 
+                photogallery
+              )
+            ), 
 
+            React.createElement("div", {className: map_class }, 
+              React.createElement("div", {className: "nav_area"}, 
+                React.createElement("span", {className: "marker reset_button", onClick: self.reset}), 
+                React.createElement("div", {className: "nav_menu"}, 
+                  React.createElement("p", {className: "title marker"}, "Map Legend"), 
+                  React.createElement("p", {className:  self.state.area == 'natureCenter' ? "map_button active" : "map_button", onClick: self.natureCenter}, "Visitor Center Area"), 
+                  React.createElement("p", {className:  self.state.area == 'northernFloodplains' ? "map_button active" : "map_button", onClick: self.northernFloodplains}, "Northern Floodplains "), 
+                  React.createElement("p", {className:  self.state.area == 'northernUplands' ? "map_button active" : "map_button", onClick: self.northernUplands}, "Northern Uplands"), 
+                  React.createElement("p", {className:  self.state.area == 'southernUplands' ? "map_button active" : "map_button", onClick: self.southernUplands}, "Southern Uplands"), 
+                  React.createElement("p", {className:  self.state.area == 'greatMarsh' ? "map_button active" : "map_button", onClick: self.greatMarsh}, "Great Marsh Area")
+                ), 
+                 drawer.length ? 
+                  React.createElement("div", {className: "drawer"}, 
+                    React.createElement("ul", null, 
+                      drawer
+                    )
+                  ) 
+                : null
+              ), 
+
+              React.createElement("div", {className: "map_zoom"}, 
+                 self.state.mapLoaded ? 
+                  React.createElement("div", {className: "map_box", style: styles}, 
+                    React.createElement("img", {className: "map_image", src: "/img/big_map.png"}), 
+                    React.createElement("span", {onClick: self.natureCenter, className: "circle_button natureCenter"}), 
+                    React.createElement("span", {onClick: self.northernFloodplains, className: "circle_button northernFloodplains"}), 
+                    React.createElement("span", {onClick: self.northernUplands, className: "circle_button northernUplands"}), 
+                    React.createElement("span", {onClick: self.southernUplands, className: "circle_button southernUplands"}), 
+                    React.createElement("span", {onClick: self.greatMarsh, className: "circle_button greatMarsh"}), 
+                    little_map_buttons 
+                  )
+                : "Loading Map"
+              )
+            ), 
+            React.createElement("div", {className: "image_container"}, 
+              React.createElement("img", {src: "/img/forest/bottom.jpg"})
             )
           )
         )
@@ -184,7 +468,230 @@ var Main = React.createClass({displayName: "Main",
 
 module.exports = Main;
 
-},{"../../js/requestanimationframe.js":2,"../../js/svg-pan-zoom.js":3,"react":215,"react-inlinesvg":12,"react-router":35,"superagent":216,"tween.js":219,"util":11,"velocity-animate/velocity":220,"velocity-animate/velocity.ui":221}],2:[function(require,module,exports){
+},{"../../js/photogallery.json":2,"../../js/requestanimationframe.js":3,"react":215,"react-inlinesvg":12,"react-router":35,"superagent":216,"tween.js":219,"util":11,"velocity-animate/velocity":220,"velocity-animate/velocity.ui":221}],2:[function(require,module,exports){
+module.exports=[
+  {
+    "image": "/img/photogallery/birds/3152.jpg",
+    "name": "3152",
+    "description": "Description"
+  },
+   {
+    "image": "/img/photogallery/birds/3896.jpg",
+    "name": "3896",
+    "description": ""
+  },
+  {
+    "image": "/img/photogallery/birds/3897.jpg",
+    "name": "3897",
+    "description": "Description"
+  },
+  {
+    "image": "/img/photogallery/birds/3943.jpg",
+    "name": "3943",
+    "description": "Description"
+  },
+  {
+    "image": "/img/photogallery/birds/5109.jpg",
+    "name": "5109",
+    "description": "Description"
+  },
+  {
+    "image": "/img/photogallery/birds/8742.jpg",
+    "name": "8742",
+    "description": "Description"
+  },
+  {
+    "image": "/img/photogallery/birds/8743.jpg",
+    "name": "8743",
+    "description": "Description"
+  },
+  {
+    "image": "/img/photogallery/fishes/5325.jpg",
+    "name": "5325",
+    "description": "Description"
+  },
+  {
+    "image": "/img/photogallery/fishes/6872.jpg",
+    "name": "6872",
+    "description": "Description"
+  },
+  {
+    "image": "/img/photogallery/frogs-toads/3280.jpg",
+    "name": "Cope’s Gray Tree Frog",
+    "description": "These frogs are mostly seen on the flood plains near water and in moist ravines, sitting on large leaves from May through September.",
+   	"link": "http://www.fnanaturesearch.org/index.php?option=com_naturesearch&task=view&id=35&cid=2"
+  },
+  {
+    "image": "/img/photogallery/frogs-toads/4953.jpg",
+    "name": "North American Bullfrog",
+    "description": "This is the largest native frog in North America. They can weigh up to a pound and reach up to 8 inches in length."
+  },
+  {
+    "image": "/img/photogallery/fungi/4468.jpg",
+    "name": "4468",
+    "description": "Description",
+    "link": "http://www.fnanaturesearch.org/index.php?option=com_naturesearch&task=view&id=563&cid=2"
+  },
+  {
+    "image": "/img/photogallery/fungi/592.jpg",
+    "name": "592",
+    "description": "Description"
+  },
+  {
+    "image": "/img/photogallery/fungi/905.jpg",
+    "name": "905",
+    "description": "Description"
+  },
+  {
+    "image": "/img/photogallery/fungi/9621.jpg",
+    "name": "9621",
+    "description": "Description"
+  },
+  {
+    "image": "/img/photogallery/insects/3743.jpg",
+    "name": "3743",
+    "description": "Description"
+  },
+  {
+    "image": "/img/photogallery/insects/4366.jpg",
+    "name": "4366",
+    "description": "Description"
+  },
+  {
+    "image": "/img/photogallery/insects/4666.jpg",
+    "name": "4666",
+    "description": "Description"
+  },
+  {
+    "image": "/img/photogallery/insects/5473.jpg",
+    "name": "5473",
+    "description": "Description"
+  },
+  {
+    "image": "/img/photogallery/insects/6225.jpg",
+    "name": "6225",
+    "description": "Description"
+  },
+  {
+    "image": "/img/photogallery/insects/6239.jpg",
+    "name": "6239",
+    "description": "Description"
+  },
+  {
+    "image": "/img/photogallery/mammals/3650.jpg",
+    "name": "3650",
+    "description": "Description"
+  },
+  {
+    "image": "/img/photogallery/mammals/3653.jpg",
+    "name": "3653",
+    "description": "Description"
+  },
+  {
+    "image": "/img/photogallery/mammals/3656.jpg",
+    "name": "3656",
+    "description": "Description"
+  },
+  {
+    "image": "/img/photogallery/mammals/3657.jpg",
+    "name": "3657",
+    "description": "Description"
+  },
+  {
+    "image": "/img/photogallery/other/2631.jpg",
+    "name": "2631",
+    "description": "Description"
+  },
+  {
+    "image": "/img/photogallery/plants/1060.jpg",
+    "name": "1060",
+    "description": "Description"
+  },
+  {
+    "image": "/img/photogallery/plants/418.jpg",
+    "name": "418",
+    "description": "Description"
+  },
+  {
+    "image": "/img/photogallery/plants/6448.jpg",
+    "name": "6448",
+    "description": "Description"
+  },
+  {
+    "image": "/img/photogallery/plants/693.jpg",
+    "name": "693",
+    "description": "Description"
+  },
+  {
+    "image": "/img/photogallery/plants/871.jpg",
+    "name": "871",
+    "description": "Description"
+  },
+  {
+    "image": "/img/photogallery/plants/952.jpg",
+    "name": "952",
+    "description": "Description"
+  },
+  {
+    "image": "/img/photogallery/slime-molds/760.jpg",
+    "name": "760",
+    "description": "Description"
+  },
+  {
+    "image": "/img/photogallery/slime-molds/843.jpg",
+    "name": "843",
+    "description": "Description"
+  },
+  {
+    "image": "/img/photogallery/snails-clams/2177.jpg",
+    "name": "2177",
+    "description": "Description"
+  },
+  {
+    "image": "/img/photogallery/snails-clams/3135.jpg",
+    "name": "3135",
+    "description": "Description"
+  },
+  {
+    "image": "/img/photogallery/snakes-lizards-turtles/2061.jpg",
+    "name": "Brown Snake",
+    "description": "This snake spends most of its time underground, living in dens with other species of snake. They live up to 7 years, hibernating in winter.",
+    "link": "http://www.fnanaturesearch.org/index.php?option=com_naturesearch&task=view&id=573&cid=5"
+  },
+  {
+    "image": "/img/photogallery/snakes-lizards-turtles/2078.jpg",
+    "name": "2078",
+    "description": "Description"
+  },
+  {
+    "image": "/img/photogallery/snakes-lizards-turtles/5077.jpg",
+    "name": "5077",
+    "description": "Description"
+  },
+  {
+    "image": "/img/photogallery/snakes-lizards-turtles/6353.jpg",
+    "name": "Western Fox Snake",
+    "description": "This large, native, non-venomous snake grows to 5 feet long. The snake can vibrates its tail and make a rattlesnake-like sound to ward off enemies. ",
+    "link": "http://www.fnanaturesearch.org/index.php?option=com_naturesearch&task=view&id=866&cid=5"
+  },
+  {
+    "image": "/img/photogallery/spiders-ticks-mites/2327.jpg",
+    "name": "2327",
+    "description": "Description"
+  },
+  {
+    "image": "/img/photogallery/spiders-ticks-mites/2376.jpg",
+    "name": "2376",
+    "description": "Description"
+  },
+  {
+    "image": "/img/photogallery/spiders-ticks-mites/3274.jpg",
+    "name": "3274",
+    "description": "Description"
+  },
+
+]
+},{}],3:[function(require,module,exports){
 // http://paulirish.com/2011/requestanimationframe-for-smart-animating/
 // http://my.opera.com/emoller/blog/2011/12/20/requestanimationframe-for-smart-er-animating
 
@@ -215,10 +722,6 @@ module.exports = Main;
             clearTimeout(id);
         };
 }());
-},{}],3:[function(require,module,exports){
-// svg-pan-zoom v3.1.3
-// https://github.com/ariutta/svg-pan-zoom
-!function t(e,o,n){function i(r,a){if(!o[r]){if(!e[r]){var l="function"==typeof require&&require;if(!a&&l)return l(r,!0);if(s)return s(r,!0);var u=new Error("Cannot find module '"+r+"'");throw u.code="MODULE_NOT_FOUND",u}var c=o[r]={exports:{}};e[r][0].call(c.exports,function(t){var o=e[r][1][t];return i(o?o:t)},c,c.exports,t,e,o,n)}return o[r].exports}for(var s="function"==typeof require&&require,r=0;r<n.length;r++)i(n[r]);return i}({1:[function(t,e){var o=t("./svg-pan-zoom.js");!function(t){"function"==typeof define&&define.amd?define("svg-pan-zoom",function(){return o}):"undefined"!=typeof e&&e.exports&&(e.exports=o,t.svgPanZoom=o)}(window,document)},{"./svg-pan-zoom.js":4}],2:[function(t,e){var o=t("./svg-utilities");e.exports={enable:function(t){var e=t.svg.querySelector("defs");e||(e=document.createElementNS(o.svgNS,"defs"),t.svg.appendChild(e));var n=document.createElementNS(o.svgNS,"style");n.setAttribute("type","text/css"),n.textContent=".svg-pan-zoom-control { cursor: pointer; fill: black; fill-opacity: 0.333; } .svg-pan-zoom-control:hover { fill-opacity: 0.8; } .svg-pan-zoom-control-background { fill: white; fill-opacity: 0.5; } .svg-pan-zoom-control-background { fill-opacity: 0.8; }",e.appendChild(n);var i=document.createElementNS(o.svgNS,"g");i.setAttribute("id","svg-pan-zoom-controls"),i.setAttribute("transform","translate("+(t.width-70)+" "+(t.height-76)+") scale(0.75)"),i.setAttribute("class","svg-pan-zoom-control"),i.appendChild(this._createZoomIn(t)),i.appendChild(this._createZoomReset(t)),i.appendChild(this._createZoomOut(t)),t.svg.appendChild(i),t.controlIcons=i},_createZoomIn:function(t){var e=document.createElementNS(o.svgNS,"g");e.setAttribute("id","svg-pan-zoom-zoom-in"),e.setAttribute("transform","translate(30.5 5) scale(0.015)"),e.setAttribute("class","svg-pan-zoom-control"),e.addEventListener("click",function(){t.getPublicInstance().zoomIn()},!1),e.addEventListener("touchstart",function(){t.getPublicInstance().zoomIn()},!1);var n=document.createElementNS(o.svgNS,"rect");n.setAttribute("x","0"),n.setAttribute("y","0"),n.setAttribute("width","1500"),n.setAttribute("height","1400"),n.setAttribute("class","svg-pan-zoom-control-background"),e.appendChild(n);var i=document.createElementNS(o.svgNS,"path");return i.setAttribute("d","M1280 576v128q0 26 -19 45t-45 19h-320v320q0 26 -19 45t-45 19h-128q-26 0 -45 -19t-19 -45v-320h-320q-26 0 -45 -19t-19 -45v-128q0 -26 19 -45t45 -19h320v-320q0 -26 19 -45t45 -19h128q26 0 45 19t19 45v320h320q26 0 45 19t19 45zM1536 1120v-960 q0 -119 -84.5 -203.5t-203.5 -84.5h-960q-119 0 -203.5 84.5t-84.5 203.5v960q0 119 84.5 203.5t203.5 84.5h960q119 0 203.5 -84.5t84.5 -203.5z"),i.setAttribute("class","svg-pan-zoom-control-element"),e.appendChild(i),e},_createZoomReset:function(t){var e=document.createElementNS(o.svgNS,"g");e.setAttribute("id","svg-pan-zoom-reset-pan-zoom"),e.setAttribute("transform","translate(5 35) scale(0.4)"),e.setAttribute("class","svg-pan-zoom-control"),e.addEventListener("click",function(){t.getPublicInstance().reset()},!1),e.addEventListener("touchstart",function(){t.getPublicInstance().reset()},!1);var n=document.createElementNS(o.svgNS,"rect");n.setAttribute("x","2"),n.setAttribute("y","2"),n.setAttribute("width","182"),n.setAttribute("height","58"),n.setAttribute("class","svg-pan-zoom-control-background"),e.appendChild(n);var i=document.createElementNS(o.svgNS,"path");i.setAttribute("d","M33.051,20.632c-0.742-0.406-1.854-0.609-3.338-0.609h-7.969v9.281h7.769c1.543,0,2.701-0.188,3.473-0.562c1.365-0.656,2.048-1.953,2.048-3.891C35.032,22.757,34.372,21.351,33.051,20.632z"),i.setAttribute("class","svg-pan-zoom-control-element"),e.appendChild(i);var s=document.createElementNS(o.svgNS,"path");return s.setAttribute("d","M170.231,0.5H15.847C7.102,0.5,0.5,5.708,0.5,11.84v38.861C0.5,56.833,7.102,61.5,15.847,61.5h154.384c8.745,0,15.269-4.667,15.269-10.798V11.84C185.5,5.708,178.976,0.5,170.231,0.5z M42.837,48.569h-7.969c-0.219-0.766-0.375-1.383-0.469-1.852c-0.188-0.969-0.289-1.961-0.305-2.977l-0.047-3.211c-0.03-2.203-0.41-3.672-1.142-4.406c-0.732-0.734-2.103-1.102-4.113-1.102h-7.05v13.547h-7.055V14.022h16.524c2.361,0.047,4.178,0.344,5.45,0.891c1.272,0.547,2.351,1.352,3.234,2.414c0.731,0.875,1.31,1.844,1.737,2.906s0.64,2.273,0.64,3.633c0,1.641-0.414,3.254-1.242,4.84s-2.195,2.707-4.102,3.363c1.594,0.641,2.723,1.551,3.387,2.73s0.996,2.98,0.996,5.402v2.32c0,1.578,0.063,2.648,0.19,3.211c0.19,0.891,0.635,1.547,1.333,1.969V48.569z M75.579,48.569h-26.18V14.022h25.336v6.117H56.454v7.336h16.781v6H56.454v8.883h19.125V48.569z M104.497,46.331c-2.44,2.086-5.887,3.129-10.34,3.129c-4.548,0-8.125-1.027-10.731-3.082s-3.909-4.879-3.909-8.473h6.891c0.224,1.578,0.662,2.758,1.316,3.539c1.196,1.422,3.246,2.133,6.15,2.133c1.739,0,3.151-0.188,4.236-0.562c2.058-0.719,3.087-2.055,3.087-4.008c0-1.141-0.504-2.023-1.512-2.648c-1.008-0.609-2.607-1.148-4.796-1.617l-3.74-0.82c-3.676-0.812-6.201-1.695-7.576-2.648c-2.328-1.594-3.492-4.086-3.492-7.477c0-3.094,1.139-5.664,3.417-7.711s5.623-3.07,10.036-3.07c3.685,0,6.829,0.965,9.431,2.895c2.602,1.93,3.966,4.73,4.093,8.402h-6.938c-0.128-2.078-1.057-3.555-2.787-4.43c-1.154-0.578-2.587-0.867-4.301-0.867c-1.907,0-3.428,0.375-4.565,1.125c-1.138,0.75-1.706,1.797-1.706,3.141c0,1.234,0.561,2.156,1.682,2.766c0.721,0.406,2.25,0.883,4.589,1.43l6.063,1.43c2.657,0.625,4.648,1.461,5.975,2.508c2.059,1.625,3.089,3.977,3.089,7.055C108.157,41.624,106.937,44.245,104.497,46.331z M139.61,48.569h-26.18V14.022h25.336v6.117h-18.281v7.336h16.781v6h-16.781v8.883h19.125V48.569z M170.337,20.14h-10.336v28.43h-7.266V20.14h-10.383v-6.117h27.984V20.14z"),s.setAttribute("class","svg-pan-zoom-control-element"),e.appendChild(s),e},_createZoomOut:function(t){var e=document.createElementNS(o.svgNS,"g");e.setAttribute("id","svg-pan-zoom-zoom-out"),e.setAttribute("transform","translate(30.5 70) scale(0.015)"),e.setAttribute("class","svg-pan-zoom-control"),e.addEventListener("click",function(){t.getPublicInstance().zoomOut()},!1),e.addEventListener("touchstart",function(){t.getPublicInstance().zoomOut()},!1);var n=document.createElementNS(o.svgNS,"rect");n.setAttribute("x","0"),n.setAttribute("y","0"),n.setAttribute("width","1500"),n.setAttribute("height","1400"),n.setAttribute("class","svg-pan-zoom-control-background"),e.appendChild(n);var i=document.createElementNS(o.svgNS,"path");return i.setAttribute("d","M1280 576v128q0 26 -19 45t-45 19h-896q-26 0 -45 -19t-19 -45v-128q0 -26 19 -45t45 -19h896q26 0 45 19t19 45zM1536 1120v-960q0 -119 -84.5 -203.5t-203.5 -84.5h-960q-119 0 -203.5 84.5t-84.5 203.5v960q0 119 84.5 203.5t203.5 84.5h960q119 0 203.5 -84.5 t84.5 -203.5z"),i.setAttribute("class","svg-pan-zoom-control-element"),e.appendChild(i),e},disable:function(t){t.controlIcons&&(t.controlIcons.parentNode.removeChild(t.controlIcons),t.controlIcons=null)}}},{"./svg-utilities":5}],3:[function(t,e){var o=t("./svg-utilities"),n=t("./utilities"),i=function(t,e){this.init(t,e)};i.prototype.init=function(t,e){this.viewport=t,this.options=e,this.originalState={zoom:1,x:0,y:0},this.activeState={zoom:1,x:0,y:0},this.updateCTMCached=n.proxy(this.updateCTM,this),this.requestAnimationFrame=n.createRequestAnimationFrame(this.options.refreshRate),this.viewBox={x:0,y:0,width:0,height:0},this.cacheViewBox(),this.processCTM()},i.prototype.cacheViewBox=function(){var t=this.options.svg.getAttribute("viewBox");if(t){var e=t.split(" ").map(parseFloat);this.viewBox.x=e[0],this.viewBox.y=e[1],this.viewBox.width=e[2],this.viewBox.height=e[3];var o=Math.min(this.options.width/this.viewBox.width,this.options.height/this.viewBox.height);this.activeState.zoom=o,this.activeState.x=(this.options.width-this.viewBox.width*o)/2,this.activeState.y=(this.options.height-this.viewBox.height*o)/2,this.updateCTMOnNextFrame(),this.options.svg.removeAttribute("viewBox")}else{var n=this.viewport.getBBox();this.viewBox.x=n.x,this.viewBox.y=n.y,this.viewBox.width=n.width,this.viewBox.height=n.height}},i.prototype.recacheViewBox=function(){var t=this.viewport.getBoundingClientRect(),e=t.width/this.getZoom(),o=t.height/this.getZoom();this.viewBox.x=0,this.viewBox.y=0,this.viewBox.width=e,this.viewBox.height=o},i.prototype.getViewBox=function(){return n.extend({},this.viewBox)},i.prototype.processCTM=function(){var t=this.getCTM();if(this.options.fit){var e=Math.min(this.options.width/(this.viewBox.width-this.viewBox.x),this.options.height/(this.viewBox.height-this.viewBox.y));t.a=e,t.d=e,t.e=-this.viewBox.x*e,t.f=-this.viewBox.y*e}if(this.options.center){var o=.5*(this.options.width-(this.viewBox.width+this.viewBox.x)*t.a),n=.5*(this.options.height-(this.viewBox.height+this.viewBox.y)*t.a);t.e=o,t.f=n}this.originalState.zoom=t.a,this.originalState.x=t.e,this.originalState.y=t.f,this.setCTM(t)},i.prototype.getOriginalState=function(){return n.extend({},this.originalState)},i.prototype.getState=function(){return n.extend({},this.activeState)},i.prototype.getZoom=function(){return this.activeState.zoom},i.prototype.getRelativeZoom=function(){return this.activeState.zoom/this.originalState.zoom},i.prototype.computeRelativeZoom=function(t){return t/this.originalState.zoom},i.prototype.getPan=function(){return{x:this.activeState.x,y:this.activeState.y}},i.prototype.getCTM=function(){var t=this.options.svg.createSVGMatrix();return t.a=this.activeState.zoom,t.b=0,t.c=0,t.d=this.activeState.zoom,t.e=this.activeState.x,t.f=this.activeState.y,t},i.prototype.setCTM=function(t){var e=this.isZoomDifferent(t),o=this.isPanDifferent(t);if(e||o){if(e&&this.options.beforeZoom(this.getRelativeZoom(),this.computeRelativeZoom(t.a))===!1&&(t.a=t.d=this.activeState.zoom,e=!1),o){var i=this.options.beforePan(this.getPan(),{x:t.e,y:t.f}),s=!1,r=!1;i===!1?(t.e=this.getPan().x,t.f=this.getPan().y,s=r=!0):n.isObject(i)&&(i.x===!1?(t.e=this.getPan().x,s=!0):n.isNumber(i.x)&&(t.e=i.x),i.y===!1?(t.f=this.getPan().y,r=!0):n.isNumber(i.y)&&(t.f=i.y)),s&&r&&(o=!1)}(e||o)&&(this.updateCache(t),this.updateCTMOnNextFrame(),e&&this.options.onZoom(this.getRelativeZoom()),o&&this.options.onPan(this.getPan()))}},i.prototype.isZoomDifferent=function(t){return this.activeState.zoom!==t.a},i.prototype.isPanDifferent=function(t){return this.activeState.x!==t.e||this.activeState.y!==t.f},i.prototype.updateCache=function(t){this.activeState.zoom=t.a,this.activeState.x=t.e,this.activeState.y=t.f},i.prototype.pendingUpdate=!1,i.prototype.updateCTMOnNextFrame=function(){this.pendingUpdate||(this.pendingUpdate=!0,this.requestAnimationFrame.call(window,this.updateCTMCached))},i.prototype.updateCTM=function(){o.setCTM(this.viewport,this.getCTM(),this.defs),this.pendingUpdate=!1},e.exports=function(t,e){return new i(t,e)}},{"./svg-utilities":5,"./utilities":7}],4:[function(t,e){var o=t("./uniwheel"),n=t("./control-icons"),i=t("./utilities"),s=t("./svg-utilities"),r=t("./shadow-viewport"),a=function(t,e){this.init(t,e)},l={viewportSelector:".svg-pan-zoom_viewport",panEnabled:!0,controlIconsEnabled:!1,zoomEnabled:!0,dblClickZoomEnabled:!0,mouseWheelZoomEnabled:!0,zoomScaleSensitivity:.2,minZoom:.5,maxZoom:10,fit:!0,center:!0,refreshRate:"auto",beforeZoom:null,onZoom:null,beforePan:null,onPan:null,customEventsHandler:null};a.prototype.init=function(t,e){var o=this;this.svg=t,this.defs=t.querySelector("defs"),s.setupSvgAttributes(this.svg),this.options=i.extend(i.extend({},l),e),this.state="none";var a=s.getBoundingClientRectNormalized(t);this.width=a.width,this.height=a.height,this.viewport=r(s.getOrCreateViewport(this.svg,this.options.viewportSelector),{svg:this.svg,width:this.width,height:this.height,fit:this.options.fit,center:this.options.center,refreshRate:this.options.refreshRate,beforeZoom:function(t,e){return o.viewport&&o.options.beforeZoom?o.options.beforeZoom(t,e):void 0},onZoom:function(t){return o.viewport&&o.options.onZoom?o.options.onZoom(t):void 0},beforePan:function(t,e){return o.viewport&&o.options.beforePan?o.options.beforePan(t,e):void 0},onPan:function(t){return o.viewport&&o.options.onPan?o.options.onPan(t):void 0}});var u=this.getPublicInstance();u.setBeforeZoom(this.options.beforeZoom),u.setOnZoom(this.options.onZoom),u.setBeforePan(this.options.beforePan),u.setOnPan(this.options.onPan),this.options.controlIconsEnabled&&n.enable(this),this.setupHandlers()},a.prototype.setupHandlers=function(){var t=this,e=null;if(this.eventListeners={mousedown:function(e){return t.handleMouseDown(e,null)},touchstart:function(o){var n=t.handleMouseDown(o,e);return e=o,n},mouseup:function(e){return t.handleMouseUp(e)},touchend:function(e){return t.handleMouseUp(e)},mousemove:function(e){return t.handleMouseMove(e)},touchmove:function(e){return t.handleMouseMove(e)},mouseleave:function(e){return t.handleMouseUp(e)},touchleave:function(e){return t.handleMouseUp(e)},touchcancel:function(e){return t.handleMouseUp(e)}},null!=this.options.customEventsHandler){this.options.customEventsHandler.init({svgElement:this.svg,instance:this.getPublicInstance()});var o=this.options.customEventsHandler.haltEventListeners;if(o&&o.length)for(var n=o.length-1;n>=0;n--)this.eventListeners.hasOwnProperty(o[n])&&delete this.eventListeners[o[n]]}for(var i in this.eventListeners)this.svg.addEventListener(i,this.eventListeners[i],!1);this.options.mouseWheelZoomEnabled&&(this.options.mouseWheelZoomEnabled=!1,this.enableMouseWheelZoom())},a.prototype.enableMouseWheelZoom=function(){if(!this.options.mouseWheelZoomEnabled){var t=this;this.wheelListener=function(e){return t.handleMouseWheel(e)},o.on(this.svg,this.wheelListener,!1),this.options.mouseWheelZoomEnabled=!0}},a.prototype.disableMouseWheelZoom=function(){this.options.mouseWheelZoomEnabled&&(o.off(this.svg,this.wheelListener,!1),this.options.mouseWheelZoomEnabled=!1)},a.prototype.handleMouseWheel=function(t){if(this.options.zoomEnabled&&"none"===this.state){t.preventDefault?t.preventDefault():t.returnValue=!1;var e=0;e="deltaMode"in t&&0===t.deltaMode?t.wheelDelta?t.deltaY/Math.abs(t.wheelDelta/3):t.deltaY/120:"mozPressure"in t?t.deltaY/3:t.deltaY;var o=this.svg.getScreenCTM().inverse(),n=s.getEventPoint(t,this.svg).matrixTransform(o),i=Math.pow(1+this.options.zoomScaleSensitivity,-1*e);this.zoomAtPoint(i,n)}},a.prototype.zoomAtPoint=function(t,e,o){var n=this.viewport.getOriginalState();o?(t=Math.max(this.options.minZoom*n.zoom,Math.min(this.options.maxZoom*n.zoom,t)),t/=this.getZoom()):this.getZoom()*t<this.options.minZoom*n.zoom?t=this.options.minZoom*n.zoom/this.getZoom():this.getZoom()*t>this.options.maxZoom*n.zoom&&(t=this.options.maxZoom*n.zoom/this.getZoom());var i=this.viewport.getCTM(),s=e.matrixTransform(i.inverse()),r=this.svg.createSVGMatrix().translate(s.x,s.y).scale(t).translate(-s.x,-s.y),a=i.multiply(r);a.a!==i.a&&this.viewport.setCTM(a)},a.prototype.zoom=function(t,e){this.zoomAtPoint(t,s.getSvgCenterPoint(this.svg,this.width,this.height),e)},a.prototype.publicZoom=function(t,e){e&&(t=this.computeFromRelativeZoom(t)),this.zoom(t,e)},a.prototype.publicZoomAtPoint=function(t,e,o){if(o&&(t=this.computeFromRelativeZoom(t)),!("SVGPoint"!==i.getType(e)&&"x"in e&&"y"in e))throw new Error("Given point is invalid");e=s.createSVGPoint(this.svg,e.x,e.y),this.zoomAtPoint(t,e,o)},a.prototype.getZoom=function(){return this.viewport.getZoom()},a.prototype.getRelativeZoom=function(){return this.viewport.getRelativeZoom()},a.prototype.computeFromRelativeZoom=function(t){return t*this.viewport.getOriginalState().zoom},a.prototype.resetZoom=function(){var t=this.viewport.getOriginalState();this.zoom(t.zoom,!0)},a.prototype.resetPan=function(){this.pan(this.viewport.getOriginalState())},a.prototype.reset=function(){this.resetZoom(),this.resetPan()},a.prototype.handleDblClick=function(t){if(t.preventDefault?t.preventDefault():t.returnValue=!1,this.options.controlIconsEnabled){var e=t.target.getAttribute("class")||"";if(e.indexOf("svg-pan-zoom-control")>-1)return!1}var o;o=t.shiftKey?1/(2*(1+this.options.zoomScaleSensitivity)):2*(1+this.options.zoomScaleSensitivity);var n=s.getEventPoint(t,this.svg).matrixTransform(this.svg.getScreenCTM().inverse());this.zoomAtPoint(o,n)},a.prototype.handleMouseDown=function(t,e){t.preventDefault?t.preventDefault():t.returnValue=!1,i.mouseAndTouchNormalize(t,this.svg),this.options.dblClickZoomEnabled&&i.isDblClick(t,e)?this.handleDblClick(t):(this.state="pan",this.firstEventCTM=this.viewport.getCTM(),this.stateOrigin=s.getEventPoint(t,this.svg).matrixTransform(this.firstEventCTM.inverse()))},a.prototype.handleMouseMove=function(t){if(t.preventDefault?t.preventDefault():t.returnValue=!1,"pan"===this.state&&this.options.panEnabled){var e=s.getEventPoint(t,this.svg).matrixTransform(this.firstEventCTM.inverse()),o=this.firstEventCTM.translate(e.x-this.stateOrigin.x,e.y-this.stateOrigin.y);this.viewport.setCTM(o)}},a.prototype.handleMouseUp=function(t){t.preventDefault?t.preventDefault():t.returnValue=!1,"pan"===this.state&&(this.state="none")},a.prototype.fit=function(){var t=this.viewport.getViewBox(),e=Math.min(this.width/(t.width-t.x),this.height/(t.height-t.y));this.zoom(e,!0)},a.prototype.center=function(){var t=this.viewport.getViewBox(),e=.5*(this.width-(t.width+t.x)*this.getZoom()),o=.5*(this.height-(t.height+t.y)*this.getZoom());this.getPublicInstance().pan({x:e,y:o})},a.prototype.updateBBox=function(){this.viewport.recacheViewBox()},a.prototype.pan=function(t){var e=this.viewport.getCTM();e.e=t.x,e.f=t.y,this.viewport.setCTM(e)},a.prototype.panBy=function(t){var e=this.viewport.getCTM();e.e+=t.x,e.f+=t.y,this.viewport.setCTM(e)},a.prototype.getPan=function(){var t=this.viewport.getState();return{x:t.x,y:t.y}},a.prototype.resize=function(){var t=s.getBoundingClientRectNormalized(this.svg);this.width=t.width,this.height=t.height,this.options.controlIconsEnabled&&(this.getPublicInstance().disableControlIcons(),this.getPublicInstance().enableControlIcons())},a.prototype.destroy=function(){var t=this;this.beforeZoom=null,this.onZoom=null,this.beforePan=null,this.onPan=null,null!=this.options.customEventsHandler&&this.options.customEventsHandler.destroy({svgElement:this.svg,instance:this.getPublicInstance()});for(var e in this.eventListeners)this.svg.removeEventListener(e,this.eventListeners[e],!1);this.disableMouseWheelZoom(),this.getPublicInstance().disableControlIcons(),this.reset(),u=u.filter(function(e){return e.svg!==t.svg}),delete this.options,delete this.publicInstance,delete this.pi,this.getPublicInstance=function(){return null}},a.prototype.getPublicInstance=function(){var t=this;return this.publicInstance||(this.publicInstance=this.pi={enablePan:function(){return t.options.panEnabled=!0,t.pi},disablePan:function(){return t.options.panEnabled=!1,t.pi},isPanEnabled:function(){return!!t.options.panEnabled},pan:function(e){return t.pan(e),t.pi},panBy:function(e){return t.panBy(e),t.pi},getPan:function(){return t.getPan()},setBeforePan:function(e){return t.options.beforePan=null===e?null:i.proxy(e,t.publicInstance),t.pi},setOnPan:function(e){return t.options.onPan=null===e?null:i.proxy(e,t.publicInstance),t.pi},enableZoom:function(){return t.options.zoomEnabled=!0,t.pi},disableZoom:function(){return t.options.zoomEnabled=!1,t.pi},isZoomEnabled:function(){return!!t.options.zoomEnabled},enableControlIcons:function(){return t.options.controlIconsEnabled||(t.options.controlIconsEnabled=!0,n.enable(t)),t.pi},disableControlIcons:function(){return t.options.controlIconsEnabled&&(t.options.controlIconsEnabled=!1,n.disable(t)),t.pi},isControlIconsEnabled:function(){return!!t.options.controlIconsEnabled},enableDblClickZoom:function(){return t.options.dblClickZoomEnabled=!0,t.pi},disableDblClickZoom:function(){return t.options.dblClickZoomEnabled=!1,t.pi},isDblClickZoomEnabled:function(){return!!t.options.dblClickZoomEnabled},enableMouseWheelZoom:function(){return t.enableMouseWheelZoom(),t.pi},disableMouseWheelZoom:function(){return t.disableMouseWheelZoom(),t.pi},isMouseWheelZoomEnabled:function(){return!!t.options.mouseWheelZoomEnabled},setZoomScaleSensitivity:function(e){return t.options.zoomScaleSensitivity=e,t.pi},setMinZoom:function(e){return t.options.minZoom=e,t.pi},setMaxZoom:function(e){return t.options.maxZoom=e,t.pi},setBeforeZoom:function(e){return t.options.beforeZoom=null===e?null:i.proxy(e,t.publicInstance),t.pi},setOnZoom:function(e){return t.options.onZoom=null===e?null:i.proxy(e,t.publicInstance),t.pi},zoom:function(e){return t.publicZoom(e,!0),t.pi},zoomBy:function(e){return t.publicZoom(e,!1),t.pi},zoomAtPoint:function(e,o){return t.publicZoomAtPoint(e,o,!0),t.pi},zoomAtPointBy:function(e,o){return t.publicZoomAtPoint(e,o,!1),t.pi},zoomIn:function(){return this.zoomBy(1+t.options.zoomScaleSensitivity),t.pi},zoomOut:function(){return this.zoomBy(1/(1+t.options.zoomScaleSensitivity)),t.pi},getZoom:function(){return t.getRelativeZoom()},resetZoom:function(){return t.resetZoom(),t.pi},resetPan:function(){return t.resetPan(),t.pi},reset:function(){return t.reset(),t.pi},fit:function(){return t.fit(),t.pi},center:function(){return t.center(),t.pi},updateBBox:function(){return t.updateBBox(),t.pi},resize:function(){return t.resize(),t.pi},getSizes:function(){return{width:t.width,height:t.height,realZoom:t.getZoom(),viewBox:t.viewport.getViewBox()}},destroy:function(){return t.destroy(),t.pi}}),this.publicInstance};var u=[],c=function(t,e){var o=i.getSvg(t);if(null===o)return null;for(var n=u.length-1;n>=0;n--)if(u[n].svg===o)return u[n].instance.getPublicInstance();return u.push({svg:o,instance:new a(o,e)}),u[u.length-1].instance.getPublicInstance()};e.exports=c},{"./control-icons":2,"./shadow-viewport":3,"./svg-utilities":5,"./uniwheel":6,"./utilities":7}],5:[function(t,e){var o=t("./utilities"),n="unknown";document.documentMode&&(n="ie"),e.exports={svgNS:"http://www.w3.org/2000/svg",xmlNS:"http://www.w3.org/XML/1998/namespace",xmlnsNS:"http://www.w3.org/2000/xmlns/",xlinkNS:"http://www.w3.org/1999/xlink",evNS:"http://www.w3.org/2001/xml-events",getBoundingClientRectNormalized:function(t){if(t.clientWidth&&t.clientHeight)return{width:t.clientWidth,height:t.clientHeight};if(t.getBoundingClientRect())return t.getBoundingClientRect();throw new Error("Cannot get BoundingClientRect for SVG.")},getOrCreateViewport:function(t,e){var n=null;if(n=o.isElement(e)?e:t.querySelector(e),!n){var i=Array.prototype.slice.call(t.childNodes||t.children).filter(function(t){return"defs"!==t.nodeName&&"#text"!==t.nodeName});1===i.length&&"g"===i[0].nodeName&&null===i[0].getAttribute("transform")&&(n=i[0])}if(!n){var s="viewport-"+(new Date).toISOString().replace(/\D/g,"");n=document.createElementNS(this.svgNS,"g"),n.setAttribute("id",s);var r=t.childNodes||t.children;if(r&&r.length>0)for(var a=r.length;a>0;a--)"defs"!==r[r.length-a].nodeName&&n.appendChild(r[r.length-a]);t.appendChild(n)}var l=[];return n.getAttribute("class")&&(l=n.getAttribute("class").split(" ")),~l.indexOf("svg-pan-zoom_viewport")||(l.push("svg-pan-zoom_viewport"),n.setAttribute("class",l.join(" "))),n},setupSvgAttributes:function(t){if(t.setAttribute("xmlns",this.svgNS),t.setAttributeNS(this.xmlnsNS,"xmlns:xlink",this.xlinkNS),t.setAttributeNS(this.xmlnsNS,"xmlns:ev",this.evNS),null!==t.parentNode){var e=t.getAttribute("style")||"";-1===e.toLowerCase().indexOf("overflow")&&t.setAttribute("style","overflow: hidden; "+e)}},internetExplorerRedisplayInterval:300,refreshDefsGlobal:o.throttle(function(){for(var t=document.querySelectorAll("defs"),e=t.length,o=0;e>o;o++){var n=t[o];n.parentNode.insertBefore(n,n)}},this.internetExplorerRedisplayInterval),setCTM:function(t,e,o){var i=this,s="matrix("+e.a+","+e.b+","+e.c+","+e.d+","+e.e+","+e.f+")";t.setAttributeNS(null,"transform",s),"ie"===n&&o&&(o.parentNode.insertBefore(o,o),window.setTimeout(function(){i.refreshDefsGlobal()},i.internetExplorerRedisplayInterval))},getEventPoint:function(t,e){var n=e.createSVGPoint();return o.mouseAndTouchNormalize(t,e),n.x=t.clientX,n.y=t.clientY,n},getSvgCenterPoint:function(t,e,o){return this.createSVGPoint(t,e/2,o/2)},createSVGPoint:function(t,e,o){var n=t.createSVGPoint();return n.x=e,n.y=o,n}}},{"./utilities":7}],6:[function(t,e){e.exports=function(){function t(t,e,o){var n=function(t){!t&&(t=window.event);var o={originalEvent:t,target:t.target||t.srcElement,type:"wheel",deltaMode:"MozMousePixelScroll"==t.type?0:1,deltaX:0,delatZ:0,preventDefault:function(){t.preventDefault?t.preventDefault():t.returnValue=!1}};return"mousewheel"==u?(o.deltaY=-1/40*t.wheelDelta,t.wheelDeltaX&&(o.deltaX=-1/40*t.wheelDeltaX)):o.deltaY=t.detail,e(o)};return h.push({element:t,fn:n,capture:o}),n}function e(t,e){for(var o=0;o<h.length;o++)if(h[o].element===t&&h[o].capture===e)return h[o].fn;return function(){}}function o(t,e){for(var o=0;o<h.length;o++)if(h[o].element===t&&h[o].capture===e)return h.splice(o,1)}function n(e,o,n,i){var s;s="wheel"===u?n:t(e,n,i),e[a](c+o,s,i||!1)}function i(t,n,i,s){cb="wheel"===u?i:e(t,s),t[l](c+n,cb,s||!1),o(t,s)}function s(t,e,o){n(t,u,e,o),"DOMMouseScroll"==u&&n(t,"MozMousePixelScroll",e,o)}function r(t,e,o){i(t,u,e,o),"DOMMouseScroll"==u&&i(t,"MozMousePixelScroll",e,o)}var a,l,u,c="",h=[];return window.addEventListener?(a="addEventListener",l="removeEventListener"):(a="attachEvent",l="detachEvent",c="on"),u="onwheel"in document.createElement("div")?"wheel":void 0!==document.onmousewheel?"mousewheel":"DOMMouseScroll",{on:s,off:r}}()},{}],7:[function(t,e){function o(t){return function(e){window.setTimeout(e,t)}}e.exports={extend:function(t,e){t=t||{};for(var o in e)t[o]=this.isObject(e[o])?this.extend(t[o],e[o]):e[o];return t},isElement:function(t){return t instanceof HTMLElement||t instanceof SVGElement||t instanceof SVGSVGElement||t&&"object"==typeof t&&null!==t&&1===t.nodeType&&"string"==typeof t.nodeName},isObject:function(t){return"[object Object]"===Object.prototype.toString.call(t)},isNumber:function(t){return!isNaN(parseFloat(t))&&isFinite(t)},getSvg:function(t){var e,o;if(this.isElement(t))e=t;else{if(!("string"==typeof t||t instanceof String))throw new Error("Provided selector is not an HTML object nor String");if(e=document.querySelector(t),!e)throw new Error("Provided selector did not find any elements. Selector: "+t)}if("svg"===e.tagName.toLowerCase())o=e;else if("object"===e.tagName.toLowerCase())o=e.contentDocument.documentElement;else{if("embed"!==e.tagName.toLowerCase())throw new Error("img"===e.tagName.toLowerCase()?'Cannot script an SVG in an "img" element. Please use an "object" element or an in-line SVG.':"Cannot get SVG.");o=e.getSVGDocument().documentElement}return o},proxy:function(t,e){return function(){return t.apply(e,arguments)}},getType:function(t){return Object.prototype.toString.apply(t).replace(/^\[object\s/,"").replace(/\]$/,"")},mouseAndTouchNormalize:function(t,e){if(void 0===t.clientX||null===t.clientX)if(t.clientX=0,t.clientY=0,void 0!==t.changedTouches&&t.changedTouches.length){if(void 0!==t.changedTouches[0].clientX)t.clientX=t.changedTouches[0].clientX,t.clientY=t.changedTouches[0].clientY;else if(void 0!==t.changedTouches[0].pageX){var o=e.getBoundingClientRect();t.clientX=t.changedTouches[0].pageX-o.left,t.clientY=t.changedTouches[0].pageY-o.top}}else void 0!==t.originalEvent&&void 0!==t.originalEvent.clientX&&(t.clientX=t.originalEvent.clientX,t.clientY=t.originalEvent.clientY)},isDblClick:function(t,e){if(2===t.detail)return!0;if(void 0!==e&&null!==e){var o=t.timeStamp-e.timeStamp,n=Math.sqrt(Math.pow(t.clientX-e.clientX,2)+Math.pow(t.clientY-e.clientY,2));return 250>o&&10>n}return!1},now:Date.now||function(){return(new Date).getTime()},throttle:function(t,e,o){var n,i,s,r=this,a=null,l=0;o||(o={});var u=function(){l=o.leading===!1?0:r.now(),a=null,s=t.apply(n,i),a||(n=i=null)};return function(){var c=r.now();l||o.leading!==!1||(l=c);var h=e-(c-l);return n=this,i=arguments,0>=h||h>e?(clearTimeout(a),a=null,l=c,s=t.apply(n,i),a||(n=i=null)):a||o.trailing===!1||(a=setTimeout(u,h)),s}},createRequestAnimationFrame:function(t){var e=null;return"auto"!==t&&60>t&&t>1&&(e=Math.floor(1e3/t)),null===e?window.requestAnimationFrame||o(33):o(e)}}},{}]},{},[1]);
 },{}],4:[function(require,module,exports){
 /*!
  * The buffer module from node.js, for the browser.

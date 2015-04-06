@@ -46,13 +46,15 @@ var Main = React.createClass({
 
     if (self.state.loaded == true) {
       return (
-        <div className='video-container'>
-          <video id="video-background" className="video-wrap" poster="/img/loop_three.jpg" autoPlay muted="muted" loop>
-            <source src="/videos/loop_three.webm" type="video/webm" />
-          </video>
-          <div className="content_container">
-            <div className="content_wrapper">
-              <img src="/img/programs.png" />
+        <div className='page'>
+          <div className='video-container'>
+            <video id="video-background" className="video-wrap" poster="/img/loop_three.jpg" autoPlay muted="muted" loop>
+              <source src="/videos/loop_three.webm" type="video/webm" />
+            </video>
+            <div className="content_container">
+              <div className="content_wrapper">
+                <img src="/img/programs.png" />
+              </div>
             </div>
           </div>
         </div>

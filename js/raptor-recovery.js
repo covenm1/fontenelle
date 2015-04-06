@@ -46,9 +46,11 @@ var Main = React.createClass({displayName: "Main",
 
     if (self.state.loaded == true) {
       return (
-        React.createElement("div", {className: "video-container"}, 
-          React.createElement("video", {id: "video-background", className: "video-wrap", poster: "/img/loop_two.jpg", autoPlay: true, muted: "muted", loop: true}, 
-            React.createElement("source", {src: "/videos/loop_five.mp4", type: "video/mp4"})
+        React.createElement("div", {className: "page"}, 
+          React.createElement("div", {className: "video-container"}, 
+            React.createElement("video", {id: "video-background", className: "video-wrap", poster: "/img/loop_two.jpg", autoPlay: true, muted: "muted", loop: true}, 
+              React.createElement("source", {src: "/videos/loop_five.mp4", type: "video/mp4"})
+            )
           )
         )
       )
