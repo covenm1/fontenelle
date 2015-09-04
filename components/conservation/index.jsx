@@ -34,9 +34,9 @@ var Main = React.createClass({
     var tmp_pre_count = self.state.pre_count;
     tmp_pre_count++;
     if (tmp_pre_count == 1) {
-      self.setState({loaded: true, pre_count: tmp_pre_count}); 
+      self.setState({loaded: true, pre_count: tmp_pre_count});
     } else {
-      self.setState({pre_count: tmp_pre_count}); 
+      self.setState({pre_count: tmp_pre_count});
     }
   },
 
@@ -52,6 +52,7 @@ var Main = React.createClass({
             </video>
             <div className="content_container">
               <div className="content_wrapper">
+                <h1>CONSERVATION</h1>
                 <img src="/img/conservation.png" />
               </div>
             </div>

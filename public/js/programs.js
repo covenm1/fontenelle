@@ -36,9 +36,9 @@ var Main = React.createClass({displayName: "Main",
     var tmp_pre_count = self.state.pre_count;
     tmp_pre_count++;
     if (tmp_pre_count == 1) {
-      self.setState({loaded: true, pre_count: tmp_pre_count}); 
+      self.setState({loaded: true, pre_count: tmp_pre_count});
     } else {
-      self.setState({pre_count: tmp_pre_count}); 
+      self.setState({pre_count: tmp_pre_count});
     }
   },
 
@@ -54,6 +54,7 @@ var Main = React.createClass({displayName: "Main",
             ), 
             React.createElement("div", {className: "content_container"}, 
               React.createElement("div", {className: "content_wrapper"}, 
+                React.createElement("h1", null, "PROGRAMS"), 
                 React.createElement("img", {src: "/img/programs.png"})
               )
             )

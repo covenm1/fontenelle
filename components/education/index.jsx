@@ -7,7 +7,7 @@ var Router = require('react-router');
 
 require('velocity-animate/velocity.ui');
 
-var classes_data = require('../../js/classes.json');
+var classes_data = require('../../public/js/classes.json');
 
 var ClassThing = React.createClass({
   render: function() {
@@ -25,7 +25,7 @@ var ClassThing = React.createClass({
 });
 
 var ClassList = React.createClass({
-  getInitialState: function() { 
+  getInitialState: function() {
     return {classes: classes_data, current_classes: classes_data}
   },
 
@@ -80,9 +80,9 @@ var Main = React.createClass({
     var tmp_pre_count = self.state.pre_count;
     tmp_pre_count++;
     if (tmp_pre_count == 1) {
-      self.setState({loaded: true, pre_count: tmp_pre_count}); 
+      self.setState({loaded: true, pre_count: tmp_pre_count});
     } else {
-      self.setState({pre_count: tmp_pre_count}); 
+      self.setState({pre_count: tmp_pre_count});
     }
   },
 
@@ -107,6 +107,7 @@ var Main = React.createClass({
             </video>
             <div className="content_container">
               <div className="content_wrapper">
+                <h1>EDUCATION</h1>
                 <img src="/img/education.png" />
               </div>
             </div>

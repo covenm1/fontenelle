@@ -18,7 +18,7 @@ var jshint = require('gulp-jshint'),
     autoprefixer = require('gulp-autoprefixer'),
     folders = require('gulp-folders'),
     srcFolder = './components',
-    destFolder = './js/',
+    destFolder = './public/js/',
     minifyCSS = require('gulp-minify-css'),
     streamify = require('gulp-streamify');
 
@@ -28,7 +28,7 @@ gulp.task('build-reacts', folders(srcFolder, function(folder){
         .transform(reactify)
         .bundle()
         .pipe(source(folder+'.js'))
-        .pipe(gulp.dest('js/'));
+        .pipe(gulp.dest(destFolder));
 }));
 
 
@@ -46,21 +46,21 @@ gulp.task('build-reacts-production', folders(srcFolder, function(folder){
 
 // Compile Our Production Sass
 gulp.task('build-styles-production', function() {
-  return gulp.src('./scss/*.scss')
+  return gulp.src('./public/scss/*.scss')
           .pipe(sass({
             style: 'compact'
           }))
           .pipe(autoprefixer())
           .pipe(rename('main.min.css'))
           .pipe(minifyCSS({keepBreaks:false}))
-          .pipe(gulp.dest('./css'))
+          .pipe(gulp.dest('./public/css'))
 
 });
 
 // Compile Our for Development
 gulp.task('build-styles', function() {
 
-  return gulp.src('./scss/*.scss')
+  return gulp.src('./public/scss/*.scss')
           .pipe(sourcemaps.init())
             .pipe(sass({
               errLogToConsole: true,
@@ -68,7 +68,7 @@ gulp.task('build-styles', function() {
             }))
           .pipe(sourcemaps.write())
           .pipe(autoprefixer())
-          .pipe(gulp.dest('./css'));
+          .pipe(gulp.dest('./public/css'));
 });
 
 
@@ -76,7 +76,7 @@ gulp.task('build-styles', function() {
 gulp.task('watch', function() {
     // livereload.listen();
     gulp.watch('components/**/*.jsx', ['build-reacts']);
-    gulp.watch('scss/**/*.scss', ['build-styles']);
+    gulp.watch('public/scss/**/*.scss', ['build-styles']);
 });
 
 // Default Task

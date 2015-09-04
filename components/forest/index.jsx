@@ -8,11 +8,11 @@ var React = require('react'),
 
 require('velocity-animate/velocity.ui');
 
-require('../../js/requestanimationframe.js');
+require('../../public/js/requestanimationframe.js');
 
 var poster_image, map_image;
 
-var photogallery = require('../../js/photogallery.json');
+var photogallery = require('../../public/js/photogallery.json');
 
 /**
  * Randomize array element order in-place.
@@ -31,7 +31,7 @@ function shuffleArray(array) {
 var Main = React.createClass({
   mixins: [ Router.State ],
   getInitialState: function() {
-    return { 
+    return {
       windowWidth: window.innerWidth,
       width: 100,
       left: 0,
@@ -50,14 +50,14 @@ var Main = React.createClass({
     var self = this;
 
     window.addEventListener('resize', this.handleResize);
-    
+
     poster_image = new Image();
     poster_image.onload = self.onLoad;
     poster_image.src = "/img/loop_one.jpg";
     map_image = new Image();
     map_image.onload = self.onMapLoad;
     map_image.src = "/img/big_map.png";
-  }, 
+  },
 
   componentWillUnmount: function() {
     window.removeEventListener('resize', this.handleResize);
@@ -69,16 +69,27 @@ var Main = React.createClass({
 
   onLoad: function() {
     var self = this;
-    self.setState({loaded: true}); 
+    self.setState({loaded: true});
   },
 
   onMapLoad: function() {
     var self = this;
-    self.setState({mapLoaded: true}); 
+    self.setState({mapLoaded: true});
+  },
+
+  hoverClass: function(index){
+    console.log("hoverClass " + index);
+    this.setState({hover: "hover_"+index});
+  },
+
+  hoverLeave: function(){
+    this.setState({hover: ''});
+    console.log("hoverLeave" );
   },
 
 
-  reset: function(){ 
+
+  reset: function(){
     var self = this;
     console.log('natureCenter');
     self.setState({ drawer: [] });
@@ -89,18 +100,18 @@ var Main = React.createClass({
       self.setState( { width: this.width, left: this.left , top: this.top});
     })
     .start();
-   
+
     animate();
-   
+
     function animate() {
-   
+
       requestAnimationFrame( animate ); // js/RequestAnimationFrame.js needs to be included too.
       TWEEN.update();
-   
+
     }
   },
 
-  natureCenter: function(){ 
+  natureCenter: function(){
     var self = this;
     console.log('natureCenter');
 
@@ -136,19 +147,19 @@ var Main = React.createClass({
       self.setState( { width: this.width, left: this.left , top: this.top});
     })
     .start();
-   
+
     animate();
-   
+
     function animate() {
-   
+
       requestAnimationFrame( animate ); // js/RequestAnimationFrame.js needs to be included too.
       TWEEN.update();
-   
+
     }
   },
 
 
-  greatMarsh: function(){ 
+  greatMarsh: function(){
     var self = this;
     console.log('greatMarsh');
 
@@ -180,18 +191,18 @@ var Main = React.createClass({
       self.setState( { width: this.width, left: this.left , top: this.top});
     })
     .start();
-    
+
     animate();
-   
+
     function animate() {
-   
+
       requestAnimationFrame( animate ); // js/RequestAnimationFrame.js needs to be included too.
       TWEEN.update();
-   
+
     }
   },
 
-  northernFloodplains: function(){ 
+  northernFloodplains: function(){
     var self = this;
     console.log('northernFloodplains');
 
@@ -223,18 +234,18 @@ var Main = React.createClass({
       self.setState( { width: this.width, left: this.left , top: this.top});
     })
     .start();
-   
+
     animate();
-   
+
     function animate() {
-   
+
       requestAnimationFrame( animate ); // js/RequestAnimationFrame.js needs to be included too.
       TWEEN.update();
-   
+
     }
   },
 
-  northernUplands: function(){ 
+  northernUplands: function(){
     var self = this;
     console.log('northernUplands');
 
@@ -265,18 +276,18 @@ var Main = React.createClass({
       self.setState( { width: this.width, left: this.left , top: this.top});
     })
     .start();
-   
+
     animate();
-   
+
     function animate() {
-   
+
       requestAnimationFrame( animate ); // js/RequestAnimationFrame.js needs to be included too.
       TWEEN.update();
-   
+
     }
   },
 
-  southernUplands: function(){ 
+  southernUplands: function(){
     var self = this;
     console.log('southernUplands');
 
@@ -307,26 +318,20 @@ var Main = React.createClass({
       self.setState( { width: this.width, left: this.left , top: this.top});
     })
     .start();
-   
+
     animate();
-   
+
     function animate() {
-   
+
       requestAnimationFrame( animate ); // js/RequestAnimationFrame.js needs to be included too.
       TWEEN.update();
-   
+
     }
   },
 
-  hoverClass: function(index){
-    console.log("hoverClass " + index);
-    this.setState({hover: "hover_"+index});
-  },
 
-  hoverLeave: function(){
-    this.setState({hover: ''});
-    console.log("hoverLeave" );
-  },
+
+
 
   render: function() {
     var self = this;
@@ -357,7 +362,7 @@ var Main = React.createClass({
           </li>
         )
       });
- 
+
       var photogallery = self.state.photogallery.map(function(object) {
         var photoStyles = {
           backgroundImage: 'url('+object.image + ')',
@@ -371,7 +376,7 @@ var Main = React.createClass({
               </div>
             </div>
           </div>
-        ) 
+        )
       });
 
       var photogalleryStyles = {
@@ -406,10 +411,39 @@ var Main = React.createClass({
             </div>
           </div>
           <div className="page_container">
-            <div className="image_container">
-              <img src="/img/forest/top.jpg" />
+            <div className="quiet_wild_container main_wrapper">
+              <div className="quiet_wild image_container">
+                <img src="/img/forest/bird2.png" />
+              </div>
+              <div className="quiet_wild copy_container">
+                <img src="/img/divider/VINE-top-long.svg" />
+                <h2 className="marker">The Quiet Wild</h2>
+                <p>For over a century, thousands of families have experienced the quiet wild of Nebraska's Fontenelle Forest and Neale Woods–hiking, playing and exploring our 26 miles of maintained trails and 2,000 acres of upland and lowland forests, native prairies, wetlands, lakes and waterways. Each visit is its own unique adventure, its own story, its own memory to share.</p>
+                <div className="vine_bottom">
+                  <img className="left-half" src="/img/divider/VINE-bottom-left-half.svg" />
+                  <img className="down-orange" src="/img/forest/icon_down-orange.svg" />
+                  <img className="right-half" src="/img/divider/VINE-bottom-right-half.svg" />
+                </div>
+              </div>
             </div>
-            <div className="photogallery_wrapper"> 
+
+            <div className="tearjerker_video">
+              <div className="tearjerker_wrapper">
+                <div className="centered_content">
+                  <h2 className="marker">Tearjerker Video</h2>
+                  <p>Curabitur blandit tempus porttitor. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Curabitur blandit tempus porttitor. Donec id elit non mi porta gravida at eget metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis risus eget urna mollis ornare vel eu leo.</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="photogallery_header">
+              <div className="main_wrapper">
+                <h3 className="marker">Fauna and Flora</h3>
+                <p>A National Natural Landmark and a National Historic District, as designated by the United State Department of Interior, Fontenelle is home to over 600 unique species of plants and animals. </p>
+              </div>
+            </div>
+
+            <div className="photogallery_wrapper">
               <div className="photogallery" style={photogalleryStyles} >
                 {photogallery}
               </div>
@@ -426,19 +460,18 @@ var Main = React.createClass({
                   <p className={ self.state.area == 'southernUplands' ? "map_button active" : "map_button" } onClick={self.southernUplands}>Southern Uplands</p>
                   <p className={ self.state.area == 'greatMarsh' ? "map_button active" : "map_button" } onClick={self.greatMarsh}>Great Marsh Area</p>
                 </div>
-                { drawer.length ? 
+                { drawer.length ?
                   <div className="drawer">
                     <ul>
-                      {drawer} 
+                      {drawer}
                     </ul>
-                  </div> 
+                  </div>
                 : null }
               </div>
 
               <div className="map_zoom">
-                { self.state.mapLoaded ? 
+                { self.state.mapLoaded ?
                   <div className="map_box" style={styles}>
-                    <img className="map_image" src="/img/big_map.png" /> 
                     <span onClick={self.natureCenter} className="circle_button natureCenter"></span>
                     <span onClick={self.northernFloodplains} className="circle_button northernFloodplains"></span>
                     <span onClick={self.northernUplands} className="circle_button northernUplands"></span>
@@ -449,8 +482,21 @@ var Main = React.createClass({
                 : "Loading Map" }
               </div>
             </div>
-            <div className="image_container">
-              <img src="/img/forest/bottom.jpg" />
+
+
+            <div className="tearjerker_video">
+              <div className="tearjerker_wrapper">
+                <div className="centered_content">
+                  <h2 className="marker">for your favorite little explorers</h2>
+                  <p>Acorn Acres is our one acre natural playscape designed for boisterous enthusiasm, outdoor physical activity, and creative play for kids of all ages. </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="photogallery_wrapper">
+              <div className="photogallery" style={photogalleryStyles} >
+                {photogallery}
+              </div>
             </div>
           </div>
         </div>

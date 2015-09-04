@@ -22,10 +22,10 @@ var slide_names = [ 'forest' , 'conservation' , 'programs', 'education', 'raptor
 var slide_count = 0;
 
 var hotkey = require('react-hotkey');
- hotkey.activate(); 
+ hotkey.activate();
 
 var App = React.createClass({
-	mixins: [Router.State, Router.Navigation, hotkey.Mixin('handleKeyDown')], 
+	mixins: [Router.State, Router.Navigation, hotkey.Mixin('handleKeyDown')],
 
 	getHandlerKey: function () {
 		var childDepth = 1; // assuming App is top-level route
@@ -35,19 +35,18 @@ var App = React.createClass({
 		return key;
 	},
 
-	getInitialState: function () { 
+	getInitialState: function () {
 		return { currentTransition: '' };
 	},
 
 	componentDidMount: function () {
-	    // hotkey.activate();  
+	    // hotkey.activate();
 	},
 
 	componentDidMount: function(){
 	},
 
 	onClickRight: function(){
-		console.log('onClickRight:');
 		if (slide_count ==  slide_names.length ) {
 			slide_count = 0;
 		} else {
@@ -55,34 +54,24 @@ var App = React.createClass({
 		}
 
 		this.setState({currentTransition: 'slide-forward'});
-
-		console.log(' slide_count: ' + slide_count);
-		console.log(' slide_names[slide_count% slide_names.length ]: ' + slide_names[slide_count% slide_names.length ]);
-
 		this.transitionTo(slide_names[slide_count% slide_names.length ]);
 	},
 
 	onClickLeft: function(){
 
-		console.log('onClickLeft:');
 		if (slide_count == 0) {
 			slide_count = slide_names.length - 1;
 		} else {
 			slide_count--;
 		}
-		
+
 		this.setState({currentTransition: 'slide-back'});
-
-		console.log(' slide_count: ' + slide_count);
-		console.log(' slide_names[slide_count% slide_names.length ]: ' + slide_names[slide_count% slide_names.length ]);
-
 		this.transitionTo(slide_names[slide_count% slide_names.length ]);
 	},
 
 	handleKeyDown: function(e) {
 		var self = this;
-		console.log('handleKeyDown: ' + util.inspect(e.key));
-		var self = this;
+
 	  if (e.key === 'ArrowLeft') {
 			self.onClickLeft();
 	  } else if (e.key === 'ArrowRight') {
@@ -96,7 +85,6 @@ var App = React.createClass({
 
 		var transition = self.state.currentTransition;
 
-		console.log("names: " + name);
 		return (
 		  <div className="fontenelle">
 		    <header>
@@ -108,7 +96,7 @@ var App = React.createClass({
 		    </header>
 		    <div className="main_content">
 		    	<TransitionGroup transitionName={transition} className="router" component="div">
-			    	<RouteHandler key={name} />
+			    	<RouteHandler key={name} transition_to={self.openSocial} />
 			    </TransitionGroup>
 		     	<div className="slide_controls">
 		     		<span className="left slider_button" onClick={self.onClickLeft}>Left</span>

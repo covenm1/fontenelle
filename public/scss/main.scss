@@ -2,17 +2,16 @@ $orange: #a14616;
 
 
 @import "base";
+@import "fonts";
+@import "typography";
 
 @import "map";
-
 @import "photogallery";
 
-@import "fonts";
+@import "forest";
+
 
 .page.velocity-animating {
 	position: absolute;
 	top: 0;
-}
-.marker {
-	font-family: 'PermanentMarkerPro', Helvetica, Arial, Sans-Serif;
 }
