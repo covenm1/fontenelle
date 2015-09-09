@@ -1,29 +1,29 @@
 /**
  * Adapted from https://github.com/Khan/react-components/blob/master/js/timeout-transition-group.jsx
  */
- 
+
 var React = require('react/addons');
 var ReactTransitionGroup = React.addons.TransitionGroup;
 var Velocity = require('velocity-animate');
- 
+
 var transitions = {
 	// Forcefeeding: property order = [after, before]
 	'slide-forward': {
 		duration: 250,
 		enter: {
-			translateX: [ '0%', '100%' ],
+			left: [ '0%', '100%' ],
 		},
 		leave: {
-			translateX: [ '-100%', '0%' ],
+			left: [ '-100%', '0%' ],
 		}
 	},
 	'slide-back': {
 		duration: 250,
 		enter: {
-			translateX: [ '0%', '-100%' ],
+			left: [ '0%', '-100%' ],
 		},
 		leave: {
-			translateX: [ '100%', '0%' ],
+			left: [ '100%', '0%' ],
 		}
 	},
 	'slideover-forward': {
@@ -58,7 +58,7 @@ var transitions = {
 		}
 	}
 };
- 
+
 var VelocityTransitionGroupChild = React.createClass({
 	propTypes: {
 		transitionName: React.PropTypes.string.isRequired,
@@ -69,7 +69,7 @@ var VelocityTransitionGroupChild = React.createClass({
 		}
 		return transitions[this.props.transitionName] || transitions.default;
 	},
- 
+
 	componentWillEnter: function(done) {
 		var node = this.getDOMNode();
 		var transition = this._getTransition();
@@ -81,7 +81,7 @@ var VelocityTransitionGroupChild = React.createClass({
 				complete: done
 			});
 	},
- 
+
 	componentWillLeave: function(done) {
 		var node = this.getDOMNode();
 		var transition = this._getTransition();
@@ -93,17 +93,17 @@ var VelocityTransitionGroupChild = React.createClass({
 				complete: done
 			});
 	},
- 
+
 	render: function() {
 		return React.Children.only(this.props.children);
 	}
 });
- 
+
 var VelocityTransitionGroup = React.createClass({
 	propTypes: {
 		transitionName: React.PropTypes.string.isRequired,
 	},
- 
+
 	_wrapChild: function(child) {
 		return (
 			<VelocityTransitionGroupChild
@@ -113,7 +113,7 @@ var VelocityTransitionGroup = React.createClass({
 			</VelocityTransitionGroupChild>
 		);
 	},
- 
+
 	render: function() {
 		return (
 			<ReactTransitionGroup
@@ -123,5 +123,5 @@ var VelocityTransitionGroup = React.createClass({
 		);
 	}
 });
- 
+
 module.exports = VelocityTransitionGroup;

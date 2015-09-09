@@ -36,7 +36,7 @@ var App = React.createClass({
 	},
 
 	getInitialState: function () {
-		return { currentTransition: '' };
+		return { currentTransition: 'slide-forward' };
 	},
 
 	componentDidMount: function () {
@@ -47,6 +47,9 @@ var App = React.createClass({
 	},
 
 	onClickRight: function(){
+		var name = this.getHandlerKey();
+		slide_count = slide_names.indexOf(name);
+
 		if (slide_count ==  slide_names.length ) {
 			slide_count = 0;
 		} else {
@@ -58,6 +61,9 @@ var App = React.createClass({
 	},
 
 	onClickLeft: function(){
+		var name = this.getHandlerKey();
+
+		slide_count = slide_names.indexOf(name);
 
 		if (slide_count == 0) {
 			slide_count = slide_names.length - 1;
@@ -67,6 +73,22 @@ var App = React.createClass({
 
 		this.setState({currentTransition: 'slide-back'});
 		this.transitionTo(slide_names[slide_count% slide_names.length ]);
+	},
+
+	rightLink: function(name){
+
+		slide_count = slide_names.indexOf(name);
+
+		this.setState({currentTransition: 'slide-forward'});
+		this.transitionTo(name);
+	},
+
+	leftLink: function(name){
+
+		slide_count = slide_names.indexOf(name);
+
+		this.setState({currentTransition: 'slide-back'});
+		this.transitionTo(slide_names[name]);
 	},
 
 	handleKeyDown: function(e) {
@@ -79,12 +101,15 @@ var App = React.createClass({
 	  }
 	},
 
+	setTransition: function(i) {
+		this.setState({currentTransition: i});
+	},
+
 	render: function () {
 		var self = this;
 		var name = this.getHandlerKey();
 
 		var transition = self.state.currentTransition;
-
 		return (
 		  <div className="fontenelle">
 		    <header>
@@ -94,15 +119,14 @@ var App = React.createClass({
 		            <a href="javascript.void(0)" className="link">Donate</a>
 		        </span>
 		    </header>
-		    <div className="main_content">
-		    	<TransitionGroup transitionName={transition} className="router" component="div">
-			    	<RouteHandler key={name} transition_to={self.openSocial} />
-			    </TransitionGroup>
-		     	<div className="slide_controls">
-		     		<span className="left slider_button" onClick={self.onClickLeft}>Left</span>
-		     		<span className="right slider_button" onClick={self.onClickRight}>Right</span>
-		     	</div>
-		    </div>
+				<div className="slide_controls">
+					<span className="left slider_button" onClick={self.onClickLeft}>Left</span>
+					<span className="right slider_button" onClick={self.onClickRight}>Right</span>
+				</div>
+
+	    	<TransitionGroup transitionName={transition} className="main_content" component="div">
+		    	<RouteHandler key={name} transition={self.setTransition} />
+		    </TransitionGroup>
 		  </div>
 		);
 	}

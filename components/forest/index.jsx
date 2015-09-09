@@ -6,13 +6,16 @@ var React = require('react'),
     Router = require('react-router'),
     TWEEN = require('tween.js');
 
+    var Navigation = Router.Navigation;
+    var Link = Router.Link;
+
 require('velocity-animate/velocity.ui');
 
 require('../../public/js/requestanimationframe.js');
 
 var poster_image, map_image;
 
-var photogallery = require('../../public/js/photogallery.json');
+var photogallery = require('../../public/js/fauna_and_flora.json');
 
 /**
  * Randomize array element order in-place.
@@ -29,7 +32,7 @@ function shuffleArray(array) {
 }
 
 var Main = React.createClass({
-  mixins: [ Router.State ],
+  mixins: [ Router.State, Navigation ],
   getInitialState: function() {
     return {
       windowWidth: window.innerWidth,
@@ -329,7 +332,16 @@ var Main = React.createClass({
     }
   },
 
+  moveLeft: function(){
+    this.props.transition('slide-back');
+    this.transitionTo('education');
+  },
 
+
+  moveRight: function(){
+    this.props.transition('slide-forward');
+    this.transitionTo('conservation');
+  },
 
 
 
@@ -400,6 +412,107 @@ var Main = React.createClass({
 
       return (
         <div className="page">
+          <div className="page_wrapper">
+            <div className="page_container">
+              <div className="egg_wrap">
+                <div className="quiet_wild_container main_wrapper">
+                  <div className="quiet_wild image_container">
+                    <img src="/img/forest/bird2.png" />
+                  </div>
+                  <div className="quiet_wild copy_container">
+                    <img src="/img/divider/VINE-top-long.svg" />
+                    <h2 className="marker">The Quiet Wild</h2>
+                    <p>For over a century, thousands of families have experienced the quiet wild of Nebraska's Fontenelle Forest and Neale Woods–hiking, playing and exploring our 26 miles of maintained trails and 2,000 acres of upland and lowland forests, native prairies, wetlands, lakes and waterways. Each visit is its own unique adventure, its own story, its own memory to share.</p>
+                    <div className="vine_bottom">
+                      <img className="left-half" src="/img/divider/VINE-bottom-left-half.svg" />
+                      <img className="down-orange" src="/img/forest/icon_down-orange.svg" />
+                      <img className="right-half" src="/img/divider/VINE-bottom-right-half.svg" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="tearjerker_video">
+                <div className="tearjerker_wrapper">
+                  <div className="centered_content">
+                    <h2 className="marker">Tearjerker Video</h2>
+                    <p>Curabitur blandit tempus porttitor. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Curabitur blandit tempus porttitor. Donec id elit non mi porta gravida at eget metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis risus eget urna mollis ornare vel eu leo.</p>
+                  </div>
+                  <div className="centered_content wide">
+                    <div className='embed-container'><iframe src='https://www.youtube.com/embed//Qxh3eSZlUeM' frameBorder='0' allowFullScreen></iframe></div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="photogallery_header">
+                <div className="main_wrapper">
+                  <h3 className="marker">Fauna and Flora</h3>
+                  <p>A National Natural Landmark and a National Historic District, as designated by the United State Department of Interior, Fontenelle is home to over 600 unique species of plants and animals. </p>
+                </div>
+              </div>
+
+              <div className="photogallery_wrapper">
+                <div className="photogallery" style={photogalleryStyles} >
+                  {photogallery}
+                </div>
+              </div>
+              <div className="egg_wrap">
+                <div className={ map_class }>
+                  <div className="nav_area">
+                    <span className="marker reset_button" onClick={self.reset}></span>
+                    <div className="nav_menu">
+                      <p className="title marker">Map Legend</p>
+                      <p className={ self.state.area == 'natureCenter' ? "map_button active" : "map_button" } onClick={self.natureCenter}>Visitor Center Area</p>
+                      <p className={ self.state.area == 'northernFloodplains' ? "map_button active" : "map_button" } onClick={self.northernFloodplains}>Northern Floodplains </p>
+                      <p className={ self.state.area == 'northernUplands' ? "map_button active" : "map_button" } onClick={self.northernUplands}>Northern Uplands</p>
+                      <p className={ self.state.area == 'southernUplands' ? "map_button active" : "map_button" } onClick={self.southernUplands}>Southern Uplands</p>
+                      <p className={ self.state.area == 'greatMarsh' ? "map_button active" : "map_button" } onClick={self.greatMarsh}>Great Marsh Area</p>
+                    </div>
+                    { drawer.length ?
+                      <div className="drawer">
+                        <ul>
+                          {drawer}
+                        </ul>
+                      </div>
+                    : null }
+                  </div>
+                </div>
+              </div>
+
+
+              <div className="tearjerker_video">
+                <div className="tearjerker_wrapper">
+                  <div className="centered_content">
+                    <h2 className="marker">for your favorite little explorers</h2>
+                    <p>Acorn Acres is our one acre natural playscape designed for boisterous enthusiasm, outdoor physical activity, and creative play for kids of all ages. </p>
+                  </div>
+                </div>
+              </div>
+
+
+              <div className="photogallery_wrapper">
+                <div className="photogallery" style={photogalleryStyles} >
+                  {photogallery}
+                </div>
+              </div>
+
+              <div className="egg_wrap">
+                <div className="image_container">
+                  <img src="/img/forest/skyline.png" />
+                </div>
+              </div>
+
+              <div className="egg_wrap">
+                <div className="main_wrapper bottom_nav">
+                  <span className="prev_page" onClick={self.moveLeft}>To Education Page</span>
+                  <span className="next_page" onClick={self.moveRight}>To Conservation Page</span>
+                </div>
+              </div>
+              <footer>
+                <h2>This is the Footer</h2>
+              </footer>
+            </div>
+          </div>
           <div className='video-container'>
             <video id="video-background" className="video-wrap" poster="/img/loop_one.jpg" autoPlay muted="muted" loop>
               <source src="/videos/loop_one.webm" type="video/webm" />
@@ -407,95 +520,6 @@ var Main = React.createClass({
             <div className="content_container">
               <div className="content_wrapper">
                 <img src="/img/forest.png" />
-              </div>
-            </div>
-          </div>
-          <div className="page_container">
-            <div className="quiet_wild_container main_wrapper">
-              <div className="quiet_wild image_container">
-                <img src="/img/forest/bird2.png" />
-              </div>
-              <div className="quiet_wild copy_container">
-                <img src="/img/divider/VINE-top-long.svg" />
-                <h2 className="marker">The Quiet Wild</h2>
-                <p>For over a century, thousands of families have experienced the quiet wild of Nebraska's Fontenelle Forest and Neale Woods–hiking, playing and exploring our 26 miles of maintained trails and 2,000 acres of upland and lowland forests, native prairies, wetlands, lakes and waterways. Each visit is its own unique adventure, its own story, its own memory to share.</p>
-                <div className="vine_bottom">
-                  <img className="left-half" src="/img/divider/VINE-bottom-left-half.svg" />
-                  <img className="down-orange" src="/img/forest/icon_down-orange.svg" />
-                  <img className="right-half" src="/img/divider/VINE-bottom-right-half.svg" />
-                </div>
-              </div>
-            </div>
-
-            <div className="tearjerker_video">
-              <div className="tearjerker_wrapper">
-                <div className="centered_content">
-                  <h2 className="marker">Tearjerker Video</h2>
-                  <p>Curabitur blandit tempus porttitor. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Curabitur blandit tempus porttitor. Donec id elit non mi porta gravida at eget metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis risus eget urna mollis ornare vel eu leo.</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="photogallery_header">
-              <div className="main_wrapper">
-                <h3 className="marker">Fauna and Flora</h3>
-                <p>A National Natural Landmark and a National Historic District, as designated by the United State Department of Interior, Fontenelle is home to over 600 unique species of plants and animals. </p>
-              </div>
-            </div>
-
-            <div className="photogallery_wrapper">
-              <div className="photogallery" style={photogalleryStyles} >
-                {photogallery}
-              </div>
-            </div>
-
-            <div className={ map_class }>
-              <div className="nav_area">
-                <span className="marker reset_button" onClick={self.reset}></span>
-                <div className="nav_menu">
-                  <p className="title marker">Map Legend</p>
-                  <p className={ self.state.area == 'natureCenter' ? "map_button active" : "map_button" } onClick={self.natureCenter}>Visitor Center Area</p>
-                  <p className={ self.state.area == 'northernFloodplains' ? "map_button active" : "map_button" } onClick={self.northernFloodplains}>Northern Floodplains </p>
-                  <p className={ self.state.area == 'northernUplands' ? "map_button active" : "map_button" } onClick={self.northernUplands}>Northern Uplands</p>
-                  <p className={ self.state.area == 'southernUplands' ? "map_button active" : "map_button" } onClick={self.southernUplands}>Southern Uplands</p>
-                  <p className={ self.state.area == 'greatMarsh' ? "map_button active" : "map_button" } onClick={self.greatMarsh}>Great Marsh Area</p>
-                </div>
-                { drawer.length ?
-                  <div className="drawer">
-                    <ul>
-                      {drawer}
-                    </ul>
-                  </div>
-                : null }
-              </div>
-
-              <div className="map_zoom">
-                { self.state.mapLoaded ?
-                  <div className="map_box" style={styles}>
-                    <span onClick={self.natureCenter} className="circle_button natureCenter"></span>
-                    <span onClick={self.northernFloodplains} className="circle_button northernFloodplains"></span>
-                    <span onClick={self.northernUplands} className="circle_button northernUplands"></span>
-                    <span onClick={self.southernUplands} className="circle_button southernUplands"></span>
-                    <span onClick={self.greatMarsh} className="circle_button greatMarsh"></span>
-                    { little_map_buttons }
-                  </div>
-                : "Loading Map" }
-              </div>
-            </div>
-
-
-            <div className="tearjerker_video">
-              <div className="tearjerker_wrapper">
-                <div className="centered_content">
-                  <h2 className="marker">for your favorite little explorers</h2>
-                  <p>Acorn Acres is our one acre natural playscape designed for boisterous enthusiasm, outdoor physical activity, and creative play for kids of all ages. </p>
-                </div>
-              </div>
-            </div>
-
-            <div className="photogallery_wrapper">
-              <div className="photogallery" style={photogalleryStyles} >
-                {photogallery}
               </div>
             </div>
           </div>
