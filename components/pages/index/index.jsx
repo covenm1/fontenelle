@@ -4,6 +4,11 @@ var Router = require('react-router');
 var TransitionGroup = require('./VelocityTransitionGroup.jsx');
 
 var util = require('util');
+//
+var ScrollMagic = require('scrollmagic');
+// 		TweenMax = require('../../public/js/tweenmax.js');
+//
+// require('../../public/js/scrollTo.js');
 
 var Route = Router.Route,
 		DefaultRoute = Router.DefaultRoute,
@@ -15,14 +20,13 @@ var Route = Router.Route,
 var forest = require('../forest/index.jsx'),
 		conservation = require('../conservation/index.jsx'),
 		programs = require('../programs/index.jsx'),
-		education = require('../education/index.jsx'),
-		raptorRecovery = require('../raptor-recovery/index.jsx');
+		education = require('../education/index.jsx');
 
-var slide_names = [ 'forest' , 'conservation' , 'programs', 'education', 'raptor-recovery'];
+var slide_names = [ 'forest' , 'conservation' , 'programs', 'education'];
 var slide_count = 0;
 
 var hotkey = require('react-hotkey');
- hotkey.activate();
+hotkey.activate();
 
 var App = React.createClass({
 	mixins: [Router.State, Router.Navigation, hotkey.Mixin('handleKeyDown')],
@@ -39,11 +43,15 @@ var App = React.createClass({
 		return { currentTransition: 'slide-forward' };
 	},
 
-	componentDidMount: function () {
-	    // hotkey.activate();
-	},
-
 	componentDidMount: function(){
+		var controller = new ScrollMagic.Controller();
+	  var top = new ScrollMagic.Scene({
+								triggerHook: 0,
+	              duration: '97%',
+								offset: -60
+	          })
+	          .setClassToggle("header.header", "scrolled")
+	          .addTo(controller);
 	},
 
 	onClickRight: function(){
@@ -112,7 +120,7 @@ var App = React.createClass({
 		var transition = self.state.currentTransition;
 		return (
 		  <div className="fontenelle">
-		    <header>
+		    <header className="header">
 		        <a href="/" className="logo"><img src="/img/logo.png" alt="" /></a>
 		        <span className="menu">
 		            <a href="javascript.void(0)" className="link">Found Bird</a>
@@ -120,11 +128,11 @@ var App = React.createClass({
 		        </span>
 		    </header>
 				<div className="slide_controls">
-					<span className="left slider_button" onClick={self.onClickLeft}>Left</span>
-					<span className="right slider_button" onClick={self.onClickRight}>Right</span>
+					<span className="left slider_button" onClick={self.onClickLeft}><img src="/img/icon_scroll-left.svg" /></span>
+					<span className="right slider_button" onClick={self.onClickRight}><img src="/img/icon_scroll-right.svg" /></span>
 				</div>
 
-	    	<TransitionGroup transitionName={transition} className="main_content" component="div">
+	    	<TransitionGroup transitionName={transition} className="main_content" id="main_content" component="div">
 		    	<RouteHandler key={name} transition={self.setTransition} />
 		    </TransitionGroup>
 		  </div>
@@ -138,7 +146,6 @@ var routes = (
     <Route name="conservation" path="/conservation" handler={conservation} addHandlerKey={true}/>
     <Route name="programs" path="/programs" handler={programs} addHandlerKey={true} />
     <Route name="education" path="/education" handler={education} addHandlerKey={true} />
-    <Route name="raptor-recovery" path="/raptor-recovery" handler={raptorRecovery} addHandlerKey={true} />
   </Route>
 );
 

@@ -5,11 +5,11 @@ var Velocity = require('velocity-animate/velocity');
 var InlineSVG = require('react-inlinesvg');
 var Router = require('react-router');
 
-var Footer = require('../../common/footer');
+var Footer = require('../../common/footer.jsx');
 
 var ScrollMagic = require('scrollmagic');
 
-var classes_data = require('../../public/js/classes.json');
+var classes_data = require('../../../public/js/classes.json');
 
 var ClassThing = React.createClass({
   render: function() {

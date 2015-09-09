@@ -16,9 +16,9 @@ var ScrollMagic = require('scrollmagic');
 
 var poster_image, map_image;
 
-var photogallery = require('../../public/js/fauna_and_flora.json');
+var photogallery = require('../../../public/js/fauna_and_flora.json');
 
-var Footer = require('../../common/footer');
+var Footer = require('../../common/footer.jsx');
 
 /**
  * Randomize array element order in-place.

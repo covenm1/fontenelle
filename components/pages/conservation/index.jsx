@@ -6,7 +6,7 @@ var InlineSVG = require('react-inlinesvg');
 var Router = require('react-router');
 var ScrollMagic = require('scrollmagic');
 
-var Footer = require('../../common/footer');
+var Footer = require('../../common/footer.jsx');
 
 var poster_image;
 var Main = React.createClass({

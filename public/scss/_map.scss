@@ -3,20 +3,24 @@
 .map_wrapper {
 	width: 100%;
 	max-width: 1440px;
-    margin: auto;
-    border-top: none;
+	margin: auto;
+	border-top: none;
 	display: table;
 	position: relative;
-
+	height: 800px;
+	.nav_menu {
+		display: flex;
+		flex-direction: row;
+	}
 	.nav_area {
-	  vertical-align: top;
-	  text-align: center;
+		vertical-align: top;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
 
-	  position: absolute;
-	  bottom: 15px;
-	  left: 15px;
-	  z-index: 1;
-	  max-width: 500px;
 		.title {
 			color: $orange;
 			text-shadow: none;
@@ -28,10 +32,22 @@
 			padding: 0 50px;
 			margin: 0;
 			cursor: pointer;
-			background: $orange;
 			line-height: 40px;
-		  	font-size: 19px;
+		  font-size: 19px;
+			height: 100px;
+			display: flex;
+			flex: 1;
+			align-items: center;
+			color: $orange;
+			border: solid 2px rgba(161,70,22,0.9);
+			font-family: 'PermanentMarkerPro', Helvetica, Arial, Sans-Serif;
 		}
+
+		.map_button.active, .map_button:hover {
+			color: white;
+			background: rgba(161,70,22,0.9);
+		}
+
 		.reset_button {
 			display: none;
 		}
@@ -108,6 +124,10 @@
 		.drawer{
 			display: table-cell;
 			color: $orange;
+			position: absolute;
+			top: 15px;
+			right: 15px;
+
 			ul {
 				padding-left: 0;
 				list-style: none;
@@ -128,49 +148,46 @@
 			display: none;
 		}
 		.map_button {
-			display: none;
-			background: rgba(161,70,22,0.9);
+			background: rgba(161,70,22,0.0);
 		}
-		.map_button.active {
-			display: block;
-			background: rgba(161,70,22,1);
-		}
+
 		.reset_button {
 		  display: block;
 		  position: absolute;
 		  line-height: 40px;
-		  top: -40px;
-		  width: 15%;
+		  top: 15px;
+			left: 15px;
 		  cursor: pointer;
-		  background: rgba(161,70,22,1);
+			border: 2px solid black;
+			border-radius: 50%;
+			height: 50px;
+			width: 50px;
+			text-align: center;
+			line-height: 45px;
+			&:hover {
+				color: $orange;
+				border-color: $orange;
+			}
 		}
 		.reset_button:before {
 			content: '<<';
 			display: inline-block;
 		}
-		.nav_menu {
-			position: absolute;
-			width: 85%;
-			top: -40px;
-			right: 0;
-			height: 40px;
+		.map_button:hover {
+			background: rgba(161,70,22,0.9);
 		}
 		.nav_menu:hover	 {
 			height: auto;
-			.map_button {
-				display: block;
-				background: rgba(161,70,22,0.9);
-			}
-			.map_button.active, .map_button:hover {
-				display: block;
-				background: rgba(161,70,22,1);
-			}
-			.title {
-				display: block;
-				margin: 0;
-				line-height: 40px;
-				font-size: 20px;
-			}
+			// .map_button.active, .map_button:hover {
+			// 	display: block;
+			// 	background: rgba(161,70,22,1);
+			// }
+			// .title {
+			// 	display: block;
+			// 	margin: 0;
+			// 	line-height: 40px;
+			// 	font-size: 20px;
+			// }
 		}
 	}
 }

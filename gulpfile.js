@@ -17,14 +17,14 @@ var jshint = require('gulp-jshint'),
     sourcemaps = require('gulp-sourcemaps'),
     autoprefixer = require('gulp-autoprefixer'),
     folders = require('gulp-folders'),
-    srcFolder = './components',
+    srcFolder = './components/pages/',
     destFolder = './public/js/',
     minifyCSS = require('gulp-minify-css'),
     streamify = require('gulp-streamify');
 
 gulp.task('build-reacts', folders(srcFolder, function(folder){
 
-    return browserify('./components/' + folder + '/index.jsx')
+    return browserify('./components/pages/' + folder + '/index.jsx')
         .transform(reactify)
         .bundle()
         .pipe(source(folder+'.js'))
@@ -34,7 +34,7 @@ gulp.task('build-reacts', folders(srcFolder, function(folder){
 
 gulp.task('build-reacts-production', folders(srcFolder, function(folder){
 
-    return browserify('./components/' + folder + '/index.jsx')
+    return browserify('./components/pages/' + folder + '/index.jsx')
         .transform(reactify)
         .bundle()
         .pipe(source(folder+'.js'))
@@ -75,7 +75,7 @@ gulp.task('build-styles', function() {
 // Watch Files For Changes
 gulp.task('watch', function() {
     // livereload.listen();
-    gulp.watch('components/**/*.jsx', ['build-reacts']);
+    gulp.watch('components/pages/**/*.jsx', ['build-reacts']);
     gulp.watch('public/scss/**/*.scss', ['build-styles']);
 });
 
