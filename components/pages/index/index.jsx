@@ -40,7 +40,7 @@ var App = React.createClass({
 	},
 
 	getInitialState: function () {
-		return { currentTransition: 'slide-forward' };
+		return { currentTransition: null };
 	},
 
 	componentDidMount: function(){
@@ -99,6 +99,7 @@ var App = React.createClass({
 		this.transitionTo(slide_names[name]);
 	},
 
+
 	handleKeyDown: function(e) {
 		var self = this;
 
@@ -123,7 +124,7 @@ var App = React.createClass({
 		    <header className="header">
 		        <Link to="/" className="logo"><img src="/img/logo.png" alt="" /></Link>
 		        <span className="global_menu">
-		            <a href="javascript.void(0)" className="link">Found Raptor</a>
+		            <Link to="/conservation" className="link">Found Raptor</Link>
 		            <a href="javascript.void(0)" className="link">Forest Now</a>
 								<a href="javascript.void(0)" className="link">Get Involved</a>
 		        </span>

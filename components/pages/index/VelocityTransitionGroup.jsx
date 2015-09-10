@@ -8,6 +8,25 @@ var Velocity = require('velocity-animate');
 
 var transitions = {
 	// Forcefeeding: property order = [after, before]
+	'slide-down': {
+		duration: 1000,
+		enter: {
+			top: [ '0%', '100%' ],
+		},
+		leave: {
+			top: [ '-100%', '0%' ],
+		}
+	},
+	'slide-up': {
+		duration: 1000,
+		enter: {
+			top: [ '-100%', '0%' ],
+
+		},
+		leave: {
+			top: [ '0%', '100%' ],
+		}
+	},
 	'slide-forward': {
 		duration: 250,
 		enter: {

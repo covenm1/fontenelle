@@ -27,7 +27,7 @@ gulp.task('build-reacts', function(){
     return browserify('./components/pages/index/index.jsx')
         .transform(reactify)
         .bundle()
-        .pipe(source(folder+'.js'))
+        .pipe(source('index.js'))
         .pipe(gulp.dest(destFolder));
 });
 
@@ -40,7 +40,7 @@ gulp.task('build-reacts-production', function(){
         .pipe(source(folder+'.js'))
         .pipe(gulp.dest('js/'))
         .pipe(streamify(uglify()))
-        .pipe(rename(folder+'.min.js'))
+        .pipe(rename('index.min.js'))
         .pipe(gulp.dest(destFolder));
 });
 

@@ -1,5 +1,9 @@
 .photogallery_header {
   background: $orange;
+  background-image: url('/img/forest/leaf-left-hex_a04e23.png'), url('/img/forest/leaf-right-hex_a04e23.png');
+  background-position: left, right;
+  background-size: contain, contain;
+  background-repeat: no-repeat;
   color: white;
   padding: 25px 0;
   text-align: center;
@@ -92,4 +96,18 @@
 
 .next_page {
   float: right;
+}
+
+.forest .content_container {
+  background: transparent;
+  .video_overlay {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background: url('/img/forest/pattern_video-overlay.svg');
+    opacity: 0.4;
+    background-size: 15px;
+  }
 }

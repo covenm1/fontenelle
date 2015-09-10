@@ -5,19 +5,25 @@
 	max-width: 1440px;
 	margin: auto;
 	border-top: none;
-	display: table;
 	position: relative;
-	height: 800px;
 	.nav_menu {
 		display: flex;
 		flex-direction: row;
 	}
+	.map_content {
+		display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 50px 15px;
+		.copy_container, .trail_map_container {
+			flex: 1;
+		}
+	}
 	.nav_area {
 		vertical-align: top;
     text-align: center;
-    position: absolute;
-    bottom: 0;
-    left: 0;
     z-index: 1;
     width: 100%;
 
@@ -123,15 +129,32 @@
 	&.open {
 		.drawer{
 			display: table-cell;
-			color: $orange;
-			position: absolute;
-			top: 15px;
-			right: 15px;
+	    justify-content: flex-end;
+	    display: flex;
+	    padding: 15px 0 50px;
+			background-size: cover;
+	    background-position: center;
+			position: relative;
+			min-height: 700px;
+			.orange_overlay {
+				position: absolute;
+		    height: 100%;
+		    width: 100%;
+		    background-color: $forest_color;
+				background: url('/img/forest/pattern_video-overlay.svg');
+				opacity: 0.6;
+    		background-size: 15px;
+		    top: 0;
+		    left: 0;
+				opacity: 0.5;
+			}
 
 			ul {
 				padding-left: 0;
 				list-style: none;
 				margin: 0;
+				position: relative;
+				z-index: 1;
 			}
 
 			li {
@@ -158,7 +181,8 @@
 		  top: 15px;
 			left: 15px;
 		  cursor: pointer;
-			border: 2px solid black;
+			border: 2px solid white;
+			color: white;
 			border-radius: 50%;
 			height: 50px;
 			width: 50px;
@@ -178,16 +202,6 @@
 		}
 		.nav_menu:hover	 {
 			height: auto;
-			// .map_button.active, .map_button:hover {
-			// 	display: block;
-			// 	background: rgba(161,70,22,1);
-			// }
-			// .title {
-			// 	display: block;
-			// 	margin: 0;
-			// 	line-height: 40px;
-			// 	font-size: 20px;
-			// }
 		}
 	}
 }
