@@ -63,8 +63,9 @@ var Main = React.createClass({
             <div className="page_container" id="page">
               <div className="egg_wrap">
                 <div className='image_container'>
-                  <img src="/img/education/top.jpg" />
-                  <img src="/img/education/bottom.jpg" />
+                  <img src="/img/conservation/top_1.png" />
+                  <img src="/img/conservation/top_2.png" />
+                  <img src="/img/conservation/top_3.png" />
                 </div>
               </div>
 

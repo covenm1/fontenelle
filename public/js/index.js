@@ -247,8 +247,9 @@ var Main = React.createClass({displayName: "Main",
             React.createElement("div", {className: "page_container", id: "page"}, 
               React.createElement("div", {className: "egg_wrap"}, 
                 React.createElement("div", {className: "image_container"}, 
-                  React.createElement("img", {src: "/img/education/top.jpg"}), 
-                  React.createElement("img", {src: "/img/education/bottom.jpg"})
+                  React.createElement("img", {src: "/img/conservation/top_1.png"}), 
+                  React.createElement("img", {src: "/img/conservation/top_2.png"}), 
+                  React.createElement("img", {src: "/img/conservation/top_3.png"})
                 )
               ), 
 
