@@ -78,8 +78,8 @@ var Main = React.createClass({
               <Footer />
             </div>
             <div className='video-container'>
-              <video id="video-background" className="video-wrap" poster="/img/loop_two.jpg" autoPlay muted="muted" loop>
-                <source src="/videos/loop_two.webm" type="video/webm" />
+              <video id="video-background" className="video-wrap" poster="/img/loop_conservation.jpg" autoPlay muted="muted" loop>
+                <source src="/videos/loop_conservation.mp4" type="video/mp4" />
               </video>
               <div className="content_container">
                 <div className="content_wrapper">

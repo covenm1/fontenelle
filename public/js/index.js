@@ -269,8 +269,8 @@ var Main = React.createClass({displayName: "Main",
               React.createElement(Footer, null)
             ), 
             React.createElement("div", {className: "video-container"}, 
-              React.createElement("video", {id: "video-background", className: "video-wrap", poster: "/img/loop_two.jpg", autoPlay: true, muted: "muted", loop: true}, 
-                React.createElement("source", {src: "/videos/loop_two.webm", type: "video/webm"})
+              React.createElement("video", {id: "video-background", className: "video-wrap", poster: "/img/loop_conservation.jpg", autoPlay: true, muted: "muted", loop: true}, 
+                React.createElement("source", {src: "/videos/loop_conservation.mp4", type: "video/mp4"})
               ), 
               React.createElement("div", {className: "content_container"}, 
                 React.createElement("div", {className: "content_wrapper"}, 
@@ -443,8 +443,8 @@ var Main = React.createClass({displayName: "Main",
             )
           ), 
           React.createElement("div", {className: "video-container"}, 
-            React.createElement("video", {id: "video-background", className: "video-wrap", poster: "/img/loop_three.jpg", autoPlay: true, muted: "muted", loop: true}, 
-              React.createElement("source", {src: "/videos/loop_four.mp4", type: "video/mp4"})
+            React.createElement("video", {id: "video-background", className: "video-wrap", poster: "/img/loop_education.jpg", autoPlay: true, muted: "muted", loop: true}, 
+              React.createElement("source", {src: "/videos/loop_education.mp4", type: "video/mp4"})
             ), 
             React.createElement("div", {className: "content_container"}, 
               React.createElement("div", {className: "content_wrapper"}, 
@@ -1306,8 +1306,8 @@ var Main = React.createClass({displayName: "Main",
               React.createElement(Footer, null)
             ), 
             React.createElement("div", {className: "video-container"}, 
-              React.createElement("video", {id: "video-background", className: "video-wrap", poster: "/img/loop_three.jpg", autoPlay: true, muted: "muted", loop: true}, 
-                React.createElement("source", {src: "/videos/loop_three.webm", type: "video/webm"})
+              React.createElement("video", {id: "video-background", className: "video-wrap", poster: "/img/loop_programs.jpg", autoPlay: true, muted: "muted", loop: true}, 
+                React.createElement("source", {src: "/videos/loop_programs.mp4", type: "video/mp4"})
               ), 
               React.createElement("div", {className: "content_container"}, 
                 React.createElement("div", {className: "content_wrapper"}, 
