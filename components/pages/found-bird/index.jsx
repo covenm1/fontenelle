@@ -109,16 +109,6 @@ var Main = React.createClass({
               <Footer />
             </div>
           </div>
-          <div className='video-container'>
-            <video id="video-background" className="video-wrap" poster="/img/loop_three.jpg" autoPlay muted="muted" loop>
-              <source src="/videos/loop_four.mp4" type="video/mp4" />
-            </video>
-            <div className="content_container">
-              <div className="content_wrapper">
-                <img src="/img/education.png" />
-              </div>
-            </div>
-          </div>
         </div>
       )
     } else {
