@@ -16,7 +16,7 @@ var poster_image;
 var Main = React.createClass({displayName: "Main",
   mixins: [ Router.State, Navigation ],
   getInitialState: function() {
-    return { pre_count: 0 };
+    return { pre_count: 0, classImage: "/img/programs/programs-1.jpg" };
   },
 
 
@@ -63,8 +63,17 @@ var Main = React.createClass({displayName: "Main",
     this.transitionTo('forest');
   },
 
+  toggleClass: function(){
+    if (this.state.classImage == "/img/programs/programs-1.jpg") {
+      this.setState({classImage: "/img/programs/programs-2.jpg"});
+    } else {
+      this.setState({classImage: "/img/programs/programs-1.jpg"});
+    }
+  },
+
   render: function() {
     var self = this;
+    var classImage = self.state.classImage;
 
     if (self.state.loaded == true) {
       return (
@@ -73,8 +82,9 @@ var Main = React.createClass({displayName: "Main",
             React.createElement("div", {className: "page_container", id: "page"}, 
               React.createElement("div", {className: "egg_wrap"}, 
                 React.createElement("div", {className: "image_container"}, 
-                  React.createElement("img", {src: "/img/education/top.jpg"}), 
-                  React.createElement("img", {src: "/img/education/bottom.jpg"})
+                  React.createElement("img", {src: "/img/programs/top.jpg"}), 
+                  React.createElement("img", {src: classImage, onClick: self.toggleClass}), 
+                  React.createElement("img", {src: "/img/programs/bottom.jpg"})
                 )
               ), 
               React.createElement("div", {className: "egg_wrap"}, 
