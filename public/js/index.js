@@ -454,11 +454,6 @@ var Navigation = Router.Navigation;
 var Link = Router.Link;
 
 var ScrollMagic = require('scrollmagic');
-
-// require('velocity-animate/velocity.ui');
-//
-// require('../../public/js/requestanimationframe.js');
-
 var poster_image, map_image;
 
 var photogallery = require('../../../public/js/fauna_and_flora.json');
@@ -724,6 +719,33 @@ var Main = React.createClass({displayName: "Main",
 
       if (self.state.area.length) {
         map_class = map_class + " " + self.state.area;
+
+        if  ( self.state.area == 'natureCenter' ) {
+          drawer_styles = {
+            backgroundImage: 'url(/img/forest/nature-center.jpg)'
+          }
+        }
+        if  ( self.state.area == 'northernFloodplains' ) {
+          drawer_styles = {
+            backgroundImage: 'url(/img/forest/northern-floodplain.jpg)'
+          }
+        }
+        if  ( self.state.area == 'northernUplands' ) {
+          drawer_styles = {
+            backgroundImage: 'url(/img/forest/northern-upland.jpg)'
+          }
+        }
+        if  ( self.state.area == 'southernUplands' ) {
+          drawer_styles = {
+            backgroundImage: 'url(/img/forest/southern-upland.jpg)'
+          }
+        }
+        if  ( self.state.area == 'greatMarsh' ) {
+          drawer_styles = {
+            backgroundImage: 'url(/img/forest/great-marsh.jpg)'
+          }
+        }
+
       }
 
       if (self.state.hover.length) {
@@ -760,7 +782,7 @@ var Main = React.createClass({displayName: "Main",
                     React.createElement("p", null, "Curabitur blandit tempus porttitor. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Curabitur blandit tempus porttitor. Donec id elit non mi porta gravida at eget metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis risus eget urna mollis ornare vel eu leo.")
                   ), 
                   React.createElement("div", {className: "centered_content wide"}, 
-                    React.createElement("div", {className: "embed-container"}, React.createElement("iframe", {src: "https://www.youtube.com/embed//Qxh3eSZlUeM", frameBorder: "0", allowFullScreen: true}))
+                    React.createElement("div", {className: "embed-container"}, React.createElement("iframe", {src: "https://www.youtube.com/embed/Qxh3eSZlUeM", frameBorder: "0", allowFullScreen: true}))
                   )
                 )
               ), 
@@ -780,6 +802,28 @@ var Main = React.createClass({displayName: "Main",
 
               React.createElement("div", {className: "egg_wrap"}, 
                 React.createElement("div", {className: map_class }, 
+                   drawer.length ?
+                    React.createElement("div", {className: "drawer", style: drawer_styles}, 
+                      React.createElement("div", {className: "orange_overlay"}), 
+                      React.createElement("ul", null, 
+                        drawer
+                      )
+                    )
+                  :
+                    React.createElement("div", {className: "map_content"}, 
+                      React.createElement("div", {className: "copy_container"}, 
+                        React.createElement("img", {src: "/img/divider/VINE-top-long.svg"}), 
+                        React.createElement("h2", {className: "marker"}, "Trailmap"), 
+                        React.createElement("p", null, "For over a century, thousands of families have experienced the quiet wild of Nebraska's Fontenelle Forest and Neale Woods–hiking, playing and exploring our 26 miles of maintained trails and 2,000 acres of upland and lowland \u0003forests, native prairies, wetlands, lakes and waterways. Each visit is its own unique adventure, its own story, its own memory to share."), 
+                        React.createElement("div", {className: "vine_bottom"}, 
+                          React.createElement("img", {className: "left-half", src: "/img/divider/VINE-bottom-left-half.svg"}), 
+                          React.createElement("img", {className: "down-orange", src: "/img/forest/icon_down-orange.svg"}), 
+                          React.createElement("img", {className: "right-half", src: "/img/divider/VINE-bottom-right-half.svg"})
+                        )
+                      ), 
+                      React.createElement("div", {className: "trail_map_container"}, React.createElement("img", {className: "trailmap", src: "/img/forest/trail-map.svg"}))
+                    ), 
+                  
                   React.createElement("span", {className: "marker reset_button", onClick: self.reset}), 
                   React.createElement("div", {className: "nav_area"}, 
                     React.createElement("div", {className: "nav_menu"}, 
@@ -789,14 +833,8 @@ var Main = React.createClass({displayName: "Main",
                       React.createElement("p", {className:  self.state.area == 'southernUplands' ? "map_button active" : "map_button", onClick: self.southernUplands}, "Southern Uplands"), 
                       React.createElement("p", {className:  self.state.area == 'greatMarsh' ? "map_button active" : "map_button", onClick: self.greatMarsh}, "Great Marsh Area")
                     )
-                  ), 
-                   drawer.length ?
-                    React.createElement("div", {className: "drawer"}, 
-                      React.createElement("ul", null, 
-                        drawer
-                      )
-                    )
-                  : null
+                  )
+
                 )
               ), 
 
@@ -806,6 +844,9 @@ var Main = React.createClass({displayName: "Main",
                   React.createElement("div", {className: "centered_content"}, 
                     React.createElement("h2", {className: "marker"}, "for your favorite little explorers"), 
                     React.createElement("p", null, "Acorn Acres is our one acre natural playscape designed for boisterous enthusiasm, outdoor physical activity, and creative play for kids of all ages. ")
+                  ), 
+                  React.createElement("div", {className: "centered_content wide"}, 
+                    React.createElement("div", {className: "embed-container"}, React.createElement("iframe", {src: "https://www.youtube.com/embed/LEkB-HvzAuw", frameBorder: "0", allowFullScreen: true}))
                   )
                 )
               ), 
@@ -838,6 +879,7 @@ var Main = React.createClass({displayName: "Main",
               React.createElement("source", {src: "/videos/loop_one.webm", type: "video/webm"})
             ), 
             React.createElement("div", {className: "content_container"}, 
+              React.createElement("div", {className: "video_overlay"}), 
               React.createElement("div", {className: "content_wrapper"}, 
                 React.createElement("img", {src: "/img/forest.png"})
               )
