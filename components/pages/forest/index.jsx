@@ -57,26 +57,9 @@ var Main = React.createClass({
 
   },
 
-  // componentWillUnmount: function() {
-  //   var controller = this.state.controller;
-  //   controller.removeScene(top);
-  //   controller = controller.destroy(true);
-  // },
-
   onLoad: function() {
     var self = this;
     self.setState({loaded: true});
-    // var controller = new ScrollMagic.Controller();
-    // var top = new ScrollMagic.Scene({
-    //             triggerElement: "#page",
-    //             triggerHook: 'onLeave',
-    //             offset: -60
-    //         })
-    //         .setClassToggle("header.header", "scrolled")
-    //         .addTo(controller);
-    //
-    // self.setState({controller: controller});
-
   },
 
   handleResize: function(e) {
@@ -237,7 +220,7 @@ var Main = React.createClass({
 
   moveLeft: function(){
     this.props.transition('slide-back');
-    this.transitionTo('education');
+    this.transitionTo('programs');
   },
 
 
@@ -397,8 +380,8 @@ var Main = React.createClass({
 
               <div className="egg_wrap">
                 <div className="main_wrapper bottom_nav">
-                  <span className="prev_page" onClick={self.moveLeft}>To Education Page</span>
-                  <span className="next_page" onClick={self.moveRight}>To Conservation Page</span>
+                  <span className="prev_page" onClick={self.moveLeft}>Programs</span>
+                  <span className="next_page" onClick={self.moveRight}>Conservation</span>
                 </div>
               </div>
 

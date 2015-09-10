@@ -6,6 +6,10 @@ var Velocity = require('velocity-animate/velocity');
 var InlineSVG = require('react-inlinesvg');
 var Router = require('react-router');
 
+var Navigation = Router.Navigation;
+var Link = Router.Link;
+
+
 var Footer = require('../../common/footer.jsx');
 
 var ScrollMagic = require('scrollmagic');
@@ -57,7 +61,7 @@ var ClassList = React.createClass({displayName: "ClassList",
 
 var poster_image;
 var Main = React.createClass({displayName: "Main",
-  mixins: [ Router.State ],
+  mixins: [ Router.State, Navigation ],
   getInitialState: function() {
     return { pre_count: 0, classImage: "/img/education/class-1.jpg" };
   },
@@ -76,44 +80,22 @@ var Main = React.createClass({displayName: "Main",
     poster_image.onload = self.onLoad;
     poster_image.src = "/img/loop_three.jpg";
 
-    // var controller = self.state.controller;
-    // controller.removeScene(top);
-    // controller = controller.destroy(true);
-
   },
-
-
-  // onLoad: function() {
-  //   var self = this;
-  //   var tmp_pre_count = self.state.pre_count;
-  //   tmp_pre_count++;
-  //   if (tmp_pre_count == 1) {
-  //     self.setState({loaded: true, pre_count: tmp_pre_count});
-  //   } else {
-  //     self.setState({pre_count: tmp_pre_count});
-  //   }
-  // },
-
-  // componentWillUnmount: function() {
-  //   var controller = this.state.controller;
-  //   controller.removeScene(top);
-  //   controller = controller.destroy(true);
-  // },
 
   onLoad: function() {
     var self = this;
     self.setState({loaded: true});
-    // var controller = new ScrollMagic.Controller();
-    // var top = new ScrollMagic.Scene({
-    //             triggerElement: "#page",
-    //             triggerHook: 'onLeave',
-    //             offset: -60
-    //         })
-    //         .setClassToggle("header.header", "scrolled")
-    //         .addTo(controller);
-    //
-    // self.setState({controller: controller});
+  },
 
+  moveLeft: function(){
+    this.props.transition('slide-back');
+    this.transitionTo('conservation');
+  },
+
+
+  moveRight: function(){
+    this.props.transition('slide-forward');
+    this.transitionTo('programs');
   },
 
   toggleClass: function(){
@@ -138,6 +120,12 @@ var Main = React.createClass({displayName: "Main",
                   React.createElement("img", {src: "/img/education/top.jpg"}), 
                   React.createElement("img", {src: classImage, onClick: self.toggleClass}), 
                   React.createElement("img", {src: "/img/education/bottom.jpg"})
+                )
+              ), 
+              React.createElement("div", {className: "egg_wrap"}, 
+                React.createElement("div", {className: "main_wrapper bottom_nav"}, 
+                  React.createElement("span", {className: "prev_page", onClick: self.moveLeft}, "Conservation"), 
+                  React.createElement("span", {className: "next_page", onClick: self.moveRight}, "Programs")
                 )
               ), 
               React.createElement(Footer, null)

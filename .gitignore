@@ -39,3 +39,5 @@ Procfile
 */video/*
 
 dump.rdp
+
+.DS_Store

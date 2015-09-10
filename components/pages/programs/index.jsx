@@ -5,12 +5,15 @@ var Velocity = require('velocity-animate/velocity');
 var InlineSVG = require('react-inlinesvg');
 var Router = require('react-router');
 
+var Navigation = Router.Navigation;
+var Link = Router.Link;
+
 var Footer = require('../../common/footer.jsx');
 // var ScrollMagic = require('scrollmagic');
 
 var poster_image;
 var Main = React.createClass({
-  mixins: [ Router.State ],
+  mixins: [ Router.State, Navigation ],
   getInitialState: function() {
     return { pre_count: 0 };
   },
@@ -42,26 +45,21 @@ var Main = React.createClass({
   //   }
   // },
 
-  componentWillUnmount: function() {
-    // var controller = this.state.controller;
-    // controller.removeScene(top);
-    // controller = controller.destroy(true);
-  },
 
   onLoad: function() {
     var self = this;
     self.setState({loaded: true});
-    // var controller = new ScrollMagic.Controller();
-    // var top = new ScrollMagic.Scene({
-    //             triggerElement: "#page",
-    //             triggerHook: 'onLeave',
-    //             offset: -60
-    //         })
-    //         .setClassToggle("header.header", "scrolled")
-    //         .addTo(controller);
-    //
-    // self.setState({controller: controller});
+  },
 
+  moveLeft: function(){
+    this.props.transition('slide-back');
+    this.transitionTo('education');
+  },
+
+
+  moveRight: function(){
+    this.props.transition('slide-forward');
+    this.transitionTo('forest');
   },
 
   render: function() {
@@ -78,7 +76,12 @@ var Main = React.createClass({
                   <img src="/img/education/bottom.jpg" />
                 </div>
               </div>
-
+              <div className="egg_wrap">
+                <div className="main_wrapper bottom_nav">
+                  <span className="prev_page" onClick={self.moveLeft}>Education</span>
+                  <span className="next_page" onClick={self.moveRight}>Forest</span>
+                </div>
+              </div>
               <Footer />
             </div>
             <div className='video-container'>

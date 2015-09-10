@@ -5,13 +5,17 @@ var React = require('react'),
 var Velocity = require('velocity-animate/velocity');
 var InlineSVG = require('react-inlinesvg');
 var Router = require('react-router');
+
+var Navigation = Router.Navigation;
+var Link = Router.Link;
+
 var ScrollMagic = require('scrollmagic');
 
 var Footer = require('../../common/footer.jsx');
 
 var poster_image;
 var Main = React.createClass({displayName: "Main",
-  mixins: [ Router.State ],
+  mixins: [ Router.State, Navigation ],
   getInitialState: function() {
     return { pre_count: 0 };
   },
@@ -30,43 +34,25 @@ var Main = React.createClass({displayName: "Main",
     poster_image.onload = self.onLoad;
     poster_image.src = "/img/loop_two.jpg";
 
-    // var controller = self.state.controller;
-    // controller.removeScene(top);
-    // controller = controller.destroy(true);
   },
 
-  // componentWillUnmount: function() {
-  //   var controller = this.state.controller;
-  //   controller.removeScene(top);
-  //   controller = controller.destroy(true);
-  // },
 
   onLoad: function() {
     var self = this;
     self.setState({loaded: true});
-    // var controller = new ScrollMagic.Controller();
-    // var top = new ScrollMagic.Scene({
-    //             triggerElement: "#page",
-    //             triggerHook: 'onLeave',
-    //             offset: -60
-    //         })
-    //         .setClassToggle("header.header", "scrolled")
-    //         .addTo(controller);
-    //
-    // self.setState({controller: controller});
 
   },
 
-  // onLoad: function() {
-  //   var self = this;
-  //   var tmp_pre_count = self.state.pre_count;
-  //   tmp_pre_count++;
-  //   if (tmp_pre_count == 1) {
-  //     self.setState({loaded: true, pre_count: tmp_pre_count});
-  //   } else {
-  //     self.setState({pre_count: tmp_pre_count});
-  //   }
-  // },
+  moveLeft: function(){
+    this.props.transition('slide-back');
+    this.transitionTo('forest');
+  },
+
+
+  moveRight: function(){
+    this.props.transition('slide-forward');
+    this.transitionTo('education');
+  },
 
   render: function() {
     var self = this;
@@ -80,6 +66,13 @@ var Main = React.createClass({displayName: "Main",
                 React.createElement("div", {className: "image_container"}, 
                   React.createElement("img", {src: "/img/education/top.jpg"}), 
                   React.createElement("img", {src: "/img/education/bottom.jpg"})
+                )
+              ), 
+
+              React.createElement("div", {className: "egg_wrap"}, 
+                React.createElement("div", {className: "main_wrapper bottom_nav"}, 
+                  React.createElement("span", {className: "prev_page", onClick: self.moveLeft}, "Forest"), 
+                  React.createElement("span", {className: "next_page", onClick: self.moveRight}, "Education")
                 )
               ), 
 

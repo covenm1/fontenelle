@@ -22,19 +22,19 @@ var jshint = require('gulp-jshint'),
     minifyCSS = require('gulp-minify-css'),
     streamify = require('gulp-streamify');
 
-gulp.task('build-reacts', folders(srcFolder, function(folder){
+gulp.task('build-reacts', function(){
 
-    return browserify('./components/pages/' + folder + '/index.jsx')
+    return browserify('./components/pages/index/index.jsx')
         .transform(reactify)
         .bundle()
         .pipe(source(folder+'.js'))
         .pipe(gulp.dest(destFolder));
-}));
+});
 
 
-gulp.task('build-reacts-production', folders(srcFolder, function(folder){
+gulp.task('build-reacts-production', function(){
 
-    return browserify('./components/pages/' + folder + '/index.jsx')
+    return browserify('./components/pages/index/index.jsx')
         .transform(reactify)
         .bundle()
         .pipe(source(folder+'.js'))
@@ -42,7 +42,7 @@ gulp.task('build-reacts-production', folders(srcFolder, function(folder){
         .pipe(streamify(uglify()))
         .pipe(rename(folder+'.min.js'))
         .pipe(gulp.dest(destFolder));
-}));
+});
 
 // Compile Our Production Sass
 gulp.task('build-styles-production', function() {

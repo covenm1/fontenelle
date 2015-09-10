@@ -58,26 +58,9 @@ var Main = React.createClass({displayName: "Main",
 
   },
 
-  // componentWillUnmount: function() {
-  //   var controller = this.state.controller;
-  //   controller.removeScene(top);
-  //   controller = controller.destroy(true);
-  // },
-
   onLoad: function() {
     var self = this;
     self.setState({loaded: true});
-    // var controller = new ScrollMagic.Controller();
-    // var top = new ScrollMagic.Scene({
-    //             triggerElement: "#page",
-    //             triggerHook: 'onLeave',
-    //             offset: -60
-    //         })
-    //         .setClassToggle("header.header", "scrolled")
-    //         .addTo(controller);
-    //
-    // self.setState({controller: controller});
-
   },
 
   handleResize: function(e) {
@@ -238,7 +221,7 @@ var Main = React.createClass({displayName: "Main",
 
   moveLeft: function(){
     this.props.transition('slide-back');
-    this.transitionTo('education');
+    this.transitionTo('programs');
   },
 
 
@@ -398,8 +381,8 @@ var Main = React.createClass({displayName: "Main",
 
               React.createElement("div", {className: "egg_wrap"}, 
                 React.createElement("div", {className: "main_wrapper bottom_nav"}, 
-                  React.createElement("span", {className: "prev_page", onClick: self.moveLeft}, "To Education Page"), 
-                  React.createElement("span", {className: "next_page", onClick: self.moveRight}, "To Conservation Page")
+                  React.createElement("span", {className: "prev_page", onClick: self.moveLeft}, "Programs"), 
+                  React.createElement("span", {className: "next_page", onClick: self.moveRight}, "Conservation")
                 )
               ), 
 

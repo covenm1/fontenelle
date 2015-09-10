@@ -17,6 +17,20 @@ body {
     width: 100%;
     font-family: 'DIN Next Pro Condensed Bold';
 }
+$page_color: black;
+
+.forest {
+  $page_color: #a14616;
+}
+.education {
+  $page_color: #68814b;
+}
+.programs {
+  $page_color: #9e1826;
+}
+.conservation {
+  $page_color:  #1261ac;
+}
 
 #mfPreviewBar {
     display: none;
@@ -77,31 +91,87 @@ header {
     width: 100%;
     height: 60px;
     transition: 0.15s ease-out;
+    display: flex;
+    flex-direction: row;
+    flex-flow: space-between;
+    line-height: 60px;
+
+
     &.scrolled {
       background: transparent;
       color: white;
     }
+
+
+    .logo {
+        flex: 0 178px;
+        height: 55px;
+        padding: 5px 0;
+    }
+
+    .global_menu {
+      flex: 1;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .menu_icon {
+      flex: 0 178px;
+    }
+
+    .menu_icon {
+
+    }
+
+    h2 {
+        box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1);
+        font-size: 1.7em;
+        line-height: 50px;
+    }
+
+    h1 span {
+        font-weight: 300;
+    }
+
+    p {
+        font-family: Cambria, Georgia, serif;
+        font-style: italic;
+    }
 }
 
-header .logo {
-    display: inline-block;
-    height: 55px;
-    padding: 5px 0;
-}
+.global_menu {
+  a.link {
+    padding: 0 15px;
+    position: relative;
+    margin-left: 20px;
 
-header h2 {
-    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1);
-    font-size: 1.7em;
-    line-height: 50px;
-}
+    &:before {
+      content: '';
+      position: absolute;
+      height: 8px;
+      width: 8px;
+      border-radius: 50%;
+      background: green;
+      transition: 0.5s ease-out;
+      .forest &  {
+        background: $forest_color;
+      }
+      .education & {
+        background: $education_color;
+      }
+      .programs & {
+        background: $programs_color;
+      }
+      .conservation & {
+        background: $conservation_color;
+      }
 
-header h1 span {
-    font-weight: 300;
-}
-
-header p {
-    font-family: Cambria, Georgia, serif;
-    font-style: italic;
+      left: -2px;
+      top: 50%;
+      margin-top: -4px;
+    }
+  }
 }
 
 /* Video Pages */
@@ -130,11 +200,6 @@ header p {
   overflow: hidden
 }
 
-.buttons {
-    color: black;
-    cursor: pointer;
-}
-
 .slide_controls {
 
   .slider_button {
@@ -161,219 +226,6 @@ header p {
   }
 }
 
-.top_overlay {
-
-}
-
-.screen {
-    position: relative;
-    height: 100%;
-    width: 33.33333333%;
-    float: left;
-    overflow: hidden;
-}
-
-.big-image {
-    min-width: 100%;
-    min-height: 100%;
-    height: auto;
-    width: auto;
-}
-
-.video-title {
-    position: absolute;
-    top: 50%;
-    padding: 0;
-    line-height: .65;
-    font-size: 4em;
-    text-transform: uppercase;
-    width: 100%;
-    text-align: center;
-    margin-top: -2em;
-    text-shado: none;
-}
-
-.menu {
-    right: 0;
-    position: absolute;
-    top: 0;
-    line-height: 60px;
-}
-
-#nav-toggle span, #nav-toggle span:before, #nav-toggle span:after {
-  cursor: pointer;
-  border-radius: 1px;
-  height: 5px;
-  width: 35px;
-  background: white;
-  position: absolute;
-  display: block;
-  content: '';
-}
-#nav-toggle span:before {
-  top: -10px;
-}
-#nav-toggle span:after {
-  bottom: -10px;
-}
-
-.menu a.link {
-    padding: 0 15px;
-    font-family: 'DIN Next Pro Regular';
-    position: relative;
-    margin-left: 20px;
-}
-
-.menu a.link:before {
-    content: '';
-    position: absolute;
-    height: 8px;
-    width: 8px;
-    border-radius: 50%;
-    background: #1458A1;
-    left: -2px;
-    top: 50%;
-    margin-top: -4px;
-}
-
-.screen-1 .menu a.link:before, .screen-4 .menu a.link:before{
-    background: #9D4A20;
-}
-
-.screen-2 .menu a.link:before{
-    background: #5B7D42;
-}
-
-.screen-3 .menu a.link:before{
-    background: #1458A1;
-}
-
-.content {
-    position: absolute;
-    top: 70%;
-    width: 50%;
-    right: 0;
-    padding: 20px 30px;
-    font-family: 'DIN Next Pro Light'
-}
-
-.screen-1 .content, .screen-4 .content {
-    background: rgba(157,74,32,.7);
-}
-.screen-2 .content {
-    background: rgba(91,125,66,0.7);
-}
-.screen-3 .content {
-    background: rgba(20,88,161,0.7);
-}
-
-.learnmore {
-    position: absolute;
-    top: 60%;
-    width: 170px;
-    right: 0;
-    padding: 0 10px;
-    font-family: 'DIN Next Pro Light'
-}
-
-.screen-1 .learnmore, .screen-4 .learnmore {
-    background: rgba(157,74,32,.7);
-}
-.screen-2 .learnmore {
-    background: rgba(91,125,66,0.7);
-}
-.screen-3 .learnmore {
-    background: rgba(20,88,161,0.7);
-}
-
-/* Nav */
-
-nav {
-    position: absolute;
-    right: 5%;
-    top: 45%;
-    padding: 20px;
-    background: #000;
-    border-radius: 40px;
-    opacity: .4;
-    cursor: pointer;
-    z-index: 1000;
-}
-
-nav:hover {
-    opacity: .6;
-}
-
-.next-icon {
-    display: block;
-    border-top: solid 2px #fff;
-    border-right: solid 2px #fff;
-    width: 20px;
-    height: 20px;
-    position: relative;
-    left: -5px;
-    -webkit-transform: rotate(45deg);
-    -moz-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    -o-transform: rotate(45deg);
-    transform: rotate(45deg);
-    color: #fff;
-    text-decoration: none;
-}
-
-#previous-btn {
-	right: auto;
-	left: 5%;
-}
-
-.previous-icon {
-	display: block;
-	border-bottom: solid 2px #fff;
-	border-left: solid 2px #fff;
-	width: 20px;
-	height: 20px;
-	position: relative;
-	left: 5px;
-	-webkit-transform: rotate(45deg);
-	-moz-transform: rotate(45deg);
-	-ms-transform: rotate(45deg);
-	-o-transform: rotate(45deg);
-	transform: rotate(45deg);
-	color: #fff;
-	text-decoration: none;
-}
-
-#down_arrow {
-    display: block;
-    border-top: solid 2px #fff;
-    border-right: solid 2px #fff;
-    width: 20px;
-    height: 20px;
-    position: absolute;
-    left: 50%;
-	bottom: 40%;
-    -webkit-transform: rotate(135deg);
-    -moz-transform: rotate(135deg);
-    -ms-transform: rotate(135deg);
-    -o-transform: rotate(135deg);
-    transform: rotate(135deg);
-    color: #fff;
-    text-decoration: none;
-}
-
-#down_arrow:after {
-	content: '';
-	display: block;
-	border-top: solid 2px #fff;
-	border-right: solid 2px #fff;
-	width: 30px;
-	height: 30px;
-	position: absolute;
-	left: 0px;
-	bottom: 0px;
-	color: #fff;
-	text-decoration: none;
-}
 
 .white_overlay, .dark_overlay {
 	display:none;
@@ -405,38 +257,6 @@ nav:hover {
 	bottom: 0;
 }
 
-/* Codrops Header Style */
-.codrops-top {
-    line-height: 24px;
-    font-size: 11px;
-    background: #fff;
-    background: rgba(255, 255, 255, 0.5);
-    text-transform: uppercase;
-    z-index: 9999;
-    position: absolute;
-    width: 100%;
-    top: 0;
-    left: 0;
-    font-family: Cambria, Georgia, serif;
-    box-shadow: 1px 0px 2px rgba(0,0,0,0.2);
-}
-.codrops-top a {
-    padding: 0px 10px;
-    letter-spacing: 1px;
-    color: #333;
-    display: inline-block;
-    text-decoration: none;
-}
-.codrops-top a:hover {
-    background: rgba(255,255,255,0.4);
-}
-.codrops-top span.right{
-    float: right;
-}
-.codrops-top span.right a{
-    float: left;
-    display: block;
-}
 
 .container {
     width: 100%;
@@ -488,50 +308,51 @@ body.page2_up .page.page1 {
 	z-index: -1;
 	transition: 0.2s ease-in-out;
 	font-weight: normal;
-}
 
-.menu_wrapper .container {
-	max-width: 800px;
-	margin-top: 10%;
-}
 
-.menu_wrapper .header {
-	background: black;
-	text-align: center;
-	padding: 10px;
-}
+  .container {
+  	max-width: 800px;
+  	margin-top: 10%;
+  }
 
-.menu_wrapper .header .title {
-	width: 30%;
-	display: inline-block;
-	text-transform: uppercase;
-}
+  .header {
+  	background: black;
+  	text-align: center;
+  	padding: 10px;
+  }
 
-.menu_wrapper .column {
-	width: 32%;
-	margin-right: 1%;
-	display: inline-block;
-}
+  .header .title {
+  	width: 30%;
+  	display: inline-block;
+  	text-transform: uppercase;
+  }
 
-.menu_wrapper .column .item {
-	display: block;
-	position: relative;
-	padding: 20px;
-	font-family: 'DIN Next Pro Regular';
-}
+  .column {
+  	width: 32%;
+  	margin-right: 1%;
+  	display: inline-block;
+  }
 
-.menu_wrapper .column .item:before {
-    content: '';
-    position: absolute;
-    height: 8px;
-    width: 8px;
-    border-radius: 50%;
-    background: white;
-    left: -2px;
-    top: 50%;
-    margin-top: -4px;
-}
+  .column .item {
+  	display: block;
+  	position: relative;
+  	padding: 20px;
+  	font-family: 'DIN Next Pro Regular';
+  }
 
+  .column .item:before {
+      content: '';
+      position: absolute;
+      height: 8px;
+      width: 8px;
+      border-radius: 50%;
+      background: white;
+      left: -2px;
+      top: 50%;
+      margin-top: -4px;
+  }
+
+}
 
 .menu_display .menu_wrapper {
 	display: block;

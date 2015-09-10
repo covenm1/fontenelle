@@ -22,7 +22,7 @@ var forest = require('../forest/index.jsx'),
 		programs = require('../programs/index.jsx'),
 		education = require('../education/index.jsx');
 
-var slide_names = [ 'forest' , 'conservation' , 'programs', 'education'];
+var slide_names = [ 'forest' , 'conservation' , 'education' , 'programs'];
 var slide_count = 0;
 
 var hotkey = require('react-hotkey');
@@ -119,13 +119,15 @@ var App = React.createClass({
 
 		var transition = self.state.currentTransition;
 		return (
-		  <div className="fontenelle">
+		  <div className={"fontenelle " + name} >
 		    <header className="header">
-		        <a href="/" className="logo"><img src="/img/logo.png" alt="" /></a>
-		        <span className="menu">
-		            <a href="javascript.void(0)" className="link">Found Bird</a>
-		            <a href="javascript.void(0)" className="link">Donate</a>
+		        <Link to="/" className="logo"><img src="/img/logo.png" alt="" /></Link>
+		        <span className="global_menu">
+		            <a href="javascript.void(0)" className="link">Found Raptor</a>
+		            <a href="javascript.void(0)" className="link">Forest Now</a>
+								<a href="javascript.void(0)" className="link">Get Involved</a>
 		        </span>
+						<span className="menu_icon">Menu</span>
 		    </header>
 				<div className="slide_controls">
 					<span className="left slider_button" onClick={self.onClickLeft}><img src="/img/icon_scroll-left.svg" /></span>
@@ -150,6 +152,16 @@ var routes = (
 );
 
 
-Router.run(routes, Router.HistoryLocation, function (Handler) {
+// Router.run(routes, Router.HistoryLocation, function (Handler) {
+//   React.render(<Handler/>, document.body);
+// });
+
+var router = Router.create({
+  routes: routes,
+  location: Router.HistoryLocation,
+	scrollBehavior: Router.ScrollToTopBehavior
+});
+
+router.run(function (Handler) {
   React.render(<Handler/>, document.body);
 });
