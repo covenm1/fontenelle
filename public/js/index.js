@@ -405,7 +405,22 @@ var Main = React.createClass({displayName: "Main",
             React.createElement("div", {className: "page_container", id: "page"}, 
               React.createElement("div", {className: "egg_wrap"}, 
                 React.createElement("div", {className: "image_container"}, 
-                  React.createElement("img", {src: "/img/education/top.jpg"}), 
+                  React.createElement("img", {src: "/img/education/top.jpg"})
+                )
+              ), 
+              React.createElement("div", {className: "education_video"}, 
+                React.createElement("div", {className: "education_video_wrapper"}, 
+                  React.createElement("div", {className: "centered_content"}, 
+                    React.createElement("h2", {className: "marker"}, "The Walls Became the World All Around"), 
+                    React.createElement("p", null, "Curabitur blandit tempus porttitor. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Curabitur blandit tempus porttitor. Donec id elit non mi porta gravida at eget metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis risus eget urna mollis ornare vel eu leo.")
+                  ), 
+                  React.createElement("div", {className: "centered_content wide"}, 
+                    React.createElement("div", {className: "embed-container"}, React.createElement("iframe", {src: "https://www.youtube.com/embed//Qxh3eSZlUeM", frameBorder: "0", allowFullScreen: true}))
+                  )
+                )
+              ), 
+              React.createElement("div", {className: "egg_wrap"}, 
+                React.createElement("div", {className: "image_container"}, 
                   React.createElement("img", {src: classImage, onClick: self.toggleClass}), 
                   React.createElement("img", {src: "/img/education/bottom.jpg"})
                 )
@@ -1132,7 +1147,22 @@ var Main = React.createClass({displayName: "Main",
             React.createElement("div", {className: "page_container", id: "page"}, 
               React.createElement("div", {className: "egg_wrap"}, 
                 React.createElement("div", {className: "image_container"}, 
-                  React.createElement("img", {src: "/img/programs/top.jpg"}), 
+                  React.createElement("img", {src: "/img/programs/top.jpg"})
+                )
+              ), 
+              React.createElement("div", {className: "programs_video"}, 
+                React.createElement("div", {className: "programs_video_wrapper"}, 
+                  React.createElement("div", {className: "centered_content"}, 
+                    React.createElement("h2", {className: "marker"}, "A Recycled Forest, Built by Local Kids"), 
+                    React.createElement("p", null, "Curabitur blandit tempus porttitor. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Curabitur blandit tempus porttitor. Donec id elit non mi porta gravida at eget metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis risus eget urna mollis ornare vel eu leo.")
+                  ), 
+                  React.createElement("div", {className: "centered_content wide"}, 
+                    React.createElement("div", {className: "embed-container"}, React.createElement("iframe", {src: "https://www.youtube.com/embed//Qxh3eSZlUeM", frameBorder: "0", allowFullScreen: true}))
+                  )
+                )
+              ), 
+              React.createElement("div", {className: "egg_wrap"}, 
+                React.createElement("div", {className: "image_container"}, 
                   React.createElement("img", {src: classImage, onClick: self.toggleClass}), 
                   React.createElement("img", {src: "/img/programs/bottom.jpg"})
                 )

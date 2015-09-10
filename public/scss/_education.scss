@@ -1,0 +1,27 @@
+.education_video {
+  background-size: cover;
+  background-position: center;
+  .education_video_wrapper {
+    background-image: url('../img/education/pattern_video-overlay.svg');
+    background-size: 15px;
+    background-color: #1461ae;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 100px 0;
+
+    .centered_content {
+      max-width: 100%;
+      width: 500px;
+      text-align: center;
+      color: white;
+      h2 {
+        font-size: 45px;
+      }
+      &.wide {
+        width: 1000px;
+      }
+    }
+  }
+}
