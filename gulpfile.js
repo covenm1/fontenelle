@@ -37,7 +37,7 @@ gulp.task('build-reacts-production', function(){
     return browserify('./components/pages/index/index.jsx')
         .transform(reactify)
         .bundle()
-        .pipe(source(folder+'.js'))
+        .pipe(source('index.js'))
         .pipe(gulp.dest('js/'))
         .pipe(streamify(uglify()))
         .pipe(rename('index.min.js'))
