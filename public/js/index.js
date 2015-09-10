@@ -802,8 +802,8 @@ var Main = React.createClass({displayName: "Main",
               React.createElement("div", {className: "tearjerker_video"}, 
                 React.createElement("div", {className: "tearjerker_wrapper"}, 
                   React.createElement("div", {className: "centered_content"}, 
-                    React.createElement("h2", {className: "marker"}, "Tearjerker Video"), 
-                    React.createElement("p", null, "Curabitur blandit tempus porttitor. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Curabitur blandit tempus porttitor. Donec id elit non mi porta gravida at eget metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis risus eget urna mollis ornare vel eu leo.")
+                    React.createElement("h2", {className: "marker"}, "A Room All to Myself"), 
+                    React.createElement("p", null, "Push pause on the texting and clicking, just for a moment, and come out to the forest. Move your feet, breathe in the fresh air, explore. And watch what happens.")
                   ), 
                   React.createElement("div", {className: "centered_content wide"}, 
                     React.createElement("div", {className: "embed-container"}, React.createElement("iframe", {src: "https://www.youtube.com/embed/Qxh3eSZlUeM", frameBorder: "0", allowFullScreen: true}))

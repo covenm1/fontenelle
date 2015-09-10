@@ -333,8 +333,8 @@ var Main = React.createClass({
               <div className="tearjerker_video">
                 <div className="tearjerker_wrapper">
                   <div className="centered_content">
-                    <h2 className="marker">Tearjerker Video</h2>
-                    <p>Curabitur blandit tempus porttitor. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Curabitur blandit tempus porttitor. Donec id elit non mi porta gravida at eget metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis risus eget urna mollis ornare vel eu leo.</p>
+                    <h2 className="marker">A Room All to Myself</h2>
+                    <p>Push pause on the texting and clicking, just for a moment, and come out to the forest. Move your feet, breathe in the fresh air, explore. And watch what happens.</p>
                   </div>
                   <div className="centered_content wide">
                     <div className='embed-container'><iframe src='https://www.youtube.com/embed/Qxh3eSZlUeM' frameBorder='0' allowFullScreen></iframe></div>
