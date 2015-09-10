@@ -126,12 +126,13 @@ var Main = React.createClass({
                     <p>Curabitur blandit tempus porttitor. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Curabitur blandit tempus porttitor. Donec id elit non mi porta gravida at eget metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis risus eget urna mollis ornare vel eu leo.</p>
                   </div>
                   <div className="centered_content wide">
-                    <div className='embed-container'><iframe src='https://www.youtube.com/embed//Qxh3eSZlUeM' frameBorder='0' allowFullScreen></iframe></div>
+                    <div className='embed-container'><iframe src='https://www.youtube.com/embed/f_rum7pLqZc' frameBorder='0' allowFullScreen></iframe></div>
                   </div>
                 </div>
               </div>
               <div className="egg_wrap">
                 <div className='image_container'>
+                  <img src="/img/education/middle.jpg" />
                   <img src={classImage} onClick={self.toggleClass}/>
                   <img src="/img/education/bottom.jpg" />
                 </div>

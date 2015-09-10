@@ -96,28 +96,20 @@ var Main = React.createClass({
   render: function() {
     var self = this;
 
-    if (self.state.loaded == true) {
-      return (
-        <div className="page">
-          <div className="page_wrapper">
-            <div className="page_container" id="page">
-              <div className="egg_wrap">
-                <div className='image_container'>
-                  <img src="/img/found-bird/page.jpg" />
-                </div>
+    return (
+      <div className="page">
+        <div className="page_wrapper">
+          <div className="page_container" id="page">
+            <div className="egg_wrap">
+              <div className='image_container'>
+                <img src="/img/found-bird/page.jpg" />
               </div>
-              <Footer />
             </div>
+            <Footer />
           </div>
         </div>
-      )
-    } else {
-      return (
-        <div className="preloader">
-          <h1>Loading...</h1>
-        </div>
-      )
-    }
+      </div>
+    )
   }
 });
 
