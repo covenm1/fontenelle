@@ -41,7 +41,7 @@ var App = React.createClass({displayName: "App",
 	},
 
 	getInitialState: function () {
-		return { currentTransition: 'slide-forward' };
+		return { currentTransition: null };
 	},
 
 	componentDidMount: function(){
@@ -100,6 +100,7 @@ var App = React.createClass({displayName: "App",
 		this.transitionTo(slide_names[name]);
 	},
 
+
 	handleKeyDown: function(e) {
 		var self = this;
 
@@ -124,7 +125,7 @@ var App = React.createClass({displayName: "App",
 		    React.createElement("header", {className: "header"}, 
 		        React.createElement(Link, {to: "/", className: "logo"}, React.createElement("img", {src: "/img/logo.png", alt: ""})), 
 		        React.createElement("span", {className: "global_menu"}, 
-		            React.createElement("a", {href: "javascript.void(0)", className: "link"}, "Found Raptor"), 
+		            React.createElement(Link, {to: "/conservation", className: "link"}, "Found Raptor"), 
 		            React.createElement("a", {href: "javascript.void(0)", className: "link"}, "Forest Now"), 
 								React.createElement("a", {href: "javascript.void(0)", className: "link"}, "Get Involved")
 		        ), 
@@ -910,6 +911,25 @@ var Velocity = require('velocity-animate');
 
 var transitions = {
 	// Forcefeeding: property order = [after, before]
+	'slide-down': {
+		duration: 1000,
+		enter: {
+			top: [ '0%', '100%' ],
+		},
+		leave: {
+			top: [ '-100%', '0%' ],
+		}
+	},
+	'slide-up': {
+		duration: 1000,
+		enter: {
+			top: [ '-100%', '0%' ],
+
+		},
+		leave: {
+			top: [ '0%', '100%' ],
+		}
+	},
 	'slide-forward': {
 		duration: 250,
 		enter: {
@@ -1046,7 +1066,7 @@ var poster_image;
 var Main = React.createClass({displayName: "Main",
   mixins: [ Router.State, Navigation ],
   getInitialState: function() {
-    return { pre_count: 0 };
+    return { pre_count: 0, classImage: "/img/programs/programs-1.jpg" };
   },
 
 
@@ -1093,8 +1113,17 @@ var Main = React.createClass({displayName: "Main",
     this.transitionTo('forest');
   },
 
+  toggleClass: function(){
+    if (this.state.classImage == "/img/programs/programs-1.jpg") {
+      this.setState({classImage: "/img/programs/programs-2.jpg"});
+    } else {
+      this.setState({classImage: "/img/programs/programs-1.jpg"});
+    }
+  },
+
   render: function() {
     var self = this;
+    var classImage = self.state.classImage;
 
     if (self.state.loaded == true) {
       return (
@@ -1103,8 +1132,9 @@ var Main = React.createClass({displayName: "Main",
             React.createElement("div", {className: "page_container", id: "page"}, 
               React.createElement("div", {className: "egg_wrap"}, 
                 React.createElement("div", {className: "image_container"}, 
-                  React.createElement("img", {src: "/img/education/top.jpg"}), 
-                  React.createElement("img", {src: "/img/education/bottom.jpg"})
+                  React.createElement("img", {src: "/img/programs/top.jpg"}), 
+                  React.createElement("img", {src: classImage, onClick: self.toggleClass}), 
+                  React.createElement("img", {src: "/img/programs/bottom.jpg"})
                 )
               ), 
               React.createElement("div", {className: "egg_wrap"}, 

@@ -1,5 +1,9 @@
 .photogallery_header {
   background: $orange;
+  background-image: url('/img/forest/leaf-left-hex_a04e23.png'), url('/img/forest/leaf-right-hex_a04e23.png');
+  background-position: left, right;
+  background-size: contain, contain;
+  background-repeat: no-repeat;
   color: white;
   padding: 25px 0;
   text-align: center;
