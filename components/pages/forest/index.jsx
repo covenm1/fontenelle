@@ -12,6 +12,7 @@ var ScrollMagic = require('scrollmagic');
 var poster_image, map_image;
 
 var photogallery = require('../../../public/js/fauna_and_flora.json');
+var acorngallery = require('../../../public/js/littleexplorers.json');
 
 var Footer = require('../../common/footer.jsx');
 
@@ -36,6 +37,7 @@ var Main = React.createClass({
       duration: 750,
       drawer: [],
       photogallery: shuffleArray(photogallery),
+      acorngallery: shuffleArray(acorngallery),
       hover: '',
       area: ''
     };
@@ -262,8 +264,28 @@ var Main = React.createClass({
         )
       });
 
+      var acorngallery = self.state.acorngallery.map(function(object) {
+        var photoStyles = {
+          backgroundImage: 'url('+object.image + ')',
+        }
+        return (
+          <div className="photo" style={photoStyles} >
+            <div className="description_container">
+              <div className="description">
+                <h4 className="name">{object.name}</h4>
+                <p>{object.description}</p>
+              </div>
+            </div>
+          </div>
+        )
+      });
+
       var photogalleryStyles = {
         width: Math.ceil(photogallery.length/2) * 450 +"px"
+      };
+
+      var acorngalleryStyles = {
+        width: Math.ceil(acorngallery.length/2) * 450 +"px"
       };
 
       var map_class = "map_wrapper";
@@ -411,13 +433,14 @@ var Main = React.createClass({
                 </div>
               </div>
 
-
-              <div className="photogallery_wrapper">
-                <div className="photogallery" style={photogalleryStyles} >
-                  {photogallery}
+              <div className="egg_wrap">
+                <div className="photogallery_wrapper">
+                  <div className="photogallery" style={acorngalleryStyles} >
+                    {acorngallery}
+                  </div>
                 </div>
               </div>
-
+              
               <div className="egg_wrap">
                 <div className="image_container">
                   <img src="/img/forest/bottom.jpg" />

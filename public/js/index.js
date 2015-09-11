@@ -422,7 +422,7 @@ var Main = React.createClass({displayName: "Main",
                     React.createElement("p", null, "Curabitur blandit tempus porttitor. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Curabitur blandit tempus porttitor. Donec id elit non mi porta gravida at eget metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis risus eget urna mollis ornare vel eu leo.")
                   ), 
                   React.createElement("div", {className: "centered_content wide"}, 
-                    React.createElement("div", {className: "embed-container"}, React.createElement("iframe", {src: "https://www.youtube.com/embed/f_rum7pLqZc", frameBorder: "0", allowFullScreen: true}))
+                    React.createElement("div", {className: "embed-container"}, React.createElement("iframe", {src: "https://www.youtube.com/embed/tdohcrA-o8M", frameBorder: "0", allowFullScreen: true}))
                   )
                 )
               ), 
@@ -481,6 +481,7 @@ var ScrollMagic = require('scrollmagic');
 var poster_image, map_image;
 
 var photogallery = require('../../../public/js/fauna_and_flora.json');
+var acorngallery = require('../../../public/js/littleexplorers.json');
 
 var Footer = require('../../common/footer.jsx');
 
@@ -505,6 +506,7 @@ var Main = React.createClass({displayName: "Main",
       duration: 750,
       drawer: [],
       photogallery: shuffleArray(photogallery),
+      acorngallery: shuffleArray(acorngallery),
       hover: '',
       area: ''
     };
@@ -731,8 +733,28 @@ var Main = React.createClass({displayName: "Main",
         )
       });
 
+      var acorngallery = self.state.acorngallery.map(function(object) {
+        var photoStyles = {
+          backgroundImage: 'url('+object.image + ')',
+        }
+        return (
+          React.createElement("div", {className: "photo", style: photoStyles}, 
+            React.createElement("div", {className: "description_container"}, 
+              React.createElement("div", {className: "description"}, 
+                React.createElement("h4", {className: "name"}, object.name), 
+                React.createElement("p", null, object.description)
+              )
+            )
+          )
+        )
+      });
+
       var photogalleryStyles = {
         width: Math.ceil(photogallery.length/2) * 450 +"px"
+      };
+
+      var acorngalleryStyles = {
+        width: Math.ceil(acorngallery.length/2) * 450 +"px"
       };
 
       var map_class = "map_wrapper";
@@ -880,13 +902,14 @@ var Main = React.createClass({displayName: "Main",
                 )
               ), 
 
-
-              React.createElement("div", {className: "photogallery_wrapper"}, 
-                React.createElement("div", {className: "photogallery", style: photogalleryStyles}, 
-                  photogallery
+              React.createElement("div", {className: "egg_wrap"}, 
+                React.createElement("div", {className: "photogallery_wrapper"}, 
+                  React.createElement("div", {className: "photogallery", style: acorngalleryStyles}, 
+                    acorngallery
+                  )
                 )
               ), 
-
+              
               React.createElement("div", {className: "egg_wrap"}, 
                 React.createElement("div", {className: "image_container"}, 
                   React.createElement("img", {src: "/img/forest/bottom.jpg"})
@@ -928,7 +951,7 @@ var Main = React.createClass({displayName: "Main",
 
 module.exports = Main;
 
-},{"../../../public/js/fauna_and_flora.json":249,"../../common/footer.jsx":2,"react":239,"react-inlinesvg":13,"react-router":52,"scrollmagic":240,"superagent":241,"util":246,"velocity-animate/velocity":247}],6:[function(require,module,exports){
+},{"../../../public/js/fauna_and_flora.json":249,"../../../public/js/littleexplorers.json":250,"../../common/footer.jsx":2,"react":239,"react-inlinesvg":13,"react-router":52,"scrollmagic":240,"superagent":241,"util":246,"velocity-animate/velocity":247}],6:[function(require,module,exports){
 var React = require('react'),
     request = require('superagent'),
     util = require('util');
@@ -36110,6 +36133,51 @@ module.exports=[
     "description": "The stinkhorn is named for its foul, rotten meat scent. This stink attracts flies that appear to be key to its reproductive cycle, carrying spores to new locations and aiding cross-fertilization.",
     "link": "http://www.fnanaturesearch.org/index.php?option=com_naturesearch&task=view&id=374&cid=178"
   }
+]
+
+},{}],250:[function(require,module,exports){
+module.exports=[
+  {
+    "image": "/img/photogallery/birds/acorn-acres.jpg",
+    "name": "Acorn Acres",
+    "description": "Climb, explore, interact in our one-acre natural playscape for unstructured play."
+  },
+  {
+    "image": "/img/photogallery/birds/habitat-hollow-indoor.jpg",
+    "name": "Habitat Hollow Indoor Play Area",
+    "description": "Try on an animal costume, crawl through a tunnel, or climb up into the tree house in our year-round indoor kids play area, downstairs in the nature center."
+  },
+  {
+    "image": "/img/photogallery/birds/naturalist.jpg",
+    "name": "Meet A Naturalist",
+    "description": "Learn about the forest's animals, plants, and insects in person with small group presentations with our naturalists."
+  },
+  {
+    "image": "/img/photogallery/birds/boardwalk.jpg",
+    "name": "Boardwalk",
+    "description": "Stretch your legs or take a moment to catch your breath under the canopy of trees and sounds of nature."
+  },
+  {
+    "image": "/img/photogallery/birds/nature-center.jpg",
+    "name": "Nature Center",
+    "description": "Get up and close and personal with snakes, frogs, turtles and other small creatures of the forest."
+  },
+  {
+    "image": "/img/photogallery/birds/bird-banding.jpg",
+    "name": "Bird Banding",
+    "description": "See firsthand how we care for and rehabilitate injured raptors and other birds of the forest."
+  },
+  {
+    "image": "/img/photogallery/birds/trail-hikes.jpg",
+    "name": "Hike the Trails",
+    "description": "Get your feet moving and follow your favorite trail. "
+  },
+  {
+    "image": "/img/photogallery/birds/events.jpg",
+    "name": "Family Events",
+    "description": "There's always something happening for families at Fontenelle, with fun events throughout the year, like Halloween in the Forest."
+  },
+
 ]
 
 },{}]},{},[1]);
