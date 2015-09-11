@@ -154,23 +154,26 @@ var App = React.createClass({displayName: "App",
 					React.createElement("span", {className: "close_menu_button", onClick: self.toggleMenu}, "×"), 
 					React.createElement("div", {className: "sidebar_links"}, 
 						React.createElement(Link, {to: "/", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "forest main"}, "Forest")), 
-						React.createElement("a", {href: "#", className: "link", onClick: self.toggleMenu}, "Generic Link"), 
-						React.createElement("a", {href: "#", className: "link", onClick: self.toggleMenu}, "Generic Link"), 
-						React.createElement("a", {href: "#", className: "link", onClick: self.toggleMenu}, "Generic Link"), 
+						React.createElement("a", {href: "#", className: "link section", onClick: self.toggleMenu}, "Trails"), 
+						React.createElement("a", {href: "#", className: "link section", onClick: self.toggleMenu}, "Fauna & Flora"), 
+						React.createElement("a", {href: "#", className: "link section", onClick: self.toggleMenu}, "Young Adventurers"), 
 						React.createElement(Link, {to: "/conservation", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "conservation main"}, "Conservation")), 
-						React.createElement(Link, {to: "/conservation#raptor", className: "link", onClick: self.toggleMenu}, "Raptor Recovery"), 
-						React.createElement("a", {href: "#", className: "link", onClick: self.toggleMenu}, "Generic Link"), 
-						React.createElement("a", {href: "#", className: "link", onClick: self.toggleMenu}, "Generic Link"), 
+						React.createElement("a", {href: "#", className: "link section", onClick: self.toggleMenu}, "History"), 
+						React.createElement("a", {href: "#", className: "link section", onClick: self.toggleMenu}, "Habitat Management"), 
+						React.createElement(Link, {to: "/conservation#raptor", className: "link section", onClick: self.toggleMenu}, "Raptor Recovery"), 
 						React.createElement(Link, {to: "/education", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "education main"}, "Education")), 
-						React.createElement("a", {href: "#", className: "link", onClick: self.toggleMenu}, "Generic Link"), 
-						React.createElement("a", {href: "#", className: "link", onClick: self.toggleMenu}, "Generic Link"), 
-						React.createElement("a", {href: "#", className: "link", onClick: self.toggleMenu}, "Generic Link"), 
+						React.createElement("a", {href: "#", className: "link section", onClick: self.toggleMenu}, "Classes"), 
 						React.createElement(Link, {to: "/programs", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "programs main"}, "Programs")), 
-						React.createElement("a", {href: "#", className: "link", onClick: self.toggleMenu}, "Generic Link"), 
-						React.createElement(Link, {to: "/", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Other Main Link")), 
-						React.createElement(Link, {to: "/", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Other Main Link")), 
-						React.createElement(Link, {to: "/", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Other Main Link")), 
-						React.createElement(Link, {to: "/", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Other Main Link"))
+						React.createElement("a", {href: "#", className: "link section", onClick: self.toggleMenu}, "Kids"), 
+						React.createElement("a", {href: "#", className: "link section", onClick: self.toggleMenu}, "Adults"), 
+						React.createElement("a", {href: "#", className: "link section", onClick: self.toggleMenu}, "Groups"), 
+						React.createElement(Link, {to: "/", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Forest Now")), 
+						React.createElement(Link, {to: "/", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Donate")), 
+						React.createElement(Link, {to: "/", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Membership")), 
+						React.createElement(Link, {to: "/", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Volunteer")), 
+						React.createElement(Link, {to: "/", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Board")), 
+						React.createElement(Link, {to: "/", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Staff")), 
+						React.createElement(Link, {to: "/", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Contact"))
 					)
 				), 
 				 main_pages ?
@@ -417,12 +420,12 @@ var Main = React.createClass({displayName: "Main",
       width: timeline.length * 400 +"px"
     };
 
+
       return (
         React.createElement("div", {className: "page"}, 
           React.createElement("div", {className: "page_wrapper"}, 
             React.createElement("div", {className: "page_container", id: "page"}, 
               React.createElement("div", {className: "egg_wrap"}, 
-                React.createElement("h3", {onClick: self.scrollThing.bind(this, "raptor")}, "raptor"), 
                 React.createElement("div", {className: "image_container"}, 
                   React.createElement("img", {src: "/img/conservation/top_1.png"})
                 )
@@ -933,7 +936,7 @@ var Main = React.createClass({displayName: "Main",
           React.createElement("div", {className: "photo", style: photoStyles}, 
             React.createElement("div", {className: "description_container"}, 
               React.createElement("div", {className: "description"}, 
-                React.createElement("h4", {className: "name"}, object.name), 
+                React.createElement("h4", {className: "name"}, React.createElement("a", {href: object.link, target: "_blank"}, object.name)), 
                 React.createElement("p", null, object.description)
               )
             )

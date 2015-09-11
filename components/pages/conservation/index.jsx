@@ -184,12 +184,12 @@ var Main = React.createClass({
       width: timeline.length * 400 +"px"
     };
 
+
       return (
         <div className="page">
           <div className="page_wrapper">
             <div className="page_container" id="page">
               <div className="egg_wrap">
-                <h3 onClick={self.scrollThing.bind(this, "raptor")}>raptor</h3>
                 <div className='image_container'>
                   <img src="/img/conservation/top_1.png" />
                 </div>
