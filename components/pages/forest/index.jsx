@@ -256,7 +256,7 @@ var Main = React.createClass({
           <div className="photo" style={photoStyles} >
             <div className="description_container">
               <div className="description">
-                <h4 className="name">{object.name}</h4>
+                <h4 className="name"><a href={object.link} target="_blank">{object.name}</a></h4>
                 <p>{object.description}</p>
               </div>
             </div>
@@ -440,7 +440,7 @@ var Main = React.createClass({
                   </div>
                 </div>
               </div>
-              
+
               <div className="egg_wrap">
                 <div className="image_container">
                   <img src="/img/forest/bottom.jpg" />

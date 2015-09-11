@@ -461,19 +461,23 @@ footer img {
   cursor: pointer;
   transition: 0.3s ease-in-out;
   &:hover {
-    color: red;
+    color: rgba(255, 255, 255, 0.4);
   }
 }
-
+.menu_open {
+  position: fixed;
+  width: 100%;
+}
 .sidebar {
   position: fixed;
   right: -400px;
   transition: 0.15s ease-out;
   color: white;
   height: 100%;
+  overflow: scroll;
   .sidebar_links {
     margin-top: 60px;
-    padding: 0 15px;
+    padding: 0 25px 50px;
     .link {
       display: block;
       text-transform: uppercase;

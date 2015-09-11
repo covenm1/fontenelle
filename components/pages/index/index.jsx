@@ -153,23 +153,26 @@ var App = React.createClass({
 					<span className="close_menu_button" onClick={self.toggleMenu}>×</span>
 					<div className="sidebar_links">
 						<Link to="/" className="link" onClick={self.toggleMenu}><h2 className="forest main">Forest</h2></Link>
-						<a href="#" className="link" onClick={self.toggleMenu}>Generic Link</a>
-						<a href="#" className="link" onClick={self.toggleMenu}>Generic Link</a>
-						<a href="#" className="link" onClick={self.toggleMenu}>Generic Link</a>
+						<a href="#" className="link section" onClick={self.toggleMenu}>Trails</a>
+						<a href="#" className="link section" onClick={self.toggleMenu}>Fauna &amp; Flora</a>
+						<a href="#" className="link section" onClick={self.toggleMenu}>Young Adventurers</a>
 						<Link to="/conservation" className="link" onClick={self.toggleMenu}><h2 className="conservation main">Conservation</h2></Link>
-						<Link to="/conservation#raptor" className="link" onClick={self.toggleMenu}>Raptor Recovery</Link>
-						<a href="#" className="link" onClick={self.toggleMenu}>Generic Link</a>
-						<a href="#" className="link" onClick={self.toggleMenu}>Generic Link</a>
+						<a href="#" className="link section" onClick={self.toggleMenu}>History</a>
+						<a href="#" className="link section" onClick={self.toggleMenu}>Habitat Management</a>
+						<Link to="/conservation#raptor" className="link section" onClick={self.toggleMenu}>Raptor Recovery</Link>
 						<Link to="/education" className="link" onClick={self.toggleMenu}><h2 className="education main">Education</h2></Link>
-						<a href="#" className="link" onClick={self.toggleMenu}>Generic Link</a>
-						<a href="#" className="link" onClick={self.toggleMenu}>Generic Link</a>
-						<a href="#" className="link" onClick={self.toggleMenu}>Generic Link</a>
+						<a href="#" className="link section" onClick={self.toggleMenu}>Classes</a>
 						<Link to="/programs" className="link" onClick={self.toggleMenu}><h2 className="programs main">Programs</h2></Link>
-						<a href="#" className="link" onClick={self.toggleMenu}>Generic Link</a>
-						<Link to="/" className="link" onClick={self.toggleMenu}><h2 className="main">Other Main Link</h2></Link>
-						<Link to="/" className="link" onClick={self.toggleMenu}><h2 className="main">Other Main Link</h2></Link>
-						<Link to="/" className="link" onClick={self.toggleMenu}><h2 className="main">Other Main Link</h2></Link>
-						<Link to="/" className="link" onClick={self.toggleMenu}><h2 className="main">Other Main Link</h2></Link>
+						<a href="#" className="link section" onClick={self.toggleMenu}>Kids</a>
+						<a href="#" className="link section" onClick={self.toggleMenu}>Adults</a>
+						<a href="#" className="link section" onClick={self.toggleMenu}>Groups</a>
+						<Link to="/" className="link" onClick={self.toggleMenu}><h2 className="main">Forest Now</h2></Link>
+						<Link to="/" className="link" onClick={self.toggleMenu}><h2 className="main">Donate</h2></Link>
+						<Link to="/" className="link" onClick={self.toggleMenu}><h2 className="main">Membership</h2></Link>
+						<Link to="/" className="link" onClick={self.toggleMenu}><h2 className="main">Volunteer</h2></Link>
+						<Link to="/" className="link" onClick={self.toggleMenu}><h2 className="main">Board</h2></Link>
+						<Link to="/" className="link" onClick={self.toggleMenu}><h2 className="main">Staff</h2></Link>
+						<Link to="/" className="link" onClick={self.toggleMenu}><h2 className="main">Contact</h2></Link>
 					</div>
 				</div>
 				{ main_pages ?
