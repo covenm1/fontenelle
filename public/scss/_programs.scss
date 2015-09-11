@@ -1,15 +1,20 @@
 .programs_video {
+  position: relative;
   background-size: cover;
   background-position: center;
-  .programs_video_wrapper {
+  .programs.video_overlay {
     background-image: url('../img/programs/pattern_video-overlay.svg');
-    background-size: 15px;
     background-color: #9e1826;
+    opacity: 0.8;
+  }
+  .programs_video_wrapper {
+    background-size: 15px;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    padding: 100px 0;
+    padding: 100px 0 ;
+    position: relative;
 
     .centered_content {
       max-width: 100%;
@@ -23,5 +28,20 @@
         width: 1000px;
       }
     }
+  }
+}
+
+.programs  {
+  .video_overlay {
+    background-image: url('/img/programs/pattern_video-overlay.svg');
+  }
+}
+
+.video_play {
+  width: 60px;
+  cursor: pointer;
+  transition: 0.15s ease-out;
+  &:hover {
+    opacity: 0.8
   }
 }

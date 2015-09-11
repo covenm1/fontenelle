@@ -1,16 +1,24 @@
 .education_video {
   background-size: cover;
   background-position: center;
-  .education_video_wrapper {
+  position: relative;
+  background-color: $education_color;
+
+  .education.video_overlay {
     background-image: url('../img/education/pattern_video-overlay.svg');
     background-size: 15px;
     background-color: #68814b;
+    opacity: 0.8;
+  }
+
+  .education_video_wrapper {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     padding: 100px 0;
-
+    position: relative;
+    
     .centered_content {
       max-width: 100%;
       width: 500px;
@@ -23,5 +31,11 @@
         width: 1000px;
       }
     }
+  }
+}
+
+.education .content_container {
+  .video_overlay {
+    background-image: url('/img/education/pattern_video-overlay.svg');
   }
 }

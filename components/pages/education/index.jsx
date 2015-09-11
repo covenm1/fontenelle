@@ -32,7 +32,7 @@ var ClassThing = React.createClass({
 
 var ClassList = React.createClass({
   getInitialState: function() {
-    return {classes: classes_data, current_classes: classes_data}
+    return {classes: classes_data, current_classes: classes_data, video: false}
   },
 
   natureFilter: function(){
@@ -105,10 +105,17 @@ var Main = React.createClass({
     }
   },
 
+  toggleVideo: function(){
+    this.setState({video: !this.state.video});
+  },
+
   render: function() {
     var self = this;
     var classImage = self.state.classImage;
-
+    var video = self.state.video;
+    var video_style = {
+      backgroundImage: 'url(/img/education/Education_video_screenshot.jpg)'
+    }
     if (self.state.loaded == true) {
       return (
         <div className="page">
@@ -119,14 +126,19 @@ var Main = React.createClass({
                   <img src="/img/education/top.jpg" />
                 </div>
               </div>
-              <div className="education_video">
+              <div className="education_video" style={video_style}>
+                <div className="education video_overlay"></div>
                 <div className="education_video_wrapper">
-                  <div className="centered_content">
-                    <h2 className="marker">The Walls Became the World All Around</h2>
-                  </div>
-                  <div className="centered_content wide">
-                    <div className='embed-container'><iframe src='https://www.youtube.com/embed/tdohcrA-o8M' frameBorder='0' allowFullScreen></iframe></div>
-                  </div>
+                  { video ?
+                    <div className="centered_content wide">
+                      <div className='embed-container'><iframe src='https://www.youtube.com/embed/tdohcrA-o8M' frameBorder='0' allowFullScreen></iframe></div>
+                    </div>
+                  :
+                    <div className="centered_content">
+                      <h2 className="marker">The Walls Became the World All Around</h2>
+                      <img className="video_play" onClick={self.toggleVideo} src="/img/icon_play-video.svg" />
+                    </div>
+                  }
                 </div>
               </div>
               <div className="egg_wrap">
@@ -150,6 +162,7 @@ var Main = React.createClass({
               <source src="/videos/loop_education.mp4" type="video/mp4" />
             </video>
             <div className="content_container">
+              <div className="video_overlay"></div>
               <div className="content_wrapper">
                 <img src="/img/education.png" />
               </div>

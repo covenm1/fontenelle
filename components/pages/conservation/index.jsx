@@ -234,6 +234,7 @@ var Main = React.createClass({
                 <source src="/videos/loop_conservation.mp4" type="video/mp4" />
               </video>
               <div className="content_container">
+                <div className="video_overlay"></div>
                 <div className="content_wrapper">
                   <img src="/img/conservation.png" />
                 </div>

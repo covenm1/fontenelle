@@ -53,15 +53,19 @@
 .tearjerker_video {
   background-size: cover;
   background-position: center;
-  .tearjerker_wrapper {
+  position: relative;
+  background-color: $forest_color;
+  .tearjerker.video_overlay {
     background-image: url('../img/forest/pattern_video-overlay.svg');
-    background-size: 15px;
-    background-color: #1461ae;
+    opacity: 0.8;
+  }
+  .tearjerker_wrapper {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     padding: 100px 0;
+    position: relative;
 
     .centered_content {
       max-width: 100%;
@@ -83,15 +87,8 @@
 }
 
 .forest .content_container {
-  background: transparent;
   .video_overlay {
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    top: 0;
-    left: 0;
-    background: url('/img/forest/pattern_video-overlay.svg');
-    opacity: 0.4;
-    background-size: 15px;
+    background-image: url('/img/forest/pattern_video-overlay.svg');
+    opacity: 0.6;
   }
 }

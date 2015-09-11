@@ -467,6 +467,7 @@ var Main = React.createClass({displayName: "Main",
                 React.createElement("source", {src: "/videos/loop_conservation.mp4", type: "video/mp4"})
               ), 
               React.createElement("div", {className: "content_container"}, 
+                React.createElement("div", {className: "video_overlay"}), 
                 React.createElement("div", {className: "content_wrapper"}, 
                   React.createElement("img", {src: "/img/conservation.png"})
                 )
@@ -515,7 +516,7 @@ var ClassThing = React.createClass({displayName: "ClassThing",
 
 var ClassList = React.createClass({displayName: "ClassList",
   getInitialState: function() {
-    return {classes: classes_data, current_classes: classes_data}
+    return {classes: classes_data, current_classes: classes_data, video: false}
   },
 
   natureFilter: function(){
@@ -588,10 +589,17 @@ var Main = React.createClass({displayName: "Main",
     }
   },
 
+  toggleVideo: function(){
+    this.setState({video: !this.state.video});
+  },
+
   render: function() {
     var self = this;
     var classImage = self.state.classImage;
-
+    var video = self.state.video;
+    var video_style = {
+      backgroundImage: 'url(/img/education/Education_video_screenshot.jpg)'
+    }
     if (self.state.loaded == true) {
       return (
         React.createElement("div", {className: "page"}, 
@@ -602,14 +610,19 @@ var Main = React.createClass({displayName: "Main",
                   React.createElement("img", {src: "/img/education/top.jpg"})
                 )
               ), 
-              React.createElement("div", {className: "education_video"}, 
+              React.createElement("div", {className: "education_video", style: video_style}, 
+                React.createElement("div", {className: "education video_overlay"}), 
                 React.createElement("div", {className: "education_video_wrapper"}, 
-                  React.createElement("div", {className: "centered_content"}, 
-                    React.createElement("h2", {className: "marker"}, "The Walls Became the World All Around")
-                  ), 
-                  React.createElement("div", {className: "centered_content wide"}, 
-                    React.createElement("div", {className: "embed-container"}, React.createElement("iframe", {src: "https://www.youtube.com/embed/tdohcrA-o8M", frameBorder: "0", allowFullScreen: true}))
-                  )
+                   video ?
+                    React.createElement("div", {className: "centered_content wide"}, 
+                      React.createElement("div", {className: "embed-container"}, React.createElement("iframe", {src: "https://www.youtube.com/embed/tdohcrA-o8M", frameBorder: "0", allowFullScreen: true}))
+                    )
+                  :
+                    React.createElement("div", {className: "centered_content"}, 
+                      React.createElement("h2", {className: "marker"}, "The Walls Became the World All Around"), 
+                      React.createElement("img", {className: "video_play", onClick: self.toggleVideo, src: "/img/icon_play-video.svg"})
+                    )
+                  
                 )
               ), 
               React.createElement("div", {className: "egg_wrap"}, 
@@ -633,6 +646,7 @@ var Main = React.createClass({displayName: "Main",
               React.createElement("source", {src: "/videos/loop_education.mp4", type: "video/mp4"})
             ), 
             React.createElement("div", {className: "content_container"}, 
+              React.createElement("div", {className: "video_overlay"}), 
               React.createElement("div", {className: "content_wrapper"}, 
                 React.createElement("img", {src: "/img/education.png"})
               )
@@ -694,7 +708,9 @@ var Main = React.createClass({displayName: "Main",
       photogallery: shuffleArray(photogallery),
       acorngallery: shuffleArray(acorngallery),
       hover: '',
-      area: ''
+      area: '',
+      videoOne: false,
+      videoTwo: false
     };
   },
 
@@ -881,7 +897,13 @@ var Main = React.createClass({displayName: "Main",
     this.transitionTo('conservation');
   },
 
+  toggleVideoOne: function(){
+    this.setState({videoOne: !this.state.videoOne});
+  },
 
+  toggleVideoTwo: function(){
+    this.setState({videoTwo: !this.state.videoTwo});
+  },
 
   render: function() {
     var self = this;
@@ -984,6 +1006,16 @@ var Main = React.createClass({displayName: "Main",
         map_class = map_class + " " + self.state.hover;
       }
 
+      var videoOne = self.state.videoOne;
+      var videoTwo = self.state.videoTwo;
+
+      var videoOne_style = {
+        backgroundImage: 'url(/img/forest/forest-tearjerker.jpg)'
+      }
+      var videoTwo_style = {
+        backgroundImage: 'url(/img/forest/forest-kids-video.jpg)'
+      }
+
 
       return (
         React.createElement("div", {className: "page"}, 
@@ -1007,15 +1039,22 @@ var Main = React.createClass({displayName: "Main",
                 )
               ), 
 
-              React.createElement("div", {className: "tearjerker_video"}, 
+              React.createElement("div", {className: "tearjerker_video", style: videoOne_style}, 
+                React.createElement("div", {className: "tearjerker video_overlay"}), 
                 React.createElement("div", {className: "tearjerker_wrapper"}, 
-                  React.createElement("div", {className: "centered_content"}, 
-                    React.createElement("h2", {className: "marker"}, "A Room All to Myself"), 
-                    React.createElement("p", null, "Push pause on the texting and clicking, just for a moment, and come out to the forest. Move your feet, breathe in the fresh air, explore. And watch what happens.")
-                  ), 
-                  React.createElement("div", {className: "centered_content wide"}, 
-                    React.createElement("div", {className: "embed-container"}, React.createElement("iframe", {src: "https://www.youtube.com/embed/Qxh3eSZlUeM", frameBorder: "0", allowFullScreen: true}))
-                  )
+
+                   videoOne ?
+                    React.createElement("div", {className: "centered_content wide"}, 
+                      React.createElement("div", {className: "embed-container"}, React.createElement("iframe", {src: "https://www.youtube.com/embed/Qxh3eSZlUeM", frameBorder: "0", allowFullScreen: true}))
+                    )
+                  :
+                    React.createElement("div", {className: "centered_content"}, 
+                      React.createElement("h2", {className: "marker"}, "A Room All to Myself"), 
+                      React.createElement("p", null, "Push pause on the texting and clicking, just for a moment, and come out to the forest. Move your feet, breathe in the fresh air, explore. And watch what happens."), 
+                      React.createElement("img", {className: "video_play", onClick: self.toggleVideoOne, src: "/img/icon_play-video.svg"})
+                    )
+                  
+
                 )
               ), 
 
@@ -1076,15 +1115,20 @@ var Main = React.createClass({displayName: "Main",
                 )
               ), 
 
-              React.createElement("div", {className: "tearjerker_video"}, 
+              React.createElement("div", {className: "tearjerker_video", style: videoTwo_style}, 
+                React.createElement("div", {className: "tearjerker video_overlay"}), 
                 React.createElement("div", {className: "tearjerker_wrapper"}, 
-                  React.createElement("div", {className: "centered_content"}, 
-                    React.createElement("h2", {className: "marker"}, "for your favorite little explorers"), 
-                    React.createElement("p", null, "Acorn Acres is our one acre natural playscape designed for boisterous enthusiasm, outdoor physical activity, and creative play for kids of all ages. ")
-                  ), 
-                  React.createElement("div", {className: "centered_content wide"}, 
-                    React.createElement("div", {className: "embed-container"}, React.createElement("iframe", {src: "https://www.youtube.com/embed/LEkB-HvzAuw", frameBorder: "0", allowFullScreen: true}))
-                  )
+                   videoTwo ?
+                    React.createElement("div", {className: "centered_content wide"}, 
+                      React.createElement("div", {className: "embed-container"}, React.createElement("iframe", {src: "https://www.youtube.com/embed/LEkB-HvzAuw", frameBorder: "0", allowFullScreen: true}))
+                    )
+                  :
+                    React.createElement("div", {className: "centered_content"}, 
+                      React.createElement("h2", {className: "marker"}, "for your favorite little explorers"), 
+                      React.createElement("p", null, "Acorn Acres is our one acre natural playscape designed for boisterous enthusiasm, outdoor physical activity, and creative play for kids of all ages. "), 
+                      React.createElement("img", {className: "video_play", onClick: self.toggleVideoTwo, src: "/img/icon_play-video.svg"})
+                    )
+                  
                 )
               ), 
 
@@ -1095,7 +1139,7 @@ var Main = React.createClass({displayName: "Main",
                   )
                 )
               ), 
-              
+
               React.createElement("div", {className: "egg_wrap"}, 
                 React.createElement("div", {className: "image_container"}, 
                   React.createElement("img", {src: "/img/forest/bottom.jpg"})
@@ -1654,7 +1698,7 @@ var poster_image;
 var Main = React.createClass({displayName: "Main",
   mixins: [ Router.State, Navigation ],
   getInitialState: function() {
-    return { pre_count: 0, classImage: "/img/programs/programs-1.jpg" };
+    return { pre_count: 0, classImage: "/img/programs/programs-1.jpg", video: false };
   },
 
 
@@ -1709,10 +1753,17 @@ var Main = React.createClass({displayName: "Main",
     }
   },
 
+  toggleVideo: function(){
+    this.setState({video: !this.state.video});
+  },
+
   render: function() {
     var self = this;
     var classImage = self.state.classImage;
-
+    var video = self.state.video;
+    var video_style = {
+      backgroundImage: 'url(/img/programs/programs-video.jpg)'
+    }
     if (self.state.loaded == true) {
       return (
         React.createElement("div", {className: "page"}, 
@@ -1723,15 +1774,20 @@ var Main = React.createClass({displayName: "Main",
                   React.createElement("img", {src: "/img/programs/top.jpg"})
                 )
               ), 
-              React.createElement("div", {className: "programs_video"}, 
+              React.createElement("div", {className: "programs_video", style: video_style}, 
+                React.createElement("div", {className: "programs video_overlay"}), 
                 React.createElement("div", {className: "programs_video_wrapper"}, 
-                  React.createElement("div", {className: "centered_content"}, 
-                    React.createElement("h2", {className: "marker"}, "A Recycled Forest, Built by Local Kids"), 
-                    React.createElement("p", null, "Curabitur blandit tempus porttitor. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Curabitur blandit tempus porttitor. Donec id elit non mi porta gravida at eget metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis risus eget urna mollis ornare vel eu leo.")
-                  ), 
-                  React.createElement("div", {className: "centered_content wide"}, 
-                    React.createElement("div", {className: "embed-container"}, React.createElement("iframe", {src: "https://www.youtube.com/embed/f_rum7pLqZc", frameBorder: "0", allowFullScreen: true}))
-                  )
+                   video ?
+                    React.createElement("div", {className: "centered_content wide"}, 
+                      React.createElement("div", {className: "embed-container"}, React.createElement("iframe", {src: "https://www.youtube.com/embed/f_rum7pLqZc", frameBorder: "0", allowFullScreen: true}))
+                    )
+                  :
+                    React.createElement("div", {className: "centered_content"}, 
+                      React.createElement("h2", {className: "marker"}, "A Recycled Forest, Built by Local Kids"), 
+                      React.createElement("p", null, "Curabitur blandit tempus porttitor. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Curabitur blandit tempus porttitor. Donec id elit non mi porta gravida at eget metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis risus eget urna mollis ornare vel eu leo."), 
+                      React.createElement("img", {className: "video_play", onClick: self.toggleVideo, src: "/img/icon_play-video.svg"})
+                    )
+                  
                 )
               ), 
               React.createElement("div", {className: "egg_wrap"}, 
@@ -1753,6 +1809,7 @@ var Main = React.createClass({displayName: "Main",
                 React.createElement("source", {src: "/videos/loop_programs.mp4", type: "video/mp4"})
               ), 
               React.createElement("div", {className: "content_container"}, 
+                React.createElement("div", {className: "video_overlay"}), 
                 React.createElement("div", {className: "content_wrapper"}, 
                   React.createElement("img", {src: "/img/programs.png"})
                 )

@@ -39,7 +39,9 @@ var Main = React.createClass({
       photogallery: shuffleArray(photogallery),
       acorngallery: shuffleArray(acorngallery),
       hover: '',
-      area: ''
+      area: '',
+      videoOne: false,
+      videoTwo: false
     };
   },
 
@@ -226,7 +228,13 @@ var Main = React.createClass({
     this.transitionTo('conservation');
   },
 
+  toggleVideoOne: function(){
+    this.setState({videoOne: !this.state.videoOne});
+  },
 
+  toggleVideoTwo: function(){
+    this.setState({videoTwo: !this.state.videoTwo});
+  },
 
   render: function() {
     var self = this;
@@ -329,6 +337,16 @@ var Main = React.createClass({
         map_class = map_class + " " + self.state.hover;
       }
 
+      var videoOne = self.state.videoOne;
+      var videoTwo = self.state.videoTwo;
+
+      var videoOne_style = {
+        backgroundImage: 'url(/img/forest/forest-tearjerker.jpg)'
+      }
+      var videoTwo_style = {
+        backgroundImage: 'url(/img/forest/forest-kids-video.jpg)'
+      }
+
 
       return (
         <div className="page">
@@ -352,15 +370,22 @@ var Main = React.createClass({
                 </div>
               </div>
 
-              <div className="tearjerker_video">
+              <div className="tearjerker_video" style={videoOne_style}>
+                <div className="tearjerker video_overlay"></div>
                 <div className="tearjerker_wrapper">
-                  <div className="centered_content">
-                    <h2 className="marker">A Room All to Myself</h2>
-                    <p>Push pause on the texting and clicking, just for a moment, and come out to the forest. Move your feet, breathe in the fresh air, explore. And watch what happens.</p>
-                  </div>
-                  <div className="centered_content wide">
-                    <div className='embed-container'><iframe src='https://www.youtube.com/embed/Qxh3eSZlUeM' frameBorder='0' allowFullScreen></iframe></div>
-                  </div>
+
+                  { videoOne ?
+                    <div className="centered_content wide">
+                      <div className='embed-container'><iframe src='https://www.youtube.com/embed/Qxh3eSZlUeM' frameBorder='0' allowFullScreen></iframe></div>
+                    </div>
+                  :
+                    <div className="centered_content">
+                      <h2 className="marker">A Room All to Myself</h2>
+                      <p>Push pause on the texting and clicking, just for a moment, and come out to the forest. Move your feet, breathe in the fresh air, explore. And watch what happens.</p>
+                      <img className="video_play" onClick={self.toggleVideoOne} src="/img/icon_play-video.svg" />
+                    </div>
+                  }
+
                 </div>
               </div>
 
@@ -421,15 +446,20 @@ var Main = React.createClass({
                 </div>
               </div>
 
-              <div className="tearjerker_video">
+              <div className="tearjerker_video" style={videoTwo_style}>
+                <div className="tearjerker video_overlay"></div>
                 <div className="tearjerker_wrapper">
-                  <div className="centered_content">
-                    <h2 className="marker">for your favorite little explorers</h2>
-                    <p>Acorn Acres is our one acre natural playscape designed for boisterous enthusiasm, outdoor physical activity, and creative play for kids of all ages. </p>
-                  </div>
-                  <div className="centered_content wide">
-                    <div className='embed-container'><iframe src='https://www.youtube.com/embed/LEkB-HvzAuw' frameBorder='0' allowFullScreen></iframe></div>
-                  </div>
+                  { videoTwo ?
+                    <div className="centered_content wide">
+                      <div className='embed-container'><iframe src='https://www.youtube.com/embed/LEkB-HvzAuw' frameBorder='0' allowFullScreen></iframe></div>
+                    </div>
+                  :
+                    <div className="centered_content">
+                      <h2 className="marker">for your favorite little explorers</h2>
+                      <p>Acorn Acres is our one acre natural playscape designed for boisterous enthusiasm, outdoor physical activity, and creative play for kids of all ages. </p>
+                      <img className="video_play" onClick={self.toggleVideoTwo} src="/img/icon_play-video.svg" />
+                    </div>
+                  }
                 </div>
               </div>
 
@@ -440,7 +470,7 @@ var Main = React.createClass({
                   </div>
                 </div>
               </div>
-              
+
               <div className="egg_wrap">
                 <div className="image_container">
                   <img src="/img/forest/bottom.jpg" />
