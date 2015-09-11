@@ -98,16 +98,12 @@ var Main = React.createClass({
 
     return (
       <div className="page">
-        <div className="page_wrapper">
-          <div className="page_container" id="page">
-            <div className="egg_wrap">
-              <div className='image_container'>
-                <img src="/img/found-bird/page.jpg" />
-              </div>
-            </div>
-            <Footer />
+        <div className="egg_wrap">
+          <div className='image_container'>
+            <img src="/img/get-involved/page.png" />
           </div>
         </div>
+        <Footer />
       </div>
     )
   }
