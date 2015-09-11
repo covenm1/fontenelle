@@ -8,14 +8,10 @@ html,
 body {
     margin: 0;
     padding: 0;
-    color: black;
     background: #111;
     overflow-x: hidden;
-    font-weight: 300;
-    font-size: 18px;
     height: 100%;
     width: 100%;
-    font-family: 'DIN Next Pro Condensed Bold';
 }
 $page_color: black;
 
@@ -132,11 +128,6 @@ header {
 
     h1 span {
         font-weight: 300;
-    }
-
-    p {
-        font-family: Cambria, Georgia, serif;
-        font-style: italic;
     }
 }
 
@@ -293,8 +284,6 @@ body.page2_up .page.page1 {
 }
 
 .close_button {
-	font-size: 50px;
-	font-family: 'DIN Next Pro Regular';
 	background: transparent;
 	top: 0;
 	right: 0;
@@ -337,7 +326,6 @@ body.page2_up .page.page1 {
   	display: block;
   	position: relative;
   	padding: 20px;
-  	font-family: 'DIN Next Pro Regular';
   }
 
   .column .item:before {

@@ -1,3 +1,10 @@
+body {
+    color: black;
+    font-weight: 300;
+    font-size: 18px;
+    font-family: 'robotolight';
+}
+
 h1,
 h2 {
     margin: 0;
@@ -30,10 +37,15 @@ p a {
     font-weight: 700;
 }
 
-body {
-  font-family: Helvetica, Arial, Sans-Serif;
-}
-
 .marker {
 	font-family: 'PermanentMarkerPro', Helvetica, Arial, Sans-Serif;
+}
+
+.column .item {
+  font-family: 'robotomedium';
+}
+
+.close_button {
+	font-size: 50px;
+	font-family: 'robotomedium';
 }

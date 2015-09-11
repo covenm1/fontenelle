@@ -82,6 +82,21 @@ var Main = React.createClass({
               <div className="egg_wrap">
                 <div className='image_container'>
                   <img src="/img/programs/top.jpg" />
+                </div>
+              </div>
+              <div className="programs_video">
+                <div className="programs_video_wrapper">
+                  <div className="centered_content">
+                    <h2 className="marker">A Recycled Forest, Built by Local Kids</h2>
+                    <p>Curabitur blandit tempus porttitor. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Curabitur blandit tempus porttitor. Donec id elit non mi porta gravida at eget metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis risus eget urna mollis ornare vel eu leo.</p>
+                  </div>
+                  <div className="centered_content wide">
+                    <div className='embed-container'><iframe src='https://www.youtube.com/embed/f_rum7pLqZc' frameBorder='0' allowFullScreen></iframe></div>
+                  </div>
+                </div>
+              </div>
+              <div className="egg_wrap">
+                <div className='image_container'>
                   <img src={classImage} onClick={self.toggleClass}/>
                   <img src="/img/programs/bottom.jpg" />
                 </div>
@@ -95,8 +110,8 @@ var Main = React.createClass({
               <Footer />
             </div>
             <div className='video-container'>
-              <video id="video-background" className="video-wrap" poster="/img/loop_three.jpg" autoPlay muted="muted" loop>
-                <source src="/videos/loop_three.webm" type="video/webm" />
+              <video id="video-background" className="video-wrap" poster="/img/loop_programs.jpg" autoPlay muted="muted" loop>
+                <source src="/videos/loop_programs.mp4" type="video/mp4" />
               </video>
               <div className="content_container">
                 <div className="content_wrapper">

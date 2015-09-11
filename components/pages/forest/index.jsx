@@ -12,6 +12,7 @@ var ScrollMagic = require('scrollmagic');
 var poster_image, map_image;
 
 var photogallery = require('../../../public/js/fauna_and_flora.json');
+var acorngallery = require('../../../public/js/littleexplorers.json');
 
 var Footer = require('../../common/footer.jsx');
 
@@ -36,6 +37,7 @@ var Main = React.createClass({
       duration: 750,
       drawer: [],
       photogallery: shuffleArray(photogallery),
+      acorngallery: shuffleArray(acorngallery),
       hover: '',
       area: ''
     };
@@ -262,8 +264,28 @@ var Main = React.createClass({
         )
       });
 
+      var acorngallery = self.state.acorngallery.map(function(object) {
+        var photoStyles = {
+          backgroundImage: 'url('+object.image + ')',
+        }
+        return (
+          <div className="photo" style={photoStyles} >
+            <div className="description_container">
+              <div className="description">
+                <h4 className="name">{object.name}</h4>
+                <p>{object.description}</p>
+              </div>
+            </div>
+          </div>
+        )
+      });
+
       var photogalleryStyles = {
         width: Math.ceil(photogallery.length/2) * 450 +"px"
+      };
+
+      var acorngalleryStyles = {
+        width: Math.ceil(acorngallery.length/2) * 450 +"px"
       };
 
       var map_class = "map_wrapper";
@@ -333,8 +355,8 @@ var Main = React.createClass({
               <div className="tearjerker_video">
                 <div className="tearjerker_wrapper">
                   <div className="centered_content">
-                    <h2 className="marker">Tearjerker Video</h2>
-                    <p>Curabitur blandit tempus porttitor. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Curabitur blandit tempus porttitor. Donec id elit non mi porta gravida at eget metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis risus eget urna mollis ornare vel eu leo.</p>
+                    <h2 className="marker">A Room All to Myself</h2>
+                    <p>Push pause on the texting and clicking, just for a moment, and come out to the forest. Move your feet, breathe in the fresh air, explore. And watch what happens.</p>
                   </div>
                   <div className="centered_content wide">
                     <div className='embed-container'><iframe src='https://www.youtube.com/embed/Qxh3eSZlUeM' frameBorder='0' allowFullScreen></iframe></div>
@@ -393,6 +415,11 @@ var Main = React.createClass({
                 </div>
               </div>
 
+              <div className="egg_wrap">
+                <div className="image_container">
+                  <img src="/img/forest/neale-recovery.jpg" />
+                </div>
+              </div>
 
               <div className="tearjerker_video">
                 <div className="tearjerker_wrapper">
@@ -406,16 +433,17 @@ var Main = React.createClass({
                 </div>
               </div>
 
-
-              <div className="photogallery_wrapper">
-                <div className="photogallery" style={photogalleryStyles} >
-                  {photogallery}
+              <div className="egg_wrap">
+                <div className="photogallery_wrapper">
+                  <div className="photogallery" style={acorngalleryStyles} >
+                    {acorngallery}
+                  </div>
                 </div>
               </div>
-
+              
               <div className="egg_wrap">
                 <div className="image_container">
-                  <img src="/img/forest/skyline.png" />
+                  <img src="/img/forest/bottom.jpg" />
                 </div>
               </div>
 

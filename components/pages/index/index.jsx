@@ -20,7 +20,10 @@ var Route = Router.Route,
 var forest = require('../forest/index.jsx'),
 		conservation = require('../conservation/index.jsx'),
 		programs = require('../programs/index.jsx'),
-		education = require('../education/index.jsx');
+		education = require('../education/index.jsx'),
+		foundraptor = require('../found-raptor/index.jsx'),
+		meettheraptors = require('../meet-the-raptors/index.jsx'),
+		getinvolved = require('../get-involved/index.jsx');
 
 var slide_names = [ 'forest' , 'conservation' , 'education' , 'programs'];
 var slide_count = 0;
@@ -124,9 +127,9 @@ var App = React.createClass({
 		    <header className="header">
 		        <Link to="/" className="logo"><img src="/img/logo.png" alt="" /></Link>
 		        <span className="global_menu">
-		            <Link to="/conservation#raptor" className="link">Found Raptor</Link>
-		            <a href="/conservation#raptor" className="link">Forest Now</a>
-								<a href="javascript.void(0)" className="link">Get Involved</a>
+		            <Link to="/found-raptor" className="link">Found Raptor</Link>
+		            <a href="javascript.void(0)" className="link">Forest Now</a>
+								<Link to="/get-involved" className="link">Get Involved</Link>
 		        </span>
 						<span className="menu_icon">Menu</span>
 		    </header>
@@ -149,7 +152,11 @@ var routes = (
     <Route name="conservation" path="/conservation" handler={conservation} addHandlerKey={true}/>
     <Route name="programs" path="/programs" handler={programs} addHandlerKey={true} />
     <Route name="education" path="/education" handler={education} addHandlerKey={true} />
+    <Route name="found-raptor" path="/found-raptor" handler={foundraptor} addHandlerKey={true} />
+    <Route name="get-involved" path="/get-involved" handler={getinvolved} addHandlerKey={true} />
+    <Route name="meet-the-raptors" path="/meet-the-raptors" handler={meettheraptors} addHandlerKey={true} />
   </Route>
+
 );
 
 

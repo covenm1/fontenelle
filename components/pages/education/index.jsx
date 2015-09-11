@@ -117,6 +117,21 @@ var Main = React.createClass({
               <div className="egg_wrap">
                 <div className='image_container'>
                   <img src="/img/education/top.jpg" />
+                </div>
+              </div>
+              <div className="education_video">
+                <div className="education_video_wrapper">
+                  <div className="centered_content">
+                    <h2 className="marker">The Walls Became the World All Around</h2>
+                  </div>
+                  <div className="centered_content wide">
+                    <div className='embed-container'><iframe src='https://www.youtube.com/embed/tdohcrA-o8M' frameBorder='0' allowFullScreen></iframe></div>
+                  </div>
+                </div>
+              </div>
+              <div className="egg_wrap">
+                <div className='image_container'>
+                  <img src="/img/education/middle.jpg" />
                   <img src={classImage} onClick={self.toggleClass}/>
                   <img src="/img/education/bottom.jpg" />
                 </div>
@@ -131,8 +146,8 @@ var Main = React.createClass({
             </div>
           </div>
           <div className='video-container'>
-            <video id="video-background" className="video-wrap" poster="/img/loop_three.jpg" autoPlay muted="muted" loop>
-              <source src="/videos/loop_four.mp4" type="video/mp4" />
+            <video id="video-background" className="video-wrap" poster="/img/loop_education.jpg" autoPlay muted="muted" loop>
+              <source src="/videos/loop_education.mp4" type="video/mp4" />
             </video>
             <div className="content_container">
               <div className="content_wrapper">
