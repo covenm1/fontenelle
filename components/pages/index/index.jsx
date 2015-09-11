@@ -144,7 +144,7 @@ var App = React.createClass({
 		        <Link to="/" className="logo"><img src="/img/logo.png" alt="" /></Link>
 		        <span className="global_menu">
 		            <Link to="/found-raptor" className="link">Found Raptor</Link>
-		            <a href="javascript.void(0)" className="link">Forest Now</a>
+		            <a href="#" className="link">Forest Now</a>
 								<Link to="/get-involved" className="link">Get Involved</Link>
 		        </span>
 						<span className="menu_icon" onClick={self.toggleMenu}>Menu</span>
