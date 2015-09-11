@@ -9,6 +9,8 @@ var Navigation = Router.Navigation;
 var Link = Router.Link;
 
 var ScrollMagic = require('scrollmagic');
+var TweenMax = require('../../../public/js/tweenmax.js');
+require('../../../public/js/scrollTo.js');
 
 var Footer = require('../../common/footer.jsx');
 
@@ -19,20 +21,107 @@ var Main = React.createClass({
     return { pre_count: 0 };
   },
 
-
-  componentDidMount: function () {
+  componentWillMount: function () {
     var self = this;
-    poster_image = new Image();
-    poster_image.onload = self.onLoad;
-    poster_image.src = "/img/loop_two.jpg";
+    var timeline = [
+      {
+        'year': '1492',
+        'title': 'Fontenelle was Older then',
+        'description': 'Silver driftfish warty angler finback cat shark rice eel. Taimen, golden dojo goblin shark pipefish, grunt mud catfish, luderick pink salmon seamoth zebra trout. Atlantic silverside grunt sculpin; moray eel herring boarfish beaked salmon river stingray remora neon tetra large-eye bream. '
+
+      },
+      {
+        'year': '1492',
+        'title': 'Fontenelle was Older then',
+        'description': 'Silver driftfish warty angler finback cat shark rice eel. Taimen, golden dojo goblin shark pipefish, grunt mud catfish, luderick pink salmon seamoth zebra trout. Atlantic silverside grunt sculpin; moray eel herring boarfish beaked salmon river stingray remora neon tetra large-eye bream. '
+
+      },
+      {
+        'year': '1492',
+        'title': 'Fontenelle was Older then',
+        'description': 'Silver driftfish warty angler finback cat shark rice eel. Taimen, golden dojo goblin shark pipefish, grunt mud catfish, luderick pink salmon seamoth zebra trout. Atlantic silverside grunt sculpin; moray eel herring boarfish beaked salmon river stingray remora neon tetra large-eye bream. '
+
+      },
+      {
+        'year': '1492',
+        'title': 'Fontenelle was Older then',
+        'description': 'Silver driftfish warty angler finback cat shark rice eel. Taimen, golden dojo goblin shark pipefish, grunt mud catfish, luderick pink salmon seamoth zebra trout. Atlantic silverside grunt sculpin; moray eel herring boarfish beaked salmon river stingray remora neon tetra large-eye bream. '
+
+      },
+      {
+        'year': '1492',
+        'title': 'Fontenelle was Older then',
+        'description': 'Silver driftfish warty angler finback cat shark rice eel. Taimen, golden dojo goblin shark pipefish, grunt mud catfish, luderick pink salmon seamoth zebra trout. Atlantic silverside grunt sculpin; moray eel herring boarfish beaked salmon river stingray remora neon tetra large-eye bream. '
+
+      },
+      {
+        'year': '1492',
+        'title': 'Fontenelle was Older then',
+        'description': 'Silver driftfish warty angler finback cat shark rice eel. Taimen, golden dojo goblin shark pipefish, grunt mud catfish, luderick pink salmon seamoth zebra trout. Atlantic silverside grunt sculpin; moray eel herring boarfish beaked salmon river stingray remora neon tetra large-eye bream. '
+
+      },
+      {
+        'year': '1492',
+        'title': 'Fontenelle was Older then',
+        'description': 'Silver driftfish warty angler finback cat shark rice eel. Taimen, golden dojo goblin shark pipefish, grunt mud catfish, luderick pink salmon seamoth zebra trout. Atlantic silverside grunt sculpin; moray eel herring boarfish beaked salmon river stingray remora neon tetra large-eye bream. '
+
+      },
+      {
+        'year': '1492',
+        'title': 'Fontenelle was Older then',
+        'description': 'Silver driftfish warty angler finback cat shark rice eel. Taimen, golden dojo goblin shark pipefish, grunt mud catfish, luderick pink salmon seamoth zebra trout. Atlantic silverside grunt sculpin; moray eel herring boarfish beaked salmon river stingray remora neon tetra large-eye bream. '
+
+      },
+    ];
+
+    self.setState({timeline: timeline})
   },
 
-  componentWillReceiveProps: function () {
+  componentDidMount: function () {
+    console.log('componentDidMount');
     var self = this;
     poster_image = new Image();
     poster_image.onload = self.onLoad;
     poster_image.src = "/img/loop_two.jpg";
+    window.location.hash = window.decodeURIComponent(window.location.hash);
 
+    console.log(window.location.hash);
+
+    var hashParts = window.location.hash.split('#');
+
+    console.log(hashParts);
+
+    if (hashParts.length > 1) {
+      var hash = hashParts.slice(-1)[0];
+      // if(hash);
+      console.log(hash);
+      self.scrollThing(hash);
+    }
+    // window.onhashchange = function() {
+    //   window.location.hash = window.decodeURIComponent(window.location.hash);
+    //
+    //   console.log(window.location.hash);
+    //
+    //   var hashParts = window.location.hash.split('#');
+    //
+    //   console.log(hashParts);
+    //
+    //   if (hashParts.length > 1) {
+    //     var hash = hashParts.slice(-1)[0];
+    //     // if(hash);
+    //     console.log(hash);
+    //     self.scrollThing(hash);
+    //   }
+    // }
+  },
+
+
+  componentWillReceiveProps: function () {
+    console.log('componentWillReceiveProps');
+    var self = this;
+    poster_image = new Image();
+    poster_image.onload = self.onLoad;
+    poster_image.src = "/img/loop_two.jpg";
   },
 
 
@@ -53,19 +142,73 @@ var Main = React.createClass({
     this.transitionTo('education');
   },
 
+  scrollThing: function(thing){
+    var controller = new ScrollMagic.Controller();
+    controller.scrollTo(function(target) {
+
+      TweenMax.to(window, 0.5, {
+        scrollTo : {
+          y : target, // scroll position of the target along y axis
+          autoKill : true // allows user to kill scroll action smoothly
+        },
+        ease : Cubic.easeInOut
+      });
+
+    });
+    controller.scrollTo("#"+thing);
+  },
+
   render: function() {
     var self = this;
 
-    if (self.state.loaded == true) {
+    var timeline = self.state.timeline.map(function(object) {
+      return (
+        <div className="timeline_item" >
+          <h4 className="year">{object.year}</h4>
+          <span className="circle"></span>
+          <div className="timeline_container">
+            <div className="description">
+              <h4 className="title marker">{object.title}</h4>
+              <p>{object.description}</p>
+            </div>
+          </div>
+        </div>
+      )
+    });
+
+    var timelineStyles = {
+      width: timeline.length * 430 +"px"
+    };
+
+    var thelineStyles = {
+      width: timeline.length * 400 +"px"
+    };
+
       return (
         <div className="page">
           <div className="page_wrapper">
             <div className="page_container" id="page">
               <div className="egg_wrap">
+                <h3 onClick={self.scrollThing.bind(this, "raptor")}>raptor</h3>
                 <div className='image_container'>
                   <img src="/img/conservation/top_1.png" />
+                </div>
+              </div>
+
+              <div className="egg_wrap">
+                <h2 className="time_title marker">Timeline</h2>
+                <div className="timeline_wrapper">
+                  <div className="timeline" style={timelineStyles} >
+                    <span className="the_line" style={thelineStyles}></span>
+                    {timeline}
+                  </div>
+                </div>
+              </div>
+
+              <div className="egg_wrap">
+                <div className='image_container'>
                   <img src="/img/conservation/top_2.png" />
-                  <img src="/img/conservation/top_3.png" />
+                  <img src="/img/conservation/top_3.png" id="raptor" />
                 </div>
               </div>
 
@@ -91,13 +234,6 @@ var Main = React.createClass({
           </div>
         </div>
       )
-    } else {
-      return (
-        <div className="preloader">
-          <h1>Loading...</h1>
-        </div>
-      )
-    }
   }
 });
 

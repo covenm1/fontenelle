@@ -136,6 +136,8 @@
 	    background-position: center;
 			position: relative;
 			min-height: 700px;
+			transition: 0.15s ease-out;
+
 			.orange_overlay {
 				position: absolute;
 		    height: 100%;

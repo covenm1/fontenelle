@@ -40,7 +40,7 @@ var App = React.createClass({
 	},
 
 	getInitialState: function () {
-		return { currentTransition: null };
+		return { currentTransition: 'default' };
 	},
 
 	componentDidMount: function(){
@@ -124,8 +124,8 @@ var App = React.createClass({
 		    <header className="header">
 		        <Link to="/" className="logo"><img src="/img/logo.png" alt="" /></Link>
 		        <span className="global_menu">
-		            <Link to="/conservation" className="link">Found Raptor</Link>
-		            <a href="javascript.void(0)" className="link">Forest Now</a>
+		            <Link to="/conservation#raptor" className="link">Found Raptor</Link>
+		            <a href="/conservation#raptor" className="link">Forest Now</a>
 								<a href="javascript.void(0)" className="link">Get Involved</a>
 		        </span>
 						<span className="menu_icon">Menu</span>

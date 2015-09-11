@@ -65,6 +65,15 @@ var transitions = {
 		leave: {
 			translateX: [ '100%', '0%' ],
 			zIndex: [ 1, 1 ]
+		},
+		'default': {
+			duration: 250,
+			enter: {
+				opacity: [ 1, 0 ],
+			},
+			leave: {
+				opacity: [ 0, 1 ],
+			}
 		}
 	},
 	default: {

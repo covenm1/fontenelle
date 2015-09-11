@@ -4,6 +4,8 @@ $education_color: #68814b;
 $programs_color: #9e1826;
 $conservation_color:  #1261ac;
 
+$grey: #808080;
+
 @import "base";
 @import "fonts";
 @import "typography";
@@ -11,6 +13,7 @@ $conservation_color:  #1261ac;
 @import "map";
 @import "photogallery";
 
+@import "conservation";
 @import "forest";
 
 
