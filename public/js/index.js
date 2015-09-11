@@ -862,6 +862,11 @@ var Main = React.createClass({displayName: "Main",
                 )
               ), 
 
+              React.createElement("div", {className: "egg_wrap"}, 
+                React.createElement("div", {className: "image_container"}, 
+                  React.createElement("img", {src: "/img/forest/neale-recovery.jpg"})
+                )
+              ), 
 
               React.createElement("div", {className: "tearjerker_video"}, 
                 React.createElement("div", {className: "tearjerker_wrapper"}, 
@@ -884,7 +889,7 @@ var Main = React.createClass({displayName: "Main",
 
               React.createElement("div", {className: "egg_wrap"}, 
                 React.createElement("div", {className: "image_container"}, 
-                  React.createElement("img", {src: "/img/forest/skyline.png"})
+                  React.createElement("img", {src: "/img/forest/bottom.jpg"})
                 )
               ), 
 
@@ -1025,8 +1030,8 @@ var Main = React.createClass({displayName: "Main",
     return (
       React.createElement("div", {className: "page"}, 
         React.createElement("div", {className: "egg_wrap"}, 
-          React.createElement("div", {className: "image_container"}, 
-            React.createElement("img", {src: "/img/found-bird/page.png"})
+          React.createElement("div", {className: "main_wrapper"}, 
+            React.createElement("img", {src: "/img/found-raptor/page.png"})
           )
         ), 
         React.createElement(Footer, null)
@@ -1400,16 +1405,12 @@ var Main = React.createClass({displayName: "Main",
 
     return (
       React.createElement("div", {className: "page"}, 
-        React.createElement("div", {className: "page_wrapper"}, 
-          React.createElement("div", {className: "page_container", id: "page"}, 
-            React.createElement("div", {className: "egg_wrap"}, 
-              React.createElement("div", {className: "image_container"}, 
-                React.createElement("img", {src: "/img/found-bird/page.jpg"})
-              )
-            ), 
-            React.createElement(Footer, null)
+        React.createElement("div", {className: "egg_wrap"}, 
+          React.createElement("div", {className: "image_container"}, 
+            React.createElement("img", {src: "/img/meet-the-raptors/page.png"})
           )
-        )
+        ), 
+        React.createElement(Footer, null)
       )
     )
   }

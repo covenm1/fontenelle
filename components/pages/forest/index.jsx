@@ -393,6 +393,11 @@ var Main = React.createClass({
                 </div>
               </div>
 
+              <div className="egg_wrap">
+                <div className="image_container">
+                  <img src="/img/forest/neale-recovery.jpg" />
+                </div>
+              </div>
 
               <div className="tearjerker_video">
                 <div className="tearjerker_wrapper">
@@ -415,7 +420,7 @@ var Main = React.createClass({
 
               <div className="egg_wrap">
                 <div className="image_container">
-                  <img src="/img/forest/skyline.png" />
+                  <img src="/img/forest/bottom.jpg" />
                 </div>
               </div>
 
