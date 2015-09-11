@@ -1024,6 +1024,120 @@ var Main = React.createClass({displayName: "Main",
 
     return (
       React.createElement("div", {className: "page"}, 
+        React.createElement("div", {className: "egg_wrap"}, 
+          React.createElement("div", {className: "image_container"}, 
+            React.createElement("img", {src: "/img/found-bird/page.png"})
+          )
+        ), 
+        React.createElement(Footer, null)
+      )
+    )
+  }
+});
+
+module.exports = Main;
+
+},{"../../../public/js/classes.json":248,"../../common/footer.jsx":2,"react":239,"react-inlinesvg":13,"react-router":52,"scrollmagic":240,"superagent":241,"util":246,"velocity-animate/velocity":247}],7:[function(require,module,exports){
+var React = require('react'),
+    request = require('superagent'),
+    util = require('util');
+var Velocity = require('velocity-animate/velocity');
+var InlineSVG = require('react-inlinesvg');
+var Router = require('react-router');
+
+var Navigation = Router.Navigation;
+var Link = Router.Link;
+
+
+var Footer = require('../../common/footer.jsx');
+
+var ScrollMagic = require('scrollmagic');
+
+var classes_data = require('../../../public/js/classes.json');
+
+var ClassThing = React.createClass({displayName: "ClassThing",
+  render: function() {
+    return (
+      React.createElement("div", {className: "class"}, 
+        React.createElement("h2", null, this.props.name), 
+        React.createElement("p", null, this.props.age), 
+        React.createElement("p", null, this.props.science_standards), 
+        React.createElement("p", null, this.props.series), 
+        React.createElement("p", null, this.props.duration), 
+        React.createElement("p", null, this.props.description)
+      )
+    )
+  }
+});
+
+var ClassList = React.createClass({displayName: "ClassList",
+  getInitialState: function() {
+    return {classes: classes_data, current_classes: classes_data}
+  },
+
+  natureFilter: function(){
+    var natureClasses = self.state.classes
+  },
+  render: function() {
+    var self = this;
+    var classes = self.state.current_classes.map(function(object) {
+
+      return React.createElement(ClassThing, {
+        name: object.name, 
+        age: object.age, 
+        science_standards: object.science_standards, 
+        series: object.series, 
+        duration: object.duration, 
+        description: object.description})
+    });
+    return (
+      React.createElement("div", {className: "classes"}, 
+        classes 
+      )
+    )
+  }
+});
+
+var poster_image;
+var Main = React.createClass({displayName: "Main",
+  mixins: [ Router.State, Navigation ],
+
+  componentDidMount: function () {
+    var self = this;
+    poster_image = new Image();
+    poster_image.onload = self.onLoad;
+    poster_image.src = "/img/loop_three.jpg";
+  },
+
+  componentWillReceiveProps: function () {
+    var self = this;
+    poster_image = new Image();
+    poster_image.onload = self.onLoad;
+    poster_image.src = "/img/loop_three.jpg";
+
+  },
+
+  onLoad: function() {
+    var self = this;
+    self.setState({loaded: true});
+  },
+
+  moveLeft: function(){
+    this.props.transition('slide-back');
+    this.transitionTo('conservation');
+  },
+
+
+  moveRight: function(){
+    this.props.transition('slide-forward');
+    this.transitionTo('programs');
+  },
+
+  render: function() {
+    var self = this;
+
+    return (
+      React.createElement("div", {className: "page"}, 
         React.createElement("div", {className: "page_wrapper"}, 
           React.createElement("div", {className: "page_container", id: "page"}, 
             React.createElement("div", {className: "egg_wrap"}, 
@@ -1041,9 +1155,7 @@ var Main = React.createClass({displayName: "Main",
 
 module.exports = Main;
 
-},{"../../../public/js/classes.json":248,"../../common/footer.jsx":2,"react":239,"react-inlinesvg":13,"react-router":52,"scrollmagic":240,"superagent":241,"util":246,"velocity-animate/velocity":247}],7:[function(require,module,exports){
-arguments[4][6][0].apply(exports,arguments)
-},{"../../../public/js/classes.json":248,"../../common/footer.jsx":2,"dup":6,"react":239,"react-inlinesvg":13,"react-router":52,"scrollmagic":240,"superagent":241,"util":246,"velocity-animate/velocity":247}],8:[function(require,module,exports){
+},{"../../../public/js/classes.json":248,"../../common/footer.jsx":2,"react":239,"react-inlinesvg":13,"react-router":52,"scrollmagic":240,"superagent":241,"util":246,"velocity-animate/velocity":247}],8:[function(require,module,exports){
 /**
  * Adapted from https://github.com/Khan/react-components/blob/master/js/timeout-transition-group.jsx
  */
@@ -1192,8 +1304,8 @@ var VelocityTransitionGroup = React.createClass({displayName: "VelocityTransitio
 module.exports = VelocityTransitionGroup;
 
 },{"react/addons":67,"velocity-animate":247}],9:[function(require,module,exports){
-arguments[4][6][0].apply(exports,arguments)
-},{"../../../public/js/classes.json":248,"../../common/footer.jsx":2,"dup":6,"react":239,"react-inlinesvg":13,"react-router":52,"scrollmagic":240,"superagent":241,"util":246,"velocity-animate/velocity":247}],10:[function(require,module,exports){
+arguments[4][7][0].apply(exports,arguments)
+},{"../../../public/js/classes.json":248,"../../common/footer.jsx":2,"dup":7,"react":239,"react-inlinesvg":13,"react-router":52,"scrollmagic":240,"superagent":241,"util":246,"velocity-animate/velocity":247}],10:[function(require,module,exports){
 var React = require('react'),
     request = require('superagent'),
     util = require('util');
