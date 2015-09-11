@@ -418,8 +418,7 @@ var Main = React.createClass({displayName: "Main",
               React.createElement("div", {className: "education_video"}, 
                 React.createElement("div", {className: "education_video_wrapper"}, 
                   React.createElement("div", {className: "centered_content"}, 
-                    React.createElement("h2", {className: "marker"}, "The Walls Became the World All Around"), 
-                    React.createElement("p", null, "Curabitur blandit tempus porttitor. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Curabitur blandit tempus porttitor. Donec id elit non mi porta gravida at eget metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis risus eget urna mollis ornare vel eu leo.")
+                    React.createElement("h2", {className: "marker"}, "The Walls Became the World All Around")
                   ), 
                   React.createElement("div", {className: "centered_content wide"}, 
                     React.createElement("div", {className: "embed-container"}, React.createElement("iframe", {src: "https://www.youtube.com/embed/tdohcrA-o8M", frameBorder: "0", allowFullScreen: true}))
