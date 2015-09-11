@@ -98,7 +98,7 @@ var Main = React.createClass({
 
     return (
       <div className="page">
-        <div className="egg_wrap">
+        <div className="egg_wrap static">
           <div className='main_wrapper'>
             <img src="/img/found-raptor/page.png" />
           </div>
