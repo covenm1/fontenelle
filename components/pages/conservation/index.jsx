@@ -196,6 +196,12 @@ var Main = React.createClass({
               </div>
 
               <div className="egg_wrap">
+                <div className='image_container'>
+                  <img src="/img/conservation/conservationthing.jpg" />
+                </div>
+              </div>
+
+              <div className="egg_wrap">
                 <h2 className="time_title marker">Timeline</h2>
                 <div className="timeline_wrapper">
                   <div className="timeline" style={timelineStyles} >
@@ -208,7 +214,9 @@ var Main = React.createClass({
               <div className="egg_wrap">
                 <div className='image_container'>
                   <img src="/img/conservation/top_2.png" />
-                  <img src="/img/conservation/top_3.png" id="raptor" />
+                  <img src="/img/conservation/top_2b.png" id="raptor" />
+                  <Link to="/meet-the-raptors" ><img src="/img/conservation/meetraptors.jpg" id="raptor" /></Link>
+                  <img src="/img/conservation/top_3.png" />
                 </div>
               </div>
 

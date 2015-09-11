@@ -387,6 +387,12 @@ var Main = React.createClass({displayName: "Main",
               ), 
 
               React.createElement("div", {className: "egg_wrap"}, 
+                React.createElement("div", {className: "image_container"}, 
+                  React.createElement("img", {src: "/img/conservation/conservationthing.jpg"})
+                )
+              ), 
+
+              React.createElement("div", {className: "egg_wrap"}, 
                 React.createElement("h2", {className: "time_title marker"}, "Timeline"), 
                 React.createElement("div", {className: "timeline_wrapper"}, 
                   React.createElement("div", {className: "timeline", style: timelineStyles}, 
@@ -399,7 +405,9 @@ var Main = React.createClass({displayName: "Main",
               React.createElement("div", {className: "egg_wrap"}, 
                 React.createElement("div", {className: "image_container"}, 
                   React.createElement("img", {src: "/img/conservation/top_2.png"}), 
-                  React.createElement("img", {src: "/img/conservation/top_3.png", id: "raptor"})
+                  React.createElement("img", {src: "/img/conservation/top_2b.png", id: "raptor"}), 
+                  React.createElement(Link, {to: "/meet-the-raptors"}, React.createElement("img", {src: "/img/conservation/meetraptors.jpg", id: "raptor"})), 
+                  React.createElement("img", {src: "/img/conservation/top_3.png"})
                 )
               ), 
 
