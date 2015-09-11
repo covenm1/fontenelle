@@ -43,7 +43,7 @@ var App = React.createClass({
 	},
 
 	getInitialState: function () {
-		return { currentTransition: 'default' };
+		return { currentTransition: 'default', menu: false };
 	},
 
 	componentDidMount: function(){
@@ -117,13 +117,29 @@ var App = React.createClass({
 		this.setState({currentTransition: i});
 	},
 
+	toggleMenu: function(){
+		this.setState({menu: !this.state.menu});
+	},
+
 	render: function () {
 		var self = this;
 		var name = this.getHandlerKey();
 
 		var transition = self.state.currentTransition;
+		var menu = self.state.menu;
+		if (menu) {
+			var menu_class = " menu_open";
+		} else {
+			var menu_class = "";
+		}
+		var main_pages = slide_names.indexOf(name) > -1;
+		if (main_pages){
+			var header_up = "";
+		} else {
+			var header_up = " header_up";
+		}
 		return (
-		  <div className={"fontenelle " + name} >
+		  <div className={"fontenelle " + name + menu_class + header_up} >
 		    <header className="header">
 		        <Link to="/" className="logo"><img src="/img/logo.png" alt="" /></Link>
 		        <span className="global_menu">
@@ -131,12 +147,38 @@ var App = React.createClass({
 		            <a href="javascript.void(0)" className="link">Forest Now</a>
 								<Link to="/get-involved" className="link">Get Involved</Link>
 		        </span>
-						<span className="menu_icon">Menu</span>
+						<span className="menu_icon" onClick={self.toggleMenu}>Menu</span>
 		    </header>
+				<div className="sidebar">
+					<span className="close_menu_button" onClick={self.toggleMenu}>×</span>
+					<div className="sidebar_links">
+						<Link to="/" className="link" onClick={self.toggleMenu}><h2 className="forest main">Forest</h2></Link>
+						<a href="#" className="link" onClick={self.toggleMenu}>Generic Link</a>
+						<a href="#" className="link" onClick={self.toggleMenu}>Generic Link</a>
+						<a href="#" className="link" onClick={self.toggleMenu}>Generic Link</a>
+						<Link to="/conservation" className="link" onClick={self.toggleMenu}><h2 className="conservation main">Conservation</h2></Link>
+						<Link to="/conservation#raptor" className="link" onClick={self.toggleMenu}>Raptor Recovery</Link>
+						<a href="#" className="link" onClick={self.toggleMenu}>Generic Link</a>
+						<a href="#" className="link" onClick={self.toggleMenu}>Generic Link</a>
+						<Link to="/education" className="link" onClick={self.toggleMenu}><h2 className="education main">Education</h2></Link>
+						<a href="#" className="link" onClick={self.toggleMenu}>Generic Link</a>
+						<a href="#" className="link" onClick={self.toggleMenu}>Generic Link</a>
+						<a href="#" className="link" onClick={self.toggleMenu}>Generic Link</a>
+						<Link to="/programs" className="link" onClick={self.toggleMenu}><h2 className="programs main">Programs</h2></Link>
+						<a href="#" className="link" onClick={self.toggleMenu}>Generic Link</a>
+						<Link to="/" className="link" onClick={self.toggleMenu}><h2 className="main">Other Main Link</h2></Link>
+						<Link to="/" className="link" onClick={self.toggleMenu}><h2 className="main">Other Main Link</h2></Link>
+						<Link to="/" className="link" onClick={self.toggleMenu}><h2 className="main">Other Main Link</h2></Link>
+						<Link to="/" className="link" onClick={self.toggleMenu}><h2 className="main">Other Main Link</h2></Link>
+					</div>
+				</div>
+				{ main_pages ?
 				<div className="slide_controls">
 					<span className="left slider_button" onClick={self.onClickLeft}><img src="/img/icon_scroll-left.svg" /></span>
 					<span className="right slider_button" onClick={self.onClickRight}><img src="/img/icon_scroll-right.svg" /></span>
 				</div>
+				: null }
+				<div className="menu_overlay" onClick={self.toggleMenu}></div>
 
 	    	<TransitionGroup transitionName={transition} className="main_content" id="main_content" component="div">
 		    	<RouteHandler key={name} transition={self.setTransition} />

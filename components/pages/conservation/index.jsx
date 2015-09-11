@@ -97,22 +97,22 @@ var Main = React.createClass({
       console.log(hash);
       self.scrollThing(hash);
     }
-    // window.onhashchange = function() {
-    //   window.location.hash = window.decodeURIComponent(window.location.hash);
-    //
-    //   console.log(window.location.hash);
-    //
-    //   var hashParts = window.location.hash.split('#');
-    //
-    //   console.log(hashParts);
-    //
-    //   if (hashParts.length > 1) {
-    //     var hash = hashParts.slice(-1)[0];
-    //     // if(hash);
-    //     console.log(hash);
-    //     self.scrollThing(hash);
-    //   }
-    // }
+    window.onhashchange = function() {
+      window.location.hash = window.decodeURIComponent(window.location.hash);
+
+      console.log(window.location.hash);
+
+      var hashParts = window.location.hash.split('#');
+
+      console.log(hashParts);
+
+      if (hashParts.length > 1) {
+        var hash = hashParts.slice(-1)[0];
+        // if(hash);
+        console.log(hash);
+        self.scrollThing(hash);
+      }
+    }
   },
 
 

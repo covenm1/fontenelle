@@ -44,7 +44,7 @@ var App = React.createClass({displayName: "App",
 	},
 
 	getInitialState: function () {
-		return { currentTransition: 'default' };
+		return { currentTransition: 'default', menu: false };
 	},
 
 	componentDidMount: function(){
@@ -118,13 +118,29 @@ var App = React.createClass({displayName: "App",
 		this.setState({currentTransition: i});
 	},
 
+	toggleMenu: function(){
+		this.setState({menu: !this.state.menu});
+	},
+
 	render: function () {
 		var self = this;
 		var name = this.getHandlerKey();
 
 		var transition = self.state.currentTransition;
+		var menu = self.state.menu;
+		if (menu) {
+			var menu_class = " menu_open";
+		} else {
+			var menu_class = "";
+		}
+		var main_pages = slide_names.indexOf(name) > -1;
+		if (main_pages){
+			var header_up = "";
+		} else {
+			var header_up = " header_up";
+		}
 		return (
-		  React.createElement("div", {className: "fontenelle " + name}, 
+		  React.createElement("div", {className: "fontenelle " + name + menu_class + header_up}, 
 		    React.createElement("header", {className: "header"}, 
 		        React.createElement(Link, {to: "/", className: "logo"}, React.createElement("img", {src: "/img/logo.png", alt: ""})), 
 		        React.createElement("span", {className: "global_menu"}, 
@@ -132,12 +148,38 @@ var App = React.createClass({displayName: "App",
 		            React.createElement("a", {href: "javascript.void(0)", className: "link"}, "Forest Now"), 
 								React.createElement(Link, {to: "/get-involved", className: "link"}, "Get Involved")
 		        ), 
-						React.createElement("span", {className: "menu_icon"}, "Menu")
+						React.createElement("span", {className: "menu_icon", onClick: self.toggleMenu}, "Menu")
 		    ), 
+				React.createElement("div", {className: "sidebar"}, 
+					React.createElement("span", {className: "close_menu_button", onClick: self.toggleMenu}, "×"), 
+					React.createElement("div", {className: "sidebar_links"}, 
+						React.createElement(Link, {to: "/", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "forest main"}, "Forest")), 
+						React.createElement("a", {href: "#", className: "link", onClick: self.toggleMenu}, "Generic Link"), 
+						React.createElement("a", {href: "#", className: "link", onClick: self.toggleMenu}, "Generic Link"), 
+						React.createElement("a", {href: "#", className: "link", onClick: self.toggleMenu}, "Generic Link"), 
+						React.createElement(Link, {to: "/conservation", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "conservation main"}, "Conservation")), 
+						React.createElement(Link, {to: "/conservation#raptor", className: "link", onClick: self.toggleMenu}, "Raptor Recovery"), 
+						React.createElement("a", {href: "#", className: "link", onClick: self.toggleMenu}, "Generic Link"), 
+						React.createElement("a", {href: "#", className: "link", onClick: self.toggleMenu}, "Generic Link"), 
+						React.createElement(Link, {to: "/education", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "education main"}, "Education")), 
+						React.createElement("a", {href: "#", className: "link", onClick: self.toggleMenu}, "Generic Link"), 
+						React.createElement("a", {href: "#", className: "link", onClick: self.toggleMenu}, "Generic Link"), 
+						React.createElement("a", {href: "#", className: "link", onClick: self.toggleMenu}, "Generic Link"), 
+						React.createElement(Link, {to: "/programs", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "programs main"}, "Programs")), 
+						React.createElement("a", {href: "#", className: "link", onClick: self.toggleMenu}, "Generic Link"), 
+						React.createElement(Link, {to: "/", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Other Main Link")), 
+						React.createElement(Link, {to: "/", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Other Main Link")), 
+						React.createElement(Link, {to: "/", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Other Main Link")), 
+						React.createElement(Link, {to: "/", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Other Main Link"))
+					)
+				), 
+				 main_pages ?
 				React.createElement("div", {className: "slide_controls"}, 
 					React.createElement("span", {className: "left slider_button", onClick: self.onClickLeft}, React.createElement("img", {src: "/img/icon_scroll-left.svg"})), 
 					React.createElement("span", {className: "right slider_button", onClick: self.onClickRight}, React.createElement("img", {src: "/img/icon_scroll-right.svg"}))
-				), 
+				)
+				: null, 
+				React.createElement("div", {className: "menu_overlay", onClick: self.toggleMenu}), 
 
 	    	React.createElement(TransitionGroup, {transitionName: transition, className: "main_content", id: "main_content", component: "div"}, 
 		    	React.createElement(RouteHandler, {key: name, transition: self.setTransition})
@@ -288,22 +330,22 @@ var Main = React.createClass({displayName: "Main",
       console.log(hash);
       self.scrollThing(hash);
     }
-    // window.onhashchange = function() {
-    //   window.location.hash = window.decodeURIComponent(window.location.hash);
-    //
-    //   console.log(window.location.hash);
-    //
-    //   var hashParts = window.location.hash.split('#');
-    //
-    //   console.log(hashParts);
-    //
-    //   if (hashParts.length > 1) {
-    //     var hash = hashParts.slice(-1)[0];
-    //     // if(hash);
-    //     console.log(hash);
-    //     self.scrollThing(hash);
-    //   }
-    // }
+    window.onhashchange = function() {
+      window.location.hash = window.decodeURIComponent(window.location.hash);
+
+      console.log(window.location.hash);
+
+      var hashParts = window.location.hash.split('#');
+
+      console.log(hashParts);
+
+      if (hashParts.length > 1) {
+        var hash = hashParts.slice(-1)[0];
+        // if(hash);
+        console.log(hash);
+        self.scrollThing(hash);
+      }
+    }
   },
 
 

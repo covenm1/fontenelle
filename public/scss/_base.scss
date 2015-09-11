@@ -96,6 +96,10 @@ header {
     &.scrolled {
       background: transparent;
       color: white;
+      .header_up & {
+        background: rgba(0,0,0,0.8);
+        color: white;
+      }
     }
 
 
@@ -117,7 +121,8 @@ header {
     }
 
     .menu_icon {
-
+      text-align: right;
+      cursor: pointer;
     }
 
     h2 {
@@ -143,7 +148,7 @@ header {
       height: 8px;
       width: 8px;
       border-radius: 50%;
-      background: green;
+      background: $grey;
       transition: 0.5s ease-out;
       .forest &  {
         background: $forest_color;
@@ -442,6 +447,86 @@ footer img {
   left: 0;
   width: 100%;
   height: 100%;
+}
+
+.close_menu_button {
+  color: white;
+  font-size: 50px;
+  position:fixed;
+  top: 0;
+  right: -500px;
+  padding: 20px;
+  line-height: 15px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+  &:hover {
+    color: red;
+  }
+}
+
+.sidebar {
+  position: fixed;
+  right: -400px;
+  transition: 0.15s ease-out;
+  color: white;
+  height: 100%;
+  .sidebar_links {
+    margin-top: 60px;
+    padding: 0 15px;
+    .link {
+      display: block;
+      text-transform: uppercase;
+      transition: 0.15s ease-out;
+      &:hover {
+        opacity: 0.8;
+      }
+      .main {
+        border-bottom: 2px solid $grey;
+        &.forest {
+          border-bottom: 2px solid $forest_color;
+        }
+        &.conservation {
+          border-bottom: 2px solid $conservation_color;
+        }
+        &.programs {
+          border-bottom: 2px solid $programs_color;
+        }
+        &.education {
+          border-bottom: 2px solid $education_color;
+        }
+      }
+    }
+    a {
+      text-decoration: none;
+    }
+
+  }
+  .menu_open & {
+    width: 400px;
+    background: black;
+    z-index: 999999;
+    right: 0;
+
+    .close_menu_button {
+      right: 0;
+    }
+  }
+}
+
+.menu_overlay {
+  opacity: 0;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transition: 0.1s ease-out;
+  .menu_open & {
+    z-index: 99999;
+    opacity: 0.6;
+    background: black;
+  }
 }
 
 /* End Codrops Header Style */
