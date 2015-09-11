@@ -444,4 +444,32 @@ footer img {
   height: 100%;
 }
 
+.prev_page, .next_page {
+  float: left;
+  line-height: 75px;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.bottom_nav {
+  height: 75px;
+}
+
+.prev_page {
+  background-image: url(/img/page-left.png);
+  background-repeat: no-repeat;
+  background-position: left;
+  padding-left: 56px;
+}
+
+.next_page {
+  float: right;
+  background-image: url(/img/page-right.png);
+  background-repeat: no-repeat;
+  background-position: right;
+  padding-right: 56px;
+}
+
 /* End Codrops Header Style */
+/* Thanks, Codrops! */

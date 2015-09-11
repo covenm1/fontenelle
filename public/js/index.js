@@ -182,7 +182,7 @@ module.exports = React.createClass({displayName: "exports",
   render: function() {
     return (
       React.createElement("footer", null, 
-        React.createElement("h2", null, "This is the Footer")
+        React.createElement("img", {src: "/img/footer.png"})
       )
     )
   }
