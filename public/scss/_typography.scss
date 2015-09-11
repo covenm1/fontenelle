@@ -12,8 +12,8 @@ h2 {
 }
 
 p {
-    line-height: 1.4;
-    /*text-shadow: 1px 1px 1px #000;*/
+  line-height: 1.7;
+  font-size: 0.8em;
 }
 
 a,
@@ -60,4 +60,14 @@ p a {
   font-family: 'roboto_condensedbold';
   line-height: 1.5em;
   padding-top: 10px;
+}
+
+.prev_page, .next_page {
+  font-family: 'roboto_condensedbold';
+  font-size: 1.5em;
+}
+
+h4.name {
+  font-family: 'roboto_condensedbold';
+  font-size: 1.3em;
 }
