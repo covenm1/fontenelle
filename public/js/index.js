@@ -1241,7 +1241,7 @@ var Main = React.createClass({displayName: "Main",
 
     return (
       React.createElement("div", {className: "page"}, 
-        React.createElement("div", {className: "egg_wrap"}, 
+        React.createElement("div", {className: "egg_wrap static"}, 
           React.createElement("div", {className: "main_wrapper"}, 
             React.createElement("img", {src: "/img/found-raptor/page.png"})
           )
@@ -1355,7 +1355,7 @@ var Main = React.createClass({displayName: "Main",
 
     return (
       React.createElement("div", {className: "page"}, 
-        React.createElement("div", {className: "egg_wrap"}, 
+        React.createElement("div", {className: "egg_wrap static"}, 
           React.createElement("div", {className: "image_container"}, 
             React.createElement("img", {src: "/img/get-involved/page.png"})
           )
@@ -1626,7 +1626,7 @@ var Main = React.createClass({displayName: "Main",
 
     return (
       React.createElement("div", {className: "page"}, 
-        React.createElement("div", {className: "egg_wrap"}, 
+        React.createElement("div", {className: "egg_wrap static"}, 
           React.createElement("div", {className: "image_container"}, 
             React.createElement("img", {src: "/img/meet-the-raptors/page.png"})
           )
