@@ -40,6 +40,9 @@ var Main = React.createClass({
       acorngallery: shuffleArray(acorngallery),
       hover: '',
       area: '',
+      left: 0,
+      acornLeft: 0,
+      windowWidth: window.innerWidth,
       videoOne: false,
       videoTwo: false
     };
@@ -48,7 +51,7 @@ var Main = React.createClass({
   componentDidMount: function () {
     var self = this;
 
-    window.addEventListener('resize', this.handleResize);
+    window.addEventListener('resize', self.handleResize);
 
     poster_image = new Image();
     poster_image.onload = self.onLoad;
@@ -62,7 +65,14 @@ var Main = React.createClass({
   },
 
   handleResize: function(e) {
-    this.setState({windowWidth: window.innerWidth});
+
+    this.setState({
+      windowWidth: window.innerWidth,
+      left: 0,
+      photogallery: shuffleArray(photogallery),
+      acornLeft: 0,
+      acorngallery: shuffleArray(acorngallery)
+    });
   },
 
 
@@ -236,6 +246,49 @@ var Main = React.createClass({
     this.setState({videoTwo: !this.state.videoTwo});
   },
 
+  galleryRight: function(){
+    var self = this;
+    var gallery_width = Math.ceil(self.state.photogallery.length/2) * 450;
+
+    var window_width = self.state.windowWidth;
+    var left = self.state.left;
+
+    if (window_width <= (gallery_width - left)) {
+      self.setState({left: self.state.left + 450});
+    }
+  },
+
+  galleryLeft: function(){
+    var self = this;
+    var left = self.state.left;
+
+    if (left > 0) {
+      self.setState({left: self.state.left + -450});
+    }
+  },
+
+
+  acornRight: function(){
+    var self = this;
+    var gallery_width = Math.ceil(self.state.acorngallery.length/2) * 450;
+
+    var window_width = self.state.windowWidth;
+    var acornLeft = self.state.acornLeft;
+
+    if (window_width <= (gallery_width - acornLeft)) {
+      self.setState({acornLeft: acornLeft + 450});
+    }
+  },
+
+  acornLeft: function(){
+    var self = this;
+    var acornLeft = self.state.acornLeft;
+
+    if (acornLeft > 0) {
+      self.setState({acornLeft: acornLeft + -450});
+    }
+  },
+
   render: function() {
     var self = this;
 
@@ -289,11 +342,13 @@ var Main = React.createClass({
       });
 
       var photogalleryStyles = {
-        width: Math.ceil(photogallery.length/2) * 450 +"px"
+        width: Math.ceil(photogallery.length/2) * 450 +"px",
+        marginLeft: "-" + self.state.left + "px"
       };
 
       var acorngalleryStyles = {
-        width: Math.ceil(acorngallery.length/2) * 450 +"px"
+        width: Math.ceil(acorngallery.length/2) * 450 +"px",
+        marginLeft: "-" + self.state.acornLeft + "px"
       };
 
       var map_class = "map_wrapper";
@@ -376,7 +431,8 @@ var Main = React.createClass({
 
                   { videoOne ?
                     <div className="centered_content wide">
-                      <div className='embed-container'><iframe src='https://www.youtube.com/embed/Qxh3eSZlUeM' frameBorder='0' allowFullScreen></iframe></div>
+                      <span className="video_close" onClick={self.toggleVideoOne}>×</span>
+                      <div className='embed-container'><iframe src='https://www.youtube.com/embed/Qxh3eSZlUeM?autoplay=1' frameBorder='0' allowFullScreen></iframe></div>
                     </div>
                   :
                     <div className="centered_content">
@@ -398,6 +454,8 @@ var Main = React.createClass({
 
               <div className="photogallery_wrapper">
                 <div className="photogallery" style={photogalleryStyles} >
+                  <span className="left gallery_button" onClick={self.galleryLeft}><img src="/img/icon_scroll-left.svg" /></span>
+                  <span className="right gallery_button" onClick={self.galleryRight}><img src="/img/icon_scroll-right.svg" /></span>
                   {photogallery}
                 </div>
               </div>
@@ -451,7 +509,8 @@ var Main = React.createClass({
                 <div className="tearjerker_wrapper">
                   { videoTwo ?
                     <div className="centered_content wide">
-                      <div className='embed-container'><iframe src='https://www.youtube.com/embed/LEkB-HvzAuw' frameBorder='0' allowFullScreen></iframe></div>
+                      <span className="video_close" onClick={self.toggleVideoTwo}>×</span>
+                      <div className='embed-container'><iframe src='https://www.youtube.com/embed/LEkB-HvzAuw?autoplay=1' frameBorder='0' allowFullScreen></iframe></div>
                     </div>
                   :
                     <div className="centered_content">
@@ -465,6 +524,8 @@ var Main = React.createClass({
 
               <div className="egg_wrap">
                 <div className="photogallery_wrapper">
+                  <span className="left gallery_button" onClick={self.acornLeft}><img src="/img/icon_scroll-left.svg" /></span>
+                  <span className="right gallery_button" onClick={self.acornRight}><img src="/img/icon_scroll-right.svg" /></span>
                   <div className="photogallery" style={acorngalleryStyles} >
                     {acorngallery}
                   </div>

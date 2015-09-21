@@ -1,8 +1,12 @@
 .photogallery_wrapper {
 	width: 100%;
-	overflow-x: scroll;
+	overflow: hidden;
+	position: relative;
+	background: $orange;
+	
 	.photogallery {
 		height: 600px;
+		transition: 0.25s ease-out;
 
 		.photo {
 			height: 300px;

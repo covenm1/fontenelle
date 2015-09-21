@@ -35,6 +35,23 @@
     }
   }
 }
+
+.video_close {
+  border: 2px solid white;
+  border-radius: 50%;
+  height: 25px;
+  width: 25px;
+  display: block;
+  line-height: 20px;
+  cursor: pointer;
+  position: absolute;
+  left: -30px;
+  top: 0;
+  transition: 0.15s ease-out;
+  &:hover {
+    opacity: 0.8
+  }
+}
 .vine_bottom {
   display: flex;
   flex-direction: row;
@@ -47,6 +64,26 @@
   }
   .right-half {
     flex: 1;
+  }
+}
+
+.gallery_button {
+  position: absolute;
+  width: 25px;
+  top: 50%;
+  margin-top: -15px;
+  z-index: 1;
+  transition: 0.15s ease-out;
+  cursor: pointer;
+  
+  &.right {
+    right: 15px;
+  }
+  &.left {
+    left: 15px;
+  }
+  &:hover {
+    opacity: 0.7;
   }
 }
 
@@ -66,12 +103,13 @@
     flex-direction: column;
     padding: 100px 0;
     position: relative;
- 
+
     .centered_content {
       max-width: 100%;
       width: 500px;
       text-align: center;
       color: white;
+      position: relative;
       h2 {
         font-size: 45px;
       }
