@@ -18,14 +18,14 @@ var Route = Router.Route,
 
 
 var forest = require('../forest/index.jsx'),
-		conservation = require('../conservation/index.jsx'),
+		naturalresources = require('../conservation/index.jsx'),
 		programs = require('../programs/index.jsx'),
 		education = require('../education/index.jsx'),
 		foundraptor = require('../found-raptor/index.jsx'),
 		meettheraptors = require('../meet-the-raptors/index.jsx'),
 		getinvolved = require('../get-involved/index.jsx');
 
-var slide_names = [ 'forest' , 'conservation' , 'education' , 'programs'];
+var slide_names = [ 'forest' , 'natural-resources' , 'education' , 'programs'];
 var slide_count = 0;
 
 var hotkey = require('react-hotkey');
@@ -156,10 +156,10 @@ var App = React.createClass({
 						<a href="#" className="link section" onClick={self.toggleMenu}>Trails</a>
 						<a href="#" className="link section" onClick={self.toggleMenu}>Fauna &amp; Flora</a>
 						<a href="#" className="link section" onClick={self.toggleMenu}>Young Adventurers</a>
-						<Link to="/conservation" className="link" onClick={self.toggleMenu}><h2 className="conservation main">Conservation</h2></Link>
+						<Link to="/natural-resources" className="link" onClick={self.toggleMenu}><h2 className="conservation main">Natural Resources</h2></Link>
 						<a href="#" className="link section" onClick={self.toggleMenu}>History</a>
 						<a href="#" className="link section" onClick={self.toggleMenu}>Habitat Management</a>
-						<Link to="/conservation#raptor" className="link section" onClick={self.toggleMenu}>Raptor Recovery</Link>
+						<Link to="/natural-resources#raptor" className="link section" onClick={self.toggleMenu}>Raptor Recovery</Link>
 						<Link to="/education" className="link" onClick={self.toggleMenu}><h2 className="education main">Education</h2></Link>
 						<a href="#" className="link section" onClick={self.toggleMenu}>Classes</a>
 						<Link to="/programs" className="link" onClick={self.toggleMenu}><h2 className="programs main">Programs</h2></Link>
@@ -194,7 +194,7 @@ var App = React.createClass({
 var routes = (
   <Route handler={App}>
     <Route name="forest" path="/" handler={forest} addHandlerKey={true}/>
-    <Route name="conservation" path="/conservation" handler={conservation} addHandlerKey={true}/>
+    <Route name="natural-resources" path="/natural-resources" handler={naturalresources} addHandlerKey={true}/>
     <Route name="programs" path="/programs" handler={programs} addHandlerKey={true} />
     <Route name="education" path="/education" handler={education} addHandlerKey={true} />
     <Route name="found-raptor" path="/found-raptor" handler={foundraptor} addHandlerKey={true} />

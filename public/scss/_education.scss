@@ -18,7 +18,7 @@
     flex-direction: column;
     padding: 100px 0;
     position: relative;
-    
+
     .centered_content {
       max-width: 100%;
       width: 500px;
@@ -38,4 +38,138 @@
   .video_overlay {
     background-image: url('/img/education/pattern_video-overlay.svg');
   }
+}
+
+.education .color {
+  color: $education_color;
+}
+
+.current_class {
+  background-color: rgba(106,130,72,.1);
+  padding: 50px 30px 100px;
+  position: relative;
+  .reset_class {
+    border: 2px solid $education_color;
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    text-align: center;
+    line-height: 40px;
+    color: $education_color;
+    font-size: 40px;
+    cursor: pointer;
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    margin: 0;
+  }
+
+  .main_class {
+    width: 750px;
+    margin: auto;
+  }
+  .icons {
+    img {
+      width: 50px;
+    }
+  }
+  .details {
+    border-top: 2px solid $education_color;
+    border-bottom: 2px solid $education_color;
+    display: flex;
+    flex-direction: row;
+    p {
+      flex: 1;
+      color: #838383;
+      font-weight: bold;
+      text-align: center;
+    }
+  }
+}
+
+.classes {
+    display: flex;
+    flex-flow: row wrap;
+    width: 100%;
+}
+
+.class {
+    align-items: center;
+    background-color: rgba(106,130,72,0.05);
+    box-sizing: border-box;
+    display: flex;
+    padding: 15px;
+    width: 100%;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    h2 {
+      font-size: 20px;
+      cursor: pointer;
+    }
+    .icons {
+      img {
+        width: 35px;
+        display: inline-block;
+        text-align: center;
+        margin: 0 5px;
+      }
+    }
+}
+
+.class:nth-child(odd) {
+    background-color: transparent;
+}
+
+
+@media screen and (min-width: 450px) {
+
+    .class:nth-child(1n) {
+        background-color: rgba(106,130,72,0.05);
+        width: 50%;
+    }
+
+    .class:nth-child(4n+1),
+    .class:nth-child(4n+4) {
+        background-color: transparent;
+    }
+}
+
+@media screen and (min-width: 900px) {
+
+    .class:nth-child(1n) {
+        background-color: rgba(106,130,72,0.05);
+        width: 33.333333333333333333333%;
+    }
+
+    .class:nth-child(odd) {
+        background-color: transparent;
+    }
+}
+
+@media screen and (min-width: 1350px) {
+
+    .class:nth-child(1n) {
+        background-color: rgba(106,130,72,0.05);
+        width: 25%;
+    }
+
+    .class:nth-child(8n+1),
+    .class:nth-child(8n+3),
+    .class:nth-child(8n+6),
+    .class:nth-child(8n+8) {
+        background-color: transparent;
+    }
+}
+
+@media screen and (min-width: 1800px) {
+
+    .class:nth-child(1n) {
+        background-color: rgba(106,130,72,0.05);
+        width: 20%;
+    }
+
+    .class:nth-child(odd) {
+        background-color: transparent;
+    }
 }

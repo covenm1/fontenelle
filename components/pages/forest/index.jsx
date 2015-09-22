@@ -69,9 +69,7 @@ var Main = React.createClass({
     this.setState({
       windowWidth: window.innerWidth,
       left: 0,
-      photogallery: shuffleArray(photogallery),
       acornLeft: 0,
-      acorngallery: shuffleArray(acorngallery)
     });
   },
 
@@ -122,8 +120,12 @@ var Main = React.createClass({
         image: "/img/map_photos/small/4NorthernFloodplainsFall.jpg"
       }
     ];
+    var drawer_overview = {
+        title: "Mormon Hollow",
+        description: "Follow a deep ravine along traces of a Mormon Pioneer trail blazed in the summer of 1846.",
+    };
 
-    self.setState({ drawer: drawer, area: 'natureCenter' });
+    self.setState({ drawer: drawer, area: 'natureCenter', drawer_overview: drawer_overview });
   },
 
 
@@ -148,8 +150,12 @@ var Main = React.createClass({
         image: "/img/map_photos/small/2RiverviewBoardwalkSummer2.jpg"
       }
     ];
+    var drawer_overview = {
+        title: "Mormon Hollow",
+        description: "Follow a deep ravine along traces of a Mormon Pioneer trail blazed in the summer of 1846.",
+    };
 
-    self.setState({ drawer: drawer, area: 'greatMarsh' });
+    self.setState({ drawer: drawer, area: 'greatMarsh', drawer_overview: drawer_overview });
   },
 
   northernFloodplains: function(){
@@ -173,8 +179,12 @@ var Main = React.createClass({
         image: "/img/map_photos/small/1NatureCenterWinter.jpg"
       }
     ];
+    var drawer_overview = {
+        title: "Mormon Hollow",
+        description: "Follow a deep ravine along traces of a Mormon Pioneer trail blazed in the summer of 1846.",
+    };
 
-    self.setState({ drawer: drawer, area: 'northernFloodplains' });
+    self.setState({ drawer: drawer, area: 'northernFloodplains', drawer_overview: drawer_overview });
   },
 
   northernUplands: function(){
@@ -198,13 +208,22 @@ var Main = React.createClass({
         image: "/img/map_photos/small/4NorthernFloodplainsFall.jpg"
       }
     ];
+    var drawer_overview = {
+        title: "Mormon Hollow",
+        description: "Follow a deep ravine along traces of a Mormon Pioneer trail blazed in the summer of 1846.",
+    };
 
-    self.setState({ drawer: drawer, area: 'northernUplands' });
+    self.setState({ drawer: drawer, area: 'northernUplands', drawer_overview: drawer_overview });
   },
 
   southernUplands: function(){
     var self = this;
     console.log('southernUplands');
+
+    var drawer_overview = {
+        title: "Mormon Hollow",
+        description: "Follow a deep ravine along traces of a Mormon Pioneer trail blazed in the summer of 1846.",
+    };
 
     var drawer = [
       {
@@ -224,7 +243,7 @@ var Main = React.createClass({
       }
     ];
 
-    self.setState({ drawer: drawer, area: 'southernUplands' });
+    self.setState({ drawer: drawer, area: 'southernUplands', drawer_overview: drawer_overview });
   },
 
   moveLeft: function(){
@@ -235,7 +254,7 @@ var Main = React.createClass({
 
   moveRight: function(){
     this.props.transition('slide-forward');
-    this.transitionTo('conservation');
+    this.transitionTo('natural-resources');
   },
 
   toggleVideoOne: function(){
@@ -318,6 +337,8 @@ var Main = React.createClass({
           </li>
         )
       });
+
+      var drawer_overview = self.state.drawer_overview;
 
       var photogallery = self.state.photogallery.map(function(object) {
         var photoStyles = {
@@ -477,6 +498,10 @@ var Main = React.createClass({
                   { drawer.length ?
                     <div className="drawer" style={drawer_styles}>
                       <div className="orange_overlay"></div>
+                      <div className="drawer_overview">
+                        <h3 className="marker">{drawer_overview.title}</h3>
+                        <p>{drawer_overview.description}</p>
+                      </div>
                       <ul>
                         {drawer}
                       </ul>
@@ -1445,7 +1470,7 @@ var Main = React.createClass({
                   :
                     <div className="centered_content">
                       <h2 className="marker">for your favorite little explorers</h2>
-                      <p>Acorn Acres is our one acre natural playscape designed for boisterous enthusiasm, outdoor physical activity, and creative play for kids of all ages. </p>
+                      <p>A place where boisterous enthusiasm, outdoor physical activity, and creative play reign supreme.</p>
                       <img className="video_play" onClick={self.toggleVideoTwo} src="/img/icon_play-video.svg" />
                     </div>
                   }
@@ -1471,7 +1496,7 @@ var Main = React.createClass({
               <div className="egg_wrap">
                 <div className="main_wrapper bottom_nav">
                   <span className="prev_page" onClick={self.moveLeft}>Programs</span>
-                  <span className="next_page" onClick={self.moveRight}>Conservation</span>
+                  <span className="next_page" onClick={self.moveRight}>Natural Resources</span>
                 </div>
               </div>
 
