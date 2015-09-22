@@ -1470,7 +1470,7 @@ var Main = React.createClass({
                   :
                     <div className="centered_content">
                       <h2 className="marker">for your favorite little explorers</h2>
-                      <p>Acorn Acres is our one acre natural playscape designed for boisterous enthusiasm, outdoor physical activity, and creative play for kids of all ages. </p>
+                      <p>A place where boisterous enthusiasm, outdoor physical activity, and creative play reign supreme.</p>
                       <img className="video_play" onClick={self.toggleVideoTwo} src="/img/icon_play-video.svg" />
                     </div>
                   }

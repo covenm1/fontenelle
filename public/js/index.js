@@ -659,7 +659,7 @@ module.exports=[
   {
     "image": "/img/littleexplorers/bird-banding.jpg",
     "name": "Bird Banding",
-    "description": "See firsthand how we care for and rehabilitate injured raptors and other birds of the forest."
+    "description": "See research in action, as we tag individual birds with tiny, light-weight bird bands to study migration, behavior, and population growth."
   },
   {
     "image": "/img/littleexplorers/trail-hikes.jpg",
@@ -2748,7 +2748,7 @@ var Main = React.createClass({displayName: "Main",
                   :
                     React.createElement("div", {className: "centered_content"}, 
                       React.createElement("h2", {className: "marker"}, "for your favorite little explorers"), 
-                      React.createElement("p", null, "Acorn Acres is our one acre natural playscape designed for boisterous enthusiasm, outdoor physical activity, and creative play for kids of all ages. "), 
+                      React.createElement("p", null, "A place where boisterous enthusiasm, outdoor physical activity, and creative play reign supreme."), 
                       React.createElement("img", {className: "video_play", onClick: self.toggleVideoTwo, src: "/img/icon_play-video.svg"})
                     )
                   
