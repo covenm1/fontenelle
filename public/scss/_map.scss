@@ -47,6 +47,13 @@
 			color: $orange;
 			border: solid 2px rgba(161,70,22,0.9);
 			font-family: 'PermanentMarkerPro', Helvetica, Arial, Sans-Serif;
+			margin: 0 2px;
+			&:first-child {
+				margin-left: 0;
+			}
+			&:last-child {
+				margin-right: 0;
+			}
 		}
 
 		.map_button.active, .map_button:hover {
@@ -71,57 +78,6 @@
 
 			.map_image {
 				width: 100%;
-			}
-
-			.circle_button {
-				width: 4%;
-				height: 5%;
-				background: rgba(30,30,30,0.6);
-				position: absolute;
-				border-radius: 50%;
-				transition: 0.15s ease-out;
-				cursor: pointer;
-				&:hover {
-					background: rgba(142,49,20,0.7);
-					&:before {
-						background: rgba(142,49,20, 0.4);
-					}
-				}
-				&:before {
-				  content: '';
-				  position: absolute;
-				  width: 130%;
-				  height: 130%;
-				  background: rgba(30, 30, 30, 0.4);
-				  top: -15%;
-				  left: -15%;
-				  border-radius: 50%;
-				}
-				&.small {
-					width: 1.5%;
-					height: 1.9%;
-				}
-			}
-
-			.circle_button.natureCenter {
-				top: 25%;
-				left: 24%;
-			}
-			.circle_button.northernFloodplains {
-				top: 28%;
-				left: 51%;
-			}
-			.circle_button.northernUplands {
-				top: 38%;
-				left: 39%;
-			}
-			.circle_button.southernUplands {
-				top: 57%;
-				left: 56%;
-			}
-			.circle_button.greatMarsh {
-				top: 57%;
-				left: 71%;
 			}
 		}
 	}
@@ -208,31 +164,6 @@
 	}
 }
 
-.map_wrapper.open.natureCenter {
-	.nav_menu:hover {
-		top: -80px;
-	}
-}
-.map_wrapper.open.northernFloodplains {
-	.nav_menu:hover {
-		top: -120px;
-	}
-}
-.map_wrapper.open.northernUplands {
-	.nav_menu:hover {
-		top: -160px;
-	}
-}
-.map_wrapper.open.southernUplands {
-	.nav_menu:hover {
-		top: -200px;
-	}
-}
-.map_wrapper.open.greatMarsh {
-	.nav_menu:hover {
-		top: -240px;
-	}
-}
 .drawer {
 	text-align: left;
 	.drawer_image {
@@ -257,160 +188,43 @@
 		 }
 	}
 }
-.map_wrapper.natureCenter {
-	.circle_button.small_0 {
-		top: 30%;
-		left: 21%;
-	}
-	.circle_button.small_1 {
-		top: 24%;
-		left: 21%;
-	}
-	.circle_button.small_2 {
-		top: 28%;
-		left: 28%;
-	}
-	.circle_button.small_3 {
-		top: 23%;
-		left: 26%;
-	}
-}
 
-.map_wrapper.northernFloodplains {
-	.circle_button.small_0 {
-		top: 27.5%;
-		left: 59.5%;
-	}
-	.circle_button.small_1 {
-		top: 24%;
-		left: 46%;
-	}
-	.circle_button.small_2 {
-		top: 20%;
-		left: 54%;
-
-	}
-}
-
-.map_wrapper.northernUplands {
-	.circle_button.small_0 {
-		top: 30%;
-		left: 35%;
-	}
-	.circle_button.small_1 {
-		top: 27%;
-		left: 44%;
-	}
-	.circle_button.small_2 {
-		top: 48.5%;
-		left: 40.5%;
-	}
-}
-
-.map_wrapper.southernUplands {
-	.circle_button.small_0 {
-		top: 70.3%;
-		left: 56.5%;
-	}
-	.circle_button.small_1 {
-		top: 51%;
-		left: 63%;
-	}
-	.circle_button.small_2 {
-		top: 54%;
-		left: 57%;
-	}
-}
-
-.map_wrapper.greatMarsh {
-	.circle_button.small_0 {
-		top: 48%;
-		left: 72%;
-	}
-	.circle_button.small_1 {
-		top: 60%;
-		left: 82%;
-	}
-	.circle_button.small_2 {
-		top: 59%;
-		left: 69%;
-	}
-}
-
-.hover_0 {
-	.big_0 {
-		.drawer_content {
-			color: $orange;
+.map_wrapper {
+	svg.trailmap {
+		#south-floodplain, #south-uplands, #north-floodplain, #north-uplands, #nature-center {
+			stroke: #D1D1D1;
+			transition: 0.15s ease-out;
+			stroke-width: 3;
 		}
 	}
-	.small_0.circle_button {
-		background: rgba(142,49,20,0.7) !important;
-		&:before {
-			background: rgba(142,49,20, 0.4) !important;
+	&.natureCenter {
+		svg.trailmap #nature-center {
+			stroke: $forest_color;
+			stroke-width: 4;
 		}
 	}
-}
-
-.hover_1 {
-	.big_1 {
-		.drawer_content {
-			color: $orange;
+	&.northernFloodplains {
+		svg.trailmap #north-floodplain {
+			stroke: $forest_color;
+			stroke-width: 4;
 		}
 	}
-	.small_1.circle_button {
-		background: rgba(142,49,20,0.7) !important;
-		&:before {
-			background: rgba(142,49,20, 0.4) !important;
+	&.northernUplands {
+		svg.trailmap #north-uplands {
+			stroke: $forest_color;
+			stroke-width: 4;
 		}
 	}
-}
-
-.hover_2 {
-	.big_2 {
-		.drawer_content {
-			color: $orange;
+	&.southernUplands {
+		svg.trailmap #south-uplands {
+			stroke: $forest_color;
+			stroke-width: 4;
 		}
 	}
-	.small_2.circle_button {
-		background: rgba(142,49,20,0.7) !important;
-		&:before {
-			background: rgba(142,49,20, 0.4) !important;
+	&.greatMarsh {
+		svg.trailmap #south-floodplain {
+			stroke: $forest_color;
+			stroke-width: 4;
 		}
 	}
-}
-
-.hover_3 {
-	.big_3 {
-		.drawer_content {
-			color: $orange;
-		}
-	}
-	.small_3.circle_button {
-		background: rgba(142,49,20,0.7) !important;
-		&:before {
-			background: rgba(142,49,20, 0.4) !important;
-		}
-	}
-}
-
-.hover_4 {
-	.big_4 {
-		.drawer_content {
-			color: $orange;
-		}
-	}
-	.small_4.circle_button {
-		background: rgba(142,49,20,0.7) !important;
-		&:before {
-			background: rgba(142,49,20, 0.4) !important;
-		}
-	}
-}
-
-.map_wrapper.open.natureCenter .circle_button.natureCenter,
-.map_wrapper.open.northernFloodplains .circle_button.northernFloodplains,
-.map_wrapper.open.northernUplands .circle_button.northernUplands,
-.map_wrapper.open.southernUplands .circle_button.southernUplands,
-.map_wrapper.open.greatMarsh .circle_button.greatMarsh   {
-	display: none;
 }

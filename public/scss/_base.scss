@@ -73,6 +73,15 @@ $page_color: black;
 
 .egg_wrap {
   background: url(/img/eggshell.jpg);
+  &.padded {
+    padding: 50px 0;
+  }
+  &.bpadded {
+    padding-bottom: 50px;
+  }
+  &.tpadded {
+    padding-top: 50px;
+  }
 }
 
 /* Header */
