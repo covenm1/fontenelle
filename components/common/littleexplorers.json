@@ -1,0 +1,43 @@
+[
+  {
+    "image": "/img/littleexplorers/acorn-acres.jpg",
+    "name": "Acorn Acres",
+    "description": "Climb, explore, interact in our one-acre natural playscape for unstructured play."
+  },
+  {
+    "image": "/img/littleexplorers/habitat-hollow-indoor.jpg",
+    "name": "Habitat Hollow Indoor Play Area",
+    "description": "Try on an animal costume, crawl through a tunnel, or climb up into the tree house in our year-round indoor kids play area, downstairs in the nature center."
+  },
+  {
+    "image": "/img/littleexplorers/naturalist.jpg",
+    "name": "Meet A Naturalist",
+    "description": "Learn about the forest's animals, plants, and insects in person with small group presentations with our naturalists."
+  },
+  {
+    "image": "/img/littleexplorers/boardwalk.jpg",
+    "name": "Boardwalk",
+    "description": "Stretch your legs or take a moment to catch your breath under the canopy of trees and sounds of nature."
+  },
+  {
+    "image": "/img/littleexplorers/nature-center.jpg",
+    "name": "Nature Center",
+    "description": "Get up and close and personal with snakes, frogs, turtles and other small creatures of the forest."
+  },
+  {
+    "image": "/img/littleexplorers/bird-banding.jpg",
+    "name": "Bird Banding",
+    "description": "See firsthand how we care for and rehabilitate injured raptors and other birds of the forest."
+  },
+  {
+    "image": "/img/littleexplorers/trail-hikes.jpg",
+    "name": "Hike the Trails",
+    "description": "Get your feet moving and follow your favorite trail. "
+  },
+  {
+    "image": "/img/littleexplorers/events.jpg",
+    "name": "Family Events",
+    "description": "There's always something happening for families at Fontenelle, with fun events throughout the year, like Halloween in the Forest."
+  },
+
+]
