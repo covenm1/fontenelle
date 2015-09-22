@@ -152,7 +152,7 @@
 			}
 		}
 		.reset_button:before {
-			content: '<<';
+			content: '<';
 			display: inline-block;
 		}
 		.map_button:hover {
@@ -176,7 +176,7 @@
 	}
 	.drawer_content {
 		display: inline-block;
-		width: 300px;
+		width: 375px;
 		vertical-align: top;
 		 padding: 0 10px;
 		 color: #444;

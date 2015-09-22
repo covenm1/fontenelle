@@ -13,18 +13,21 @@ var Footer = require('../../common/footer.jsx');
 
 var ScrollMagic = require('scrollmagic');
 
-var classes_data = require('../../../public/js/classes.json');
+var classes_data = require('../../common/classes.json');
 
 var ClassThing = React.createClass({
   render: function() {
+    var self = this;
     return (
       <div className="class">
-        <h2>{this.props.name}</h2>
-        <p>{this.props.age}</p>
-        <p>{this.props.science_standards}</p>
-        <p>{this.props.series}</p>
-        <p>{this.props.duration}</p>
-        <p>{this.props.description}</p>
+        { self.props.categories.length ?
+          <span className="icons">
+            { self.props.categories.indexOf('forest') > -1 ? <img src="/img/education/icon_outdoor-grey.svg" /> : null }
+            { self.props.categories.indexOf('nature') > -1 ? <img src="/img/education/icon_indoor-grey.svg" /> : null }
+          </span>
+        : null }
+        <h2 className="marker color" onClick={self.props.show}>{self.props.name}</h2>
+        <p>{self.props.level}</p>
       </div>
     )
   }
@@ -32,29 +35,66 @@ var ClassThing = React.createClass({
 
 var ClassList = React.createClass({
   getInitialState: function() {
-    return {classes: classes_data, current_classes: classes_data, video: false}
+    return {classes: classes_data, current_class: {}, video: false}
   },
 
   natureFilter: function(){
-    var natureClasses = self.state.classes
+    var natureClasses = self.state.classes;
   },
+
+  showClass: function(object){
+    var self = this;
+    self.setState({current_class: object});
+  },
+
+  resetClass: function(){
+    var self = this;
+    self.setState({current_class: {}});
+  },
+
   render: function() {
     var self = this;
-    var classes = self.state.current_classes.map(function(object) {
+    var classes = self.state.classes.map(function(object) {
 
       return <ClassThing
         name={object.name}
-        age={object.age}
-        science_standards={object.science_standards}
-        series={object.series}
-        duration={object.duration}
-        description={object.description}  />
+        level={object.level}
+        standards={object.standards}
+        categories={object.categories}
+        length={object.length}
+        description={object.description}
+        show={self.showClass.bind(self,object)} />
+
     });
-    return (
-      <div className="classes">
-        { classes }
-      </div>
-    )
+    var current_class = self.state.current_class;
+    if (current_class.length) {
+      return (
+        <div className="current_class">
+          <p className="reset_class"  onClick={self.resetClass}>&lt;</p>
+          <div className="main_class">
+            <h2 className="marker color">{ current_class.name }</h2>
+            <p>{ current_class.description }</p>
+            { current_class.categories.length ?
+              <span className="icons">
+                { current_class.categories.indexOf('forest') > -1 ? <span className="category marker color"><img src="/img/education/icon_outdoor-grey.svg" /> Fontenell Forest</span> : null }
+                { current_class.categories.indexOf('nature') > -1 ? <span className="category marker color"><img src="/img/education/icon_indoor-grey.svg" /> Forest On-The-Go</span> : null }
+              </span>
+            : null }
+            <div className="details">
+              <p>LEVEL<br />{ current_class.level }</p>
+              <p>LENGTH<br />{ current_class.length }</p>
+              <p>NE STATE SCIENCE STANDARDS<br />{ current_class.standards }</p>
+            </div>
+          </div>
+        </div>
+      )
+    } else {
+      return (
+        <div className="classes">
+          { classes }
+        </div>
+      )
+    }
   }
 });
 
@@ -88,7 +128,7 @@ var Main = React.createClass({
 
   moveLeft: function(){
     this.props.transition('slide-back');
-    this.transitionTo('conservation');
+    this.transitionTo('natural-resources');
   },
 
 
@@ -144,13 +184,23 @@ var Main = React.createClass({
               <div className="egg_wrap">
                 <div className='image_container'>
                   <img src="/img/education/middle.jpg" />
-                  <img src={classImage} onClick={self.toggleClass}/>
+                </div>
+              </div>
+
+              <div className="egg_wrap">
+                <div className='image_container'>
+                  <ClassList />
+                </div>
+              </div>
+
+              <div className="egg_wrap">
+                <div className='image_container'>
                   <img src="/img/education/bottom.jpg" />
                 </div>
               </div>
               <div className="egg_wrap">
                 <div className="main_wrapper bottom_nav">
-                  <span className="prev_page" onClick={self.moveLeft}>Conservation</span>
+                  <span className="prev_page" onClick={self.moveLeft}>Natural Resources</span>
                   <span className="next_page" onClick={self.moveRight}>Programs</span>
                 </div>
               </div>
