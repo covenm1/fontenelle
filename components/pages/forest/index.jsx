@@ -1489,7 +1489,11 @@ var Main = React.createClass({
 
               <div className="egg_wrap">
                 <div className="image_container">
-                  <img src="/img/forest/bottom.jpg" />
+                  <div className="backyard">
+                    <h2 className="marker color">In Our Backyard</h2>
+                    <p>Conveniently located off Hwy 75 and just minutes from downtown Omaha, Fontenelle Forest is a quiet gem right in our backyard.</p>
+                  </div>
+                  <img src="/img/forest/skyline_orange.jpg" />
                 </div>
               </div>
 

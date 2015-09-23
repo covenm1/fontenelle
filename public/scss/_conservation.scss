@@ -180,3 +180,17 @@
     padding-bottom: 1em;
   }
 }
+
+.natural-resources {
+  .color {
+    color: $conservation_color;
+    font-size: 50px;
+    text-align: center;
+  }
+  .content_container {
+    .video_overlay {
+      background-image: url('/img/forest/pattern_video-overlay.svg');
+      opacity: 0.6;
+    }
+  }
+}

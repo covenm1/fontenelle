@@ -46,6 +46,12 @@
   color: $education_color;
 }
 
+.education .backyard .color {
+  color: $education_color;
+  font-size: 50px;
+  text-align: center;
+}
+
 .current_class {
   background-color: rgba(106,130,72,.1);
   padding: 50px 30px 100px;
@@ -90,7 +96,8 @@
   }
   .enhance {
     font-size: 14px;
-    font-family: 'robotobold';
+    font-family: 'roboto';
+    font-weight: bold;
     float: left;
     a.download_pdf {
       border-radius: 10px;
@@ -101,7 +108,8 @@
   }
   .signup {
     font-size: 14px;
-    font-family: 'robotobold';
+    font-family: 'roboto';
+    font-weight: bold;
     float: right;
     a {
       color: $education_color;
@@ -252,7 +260,8 @@
     .small_text {
       font-size: 12px;
       strong {
-        font-family: 'robotobold';
+        font-family: 'roboto';
+        font-weight: bold;
       }
     }
   }

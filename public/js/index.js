@@ -155,25 +155,25 @@ var App = React.createClass({displayName: "App",
 					React.createElement("span", {className: "close_menu_button", onClick: self.toggleMenu}, "×"), 
 					React.createElement("div", {className: "sidebar_links"}, 
 						React.createElement(Link, {to: "/", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "forest main"}, "Forest")), 
-						React.createElement("a", {href: "#", className: "link section", onClick: self.toggleMenu}, "Trails"), 
-						React.createElement("a", {href: "#", className: "link section", onClick: self.toggleMenu}, "Fauna & Flora"), 
-						React.createElement("a", {href: "#", className: "link section", onClick: self.toggleMenu}, "Young Adventurers"), 
+						React.createElement("a", {href: "/#trails", className: "link section", onClick: self.toggleMenu}, "Trails"), 
+						React.createElement("a", {href: "/#fauna", className: "link section", onClick: self.toggleMenu}, "Fauna & Flora"), 
+						React.createElement("a", {href: "/#young", className: "link section", onClick: self.toggleMenu}, "Young Adventurers"), 
 						React.createElement(Link, {to: "/natural-resources", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "conservation main"}, "Natural Resources")), 
-						React.createElement("a", {href: "#", className: "link section", onClick: self.toggleMenu}, "History"), 
-						React.createElement("a", {href: "#", className: "link section", onClick: self.toggleMenu}, "Habitat Management"), 
+						React.createElement("a", {href: "/natural-resources#history", className: "link section", onClick: self.toggleMenu}, "History"), 
+						React.createElement("a", {href: "/natural-resources#habitat", className: "link section", onClick: self.toggleMenu}, "Habitat Management"), 
 						React.createElement(Link, {to: "/natural-resources#raptor", className: "link section", onClick: self.toggleMenu}, "Raptor Recovery"), 
 						React.createElement(Link, {to: "/education", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "education main"}, "Education")), 
-						React.createElement("a", {href: "#", className: "link section", onClick: self.toggleMenu}, "Classes"), 
+						React.createElement("a", {href: "/education#classes", className: "link section", onClick: self.toggleMenu}, "Classes"), 
 						React.createElement(Link, {to: "/programs", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "programs main"}, "Programs")), 
-						React.createElement("a", {href: "#", className: "link section", onClick: self.toggleMenu}, "Kids"), 
-						React.createElement("a", {href: "#", className: "link section", onClick: self.toggleMenu}, "Adults"), 
-						React.createElement("a", {href: "#", className: "link section", onClick: self.toggleMenu}, "Groups"), 
-						React.createElement(Link, {to: "/", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Forest Now")), 
-						React.createElement(Link, {to: "/", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Donate")), 
-						React.createElement(Link, {to: "/", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Membership")), 
-						React.createElement(Link, {to: "/", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Volunteer")), 
-						React.createElement(Link, {to: "/", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Board")), 
-						React.createElement(Link, {to: "/", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Staff")), 
+						React.createElement("a", {href: "/programs#kids", className: "link section", onClick: self.toggleMenu}, "Kids"), 
+						React.createElement("a", {href: "/programs#adults", className: "link section", onClick: self.toggleMenu}, "Adults"), 
+						React.createElement("a", {href: "/programs#groups", className: "link section", onClick: self.toggleMenu}, "Groups"), 
+						React.createElement(Link, {to: "/forest-now", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Forest Now")), 
+						React.createElement(Link, {to: "/get-involved", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Donate")), 
+						React.createElement(Link, {to: "/get-involved", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Membership")), 
+						React.createElement(Link, {to: "/get-involved", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Volunteer")), 
+						React.createElement(Link, {to: "/board-of-directors", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Board")), 
+						React.createElement(Link, {to: "/hours-and-admissions", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Hours and Admissions")), 
 						React.createElement(Link, {to: "/contact", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Contact"))
 					)
 				), 
@@ -1202,6 +1202,10 @@ var Main = React.createClass({displayName: "Main",
 
               React.createElement("div", {className: "egg_wrap"}, 
                 React.createElement("div", {className: "image_container"}, 
+                  React.createElement("div", {className: "backyard"}, 
+                    React.createElement("h2", {className: "marker color"}, "In Our Backyard"), 
+                    React.createElement("p", null, "Conveniently located off Hwy 75 and just minutes from downtown Omaha, Fontenelle Forest is a quiet gem right in our backyard.")
+                  ), 
                   React.createElement("img", {src: "/img/conservation/skyline_blue.jpg"})
                 )
               ), 
@@ -1723,6 +1727,10 @@ var Main = React.createClass({displayName: "Main",
 
               React.createElement("div", {className: "egg_wrap"}, 
                 React.createElement("div", {className: "image_container"}, 
+                  React.createElement("div", {className: "backyard"}, 
+                    React.createElement("h2", {className: "marker color"}, "In Our Backyard"), 
+                    React.createElement("p", null, "Conveniently located off Hwy 75 and just minutes from downtown Omaha, Fontenelle Forest is a quiet gem right in our backyard.")
+                  ), 
                   React.createElement("img", {src: "/img/education/skyline_green.jpg"})
                 )
               ), 
@@ -3252,7 +3260,11 @@ var Main = React.createClass({displayName: "Main",
 
               React.createElement("div", {className: "egg_wrap"}, 
                 React.createElement("div", {className: "image_container"}, 
-                  React.createElement("img", {src: "/img/forest/bottom.jpg"})
+                  React.createElement("div", {className: "backyard"}, 
+                    React.createElement("h2", {className: "marker color"}, "In Our Backyard"), 
+                    React.createElement("p", null, "Conveniently located off Hwy 75 and just minutes from downtown Omaha, Fontenelle Forest is a quiet gem right in our backyard.")
+                  ), 
+                  React.createElement("img", {src: "/img/forest/skyline_orange.jpg"})
                 )
               ), 
 
@@ -3904,7 +3916,11 @@ var Main = React.createClass({displayName: "Main",
               React.createElement("div", {className: "egg_wrap"}, 
                 React.createElement("div", {className: "image_container"}, 
                   React.createElement("img", {src: classImage, onClick: self.toggleClass}), 
-                  React.createElement("img", {src: "/img/programs/bottom.jpg"})
+                  React.createElement("div", {className: "backyard"}, 
+                    React.createElement("h2", {className: "marker color"}, "In Our Backyard"), 
+                    React.createElement("p", null, "Conveniently located off Hwy 75 and just minutes from downtown Omaha, Fontenelle Forest is a quiet gem right in our backyard.")
+                  ), 
+                  React.createElement("img", {src: "/img/programs/skyline_red.jpg"})
                 )
               ), 
               React.createElement("div", {className: "egg_wrap"}, 
