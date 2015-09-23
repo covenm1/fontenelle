@@ -36,6 +36,47 @@
   }
 }
 
+.program_item {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-bottom : 2px solid #d1d1d1;
+  padding: 10px 0;
+  cursor: pointer;
+  
+  .name {
+    flex: 2;
+    margin: 0;
+    .program_name {
+      display: block;
+      color: $programs_color;
+      text-transform: uppercase;
+      font-size: 20px;
+    }
+    .program_description {
+      display: block;
+      font-size: 16px;
+      font-weight: 100;
+      font-family: 'roboto';
+    }
+  }
+  .program_arrow {
+    flex: 0 100px;
+    text-align: center;
+    img {
+      width: 50px;
+    }
+    .more_info {
+      display: block;
+      text-transform: uppercase;
+      font-family: 'roboto_condensedbold';
+      color: #838383;
+      font-size: 15px;
+    }
+  }
+}
+
 .video_close {
   border: 2px solid white;
   border-radius: 50%;

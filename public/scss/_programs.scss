@@ -48,8 +48,51 @@
   }
 }
 
-.programs .color {
-  color: $programs_color;
-  font-size: 50px;
-  text-align: center;
+.for_kids_container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  .image_container {
+    flex: 2;
+    img {
+      max-width: 100%;
+    }
+  }
+  .copy_container {
+    flex: 3;
+    h2 {
+      font-size: 50px;
+      text-align: left;
+    }
+    p {
+      font-size: 20px;
+    }
+  }
+}
+
+.spider {
+  transition: 0.15s ease-out;
+  &.rotated {
+    transform: rotateY(180deg) rotate(-125deg);
+  }
+}
+
+
+.programs {
+  .quiet_wild_container .copy_container h2 {
+    color: $programs_color;
+  }
+  .color {
+    color: $programs_color;
+    font-size: 50px;
+    text-align: center;
+  }
+
+  .current_class {
+    background-color: rgba(158,24,38,0.1);
+    .reset_class {
+      border-color: $programs_color;
+      color: $programs_color;
+    }
+  }
 }
