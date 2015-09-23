@@ -22,6 +22,7 @@
 
 	.timeline {
     position: relative;
+    transition: 0.25s ease-out;
     .the_line {
       height: 2px;
       background: #ccc;
@@ -29,13 +30,13 @@
       position: absolute;
       margin: 15px;
       left: 100px;
-      top: 80px;
+      top: 83px;
     }
 		.timeline_item {
 			width: 400px;
       margin: 15px;
 			display: inline-block;
-			vertical-align: middle;
+			vertical-align: top;
       position: relative;
       .timeline_container {
         background: white;
@@ -96,6 +97,29 @@
       color: $conservation_color;
       font-size: 50px;
     }
+  }
+}
+.timeline_wrapper {
+  position: relative;
+}
+.timeline_button {
+  position: absolute;
+  width: 35px;
+  // transition: 0.15s ease-out;
+  z-index: 1;
+  cursor: pointer;
+
+  &.right {
+    top: 15px;
+    right: 15px;
+  }
+  &.left {
+    left: 15px;
+    top: 10px;
+    transform: rotate(180deg);
+  }
+  &:hover {
+    opacity: 0.7;
   }
 }
 

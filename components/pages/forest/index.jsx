@@ -112,7 +112,7 @@ var Main = React.createClass({
       {
         title: "Habitat Hollow",
         description: "This short, level trail is a great option when you want a short jaunt off the boardwalk. ",
-        image: "/img/map_photos/small/2RiverviewBoardwalkSummer2.jpg"
+        image: "/img/map_photos/small/nature-center.jpg"
       },
       {
         title: "Riverview Boardwalk",
@@ -137,7 +137,7 @@ var Main = React.createClass({
       {
         title: "Trailheads at the Wetlands Learning Center",
         description: "With 5 trailheads nearby, the Wetlands Learning center is a great spot to park and while you discover a new trail.",
-        image: "/img/map_photos/small/1NatureCenterWinter.jpg"
+        image: "/img/map_photos/small/nature-center.jpg"
       },
       {
         title: "Gifford Memorial Boardwalk",
@@ -166,12 +166,12 @@ var Main = React.createClass({
       {
         title: "Camp Gifford",
         description: "A young Henry Fonda spent time with other scouts at Camp Gifford. You can still see concrete bunkhouse foundations from Stream Trail.",
-        image: "/img/map_photos/small/4NorthernFloodplainsFall.jpg"
+        image: "/img/map_photos/small/nature-center.jpg"
       },
       {
         title: "Stream Trail",
         description: "Hike along the stream where you can see beavers, frogs, and other wildlife.",
-        image: "/img/map_photos/small/stream-trail."
+        image: "/img/map_photos/small/stream-trail.jpg"
       },
       {
         title: "Cottonwood Trail",
@@ -195,7 +195,7 @@ var Main = React.createClass({
       {
         title: "Earth Lodges",
         description: "Along the ridges of Oak Trail and Hawthorn Trail you can find depressions that mark 1000 year old sites of Native American earth lodges.",
-        image: "/img/map_photos/small/2AcornAcresFall.jpg"
+        image: "/img/map_photos/small/nature-center.jpg"
       },
       {
         title: "Scenic, ridge-top Oak Trail",
@@ -204,8 +204,8 @@ var Main = React.createClass({
       },
       {
         title: "Child’s MIll",
-        description: "",
-        image: "/img/map_photos/small/4NorthernFloodplainsFall.jpg"
+        description: "In the 1850’s Charles Childs owned a large section of Fontenelle Forest. His and other logging operations left trails throughout the forest, some of which eventually became the trails we hike today.",
+        image: "/img/map_photos/small/nature-center.jpg"
       }
     ];
     var drawer_overview = {
@@ -238,7 +238,7 @@ var Main = React.createClass({
       },
       {
         title: "History Trail",
-        description: "",
+        description: "Follow a self guided tour of 15 historic locations throughout Fontenelle Forest.",
         image: "/img/map_photos/small/history-trail.jpg"
       }
     ];
