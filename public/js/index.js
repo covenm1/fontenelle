@@ -1151,6 +1151,15 @@ var ClassList = React.createClass({displayName: "ClassList",
               React.createElement("p", null, "LEVEL", React.createElement("br", null),  current_class.level), 
               React.createElement("p", null, "LENGTH", React.createElement("br", null),  current_class.length), 
               React.createElement("p", null, "NE STATE SCIENCE STANDARDS", React.createElement("br", null),  current_class.standards)
+            ), 
+            React.createElement("div", {className: "enhance"}, 
+              React.createElement("p", null, "Enhance your class experience with pre and post class activities."), 
+              React.createElement("a", {href: "", className: "download_pdf"}, "Download PDF")
+            ), 
+            React.createElement("div", {className: "signup"}, 
+              React.createElement("p", null, "To sign up, contact:"), 
+              React.createElement("p", null, React.createElement("a", {href: "education@fontenelleforest.org"}, "education@fontenelleforest.org")), 
+              React.createElement("a", {href: ""}, "(402) 731-3140")
             )
           )
         )
@@ -3453,7 +3462,8 @@ var Main = React.createClass({displayName: "Main",
                 React.createElement("div", {className: "programs_video_wrapper"}, 
                    video ?
                     React.createElement("div", {className: "centered_content wide"}, 
-                      React.createElement("div", {className: "embed-container"}, React.createElement("iframe", {src: "https://www.youtube.com/embed/f_rum7pLqZc", frameBorder: "0", allowFullScreen: true}))
+                      React.createElement("span", {className: "video_close", onClick: self.toggleVideo}, "×"), 
+                      React.createElement("div", {className: "embed-container"}, React.createElement("iframe", {src: "https://www.youtube.com/embed/f_rum7pLqZc?autoplay=1", frameBorder: "0", allowFullScreen: true}))
                     )
                   :
                     React.createElement("div", {className: "centered_content"}, 

@@ -73,6 +73,7 @@
   .icons {
     img {
       width: 50px;
+      margin:0 auto;
     }
   }
   .details {
@@ -85,6 +86,25 @@
       color: #838383;
       font-weight: bold;
       text-align: center;
+    }
+  }
+  .enhance {
+    font-size: 14px;
+    font-family: 'robotobold';
+    float: left;
+    a.download_pdf {
+      border-radius: 10px;
+      border: 2px solid $education_color;
+      padding: 5px 30px;
+      color: $education_color;
+    }
+  }
+  .signup {
+    font-size: 14px;
+    font-family: 'robotobold';
+    float: right;
+    a {
+      color: $education_color;
     }
   }
 }
