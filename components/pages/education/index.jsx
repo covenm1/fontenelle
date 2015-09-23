@@ -161,17 +161,29 @@ var Main = React.createClass({
         <div className="page">
           <div className="page_wrapper">
             <div className="page_container" id="page">
-              <div className="egg_wrap">
-                <div className='image_container'>
-                  <img src="/img/education/top.jpg" />
+              <div className="egg_wrap living_classroom_container">
+                <div className="living_classroom copy_container">
+                  <img src="/img/divider/VINE-top-long.svg" />
+                  <h2 className="marker">A living classroom</h2>
+                  <p>The Forest offers nearly unlimited opportunities for learning. Over 100,000 youth and adults each year take part in environmental education programs through Fontenelle.</p>
+                  <div className="vine_bottom">
+                    <img className="left-half" src="/img/divider/VINE-bottom-left-half.svg" />
+                    <img className="down-orange" src="/img/education/icon_down_green.svg" />
+                    <img className="right-half" src="/img/divider/VINE-bottom-right-half.svg" />
+                  </div>
+                </div>
+                <div className="living_classroom image_container">
+                  <img src="/img/education/caterpillar.png" />
                 </div>
               </div>
+
               <div className="education_video" style={video_style}>
                 <div className="education video_overlay"></div>
                 <div className="education_video_wrapper">
                   { video ?
                     <div className="centered_content wide">
-                      <div className='embed-container'><iframe src='https://www.youtube.com/embed/tdohcrA-o8M' frameBorder='0' allowFullScreen></iframe></div>
+                      <span className="video_close" onClick={self.toggleVideo}>×</span>
+                      <div className='embed-container'><iframe src='https://www.youtube.com/embed/tdohcrA-o8M?autoplay=1' frameBorder='0' allowFullScreen></iframe></div>
                     </div>
                   :
                     <div className="centered_content">
@@ -181,9 +193,22 @@ var Main = React.createClass({
                   }
                 </div>
               </div>
-              <div className="egg_wrap">
+
+              <div className="egg_wrap classes_container">
+                <div className="living_classroom copy_container">
+                  <h2 className="marker in_forest">In the Forest</h2>
+                  <p>Book your next field trip with Fontenelle Forest! Our experienced educators will provide an engaging, hands-on program for your group. Each program includes an indoor and outdoor portion. To register for a school program for the 2011/2012 school year, please contact the FF Education Department at (402) 731-3140. For directions to the nature centers, click here.</p>
+                  <p className="small_text"><strong>Once you have booked a field trip</strong>, be sure to take advantage of the activities provided below. These activities will greatly enhance your students' field trip experience - and they're a lot of fun!</p>
+                </div>
+                <div className="living_classroom copy_container">
+                  <h2 className="marker on_go">Nature On-The-Go</h2>
+                  <p>Nature-On-the-Go traveling programs introduce hands-on natural science programs to your students. During each program, your students will explore a variety of topics. These are great to supplement your school-day lessons or as an after-school program.</p>
+                  <p className="small_text"><strong>To schedule a program</strong>, call our Manager of Programming and Outreach at 402-731-3140 x1026</p>
+                  <p className="small_text">All programs are aligned with Nebraska State Science Standards.</p>
+                  <p className="small_text">Each program is 45–60 minutes long. Maximum 30 students per On-the-Go program. For groups larger than 30, multiple programs must be scheduled.</p>
+                </div>
                 <div className='image_container'>
-                  <img src="/img/education/middle.jpg" />
+                  <img src="/img/education/flowers.png" />
                 </div>
               </div>
 
@@ -195,7 +220,7 @@ var Main = React.createClass({
 
               <div className="egg_wrap">
                 <div className='image_container'>
-                  <img src="/img/education/bottom.jpg" />
+                  <img src="/img/education/skyline_green.jpg" />
                 </div>
               </div>
               <div className="egg_wrap">

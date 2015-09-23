@@ -1035,6 +1035,14 @@ var Main = React.createClass({displayName: "Main",
       backgroundImage: 'url(/img/conservation/Natural-Resources-trail-photo.jpg)'
     }
 
+    var videoTwo_style = {
+      backgroundImage: 'url(/img/conservation/Meet-Raptors.jpg)'
+    }
+
+    var videoThree_style = {
+      backgroundImage: 'url(/img/conservation/urban-wildlife.jpg)'
+    }
+
       return (
         React.createElement("div", {className: "page"}, 
           React.createElement("div", {className: "page_wrapper"}, 
@@ -1063,7 +1071,7 @@ var Main = React.createClass({displayName: "Main",
                 )
               ), 
 
-              React.createElement("div", {className: "tearjerker_video", style: videoOne_style}, 
+              React.createElement("div", {className: "tearjerker_video thousandyears", style: videoOne_style}, 
                 React.createElement("div", {className: "thousandyears video_overlay"}), 
                 React.createElement("div", {className: "tearjerker_wrapper"}, 
                   React.createElement("div", {className: "centered_content"}, 
@@ -1156,9 +1164,14 @@ var Main = React.createClass({displayName: "Main",
                 )
               ), 
 
-              React.createElement("div", {className: "egg_wrap"}, 
-                React.createElement("div", {className: "image_container"}, 
-                  React.createElement(Link, {to: "/meet-the-raptors"}, React.createElement("img", {src: "/img/conservation/meetraptors.jpg", id: "raptor"}))
+              React.createElement("div", {className: "tearjerker_video meetraptors", style: videoTwo_style}, 
+                React.createElement("div", {className: "meetraptors video_overlay"}), 
+                React.createElement("div", {className: "tearjerker_wrapper"}, 
+                  React.createElement("div", {className: "centered_content"}, 
+                    React.createElement("h2", {className: "marker"}, "Meet the Raptors"), 
+                    React.createElement("p", null, "See some of the injured birds now rehabbing at Fontenelle"), 
+                    React.createElement(Link, {to: "/meet-the-raptors"}, React.createElement("img", {src: "/img/conservation/arrow_right.png"}))
+                  )
                 )
               ), 
 
@@ -1172,6 +1185,17 @@ var Main = React.createClass({displayName: "Main",
                   ), 
                   React.createElement("div", {className: "quiet_wild image_container"}, 
                     React.createElement("img", {src: "/img/conservation/birds_right.png"})
+                  )
+                )
+              ), 
+
+              React.createElement("div", {className: "tearjerker_video urbanwildlife", style: videoThree_style}, 
+                React.createElement("div", {className: "urbanwildlife video_overlay"}), 
+                React.createElement("div", {className: "tearjerker_wrapper"}, 
+                  React.createElement("div", {className: "centered_content"}, 
+                    React.createElement("h2", {className: "marker"}, "Living With Urban Wildlife"), 
+                    React.createElement("p", null, "City life is often filled with wildlife interactions. Find out some ways to make it more harmonious and see how Fontenelle Forest can help you do so."), 
+                    React.createElement("img", {src: "/img/conservation/arrow_right.png"})
                   )
                 )
               ), 
@@ -1631,17 +1655,29 @@ var Main = React.createClass({displayName: "Main",
         React.createElement("div", {className: "page"}, 
           React.createElement("div", {className: "page_wrapper"}, 
             React.createElement("div", {className: "page_container", id: "page"}, 
-              React.createElement("div", {className: "egg_wrap"}, 
-                React.createElement("div", {className: "image_container"}, 
-                  React.createElement("img", {src: "/img/education/top.jpg"})
+              React.createElement("div", {className: "egg_wrap living_classroom_container"}, 
+                React.createElement("div", {className: "living_classroom copy_container"}, 
+                  React.createElement("img", {src: "/img/divider/VINE-top-long.svg"}), 
+                  React.createElement("h2", {className: "marker"}, "A living classroom"), 
+                  React.createElement("p", null, "The Forest offers nearly unlimited opportunities for learning. \u0003Over 100,000 youth and adults each year take part in environmental \u0003education programs through Fontenelle."), 
+                  React.createElement("div", {className: "vine_bottom"}, 
+                    React.createElement("img", {className: "left-half", src: "/img/divider/VINE-bottom-left-half.svg"}), 
+                    React.createElement("img", {className: "down-orange", src: "/img/education/icon_down_green.svg"}), 
+                    React.createElement("img", {className: "right-half", src: "/img/divider/VINE-bottom-right-half.svg"})
+                  )
+                ), 
+                React.createElement("div", {className: "living_classroom image_container"}, 
+                  React.createElement("img", {src: "/img/education/caterpillar.png"})
                 )
               ), 
+
               React.createElement("div", {className: "education_video", style: video_style}, 
                 React.createElement("div", {className: "education video_overlay"}), 
                 React.createElement("div", {className: "education_video_wrapper"}, 
                    video ?
                     React.createElement("div", {className: "centered_content wide"}, 
-                      React.createElement("div", {className: "embed-container"}, React.createElement("iframe", {src: "https://www.youtube.com/embed/tdohcrA-o8M", frameBorder: "0", allowFullScreen: true}))
+                      React.createElement("span", {className: "video_close", onClick: self.toggleVideo}, "×"), 
+                      React.createElement("div", {className: "embed-container"}, React.createElement("iframe", {src: "https://www.youtube.com/embed/tdohcrA-o8M?autoplay=1", frameBorder: "0", allowFullScreen: true}))
                     )
                   :
                     React.createElement("div", {className: "centered_content"}, 
@@ -1651,9 +1687,22 @@ var Main = React.createClass({displayName: "Main",
                   
                 )
               ), 
-              React.createElement("div", {className: "egg_wrap"}, 
+
+              React.createElement("div", {className: "egg_wrap classes_container"}, 
+                React.createElement("div", {className: "living_classroom copy_container"}, 
+                  React.createElement("h2", {className: "marker in_forest"}, "In the Forest"), 
+                  React.createElement("p", null, "Book your next field trip with Fontenelle Forest! Our experienced educators will provide an engaging, hands-on program for your group. Each program includes an indoor and outdoor portion. To register for a school program for the 2011/2012 school year, please contact the FF Education Department at (402) 731-3140. For directions to the nature centers, click here."), 
+                  React.createElement("p", {className: "small_text"}, React.createElement("strong", null, "Once you have booked a field trip"), ", be sure to take advantage of the activities provided below. These activities will greatly enhance your students' field trip experience - and they're a lot of fun!")
+                ), 
+                React.createElement("div", {className: "living_classroom copy_container"}, 
+                  React.createElement("h2", {className: "marker on_go"}, "Nature On-The-Go"), 
+                  React.createElement("p", null, "Nature-On-the-Go traveling programs introduce hands-on natural science programs to your students. During each program, your students will explore a \u0003variety of topics. These are great to supplement your school-day lessons or as an after-school program."), 
+                  React.createElement("p", {className: "small_text"}, React.createElement("strong", null, "To schedule a program"), ", call our Manager of Programming and Outreach at 402-731-3140 x1026"), 
+                  React.createElement("p", {className: "small_text"}, "All programs are aligned with Nebraska State Science Standards."), 
+                  React.createElement("p", {className: "small_text"}, "Each program is 45–60 minutes long. Maximum 30 students per On-the-Go program. For groups larger than 30, multiple programs must be scheduled.")
+                ), 
                 React.createElement("div", {className: "image_container"}, 
-                  React.createElement("img", {src: "/img/education/middle.jpg"})
+                  React.createElement("img", {src: "/img/education/flowers.png"})
                 )
               ), 
 
@@ -1665,7 +1714,7 @@ var Main = React.createClass({displayName: "Main",
 
               React.createElement("div", {className: "egg_wrap"}, 
                 React.createElement("div", {className: "image_container"}, 
-                  React.createElement("img", {src: "/img/education/bottom.jpg"})
+                  React.createElement("img", {src: "/img/education/skyline_green.jpg"})
                 )
               ), 
               React.createElement("div", {className: "egg_wrap"}, 

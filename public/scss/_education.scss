@@ -24,11 +24,13 @@
       width: 500px;
       text-align: center;
       color: white;
+      position: relative;
       h2 {
         font-size: 45px;
       }
       &.wide {
         width: 1000px;
+        position: relative;
       }
     }
   }
@@ -172,4 +174,66 @@
     .class:nth-child(odd) {
         background-color: transparent;
     }
+}
+
+.living_classroom_container {
+  padding: 50px;
+  .image_container {
+    width: 80%;
+    img {
+      max-width: 100%;
+    }
+  }
+  .copy_container {
+    text-align: center;
+    width: 50%;
+    float: right;
+    h2 {
+      color: $education_color;
+      font-size: 50px;
+    }
+  }
+}
+
+.classes_container {
+  display: flex;
+  padding: 50px 50px 0 50px;
+  .image_container {
+    flex: 2;
+    img {
+      max-width: 100%;
+    }
+  }
+  .copy_container {
+    flex: 4;
+    text-align: left;
+    width: 50%;
+    float: right;
+    h2 {
+      color: $education_color;
+      font-size: 30px;
+      padding-left: 70px;
+      height: 60px;
+    }
+    .on_go {
+      background-image: url('/img/education/icon_on_go.png');
+      background-repeat: no-repeat;
+      background-position: left;
+    }
+    .in_forest {
+      background-image: url('/img/education/icon_in_forest.png');
+      background-repeat: no-repeat;
+      background-position: left;
+    }
+    p {
+      padding-left: 70px;
+      padding-right: 30px;
+    }
+    .small_text {
+      font-size: 12px;
+      strong {
+        font-family: 'robotobold';
+      }
+    }
+  }
 }

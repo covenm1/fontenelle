@@ -188,6 +188,14 @@ var Main = React.createClass({
       backgroundImage: 'url(/img/conservation/Natural-Resources-trail-photo.jpg)'
     }
 
+    var videoTwo_style = {
+      backgroundImage: 'url(/img/conservation/Meet-Raptors.jpg)'
+    }
+
+    var videoThree_style = {
+      backgroundImage: 'url(/img/conservation/urban-wildlife.jpg)'
+    }
+
       return (
         <div className="page">
           <div className="page_wrapper">
@@ -216,7 +224,7 @@ var Main = React.createClass({
                 </div>
               </div>
 
-              <div className="tearjerker_video" style={videoOne_style}>
+              <div className="tearjerker_video thousandyears" style={videoOne_style}>
                 <div className="thousandyears video_overlay"></div>
                 <div className="tearjerker_wrapper">
                   <div className="centered_content">
@@ -309,9 +317,14 @@ var Main = React.createClass({
                 </div>
               </div>
 
-              <div className="egg_wrap">
-                <div className='image_container'>
-                  <Link to="/meet-the-raptors" ><img src="/img/conservation/meetraptors.jpg" id="raptor" /></Link>
+              <div className="tearjerker_video meetraptors" style={videoTwo_style}>
+                <div className="meetraptors video_overlay"></div>
+                <div className="tearjerker_wrapper">
+                  <div className="centered_content">
+                    <h2 className="marker">Meet the Raptors</h2>
+                    <p>See some of the injured birds now rehabbing at Fontenelle</p>
+                    <Link to="/meet-the-raptors" ><img src="/img/conservation/arrow_right.png" /></Link>
+                  </div>
                 </div>
               </div>
 
@@ -325,6 +338,17 @@ var Main = React.createClass({
                   </div>
                   <div className="quiet_wild image_container">
                     <img src="/img/conservation/birds_right.png" />
+                  </div>
+                </div>
+              </div>
+
+              <div className="tearjerker_video urbanwildlife" style={videoThree_style}>
+                <div className="urbanwildlife video_overlay"></div>
+                <div className="tearjerker_wrapper">
+                  <div className="centered_content">
+                    <h2 className="marker">Living With Urban Wildlife</h2>
+                    <p>City life is often filled with wildlife interactions. Find out some ways to make it more harmonious and see how Fontenelle Forest can help you do so.</p>
+                    <img src="/img/conservation/arrow_right.png" />
                   </div>
                 </div>
               </div>
