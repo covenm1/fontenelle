@@ -102,12 +102,12 @@ var Main = React.createClass({
       {
         title: "The Nature Center",
         description: "This 25000 square foot building is the home to classrooms, rotating exhibits, and the Fontenelle Forest main offices. Stop by the front desk to grab a map and check the ranger board for the latest on wildlife activity.",
-        image: "/img/map_photos/small/1NatureCenterWinter.jpg"
+        image: "/img/map_photos/small/nature-center.jpg"
       },
       {
         title: "Acorn Acres",
         description: "Just outside the Nature Center, this natural playscape offers children a unique place for unstructured play and outdoor learning",
-        image: "/img/map_photos/small/2AcornAcresFall.jpg"
+        image: "/img/map_photos/small/acorn-acres.jpg"
       },
       {
         title: "Habitat Hollow",
@@ -117,12 +117,12 @@ var Main = React.createClass({
       {
         title: "Riverview Boardwalk",
         description: "Recommended for all first time visitors, the wooden boardwalk’s three interconnected loops make for a pleasant, mud-free hike in any weather. This barrier-free trail is also well suited to baby strollers.",
-        image: "/img/map_photos/small/4NorthernFloodplainsFall.jpg"
+        image: "/img/map_photos/small/river-boardwalk.jpg"
       }
     ];
     var drawer_overview = {
-        title: "Mormon Hollow",
-        description: "Follow a deep ravine along traces of a Mormon Pioneer trail blazed in the summer of 1846.",
+        title: "Overview",
+        description: "With a total of 3.4 miles, this group of trails includes a 1.0 mile boardwalk and various difficulties of trails through the woods. There is also a trail that runs along Childs Hollow through the wetland area to a view of the river. These trails provide several opportunities to see our oak woodland restoration right along the trails.",
     };
 
     self.setState({ drawer: drawer, area: 'natureCenter', drawer_overview: drawer_overview });
@@ -142,17 +142,17 @@ var Main = React.createClass({
       {
         title: "Gifford Memorial Boardwalk",
         description: "This level, barrier free trail takes you on a half mile journey through wetland and cottonwoods to the observation blind.",
-        image: "/img/map_photos/small/2AcornAcresFall.jpg"
+        image: "/img/map_photos/small/gifford memorial boardwalk.jpg"
       },
       {
         title: "Observation Blind",
         description: "Looks out over the Great Marsh, which is a “river scar” marking a former channel of the Missouri.",
-        image: "/img/map_photos/small/2RiverviewBoardwalkSummer2.jpg"
+        image: "/img/map_photos/small/observation-blind.jpg"
       }
     ];
     var drawer_overview = {
-        title: "Mormon Hollow",
-        description: "Follow a deep ravine along traces of a Mormon Pioneer trail blazed in the summer of 1846.",
+        title: "Overview",
+        description: "Walk along our Great Marsh, or take the level boardwalk out to our bird blind. If you’re up for a longer hike, head out to Hidden Lake on the mostly level trail.",
     };
 
     self.setState({ drawer: drawer, area: 'greatMarsh', drawer_overview: drawer_overview });
@@ -171,17 +171,17 @@ var Main = React.createClass({
       {
         title: "Stream Trail",
         description: "Hike along the stream where you can see beavers, frogs, and other wildlife.",
-        image: "/img/map_photos/small/5ChildsHollowWinter2.jpg"
+        image: "/img/map_photos/small/stream-trail."
       },
       {
         title: "Cottonwood Trail",
         description: "A level trail across the floodplain where you can find giant cottonwood trees.",
-        image: "/img/map_photos/small/1NatureCenterWinter.jpg"
+        image: "/img/map_photos/small/cottonwood-trail.jpg"
       }
     ];
     var drawer_overview = {
-        title: "Mormon Hollow",
-        description: "Follow a deep ravine along traces of a Mormon Pioneer trail blazed in the summer of 1846.",
+        title: "Overview",
+        description: "Mostly flat, sandy trails wind through the northern part of our floodplain. River views can be found along Missouri Trail. Since this is a wetland, the trails can often be muddy or have some standing water on them.",
     };
 
     self.setState({ drawer: drawer, area: 'northernFloodplains', drawer_overview: drawer_overview });
@@ -200,7 +200,7 @@ var Main = React.createClass({
       {
         title: "Scenic, ridge-top Oak Trail",
         description: "A bit over a mile long with plenty of vertical travel, Oak Trail can give you a workout. The trail follows a ridge with scenic views and 250 year old Burr Oak trees.",
-        image: "/img/map_photos/small/2RiverviewBoardwalkSummer2.jpg"
+        image: "/img/map_photos/small/oak-trail.jpg"
       },
       {
         title: "Child’s MIll",
@@ -209,8 +209,8 @@ var Main = React.createClass({
       }
     ];
     var drawer_overview = {
-        title: "Mormon Hollow",
-        description: "Follow a deep ravine along traces of a Mormon Pioneer trail blazed in the summer of 1846.",
+        title: "Overview",
+        description: "North of Camp Gifford Road, this section containing 2.5 miles of undulating trails through our upland forest is a quiet place to enjoy nature. These trails mostly have moderate slope, with a few steep slopes along the way.",
     };
 
     self.setState({ drawer: drawer, area: 'northernUplands', drawer_overview: drawer_overview });
@@ -221,25 +221,25 @@ var Main = React.createClass({
     console.log('southernUplands');
 
     var drawer_overview = {
-        title: "Mormon Hollow",
-        description: "Follow a deep ravine along traces of a Mormon Pioneer trail blazed in the summer of 1846.",
+        title: "Overview",
+        description: "Full of Nebraska history and the beginning of Bellevue, these moderate to steep trails take you on an amazing journey. Pick up a History brochure at the front desk for a minimal cost and travel back in time. ",
     };
 
     var drawer = [
       {
         title: "Mormon Hollow",
         description: "Follow a deep ravine along traces of a Mormon Pioneer trail blazed in the summer of 1846.",
-        image: "/img/map_photos/small/1NatureCenterWinter.jpg"
+        image: "/img/map_photos/small/mormon-hollow.jpg"
       },
       {
         title: "Springs and streams",
         description: "Along Morman Hollow’s trail you can find springs and miniature waterfalls.",
-        image: "/img/map_photos/small/2AcornAcresFall.jpg"
+        image: "/img/map_photos/small/springsandstreams.jpg"
       },
       {
         title: "History Trail",
         description: "",
-        image: "/img/map_photos/small/2RiverviewBoardwalkSummer2.jpg"
+        image: "/img/map_photos/small/history-trail.jpg"
       }
     ];
 

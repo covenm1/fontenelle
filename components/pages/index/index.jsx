@@ -23,7 +23,8 @@ var forest = require('../forest/index.jsx'),
 		education = require('../education/index.jsx'),
 		foundraptor = require('../found-raptor/index.jsx'),
 		meettheraptors = require('../meet-the-raptors/index.jsx'),
-		getinvolved = require('../get-involved/index.jsx');
+		getinvolved = require('../get-involved/index.jsx'),
+		contact = require('../contact/index.jsx');
 
 var slide_names = [ 'forest' , 'natural-resources' , 'education' , 'programs'];
 var slide_count = 0;
@@ -172,7 +173,7 @@ var App = React.createClass({
 						<Link to="/" className="link" onClick={self.toggleMenu}><h2 className="main">Volunteer</h2></Link>
 						<Link to="/" className="link" onClick={self.toggleMenu}><h2 className="main">Board</h2></Link>
 						<Link to="/" className="link" onClick={self.toggleMenu}><h2 className="main">Staff</h2></Link>
-						<Link to="/" className="link" onClick={self.toggleMenu}><h2 className="main">Contact</h2></Link>
+						<Link to="/contact" className="link" onClick={self.toggleMenu}><h2 className="main">Contact</h2></Link>
 					</div>
 				</div>
 				{ main_pages ?
@@ -200,6 +201,7 @@ var routes = (
     <Route name="found-raptor" path="/found-raptor" handler={foundraptor} addHandlerKey={true} />
     <Route name="get-involved" path="/get-involved" handler={getinvolved} addHandlerKey={true} />
     <Route name="meet-the-raptors" path="/meet-the-raptors" handler={meettheraptors} addHandlerKey={true} />
+		<Route name="contact" path="/contact" handler={contact} addHandlerKey={true} />
   </Route>
 
 );

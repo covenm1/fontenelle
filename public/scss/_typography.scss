@@ -1,8 +1,8 @@
 body {
     color: black;
-    font-weight: 300;
+    font-weight: 100;
     font-size: 18px;
-    font-family: 'robotolight';
+    font-family: 'roboto';
 }
 
 h1,
@@ -51,7 +51,8 @@ p a {
 }
 
 .sidebar_links a.section {
-  font-family: 'robotolight';
+  font-family: 'roboto';
+  font-weight: 100;
   padding: 5px 0 0 15px;
   font-size: 0.9em;
 }

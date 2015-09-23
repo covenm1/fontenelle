@@ -1,0 +1,101 @@
+.staff_member {
+  display: flex;
+  border-bottom : 2px solid #d1d1d1;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 0;
+  .name {
+    display: inline-block;
+    flex: 2;
+    .staff_name { font-size: 15px; }
+    .title {
+      font-size: 15px;
+      font-weight: 100;
+    }
+  }
+  .email {
+    font-size: 15px;
+    display: inline-block;
+    flex: 1;
+    text-align: right;
+    margin: 0;
+    a {
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 0;
+    }
+    img {
+      width: 30px;
+    }
+  }
+}
+.main_staff_title {
+  font-size: 50px;
+  color: $conservation_color;
+  text-align: center;
+}
+.staff_title {
+  font-family: 'roboto_condensedbold';
+  color: $conservation_color;
+  text-transform: uppercase;
+  font-size: 20px;
+  margin-top: 50px;
+}
+
+.name_list {
+  width: 400px;
+  display: inline-block;
+  vertical-align: top;
+  padding: 0 50px 50px 0;
+  list-style: none;
+  line-height: 2;
+}
+
+.name_item {
+  width: 300px;
+  display: inline-block;
+  vertical-align: top;
+  padding: 0 50px 50px 0;
+  list-style: none;
+  line-height: 2;
+}
+
+.blue_wrap {
+  background: $conservation_color;
+  text-align: center;
+  color: white;
+
+  .phone_label {
+    font-weight: 500;
+  }
+  .phone_button {
+    background: white;
+    border-radius: 10px;
+    color: $conservation_color;
+    padding: 2px 15px;
+    margin: 0 15px;
+    font-weight: bold;
+    font-size: 16px;
+  }
+
+}
+.place {
+  width: 400px;
+  display: inline-block;
+  vertical-align: top;
+  padding: 0 50px 50px 0;
+  .place_title {
+    color: $conservation_color;
+    font-size: 20px;
+    font-family: 'roboto_condensedbold';
+  }
+  .map_link {
+    color: $conservation_color;
+    text-decoration: none;
+    font-family: 'roboto_condensedbold';
+    transition: 0.15s ease-out;
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}
