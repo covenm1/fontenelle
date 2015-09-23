@@ -85,6 +85,15 @@ var ClassList = React.createClass({
               <p>LENGTH<br />{ current_class.length }</p>
               <p>NE STATE SCIENCE STANDARDS<br />{ current_class.standards }</p>
             </div>
+            <div className="enhance">
+              <p>Enhance your class experience with pre and post class activities.</p>
+              <a href="" className="download_pdf">Download PDF</a>
+            </div>
+            <div className="signup">
+              <p>To sign up, contact:</p>
+              <p><a href="education@fontenelleforest.org" >education@fontenelleforest.org</a></p>
+              <a href="" >(402) 731-3140</a>
+            </div>
           </div>
         </div>
       )
