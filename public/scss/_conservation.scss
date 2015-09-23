@@ -1,12 +1,14 @@
 .time_title {
   text-align: center;
-  font-size: 40px;
+  font-size: 70px;
   color: $conservation_color;
 }
 
 .timeline_wrapper {
 	width: 100%;
 	overflow: hidden;
+
+  padding: 50px 0;
   .year {
     text-align: center;
     color: $grey;
@@ -110,12 +112,12 @@
   cursor: pointer;
 
   &.right {
-    top: 15px;
+    top: 75px;
     right: 15px;
   }
   &.left {
     left: 15px;
-    top: 10px;
+    top: 70px;
     transform: rotate(180deg);
   }
   &:hover {

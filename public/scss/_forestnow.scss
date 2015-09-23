@@ -1,0 +1,37 @@
+.now-left {
+	float: left;
+	display: inline-block;
+  width: 50.6%;
+}
+
+.now-right {
+	float: right;
+	display: inline-block;
+  width: 49.4%;
+}
+
+.now-blue {
+	background-color: $conservation_color;
+	height: 60px;
+}
+
+.now-links {
+	display: inline-block;
+	margin: 0 auto;
+	text-align: center;
+	padding: 20px 170px;
+}
+
+.now-links a, .now-links span {
+	padding: 10px 25px;
+	color: #fff;
+}
+
+.now-links span a {
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.forest-now .static, .save-the-oaks .static {
+	padding: 60px 30px 50px !important;
+}

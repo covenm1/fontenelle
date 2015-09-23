@@ -25,6 +25,8 @@ var forest = require('../forest/index.jsx'),
 		getinvolved = require('../get-involved/index.jsx'),
 		boardofdirectors = require('../board-of-directors/index.jsx'),
 		hoursandadmissions = require('../hours-and-admissions/index.jsx'),
+		forestnow = require('../forest-now/index.jsx'),
+		savetheoaks = require('../save-the-oaks/index.jsx'),
 		contact = require('../contact/index.jsx');
 
 var slide_names = [ 'forest', 'natural-resources', 'education', 'programs'];
@@ -168,7 +170,7 @@ var App = React.createClass({
 		        <Link to="/" className="logo"><img src="/img/logo.png" alt="" /></Link>
 		        <span className="global_menu">
 		            <Link to="/found-raptor" className="link">Found Raptor</Link>
-		            <a href="#" className="link">Forest Now</a>
+		            <a href="/forest-now" className="link">Forest Now</a>
 								<Link to="/get-involved" className="link">Get Involved</Link>
 		        </span>
 						<span className="menu_icon" onClick={self.toggleMenu}>Menu</span>
@@ -177,9 +179,19 @@ var App = React.createClass({
 					<span className="close_menu_button" onClick={self.toggleMenu}>×</span>
 					<div className="sidebar_links">
 						<Link to="/" className="link" onClick={self.toggleMenu}><h2 className="forest main">Forest</h2></Link>
-						<span className="link section" onClick={self.scrollThing.bind(this, "trails")}>Trails</span>
-						<a href="/#fauna" className="link section" onClick={self.toggleMenu}>Fauna &amp; Flora</a>
-						<a href="/#young" className="link section" onClick={self.toggleMenu}>Young Adventurers</a>
+						{ name == 'forest' ?
+							<span>
+								<span className="link section" onClick={self.scrollThing.bind(this, "trails")}>Trails</span>
+								<span className="link section" onClick={self.scrollThing.bind(this, "fauna")}>Fauna &amp; Flora</span>
+								<span className="link section" onClick={self.scrollThing.bind(this, "young")}>Little Explorers</span>
+							</span>
+						:
+							<span>
+								<a href="/#trails" className="link section" onClick={self.toggleMenu}>Trails</a>
+								<a href="/#fauna" className="link section" onClick={self.toggleMenu}>Fauna &amp; Flora</a>
+								<a href="/#young" className="link section" onClick={self.toggleMenu}>Little Explorers</a>
+							</span>
+						}
 						<Link to="/natural-resources" className="link" onClick={self.toggleMenu}><h2 className="conservation main">Natural Resources</h2></Link>
 						<a href="/natural-resources#history" className="link section" onClick={self.toggleMenu}>History</a>
 						<a href="/natural-resources#habitat" className="link section" onClick={self.toggleMenu}>Habitat Management</a>
@@ -226,6 +238,8 @@ var routes = (
     <Route name="meet-the-raptors" path="/meet-the-raptors" handler={meettheraptors} addHandlerKey={true} />
     <Route name="hours-and-admissions" path="/hours-and-admissions" handler={hoursandadmissions} addHandlerKey={true} />
     <Route name="board-of-directors" path="/board-of-directors" handler={boardofdirectors} addHandlerKey={true} />
+    <Route name="forest-now" path="/forest-now" handler={forestnow} addHandlerKey={true} />
+    <Route name="save-the-oaks" path="/save-the-oaks" handler={savetheoaks} addHandlerKey={true} />
 		<Route name="contact" path="/contact" handler={contact} addHandlerKey={true} />
   </Route>
 

@@ -308,6 +308,14 @@ var Main = React.createClass({
                         </span>
                       </div>
 
+                      <h5 className="preogram_forest_now">Check <Link to="forest-now" className="color">FOREST NOW</Link> for updates and registration</h5>
+
+                      <div className="vine_bottom">
+                        <img className="left-half" src="/img/divider/VINE-bottom-left-half.svg" />
+                        <img className="down-orange" src="/img/programs/icon_right-arrow-red.svg" />
+                        <img className="right-half" src="/img/divider/VINE-bottom-right-half.svg" />
+                      </div>
+
                     </div>
                     <div className="for_kids image_container">
                       <img src="/img/programs/binoculars.png" />
