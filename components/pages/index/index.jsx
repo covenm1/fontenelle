@@ -23,6 +23,8 @@ var forest = require('../forest/index.jsx'),
 		foundraptor = require('../found-raptor/index.jsx'),
 		meettheraptors = require('../meet-the-raptors/index.jsx'),
 		getinvolved = require('../get-involved/index.jsx'),
+		boardofdirectors = require('../board-of-directors/index.jsx'),
+		hoursandadmissions = require('../hours-and-admissions/index.jsx'),
 		contact = require('../contact/index.jsx');
 
 var slide_names = [ 'forest', 'natural-resources', 'education', 'programs'];
@@ -181,7 +183,7 @@ var App = React.createClass({
 						<Link to="/natural-resources" className="link" onClick={self.toggleMenu}><h2 className="conservation main">Natural Resources</h2></Link>
 						<a href="/natural-resources#history" className="link section" onClick={self.toggleMenu}>History</a>
 						<a href="/natural-resources#habitat" className="link section" onClick={self.toggleMenu}>Habitat Management</a>
-						<Link to="/natural-resources#raptor" className="link section" onClick={self.toggleMenu}>Raptor Recovery</Link>
+						<a href="/natural-resources#raptor" className="link section" onClick={self.toggleMenu}>Raptor Recovery</a>
 						<Link to="/education" className="link" onClick={self.toggleMenu}><h2 className="education main">Education</h2></Link>
 						<a href="/education#classes" className="link section" onClick={self.toggleMenu}>Classes</a>
 						<Link to="/programs" className="link" onClick={self.toggleMenu}><h2 className="programs main">Programs</h2></Link>
@@ -222,6 +224,8 @@ var routes = (
     <Route name="found-raptor" path="/found-raptor" handler={foundraptor} addHandlerKey={true} />
     <Route name="get-involved" path="/get-involved" handler={getinvolved} addHandlerKey={true} />
     <Route name="meet-the-raptors" path="/meet-the-raptors" handler={meettheraptors} addHandlerKey={true} />
+    <Route name="hours-and-admissions" path="/hours-and-admissions" handler={hoursandadmissions} addHandlerKey={true} />
+    <Route name="board-of-directors" path="/board-of-directors" handler={boardofdirectors} addHandlerKey={true} />
 		<Route name="contact" path="/contact" handler={contact} addHandlerKey={true} />
   </Route>
 

@@ -224,7 +224,7 @@ var Main = React.createClass({
                 </div>
               </div>
 
-              <div className="egg_wrap classes_container">
+              <div id="classes" className="egg_wrap classes_container">
                 <div className="living_classroom copy_container">
                   <h2 className="marker in_forest">In the Forest</h2>
                   <p>Book your next field trip with Fontenelle Forest! Our experienced educators will provide an engaging, hands-on program for your group. Each program includes an indoor and outdoor portion. To register for a school program for the 2011/2012 school year, please contact the FF Education Department at (402) 731-3140. For directions to the nature centers, click here.</p>
