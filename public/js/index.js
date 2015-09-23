@@ -14,7 +14,7 @@ var Route = Router.Route,
 		DefaultRoute = Router.DefaultRoute,
   	NotFoundRoute = Router.NotFoundRoute,
   	RouteHandler = Router.RouteHandler,
-  	Link = Router.Link; 
+  	Link = Router.Link;
 
 
 var forest = require('../forest/index.jsx'),
@@ -181,18 +181,18 @@ var App = React.createClass({displayName: "App",
 					React.createElement("div", {className: "sidebar_links"}, 
 						React.createElement(Link, {to: "/", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "forest main"}, "Forest")), 
 						React.createElement("span", {className: "link section", onClick: self.scrollThing.bind(this, "trails")}, "Trails"), 
-						React.createElement("a", {href: "/#fauna", className: "link section", onClick: self.toggleMenu}, "Fauna & Flora"), 
-						React.createElement("a", {href: "/#young", className: "link section", onClick: self.toggleMenu}, "Little Explorers"), 
+						React.createElement("span", {className: "link section", onClick: self.scrollThing.bind(this, "fauna")}, "Fauna & Flora"), 
+						React.createElement("span", {className: "link section", onClick: self.scrollThing.bind(this, "young")}, "Little Explorers"), 
 						React.createElement(Link, {to: "/natural-resources", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "conservation main"}, "Natural Resources")), 
-						React.createElement("a", {href: "/natural-resources#history", className: "link section", onClick: self.toggleMenu}, "History"), 
-						React.createElement("a", {href: "/natural-resources#habitat", className: "link section", onClick: self.toggleMenu}, "Habitat Management"), 
-						React.createElement("a", {href: "/natural-resources#raptor", className: "link section", onClick: self.toggleMenu}, "Raptor Recovery"), 
+						React.createElement("span", {className: "link section", onClick: self.scrollThing.bind(this, "history")}, "History"), 
+						React.createElement("span", {className: "link section", onClick: self.scrollThing.bind(this, "habitat")}, "Habitat Management"), 
+						React.createElement("span", {className: "link section", onClick: self.scrollThing.bind(this, "raptor")}, "Raptor Recovery"), 
 						React.createElement(Link, {to: "/education", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "education main"}, "Education")), 
-						React.createElement("a", {href: "/education#classes", className: "link section", onClick: self.toggleMenu}, "Classes"), 
+						React.createElement("span", {className: "link section", onClick: self.scrollThing.bind(this, "classes")}, "Clasess"), 
 						React.createElement(Link, {to: "/programs", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "programs main"}, "Programs")), 
-						React.createElement("a", {href: "/programs#kids", className: "link section", onClick: self.toggleMenu}, "Kids"), 
-						React.createElement("a", {href: "/programs#adults", className: "link section", onClick: self.toggleMenu}, "Adults"), 
-						React.createElement("a", {href: "/programs#groups", className: "link section", onClick: self.toggleMenu}, "Groups"), 
+						React.createElement("span", {className: "link section", onClick: self.scrollThing.bind(this, "kids")}, "Kids"), 
+						React.createElement("span", {className: "link section", onClick: self.scrollThing.bind(this, "adults")}, "Adults"), 
+						React.createElement("span", {className: "link section", onClick: self.scrollThing.bind(this, "groups")}, "Groups"), 
 						React.createElement(Link, {to: "/forest-now", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Forest Now")), 
 						React.createElement(Link, {to: "/get-involved", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Donate")), 
 						React.createElement(Link, {to: "/get-involved", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Membership")), 
@@ -2143,7 +2143,7 @@ var Main = React.createClass({displayName: "Main",
           React.createElement("div", {className: "image_container"}, 
             React.createElement("img", {src: classImage, onClick: self.toggleClass})
           ), 
-          React.createElement("div", {className: "content_container now-blue"}, 
+          React.createElement("div", {className: "image_container now-blue"}, 
             React.createElement("div", {className: "now-links"}, 
               React.createElement("a", {href: "/hours-and-admissions"}, "Hours and Admissions"), 
               React.createElement("span", null, "Trail Maps: ", React.createElement("a", {target: "_blank", href: "http://fontenelleforest.org/images/stories/Trails/ffnc_trailmap_dec09.pdf"}, "Fontenelle"), "|", React.createElement("a", {target: "_blank", href: "http://fontenelleforest.org/images/stories/Trails/neale_woods_map_printable.pdf"}, "Neale Woods")), 
@@ -2151,11 +2151,13 @@ var Main = React.createClass({displayName: "Main",
               React.createElement("a", {href: "/contact"}, "Contact")
             )
           ), 
-          React.createElement("div", {className: "image_container now-left"}, 
-            React.createElement("img", {src: "/img/forest-now/calendar.jpg"})
-          ), 
-          React.createElement("div", {className: "image_container now-right"}, 
-            React.createElement(Link, {to: "/save-the-oaks"}, React.createElement("img", {src: "/img/forest-now/blog.jpg"}))
+          React.createElement("div", {className: "image_container"}, 
+            React.createElement("div", {className: "now-left"}, 
+              React.createElement("img", {src: "/img/forest-now/calendar.jpg"})
+            ), 
+            React.createElement("div", {className: "now-right"}, 
+              React.createElement(Link, {to: "/save-the-oaks"}, React.createElement("img", {src: "/img/forest-now/blog.jpg"}))
+            )
           ), 
           React.createElement("div", {className: "image_container"}, 
             React.createElement("img", {src: "/img/forest-now/social-media.jpg"})
@@ -3919,7 +3921,9 @@ var Main = React.createClass({displayName: "Main",
       React.createElement("div", {className: "page"}, 
         React.createElement("div", {className: "egg_wrap static"}, 
           React.createElement("div", {className: "image_container"}, 
-            React.createElement("img", {src: "/img/get-involved/page.png"})
+            React.createElement("img", {src: "/img/get-involved/Get-involved-donate.jpg"}), 
+            React.createElement("img", {src: "/img/get-involved/Get-involved-membership.jpg"}), 
+            React.createElement("img", {src: "/img/get-involved/Get-involved-volunteer.jpg"})
           )
         ), 
         React.createElement(Footer, null)

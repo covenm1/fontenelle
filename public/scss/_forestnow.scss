@@ -13,6 +13,7 @@
 .now-blue {
 	background-color: $conservation_color;
 	height: 60px;
+	max-width: 1440px;
 }
 
 .now-links {
@@ -32,6 +33,6 @@
 	padding-right: 0;
 }
 
-.forest-now .static, .save-the-oaks .static {
+.forest-now .static, .save-the-oaks .static, .get-involved .static {
 	padding: 60px 30px 50px !important;
 }

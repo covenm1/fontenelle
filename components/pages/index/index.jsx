@@ -13,7 +13,7 @@ var Route = Router.Route,
 		DefaultRoute = Router.DefaultRoute,
   	NotFoundRoute = Router.NotFoundRoute,
   	RouteHandler = Router.RouteHandler,
-  	Link = Router.Link; 
+  	Link = Router.Link;
 
 
 var forest = require('../forest/index.jsx'),
@@ -180,18 +180,18 @@ var App = React.createClass({
 					<div className="sidebar_links">
 						<Link to="/" className="link" onClick={self.toggleMenu}><h2 className="forest main">Forest</h2></Link>
 						<span className="link section" onClick={self.scrollThing.bind(this, "trails")}>Trails</span>
-						<a href="/#fauna" className="link section" onClick={self.toggleMenu}>Fauna &amp; Flora</a>
-						<a href="/#young" className="link section" onClick={self.toggleMenu}>Little Explorers</a>
+						<span className="link section" onClick={self.scrollThing.bind(this, "fauna")}>Fauna &amp; Flora</span>
+						<span className="link section" onClick={self.scrollThing.bind(this, "young")}>Little Explorers</span>
 						<Link to="/natural-resources" className="link" onClick={self.toggleMenu}><h2 className="conservation main">Natural Resources</h2></Link>
-						<a href="/natural-resources#history" className="link section" onClick={self.toggleMenu}>History</a>
-						<a href="/natural-resources#habitat" className="link section" onClick={self.toggleMenu}>Habitat Management</a>
-						<a href="/natural-resources#raptor" className="link section" onClick={self.toggleMenu}>Raptor Recovery</a>
+						<span className="link section" onClick={self.scrollThing.bind(this, "history")}>History</span>
+						<span className="link section" onClick={self.scrollThing.bind(this, "habitat")}>Habitat Management</span>
+						<span className="link section" onClick={self.scrollThing.bind(this, "raptor")}>Raptor Recovery</span>
 						<Link to="/education" className="link" onClick={self.toggleMenu}><h2 className="education main">Education</h2></Link>
-						<a href="/education#classes" className="link section" onClick={self.toggleMenu}>Classes</a>
+						<span className="link section" onClick={self.scrollThing.bind(this, "classes")}>Clasess</span>
 						<Link to="/programs" className="link" onClick={self.toggleMenu}><h2 className="programs main">Programs</h2></Link>
-						<a href="/programs#kids" className="link section" onClick={self.toggleMenu}>Kids</a>
-						<a href="/programs#adults" className="link section" onClick={self.toggleMenu}>Adults</a>
-						<a href="/programs#groups" className="link section" onClick={self.toggleMenu}>Groups</a>
+						<span className="link section" onClick={self.scrollThing.bind(this, "kids")}>Kids</span>
+						<span className="link section" onClick={self.scrollThing.bind(this, "adults")}>Adults</span>
+						<span className="link section" onClick={self.scrollThing.bind(this, "groups")}>Groups</span>
 						<Link to="/forest-now" className="link" onClick={self.toggleMenu}><h2 className="main">Forest Now</h2></Link>
 						<Link to="/get-involved" className="link" onClick={self.toggleMenu}><h2 className="main">Donate</h2></Link>
 						<Link to="/get-involved" className="link" onClick={self.toggleMenu}><h2 className="main">Membership</h2></Link>

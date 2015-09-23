@@ -66,7 +66,7 @@ var Main = React.createClass({
           <div className='image_container'>
             <img src={classImage} onClick={self.toggleClass}/>
           </div>
-          <div className='content_container now-blue'>
+          <div className='image_container now-blue'>
             <div className='now-links'>
               <a href="/hours-and-admissions">Hours and Admissions</a>
               <span>Trail Maps: <a target="_blank" href="http://fontenelleforest.org/images/stories/Trails/ffnc_trailmap_dec09.pdf">Fontenelle</a>|<a target="_blank" href="http://fontenelleforest.org/images/stories/Trails/neale_woods_map_printable.pdf">Neale Woods</a></span>
@@ -74,11 +74,13 @@ var Main = React.createClass({
               <a href="/contact">Contact</a>
             </div>
           </div>
-          <div className='image_container now-left'>
-            <img src="/img/forest-now/calendar.jpg" />
-          </div>
-          <div className='image_container now-right'>
-            <Link to='/save-the-oaks'><img src="/img/forest-now/blog.jpg" /></Link>
+          <div className='image_container'>
+            <div className='now-left'>
+              <img src="/img/forest-now/calendar.jpg" />
+            </div>
+            <div className='now-right'>
+              <Link to='/save-the-oaks'><img src="/img/forest-now/blog.jpg" /></Link>
+            </div>
           </div>
           <div className='image_container'>
             <img src="/img/forest-now/social-media.jpg" />
