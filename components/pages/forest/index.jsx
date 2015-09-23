@@ -478,7 +478,7 @@ var Main = React.createClass({
                 </div>
               </div>
 
-              <div className="photogallery_header">
+              <div id="fauna" className="photogallery_header">
                 <div className="main_wrapper">
                   <h3 className="marker">Fauna and Flora</h3>
                   <p>A National Natural Landmark and a National Historic District, as designated by the United State Department of Interior, Fontenelle is home to over 600 unique species of plants and animals. </p>
@@ -493,7 +493,7 @@ var Main = React.createClass({
                 </div>
               </div>
 
-              <div className="egg_wrap padded">
+              <div id="trails" className="egg_wrap padded">
                 <div className={ map_class }>
                   { drawer.length ?
                     <div className="drawer" style={drawer_styles}>
@@ -1459,7 +1459,7 @@ var Main = React.createClass({
                 </div>
               </div>
 
-              <div className="tearjerker_video" style={videoTwo_style}>
+              <div id="young" className="tearjerker_video" style={videoTwo_style}>
                 <div className="tearjerker video_overlay"></div>
                 <div className="tearjerker_wrapper">
                   { videoTwo ?

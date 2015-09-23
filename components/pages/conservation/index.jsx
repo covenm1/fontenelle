@@ -337,7 +337,7 @@ var Main = React.createClass({
 
               <div className="tearjerker_video thousandyears" style={videoOne_style}>
                 <div className="thousandyears video_overlay"></div>
-                <div className="tearjerker_wrapper">
+                <div id="history" className="tearjerker_wrapper">
                   <div className="centered_content">
                     <img src="/img/conservation/divider_top_thing.png" />
                     <h2 className="marker">Thousands of Years Plus a Century</h2>
@@ -368,7 +368,7 @@ var Main = React.createClass({
                 </div>
               </div>
 
-              <div className="egg_wrap">
+              <div id="habitat" className="egg_wrap">
                 <div className="habitat_home_container main_wrapper">
                   <div className="quiet_wild copy_container">
                     <img src="/img/divider/VINE-top-long.svg" />
@@ -411,9 +411,9 @@ var Main = React.createClass({
                 </div>
               </div>
 
-              <div className="egg_wrap">
+              <div id="raptor" className="egg_wrap">
                 <div className="raptor_container main_wrapper">
-                  <div id="raptor" className="quiet_wild copy_container">
+                  <div className="quiet_wild copy_container">
                     <div className="raptor">
                       <img src="/img/conservation/divider_top_grey.png" />
                       <h2 className="marker">Raptor Recovery</h2>
