@@ -38,7 +38,7 @@ $page_color: black;
     height: 100%;
     z-index: 0;
 }
-
+ 
 .other-stuff {
     z-index: 1111;
     position: relative;
@@ -147,10 +147,11 @@ header {
 }
 
 .global_menu {
-  a.link {
+  .link {
     padding: 0 15px;
     position: relative;
     margin-left: 20px;
+    cursor: pointer;
 
     &:before {
       content: '';
@@ -475,8 +476,8 @@ footer img {
   }
 }
 .menu_open {
-  position: fixed;
-  width: 100%;
+  // position: fixed;
+  // width: 100%;
 }
 .sidebar {
   position: fixed;
@@ -513,6 +514,13 @@ footer img {
     }
     a {
       text-decoration: none;
+    }
+    .section {
+      font-family: 'roboto';
+      font-weight: 100;
+      padding: 5px 0 0 15px;
+      font-size: 0.9em;
+      cursor: pointer;
     }
 
   }
