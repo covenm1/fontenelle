@@ -7,9 +7,8 @@ var TransitionGroup = require('./VelocityTransitionGroup.jsx');
 var util = require('util');
 //
 var ScrollMagic = require('scrollmagic');
-// 		TweenMax = require('../../public/js/tweenmax.js');
-//
-// require('../../public/js/scrollTo.js');
+var TweenMax = require('../../../public/js/tweenmax.js');
+require('../../../public/js/scrollTo.js');
 
 var Route = Router.Route,
 		DefaultRoute = Router.DefaultRoute,
@@ -123,6 +122,28 @@ var App = React.createClass({displayName: "App",
 		this.setState({menu: !this.state.menu});
 	},
 
+	closeMenu: function(){
+		this.setState({menu: false});
+	},
+
+	scrollThing: function(thing){
+		this.closeMenu();
+		var controller = new ScrollMagic.Controller();
+		controller.scrollTo(function(target) {
+
+			TweenMax.to(window, 0.5, {
+				scrollTo : {
+					y : target - 60, // scroll position of the target along y axis
+					autoKill : true // allows user to kill scroll action smoothly
+				},
+				ease : Cubic.easeInOut
+			});
+
+		});
+		controller.scrollTo("#"+thing);
+	},
+
+
 	render: function () {
 		var self = this;
 		var name = this.getHandlerKey();
@@ -155,7 +176,7 @@ var App = React.createClass({displayName: "App",
 					React.createElement("span", {className: "close_menu_button", onClick: self.toggleMenu}, "×"), 
 					React.createElement("div", {className: "sidebar_links"}, 
 						React.createElement(Link, {to: "/", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "forest main"}, "Forest")), 
-						React.createElement("a", {href: "/#trails", className: "link section", onClick: self.toggleMenu}, "Trails"), 
+						React.createElement("span", {className: "link section", onClick: self.scrollThing.bind(this, "trails")}, "Trails"), 
 						React.createElement("a", {href: "/#fauna", className: "link section", onClick: self.toggleMenu}, "Fauna & Flora"), 
 						React.createElement("a", {href: "/#young", className: "link section", onClick: self.toggleMenu}, "Young Adventurers"), 
 						React.createElement(Link, {to: "/natural-resources", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "conservation main"}, "Natural Resources")), 
@@ -222,7 +243,7 @@ router.run(function (Handler) {
   React.render(React.createElement(Handler, null), document.body);
 });
 
-},{"../conservation/index.jsx":8,"../contact/index.jsx":9,"../education/index.jsx":10,"../forest/index.jsx":11,"../found-raptor/index.jsx":12,"../get-involved/index.jsx":13,"../meet-the-raptors/index.jsx":15,"../programs/index.jsx":16,"./VelocityTransitionGroup.jsx":14,"react":245,"react-hotkey":18,"react-router":58,"scrollmagic":246,"util":252}],2:[function(require,module,exports){
+},{"../../../public/js/scrollTo.js":255,"../../../public/js/tweenmax.js":256,"../conservation/index.jsx":8,"../contact/index.jsx":9,"../education/index.jsx":10,"../forest/index.jsx":11,"../found-raptor/index.jsx":12,"../get-involved/index.jsx":13,"../meet-the-raptors/index.jsx":15,"../programs/index.jsx":16,"./VelocityTransitionGroup.jsx":14,"react":245,"react-hotkey":18,"react-router":58,"scrollmagic":246,"util":252}],2:[function(require,module,exports){
 module.exports=[
   {
     "name": "Critters on the Move",
@@ -231,7 +252,8 @@ module.exports=[
     "level": "All",
     "length": "1 hour",
     "standards": "SC2.1.1.a, SC2.1.1.d, SC2.3.2.b",
-    "signup": ""
+    "signup": "",
+    "prepost": "http://fontenelleforest.org/images/stories/School_Program_PDFs/Critters_Close-up_and_Critters_on_the_Move_2012.pdf",
   },
   {
     "name": "Predator-Prey On the Go",
@@ -241,6 +263,7 @@ module.exports=[
     "length": "1 hour",
     "standards": "SC 5.3.1, 5.3.2.a, 5.3.3.b,c, and d, 5.3.4, 8.3.1.e, 8.3.3.b,d, and e, 8.3.4.a, 8.3.4.c",
     "signup": "",
+    "prepost": "",
   },
   {
     "name": "Mud Pies for Preschools",
@@ -250,6 +273,7 @@ module.exports=[
     "length": "2 hours",
     "standards": "",
     "signup": "",
+    "prepost": "",
   },
   {
     "name": "Fall Inquiry",
@@ -259,6 +283,7 @@ module.exports=[
     "length": "1 hour",
     "standards": "SC2.1.1, SC2.1.1.a, SC2.1.1.b, SC2.1.1.d, SC2.4.3",
     "signup": "",
+    "prepost": "",
   },
   {
     "name": "Raptor-ology®",
@@ -268,6 +293,7 @@ module.exports=[
     "length": "1 hour",
     "standards": "SC5.3.4.a, SC8.1.1.e",
     "signup": "",
+    "prepost": "",
   },
   {
     "name": "It's a Plant's Life",
@@ -277,6 +303,7 @@ module.exports=[
     "length": "1 hour",
     "standards": "SC2.1.1.a, SC2.3.1.c, SC5.1.1.b",
     "signup": "",
+    "prepost": "http://fontenelleforest.org/images/stories/School_Program_PDFs/Plantastic_and_It_is_a_Plants_Life_OTG_2012.pdf",
   },
   {
     "name": "Animal Tracking",
@@ -286,6 +313,7 @@ module.exports=[
     "length": "1 hour",
     "standards": "SC5.1.1.d , SC5.1.1.e, SC5.1.1.f, SC5.2.2.b, SC5.3.3, SC5.3.4.a, SC5.1.1.i, SC5.3.1.b",
     "signup": "",
+    "prepost": "",
   },
   {
     "name": "Vertebrate/Invertebrate",
@@ -295,6 +323,7 @@ module.exports=[
     "length": "1 hour",
     "standards": "SC5.1.1.d, SC5.1.1.e, SC5.1.1.f, SC5.3.1, SC5.3.1.a, SC5.3.1.b, SC5.1.1.i",
     "signup": "",
+    "prepost": "",
   },
   {
     "name": "Thorns and Teeth and Feathers, Oh My!",
@@ -304,6 +333,7 @@ module.exports=[
     "length": "1 hour",
     "standards": "SC5.1.1.d, SC5.3.4.a",
     "signup": "",
+    "prepost": "",
   },
   {
     "name": "Habitats: From Alligators to Zebra Mussels",
@@ -313,6 +343,7 @@ module.exports=[
     "length": "1 hour",
     "standards": "",
     "signup": "",
+    "prepost": "",
   },
   {
     "name": "Naturally Sense-Sational!",
@@ -322,6 +353,8 @@ module.exports=[
     "length": "1 hour",
     "standards": "SC2.1.1.a, SC2.1.1.d, SC2.3.4.a",
     "signup": "",
+    "prepost": "http://fontenelleforest.org/images/stories/School_Program_PDFs/2013xNaturally_Sensational.pdf",
+
   },
   {
     "name": "Wild about Winter",
@@ -331,6 +364,7 @@ module.exports=[
     "length": "1 hour",
     "standards": "SC2.1.1.a, SC2.1.1.d, SC2.4.3.c, SC5.3.3.d",
     "signup": "",
+    "prepost": "http://fontenelleforest.org/images/stories/School_Program_PDFs/2013_Wild_about_Winter_Pre_and_Post_activities_.pdf",
   },
   {
     "name": "Is it Alive?",
@@ -340,6 +374,7 @@ module.exports=[
     "length": "1.5 hours",
     "standards": "SC2.1.1.a, SC2.1.1.d, SC2.3.1.a, SC2.3.2.b, SC5.3.1.a",
     "signup": "",
+    "prepost": "http://fontenelleforest.org/images/stories/School_Program_PDFs/Is_It_Alive_2012.pdf",
   },
   {
     "name": "The Secret Life of Plants",
@@ -349,6 +384,7 @@ module.exports=[
     "length": "2 hours",
     "standards": "SC2.1.1.a, SC2.3.1.c, SC5.3.1.b, SC5.3.2b",
     "signup": "",
+    "prepost": "",
   },
   {
     "name": "Habitat, Habitat",
@@ -358,6 +394,7 @@ module.exports=[
     "length": "2 hours",
     "standards": "SC2.1.1.a, SC2.3.1.b, SC2.3.1.d",
     "signup": "",
+    "prepost": "http://fontenelleforest.org/images/stories/School_Program_PDFs/Habitat_Habitat_2012.pdf",
   },
   {
     "name": "Soil Science",
@@ -367,6 +404,7 @@ module.exports=[
     "length": "1.5 hours",
     "standards": "SC2.1.1.a, SC2.1.1.b, SC2.1.1.f, SC2.4.2.a",
     "signup": "",
+    "prepost": "",
   },
   {
     "name": "Renew or Not?",
@@ -376,6 +414,7 @@ module.exports=[
     "length": "2 hours",
     "standards": "SC2.4.2.b, SC5.4.2.c, SC8.4.2.h",
     "signup": "",
+    "prepost": "http://fontenelleforest.org/images/stories/School_Program_PDFs/Renew_or_Not_2012.pdf",
   },
   {
     "name": "Webology",
@@ -385,6 +424,7 @@ module.exports=[
     "length": "2 hours",
     "standards": "SC5.3.3.a, SC5.3.3.b, SC8.3.3.a, SC8.3.3.b",
     "signup": "",
+    "prepost": "http://fontenelleforest.org/images/stories/School_Program_PDFs/Renew_or_Not_2012.pdf",
   },
   {
     "name": "Who Goes There?",
@@ -394,6 +434,7 @@ module.exports=[
     "length": "2 hours",
     "standards": "SC5.1.1.a, SC5.1.1.d",
     "signup": "",
+    "prepost": "http://fontenelleforest.org/images/stories/School_Program_PDFs/Who_Goes_There_2012.pdf",
   },
   {
     "name": "My, what Sharp Claws You Have!",
@@ -403,6 +444,7 @@ module.exports=[
     "length": "2 hours",
     "standards": "SC5.1.1.d, SC5.3.4.a",
     "signup": "",
+    "prepost": "http://fontenelleforest.org/images/stories/School_Program_PDFs/Sharp_Claws_and_Thorns_and_Teeth_OTG_2012.pdf",
   },
   {
     "name": "Predator/Prey",
@@ -412,6 +454,7 @@ module.exports=[
     "length": "2 hours",
     "standards": "SC5.1.3.b, SC5.3.1.b, SC8.3.4.a",
     "signup": "",
+    "prepost": "http://fontenelleforest.org/images/stories/School_Program_PDFs/2013_Predator_or_Prey_pre-post_activities.pdf",
   },
   {
     "name": "Take only Memories",
@@ -421,6 +464,7 @@ module.exports=[
     "length": "2 hours",
     "standards": "SC5.1.3.b, SC5.3.3.d, SC8.3.3.g",
     "signup": "",
+    "prepost": "http://fontenelleforest.org/images/stories/School_Program_PDFs/Take_Only_Memories_2012.pdf",
   },
   {
     "name": "Agents of Change",
@@ -430,6 +474,7 @@ module.exports=[
     "length": "2 hours",
     "standards": "SC5.4.2.b, SC5.4.4.a, SC8.4.2.e, SC12.4.4.a",
     "signup": "",
+    "prepost": "http://fontenelleforest.org/images/stories/School_Program_PDFs/2013__Agents_of_Change_pre-post_activities_v2.pdf",
   },
   {
     "name": "Green's the Thing",
@@ -439,6 +484,7 @@ module.exports=[
     "length": "2 hours",
     "standards": "SC5.1.1.d, SC5.3.1.b",
     "signup": "",
+    "prepost": "http://fontenelleforest.org/images/stories/School_Program_PDFs/Green_is_The_Thing_2012.pdf",
   },
   {
     "name": "Teaching with Talons",
@@ -448,6 +494,7 @@ module.exports=[
     "length": "2 hours",
     "standards": "SC5.3.4.a, SC8.1.1.e",
     "signup": "",
+    "prepost": "",
   },
   {
     "name": "Birds of a Feather",
@@ -457,6 +504,7 @@ module.exports=[
     "length": "2 hours",
     "standards": "SC5.3.4.a, SC8.1.1.e, SC8.1.1.g, SC8.3.4.a",
     "signup": "",
+    "prepost": "http://fontenelleforest.org/images/stories/School_Program_PDFs/Birds_of_a_Feather_2012.pdf",
   },
   {
     "name": "Owl about Population Dynamics",
@@ -466,6 +514,7 @@ module.exports=[
     "length": "2 hours",
     "standards": "SC8.1.1.d, SC8.1.1.e, SC8.1.1.g, SC8.1.1.j, SC8.3.3.e",
     "signup": "",
+    "prepost": "http://fontenelleforest.org/images/stories/School_Program_PDFs/Owl_About_Populations_2012.pdf",
   },
 ]
 
@@ -1103,7 +1152,7 @@ var Main = React.createClass({displayName: "Main",
 
     if (window_width <= (gallery_width - left)) {
       self.setState({left: self.state.left + 430});
-    }
+    } 
   },
 
   timelineLeft: function(){
@@ -1624,6 +1673,8 @@ var Link = Router.Link;
 var Footer = require('../../common/footer.jsx');
 
 var ScrollMagic = require('scrollmagic');
+var TweenMax = require('../../../public/js/tweenmax.js');
+require('../../../public/js/scrollTo.js');
 
 var classes_data = require('../../common/classes.json');
 
@@ -1657,12 +1708,29 @@ var ClassList = React.createClass({displayName: "ClassList",
   showClass: function(object){
     var self = this;
     self.setState({current_class: object});
+    self.scrollThing('class_section');
   },
 
   resetClass: function(){
     var self = this;
     self.setState({current_class: {}});
   },
+  scrollThing: function(thing){
+    var controller = new ScrollMagic.Controller();
+    controller.scrollTo(function(target) {
+
+      TweenMax.to(window, 0.5, {
+        scrollTo : {
+          y : target + 60, // scroll position of the target along y axis
+          autoKill : true // allows user to kill scroll action smoothly
+        },
+        ease : Cubic.easeInOut
+      });
+
+    });
+    controller.scrollTo("#"+thing);
+  },
+
 
   render: function() {
     var self = this;
@@ -1681,7 +1749,7 @@ var ClassList = React.createClass({displayName: "ClassList",
     var current_class = self.state.current_class;
     if (current_class.length) {
       return (
-        React.createElement("div", {className: "current_class"}, 
+        React.createElement("div", {className: "current_class", id: "class_section"}, 
           React.createElement("p", {className: "reset_class", onClick: self.resetClass}, "<"), 
           React.createElement("div", {className: "main_class"}, 
             React.createElement("h2", {className: "marker color"},  current_class.name), 
@@ -1697,10 +1765,12 @@ var ClassList = React.createClass({displayName: "ClassList",
               React.createElement("p", null, "LENGTH", React.createElement("br", null),  current_class.length), 
               React.createElement("p", null, "NE STATE SCIENCE STANDARDS", React.createElement("br", null),  current_class.standards)
             ), 
+             current_class.prepost.length ?
             React.createElement("div", {className: "enhance"}, 
               React.createElement("p", null, "Enhance your class experience with pre and post class activities."), 
-              React.createElement("a", {href: "", className: "download_pdf"}, "Download PDF")
-            ), 
+              React.createElement("a", {href:  current_class.prepost, className: "download_pdf"}, "Download PDF")
+            )
+            : null, 
             React.createElement("div", {className: "signup"}, 
               React.createElement("p", null, "To sign up, contact:"), 
               React.createElement("p", null, React.createElement("a", {href: "education@fontenelleforest.org"}, "education@fontenelleforest.org")), 
@@ -1711,7 +1781,7 @@ var ClassList = React.createClass({displayName: "ClassList",
       )
     } else {
       return (
-        React.createElement("div", {className: "classes"}, 
+        React.createElement("div", {className: "classes", id: "class_section"}, 
           classes 
         )
       )
@@ -1882,7 +1952,7 @@ var Main = React.createClass({displayName: "Main",
 
 module.exports = Main;
 
-},{"../../common/classes.json":2,"../../common/footer.jsx":4,"react":245,"react-inlinesvg":19,"react-router":58,"scrollmagic":246,"superagent":247,"util":252,"velocity-animate/velocity":253}],11:[function(require,module,exports){
+},{"../../../public/js/scrollTo.js":255,"../../../public/js/tweenmax.js":256,"../../common/classes.json":2,"../../common/footer.jsx":4,"react":245,"react-inlinesvg":19,"react-router":58,"scrollmagic":246,"superagent":247,"util":252,"velocity-animate/velocity":253}],11:[function(require,module,exports){
 var React = require('react'),
     request = require('superagent'),
     util = require('util'),
@@ -2194,13 +2264,11 @@ var Main = React.createClass({displayName: "Main",
   },
 
   mapHoverEnter: function(index){
-    console.log("hoverClass: " + index);
     this.setState({hover: index});
   },
 
   mapHoverLeave: function(){
     this.setState({hover: ''});
-    console.log("hoverLeave" );
   },
 
   render: function() {
@@ -2378,7 +2446,7 @@ var Main = React.createClass({displayName: "Main",
                 )
               ), 
 
-              React.createElement("div", {className: "egg_wrap padded"}, 
+              React.createElement("div", {className: "egg_wrap padded", id: "trails"}, 
                 React.createElement("div", {className: map_class }, 
                    drawer.length ?
                     React.createElement("div", {className: "drawer", style: drawer_styles}, 

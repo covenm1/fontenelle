@@ -38,6 +38,9 @@ Procfile
 .git.bfg-report
 */video/*
 
+/public/css/main.css
+/public/js/main.js
+
 dump.rdp
 
 .DS_Store

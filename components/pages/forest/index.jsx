@@ -309,13 +309,11 @@ var Main = React.createClass({
   },
 
   mapHoverEnter: function(index){
-    console.log("hoverClass: " + index);
     this.setState({hover: index});
   },
 
   mapHoverLeave: function(){
     this.setState({hover: ''});
-    console.log("hoverLeave" );
   },
 
   render: function() {
@@ -493,7 +491,7 @@ var Main = React.createClass({
                 </div>
               </div>
 
-              <div className="egg_wrap padded">
+              <div className="egg_wrap padded" id="trails">
                 <div className={ map_class }>
                   { drawer.length ?
                     <div className="drawer" style={drawer_styles}>

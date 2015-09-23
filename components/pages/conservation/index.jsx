@@ -256,7 +256,7 @@ var Main = React.createClass({
 
     if (window_width <= (gallery_width - left)) {
       self.setState({left: self.state.left + 430});
-    }
+    } 
   },
 
   timelineLeft: function(){

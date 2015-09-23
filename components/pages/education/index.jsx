@@ -12,6 +12,8 @@ var Link = Router.Link;
 var Footer = require('../../common/footer.jsx');
 
 var ScrollMagic = require('scrollmagic');
+var TweenMax = require('../../../public/js/tweenmax.js');
+require('../../../public/js/scrollTo.js');
 
 var classes_data = require('../../common/classes.json');
 
@@ -45,12 +47,29 @@ var ClassList = React.createClass({
   showClass: function(object){
     var self = this;
     self.setState({current_class: object});
+    self.scrollThing('class_section');
   },
 
   resetClass: function(){
     var self = this;
     self.setState({current_class: {}});
   },
+  scrollThing: function(thing){
+    var controller = new ScrollMagic.Controller();
+    controller.scrollTo(function(target) {
+
+      TweenMax.to(window, 0.5, {
+        scrollTo : {
+          y : target + 60, // scroll position of the target along y axis
+          autoKill : true // allows user to kill scroll action smoothly
+        },
+        ease : Cubic.easeInOut
+      });
+
+    });
+    controller.scrollTo("#"+thing);
+  },
+
 
   render: function() {
     var self = this;
@@ -69,7 +88,7 @@ var ClassList = React.createClass({
     var current_class = self.state.current_class;
     if (current_class.length) {
       return (
-        <div className="current_class">
+        <div className="current_class" id="class_section">
           <p className="reset_class"  onClick={self.resetClass}>&lt;</p>
           <div className="main_class">
             <h2 className="marker color">{ current_class.name }</h2>
@@ -85,10 +104,12 @@ var ClassList = React.createClass({
               <p>LENGTH<br />{ current_class.length }</p>
               <p>NE STATE SCIENCE STANDARDS<br />{ current_class.standards }</p>
             </div>
+            { current_class.prepost.length ?
             <div className="enhance">
               <p>Enhance your class experience with pre and post class activities.</p>
-              <a href="" className="download_pdf">Download PDF</a>
+              <a href={ current_class.prepost } className="download_pdf">Download PDF</a>
             </div>
+            : null }
             <div className="signup">
               <p>To sign up, contact:</p>
               <p><a href="education@fontenelleforest.org" >education@fontenelleforest.org</a></p>
@@ -99,7 +120,7 @@ var ClassList = React.createClass({
       )
     } else {
       return (
-        <div className="classes">
+        <div className="classes" id="class_section">
           { classes }
         </div>
       )

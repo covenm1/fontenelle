@@ -6,9 +6,8 @@ var TransitionGroup = require('./VelocityTransitionGroup.jsx');
 var util = require('util');
 //
 var ScrollMagic = require('scrollmagic');
-// 		TweenMax = require('../../public/js/tweenmax.js');
-//
-// require('../../public/js/scrollTo.js');
+var TweenMax = require('../../../public/js/tweenmax.js');
+require('../../../public/js/scrollTo.js');
 
 var Route = Router.Route,
 		DefaultRoute = Router.DefaultRoute,
@@ -122,6 +121,28 @@ var App = React.createClass({
 		this.setState({menu: !this.state.menu});
 	},
 
+	closeMenu: function(){
+		this.setState({menu: false});
+	},
+
+	scrollThing: function(thing){
+		this.closeMenu();
+		var controller = new ScrollMagic.Controller();
+		controller.scrollTo(function(target) {
+
+			TweenMax.to(window, 0.5, {
+				scrollTo : {
+					y : target - 60, // scroll position of the target along y axis
+					autoKill : true // allows user to kill scroll action smoothly
+				},
+				ease : Cubic.easeInOut
+			});
+
+		});
+		controller.scrollTo("#"+thing);
+	},
+
+
 	render: function () {
 		var self = this;
 		var name = this.getHandlerKey();
@@ -154,7 +175,7 @@ var App = React.createClass({
 					<span className="close_menu_button" onClick={self.toggleMenu}>×</span>
 					<div className="sidebar_links">
 						<Link to="/" className="link" onClick={self.toggleMenu}><h2 className="forest main">Forest</h2></Link>
-						<a href="/#trails" className="link section" onClick={self.toggleMenu}>Trails</a>
+						<span className="link section" onClick={self.scrollThing.bind(this, "trails")}>Trails</span>
 						<a href="/#fauna" className="link section" onClick={self.toggleMenu}>Fauna &amp; Flora</a>
 						<a href="/#young" className="link section" onClick={self.toggleMenu}>Young Adventurers</a>
 						<Link to="/natural-resources" className="link" onClick={self.toggleMenu}><h2 className="conservation main">Natural Resources</h2></Link>

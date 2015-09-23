@@ -6,7 +6,7 @@
 
 .timeline_wrapper {
 	width: 100%;
-	overflow-x: scroll;
+	overflow: hidden;
   .year {
     text-align: center;
     color: $grey;
@@ -104,7 +104,7 @@
 }
 .timeline_button {
   position: absolute;
-  width: 35px;
+  width: 50px;
   // transition: 0.15s ease-out;
   z-index: 1;
   cursor: pointer;
