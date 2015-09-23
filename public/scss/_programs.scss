@@ -49,6 +49,7 @@
 }
 
 .for_kids_container {
+  padding: 50px 0;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -65,7 +66,6 @@
       text-align: left;
     }
     p {
-      font-size: 20px;
     }
   }
 }
@@ -75,6 +75,12 @@
   &.rotated {
     transform: rotateY(180deg) rotate(-125deg);
   }
+}
+
+.binoculars {
+  width: 337px!important;
+  max-width: 100%!important;
+  margin: auto;
 }
 
 

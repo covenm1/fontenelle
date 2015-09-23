@@ -267,7 +267,7 @@ var Main = React.createClass({
                       <div className="program_item" onClick={self.mudPies}>
                         <h4 className="name">
                           <span className="program_name">Mud Pies</span>
-                          <span className="program_description">Etiam porta sem malesuada magna mollis euismod.</span>
+                          <span className="program_description">Mud Pies is a relaxed, drop-in-and-play program that encourages interaction between adult and child.</span>
                         </h4>
                         <span className="program_arrow">
                           <img src="/img/programs/icon_right-arrow-red.svg" />
@@ -318,7 +318,7 @@ var Main = React.createClass({
 
                     </div>
                     <div className="for_kids image_container">
-                      <img src="/img/programs/binoculars.png" />
+                      <img className="binoculars" src="/img/programs/binoculars.png" />
                     </div>
                   </div>
                 }
@@ -337,7 +337,7 @@ var Main = React.createClass({
                   :
                     <div className="centered_content">
                       <h2 className="marker">A Recycled Forest, Built by Local Kids</h2>
-                      <p>Curabitur blandit tempus porttitor. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Curabitur blandit tempus porttitor. Donec id elit non mi porta gravida at eget metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis risus eget urna mollis ornare vel eu leo.</p>
+                      <p>Fontenelle teamed up with local artist Bart Vargas and non-profits Girls, Inc., Completely Kids, and Arts for All for this community art project.</p>
                       <img className="video_play" onClick={self.toggleVideo} src="/img/icon_play-video.svg" />
                     </div>
                   }
@@ -372,7 +372,7 @@ var Main = React.createClass({
                         <div className="program_item" onClick={self.insectClub}>
                           <h4 className="name">
                             <span className="program_name">THE INSECT CLUB </span>
-                            <span className="program_description">is our newest club, but already one of our most active, with a variety of activitiescentered around the numerous tiny species that share the forest.</span>
+                            <span className="program_description">is our newest club, but already one of our most active, with a variety of activities centered around the numerous tiny species that share the forest.</span>
                           </h4>
                           <span className="program_arrow">
                             <img src="/img/programs/icon_right-arrow-red.svg" />
@@ -426,6 +426,11 @@ var Main = React.createClass({
                     </div>
                   }
 
+              </div>
+              <div className="egg_wrap">
+                <div className='image_container'>
+                  <img src="/img/programs/groups.png" />
+                </div>
               </div>
 
               <div className="egg_wrap">

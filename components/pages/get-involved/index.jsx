@@ -100,7 +100,9 @@ var Main = React.createClass({
       <div className="page">
         <div className="egg_wrap static">
           <div className='image_container'>
-            <img src="/img/get-involved/page.png" />
+            <img src="/img/get-involved/Get-involved-donate.jpg" />
+            <img src="/img/get-involved/Get-involved-membership.jpg" />
+            <img src="/img/get-involved/Get-involved-volunteer.jpg" />
           </div>
         </div>
         <Footer />

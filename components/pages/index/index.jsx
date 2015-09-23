@@ -173,7 +173,7 @@ var App = React.createClass({
 		            <a href="/forest-now" className="link">Forest Now</a>
 								<Link to="/get-involved" className="link">Get Involved</Link>
 		        </span>
-						<span className="menu_icon" onClick={self.toggleMenu}>Menu</span>
+						<span className="menu_icon" onClick={self.toggleMenu}><img src="/img/hamburger.png" className="hamburger" /> <span className="menu_label">Menu</span></span>
 		    </header>
 				<div className="sidebar">
 					<span className="close_menu_button" onClick={self.toggleMenu}>×</span>
@@ -193,15 +193,15 @@ var App = React.createClass({
 							</span>
 						}
 						<Link to="/natural-resources" className="link" onClick={self.toggleMenu}><h2 className="conservation main">Natural Resources</h2></Link>
-						<a href="/natural-resources#history" className="link section" onClick={self.toggleMenu}>History</a>
-						<a href="/natural-resources#habitat" className="link section" onClick={self.toggleMenu}>Habitat Management</a>
-						<a href="/natural-resources#raptor" className="link section" onClick={self.toggleMenu}>Raptor Recovery</a>
+						<span className="link section" onClick={self.scrollThing.bind(this, "history")}>History</span>
+						<span className="link section" onClick={self.scrollThing.bind(this, "habitat")}>Habitat Management</span>
+						<span className="link section" onClick={self.scrollThing.bind(this, "raptor")}>Raptor Recovery</span>
 						<Link to="/education" className="link" onClick={self.toggleMenu}><h2 className="education main">Education</h2></Link>
-						<a href="/education#classes" className="link section" onClick={self.toggleMenu}>Classes</a>
+						<span className="link section" onClick={self.scrollThing.bind(this, "classes")}>Clasess</span>
 						<Link to="/programs" className="link" onClick={self.toggleMenu}><h2 className="programs main">Programs</h2></Link>
-						<a href="/programs#kids" className="link section" onClick={self.toggleMenu}>Kids</a>
-						<a href="/programs#adults" className="link section" onClick={self.toggleMenu}>Adults</a>
-						<a href="/programs#groups" className="link section" onClick={self.toggleMenu}>Groups</a>
+						<span className="link section" onClick={self.scrollThing.bind(this, "kids")}>Kids</span>
+						<span className="link section" onClick={self.scrollThing.bind(this, "adults")}>Adults</span>
+						<span className="link section" onClick={self.scrollThing.bind(this, "groups")}>Groups</span>
 						<Link to="/forest-now" className="link" onClick={self.toggleMenu}><h2 className="main">Forest Now</h2></Link>
 						<Link to="/get-involved" className="link" onClick={self.toggleMenu}><h2 className="main">Donate</h2></Link>
 						<Link to="/get-involved" className="link" onClick={self.toggleMenu}><h2 className="main">Membership</h2></Link>

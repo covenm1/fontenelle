@@ -60,7 +60,7 @@ var ClassList = React.createClass({
 
       TweenMax.to(window, 0.5, {
         scrollTo : {
-          y : target + 60, // scroll position of the target along y axis
+          y : target - 60, // scroll position of the target along y axis
           autoKill : true // allows user to kill scroll action smoothly
         },
         ease : Cubic.easeInOut
@@ -107,7 +107,7 @@ var ClassList = React.createClass({
             { current_class.prepost.length ?
             <div className="enhance">
               <p>Enhance your class experience with pre and post class activities.</p>
-              <a href={ current_class.prepost } className="download_pdf">Download PDF</a>
+              <a href={ current_class.prepost } target="_blank" className="download_pdf">Download PDF</a>
             </div>
             : null }
             <div className="signup">
@@ -195,7 +195,7 @@ var Main = React.createClass({
                 <div className="living_classroom copy_container">
                   <img src="/img/divider/VINE-top-long.svg" />
                   <h2 className="marker">A living classroom</h2>
-                  <p>The Forest offers nearly unlimited opportunities for learning. Over 100,000 youth and adults each year take part in environmental education programs through Fontenelle.</p>
+                  <p>The Forest offers nearly unlimited opportunities for learning. Over 100,000 youth and adults each year take part in environmental education programs through Fontenelle.</p>
                   <div className="vine_bottom">
                     <img className="left-half" src="/img/divider/VINE-bottom-left-half.svg" />
                     <img className="down-orange" src="/img/education/icon_down_green.svg" />
