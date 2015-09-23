@@ -8,59 +8,14 @@ var Router = require('react-router');
 var Navigation = Router.Navigation;
 var Link = Router.Link;
 
-
 var Footer = require('../../common/footer.jsx');
-
-var ScrollMagic = require('scrollmagic');
-
-var classes_data = require('../../../public/js/classes.json');
-
-var ClassThing = React.createClass({
-  render: function() {
-    return (
-      <div className="class">
-        <h2>{this.props.name}</h2>
-        <p>{this.props.age}</p>
-        <p>{this.props.science_standards}</p>
-        <p>{this.props.series}</p>
-        <p>{this.props.duration}</p>
-        <p>{this.props.description}</p>
-      </div>
-    )
-  }
-});
-
-var ClassList = React.createClass({
-  getInitialState: function() {
-    return {classes: classes_data, current_classes: classes_data}
-  },
-
-  natureFilter: function(){
-    var natureClasses = self.state.classes
-  },
-  render: function() {
-    var self = this;
-    var classes = self.state.current_classes.map(function(object) {
-
-      return <ClassThing
-        name={object.name}
-        age={object.age}
-        science_standards={object.science_standards}
-        series={object.series}
-        duration={object.duration}
-        description={object.description}  />
-    });
-    return (
-      <div className="classes">
-        { classes }
-      </div>
-    )
-  }
-});
 
 var poster_image;
 var Main = React.createClass({
   mixins: [ Router.State, Navigation ],
+  getInitialState: function() {
+    return { pre_count: 0, classImage: "/img/forest-now/nature-notes.jpg", video: false };
+  },
 
   componentDidMount: function () {
     var self = this;
@@ -103,6 +58,7 @@ var Main = React.createClass({
 
   render: function() {
     var self = this;
+    var classImage = self.state.classImage;
 
     return (
       <div className="page">
@@ -110,15 +66,22 @@ var Main = React.createClass({
           <div className='image_container'>
             <img src={classImage} onClick={self.toggleClass}/>
           </div>
-          <div className='image_container'>
-            <img src="/img/forest-now/blue-bar.png" />
+          <div className='content_container now-blue'>
+            <div className='now-links'>
+              <a href="/hours-and-admissions">Hours and Admissions</a>
+              <span>Trail Maps: <a target="_blank" href="http://fontenelleforest.org/images/stories/Trails/ffnc_trailmap_dec09.pdf">Fontenelle</a>|<a target="_blank" href="http://fontenelleforest.org/images/stories/Trails/neale_woods_map_printable.pdf">Neale Woods</a></span>
+              <a href="#">Guidelines</a>
+              <a href="/contact">Contact</a>
+            </div>
+          </div>
+          <div className='image_container now-left'>
+            <img src="/img/forest-now/calendar.jpg" />
+          </div>
+          <div className='image_container now-right'>
+            <Link to='/save-the-oaks'><img src="/img/forest-now/blog.jpg" /></Link>
           </div>
           <div className='image_container'>
-            <img src="/img/forest-now/calendar.png" />
-            <img src="/img/forest-now/blog.png" />
-          </div>
-          <div className='image_container'>
-            <img src="/img/forest-now/social-media.png" />
+            <img src="/img/forest-now/social-media.jpg" />
           </div>
         </div>
         <Footer />

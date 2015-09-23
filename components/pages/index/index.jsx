@@ -27,6 +27,7 @@ var forest = require('../forest/index.jsx'),
 		boardofdirectors = require('../board-of-directors/index.jsx'),
 		hoursandadmissions = require('../hours-and-admissions/index.jsx'),
 		forestnow = require('../forest-now/index.jsx'),
+		savetheoaks = require('../save-the-oaks/index.jsx'),
 		contact = require('../contact/index.jsx');
 
 var slide_names = [ 'forest', 'natural-resources', 'education', 'programs'];
@@ -148,7 +149,7 @@ var App = React.createClass({
 		        <Link to="/" className="logo"><img src="/img/logo.png" alt="" /></Link>
 		        <span className="global_menu">
 		            <Link to="/found-raptor" className="link">Found Raptor</Link>
-		            <a href="#" className="link">Forest Now</a>
+		            <a href="/forest-now" className="link">Forest Now</a>
 								<Link to="/get-involved" className="link">Get Involved</Link>
 		        </span>
 						<span className="menu_icon" onClick={self.toggleMenu}>Menu</span>
@@ -207,6 +208,7 @@ var routes = (
     <Route name="hours-and-admissions" path="/hours-and-admissions" handler={hoursandadmissions} addHandlerKey={true} />
     <Route name="board-of-directors" path="/board-of-directors" handler={boardofdirectors} addHandlerKey={true} />
     <Route name="forest-now" path="/forest-now" handler={forestnow} addHandlerKey={true} />
+    <Route name="save-the-oaks" path="/save-the-oaks" handler={savetheoaks} addHandlerKey={true} />
 		<Route name="contact" path="/contact" handler={contact} addHandlerKey={true} />
   </Route>
 
