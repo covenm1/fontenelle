@@ -26,7 +26,7 @@ var forest = require('../forest/index.jsx'),
 		getinvolved = require('../get-involved/index.jsx'),
 		contact = require('../contact/index.jsx');
 
-var slide_names = [ 'forest' , 'natural-resources' , 'education' , 'programs'];
+var slide_names = [ 'forest', 'natural-resources', 'education', 'programs'];
 var slide_count = 0;
 
 var hotkey = require('react-hotkey');
