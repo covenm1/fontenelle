@@ -9,7 +9,7 @@ var Navigation = Router.Navigation;
 var Link = Router.Link;
 
 var ScrollMagic = require('scrollmagic');
-var poster_image, map_image;
+var load_image = [];
 
 var photogallery = require('../../common/fall.json');
 var acorngallery = require('../../common/littleexplorers.json');
@@ -41,6 +41,18 @@ var Main = React.createClass({
       hover: '',
       area: '',
       left: 0,
+      pre_count: 0,
+      load_images: [
+        "/img/loop_one.jpg",
+        "/img/forest/forest-tearjerker.jpg",
+        "/img/forest/forest-kids-video.jpg",
+        "/img/forest/neale-woods.jpg",
+        "/img/forest/bird2.png",
+        '/img/forest/leaf-left-hex_a04e23.png',
+        '/img/forest/leaf-right-hex_a04e23.png',
+        "/img/eggshell.jpg"
+      ],
+      percent_loaded: 0,
       acornLeft: 0,
       windowWidth: window.innerWidth,
       videoOne: false,
@@ -53,15 +65,37 @@ var Main = React.createClass({
 
     window.addEventListener('resize', self.handleResize);
 
-    poster_image = new Image();
-    poster_image.onload = self.onLoad;
-    poster_image.src = "/img/loop_one.jpg";
+    var load_images = self.state.load_images;
+    console.log("load_images: " + load_images);
+    for (image in load_images) {
+      console.log("image: " + load_images[image]);
+      tmp_image = new Image();
+      tmp_image.onload = self.onLoad;
+      tmp_image.src = load_images[image];
+    }
 
   },
 
   onLoad: function() {
     var self = this;
-    self.setState({loaded: true});
+
+    var tmp_pre_count = self.state.pre_count;
+    tmp_pre_count++;
+
+    if (tmp_pre_count == self.state.load_images.length) {
+
+      self.setState({loaded: true, pre_count: tmp_pre_count, percent_loaded: 100});
+
+    } else {
+
+      var percent_loaded = (tmp_pre_count / self.state.load_images.length ) * 100;
+
+      console.log("onLoad #" + tmp_pre_count );
+      console.log("  percent_loaded: " + percent_loaded);
+
+      self.setState({pre_count: tmp_pre_count, percent_loaded: percent_loaded});
+
+    }
   },
 
   handleResize: function(e) {
@@ -73,19 +107,10 @@ var Main = React.createClass({
     });
   },
 
-
-
   hoverClass: function(index){
     console.log("hoverClass " + index);
     this.setState({hover: index});
   },
-
-  hoverLeave: function(){
-    this.setState({hover: ''});
-    console.log("hoverLeave" );
-  },
-
-
 
   reset: function(){
     var self = this;
@@ -318,7 +343,9 @@ var Main = React.createClass({
 
   render: function() {
     var self = this;
-
+    var loadStyle = {
+      width: self.state.percent_loaded + "%"
+    }
     if (self.state.loaded == true) {
 
       var drawer = self.state.drawer.map(function(object, index) {
@@ -431,13 +458,10 @@ var Main = React.createClass({
         backgroundImage: 'url(/img/forest/forest-kids-video.jpg)'
       }
 
-
-
-
       return (
         <div className="page">
           <div className="page_wrapper">
-            <div className="page_container" id="page">
+             <div className="page_container" id="page" style={loadStyle}>
               <div className="egg_wrap">
                 <div className="quiet_wild_container main_wrapper">
                   <div className="quiet_wild image_container">
@@ -1520,8 +1544,23 @@ var Main = React.createClass({
       )
     } else {
       return (
-        <div className="preloader">
-          <h1>Loading...</h1>
+        <div className="page preloading">
+          <div className="page_wrapper">
+            <div className="page_container" id="page" style={loadStyle}>
+            </div>
+          </div>
+
+          <div className='video-container'>
+            <video id="video-background" className="video-wrap" poster="/img/loop_one.jpg" autoPlay muted="muted" loop>
+              <source src="/videos/loop_one.webm" type="video/webm" />
+            </video>
+            <div className="content_container">
+              <div className="video_overlay"></div>
+              <div className="content_wrapper">
+                <img src="/img/forest.png" />
+              </div>
+            </div>
+          </div>
         </div>
       )
     }

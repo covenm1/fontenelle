@@ -35,7 +35,7 @@ gulp.task('build-reacts', function(){
 gulp.task('build-reacts-production', function(){
 
     return browserify('./components/pages/index/index.jsx')
-        .transform(reactify)
+        .transform(reactify, {stripTypes: true, es6: true})
         .bundle()
         .pipe(source('index.js'))
         .pipe(gulp.dest('js/'))

@@ -2193,7 +2193,7 @@ var Navigation = Router.Navigation;
 var Link = Router.Link;
 
 var ScrollMagic = require('scrollmagic');
-var poster_image, map_image;
+var load_image = [];
 
 var photogallery = require('../../common/fall.json');
 var acorngallery = require('../../common/littleexplorers.json');
@@ -2225,6 +2225,18 @@ var Main = React.createClass({displayName: "Main",
       hover: '',
       area: '',
       left: 0,
+      pre_count: 0,
+      load_images: [
+        "/img/loop_one.jpg",
+        "/img/forest/forest-tearjerker.jpg",
+        "/img/forest/forest-kids-video.jpg",
+        "/img/forest/neale-woods.jpg",
+        "/img/forest/bird2.png",
+        '/img/forest/leaf-left-hex_a04e23.png',
+        '/img/forest/leaf-right-hex_a04e23.png',
+        "/img/eggshell.jpg"
+      ],
+      percent_loaded: 0,
       acornLeft: 0,
       windowWidth: window.innerWidth,
       videoOne: false,
@@ -2237,15 +2249,37 @@ var Main = React.createClass({displayName: "Main",
 
     window.addEventListener('resize', self.handleResize);
 
-    poster_image = new Image();
-    poster_image.onload = self.onLoad;
-    poster_image.src = "/img/loop_one.jpg";
+    var load_images = self.state.load_images;
+    console.log("load_images: " + load_images);
+    for (image in load_images) {
+      console.log("image: " + load_images[image]);
+      tmp_image = new Image();
+      tmp_image.onload = self.onLoad;
+      tmp_image.src = load_images[image];
+    }
 
   },
 
   onLoad: function() {
     var self = this;
-    self.setState({loaded: true});
+
+    var tmp_pre_count = self.state.pre_count;
+    tmp_pre_count++;
+
+    if (tmp_pre_count == self.state.load_images.length) {
+
+      self.setState({loaded: true, pre_count: tmp_pre_count, percent_loaded: 100});
+
+    } else {
+
+      var percent_loaded = (tmp_pre_count / self.state.load_images.length ) * 100;
+
+      console.log("onLoad #" + tmp_pre_count );
+      console.log("  percent_loaded: " + percent_loaded);
+
+      self.setState({pre_count: tmp_pre_count, percent_loaded: percent_loaded});
+
+    }
   },
 
   handleResize: function(e) {
@@ -2257,19 +2291,10 @@ var Main = React.createClass({displayName: "Main",
     });
   },
 
-
-
   hoverClass: function(index){
     console.log("hoverClass " + index);
     this.setState({hover: index});
   },
-
-  hoverLeave: function(){
-    this.setState({hover: ''});
-    console.log("hoverLeave" );
-  },
-
-
 
   reset: function(){
     var self = this;
@@ -2502,7 +2527,9 @@ var Main = React.createClass({displayName: "Main",
 
   render: function() {
     var self = this;
-
+    var loadStyle = {
+      width: self.state.percent_loaded + "%"
+    }
     if (self.state.loaded == true) {
 
       var drawer = self.state.drawer.map(function(object, index) {
@@ -2615,13 +2642,10 @@ var Main = React.createClass({displayName: "Main",
         backgroundImage: 'url(/img/forest/forest-kids-video.jpg)'
       }
 
-
-
-
       return (
         React.createElement("div", {className: "page"}, 
           React.createElement("div", {className: "page_wrapper"}, 
-            React.createElement("div", {className: "page_container", id: "page"}, 
+             React.createElement("div", {className: "page_container", id: "page", style: loadStyle}, 
               React.createElement("div", {className: "egg_wrap"}, 
                 React.createElement("div", {className: "quiet_wild_container main_wrapper"}, 
                   React.createElement("div", {className: "quiet_wild image_container"}, 
@@ -3704,8 +3728,23 @@ var Main = React.createClass({displayName: "Main",
       )
     } else {
       return (
-        React.createElement("div", {className: "preloader"}, 
-          React.createElement("h1", null, "Loading...")
+        React.createElement("div", {className: "page preloading"}, 
+          React.createElement("div", {className: "page_wrapper"}, 
+            React.createElement("div", {className: "page_container", id: "page", style: loadStyle}
+            )
+          ), 
+
+          React.createElement("div", {className: "video-container"}, 
+            React.createElement("video", {id: "video-background", className: "video-wrap", poster: "/img/loop_one.jpg", autoPlay: true, muted: "muted", loop: true}, 
+              React.createElement("source", {src: "/videos/loop_one.webm", type: "video/webm"})
+            ), 
+            React.createElement("div", {className: "content_container"}, 
+              React.createElement("div", {className: "video_overlay"}), 
+              React.createElement("div", {className: "content_wrapper"}, 
+                React.createElement("img", {src: "/img/forest.png"})
+              )
+            )
+          )
         )
       )
     }
@@ -35354,7 +35393,7 @@ function hasOwnProperty(obj, prop) {
 
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{"./support/isBuffer":255,"_process":21,"inherits":254}],257:[function(require,module,exports){
-/*! VelocityJS.org (1.2.2). (C) 2014 Julian Shapiro. MIT @license: en.wikipedia.org/wiki/MIT_License */
+/*! VelocityJS.org (1.2.3). (C) 2014 Julian Shapiro. MIT @license: en.wikipedia.org/wiki/MIT_License */
 
 /*************************
    Velocity jQuery Shim
@@ -37430,7 +37469,7 @@ return function (global, window, document, undefined) {
         /* Support is included for jQuery's argument overloading: $.animate(propertyMap [, duration] [, easing] [, complete]).
            Overloading is detected by checking for the absence of an object being passed into options. */
         /* Note: The stop and finish actions do not accept animation options, and are therefore excluded from this check. */
-        if (!/^(stop|finish)$/i.test(propertiesMap) && !$.isPlainObject(options)) {
+        if (!/^(stop|finish|finishAll)$/i.test(propertiesMap) && !$.isPlainObject(options)) {
             /* The utility function shifts all arguments one position to the right, so we adjust for that offset. */
             var startingArgumentPosition = argumentIndex + 1;
 
@@ -37496,6 +37535,7 @@ return function (global, window, document, undefined) {
                 break;
 
             case "finish":
+            case "finishAll":
             case "stop":
                 /*******************
                     Action: Stop
@@ -37513,6 +37553,22 @@ return function (global, window, document, undefined) {
                         }
 
                         delete Data(element).delayTimer;
+                    }
+
+                    /* If we want to finish everything in the queue, we have to iterate through it
+                       and call each function. This will make them active calls below, which will
+                       cause them to be applied via the duration setting. */
+                    if (propertiesMap === "finishAll" && (options === true || Type.isString(options))) {
+                        /* Iterate through the items in the element's queue. */
+                        $.each($.queue(element, Type.isString(options) ? options : ""), function(_, item) {
+                            /* The queue array can contain an "inprogress" string, which we skip. */
+                            if (Type.isFunction(item)) {
+                                item();
+                            }
+                        });
+
+                        /* Clearing the $.queue() array is achieved by resetting it to []. */
+                        $.queue(element, Type.isString(options) ? options : "", []);
                     }
                 });
 
@@ -37546,10 +37602,11 @@ return function (global, window, document, undefined) {
                             }
 
                             /* Iterate through the calls targeted by the stop command. */
-                            $.each(elements, function(l, element) {                                
+                            $.each(elements, function(l, element) {
                                 /* Check that this call was applied to the target element. */
                                 if (element === activeElement) {
-                                    /* Optionally clear the remaining queued calls. */
+                                    /* Optionally clear the remaining queued calls. If we're doing "finishAll" this won't find anything,
+                                       due to the queue-clearing above. */
                                     if (options === true || Type.isString(options)) {
                                         /* Iterate through the items in the element's queue. */
                                         $.each($.queue(element, Type.isString(options) ? options : ""), function(_, item) {
@@ -37577,7 +37634,7 @@ return function (global, window, document, undefined) {
                                         }
 
                                         callsToStop.push(i);
-                                    } else if (propertiesMap === "finish") {
+                                    } else if (propertiesMap === "finish" || propertiesMap === "finishAll") {
                                         /* To get active tweens to finish immediately, we forcefully shorten their durations to 1ms so that
                                         they finish upon the next rAf tick then proceed with normal call completion logic. */
                                         activeCall[2].duration = 1;
@@ -38829,7 +38886,7 @@ return function (global, window, document, undefined) {
                             tween.currentValue = currentValue;
 
                             /* If we're tweening a fake 'tween' property in order to log transition values, update the one-per-call variable so that
-                               it can be passed into the progress callback. */ 
+                               it can be passed into the progress callback. */
                             if (property === "tween") {
                                 tweenDummyValue = currentValue;
                             } else {

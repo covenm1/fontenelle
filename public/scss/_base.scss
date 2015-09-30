@@ -70,6 +70,15 @@ $page_color: black;
   position: absolute;
   width: 100%;
   top: 97%;
+  transition: 0.15s ease-out;
+  .forest & {
+      border-top: $forest_color 10px solid;
+  }
+  .preloading & {
+    top: 100%;
+    margin-top: -10px;
+    width: 0%;
+  }
 }
 
 .image_container {
