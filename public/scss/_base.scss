@@ -216,6 +216,20 @@ header {
     height: 100%;
 }
 
+.loading .main_content {
+  background: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  .fa.fa-cog.fa-spin {
+    font-size: 50px;
+  }
+  .load_message {
+
+  }
+}
+
 #limit-svg {
     display: block;
     width: 100%;

@@ -47,10 +47,23 @@ var App = React.createClass({
 	},
 
 	getInitialState: function () {
-		return { currentTransition: 'default', menu: false };
+		return {
+			currentTransition: 'default',
+			menu: false,
+			pre_count: 0,
+			percent_loaded: 0,
+			load_images: [
+				"/img/loop_one.jpg",
+				"/img/loop_programs.jpg",
+				"/img/loop_education.jpg",
+				"/img/loop_conservation.jpg"
+			],
+		};
 	},
 
 	componentDidMount: function(){
+		var self = this;
+
 		var controller = new ScrollMagic.Controller();
 	  var top = new ScrollMagic.Scene({
 								triggerHook: 0,
@@ -59,6 +72,34 @@ var App = React.createClass({
 	          })
 	          .setClassToggle("header.header", "scrolled")
 	          .addTo(controller);
+
+		var load_images = self.state.load_images;
+    console.log("load_images: " + load_images);
+    for (image in load_images) {
+      console.log("image: " + load_images[image]);
+      tmp_image = new Image();
+      tmp_image.onload = self.onLoad;
+      tmp_image.src = load_images[image];
+    }
+	},
+
+	onLoad: function() {
+		var self = this;
+		var tmp_pre_count = self.state.pre_count;
+		tmp_pre_count++;
+
+		if (tmp_pre_count == self.state.load_images.length) {
+
+			self.setState({pre_count: tmp_pre_count, percent_loaded: 100});
+			setTimeout(function() { self.setState({loaded: true}); }, 150);
+
+		} else {
+
+			var percent_loaded = (tmp_pre_count / self.state.load_images.length ) * 100;
+			self.setState({pre_count: tmp_pre_count, percent_loaded: percent_loaded});
+
+		}
+
 	},
 
 	onClickRight: function(){
@@ -164,66 +205,122 @@ var App = React.createClass({
 		} else {
 			var header_up = " header_up";
 		}
-		return (
-		  <div className={"fontenelle " + name + menu_class + header_up} >
-		    <header className="header">
-		        <Link to="/" className="logo"><img src="/img/logo.png" alt="" /></Link>
-		        <span className="global_menu">
-		            <Link to="/found-raptor" className="link">Found Raptor</Link>
-		            <a href="/forest-now" className="link">Forest Now</a>
-								<Link to="/get-involved" className="link">Get Involved</Link>
-		        </span>
-						<span className="menu_icon" onClick={self.toggleMenu}><img src="/img/hamburger.png" className="hamburger" /> <span className="menu_label">Menu</span></span>
-		    </header>
-				<div className="sidebar">
-					<span className="close_menu_button" onClick={self.toggleMenu}>×</span>
-					<div className="sidebar_links">
-						<Link to="/" className="link" onClick={self.toggleMenu}><h2 className="forest main">Forest</h2></Link>
-						{ name == 'forest' ?
-							<span>
-								<span className="link section" onClick={self.scrollThing.bind(this, "trails")}>Trails</span>
-								<span className="link section" onClick={self.scrollThing.bind(this, "fauna")}>Fauna &amp; Flora</span>
-								<span className="link section" onClick={self.scrollThing.bind(this, "young")}>Little Explorers</span>
+		if (self.state.loaded == true) {
+			return (
+			  <div className={"fontenelle " + name + menu_class + header_up} >
+			    <header className="header">
+			        <Link to="/" className="logo"><img src="/img/logo.png" alt="" /></Link>
+			        <span className="global_menu">
+			            <Link to="/found-raptor" className="link">Found Raptor</Link>
+			            <a href="/forest-now" className="link">Forest Now</a>
+									<Link to="/get-involved" className="link">Get Involved</Link>
+			        </span>
+							<span className="menu_icon" onClick={self.toggleMenu}><img src="/img/hamburger.png" className="hamburger" /> <span className="menu_label">Menu</span></span>
+			    </header>
+					<div className="sidebar">
+						<span className="close_menu_button" onClick={self.toggleMenu}>×</span>
+						<div className="sidebar_links">
+							<Link to="/" className="link" onClick={self.toggleMenu}><h2 className="forest main">Forest</h2></Link>
+							{ name == 'forest' ?
+								<span>
+									<span className="link section" onClick={self.scrollThing.bind(this, "trails")}>Trails</span>
+									<span className="link section" onClick={self.scrollThing.bind(this, "fauna")}>Fauna &amp; Flora</span>
+									<span className="link section" onClick={self.scrollThing.bind(this, "young")}>Little Explorers</span>
+								</span>
+							:
+								<span>
+									<a href="/#trails" className="link section" onClick={self.toggleMenu}>Trails</a>
+									<a href="/#fauna" className="link section" onClick={self.toggleMenu}>Fauna &amp; Flora</a>
+									<a href="/#young" className="link section" onClick={self.toggleMenu}>Little Explorers</a>
+								</span>
+							}
+							<Link to="/natural-resources" className="link" onClick={self.toggleMenu}><h2 className="conservation main">Natural Resources</h2></Link>
+							<span className="link section" onClick={self.scrollThing.bind(this, "history")}>History</span>
+							<span className="link section" onClick={self.scrollThing.bind(this, "habitat")}>Habitat Management</span>
+							<span className="link section" onClick={self.scrollThing.bind(this, "raptor")}>Raptor Recovery</span>
+							<Link to="/education" className="link" onClick={self.toggleMenu}><h2 className="education main">Education</h2></Link>
+							<span className="link section" onClick={self.scrollThing.bind(this, "classes")}>Clasess</span>
+							<Link to="/programs" className="link" onClick={self.toggleMenu}><h2 className="programs main">Programs</h2></Link>
+							<span className="link section" onClick={self.scrollThing.bind(this, "kids")}>Kids</span>
+							<span className="link section" onClick={self.scrollThing.bind(this, "adults")}>Adults</span>
+							<span className="link section" onClick={self.scrollThing.bind(this, "groups")}>Groups</span>
+							<Link to="/forest-now" className="link" onClick={self.toggleMenu}><h2 className="main">Forest Now</h2></Link>
+							<Link to="/get-involved" className="link" onClick={self.toggleMenu}><h2 className="main">Donate</h2></Link>
+							<Link to="/get-involved" className="link" onClick={self.toggleMenu}><h2 className="main">Membership</h2></Link>
+							<Link to="/get-involved" className="link" onClick={self.toggleMenu}><h2 className="main">Volunteer</h2></Link>
+							<Link to="/board-of-directors" className="link" onClick={self.toggleMenu}><h2 className="main">Board</h2></Link>
+							<Link to="/hours-and-admissions" className="link" onClick={self.toggleMenu}><h2 className="main">Hours and Admissions</h2></Link>
+							<Link to="/contact" className="link" onClick={self.toggleMenu}><h2 className="main">Contact</h2></Link>
+						</div>
+					</div>
+					{ main_pages ?
+					<div className="slide_controls">
+						<span className="left slider_button" onClick={self.onClickLeft}><img src="/img/icon_scroll-left.svg" /></span>
+						<span className="right slider_button" onClick={self.onClickRight}><img src="/img/icon_scroll-right.svg" /></span>
+					</div>
+					: null }
+					<div className="menu_overlay" onClick={self.toggleMenu}></div>
+
+		    	<TransitionGroup transitionName={transition} className="main_content" id="main_content" component="div">
+			    	<RouteHandler key={name} transition={self.setTransition} />
+			    </TransitionGroup>
+			  </div>
+			)
+		} else {
+			return (
+				<div className={"fontenelle loading header_up" + name + menu_class} >
+					<header className="header">
+							<Link to="/" className="logo"><img src="/img/logo.png" alt="" /></Link>
+							<span className="global_menu">
+									<Link to="/found-raptor" className="link">Found Raptor</Link>
+									<a href="/forest-now" className="link">Forest Now</a>
+									<Link to="/get-involved" className="link">Get Involved</Link>
 							</span>
-						:
-							<span>
-								<a href="/#trails" className="link section" onClick={self.toggleMenu}>Trails</a>
-								<a href="/#fauna" className="link section" onClick={self.toggleMenu}>Fauna &amp; Flora</a>
-								<a href="/#young" className="link section" onClick={self.toggleMenu}>Little Explorers</a>
-							</span>
-						}
-						<Link to="/natural-resources" className="link" onClick={self.toggleMenu}><h2 className="conservation main">Natural Resources</h2></Link>
-						<span className="link section" onClick={self.scrollThing.bind(this, "history")}>History</span>
-						<span className="link section" onClick={self.scrollThing.bind(this, "habitat")}>Habitat Management</span>
-						<span className="link section" onClick={self.scrollThing.bind(this, "raptor")}>Raptor Recovery</span>
-						<Link to="/education" className="link" onClick={self.toggleMenu}><h2 className="education main">Education</h2></Link>
-						<span className="link section" onClick={self.scrollThing.bind(this, "classes")}>Clasess</span>
-						<Link to="/programs" className="link" onClick={self.toggleMenu}><h2 className="programs main">Programs</h2></Link>
-						<span className="link section" onClick={self.scrollThing.bind(this, "kids")}>Kids</span>
-						<span className="link section" onClick={self.scrollThing.bind(this, "adults")}>Adults</span>
-						<span className="link section" onClick={self.scrollThing.bind(this, "groups")}>Groups</span>
-						<Link to="/forest-now" className="link" onClick={self.toggleMenu}><h2 className="main">Forest Now</h2></Link>
-						<Link to="/get-involved" className="link" onClick={self.toggleMenu}><h2 className="main">Donate</h2></Link>
-						<Link to="/get-involved" className="link" onClick={self.toggleMenu}><h2 className="main">Membership</h2></Link>
-						<Link to="/get-involved" className="link" onClick={self.toggleMenu}><h2 className="main">Volunteer</h2></Link>
-						<Link to="/board-of-directors" className="link" onClick={self.toggleMenu}><h2 className="main">Board</h2></Link>
-						<Link to="/hours-and-admissions" className="link" onClick={self.toggleMenu}><h2 className="main">Hours and Admissions</h2></Link>
-						<Link to="/contact" className="link" onClick={self.toggleMenu}><h2 className="main">Contact</h2></Link>
+							<span className="menu_icon" onClick={self.toggleMenu}><img src="/img/hamburger.png" className="hamburger" /> <span className="menu_label">Menu</span></span>
+					</header>
+					<div className="sidebar">
+						<span className="close_menu_button" onClick={self.toggleMenu}>×</span>
+						<div className="sidebar_links">
+							<Link to="/" className="link" onClick={self.toggleMenu}><h2 className="forest main">Forest</h2></Link>
+							{ name == 'forest' ?
+								<span>
+									<span className="link section" onClick={self.scrollThing.bind(this, "trails")}>Trails</span>
+									<span className="link section" onClick={self.scrollThing.bind(this, "fauna")}>Fauna &amp; Flora</span>
+									<span className="link section" onClick={self.scrollThing.bind(this, "young")}>Little Explorers</span>
+								</span>
+							:
+								<span>
+									<a href="/#trails" className="link section" onClick={self.toggleMenu}>Trails</a>
+									<a href="/#fauna" className="link section" onClick={self.toggleMenu}>Fauna &amp; Flora</a>
+									<a href="/#young" className="link section" onClick={self.toggleMenu}>Little Explorers</a>
+								</span>
+							}
+							<Link to="/natural-resources" className="link" onClick={self.toggleMenu}><h2 className="conservation main">Natural Resources</h2></Link>
+							<span className="link section" onClick={self.scrollThing.bind(this, "history")}>History</span>
+							<span className="link section" onClick={self.scrollThing.bind(this, "habitat")}>Habitat Management</span>
+							<span className="link section" onClick={self.scrollThing.bind(this, "raptor")}>Raptor Recovery</span>
+							<Link to="/education" className="link" onClick={self.toggleMenu}><h2 className="education main">Education</h2></Link>
+							<span className="link section" onClick={self.scrollThing.bind(this, "classes")}>Clasess</span>
+							<Link to="/programs" className="link" onClick={self.toggleMenu}><h2 className="programs main">Programs</h2></Link>
+							<span className="link section" onClick={self.scrollThing.bind(this, "kids")}>Kids</span>
+							<span className="link section" onClick={self.scrollThing.bind(this, "adults")}>Adults</span>
+							<span className="link section" onClick={self.scrollThing.bind(this, "groups")}>Groups</span>
+							<Link to="/forest-now" className="link" onClick={self.toggleMenu}><h2 className="main">Forest Now</h2></Link>
+							<Link to="/get-involved" className="link" onClick={self.toggleMenu}><h2 className="main">Donate</h2></Link>
+							<Link to="/get-involved" className="link" onClick={self.toggleMenu}><h2 className="main">Membership</h2></Link>
+							<Link to="/get-involved" className="link" onClick={self.toggleMenu}><h2 className="main">Volunteer</h2></Link>
+							<Link to="/board-of-directors" className="link" onClick={self.toggleMenu}><h2 className="main">Board</h2></Link>
+							<Link to="/hours-and-admissions" className="link" onClick={self.toggleMenu}><h2 className="main">Hours and Admissions</h2></Link>
+							<Link to="/contact" className="link" onClick={self.toggleMenu}><h2 className="main">Contact</h2></Link>
+						</div>
+					</div>
+					<div className="main_content" id="main_content">
+						<i className="fa fa-cog fa-spin"></i>
+						<div className="load_message">Loading content for {name}.</div>
 					</div>
 				</div>
-				{ main_pages ?
-				<div className="slide_controls">
-					<span className="left slider_button" onClick={self.onClickLeft}><img src="/img/icon_scroll-left.svg" /></span>
-					<span className="right slider_button" onClick={self.onClickRight}><img src="/img/icon_scroll-right.svg" /></span>
-				</div>
-				: null }
-				<div className="menu_overlay" onClick={self.toggleMenu}></div>
-
-	    	<TransitionGroup transitionName={transition} className="main_content" id="main_content" component="div">
-		    	<RouteHandler key={name} transition={self.setTransition} />
-		    </TransitionGroup>
-		  </div>
-		);
+			)
+		}
 	}
 });
 
