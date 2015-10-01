@@ -48,10 +48,23 @@ var App = React.createClass({displayName: "App",
 	},
 
 	getInitialState: function () {
-		return { currentTransition: 'default', menu: false };
+		return {
+			currentTransition: 'default',
+			menu: false,
+			pre_count: 0,
+			percent_loaded: 0,
+			load_images: [
+				"/img/loop_one.jpg",
+				"/img/loop_programs.jpg",
+				"/img/loop_education.jpg",
+				"/img/loop_conservation.jpg"
+			],
+		};
 	},
 
 	componentDidMount: function(){
+		var self = this;
+
 		var controller = new ScrollMagic.Controller();
 	  var top = new ScrollMagic.Scene({
 								triggerHook: 0,
@@ -60,6 +73,34 @@ var App = React.createClass({displayName: "App",
 	          })
 	          .setClassToggle("header.header", "scrolled")
 	          .addTo(controller);
+
+		var load_images = self.state.load_images;
+    console.log("load_images: " + load_images);
+    for (image in load_images) {
+      console.log("image: " + load_images[image]);
+      tmp_image = new Image();
+      tmp_image.onload = self.onLoad;
+      tmp_image.src = load_images[image];
+    }
+	},
+
+	onLoad: function() {
+		var self = this;
+		var tmp_pre_count = self.state.pre_count;
+		tmp_pre_count++;
+
+		if (tmp_pre_count == self.state.load_images.length) {
+
+			self.setState({pre_count: tmp_pre_count, percent_loaded: 100});
+			setTimeout(function() { self.setState({loaded: true}); }, 150);
+
+		} else {
+
+			var percent_loaded = (tmp_pre_count / self.state.load_images.length ) * 100;
+			self.setState({pre_count: tmp_pre_count, percent_loaded: percent_loaded});
+
+		}
+
 	},
 
 	onClickRight: function(){
@@ -165,66 +206,122 @@ var App = React.createClass({displayName: "App",
 		} else {
 			var header_up = " header_up";
 		}
-		return (
-		  React.createElement("div", {className: "fontenelle " + name + menu_class + header_up}, 
-		    React.createElement("header", {className: "header"}, 
-		        React.createElement(Link, {to: "/", className: "logo"}, React.createElement("img", {src: "/img/logo.png", alt: ""})), 
-		        React.createElement("span", {className: "global_menu"}, 
-		            React.createElement(Link, {to: "/found-raptor", className: "link"}, "Found Raptor"), 
-		            React.createElement("a", {href: "/forest-now", className: "link"}, "Forest Now"), 
-								React.createElement(Link, {to: "/get-involved", className: "link"}, "Get Involved")
-		        ), 
-						React.createElement("span", {className: "menu_icon", onClick: self.toggleMenu}, React.createElement("img", {src: "/img/hamburger.png", className: "hamburger"}), " ", React.createElement("span", {className: "menu_label"}, "Menu"))
-		    ), 
-				React.createElement("div", {className: "sidebar"}, 
-					React.createElement("span", {className: "close_menu_button", onClick: self.toggleMenu}, "×"), 
-					React.createElement("div", {className: "sidebar_links"}, 
-						React.createElement(Link, {to: "/", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "forest main"}, "Forest")), 
-						 name == 'forest' ?
-							React.createElement("span", null, 
-								React.createElement("span", {className: "link section", onClick: self.scrollThing.bind(this, "trails")}, "Trails"), 
-								React.createElement("span", {className: "link section", onClick: self.scrollThing.bind(this, "fauna")}, "Fauna & Flora"), 
-								React.createElement("span", {className: "link section", onClick: self.scrollThing.bind(this, "young")}, "Little Explorers")
-							)
-						:
-							React.createElement("span", null, 
-								React.createElement("a", {href: "/#trails", className: "link section", onClick: self.toggleMenu}, "Trails"), 
-								React.createElement("a", {href: "/#fauna", className: "link section", onClick: self.toggleMenu}, "Fauna & Flora"), 
-								React.createElement("a", {href: "/#young", className: "link section", onClick: self.toggleMenu}, "Little Explorers")
-							), 
-						
-						React.createElement(Link, {to: "/natural-resources", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "conservation main"}, "Natural Resources")), 
-						React.createElement("span", {className: "link section", onClick: self.scrollThing.bind(this, "history")}, "History"), 
-						React.createElement("span", {className: "link section", onClick: self.scrollThing.bind(this, "habitat")}, "Habitat Management"), 
-						React.createElement("span", {className: "link section", onClick: self.scrollThing.bind(this, "raptor")}, "Raptor Recovery"), 
-						React.createElement(Link, {to: "/education", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "education main"}, "Education")), 
-						React.createElement("span", {className: "link section", onClick: self.scrollThing.bind(this, "classes")}, "Clasess"), 
-						React.createElement(Link, {to: "/programs", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "programs main"}, "Programs")), 
-						React.createElement("span", {className: "link section", onClick: self.scrollThing.bind(this, "kids")}, "Kids"), 
-						React.createElement("span", {className: "link section", onClick: self.scrollThing.bind(this, "adults")}, "Adults"), 
-						React.createElement("span", {className: "link section", onClick: self.scrollThing.bind(this, "groups")}, "Groups"), 
-						React.createElement(Link, {to: "/forest-now", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Forest Now")), 
-						React.createElement(Link, {to: "/get-involved", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Donate")), 
-						React.createElement(Link, {to: "/get-involved", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Membership")), 
-						React.createElement(Link, {to: "/get-involved", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Volunteer")), 
-						React.createElement(Link, {to: "/board-of-directors", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Board")), 
-						React.createElement(Link, {to: "/hours-and-admissions", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Hours and Admissions")), 
-						React.createElement(Link, {to: "/contact", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Contact"))
+		if (self.state.loaded == true) {
+			return (
+			  React.createElement("div", {className: "fontenelle " + name + menu_class + header_up}, 
+			    React.createElement("header", {className: "header"}, 
+			        React.createElement(Link, {to: "/", className: "logo"}, React.createElement("img", {src: "/img/logo.png", alt: ""})), 
+			        React.createElement("span", {className: "global_menu"}, 
+			            React.createElement(Link, {to: "/found-raptor", className: "link"}, "Found Raptor"), 
+			            React.createElement("a", {href: "/forest-now", className: "link"}, "Forest Now"), 
+									React.createElement(Link, {to: "/get-involved", className: "link"}, "Get Involved")
+			        ), 
+							React.createElement("span", {className: "menu_icon", onClick: self.toggleMenu}, React.createElement("img", {src: "/img/hamburger.png", className: "hamburger"}), " ", React.createElement("span", {className: "menu_label"}, "Menu"))
+			    ), 
+					React.createElement("div", {className: "sidebar"}, 
+						React.createElement("span", {className: "close_menu_button", onClick: self.toggleMenu}, "×"), 
+						React.createElement("div", {className: "sidebar_links"}, 
+							React.createElement(Link, {to: "/", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "forest main"}, "Forest")), 
+							 name == 'forest' ?
+								React.createElement("span", null, 
+									React.createElement("span", {className: "link section", onClick: self.scrollThing.bind(this, "trails")}, "Trails"), 
+									React.createElement("span", {className: "link section", onClick: self.scrollThing.bind(this, "fauna")}, "Fauna & Flora"), 
+									React.createElement("span", {className: "link section", onClick: self.scrollThing.bind(this, "young")}, "Little Explorers")
+								)
+							:
+								React.createElement("span", null, 
+									React.createElement("a", {href: "/#trails", className: "link section", onClick: self.toggleMenu}, "Trails"), 
+									React.createElement("a", {href: "/#fauna", className: "link section", onClick: self.toggleMenu}, "Fauna & Flora"), 
+									React.createElement("a", {href: "/#young", className: "link section", onClick: self.toggleMenu}, "Little Explorers")
+								), 
+							
+							React.createElement(Link, {to: "/natural-resources", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "conservation main"}, "Natural Resources")), 
+							React.createElement("span", {className: "link section", onClick: self.scrollThing.bind(this, "history")}, "History"), 
+							React.createElement("span", {className: "link section", onClick: self.scrollThing.bind(this, "habitat")}, "Habitat Management"), 
+							React.createElement("span", {className: "link section", onClick: self.scrollThing.bind(this, "raptor")}, "Raptor Recovery"), 
+							React.createElement(Link, {to: "/education", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "education main"}, "Education")), 
+							React.createElement("span", {className: "link section", onClick: self.scrollThing.bind(this, "classes")}, "Clasess"), 
+							React.createElement(Link, {to: "/programs", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "programs main"}, "Programs")), 
+							React.createElement("span", {className: "link section", onClick: self.scrollThing.bind(this, "kids")}, "Kids"), 
+							React.createElement("span", {className: "link section", onClick: self.scrollThing.bind(this, "adults")}, "Adults"), 
+							React.createElement("span", {className: "link section", onClick: self.scrollThing.bind(this, "groups")}, "Groups"), 
+							React.createElement(Link, {to: "/forest-now", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Forest Now")), 
+							React.createElement(Link, {to: "/get-involved", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Donate")), 
+							React.createElement(Link, {to: "/get-involved", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Membership")), 
+							React.createElement(Link, {to: "/get-involved", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Volunteer")), 
+							React.createElement(Link, {to: "/board-of-directors", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Board")), 
+							React.createElement(Link, {to: "/hours-and-admissions", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Hours and Admissions")), 
+							React.createElement(Link, {to: "/contact", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Contact"))
+						)
+					), 
+					 main_pages ?
+					React.createElement("div", {className: "slide_controls"}, 
+						React.createElement("span", {className: "left slider_button", onClick: self.onClickLeft}, React.createElement("img", {src: "/img/icon_scroll-left.svg"})), 
+						React.createElement("span", {className: "right slider_button", onClick: self.onClickRight}, React.createElement("img", {src: "/img/icon_scroll-right.svg"}))
 					)
-				), 
-				 main_pages ?
-				React.createElement("div", {className: "slide_controls"}, 
-					React.createElement("span", {className: "left slider_button", onClick: self.onClickLeft}, React.createElement("img", {src: "/img/icon_scroll-left.svg"})), 
-					React.createElement("span", {className: "right slider_button", onClick: self.onClickRight}, React.createElement("img", {src: "/img/icon_scroll-right.svg"}))
-				)
-				: null, 
-				React.createElement("div", {className: "menu_overlay", onClick: self.toggleMenu}), 
+					: null, 
+					React.createElement("div", {className: "menu_overlay", onClick: self.toggleMenu}), 
 
-	    	React.createElement(TransitionGroup, {transitionName: transition, className: "main_content", id: "main_content", component: "div"}, 
-		    	React.createElement(RouteHandler, {key: name, transition: self.setTransition})
-		    )
-		  )
-		);
+		    	React.createElement(TransitionGroup, {transitionName: transition, className: "main_content", id: "main_content", component: "div"}, 
+			    	React.createElement(RouteHandler, {key: name, transition: self.setTransition})
+			    )
+			  )
+			)
+		} else {
+			return (
+				React.createElement("div", {className: "fontenelle loading header_up" + name + menu_class}, 
+					React.createElement("header", {className: "header"}, 
+							React.createElement(Link, {to: "/", className: "logo"}, React.createElement("img", {src: "/img/logo.png", alt: ""})), 
+							React.createElement("span", {className: "global_menu"}, 
+									React.createElement(Link, {to: "/found-raptor", className: "link"}, "Found Raptor"), 
+									React.createElement("a", {href: "/forest-now", className: "link"}, "Forest Now"), 
+									React.createElement(Link, {to: "/get-involved", className: "link"}, "Get Involved")
+							), 
+							React.createElement("span", {className: "menu_icon", onClick: self.toggleMenu}, React.createElement("img", {src: "/img/hamburger.png", className: "hamburger"}), " ", React.createElement("span", {className: "menu_label"}, "Menu"))
+					), 
+					React.createElement("div", {className: "sidebar"}, 
+						React.createElement("span", {className: "close_menu_button", onClick: self.toggleMenu}, "×"), 
+						React.createElement("div", {className: "sidebar_links"}, 
+							React.createElement(Link, {to: "/", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "forest main"}, "Forest")), 
+							 name == 'forest' ?
+								React.createElement("span", null, 
+									React.createElement("span", {className: "link section", onClick: self.scrollThing.bind(this, "trails")}, "Trails"), 
+									React.createElement("span", {className: "link section", onClick: self.scrollThing.bind(this, "fauna")}, "Fauna & Flora"), 
+									React.createElement("span", {className: "link section", onClick: self.scrollThing.bind(this, "young")}, "Little Explorers")
+								)
+							:
+								React.createElement("span", null, 
+									React.createElement("a", {href: "/#trails", className: "link section", onClick: self.toggleMenu}, "Trails"), 
+									React.createElement("a", {href: "/#fauna", className: "link section", onClick: self.toggleMenu}, "Fauna & Flora"), 
+									React.createElement("a", {href: "/#young", className: "link section", onClick: self.toggleMenu}, "Little Explorers")
+								), 
+							
+							React.createElement(Link, {to: "/natural-resources", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "conservation main"}, "Natural Resources")), 
+							React.createElement("span", {className: "link section", onClick: self.scrollThing.bind(this, "history")}, "History"), 
+							React.createElement("span", {className: "link section", onClick: self.scrollThing.bind(this, "habitat")}, "Habitat Management"), 
+							React.createElement("span", {className: "link section", onClick: self.scrollThing.bind(this, "raptor")}, "Raptor Recovery"), 
+							React.createElement(Link, {to: "/education", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "education main"}, "Education")), 
+							React.createElement("span", {className: "link section", onClick: self.scrollThing.bind(this, "classes")}, "Clasess"), 
+							React.createElement(Link, {to: "/programs", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "programs main"}, "Programs")), 
+							React.createElement("span", {className: "link section", onClick: self.scrollThing.bind(this, "kids")}, "Kids"), 
+							React.createElement("span", {className: "link section", onClick: self.scrollThing.bind(this, "adults")}, "Adults"), 
+							React.createElement("span", {className: "link section", onClick: self.scrollThing.bind(this, "groups")}, "Groups"), 
+							React.createElement(Link, {to: "/forest-now", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Forest Now")), 
+							React.createElement(Link, {to: "/get-involved", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Donate")), 
+							React.createElement(Link, {to: "/get-involved", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Membership")), 
+							React.createElement(Link, {to: "/get-involved", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Volunteer")), 
+							React.createElement(Link, {to: "/board-of-directors", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Board")), 
+							React.createElement(Link, {to: "/hours-and-admissions", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Hours and Admissions")), 
+							React.createElement(Link, {to: "/contact", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Contact"))
+						)
+					), 
+					React.createElement("div", {className: "main_content", id: "main_content"}, 
+						React.createElement("i", {className: "fa fa-cog fa-spin"}), 
+						React.createElement("div", {className: "load_message"}, "Loading content for ", name, ".")
+					)
+				)
+			)
+		}
 	}
 });
 
