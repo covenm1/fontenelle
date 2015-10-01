@@ -132,15 +132,31 @@ var poster_image;
 var Main = React.createClass({
   mixins: [ Router.State, Navigation ],
   getInitialState: function() {
-    return { pre_count: 0, classImage: "/img/education/class-1.jpg" };
-  },
+    return {
+      pre_count: 0,
+      percent_loaded: 0,
+      load_images: [
+        "/img/loop_three.jpg",
+        "/img/education/Education_video_screenshot.jpg",
+        "/img/education/skyline_green.jpg",
+        "/img/education.png",
+        "/img/education/flowers.png",
 
+      ]
+
+    };
+  },
 
   componentDidMount: function () {
     var self = this;
-    poster_image = new Image();
-    poster_image.onload = self.onLoad;
-    poster_image.src = "/img/loop_three.jpg";
+    var load_images = self.state.load_images;
+    console.log("load_images: " + load_images);
+    for (image in load_images) {
+      console.log("image: " + load_images[image]);
+      tmp_image = new Image();
+      tmp_image.onload = self.onLoad;
+      tmp_image.src = load_images[image];
+    }
   },
 
   componentWillReceiveProps: function () {
@@ -153,7 +169,21 @@ var Main = React.createClass({
 
   onLoad: function() {
     var self = this;
-    self.setState({loaded: true});
+
+    var tmp_pre_count = self.state.pre_count;
+    tmp_pre_count++;
+
+    if (tmp_pre_count == self.state.load_images.length) {
+
+      self.setState({pre_count: tmp_pre_count, percent_loaded: 100});
+      setTimeout(function() { self.setState({loaded: true}); }, 150);
+
+    } else {
+
+      var percent_loaded = (tmp_pre_count / self.state.load_images.length ) * 100;
+      self.setState({pre_count: tmp_pre_count, percent_loaded: percent_loaded});
+
+    }
   },
 
   moveLeft: function(){
@@ -167,14 +197,6 @@ var Main = React.createClass({
     this.transitionTo('programs');
   },
 
-  toggleClass: function(){
-    if (this.state.classImage == "/img/education/class-1.jpg") {
-      this.setState({classImage: "/img/education/class-2.jpg"});
-    } else {
-      this.setState({classImage: "/img/education/class-1.jpg"});
-    }
-  },
-
   toggleVideo: function(){
     this.setState({video: !this.state.video});
   },
@@ -186,11 +208,14 @@ var Main = React.createClass({
     var video_style = {
       backgroundImage: 'url(/img/education/Education_video_screenshot.jpg)'
     }
+    var loadStyle = {
+      width: self.state.percent_loaded + "%"
+    }
     if (self.state.loaded == true) {
       return (
         <div className="page">
           <div className="page_wrapper">
-            <div className="page_container" id="page">
+            <div className="page_container" id="page" style={loadStyle}>
               <div className="egg_wrap living_classroom_container">
                 <div className="living_classroom copy_container">
                   <img src="/img/divider/VINE-top-long.svg" />
@@ -281,8 +306,22 @@ var Main = React.createClass({
       )
     } else {
       return (
-        <div className="preloader">
-          <h1>Loading...</h1>
+        <div className="page preloading">
+          <div className="page_wrapper">
+            <div className="page_container" id="page" style={loadStyle}>
+            </div>
+          </div>
+          <div className='video-container'>
+            <video id="video-background" className="video-wrap" poster="/img/loop_education.jpg" autoPlay muted="muted" loop>
+              <source src="/videos/loop_education.mp4" type="video/mp4" />
+            </video>
+            <div className="content_container">
+              <div className="video_overlay"></div>
+              <div className="content_wrapper">
+                <img src="/img/education.png" />
+              </div>
+            </div>
+          </div>
         </div>
       )
     }

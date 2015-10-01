@@ -1046,7 +1046,21 @@ var poster_image;
 var Main = React.createClass({displayName: "Main",
   mixins: [ Router.State, Navigation ],
   getInitialState: function() {
-    return { pre_count: 0, left: 0, windowWidth: window.innerWidth };
+    return {
+      pre_count: 0,
+      percent_loaded: 0,
+      load_images: [
+        "/img/conservation/Natural-Resources-trail-photo.jpg",
+        "/img/conservation/Meet-Raptors.jpg",
+        "/img/conservation/urban-wildlife.jpg",
+        "/img/conservation/sign.png",
+        "/img/conservation/log.png",
+        "/img/conservation/provenplan.png",
+        "/img/conservation.png"
+      ],
+      left: 0,
+      windowWidth: window.innerWidth
+    };
   },
 
   handleResize: function(e) {
@@ -1197,9 +1211,16 @@ var Main = React.createClass({displayName: "Main",
   componentDidMount: function () {
     console.log('componentDidMount');
     var self = this;
-    poster_image = new Image();
-    poster_image.onload = self.onLoad;
-    poster_image.src = "/img/loop_two.jpg";
+
+    var load_images = self.state.load_images;
+    console.log("load_images: " + load_images);
+    for (image in load_images) {
+      console.log("image: " + load_images[image]);
+      tmp_image = new Image();
+      tmp_image.onload = self.onLoad;
+      tmp_image.src = load_images[image];
+    }
+
     window.location.hash = window.decodeURIComponent(window.location.hash);
 
     console.log(window.location.hash);
@@ -1232,7 +1253,6 @@ var Main = React.createClass({displayName: "Main",
     }
   },
 
-
   componentWillReceiveProps: function () {
     console.log('componentWillReceiveProps');
     var self = this;
@@ -1241,10 +1261,22 @@ var Main = React.createClass({displayName: "Main",
     poster_image.src = "/img/loop_two.jpg";
   },
 
-
   onLoad: function() {
     var self = this;
-    self.setState({loaded: true});
+    var tmp_pre_count = self.state.pre_count;
+    tmp_pre_count++;
+
+    if (tmp_pre_count == self.state.load_images.length) {
+
+      self.setState({pre_count: tmp_pre_count, percent_loaded: 100});
+      setTimeout(function() { self.setState({loaded: true}); }, 150);
+
+    } else {
+
+      var percent_loaded = (tmp_pre_count / self.state.load_images.length ) * 100;
+      self.setState({pre_count: tmp_pre_count, percent_loaded: percent_loaded});
+
+    }
 
   },
 
@@ -1252,7 +1284,6 @@ var Main = React.createClass({displayName: "Main",
     this.props.transition('slide-back');
     this.transitionTo('forest');
   },
-
 
   moveRight: function(){
     this.props.transition('slide-forward');
@@ -1284,7 +1315,7 @@ var Main = React.createClass({displayName: "Main",
 
     if (window_width <= (gallery_width - left)) {
       self.setState({left: self.state.left + 430});
-    } 
+    }
   },
 
   timelineLeft: function(){
@@ -1335,11 +1366,14 @@ var Main = React.createClass({displayName: "Main",
       backgroundImage: 'url(/img/conservation/urban-wildlife.jpg)'
     }
 
+    var loadStyle = {
+      width: self.state.percent_loaded + "%"
+    }
+    if (self.state.loaded == true) {
       return (
         React.createElement("div", {className: "page"}, 
           React.createElement("div", {className: "page_wrapper"}, 
-            React.createElement("div", {className: "page_container", id: "page"}, 
-
+            React.createElement("div", {className: "page_container", id: "page", style: loadStyle}, 
               React.createElement("div", {className: "egg_wrap"}, 
                 React.createElement("div", {className: "ongoing_story_container main_wrapper"}, 
                   React.createElement("div", {className: "quiet_wild image_container"}, 
@@ -1528,6 +1562,26 @@ var Main = React.createClass({displayName: "Main",
           )
         )
       )
+    } else {
+      return (
+        React.createElement("div", {className: "page preloading"}, 
+          React.createElement("div", {className: "page_wrapper"}, 
+            React.createElement("div", {className: "page_container", id: "page", style: loadStyle}), 
+            React.createElement("div", {className: "video-container"}, 
+              React.createElement("video", {id: "video-background", className: "video-wrap", poster: "/img/loop_conservation.jpg", autoPlay: true, muted: "muted", loop: true}, 
+                React.createElement("source", {src: "/videos/loop_conservation.mp4", type: "video/mp4"})
+              ), 
+              React.createElement("div", {className: "content_container"}, 
+                React.createElement("div", {className: "video_overlay"}), 
+                React.createElement("div", {className: "content_wrapper"}, 
+                  React.createElement("img", {src: "/img/conservation.png"})
+                )
+              )
+            )
+          )
+        )
+      )
+    }
   }
 });
 
@@ -1925,15 +1979,31 @@ var poster_image;
 var Main = React.createClass({displayName: "Main",
   mixins: [ Router.State, Navigation ],
   getInitialState: function() {
-    return { pre_count: 0, classImage: "/img/education/class-1.jpg" };
-  },
+    return {
+      pre_count: 0,
+      percent_loaded: 0,
+      load_images: [
+        "/img/loop_three.jpg",
+        "/img/education/Education_video_screenshot.jpg",
+        "/img/education/skyline_green.jpg",
+        "/img/education.png",
+        "/img/education/flowers.png",
 
+      ]
+
+    };
+  },
 
   componentDidMount: function () {
     var self = this;
-    poster_image = new Image();
-    poster_image.onload = self.onLoad;
-    poster_image.src = "/img/loop_three.jpg";
+    var load_images = self.state.load_images;
+    console.log("load_images: " + load_images);
+    for (image in load_images) {
+      console.log("image: " + load_images[image]);
+      tmp_image = new Image();
+      tmp_image.onload = self.onLoad;
+      tmp_image.src = load_images[image];
+    }
   },
 
   componentWillReceiveProps: function () {
@@ -1946,7 +2016,21 @@ var Main = React.createClass({displayName: "Main",
 
   onLoad: function() {
     var self = this;
-    self.setState({loaded: true});
+
+    var tmp_pre_count = self.state.pre_count;
+    tmp_pre_count++;
+
+    if (tmp_pre_count == self.state.load_images.length) {
+
+      self.setState({pre_count: tmp_pre_count, percent_loaded: 100});
+      setTimeout(function() { self.setState({loaded: true}); }, 150);
+
+    } else {
+
+      var percent_loaded = (tmp_pre_count / self.state.load_images.length ) * 100;
+      self.setState({pre_count: tmp_pre_count, percent_loaded: percent_loaded});
+
+    }
   },
 
   moveLeft: function(){
@@ -1960,14 +2044,6 @@ var Main = React.createClass({displayName: "Main",
     this.transitionTo('programs');
   },
 
-  toggleClass: function(){
-    if (this.state.classImage == "/img/education/class-1.jpg") {
-      this.setState({classImage: "/img/education/class-2.jpg"});
-    } else {
-      this.setState({classImage: "/img/education/class-1.jpg"});
-    }
-  },
-
   toggleVideo: function(){
     this.setState({video: !this.state.video});
   },
@@ -1979,11 +2055,14 @@ var Main = React.createClass({displayName: "Main",
     var video_style = {
       backgroundImage: 'url(/img/education/Education_video_screenshot.jpg)'
     }
+    var loadStyle = {
+      width: self.state.percent_loaded + "%"
+    }
     if (self.state.loaded == true) {
       return (
         React.createElement("div", {className: "page"}, 
           React.createElement("div", {className: "page_wrapper"}, 
-            React.createElement("div", {className: "page_container", id: "page"}, 
+            React.createElement("div", {className: "page_container", id: "page", style: loadStyle}, 
               React.createElement("div", {className: "egg_wrap living_classroom_container"}, 
                 React.createElement("div", {className: "living_classroom copy_container"}, 
                   React.createElement("img", {src: "/img/divider/VINE-top-long.svg"}), 
@@ -2074,8 +2153,22 @@ var Main = React.createClass({displayName: "Main",
       )
     } else {
       return (
-        React.createElement("div", {className: "preloader"}, 
-          React.createElement("h1", null, "Loading...")
+        React.createElement("div", {className: "page preloading"}, 
+          React.createElement("div", {className: "page_wrapper"}, 
+            React.createElement("div", {className: "page_container", id: "page", style: loadStyle}
+            )
+          ), 
+          React.createElement("div", {className: "video-container"}, 
+            React.createElement("video", {id: "video-background", className: "video-wrap", poster: "/img/loop_education.jpg", autoPlay: true, muted: "muted", loop: true}, 
+              React.createElement("source", {src: "/videos/loop_education.mp4", type: "video/mp4"})
+            ), 
+            React.createElement("div", {className: "content_container"}, 
+              React.createElement("div", {className: "video_overlay"}), 
+              React.createElement("div", {className: "content_wrapper"}, 
+                React.createElement("img", {src: "/img/education.png"})
+              )
+            )
+          )
         )
       )
     }
@@ -2268,15 +2361,12 @@ var Main = React.createClass({displayName: "Main",
 
     if (tmp_pre_count == self.state.load_images.length) {
 
-      self.setState({loaded: true, pre_count: tmp_pre_count, percent_loaded: 100});
+      self.setState({pre_count: tmp_pre_count, percent_loaded: 100});
+      setTimeout(function() { self.setState({loaded: true}); }, 150);
 
     } else {
 
       var percent_loaded = (tmp_pre_count / self.state.load_images.length ) * 100;
-
-      console.log("onLoad #" + tmp_pre_count );
-      console.log("  percent_loaded: " + percent_loaded);
-
       self.setState({pre_count: tmp_pre_count, percent_loaded: percent_loaded});
 
     }
@@ -4388,28 +4478,62 @@ var poster_image;
 var Main = React.createClass({displayName: "Main",
   mixins: [ Router.State, Navigation ],
   getInitialState: function() {
-    return { pre_count: 0, classImage: "/img/programs/programs-1.jpg", video: false, content: '', parent: '', spider: 0 };
+    return {
+      pre_count: 0,
+      load_images: [
+        "/img/programs/programs-video.jpg",
+        "/img/programs/binoculars.png",
+        "/img/programs/spider.png",
+        "/img/programs/skyline_red.jpg",
+        "/img/programs/groups.png"
+      ],
+      percent_loaded: 0,
+      classImage: "/img/programs/programs-1.jpg",
+      video: false,
+      content: '',
+      parent: '',
+      spider: 0 };
   },
 
 
   componentDidMount: function () {
     var self = this;
-    poster_image = new Image();
-    poster_image.onload = self.onLoad;
-    poster_image.src = "/img/loop_three.jpg";
+
+    var load_images = self.state.load_images;
+    console.log("load_images: " + load_images);
+    for (image in load_images) {
+      console.log("image: " + load_images[image]);
+      tmp_image = new Image();
+      tmp_image.onload = self.onLoad;
+      tmp_image.src = load_images[image];
+    }
   },
 
-  componentWillReceiveProps: function () {
-    var self = this;
-    poster_image = new Image();
-    poster_image.onload = self.onLoad;
-    poster_image.src = "/img/loop_three.jpg";
-  },
+  // componentWillReceiveProps: function () {
+  //   var self = this;
+  //   poster_image = new Image();
+  //   poster_image.onload = self.onLoad;
+  //   poster_image.src = "/img/loop_three.jpg";
+  // },
 
 
   onLoad: function() {
     var self = this;
-    self.setState({loaded: true});
+
+    var tmp_pre_count = self.state.pre_count;
+    tmp_pre_count++;
+
+    if (tmp_pre_count == self.state.load_images.length) {
+
+      self.setState({pre_count: tmp_pre_count, percent_loaded: 100});
+      setTimeout(function() { self.setState({loaded: true}); }, 150);
+
+    } else {
+
+      var percent_loaded = (tmp_pre_count / self.state.load_images.length ) * 100;
+      self.setState({pre_count: tmp_pre_count, percent_loaded: percent_loaded});
+
+    }
   },
 
   moveLeft: function(){
@@ -4587,7 +4711,6 @@ var Main = React.createClass({displayName: "Main",
     this.setState({adult: content})
   },
 
-
   seniors: function(){
     var content = (
       React.createElement("div", {className: "main_class"}, 
@@ -4617,11 +4740,15 @@ var Main = React.createClass({displayName: "Main",
     var video_style = {
       backgroundImage: 'url(/img/programs/programs-video.jpg)'
     }
+
+    var loadStyle = {
+      width: self.state.percent_loaded + "%"
+    }
     if (self.state.loaded == true) {
       return (
         React.createElement("div", {className: "page"}, 
           React.createElement("div", {className: "page_wrapper"}, 
-            React.createElement("div", {className: "page_container", id: "page"}, 
+            React.createElement("div", {className: "page_container", id: "page", style: loadStyle}, 
               React.createElement("div", {className: "egg_wrap"}, 
 
                  content ?
@@ -4840,9 +4967,24 @@ var Main = React.createClass({displayName: "Main",
       )
     } else {
       return (
-        React.createElement("div", {className: "preloader"}, 
-          React.createElement("h1", null, "Loading...")
+        React.createElement("div", {className: "page preloading"}, 
+          React.createElement("div", {className: "page_wrapper"}, 
+            React.createElement("div", {className: "page_container", id: "page", style: loadStyle}), 
+            React.createElement("div", {className: "video-container"}, 
+              React.createElement("video", {id: "video-background", className: "video-wrap", poster: "/img/loop_programs.jpg", autoPlay: true, muted: "muted", loop: true}, 
+                React.createElement("source", {src: "/videos/loop_programs.mp4", type: "video/mp4"})
+              ), 
+              React.createElement("div", {className: "content_container"}, 
+                React.createElement("div", {className: "video_overlay"}), 
+                React.createElement("div", {className: "content_wrapper"}, 
+                  React.createElement("img", {src: "/img/programs.png"})
+                )
+              )
+            )
+
+          )
         )
+
       )
     }
   }

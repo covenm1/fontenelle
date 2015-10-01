@@ -72,7 +72,16 @@ $page_color: black;
   top: 97%;
   transition: 0.15s ease-out;
   .forest & {
-      border-top: $forest_color 10px solid;
+    border-top: $forest_color 10px solid;
+  }
+  .education & {
+    border-top: $education_color 10px solid;
+  }
+  .programs & {
+    border-top: $programs_color 10px solid;
+  }
+  .natural-resources & {
+    border-top: $conservation_color 10px solid;
   }
   .preloading & {
     top: 100%;

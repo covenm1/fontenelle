@@ -84,15 +84,12 @@ var Main = React.createClass({
 
     if (tmp_pre_count == self.state.load_images.length) {
 
-      self.setState({loaded: true, pre_count: tmp_pre_count, percent_loaded: 100});
+      self.setState({pre_count: tmp_pre_count, percent_loaded: 100});
+      setTimeout(function() { self.setState({loaded: true}); }, 150);
 
     } else {
 
       var percent_loaded = (tmp_pre_count / self.state.load_images.length ) * 100;
-
-      console.log("onLoad #" + tmp_pre_count );
-      console.log("  percent_loaded: " + percent_loaded);
-
       self.setState({pre_count: tmp_pre_count, percent_loaded: percent_loaded});
 
     }

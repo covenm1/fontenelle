@@ -18,7 +18,21 @@ var poster_image;
 var Main = React.createClass({
   mixins: [ Router.State, Navigation ],
   getInitialState: function() {
-    return { pre_count: 0, left: 0, windowWidth: window.innerWidth };
+    return {
+      pre_count: 0,
+      percent_loaded: 0,
+      load_images: [
+        "/img/conservation/Natural-Resources-trail-photo.jpg",
+        "/img/conservation/Meet-Raptors.jpg",
+        "/img/conservation/urban-wildlife.jpg",
+        "/img/conservation/sign.png",
+        "/img/conservation/log.png",
+        "/img/conservation/provenplan.png",
+        "/img/conservation.png"
+      ],
+      left: 0,
+      windowWidth: window.innerWidth
+    };
   },
 
   handleResize: function(e) {
@@ -169,9 +183,16 @@ var Main = React.createClass({
   componentDidMount: function () {
     console.log('componentDidMount');
     var self = this;
-    poster_image = new Image();
-    poster_image.onload = self.onLoad;
-    poster_image.src = "/img/loop_two.jpg";
+
+    var load_images = self.state.load_images;
+    console.log("load_images: " + load_images);
+    for (image in load_images) {
+      console.log("image: " + load_images[image]);
+      tmp_image = new Image();
+      tmp_image.onload = self.onLoad;
+      tmp_image.src = load_images[image];
+    }
+
     window.location.hash = window.decodeURIComponent(window.location.hash);
 
     console.log(window.location.hash);
@@ -204,7 +225,6 @@ var Main = React.createClass({
     }
   },
 
-
   componentWillReceiveProps: function () {
     console.log('componentWillReceiveProps');
     var self = this;
@@ -213,10 +233,22 @@ var Main = React.createClass({
     poster_image.src = "/img/loop_two.jpg";
   },
 
-
   onLoad: function() {
     var self = this;
-    self.setState({loaded: true});
+    var tmp_pre_count = self.state.pre_count;
+    tmp_pre_count++;
+
+    if (tmp_pre_count == self.state.load_images.length) {
+
+      self.setState({pre_count: tmp_pre_count, percent_loaded: 100});
+      setTimeout(function() { self.setState({loaded: true}); }, 150);
+
+    } else {
+
+      var percent_loaded = (tmp_pre_count / self.state.load_images.length ) * 100;
+      self.setState({pre_count: tmp_pre_count, percent_loaded: percent_loaded});
+
+    }
 
   },
 
@@ -224,7 +256,6 @@ var Main = React.createClass({
     this.props.transition('slide-back');
     this.transitionTo('forest');
   },
-
 
   moveRight: function(){
     this.props.transition('slide-forward');
@@ -256,7 +287,7 @@ var Main = React.createClass({
 
     if (window_width <= (gallery_width - left)) {
       self.setState({left: self.state.left + 430});
-    } 
+    }
   },
 
   timelineLeft: function(){
@@ -307,11 +338,14 @@ var Main = React.createClass({
       backgroundImage: 'url(/img/conservation/urban-wildlife.jpg)'
     }
 
+    var loadStyle = {
+      width: self.state.percent_loaded + "%"
+    }
+    if (self.state.loaded == true) {
       return (
         <div className="page">
           <div className="page_wrapper">
-            <div className="page_container" id="page">
-
+            <div className="page_container" id="page"  style={loadStyle}>
               <div className="egg_wrap">
                 <div className="ongoing_story_container main_wrapper">
                   <div className="quiet_wild image_container">
@@ -500,6 +534,26 @@ var Main = React.createClass({
           </div>
         </div>
       )
+    } else {
+      return (
+        <div className="page preloading">
+          <div className="page_wrapper">
+            <div className="page_container" id="page"  style={loadStyle}></div>
+            <div className='video-container'>
+              <video id="video-background" className="video-wrap" poster="/img/loop_conservation.jpg" autoPlay muted="muted" loop>
+                <source src="/videos/loop_conservation.mp4" type="video/mp4" />
+              </video>
+              <div className="content_container">
+                <div className="video_overlay"></div>
+                <div className="content_wrapper">
+                  <img src="/img/conservation.png" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )
+    }
   }
 });
 

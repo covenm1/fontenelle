@@ -17,28 +17,62 @@ var poster_image;
 var Main = React.createClass({
   mixins: [ Router.State, Navigation ],
   getInitialState: function() {
-    return { pre_count: 0, classImage: "/img/programs/programs-1.jpg", video: false, content: '', parent: '', spider: 0 };
+    return {
+      pre_count: 0,
+      load_images: [
+        "/img/programs/programs-video.jpg",
+        "/img/programs/binoculars.png",
+        "/img/programs/spider.png",
+        "/img/programs/skyline_red.jpg",
+        "/img/programs/groups.png"
+      ],
+      percent_loaded: 0,
+      classImage: "/img/programs/programs-1.jpg",
+      video: false,
+      content: '',
+      parent: '',
+      spider: 0 };
   },
 
 
   componentDidMount: function () {
     var self = this;
-    poster_image = new Image();
-    poster_image.onload = self.onLoad;
-    poster_image.src = "/img/loop_three.jpg";
+
+    var load_images = self.state.load_images;
+    console.log("load_images: " + load_images);
+    for (image in load_images) {
+      console.log("image: " + load_images[image]);
+      tmp_image = new Image();
+      tmp_image.onload = self.onLoad;
+      tmp_image.src = load_images[image];
+    }
   },
 
-  componentWillReceiveProps: function () {
-    var self = this;
-    poster_image = new Image();
-    poster_image.onload = self.onLoad;
-    poster_image.src = "/img/loop_three.jpg";
-  },
+  // componentWillReceiveProps: function () {
+  //   var self = this;
+  //   poster_image = new Image();
+  //   poster_image.onload = self.onLoad;
+  //   poster_image.src = "/img/loop_three.jpg";
+  // },
 
 
   onLoad: function() {
     var self = this;
-    self.setState({loaded: true});
+
+    var tmp_pre_count = self.state.pre_count;
+    tmp_pre_count++;
+
+    if (tmp_pre_count == self.state.load_images.length) {
+
+      self.setState({pre_count: tmp_pre_count, percent_loaded: 100});
+      setTimeout(function() { self.setState({loaded: true}); }, 150);
+
+    } else {
+
+      var percent_loaded = (tmp_pre_count / self.state.load_images.length ) * 100;
+      self.setState({pre_count: tmp_pre_count, percent_loaded: percent_loaded});
+
+    }
   },
 
   moveLeft: function(){
@@ -216,7 +250,6 @@ var Main = React.createClass({
     this.setState({adult: content})
   },
 
-
   seniors: function(){
     var content = (
       <div className="main_class">
@@ -246,11 +279,15 @@ var Main = React.createClass({
     var video_style = {
       backgroundImage: 'url(/img/programs/programs-video.jpg)'
     }
+
+    var loadStyle = {
+      width: self.state.percent_loaded + "%"
+    }
     if (self.state.loaded == true) {
       return (
         <div className="page">
           <div className="page_wrapper">
-            <div className="page_container" id="page">
+            <div className="page_container" id="page"  style={loadStyle}>
               <div className="egg_wrap">
 
                 { content ?
@@ -469,9 +506,24 @@ var Main = React.createClass({
       )
     } else {
       return (
-        <div className="preloader">
-          <h1>Loading...</h1>
+        <div className="page preloading">
+          <div className="page_wrapper">
+            <div className="page_container" id="page"  style={loadStyle}></div>
+            <div className='video-container'>
+              <video id="video-background" className="video-wrap" poster="/img/loop_programs.jpg" autoPlay muted="muted" loop>
+                <source src="/videos/loop_programs.mp4" type="video/mp4" />
+              </video>
+              <div className="content_container">
+                <div className="video_overlay"></div>
+                <div className="content_wrapper">
+                  <img src="/img/programs.png" />
+                </div>
+              </div>
+            </div>
+
+          </div>
         </div>
+
       )
     }
   }
