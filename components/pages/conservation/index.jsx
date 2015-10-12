@@ -224,14 +224,14 @@ var Main = React.createClass({
       }
     }
   },
-
-  componentWillReceiveProps: function () {
-    console.log('componentWillReceiveProps');
-    var self = this;
-    poster_image = new Image();
-    poster_image.onload = self.onLoad;
-    poster_image.src = "/img/loop_two.jpg";
-  },
+  // 
+  // componentWillReceiveProps: function () {
+  //   console.log('componentWillReceiveProps');
+  //   var self = this;
+  //   poster_image = new Image();
+  //   poster_image.onload = self.onLoad;
+  //   poster_image.src = "/img/loop_two.jpg";
+  // },
 
   onLoad: function() {
     var self = this;

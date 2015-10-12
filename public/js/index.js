@@ -240,7 +240,7 @@ var App = React.createClass({displayName: "App",
 							React.createElement("span", {className: "link section", onClick: self.scrollThing.bind(this, "habitat")}, "Habitat Management"), 
 							React.createElement("span", {className: "link section", onClick: self.scrollThing.bind(this, "raptor")}, "Raptor Recovery"), 
 							React.createElement(Link, {to: "/education", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "education main"}, "Education")), 
-							React.createElement("span", {className: "link section", onClick: self.scrollThing.bind(this, "classes")}, "Clasess"), 
+							React.createElement(Link, {to: "/education/classes", className: "link section", onClick: self.toggleMenu}, "Classes"), 
 							React.createElement(Link, {to: "/programs", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "programs main"}, "Programs")), 
 							React.createElement("span", {className: "link section", onClick: self.scrollThing.bind(this, "kids")}, "Kids"), 
 							React.createElement("span", {className: "link section", onClick: self.scrollThing.bind(this, "adults")}, "Adults"), 
@@ -301,7 +301,7 @@ var App = React.createClass({displayName: "App",
 							React.createElement("span", {className: "link section", onClick: self.scrollThing.bind(this, "habitat")}, "Habitat Management"), 
 							React.createElement("span", {className: "link section", onClick: self.scrollThing.bind(this, "raptor")}, "Raptor Recovery"), 
 							React.createElement(Link, {to: "/education", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "education main"}, "Education")), 
-							React.createElement("span", {className: "link section", onClick: self.scrollThing.bind(this, "classes")}, "Clasess"), 
+							React.createElement(Link, {to: "/education/classes", className: "link section"}, "Classes"), 
 							React.createElement(Link, {to: "/programs", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "programs main"}, "Programs")), 
 							React.createElement("span", {className: "link section", onClick: self.scrollThing.bind(this, "kids")}, "Kids"), 
 							React.createElement("span", {className: "link section", onClick: self.scrollThing.bind(this, "adults")}, "Adults"), 
@@ -330,7 +330,9 @@ var routes = (
     React.createElement(Route, {name: "forest", path: "/", handler: forest, addHandlerKey: true}), 
     React.createElement(Route, {name: "natural-resources", path: "/natural-resources", handler: naturalresources, addHandlerKey: true}), 
     React.createElement(Route, {name: "programs", path: "/programs", handler: programs, addHandlerKey: true}), 
-    React.createElement(Route, {name: "education", path: "/education", handler: education, addHandlerKey: true}), 
+		React.createElement(Route, {name: "education", path: "/education", handler: education, addHandlerKey: true}, 
+			React.createElement(Route, {path: "/education/:scroll", handler: education, addHandlerKey: true})
+		), 
     React.createElement(Route, {name: "found-raptor", path: "/found-raptor", handler: foundraptor, addHandlerKey: true}), 
     React.createElement(Route, {name: "get-involved", path: "/get-involved", handler: getinvolved, addHandlerKey: true}), 
     React.createElement(Route, {name: "meet-the-raptors", path: "/meet-the-raptors", handler: meettheraptors, addHandlerKey: true}), 
@@ -1349,14 +1351,14 @@ var Main = React.createClass({displayName: "Main",
       }
     }
   },
-
-  componentWillReceiveProps: function () {
-    console.log('componentWillReceiveProps');
-    var self = this;
-    poster_image = new Image();
-    poster_image.onload = self.onLoad;
-    poster_image.src = "/img/loop_two.jpg";
-  },
+  // 
+  // componentWillReceiveProps: function () {
+  //   console.log('componentWillReceiveProps');
+  //   var self = this;
+  //   poster_image = new Image();
+  //   poster_image.onload = self.onLoad;
+  //   poster_image.src = "/img/loop_two.jpg";
+  // },
 
   onLoad: function() {
     var self = this;
@@ -2085,6 +2087,7 @@ var Main = React.createClass({displayName: "Main",
         "/img/education/skyline_green.jpg",
         "/img/education.png",
         "/img/education/flowers.png",
+        "/img/education/caterpillar.png"
 
       ]
 
@@ -2093,6 +2096,9 @@ var Main = React.createClass({displayName: "Main",
 
   componentDidMount: function () {
     var self = this;
+
+    console.log("this.getParams(): " + util.inspect(this.getParams()));
+
     var load_images = self.state.load_images;
     console.log("load_images: " + load_images);
     for (image in load_images) {
@@ -2101,14 +2107,18 @@ var Main = React.createClass({displayName: "Main",
       tmp_image.onload = self.onLoad;
       tmp_image.src = load_images[image];
     }
+    // if (self.getParams().scroll.length) {
+    //   console.log('fuck scrolling');
+    //   self.scrollThing(self.getParams().scroll)
+    // }
   },
 
   componentWillReceiveProps: function () {
-    var self = this;
-    poster_image = new Image();
-    poster_image.onload = self.onLoad;
-    poster_image.src = "/img/loop_three.jpg";
-
+    var self  = this;
+    if (self.getParams().scroll.length) {
+      console.log('fuck scrolling');
+      self.scrollThing(self.getParams().scroll)
+    }
   },
 
   onLoad: function() {
@@ -2120,14 +2130,37 @@ var Main = React.createClass({displayName: "Main",
     if (tmp_pre_count == self.state.load_images.length) {
 
       self.setState({pre_count: tmp_pre_count, percent_loaded: 100});
-      setTimeout(function() { self.setState({loaded: true}); }, 150);
+      setTimeout(function() {
+        self.setState({loaded: true});
+      }, 150);
+      setTimeout(function() {
+        if (self.getParams().scroll.length) {
+          console.log('fuck scrolling');
+          self.scrollThing(self.getParams().scroll)
+        }
+      }, 350);
 
     } else {
 
       var percent_loaded = (tmp_pre_count / self.state.load_images.length ) * 100;
-      self.setState({pre_count: tmp_pre_count, percent_loaded: percent_loaded});
-
+      self.setState({pre_count: tmp_pre_count, percent_loaded: percent_loaded})
     }
+  },
+
+  scrollThing: function(thing){
+    var controller = new ScrollMagic.Controller();
+    controller.scrollTo(function(target) {
+
+      TweenMax.to(window, 0.5, {
+        scrollTo : {
+          y : target - 60, // scroll position of the target along y axis
+          autoKill : true // allows user to kill scroll action smoothly
+        },
+        ease : Cubic.easeInOut
+      });
+
+    });
+    controller.scrollTo("#"+thing);
   },
 
   moveLeft: function(){
@@ -2252,8 +2285,7 @@ var Main = React.createClass({displayName: "Main",
       return (
         React.createElement("div", {className: "page preloading"}, 
           React.createElement("div", {className: "page_wrapper"}, 
-            React.createElement("div", {className: "page_container", id: "page", style: loadStyle}
-            )
+            React.createElement("div", {className: "page_container", id: "page", style: loadStyle})
           ), 
           React.createElement("div", {className: "video-container"}, 
             React.createElement("video", {id: "video-background", className: "video-wrap", poster: "/img/loop_education.jpg", autoPlay: true, muted: "muted", loop: true}, 

@@ -141,6 +141,7 @@ var Main = React.createClass({
         "/img/education/skyline_green.jpg",
         "/img/education.png",
         "/img/education/flowers.png",
+        "/img/education/caterpillar.png"
 
       ]
 
@@ -149,6 +150,9 @@ var Main = React.createClass({
 
   componentDidMount: function () {
     var self = this;
+
+    console.log("this.getParams(): " + util.inspect(this.getParams()));
+
     var load_images = self.state.load_images;
     console.log("load_images: " + load_images);
     for (image in load_images) {
@@ -157,14 +161,18 @@ var Main = React.createClass({
       tmp_image.onload = self.onLoad;
       tmp_image.src = load_images[image];
     }
+    // if (self.getParams().scroll.length) {
+    //   console.log('fuck scrolling');
+    //   self.scrollThing(self.getParams().scroll)
+    // }
   },
 
   componentWillReceiveProps: function () {
-    var self = this;
-    poster_image = new Image();
-    poster_image.onload = self.onLoad;
-    poster_image.src = "/img/loop_three.jpg";
-
+    var self  = this;
+    if (self.getParams().scroll.length) {
+      console.log('fuck scrolling');
+      self.scrollThing(self.getParams().scroll)
+    }
   },
 
   onLoad: function() {
@@ -176,14 +184,37 @@ var Main = React.createClass({
     if (tmp_pre_count == self.state.load_images.length) {
 
       self.setState({pre_count: tmp_pre_count, percent_loaded: 100});
-      setTimeout(function() { self.setState({loaded: true}); }, 150);
+      setTimeout(function() {
+        self.setState({loaded: true});
+      }, 150);
+      setTimeout(function() {
+        if (self.getParams().scroll.length) {
+          console.log('fuck scrolling');
+          self.scrollThing(self.getParams().scroll)
+        }
+      }, 350);
 
     } else {
 
       var percent_loaded = (tmp_pre_count / self.state.load_images.length ) * 100;
-      self.setState({pre_count: tmp_pre_count, percent_loaded: percent_loaded});
-
+      self.setState({pre_count: tmp_pre_count, percent_loaded: percent_loaded})
     }
+  },
+
+  scrollThing: function(thing){
+    var controller = new ScrollMagic.Controller();
+    controller.scrollTo(function(target) {
+
+      TweenMax.to(window, 0.5, {
+        scrollTo : {
+          y : target - 60, // scroll position of the target along y axis
+          autoKill : true // allows user to kill scroll action smoothly
+        },
+        ease : Cubic.easeInOut
+      });
+
+    });
+    controller.scrollTo("#"+thing);
   },
 
   moveLeft: function(){
@@ -308,8 +339,7 @@ var Main = React.createClass({
       return (
         <div className="page preloading">
           <div className="page_wrapper">
-            <div className="page_container" id="page" style={loadStyle}>
-            </div>
+            <div className="page_container" id="page" style={loadStyle}></div>
           </div>
           <div className='video-container'>
             <video id="video-background" className="video-wrap" poster="/img/loop_education.jpg" autoPlay muted="muted" loop>

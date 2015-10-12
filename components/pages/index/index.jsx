@@ -239,7 +239,7 @@ var App = React.createClass({
 							<span className="link section" onClick={self.scrollThing.bind(this, "habitat")}>Habitat Management</span>
 							<span className="link section" onClick={self.scrollThing.bind(this, "raptor")}>Raptor Recovery</span>
 							<Link to="/education" className="link" onClick={self.toggleMenu}><h2 className="education main">Education</h2></Link>
-							<span className="link section" onClick={self.scrollThing.bind(this, "classes")}>Clasess</span>
+							<Link to="/education/classes" className="link section" onClick={self.toggleMenu}>Classes</Link>
 							<Link to="/programs" className="link" onClick={self.toggleMenu}><h2 className="programs main">Programs</h2></Link>
 							<span className="link section" onClick={self.scrollThing.bind(this, "kids")}>Kids</span>
 							<span className="link section" onClick={self.scrollThing.bind(this, "adults")}>Adults</span>
@@ -300,7 +300,7 @@ var App = React.createClass({
 							<span className="link section" onClick={self.scrollThing.bind(this, "habitat")}>Habitat Management</span>
 							<span className="link section" onClick={self.scrollThing.bind(this, "raptor")}>Raptor Recovery</span>
 							<Link to="/education" className="link" onClick={self.toggleMenu}><h2 className="education main">Education</h2></Link>
-							<span className="link section" onClick={self.scrollThing.bind(this, "classes")}>Clasess</span>
+							<Link to="/education/classes" className="link section">Classes</Link>
 							<Link to="/programs" className="link" onClick={self.toggleMenu}><h2 className="programs main">Programs</h2></Link>
 							<span className="link section" onClick={self.scrollThing.bind(this, "kids")}>Kids</span>
 							<span className="link section" onClick={self.scrollThing.bind(this, "adults")}>Adults</span>
@@ -329,7 +329,9 @@ var routes = (
     <Route name="forest" path="/" handler={forest} addHandlerKey={true}/>
     <Route name="natural-resources" path="/natural-resources" handler={naturalresources} addHandlerKey={true}/>
     <Route name="programs" path="/programs" handler={programs} addHandlerKey={true} />
-    <Route name="education" path="/education" handler={education} addHandlerKey={true} />
+		<Route name="education" path="/education" handler={education} addHandlerKey={true}>
+			<Route path="/education/:scroll" handler={education} addHandlerKey={true} />
+		</Route>
     <Route name="found-raptor" path="/found-raptor" handler={foundraptor} addHandlerKey={true} />
     <Route name="get-involved" path="/get-involved" handler={getinvolved} addHandlerKey={true} />
     <Route name="meet-the-raptors" path="/meet-the-raptors" handler={meettheraptors} addHandlerKey={true} />
