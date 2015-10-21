@@ -66,6 +66,16 @@ var App = React.createClass({displayName: "App",
 		var self = this;
 
 		var controller = new ScrollMagic.Controller();
+		controller.scrollTo(function(target) {
+			TweenMax.to(window, 0.5, {
+				scrollTo : {
+					y : target - 60, // scroll position of the target along y axis
+					autoKill : true // allows user to kill scroll action smoothly
+				},
+				ease : Cubic.easeInOut
+			});
+
+		});
 	  var top = new ScrollMagic.Scene({
 								triggerHook: 0,
 	              duration: '97%',
@@ -73,11 +83,10 @@ var App = React.createClass({displayName: "App",
 	          })
 	          .setClassToggle("header.header", "scrolled")
 	          .addTo(controller);
+		self.setState({controller: controller});
 
 		var load_images = self.state.load_images;
-    console.log("load_images: " + load_images);
     for (image in load_images) {
-      console.log("image: " + load_images[image]);
       tmp_image = new Image();
       tmp_image.onload = self.onLoad;
       tmp_image.src = load_images[image];
@@ -91,8 +100,10 @@ var App = React.createClass({displayName: "App",
 
 		if (tmp_pre_count == self.state.load_images.length) {
 
-			self.setState({pre_count: tmp_pre_count, percent_loaded: 100});
+			self.setState({pre_count: tmp_pre_count, percent_loaded: 100,});
 			setTimeout(function() { self.setState({loaded: true}); }, 150);
+
+
 
 		} else {
 
@@ -172,19 +183,9 @@ var App = React.createClass({displayName: "App",
 	},
 
 	scrollThing: function(thing){
-		this.closeMenu();
-		var controller = new ScrollMagic.Controller();
-		controller.scrollTo(function(target) {
-
-			TweenMax.to(window, 0.5, {
-				scrollTo : {
-					y : target - 60, // scroll position of the target along y axis
-					autoKill : true // allows user to kill scroll action smoothly
-				},
-				ease : Cubic.easeInOut
-			});
-
-		});
+		var self = this;
+		self.closeMenu();
+		var controller = self.state.controller;
 		controller.scrollTo("#"+thing);
 	},
 
@@ -207,6 +208,7 @@ var App = React.createClass({displayName: "App",
 			var header_up = " header_up";
 		}
 		if (self.state.loaded == true) {
+			var controller = self.state.controller;
 			return (
 			  React.createElement("div", {className: "fontenelle " + name + menu_class + header_up}, 
 			    React.createElement("header", {className: "header"}, 
@@ -222,29 +224,26 @@ var App = React.createClass({displayName: "App",
 						React.createElement("span", {className: "close_menu_button", onClick: self.toggleMenu}, "×"), 
 						React.createElement("div", {className: "sidebar_links"}, 
 							React.createElement(Link, {to: "/", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "forest main"}, "Forest")), 
-							 name == 'forest' ?
-								React.createElement("span", null, 
-									React.createElement("span", {className: "link section", onClick: self.scrollThing.bind(this, "trails")}, "Trails"), 
-									React.createElement("span", {className: "link section", onClick: self.scrollThing.bind(this, "fauna")}, "Fauna & Flora"), 
-									React.createElement("span", {className: "link section", onClick: self.scrollThing.bind(this, "young")}, "Little Explorers")
-								)
-							:
-								React.createElement("span", null, 
-									React.createElement("a", {href: "/#trails", className: "link section", onClick: self.toggleMenu}, "Trails"), 
-									React.createElement("a", {href: "/#fauna", className: "link section", onClick: self.toggleMenu}, "Fauna & Flora"), 
-									React.createElement("a", {href: "/#young", className: "link section", onClick: self.toggleMenu}, "Little Explorers")
-								), 
-							
+
+							React.createElement(Link, {to: "/forest/trails", className: "link section", onClick: self.toggleMenu}, "Trails"), 
+							React.createElement(Link, {to: "/forest/fauna", className: "link section", onClick: self.toggleMenu}, "Fauna & Flora"), 
+							React.createElement(Link, {to: "/forest/young", className: "link section", onClick: self.toggleMenu}, "Little Explorers"), 
+
 							React.createElement(Link, {to: "/natural-resources", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "conservation main"}, "Natural Resources")), 
-							React.createElement("span", {className: "link section", onClick: self.scrollThing.bind(this, "history")}, "History"), 
-							React.createElement("span", {className: "link section", onClick: self.scrollThing.bind(this, "habitat")}, "Habitat Management"), 
-							React.createElement("span", {className: "link section", onClick: self.scrollThing.bind(this, "raptor")}, "Raptor Recovery"), 
+
+							React.createElement(Link, {to: "/natural-resources/history", className: "link section", onClick: self.toggleMenu}, "History"), 
+							React.createElement(Link, {to: "/natural-resources/habitat", className: "link section", onClick: self.toggleMenu}, "Habitat Management"), 
+							React.createElement(Link, {to: "/natural-resources/raptor", className: "link section", onClick: self.toggleMenu}, "Raptor Recovery"), 
+
 							React.createElement(Link, {to: "/education", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "education main"}, "Education")), 
 							React.createElement(Link, {to: "/education/classes", className: "link section", onClick: self.toggleMenu}, "Classes"), 
+
 							React.createElement(Link, {to: "/programs", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "programs main"}, "Programs")), 
-							React.createElement("span", {className: "link section", onClick: self.scrollThing.bind(this, "kids")}, "Kids"), 
-							React.createElement("span", {className: "link section", onClick: self.scrollThing.bind(this, "adults")}, "Adults"), 
-							React.createElement("span", {className: "link section", onClick: self.scrollThing.bind(this, "groups")}, "Groups"), 
+
+							React.createElement(Link, {to: "/programs/kids", className: "link section", onClick: self.toggleMenu}, "Kids"), 
+							React.createElement(Link, {to: "/programs/adults", className: "link section", onClick: self.toggleMenu}, "Adults"), 
+							React.createElement(Link, {to: "/programs/groups", className: "link section", onClick: self.toggleMenu}, "Groups"), 
+
 							React.createElement(Link, {to: "/forest-now", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Forest Now")), 
 							React.createElement(Link, {to: "/get-involved", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Donate")), 
 							React.createElement(Link, {to: "/get-involved", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Membership")), 
@@ -263,7 +262,7 @@ var App = React.createClass({displayName: "App",
 					React.createElement("div", {className: "menu_overlay", onClick: self.toggleMenu}), 
 
 		    	React.createElement(TransitionGroup, {transitionName: transition, className: "main_content", id: "main_content", component: "div"}, 
-			    	React.createElement(RouteHandler, {key: name, transition: self.setTransition})
+			    	React.createElement(RouteHandler, {key: name, transition: self.setTransition, controller: controller})
 			    )
 			  )
 			)
@@ -283,29 +282,26 @@ var App = React.createClass({displayName: "App",
 						React.createElement("span", {className: "close_menu_button", onClick: self.toggleMenu}, "×"), 
 						React.createElement("div", {className: "sidebar_links"}, 
 							React.createElement(Link, {to: "/", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "forest main"}, "Forest")), 
-							 name == 'forest' ?
-								React.createElement("span", null, 
-									React.createElement("span", {className: "link section", onClick: self.scrollThing.bind(this, "trails")}, "Trails"), 
-									React.createElement("span", {className: "link section", onClick: self.scrollThing.bind(this, "fauna")}, "Fauna & Flora"), 
-									React.createElement("span", {className: "link section", onClick: self.scrollThing.bind(this, "young")}, "Little Explorers")
-								)
-							:
-								React.createElement("span", null, 
-									React.createElement("a", {href: "/#trails", className: "link section", onClick: self.toggleMenu}, "Trails"), 
-									React.createElement("a", {href: "/#fauna", className: "link section", onClick: self.toggleMenu}, "Fauna & Flora"), 
-									React.createElement("a", {href: "/#young", className: "link section", onClick: self.toggleMenu}, "Little Explorers")
-								), 
-							
+
+							React.createElement(Link, {to: "/forest/trails", className: "link section", onClick: self.toggleMenu}, "Trails"), 
+							React.createElement(Link, {to: "/forest/fauna", className: "link section", onClick: self.toggleMenu}, "Fauna & Flora"), 
+							React.createElement(Link, {to: "/forest/young", className: "link section", onClick: self.toggleMenu}, "Little Explorers"), 
+
 							React.createElement(Link, {to: "/natural-resources", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "conservation main"}, "Natural Resources")), 
-							React.createElement("span", {className: "link section", onClick: self.scrollThing.bind(this, "history")}, "History"), 
-							React.createElement("span", {className: "link section", onClick: self.scrollThing.bind(this, "habitat")}, "Habitat Management"), 
-							React.createElement("span", {className: "link section", onClick: self.scrollThing.bind(this, "raptor")}, "Raptor Recovery"), 
+
+							React.createElement(Link, {to: "/natural-resources/history", className: "link section", onClick: self.toggleMenu}, "History"), 
+							React.createElement(Link, {to: "/natural-resources/habitat", className: "link section", onClick: self.toggleMenu}, "Habitat Management"), 
+							React.createElement(Link, {to: "/natural-resources/raptor", className: "link section", onClick: self.toggleMenu}, "Raptor Recovery"), 
+
 							React.createElement(Link, {to: "/education", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "education main"}, "Education")), 
-							React.createElement(Link, {to: "/education/classes", className: "link section"}, "Classes"), 
+							React.createElement(Link, {to: "/education/classes", className: "link section", onClick: self.toggleMenu}, "Classes"), 
+							
 							React.createElement(Link, {to: "/programs", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "programs main"}, "Programs")), 
-							React.createElement("span", {className: "link section", onClick: self.scrollThing.bind(this, "kids")}, "Kids"), 
-							React.createElement("span", {className: "link section", onClick: self.scrollThing.bind(this, "adults")}, "Adults"), 
-							React.createElement("span", {className: "link section", onClick: self.scrollThing.bind(this, "groups")}, "Groups"), 
+
+							React.createElement(Link, {to: "/programs/kids", className: "link section", onClick: self.toggleMenu}, "Kids"), 
+							React.createElement(Link, {to: "/programs/adults", className: "link section", onClick: self.toggleMenu}, "Adults"), 
+							React.createElement(Link, {to: "/programs/groups", className: "link section", onClick: self.toggleMenu}, "Groups"), 
+
 							React.createElement(Link, {to: "/forest-now", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Forest Now")), 
 							React.createElement(Link, {to: "/get-involved", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Donate")), 
 							React.createElement(Link, {to: "/get-involved", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Membership")), 
@@ -327,10 +323,16 @@ var App = React.createClass({displayName: "App",
 
 var routes = (
   React.createElement(Route, {handler: App}, 
-    React.createElement(Route, {name: "forest", path: "/", handler: forest, addHandlerKey: true}), 
-    React.createElement(Route, {name: "natural-resources", path: "/natural-resources", handler: naturalresources, addHandlerKey: true}), 
-    React.createElement(Route, {name: "programs", path: "/programs", handler: programs, addHandlerKey: true}), 
-		React.createElement(Route, {name: "education", path: "/education", handler: education, addHandlerKey: true}, 
+    React.createElement(Route, {name: "forest", path: "/", handler: forest, ignoreScrollBehavior: true}, 
+			React.createElement(Route, {path: "/forest/:scroll", handler: forest})
+		), 
+    React.createElement(Route, {name: "natural-resources", path: "/natural-resources", handler: naturalresources, ignoreScrollBehavior: true}, 
+			React.createElement(Route, {path: "/natural-resources/:scroll", handler: naturalresources})
+		), 
+    React.createElement(Route, {name: "programs", path: "/programs", handler: programs, addHandlerKey: true, ignoreScrollBehavior: true}, 
+			React.createElement(Route, {path: "/programs/:scroll", handler: programs, addHandlerKey: true})
+		), 
+		React.createElement(Route, {name: "education", path: "/education", handler: education, addHandlerKey: true, ignoreScrollBehavior: true}, 
 			React.createElement(Route, {path: "/education/:scroll", handler: education, addHandlerKey: true})
 		), 
     React.createElement(Route, {name: "found-raptor", path: "/found-raptor", handler: foundraptor, addHandlerKey: true}), 
@@ -352,8 +354,7 @@ var routes = (
 
 var router = Router.create({
   routes: routes,
-  location: Router.HistoryLocation,
-	scrollBehavior: Router.ScrollToTopBehavior
+  location: Router.HistoryLocation
 });
 
 router.run(function (Handler) {
@@ -1135,10 +1136,6 @@ var Router = require('react-router');
 var Navigation = Router.Navigation;
 var Link = Router.Link;
 
-var ScrollMagic = require('scrollmagic');
-var TweenMax = require('../../../public/js/tweenmax.js');
-require('../../../public/js/scrollTo.js');
-
 var Footer = require('../../common/footer.jsx');
 
 var poster_image;
@@ -1158,7 +1155,9 @@ var Main = React.createClass({displayName: "Main",
         "/img/conservation.png"
       ],
       left: 0,
-      windowWidth: window.innerWidth
+      windowWidth: window.innerWidth,
+      controller: {},
+      scrollPos: 0
     };
   },
 
@@ -1308,57 +1307,26 @@ var Main = React.createClass({displayName: "Main",
   },
 
   componentDidMount: function () {
-    console.log('componentDidMount');
     var self = this;
-
     var load_images = self.state.load_images;
-    console.log("load_images: " + load_images);
     for (image in load_images) {
-      console.log("image: " + load_images[image]);
       tmp_image = new Image();
       tmp_image.onload = self.onLoad;
       tmp_image.src = load_images[image];
     }
+  },
 
-    window.location.hash = window.decodeURIComponent(window.location.hash);
+  componentWillReceiveProps: function (nextProps) {
+    var self  = this;
+  },
 
-    console.log(window.location.hash);
+  componentDidUpdate: function (prevProps, prevState) {
+    var self  = this;
 
-    var hashParts = window.location.hash.split('#');
-
-    console.log(hashParts);
-
-    if (hashParts.length > 1) {
-      var hash = hashParts.slice(-1)[0];
-      // if(hash);
-      console.log(hash);
-      self.scrollThing(hash);
-    }
-    window.onhashchange = function() {
-      window.location.hash = window.decodeURIComponent(window.location.hash);
-
-      console.log(window.location.hash);
-
-      var hashParts = window.location.hash.split('#');
-
-      console.log(hashParts);
-
-      if (hashParts.length > 1) {
-        var hash = hashParts.slice(-1)[0];
-        // if(hash);
-        console.log(hash);
-        self.scrollThing(hash);
-      }
+    if (prevProps.params != self.props.params){
+      self.scrollThing(self.props.params.scroll);
     }
   },
-  // 
-  // componentWillReceiveProps: function () {
-  //   console.log('componentWillReceiveProps');
-  //   var self = this;
-  //   poster_image = new Image();
-  //   poster_image.onload = self.onLoad;
-  //   poster_image.src = "/img/loop_two.jpg";
-  // },
 
   onLoad: function() {
     var self = this;
@@ -1369,7 +1337,11 @@ var Main = React.createClass({displayName: "Main",
 
       self.setState({pre_count: tmp_pre_count, percent_loaded: 100});
       setTimeout(function() { self.setState({loaded: true}); }, 150);
-
+      setTimeout(function() {
+        if (self.getParams().scroll) {
+          self.scrollThing(self.getParams().scroll)
+        }
+      }, 350);
     } else {
 
       var percent_loaded = (tmp_pre_count / self.state.load_images.length ) * 100;
@@ -1390,19 +1362,13 @@ var Main = React.createClass({displayName: "Main",
   },
 
   scrollThing: function(thing){
-    var controller = new ScrollMagic.Controller();
-    controller.scrollTo(function(target) {
-
-      TweenMax.to(window, 0.5, {
-        scrollTo : {
-          y : target, // scroll position of the target along y axis
-          autoKill : true // allows user to kill scroll action smoothly
-        },
-        ease : Cubic.easeInOut
-      });
-
-    });
-    controller.scrollTo("#"+thing);
+    var self = this;
+    var controller = self.props.controller
+    if (thing) {
+      controller.scrollTo("#"+thing);
+    } else {
+      controller.scrollTo(0);
+    }
   },
 
   timelineRight: function(){
@@ -1686,7 +1652,7 @@ var Main = React.createClass({displayName: "Main",
 
 module.exports = Main;
 
-},{"../../../public/js/scrollTo.js":259,"../../../public/js/tweenmax.js":260,"../../common/footer.jsx":4,"react":249,"react-inlinesvg":23,"react-router":62,"scrollmagic":250,"superagent":251,"util":256,"velocity-animate/velocity":257}],10:[function(require,module,exports){
+},{"../../common/footer.jsx":4,"react":249,"react-inlinesvg":23,"react-router":62,"superagent":251,"util":256,"velocity-animate/velocity":257}],10:[function(require,module,exports){
 var React = require('react'),
     request = require('superagent'),
     util = require('util');
@@ -2097,27 +2063,19 @@ var Main = React.createClass({displayName: "Main",
   componentDidMount: function () {
     var self = this;
 
-    console.log("this.getParams(): " + util.inspect(this.getParams()));
-
     var load_images = self.state.load_images;
-    console.log("load_images: " + load_images);
     for (image in load_images) {
-      console.log("image: " + load_images[image]);
       tmp_image = new Image();
       tmp_image.onload = self.onLoad;
       tmp_image.src = load_images[image];
     }
-    // if (self.getParams().scroll.length) {
-    //   console.log('fuck scrolling');
-    //   self.scrollThing(self.getParams().scroll)
-    // }
   },
 
-  componentWillReceiveProps: function () {
+  componentDidUpdate: function (prevProps, prevState) {
     var self  = this;
-    if (self.getParams().scroll.length) {
-      console.log('fuck scrolling');
-      self.scrollThing(self.getParams().scroll)
+
+    if (prevProps.params != self.props.params){
+      self.scrollThing(self.props.params.scroll);
     }
   },
 
@@ -2134,8 +2092,7 @@ var Main = React.createClass({displayName: "Main",
         self.setState({loaded: true});
       }, 150);
       setTimeout(function() {
-        if (self.getParams().scroll.length) {
-          console.log('fuck scrolling');
+        if (self.getParams().scroll) {
           self.scrollThing(self.getParams().scroll)
         }
       }, 350);
@@ -2148,19 +2105,13 @@ var Main = React.createClass({displayName: "Main",
   },
 
   scrollThing: function(thing){
-    var controller = new ScrollMagic.Controller();
-    controller.scrollTo(function(target) {
-
-      TweenMax.to(window, 0.5, {
-        scrollTo : {
-          y : target - 60, // scroll position of the target along y axis
-          autoKill : true // allows user to kill scroll action smoothly
-        },
-        ease : Cubic.easeInOut
-      });
-
-    });
-    controller.scrollTo("#"+thing);
+    var self = this;
+    var controller = self.props.controller
+    if (thing) {
+      controller.scrollTo("#"+thing);
+    } else {
+      controller.scrollTo(0);
+    }
   },
 
   moveLeft: function(){
@@ -2323,7 +2274,12 @@ var poster_image;
 var Main = React.createClass({displayName: "Main",
   mixins: [ Router.State, Navigation ],
   getInitialState: function() {
-    return { pre_count: 0, classImage: "/img/forest-now/nature-notes.jpg", video: false };
+    return { pre_count: 0,
+      classImage: "/img/forest-now/nature-notes.jpg",
+      video: false,
+      wildlife: [],
+      plantlife: [],
+      closings: []};
   },
 
   componentDidMount: function () {
@@ -2331,6 +2287,10 @@ var Main = React.createClass({displayName: "Main",
     poster_image = new Image();
     poster_image.onload = self.onLoad;
     poster_image.src = "/img/loop_three.jpg";
+
+    self.loadPlantlife();
+    self.loadWildlife();
+    self.loadClosings();
   },
 
   componentWillReceiveProps: function () {
@@ -2341,20 +2301,56 @@ var Main = React.createClass({displayName: "Main",
 
   },
 
-  onLoad: function() {
+  loadPlantlife: function(){
     var self = this;
-    self.setState({loaded: true});
+      request
+        .get('http://fontenelle.flywheelsites.com/wp-json/posts')
+        .query('type[]=plantlife&filter[posts_per_page]=-1')
+        .end(function(err, res) {
+      if (res.ok) {
+        var plantlife = res.body;
+
+        self.setState({plantlife: plantlife});
+
+      } else {
+        console.log('Oh no! error ' + res.text);
+      }
+        }.bind(self));
   },
 
-  moveLeft: function(){
-    this.props.transition('slide-back');
-    this.transitionTo('conservation');
+
+  loadWildlife: function(){
+    var self = this;
+      request
+        .get('http://fontenelle.flywheelsites.com/wp-json/posts')
+        .query('type[]=wildlife&filter[posts_per_page]=-1')
+        .end(function(err, res) {
+      if (res.ok) {
+        var wildlife = res.body;
+
+        self.setState({wildlife: wildlife});
+
+      } else {
+        console.log('Oh no! error ' + res.text);
+      }
+        }.bind(self));
   },
 
+  loadClosings: function(){
+    var self = this;
+      request
+        .get('http://fontenelle.flywheelsites.com/wp-json/posts')
+        .query('type[]=closings&filter[posts_per_page]=-1')
+        .end(function(err, res) {
+      if (res.ok) {
+        var closings = res.body;
 
-  moveRight: function(){
-    this.props.transition('slide-forward');
-    this.transitionTo('programs');
+        self.setState({closings: closings});
+
+      } else {
+        console.log('Oh no! error ' + res.text);
+      }
+        }.bind(self));
   },
 
   toggleClass: function(){
@@ -2368,12 +2364,43 @@ var Main = React.createClass({displayName: "Main",
   render: function() {
     var self = this;
     var classImage = self.state.classImage;
+    var self = this;
+    var wildlife = self.state.wildlife.map(function(object){
+      return React.createElement("h4", {className: "wildlife_title"}, object.title)
+    });
+    var plantlife = self.state.plantlife.map(function(object){
+      return (
+        React.createElement("div", {className: "nature_notes_item"}, 
+          React.createElement("img", {src: object.featured_image.attachment_meta.sizes.thumbnail.url}), 
+          React.createElement("h4", {className: "plantlife_title"}, object.title), 
+          React.createElement("div", {dangerouslySetInnerHTML: {__html: object.content}}), 
+          React.createElement("a", {href: object.meta.naturesearch_link, target: "_blank"}, "Read more")
+        )
+      )
+    }); 
 
+    var closings = self.state.closings.map(function(object){
+      return React.createElement("p", {className: "closings_title"}, object.title)
+    });
     return (
       React.createElement("div", {className: "page"}, 
         React.createElement("div", {className: "egg_wrap static"}, 
           React.createElement("div", {className: "image_container"}, 
             React.createElement("img", {src: classImage, onClick: self.toggleClass})
+          ), 
+          React.createElement("div", {className: "nature_notes"}, 
+            React.createElement("div", {className: "nature_notes_header"}, 
+              React.createElement("h2", {className: "marker"}, "Nature Notes"), 
+              React.createElement("div", {className: "closings"}, 
+                closings
+              )
+            ), 
+            React.createElement("div", {className: "plantlife"}, 
+              plantlife
+            ), 
+            React.createElement("div", {className: "wildlife"}, 
+              wildlife
+            )
           ), 
           React.createElement("div", {className: "image_container now-blue"}, 
             React.createElement("div", {className: "now-links"}, 
@@ -2472,14 +2499,20 @@ var Main = React.createClass({displayName: "Main",
     window.addEventListener('resize', self.handleResize);
 
     var load_images = self.state.load_images;
-    console.log("load_images: " + load_images);
     for (image in load_images) {
-      console.log("image: " + load_images[image]);
       tmp_image = new Image();
       tmp_image.onload = self.onLoad;
       tmp_image.src = load_images[image];
     }
 
+  },
+
+  componentDidUpdate: function (prevProps, prevState) {
+    var self  = this;
+
+    if (prevProps.params != self.props.params){
+      self.scrollThing(self.props.params.scroll);
+    }
   },
 
   onLoad: function() {
@@ -2492,6 +2525,12 @@ var Main = React.createClass({displayName: "Main",
 
       self.setState({pre_count: tmp_pre_count, percent_loaded: 100});
       setTimeout(function() { self.setState({loaded: true}); }, 150);
+
+      setTimeout(function() {
+        if (self.getParams().scroll) {
+          self.scrollThing(self.getParams().scroll)
+        }
+      }, 350);
 
     } else {
 
@@ -2742,6 +2781,16 @@ var Main = React.createClass({displayName: "Main",
 
   mapHoverLeave: function(){
     this.setState({hover: ''});
+  },
+
+  scrollThing: function(thing){
+    var self = this;
+    var controller = self.props.controller
+    if (thing) {
+      controller.scrollTo("#"+thing);
+    } else {
+      controller.scrollTo(0);
+    }
   },
 
   render: function() {
@@ -4629,21 +4678,20 @@ var Main = React.createClass({displayName: "Main",
     var self = this;
 
     var load_images = self.state.load_images;
-    console.log("load_images: " + load_images);
     for (image in load_images) {
-      console.log("image: " + load_images[image]);
       tmp_image = new Image();
       tmp_image.onload = self.onLoad;
       tmp_image.src = load_images[image];
     }
   },
 
-  // componentWillReceiveProps: function () {
-  //   var self = this;
-  //   poster_image = new Image();
-  //   poster_image.onload = self.onLoad;
-  //   poster_image.src = "/img/loop_three.jpg";
-  // },
+  componentDidUpdate: function (prevProps, prevState) {
+    var self  = this;
+
+    if (prevProps.params != self.props.params){
+      self.scrollThing(self.props.params.scroll);
+    }
+  },
 
 
   onLoad: function() {
@@ -4656,12 +4704,27 @@ var Main = React.createClass({displayName: "Main",
 
       self.setState({pre_count: tmp_pre_count, percent_loaded: 100});
       setTimeout(function() { self.setState({loaded: true}); }, 150);
+      setTimeout(function() {
+        if (self.getParams().scroll) {
+          self.scrollThing(self.getParams().scroll)
+        }
+      }, 350);
 
     } else {
 
       var percent_loaded = (tmp_pre_count / self.state.load_images.length ) * 100;
       self.setState({pre_count: tmp_pre_count, percent_loaded: percent_loaded});
 
+    }
+  },
+
+  scrollThing: function(thing){
+    var self = this;
+    var controller = self.props.controller
+    if (thing) {
+      controller.scrollTo("#"+thing);
+    } else {
+      controller.scrollTo(0);
     }
   },
 
@@ -4887,7 +4950,7 @@ var Main = React.createClass({displayName: "Main",
                   ):
                   React.createElement("div", {className: "for_kids_container main_wrapper"}, 
 
-                    React.createElement("div", {className: "for_kids copy_container"}, 
+                    React.createElement("div", {className: "for_kids copy_container", id: "kids"}, 
                       React.createElement("h2", {className: "marker color"}, "For Kids"), 
                       React.createElement("p", null, "What could be more fun than spending a week in the forest? Fontenelle’s Nature \u0003Discovery Day Camps feature fun, hands-on, science-based learning through play taught by our year-round professional educators. Camps are offered in the Summer and Winter. We also offer special camps for grandparents and grandkids to participate in together. Registration is limited and begins January 5th. Proof of age is required. Campers should bring their lunch. Snacks provided."), 
 
@@ -4981,7 +5044,7 @@ var Main = React.createClass({displayName: "Main",
                       React.createElement("div", {className: "for_kids image_container"}, 
                         React.createElement("img", {onClick: self.spiderClick, className:  spider ? "rotated spider" : "spider", src: "/img/programs/spider.png"})
                       ), 
-                      React.createElement("div", {className: "for_kids copy_container"}, 
+                      React.createElement("div", {className: "for_kids copy_container", id: "adults"}, 
                         React.createElement("h2", {className: "marker color"}, "For Adults"), 
                         React.createElement("p", null, "A few of our most popular activities at the forest are birding, looking for insects, and shooting nature photography. We have clubs for each one, and more: "), 
 
@@ -5055,7 +5118,7 @@ var Main = React.createClass({displayName: "Main",
 
               ), 
               React.createElement("div", {className: "egg_wrap"}, 
-                React.createElement("div", {className: "image_container"}, 
+                React.createElement("div", {className: "image_container", id: "groups"}, 
                   React.createElement("img", {src: "/img/programs/groups.png"})
                 )
               ), 

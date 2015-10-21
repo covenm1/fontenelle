@@ -65,6 +65,16 @@ var App = React.createClass({
 		var self = this;
 
 		var controller = new ScrollMagic.Controller();
+		controller.scrollTo(function(target) {
+			TweenMax.to(window, 0.5, {
+				scrollTo : {
+					y : target - 60, // scroll position of the target along y axis
+					autoKill : true // allows user to kill scroll action smoothly
+				},
+				ease : Cubic.easeInOut
+			});
+
+		});
 	  var top = new ScrollMagic.Scene({
 								triggerHook: 0,
 	              duration: '97%',
@@ -72,11 +82,10 @@ var App = React.createClass({
 	          })
 	          .setClassToggle("header.header", "scrolled")
 	          .addTo(controller);
+		self.setState({controller: controller});
 
 		var load_images = self.state.load_images;
-    console.log("load_images: " + load_images);
     for (image in load_images) {
-      console.log("image: " + load_images[image]);
       tmp_image = new Image();
       tmp_image.onload = self.onLoad;
       tmp_image.src = load_images[image];
@@ -90,8 +99,10 @@ var App = React.createClass({
 
 		if (tmp_pre_count == self.state.load_images.length) {
 
-			self.setState({pre_count: tmp_pre_count, percent_loaded: 100});
+			self.setState({pre_count: tmp_pre_count, percent_loaded: 100,});
 			setTimeout(function() { self.setState({loaded: true}); }, 150);
+
+
 
 		} else {
 
@@ -171,19 +182,9 @@ var App = React.createClass({
 	},
 
 	scrollThing: function(thing){
-		this.closeMenu();
-		var controller = new ScrollMagic.Controller();
-		controller.scrollTo(function(target) {
-
-			TweenMax.to(window, 0.5, {
-				scrollTo : {
-					y : target - 60, // scroll position of the target along y axis
-					autoKill : true // allows user to kill scroll action smoothly
-				},
-				ease : Cubic.easeInOut
-			});
-
-		});
+		var self = this;
+		self.closeMenu();
+		var controller = self.state.controller;
 		controller.scrollTo("#"+thing);
 	},
 
@@ -206,6 +207,7 @@ var App = React.createClass({
 			var header_up = " header_up";
 		}
 		if (self.state.loaded == true) {
+			var controller = self.state.controller;
 			return (
 			  <div className={"fontenelle " + name + menu_class + header_up} >
 			    <header className="header">
@@ -221,29 +223,26 @@ var App = React.createClass({
 						<span className="close_menu_button" onClick={self.toggleMenu}>×</span>
 						<div className="sidebar_links">
 							<Link to="/" className="link" onClick={self.toggleMenu}><h2 className="forest main">Forest</h2></Link>
-							{ name == 'forest' ?
-								<span>
-									<span className="link section" onClick={self.scrollThing.bind(this, "trails")}>Trails</span>
-									<span className="link section" onClick={self.scrollThing.bind(this, "fauna")}>Fauna &amp; Flora</span>
-									<span className="link section" onClick={self.scrollThing.bind(this, "young")}>Little Explorers</span>
-								</span>
-							:
-								<span>
-									<a href="/#trails" className="link section" onClick={self.toggleMenu}>Trails</a>
-									<a href="/#fauna" className="link section" onClick={self.toggleMenu}>Fauna &amp; Flora</a>
-									<a href="/#young" className="link section" onClick={self.toggleMenu}>Little Explorers</a>
-								</span>
-							}
+
+							<Link to="/forest/trails" className="link section" onClick={self.toggleMenu}>Trails</Link>
+							<Link to="/forest/fauna" className="link section" onClick={self.toggleMenu}>Fauna &amp; Flora</Link>
+							<Link to="/forest/young" className="link section" onClick={self.toggleMenu}>Little Explorers</Link>
+
 							<Link to="/natural-resources" className="link" onClick={self.toggleMenu}><h2 className="conservation main">Natural Resources</h2></Link>
-							<span className="link section" onClick={self.scrollThing.bind(this, "history")}>History</span>
-							<span className="link section" onClick={self.scrollThing.bind(this, "habitat")}>Habitat Management</span>
-							<span className="link section" onClick={self.scrollThing.bind(this, "raptor")}>Raptor Recovery</span>
+
+							<Link to="/natural-resources/history" className="link section" onClick={self.toggleMenu}>History</Link>
+							<Link to="/natural-resources/habitat" className="link section" onClick={self.toggleMenu}>Habitat Management</Link>
+							<Link to="/natural-resources/raptor" className="link section" onClick={self.toggleMenu}>Raptor Recovery</Link>
+
 							<Link to="/education" className="link" onClick={self.toggleMenu}><h2 className="education main">Education</h2></Link>
 							<Link to="/education/classes" className="link section" onClick={self.toggleMenu}>Classes</Link>
+
 							<Link to="/programs" className="link" onClick={self.toggleMenu}><h2 className="programs main">Programs</h2></Link>
-							<span className="link section" onClick={self.scrollThing.bind(this, "kids")}>Kids</span>
-							<span className="link section" onClick={self.scrollThing.bind(this, "adults")}>Adults</span>
-							<span className="link section" onClick={self.scrollThing.bind(this, "groups")}>Groups</span>
+
+							<Link to="/programs/kids" className="link section" onClick={self.toggleMenu}>Kids</Link>
+							<Link to="/programs/adults" className="link section" onClick={self.toggleMenu}>Adults</Link>
+							<Link to="/programs/groups" className="link section" onClick={self.toggleMenu}>Groups</Link>
+
 							<Link to="/forest-now" className="link" onClick={self.toggleMenu}><h2 className="main">Forest Now</h2></Link>
 							<Link to="/get-involved" className="link" onClick={self.toggleMenu}><h2 className="main">Donate</h2></Link>
 							<Link to="/get-involved" className="link" onClick={self.toggleMenu}><h2 className="main">Membership</h2></Link>
@@ -262,7 +261,7 @@ var App = React.createClass({
 					<div className="menu_overlay" onClick={self.toggleMenu}></div>
 
 		    	<TransitionGroup transitionName={transition} className="main_content" id="main_content" component="div">
-			    	<RouteHandler key={name} transition={self.setTransition} />
+			    	<RouteHandler key={name} transition={self.setTransition} controller={controller}/>
 			    </TransitionGroup>
 			  </div>
 			)
@@ -282,29 +281,26 @@ var App = React.createClass({
 						<span className="close_menu_button" onClick={self.toggleMenu}>×</span>
 						<div className="sidebar_links">
 							<Link to="/" className="link" onClick={self.toggleMenu}><h2 className="forest main">Forest</h2></Link>
-							{ name == 'forest' ?
-								<span>
-									<span className="link section" onClick={self.scrollThing.bind(this, "trails")}>Trails</span>
-									<span className="link section" onClick={self.scrollThing.bind(this, "fauna")}>Fauna &amp; Flora</span>
-									<span className="link section" onClick={self.scrollThing.bind(this, "young")}>Little Explorers</span>
-								</span>
-							:
-								<span>
-									<a href="/#trails" className="link section" onClick={self.toggleMenu}>Trails</a>
-									<a href="/#fauna" className="link section" onClick={self.toggleMenu}>Fauna &amp; Flora</a>
-									<a href="/#young" className="link section" onClick={self.toggleMenu}>Little Explorers</a>
-								</span>
-							}
+
+							<Link to="/forest/trails" className="link section" onClick={self.toggleMenu}>Trails</Link>
+							<Link to="/forest/fauna" className="link section" onClick={self.toggleMenu}>Fauna &amp; Flora</Link>
+							<Link to="/forest/young" className="link section" onClick={self.toggleMenu}>Little Explorers</Link>
+
 							<Link to="/natural-resources" className="link" onClick={self.toggleMenu}><h2 className="conservation main">Natural Resources</h2></Link>
-							<span className="link section" onClick={self.scrollThing.bind(this, "history")}>History</span>
-							<span className="link section" onClick={self.scrollThing.bind(this, "habitat")}>Habitat Management</span>
-							<span className="link section" onClick={self.scrollThing.bind(this, "raptor")}>Raptor Recovery</span>
+
+							<Link to="/natural-resources/history" className="link section" onClick={self.toggleMenu}>History</Link>
+							<Link to="/natural-resources/habitat" className="link section" onClick={self.toggleMenu}>Habitat Management</Link>
+							<Link to="/natural-resources/raptor" className="link section" onClick={self.toggleMenu}>Raptor Recovery</Link>
+
 							<Link to="/education" className="link" onClick={self.toggleMenu}><h2 className="education main">Education</h2></Link>
-							<Link to="/education/classes" className="link section">Classes</Link>
+							<Link to="/education/classes" className="link section" onClick={self.toggleMenu}>Classes</Link>
+							
 							<Link to="/programs" className="link" onClick={self.toggleMenu}><h2 className="programs main">Programs</h2></Link>
-							<span className="link section" onClick={self.scrollThing.bind(this, "kids")}>Kids</span>
-							<span className="link section" onClick={self.scrollThing.bind(this, "adults")}>Adults</span>
-							<span className="link section" onClick={self.scrollThing.bind(this, "groups")}>Groups</span>
+
+							<Link to="/programs/kids" className="link section" onClick={self.toggleMenu}>Kids</Link>
+							<Link to="/programs/adults" className="link section" onClick={self.toggleMenu}>Adults</Link>
+							<Link to="/programs/groups" className="link section" onClick={self.toggleMenu}>Groups</Link>
+
 							<Link to="/forest-now" className="link" onClick={self.toggleMenu}><h2 className="main">Forest Now</h2></Link>
 							<Link to="/get-involved" className="link" onClick={self.toggleMenu}><h2 className="main">Donate</h2></Link>
 							<Link to="/get-involved" className="link" onClick={self.toggleMenu}><h2 className="main">Membership</h2></Link>
@@ -326,10 +322,16 @@ var App = React.createClass({
 
 var routes = (
   <Route handler={App}>
-    <Route name="forest" path="/" handler={forest} addHandlerKey={true}/>
-    <Route name="natural-resources" path="/natural-resources" handler={naturalresources} addHandlerKey={true}/>
-    <Route name="programs" path="/programs" handler={programs} addHandlerKey={true} />
-		<Route name="education" path="/education" handler={education} addHandlerKey={true}>
+    <Route name="forest" path="/" handler={forest} ignoreScrollBehavior>
+			<Route path="/forest/:scroll" handler={forest} />
+		</Route>
+    <Route name="natural-resources" path="/natural-resources" handler={naturalresources} ignoreScrollBehavior>
+			<Route path="/natural-resources/:scroll" handler={naturalresources} />
+		</Route>
+    <Route name="programs" path="/programs" handler={programs} addHandlerKey={true} ignoreScrollBehavior>
+			<Route path="/programs/:scroll" handler={programs} addHandlerKey={true} />
+		</Route>
+		<Route name="education" path="/education" handler={education} addHandlerKey={true} ignoreScrollBehavior>
 			<Route path="/education/:scroll" handler={education} addHandlerKey={true} />
 		</Route>
     <Route name="found-raptor" path="/found-raptor" handler={foundraptor} addHandlerKey={true} />
@@ -351,8 +353,7 @@ var routes = (
 
 var router = Router.create({
   routes: routes,
-  location: Router.HistoryLocation,
-	scrollBehavior: Router.ScrollToTopBehavior
+  location: Router.HistoryLocation
 });
 
 router.run(function (Handler) {

@@ -8,10 +8,6 @@ var Router = require('react-router');
 var Navigation = Router.Navigation;
 var Link = Router.Link;
 
-var ScrollMagic = require('scrollmagic');
-var TweenMax = require('../../../public/js/tweenmax.js');
-require('../../../public/js/scrollTo.js');
-
 var Footer = require('../../common/footer.jsx');
 
 var poster_image;
@@ -31,7 +27,9 @@ var Main = React.createClass({
         "/img/conservation.png"
       ],
       left: 0,
-      windowWidth: window.innerWidth
+      windowWidth: window.innerWidth,
+      controller: {},
+      scrollPos: 0
     };
   },
 
@@ -181,57 +179,26 @@ var Main = React.createClass({
   },
 
   componentDidMount: function () {
-    console.log('componentDidMount');
     var self = this;
-
     var load_images = self.state.load_images;
-    console.log("load_images: " + load_images);
     for (image in load_images) {
-      console.log("image: " + load_images[image]);
       tmp_image = new Image();
       tmp_image.onload = self.onLoad;
       tmp_image.src = load_images[image];
     }
+  },
 
-    window.location.hash = window.decodeURIComponent(window.location.hash);
+  componentWillReceiveProps: function (nextProps) {
+    var self  = this;
+  },
 
-    console.log(window.location.hash);
+  componentDidUpdate: function (prevProps, prevState) {
+    var self  = this;
 
-    var hashParts = window.location.hash.split('#');
-
-    console.log(hashParts);
-
-    if (hashParts.length > 1) {
-      var hash = hashParts.slice(-1)[0];
-      // if(hash);
-      console.log(hash);
-      self.scrollThing(hash);
-    }
-    window.onhashchange = function() {
-      window.location.hash = window.decodeURIComponent(window.location.hash);
-
-      console.log(window.location.hash);
-
-      var hashParts = window.location.hash.split('#');
-
-      console.log(hashParts);
-
-      if (hashParts.length > 1) {
-        var hash = hashParts.slice(-1)[0];
-        // if(hash);
-        console.log(hash);
-        self.scrollThing(hash);
-      }
+    if (prevProps.params != self.props.params){
+      self.scrollThing(self.props.params.scroll);
     }
   },
-  // 
-  // componentWillReceiveProps: function () {
-  //   console.log('componentWillReceiveProps');
-  //   var self = this;
-  //   poster_image = new Image();
-  //   poster_image.onload = self.onLoad;
-  //   poster_image.src = "/img/loop_two.jpg";
-  // },
 
   onLoad: function() {
     var self = this;
@@ -242,7 +209,11 @@ var Main = React.createClass({
 
       self.setState({pre_count: tmp_pre_count, percent_loaded: 100});
       setTimeout(function() { self.setState({loaded: true}); }, 150);
-
+      setTimeout(function() {
+        if (self.getParams().scroll) {
+          self.scrollThing(self.getParams().scroll)
+        }
+      }, 350);
     } else {
 
       var percent_loaded = (tmp_pre_count / self.state.load_images.length ) * 100;
@@ -263,19 +234,13 @@ var Main = React.createClass({
   },
 
   scrollThing: function(thing){
-    var controller = new ScrollMagic.Controller();
-    controller.scrollTo(function(target) {
-
-      TweenMax.to(window, 0.5, {
-        scrollTo : {
-          y : target, // scroll position of the target along y axis
-          autoKill : true // allows user to kill scroll action smoothly
-        },
-        ease : Cubic.easeInOut
-      });
-
-    });
-    controller.scrollTo("#"+thing);
+    var self = this;
+    var controller = self.props.controller
+    if (thing) {
+      controller.scrollTo("#"+thing);
+    } else {
+      controller.scrollTo(0);
+    }
   },
 
   timelineRight: function(){

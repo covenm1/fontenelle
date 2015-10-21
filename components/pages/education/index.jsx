@@ -151,27 +151,19 @@ var Main = React.createClass({
   componentDidMount: function () {
     var self = this;
 
-    console.log("this.getParams(): " + util.inspect(this.getParams()));
-
     var load_images = self.state.load_images;
-    console.log("load_images: " + load_images);
     for (image in load_images) {
-      console.log("image: " + load_images[image]);
       tmp_image = new Image();
       tmp_image.onload = self.onLoad;
       tmp_image.src = load_images[image];
     }
-    // if (self.getParams().scroll.length) {
-    //   console.log('fuck scrolling');
-    //   self.scrollThing(self.getParams().scroll)
-    // }
   },
 
-  componentWillReceiveProps: function () {
+  componentDidUpdate: function (prevProps, prevState) {
     var self  = this;
-    if (self.getParams().scroll.length) {
-      console.log('fuck scrolling');
-      self.scrollThing(self.getParams().scroll)
+
+    if (prevProps.params != self.props.params){
+      self.scrollThing(self.props.params.scroll);
     }
   },
 
@@ -188,8 +180,7 @@ var Main = React.createClass({
         self.setState({loaded: true});
       }, 150);
       setTimeout(function() {
-        if (self.getParams().scroll.length) {
-          console.log('fuck scrolling');
+        if (self.getParams().scroll) {
           self.scrollThing(self.getParams().scroll)
         }
       }, 350);
@@ -202,19 +193,13 @@ var Main = React.createClass({
   },
 
   scrollThing: function(thing){
-    var controller = new ScrollMagic.Controller();
-    controller.scrollTo(function(target) {
-
-      TweenMax.to(window, 0.5, {
-        scrollTo : {
-          y : target - 60, // scroll position of the target along y axis
-          autoKill : true // allows user to kill scroll action smoothly
-        },
-        ease : Cubic.easeInOut
-      });
-
-    });
-    controller.scrollTo("#"+thing);
+    var self = this;
+    var controller = self.props.controller
+    if (thing) {
+      controller.scrollTo("#"+thing);
+    } else {
+      controller.scrollTo(0);
+    }
   },
 
   moveLeft: function(){

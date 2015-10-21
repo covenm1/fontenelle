@@ -14,7 +14,12 @@ var poster_image;
 var Main = React.createClass({
   mixins: [ Router.State, Navigation ],
   getInitialState: function() {
-    return { pre_count: 0, classImage: "/img/forest-now/nature-notes.jpg", video: false };
+    return { pre_count: 0,
+      classImage: "/img/forest-now/nature-notes.jpg",
+      video: false,
+      wildlife: [],
+      plantlife: [],
+      closings: []};
   },
 
   componentDidMount: function () {
@@ -22,6 +27,10 @@ var Main = React.createClass({
     poster_image = new Image();
     poster_image.onload = self.onLoad;
     poster_image.src = "/img/loop_three.jpg";
+
+    self.loadPlantlife();
+    self.loadWildlife();
+    self.loadClosings();
   },
 
   componentWillReceiveProps: function () {
@@ -32,20 +41,56 @@ var Main = React.createClass({
 
   },
 
-  onLoad: function() {
+  loadPlantlife: function(){
     var self = this;
-    self.setState({loaded: true});
+      request
+        .get('http://fontenelle.flywheelsites.com/wp-json/posts')
+        .query('type[]=plantlife&filter[posts_per_page]=-1')
+        .end(function(err, res) {
+      if (res.ok) {
+        var plantlife = res.body;
+
+        self.setState({plantlife: plantlife});
+
+      } else {
+        console.log('Oh no! error ' + res.text);
+      }
+        }.bind(self));
   },
 
-  moveLeft: function(){
-    this.props.transition('slide-back');
-    this.transitionTo('conservation');
+
+  loadWildlife: function(){
+    var self = this;
+      request
+        .get('http://fontenelle.flywheelsites.com/wp-json/posts')
+        .query('type[]=wildlife&filter[posts_per_page]=-1')
+        .end(function(err, res) {
+      if (res.ok) {
+        var wildlife = res.body;
+
+        self.setState({wildlife: wildlife});
+
+      } else {
+        console.log('Oh no! error ' + res.text);
+      }
+        }.bind(self));
   },
 
+  loadClosings: function(){
+    var self = this;
+      request
+        .get('http://fontenelle.flywheelsites.com/wp-json/posts')
+        .query('type[]=closings&filter[posts_per_page]=-1')
+        .end(function(err, res) {
+      if (res.ok) {
+        var closings = res.body;
 
-  moveRight: function(){
-    this.props.transition('slide-forward');
-    this.transitionTo('programs');
+        self.setState({closings: closings});
+
+      } else {
+        console.log('Oh no! error ' + res.text);
+      }
+        }.bind(self));
   },
 
   toggleClass: function(){
@@ -59,12 +104,43 @@ var Main = React.createClass({
   render: function() {
     var self = this;
     var classImage = self.state.classImage;
+    var self = this;
+    var wildlife = self.state.wildlife.map(function(object){
+      return <h4 className="wildlife_title">{object.title}</h4>
+    });
+    var plantlife = self.state.plantlife.map(function(object){
+      return (
+        <div className="nature_notes_item">
+          <img src={object.featured_image.attachment_meta.sizes.thumbnail.url} />
+          <h4 className="plantlife_title">{object.title}</h4>
+          <div dangerouslySetInnerHTML={{__html: object.content}}></div>
+          <a href={object.meta.naturesearch_link} target="_blank">Read more</a>
+        </div>
+      )
+    }); 
 
+    var closings = self.state.closings.map(function(object){
+      return <p className="closings_title">{object.title}</p>
+    });
     return (
       <div className="page">
         <div className="egg_wrap static">
           <div className='image_container'>
             <img src={classImage} onClick={self.toggleClass}/>
+          </div>
+          <div className="nature_notes">
+            <div className="nature_notes_header">
+              <h2 className="marker">Nature Notes</h2>
+              <div className="closings">
+                {closings}
+              </div>
+            </div>
+            <div className="plantlife">
+              {plantlife}
+            </div>
+            <div className="wildlife">
+              {wildlife}
+            </div>
           </div>
           <div className='image_container now-blue'>
             <div className='now-links'>

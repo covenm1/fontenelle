@@ -66,14 +66,20 @@ var Main = React.createClass({
     window.addEventListener('resize', self.handleResize);
 
     var load_images = self.state.load_images;
-    console.log("load_images: " + load_images);
     for (image in load_images) {
-      console.log("image: " + load_images[image]);
       tmp_image = new Image();
       tmp_image.onload = self.onLoad;
       tmp_image.src = load_images[image];
     }
 
+  },
+
+  componentDidUpdate: function (prevProps, prevState) {
+    var self  = this;
+
+    if (prevProps.params != self.props.params){
+      self.scrollThing(self.props.params.scroll);
+    }
   },
 
   onLoad: function() {
@@ -86,6 +92,12 @@ var Main = React.createClass({
 
       self.setState({pre_count: tmp_pre_count, percent_loaded: 100});
       setTimeout(function() { self.setState({loaded: true}); }, 150);
+
+      setTimeout(function() {
+        if (self.getParams().scroll) {
+          self.scrollThing(self.getParams().scroll)
+        }
+      }, 350);
 
     } else {
 
@@ -336,6 +348,16 @@ var Main = React.createClass({
 
   mapHoverLeave: function(){
     this.setState({hover: ''});
+  },
+
+  scrollThing: function(thing){
+    var self = this;
+    var controller = self.props.controller
+    if (thing) {
+      controller.scrollTo("#"+thing);
+    } else {
+      controller.scrollTo(0);
+    }
   },
 
   render: function() {
