@@ -1,18 +1,17 @@
 var React = require('react'),
     request = require('superagent'),
     util = require('util');
-var Velocity = require('velocity-animate/velocity');
-var InlineSVG = require('react-inlinesvg');
 var Router = require('react-router');
 
 var Navigation = Router.Navigation;
 var Link = Router.Link;
 
+
 var Footer = require('../../common/footer.jsx');
 
-var poster_image;
-var Main = React.createClass({
+module.exports = React.createClass({
   mixins: [ Router.State, Navigation ],
+
   getInitialState: function() {
     return {
       wildlife: [],
@@ -28,6 +27,8 @@ var Main = React.createClass({
   },
 
   componentWillReceiveProps: function () { },
+
+  onLoad: function() { },
 
   loadPlantlife: function(){
     var self = this;
@@ -83,18 +84,18 @@ var Main = React.createClass({
 
   render: function() {
     var self = this;
-    var classImage = "/img/forest-now/nature-notes.jpg";
-
     var wildlife = self.state.wildlife.map(function(object){
       return <h4 className="wildlife_title">{object.title}</h4>
     });
     var plantlife = self.state.plantlife.map(function(object){
       return (
         <div className="nature_notes_item">
-          <img src={object.featured_image.attachment_meta.sizes.thumbnail.url} />
-          <h4 className="plantlife_title">{object.title}</h4>
-          <div dangerouslySetInnerHTML={{__html: object.content}}></div>
-          <a href={object.meta.naturesearch_link} target="_blank">Read more</a>
+          <img className="plantlife_img" src={object.featured_image.attachment_meta.sizes.thumbnail.url} />
+          <div className="plantlife_copy">
+            <h4 className="plantlife_title">{object.title}</h4>
+            <div dangerouslySetInnerHTML={{__html: object.content}}></div>
+            <a className="plantlife_link" href={object.meta.naturesearch_link} target="_blank">Read more</a>
+          </div>
         </div>
       )
     });
@@ -106,26 +107,23 @@ var Main = React.createClass({
       <div className="page">
         <div className="egg_wrap static">
           <div className='image_container'>
-            <Link to="nature-notes"><img src={classImage} /></Link>
-          </div>
-          <div className='image_container now-blue'>
-            <div className='now-links'>
-              <a href="/hours-and-admissions">Hours and Admissions</a>
-              <span>Trail Maps: <a target="_blank" href="http://fontenelleforest.org/images/stories/Trails/ffnc_trailmap_dec09.pdf">Fontenelle</a>|<a target="_blank" href="http://fontenelleforest.org/images/stories/Trails/neale_woods_map_printable.pdf">Neale Woods</a></span>
-              <a href="#">Guidelines</a>
-              <a href="/contact">Contact</a>
+            <div className="nature_notes_header">
+              <h2 className="marker">Nature Notes</h2>
+              <div className="closings">
+                {closings}
+              </div>
+            </div>
+            <div className="nature_notes">
+              <div className="plantlife">
+                {plantlife}
+              </div>
+              <div className="wildlife">
+                {wildlife}
+              </div>
             </div>
           </div>
           <div className='image_container'>
-            <div className='now-left'>
-              <img src="/img/forest-now/calendar.jpg" />
-            </div>
-            <div className='now-right'>
-              <Link to='/save-the-oaks'><img src="/img/forest-now/blog.jpg" /></Link>
-            </div>
-          </div>
-          <div className='image_container'>
-            <img src="/img/forest-now/social-media.jpg" />
+            <img src="/img/forest-now/nature-notes-click.jpg" />
           </div>
         </div>
         <Footer />
@@ -133,5 +131,3 @@ var Main = React.createClass({
     )
   }
 });
-
-module.exports = Main;

@@ -26,6 +26,7 @@ var forest = require('../forest/index.jsx'),
 		boardofdirectors = require('../board-of-directors/index.jsx'),
 		hoursandadmissions = require('../hours-and-admissions/index.jsx'),
 		forestnow = require('../forest-now/index.jsx'),
+		naturenotes = require('../nature-notes/index.jsx'),
 		savetheoaks = require('../save-the-oaks/index.jsx'),
 		contact = require('../contact/index.jsx');
 
@@ -294,7 +295,7 @@ var App = React.createClass({
 
 							<Link to="/education" className="link" onClick={self.toggleMenu}><h2 className="education main">Education</h2></Link>
 							<Link to="/education/classes" className="link section" onClick={self.toggleMenu}>Classes</Link>
-							
+
 							<Link to="/programs" className="link" onClick={self.toggleMenu}><h2 className="programs main">Programs</h2></Link>
 
 							<Link to="/programs/kids" className="link section" onClick={self.toggleMenu}>Kids</Link>
@@ -340,11 +341,12 @@ var routes = (
     <Route name="hours-and-admissions" path="/hours-and-admissions" handler={hoursandadmissions} addHandlerKey={true} />
     <Route name="board-of-directors" path="/board-of-directors" handler={boardofdirectors} addHandlerKey={true} />
     <Route name="forest-now" path="/forest-now" handler={forestnow} addHandlerKey={true} />
+		<Route name="nature-notes" path="/forest-now/nature-notes" handler={naturenotes} addHandlerKey={true} />
     <Route name="save-the-oaks" path="/save-the-oaks" handler={savetheoaks} addHandlerKey={true} />
 		<Route name="contact" path="/contact" handler={contact} addHandlerKey={true} />
   </Route>
 
-);
+); 
 
 
 // Router.run(routes, Router.HistoryLocation, function (Handler) {

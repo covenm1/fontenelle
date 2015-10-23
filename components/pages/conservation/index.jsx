@@ -317,16 +317,11 @@ var Main = React.createClass({
                     <img src="/img/conservation/sign.png" />
                   </div>
                   <div className="quiet_wild copy_container">
-                    <img src="/img/divider/VINE-top-long.svg" />
                     <h2 className="marker">An Ongoing Story</h2>
                     <p>The forest is a complex ecosystem that is constantly evolving. It is part of our mission to both understand its history and to plan and protect its future. What you see when you look out into the dense trees, prairie grasses, and marshy wetlands today is different than what you would have seen 200, 100, or even 50 years ago.</p>
                     <p>As we interact with the Forest in a multitude of ways, we all have a role to play in this story. We are leaving our footprint on the Forest, and it’s vital that we consider its size and shape. We’ve learned that a purely “hands off” approach doesn’t work as well as you might guess. In the absence of proactive conservation efforts, the plant and animal life at the Forest would eventually fall out of harmony and reach a non-working state.</p>
                     <p>So we do research, and lots of it. We get out there and observe. We utilize the helping hand of hundreds of dedicated volunteers. We don’t disrupt the natural state of things, but we do encourage nature to thrive in every way we can. Conservation at Fontenelle Forest is the sum of our efforts, from pulling weeds to writing reports.</p>
-                    <div className="vine_bottom">
-                      <img className="left-half" src="/img/divider/VINE-bottom-left-half.svg" />
-                      <img className="down-orange" src="/img/conservation/icon_down_blue.svg" />
-                      <img className="right-half" src="/img/divider/VINE-bottom-right-half.svg" />
-                    </div>
+                    <img className="bottom_vine" src="/img/bottom_vine.svg" />
                   </div>
                   <div className="quiet_wild image_container">
                     <img src="/img/conservation/birds_left.png" />

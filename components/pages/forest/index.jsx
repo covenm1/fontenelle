@@ -487,14 +487,9 @@ var Main = React.createClass({
                     <img src="/img/forest/bird2.png" />
                   </div>
                   <div className="quiet_wild copy_container">
-                    <img src="/img/divider/VINE-top-long.svg" />
                     <h2 className="marker">The Quiet Wild</h2>
                     <p>For over a century, thousands of families have experienced the quiet wild of Nebraska's Fontenelle Forest and Neale Woods–hiking, playing and exploring our 26 miles of maintained trails and 2,000 acres of upland and lowland forests, native prairies, wetlands, lakes and waterways. Each visit is its own unique adventure, its own story, its own memory to share.</p>
-                    <div className="vine_bottom">
-                      <img className="left-half" src="/img/divider/VINE-bottom-left-half.svg" />
-                      <img className="down-orange" src="/img/forest/icon_down-orange.svg" />
-                      <img className="right-half" src="/img/divider/VINE-bottom-right-half.svg" />
-                    </div>
+                    <img className="bottom_vine" src="/img/bottom_vine.svg" />
                   </div>
                 </div>
               </div>
@@ -550,14 +545,9 @@ var Main = React.createClass({
                   :
                     <div className="map_content">
                       <div className="copy_container">
-                        <img src="/img/divider/VINE-top-long.svg" />
                         <h2 className="marker color">Trailmap</h2>
                         <p>For over a century, thousands of families have experienced the quiet wild of Nebraska's Fontenelle Forest and Neale Woods–hiking, playing and exploring our 26 miles of maintained trails and 2,000 acres of upland and lowland forests, native prairies, wetlands, lakes and waterways. Each visit is its own unique adventure, its own story, its own memory to share.</p>
-                        <div className="vine_bottom">
-                          <img className="left-half" src="/img/divider/VINE-bottom-left-half.svg" />
-                          <img className="down-orange" src="/img/forest/icon_down-orange.svg" />
-                          <img className="right-half" src="/img/divider/VINE-bottom-right-half.svg" />
-                        </div>
+                        <img className="bottom_vine" src="/img/bottom_vine.svg" />
                       </div>
                       <div className="trail_map_container">
                         <svg className="trailmap" x="0px" y="0px" viewBox="30.5 169.7 513.3 437.4" enable-background="new 30.5 169.7 513.3 437.4">

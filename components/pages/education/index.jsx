@@ -234,14 +234,9 @@ var Main = React.createClass({
             <div className="page_container" id="page" style={loadStyle}>
               <div className="egg_wrap living_classroom_container">
                 <div className="living_classroom copy_container">
-                  <img src="/img/divider/VINE-top-long.svg" />
                   <h2 className="marker">A living classroom</h2>
                   <p>The Forest offers nearly unlimited opportunities for learning. Over 100,000 youth and adults each year take part in environmental education programs through Fontenelle.</p>
-                  <div className="vine_bottom">
-                    <img className="left-half" src="/img/divider/VINE-bottom-left-half.svg" />
-                    <img className="down-orange" src="/img/education/icon_down_green.svg" />
-                    <img className="right-half" src="/img/divider/VINE-bottom-right-half.svg" />
-                  </div>
+                  <img className="bottom_vine" src="/img/bottom_vine.svg" />
                 </div>
                 <div className="living_classroom image_container">
                   <img src="/img/education/caterpillar.png" />
