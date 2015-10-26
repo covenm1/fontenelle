@@ -367,7 +367,7 @@ router.run(function (Handler) {
   React.render(React.createElement(Handler, null), document.body);
 });
 
-},{"../../../public/js/scrollTo.js":260,"../../../public/js/tweenmax.js":261,"../../common/footer.jsx":4,"../board-of-directors/index.jsx":8,"../conservation/index.jsx":9,"../contact/index.jsx":10,"../education/index.jsx":11,"../forest-now/index.jsx":12,"../forest/index.jsx":13,"../found-raptor/index.jsx":14,"../get-involved/index.jsx":15,"../hours-and-admissions/index.jsx":16,"../meet-the-raptors/index.jsx":18,"../nature-notes/index.jsx":19,"../programs/index.jsx":20,"../save-the-oaks/index.jsx":21,"./VelocityTransitionGroup.jsx":17,"react":250,"react-hotkey":23,"react-router":63,"scrollmagic":251,"util":257}],2:[function(require,module,exports){
+},{"../../../public/js/scrollTo.js":259,"../../../public/js/tweenmax.js":260,"../../common/footer.jsx":4,"../board-of-directors/index.jsx":8,"../conservation/index.jsx":9,"../contact/index.jsx":10,"../education/index.jsx":11,"../forest-now/index.jsx":12,"../forest/index.jsx":13,"../found-raptor/index.jsx":14,"../get-involved/index.jsx":15,"../hours-and-admissions/index.jsx":16,"../meet-the-raptors/index.jsx":18,"../nature-notes/index.jsx":19,"../programs/index.jsx":20,"../save-the-oaks/index.jsx":21,"./VelocityTransitionGroup.jsx":17,"react":250,"react-hotkey":23,"react-router":63,"scrollmagic":251,"util":257}],2:[function(require,module,exports){
 module.exports=[
   {
     "name": "Critters on the Move",
@@ -1028,90 +1028,12 @@ var Router = require('react-router');
 var Navigation = Router.Navigation;
 var Link = Router.Link;
 
-
-var Footer = require('../../common/footer.jsx');
-
-var ScrollMagic = require('scrollmagic');
-
-var classes_data = require('../../../public/js/classes.json');
-
-var ClassThing = React.createClass({displayName: "ClassThing",
-  render: function() {
-    return (
-      React.createElement("div", {className: "class"}, 
-        React.createElement("h2", null, this.props.name), 
-        React.createElement("p", null, this.props.age), 
-        React.createElement("p", null, this.props.science_standards), 
-        React.createElement("p", null, this.props.series), 
-        React.createElement("p", null, this.props.duration), 
-        React.createElement("p", null, this.props.description)
-      )
-    )
-  }
-});
-
-var ClassList = React.createClass({displayName: "ClassList",
-  getInitialState: function() {
-    return {classes: classes_data, current_classes: classes_data}
-  },
-
-  natureFilter: function(){
-    var natureClasses = self.state.classes
-  },
-  render: function() {
-    var self = this;
-    var classes = self.state.current_classes.map(function(object) {
-
-      return React.createElement(ClassThing, {
-        name: object.name, 
-        age: object.age, 
-        science_standards: object.science_standards, 
-        series: object.series, 
-        duration: object.duration, 
-        description: object.description})
-    });
-    return (
-      React.createElement("div", {className: "classes"}, 
-        classes 
-      )
-    )
-  }
-});
-
-var poster_image;
-var Main = React.createClass({displayName: "Main",
+module.exports = React.createClass({displayName: "exports",
   mixins: [ Router.State, Navigation ],
 
-  componentDidMount: function () {
-    var self = this;
-    poster_image = new Image();
-    poster_image.onload = self.onLoad;
-    poster_image.src = "/img/loop_three.jpg";
-  },
+  componentDidMount: function () { },
 
-  componentWillReceiveProps: function () {
-    var self = this;
-    poster_image = new Image();
-    poster_image.onload = self.onLoad;
-    poster_image.src = "/img/loop_three.jpg";
-
-  },
-
-  onLoad: function() {
-    var self = this;
-    self.setState({loaded: true});
-  },
-
-  moveLeft: function(){
-    this.props.transition('slide-back');
-    this.transitionTo('conservation');
-  },
-
-
-  moveRight: function(){
-    this.props.transition('slide-forward');
-    this.transitionTo('programs');
-  },
+  componentWillReceiveProps: function () { },
 
   render: function() {
     var self = this;
@@ -1122,16 +1044,13 @@ var Main = React.createClass({displayName: "Main",
           React.createElement("div", {className: "image_container"}, 
             React.createElement("img", {src: "/img/board.png"})
           )
-        ), 
-        React.createElement(Footer, null)
+        )
       )
     )
   }
 });
 
-module.exports = Main;
-
-},{"../../../public/js/classes.json":259,"../../common/footer.jsx":4,"react":250,"react-inlinesvg":24,"react-router":63,"scrollmagic":251,"superagent":252,"util":257,"velocity-animate/velocity":258}],9:[function(require,module,exports){
+},{"react":250,"react-inlinesvg":24,"react-router":63,"superagent":252,"util":257,"velocity-animate/velocity":258}],9:[function(require,module,exports){
 var React = require('react'),
     request = require('superagent'),
     util = require('util');
@@ -1141,8 +1060,6 @@ var Router = require('react-router');
 
 var Navigation = Router.Navigation;
 var Link = Router.Link;
-
-var Footer = require('../../common/footer.jsx');
 
 var poster_image;
 var Main = React.createClass({displayName: "Main",
@@ -1610,9 +1527,7 @@ var Main = React.createClass({displayName: "Main",
                   React.createElement("span", {className: "prev_page", onClick: self.moveLeft}, "Forest"), 
                   React.createElement("span", {className: "next_page", onClick: self.moveRight}, "Education")
                 )
-              ), 
-
-              React.createElement(Footer, null)
+              )
             ), 
             React.createElement("div", {className: "video-container"}, 
               React.createElement("video", {id: "video-background", className: "video-wrap", poster: "/img/loop_conservation.jpg", autoPlay: true, muted: "muted", loop: true}, 
@@ -1653,7 +1568,7 @@ var Main = React.createClass({displayName: "Main",
 
 module.exports = Main;
 
-},{"../../common/footer.jsx":4,"react":250,"react-inlinesvg":24,"react-router":63,"superagent":252,"util":257,"velocity-animate/velocity":258}],10:[function(require,module,exports){
+},{"react":250,"react-inlinesvg":24,"react-router":63,"superagent":252,"util":257,"velocity-animate/velocity":258}],10:[function(require,module,exports){
 var React = require('react'),
     request = require('superagent'),
     util = require('util');
@@ -1663,9 +1578,6 @@ var Router = require('react-router');
 
 var Navigation = Router.Navigation;
 var Link = Router.Link;
-
-
-var Footer = require('../../common/footer.jsx');
 
 var ScrollMagic = require('scrollmagic');
 
@@ -1902,15 +1814,13 @@ module.exports = React.createClass({displayName: "exports",
             React.createElement("span", {className: "name_item"}, "Brenna Watkins"), 
             React.createElement("span", {className: "name_item"}, "Lisa Wiles")
           )
-        ), 
-
-        React.createElement(Footer, null)
+        )
       )
     )
   }
 });
 
-},{"../../common/footer.jsx":4,"../../common/management.json":6,"../../common/staff.json":7,"react":250,"react-inlinesvg":24,"react-router":63,"scrollmagic":251,"superagent":252,"util":257,"velocity-animate/velocity":258}],11:[function(require,module,exports){
+},{"../../common/management.json":6,"../../common/staff.json":7,"react":250,"react-inlinesvg":24,"react-router":63,"scrollmagic":251,"superagent":252,"util":257,"velocity-animate/velocity":258}],11:[function(require,module,exports){
 var React = require('react'),
     request = require('superagent'),
     util = require('util');
@@ -1920,9 +1830,6 @@ var Router = require('react-router');
 
 var Navigation = Router.Navigation;
 var Link = Router.Link;
-
-
-var Footer = require('../../common/footer.jsx');
 
 var ScrollMagic = require('scrollmagic');
 var TweenMax = require('../../../public/js/tweenmax.js');
@@ -2211,8 +2118,7 @@ var Main = React.createClass({displayName: "Main",
                   React.createElement("span", {className: "prev_page", onClick: self.moveLeft}, "Natural Resources"), 
                   React.createElement("span", {className: "next_page", onClick: self.moveRight}, "Programs")
                 )
-              ), 
-              React.createElement(Footer, null)
+              )
             )
           ), 
           React.createElement("div", {className: "video-container"}, 
@@ -2253,7 +2159,7 @@ var Main = React.createClass({displayName: "Main",
 
 module.exports = Main;
 
-},{"../../../public/js/scrollTo.js":260,"../../../public/js/tweenmax.js":261,"../../common/classes.json":2,"../../common/footer.jsx":4,"react":250,"react-inlinesvg":24,"react-router":63,"scrollmagic":251,"superagent":252,"util":257,"velocity-animate/velocity":258}],12:[function(require,module,exports){
+},{"../../../public/js/scrollTo.js":259,"../../../public/js/tweenmax.js":260,"../../common/classes.json":2,"react":250,"react-inlinesvg":24,"react-router":63,"scrollmagic":251,"superagent":252,"util":257,"velocity-animate/velocity":258}],12:[function(require,module,exports){
 var React = require('react'),
     request = require('superagent'),
     util = require('util');
@@ -2264,10 +2170,7 @@ var Router = require('react-router');
 var Navigation = Router.Navigation;
 var Link = Router.Link;
 
-var Footer = require('../../common/footer.jsx');
-
-var poster_image;
-var Main = React.createClass({displayName: "Main",
+module.exports = React.createClass({displayName: "exports",
   mixins: [ Router.State, Navigation ],
   getInitialState: function() {
     return {
@@ -2383,16 +2286,13 @@ var Main = React.createClass({displayName: "Main",
           React.createElement("div", {className: "image_container"}, 
             React.createElement("img", {src: "/img/forest-now/social-media.jpg"})
           )
-        ), 
-        React.createElement(Footer, null)
+        )
       )
     )
   }
 });
 
-module.exports = Main;
-
-},{"../../common/footer.jsx":4,"react":250,"react-inlinesvg":24,"react-router":63,"superagent":252,"util":257,"velocity-animate/velocity":258}],13:[function(require,module,exports){
+},{"react":250,"react-inlinesvg":24,"react-router":63,"superagent":252,"util":257,"velocity-animate/velocity":258}],13:[function(require,module,exports){
 var React = require('react'),
     request = require('superagent'),
     util = require('util'),
@@ -2408,9 +2308,6 @@ var load_image = [];
 
 var photogallery = require('../../common/fall.json');
 var acorngallery = require('../../common/littleexplorers.json');
-
-var Footer = require('../../common/footer.jsx');
-
 /**
  * Randomize array element order in-place.
  * Using Fisher-Yates shuffle algorithm.
@@ -3921,9 +3818,8 @@ var Main = React.createClass({displayName: "Main",
                   React.createElement("span", {className: "prev_page", onClick: self.moveLeft}, "Programs"), 
                   React.createElement("span", {className: "next_page", onClick: self.moveRight}, "Natural Resources")
                 )
-              ), 
+              )
 
-              React.createElement(Footer, null)
             )
           ), 
           React.createElement("div", {className: "video-container"}, 
@@ -3966,7 +3862,7 @@ var Main = React.createClass({displayName: "Main",
 
 module.exports = Main;
 
-},{"../../common/fall.json":3,"../../common/footer.jsx":4,"../../common/littleexplorers.json":5,"react":250,"react-inlinesvg":24,"react-router":63,"scrollmagic":251,"superagent":252,"util":257,"velocity-animate/velocity":258}],14:[function(require,module,exports){
+},{"../../common/fall.json":3,"../../common/littleexplorers.json":5,"react":250,"react-inlinesvg":24,"react-router":63,"scrollmagic":251,"superagent":252,"util":257,"velocity-animate/velocity":258}],14:[function(require,module,exports){
 var React = require('react'),
     request = require('superagent'),
     util = require('util');
@@ -3977,90 +3873,12 @@ var Router = require('react-router');
 var Navigation = Router.Navigation;
 var Link = Router.Link;
 
-
-var Footer = require('../../common/footer.jsx');
-
-var ScrollMagic = require('scrollmagic');
-
-var classes_data = require('../../../public/js/classes.json');
-
-var ClassThing = React.createClass({displayName: "ClassThing",
-  render: function() {
-    return (
-      React.createElement("div", {className: "class"}, 
-        React.createElement("h2", null, this.props.name), 
-        React.createElement("p", null, this.props.age), 
-        React.createElement("p", null, this.props.science_standards), 
-        React.createElement("p", null, this.props.series), 
-        React.createElement("p", null, this.props.duration), 
-        React.createElement("p", null, this.props.description)
-      )
-    )
-  }
-});
-
-var ClassList = React.createClass({displayName: "ClassList",
-  getInitialState: function() {
-    return {classes: classes_data, current_classes: classes_data}
-  },
-
-  natureFilter: function(){
-    var natureClasses = self.state.classes
-  },
-  render: function() {
-    var self = this;
-    var classes = self.state.current_classes.map(function(object) {
-
-      return React.createElement(ClassThing, {
-        name: object.name, 
-        age: object.age, 
-        science_standards: object.science_standards, 
-        series: object.series, 
-        duration: object.duration, 
-        description: object.description})
-    });
-    return (
-      React.createElement("div", {className: "classes"}, 
-        classes 
-      )
-    )
-  }
-});
-
-var poster_image;
-var Main = React.createClass({displayName: "Main",
+module.exports =  React.createClass({displayName: "exports",
   mixins: [ Router.State, Navigation ],
 
-  componentDidMount: function () {
-    var self = this;
-    poster_image = new Image();
-    poster_image.onload = self.onLoad;
-    poster_image.src = "/img/loop_three.jpg";
-  },
+  componentDidMount: function () { },
 
-  componentWillReceiveProps: function () {
-    var self = this;
-    poster_image = new Image();
-    poster_image.onload = self.onLoad;
-    poster_image.src = "/img/loop_three.jpg";
-
-  },
-
-  onLoad: function() {
-    var self = this;
-    self.setState({loaded: true});
-  },
-
-  moveLeft: function(){
-    this.props.transition('slide-back');
-    this.transitionTo('conservation');
-  },
-
-
-  moveRight: function(){
-    this.props.transition('slide-forward');
-    this.transitionTo('programs');
-  },
+  componentWillReceiveProps: function () { },
 
   render: function() {
     var self = this;
@@ -4071,16 +3889,13 @@ var Main = React.createClass({displayName: "Main",
           React.createElement("div", {className: "main_wrapper"}, 
             React.createElement("img", {src: "/img/found-raptor/page.png"})
           )
-        ), 
-        React.createElement(Footer, null)
+        )
       )
     )
   }
 });
 
-module.exports = Main;
-
-},{"../../../public/js/classes.json":259,"../../common/footer.jsx":4,"react":250,"react-inlinesvg":24,"react-router":63,"scrollmagic":251,"superagent":252,"util":257,"velocity-animate/velocity":258}],15:[function(require,module,exports){
+},{"react":250,"react-inlinesvg":24,"react-router":63,"superagent":252,"util":257,"velocity-animate/velocity":258}],15:[function(require,module,exports){
 var React = require('react'),
     request = require('superagent'),
     util = require('util');
@@ -4091,90 +3906,12 @@ var Router = require('react-router');
 var Navigation = Router.Navigation;
 var Link = Router.Link;
 
-
-var Footer = require('../../common/footer.jsx');
-
-var ScrollMagic = require('scrollmagic');
-
-var classes_data = require('../../../public/js/classes.json');
-
-var ClassThing = React.createClass({displayName: "ClassThing",
-  render: function() {
-    return (
-      React.createElement("div", {className: "class"}, 
-        React.createElement("h2", null, this.props.name), 
-        React.createElement("p", null, this.props.age), 
-        React.createElement("p", null, this.props.science_standards), 
-        React.createElement("p", null, this.props.series), 
-        React.createElement("p", null, this.props.duration), 
-        React.createElement("p", null, this.props.description)
-      )
-    )
-  }
-});
-
-var ClassList = React.createClass({displayName: "ClassList",
-  getInitialState: function() {
-    return {classes: classes_data, current_classes: classes_data}
-  },
-
-  natureFilter: function(){
-    var natureClasses = self.state.classes
-  },
-  render: function() {
-    var self = this;
-    var classes = self.state.current_classes.map(function(object) {
-
-      return React.createElement(ClassThing, {
-        name: object.name, 
-        age: object.age, 
-        science_standards: object.science_standards, 
-        series: object.series, 
-        duration: object.duration, 
-        description: object.description})
-    });
-    return (
-      React.createElement("div", {className: "classes"}, 
-        classes 
-      )
-    )
-  }
-});
-
-var poster_image;
-var Main = React.createClass({displayName: "Main",
+module.exports = React.createClass({displayName: "exports",
   mixins: [ Router.State, Navigation ],
 
-  componentDidMount: function () {
-    var self = this;
-    poster_image = new Image();
-    poster_image.onload = self.onLoad;
-    poster_image.src = "/img/loop_three.jpg";
-  },
+  componentDidMount: function () { },
 
-  componentWillReceiveProps: function () {
-    var self = this;
-    poster_image = new Image();
-    poster_image.onload = self.onLoad;
-    poster_image.src = "/img/loop_three.jpg";
-
-  },
-
-  onLoad: function() {
-    var self = this;
-    self.setState({loaded: true});
-  },
-
-  moveLeft: function(){
-    this.props.transition('slide-back');
-    this.transitionTo('conservation');
-  },
-
-
-  moveRight: function(){
-    this.props.transition('slide-forward');
-    this.transitionTo('programs');
-  },
+  componentWillReceiveProps: function () {},
 
   render: function() {
     var self = this;
@@ -4187,16 +3924,13 @@ var Main = React.createClass({displayName: "Main",
             React.createElement("img", {src: "/img/get-involved/Get-involved-membership.jpg"}), 
             React.createElement("img", {src: "/img/get-involved/Get-involved-volunteer.jpg"})
           )
-        ), 
-        React.createElement(Footer, null)
+        )
       )
     )
   }
 });
 
-module.exports = Main;
-
-},{"../../../public/js/classes.json":259,"../../common/footer.jsx":4,"react":250,"react-inlinesvg":24,"react-router":63,"scrollmagic":251,"superagent":252,"util":257,"velocity-animate/velocity":258}],16:[function(require,module,exports){
+},{"react":250,"react-inlinesvg":24,"react-router":63,"superagent":252,"util":257,"velocity-animate/velocity":258}],16:[function(require,module,exports){
 var React = require('react'),
     request = require('superagent'),
     util = require('util');
@@ -4207,90 +3941,12 @@ var Router = require('react-router');
 var Navigation = Router.Navigation;
 var Link = Router.Link;
 
-
-var Footer = require('../../common/footer.jsx');
-
-var ScrollMagic = require('scrollmagic');
-
-var classes_data = require('../../../public/js/classes.json');
-
-var ClassThing = React.createClass({displayName: "ClassThing",
-  render: function() {
-    return (
-      React.createElement("div", {className: "class"}, 
-        React.createElement("h2", null, this.props.name), 
-        React.createElement("p", null, this.props.age), 
-        React.createElement("p", null, this.props.science_standards), 
-        React.createElement("p", null, this.props.series), 
-        React.createElement("p", null, this.props.duration), 
-        React.createElement("p", null, this.props.description)
-      )
-    )
-  }
-});
-
-var ClassList = React.createClass({displayName: "ClassList",
-  getInitialState: function() {
-    return {classes: classes_data, current_classes: classes_data}
-  },
-
-  natureFilter: function(){
-    var natureClasses = self.state.classes
-  },
-  render: function() {
-    var self = this;
-    var classes = self.state.current_classes.map(function(object) {
-
-      return React.createElement(ClassThing, {
-        name: object.name, 
-        age: object.age, 
-        science_standards: object.science_standards, 
-        series: object.series, 
-        duration: object.duration, 
-        description: object.description})
-    });
-    return (
-      React.createElement("div", {className: "classes"}, 
-        classes 
-      )
-    )
-  }
-});
-
-var poster_image;
-var Main = React.createClass({displayName: "Main",
+module.exports = React.createClass({displayName: "exports",
   mixins: [ Router.State, Navigation ],
 
-  componentDidMount: function () {
-    var self = this;
-    poster_image = new Image();
-    poster_image.onload = self.onLoad;
-    poster_image.src = "/img/loop_three.jpg";
-  },
+  componentDidMount: function () { },
 
-  componentWillReceiveProps: function () {
-    var self = this;
-    poster_image = new Image();
-    poster_image.onload = self.onLoad;
-    poster_image.src = "/img/loop_three.jpg";
-
-  },
-
-  onLoad: function() {
-    var self = this;
-    self.setState({loaded: true});
-  },
-
-  moveLeft: function(){
-    this.props.transition('slide-back');
-    this.transitionTo('conservation');
-  },
-
-
-  moveRight: function(){
-    this.props.transition('slide-forward');
-    this.transitionTo('programs');
-  },
+  componentWillReceiveProps: function () { },
 
   render: function() {
     var self = this;
@@ -4301,16 +3957,13 @@ var Main = React.createClass({displayName: "Main",
           React.createElement("div", {className: "image_container"}, 
             React.createElement("img", {src: "/img/hours.png"})
           )
-        ), 
-        React.createElement(Footer, null)
+        )
       )
     )
   }
 });
 
-module.exports = Main;
-
-},{"../../../public/js/classes.json":259,"../../common/footer.jsx":4,"react":250,"react-inlinesvg":24,"react-router":63,"scrollmagic":251,"superagent":252,"util":257,"velocity-animate/velocity":258}],17:[function(require,module,exports){
+},{"react":250,"react-inlinesvg":24,"react-router":63,"superagent":252,"util":257,"velocity-animate/velocity":258}],17:[function(require,module,exports){
 /**
  * Adapted from https://github.com/Khan/react-components/blob/master/js/timeout-transition-group.jsx
  */
@@ -4478,90 +4131,12 @@ var Router = require('react-router');
 var Navigation = Router.Navigation;
 var Link = Router.Link;
 
-
-var Footer = require('../../common/footer.jsx');
-
-var ScrollMagic = require('scrollmagic');
-
-var classes_data = require('../../../public/js/classes.json');
-
-var ClassThing = React.createClass({displayName: "ClassThing",
-  render: function() {
-    return (
-      React.createElement("div", {className: "class"}, 
-        React.createElement("h2", null, this.props.name), 
-        React.createElement("p", null, this.props.age), 
-        React.createElement("p", null, this.props.science_standards), 
-        React.createElement("p", null, this.props.series), 
-        React.createElement("p", null, this.props.duration), 
-        React.createElement("p", null, this.props.description)
-      )
-    )
-  }
-});
-
-var ClassList = React.createClass({displayName: "ClassList",
-  getInitialState: function() {
-    return {classes: classes_data, current_classes: classes_data}
-  },
-
-  natureFilter: function(){
-    var natureClasses = self.state.classes
-  },
-  render: function() {
-    var self = this;
-    var classes = self.state.current_classes.map(function(object) {
-
-      return React.createElement(ClassThing, {
-        name: object.name, 
-        age: object.age, 
-        science_standards: object.science_standards, 
-        series: object.series, 
-        duration: object.duration, 
-        description: object.description})
-    });
-    return (
-      React.createElement("div", {className: "classes"}, 
-        classes 
-      )
-    )
-  }
-});
-
-var poster_image;
-var Main = React.createClass({displayName: "Main",
+module.exports = React.createClass({displayName: "exports",
   mixins: [ Router.State, Navigation ],
 
-  componentDidMount: function () {
-    var self = this;
-    poster_image = new Image();
-    poster_image.onload = self.onLoad;
-    poster_image.src = "/img/loop_three.jpg";
-  },
+  componentDidMount: function () { },
 
-  componentWillReceiveProps: function () {
-    var self = this;
-    poster_image = new Image();
-    poster_image.onload = self.onLoad;
-    poster_image.src = "/img/loop_three.jpg";
-
-  },
-
-  onLoad: function() {
-    var self = this;
-    self.setState({loaded: true});
-  },
-
-  moveLeft: function(){
-    this.props.transition('slide-back');
-    this.transitionTo('conservation');
-  },
-
-
-  moveRight: function(){
-    this.props.transition('slide-forward');
-    this.transitionTo('programs');
-  },
+  componentWillReceiveProps: function () { },
 
   render: function() {
     var self = this;
@@ -4579,9 +4154,7 @@ var Main = React.createClass({displayName: "Main",
   }
 });
 
-module.exports = Main;
-
-},{"../../../public/js/classes.json":259,"../../common/footer.jsx":4,"react":250,"react-inlinesvg":24,"react-router":63,"scrollmagic":251,"superagent":252,"util":257,"velocity-animate/velocity":258}],19:[function(require,module,exports){
+},{"react":250,"react-inlinesvg":24,"react-router":63,"superagent":252,"util":257,"velocity-animate/velocity":258}],19:[function(require,module,exports){
 var React = require('react'),
     request = require('superagent'),
     util = require('util');
@@ -4589,9 +4162,6 @@ var Router = require('react-router');
 
 var Navigation = Router.Navigation;
 var Link = Router.Link;
-
-
-var Footer = require('../../common/footer.jsx');
 
 var Closing = React.createClass({displayName: "Closing",
   getInitialState: function(){
@@ -4757,14 +4327,13 @@ module.exports = React.createClass({displayName: "exports",
               )
             )
           )
-        ), 
-        React.createElement(Footer, null)
+        )
       )
     )
   }
 });
 
-},{"../../common/footer.jsx":4,"react":250,"react-router":63,"superagent":252,"util":257}],20:[function(require,module,exports){
+},{"react":250,"react-router":63,"superagent":252,"util":257}],20:[function(require,module,exports){
 var React = require('react'),
     request = require('superagent'),
     util = require('util');
@@ -4774,11 +4343,6 @@ var Router = require('react-router');
 
 var Navigation = Router.Navigation;
 var Link = Router.Link;
-
-var Footer = require('../../common/footer.jsx');
-// var ScrollMagic = require('scrollmagic');
-
-
 
 var poster_image;
 var Main = React.createClass({displayName: "Main",
@@ -5266,8 +4830,7 @@ var Main = React.createClass({displayName: "Main",
                   React.createElement("span", {className: "prev_page", onClick: self.moveLeft}, "Education"), 
                   React.createElement("span", {className: "next_page", onClick: self.moveRight}, "Forest")
                 )
-              ), 
-              React.createElement(Footer, null)
+              )
             ), 
 
             React.createElement("div", {className: "video-container"}, 
@@ -5312,7 +4875,7 @@ var Main = React.createClass({displayName: "Main",
 
 module.exports = Main;
 
-},{"../../common/footer.jsx":4,"react":250,"react-inlinesvg":24,"react-router":63,"superagent":252,"util":257,"velocity-animate/velocity":258}],21:[function(require,module,exports){
+},{"react":250,"react-inlinesvg":24,"react-router":63,"superagent":252,"util":257,"velocity-animate/velocity":258}],21:[function(require,module,exports){
 var React = require('react'),
     request = require('superagent'),
     util = require('util');
@@ -5323,90 +4886,12 @@ var Router = require('react-router');
 var Navigation = Router.Navigation;
 var Link = Router.Link;
 
-
-var Footer = require('../../common/footer.jsx');
-
-var ScrollMagic = require('scrollmagic');
-
-var classes_data = require('../../../public/js/classes.json');
-
-var ClassThing = React.createClass({displayName: "ClassThing",
-  render: function() {
-    return (
-      React.createElement("div", {className: "class"}, 
-        React.createElement("h2", null, this.props.name), 
-        React.createElement("p", null, this.props.age), 
-        React.createElement("p", null, this.props.science_standards), 
-        React.createElement("p", null, this.props.series), 
-        React.createElement("p", null, this.props.duration), 
-        React.createElement("p", null, this.props.description)
-      )
-    )
-  }
-});
-
-var ClassList = React.createClass({displayName: "ClassList",
-  getInitialState: function() {
-    return {classes: classes_data, current_classes: classes_data}
-  },
-
-  natureFilter: function(){
-    var natureClasses = self.state.classes
-  },
-  render: function() {
-    var self = this;
-    var classes = self.state.current_classes.map(function(object) {
-
-      return React.createElement(ClassThing, {
-        name: object.name, 
-        age: object.age, 
-        science_standards: object.science_standards, 
-        series: object.series, 
-        duration: object.duration, 
-        description: object.description})
-    });
-    return (
-      React.createElement("div", {className: "classes"}, 
-        classes 
-      )
-    )
-  }
-});
-
-var poster_image;
-var Main = React.createClass({displayName: "Main",
+module.exports = React.createClass({displayName: "exports",
   mixins: [ Router.State, Navigation ],
 
-  componentDidMount: function () {
-    var self = this;
-    poster_image = new Image();
-    poster_image.onload = self.onLoad;
-    poster_image.src = "/img/loop_three.jpg";
-  },
+  componentDidMount: function () { },
 
-  componentWillReceiveProps: function () {
-    var self = this;
-    poster_image = new Image();
-    poster_image.onload = self.onLoad;
-    poster_image.src = "/img/loop_three.jpg";
-
-  },
-
-  onLoad: function() {
-    var self = this;
-    self.setState({loaded: true});
-  },
-
-  moveLeft: function(){
-    this.props.transition('slide-back');
-    this.transitionTo('conservation');
-  },
-
-
-  moveRight: function(){
-    this.props.transition('slide-forward');
-    this.transitionTo('programs');
-  },
+  componentWillReceiveProps: function () { },
 
   render: function() {
     var self = this;
@@ -5428,9 +4913,7 @@ var Main = React.createClass({displayName: "Main",
   }
 });
 
-module.exports = Main;
-
-},{"../../../public/js/classes.json":259,"../../common/footer.jsx":4,"react":250,"react-inlinesvg":24,"react-router":63,"scrollmagic":251,"superagent":252,"util":257,"velocity-animate/velocity":258}],22:[function(require,module,exports){
+},{"react":250,"react-inlinesvg":24,"react-router":63,"superagent":252,"util":257,"velocity-animate/velocity":258}],22:[function(require,module,exports){
 // shim for using process in browser
 
 var process = module.exports = {};
@@ -39742,25 +39225,6 @@ return function (global, window, document, undefined) {
 Velocity, however, doesn't make this distinction. Thus, converting to or from the % unit with these subproperties
 will produce an inaccurate conversion value. The same issue exists with the cx/cy attributes of SVG circles and ellipses. */
 },{}],259:[function(require,module,exports){
-module.exports=[																				
-	{
-		"name": "Critters on the Move",	
-		"age": "All",	
-		"science_standards": ["SC2.1.1.a", "SC2.1.1.d", "SC2.3.2.b" ],
-		"series": [ "Nature On-the-Go", "Fontenelle Forest" ],
-		"duration": "1 hour",
-		"description": "Have an up-close meet and greet with a few of our educational animals. Learn what different animal groups have in common and what makes them each unique as you observe their features and behaviors. This program provides an opportunity to introduce students to nature by providing “eye to eye” contact with multiple educational animals. Students will learn about each animal’s habits and habitats as they interact with live animals in their classroom.",
-	},
-	{
-		"name": "Mud Pies for Preschools",	
-		"age": "Pre-K",	
-		"science_standards": [ "SC2.1.1.a", "SC2.1.1.d", "SC2.3.2.b" ],
-		"series": ["Fontenelle Forest" ],
-		"duration": "2 hours",
-		"description": "Bring your preschool class for a unique Mud Pies experience. Centers will be set up related to the weekly topic or topics can be developed based on your learning.",
-	}
-]
-},{}],260:[function(require,module,exports){
 (function (global){
 /*!
  * VERSION: 1.7.4
@@ -39775,7 +39239,7 @@ module.exports=[
  **/
 var _gsScope="undefined"!=typeof module&&module.exports&&"undefined"!=typeof global?global:this||window;(_gsScope._gsQueue||(_gsScope._gsQueue=[])).push(function(){"use strict";var t=document.documentElement,e=window,i=function(i,r){var s="x"===r?"Width":"Height",n="scroll"+s,a="client"+s,o=document.body;return i===e||i===t||i===o?Math.max(t[n],o[n])-(e["inner"+s]||Math.max(t[a],o[a])):i[n]-i["offset"+s]},r=_gsScope._gsDefine.plugin({propName:"scrollTo",API:2,version:"1.7.4",init:function(t,r,s){return this._wdw=t===e,this._target=t,this._tween=s,"object"!=typeof r&&(r={y:r}),this.vars=r,this._autoKill=r.autoKill!==!1,this.x=this.xPrev=this.getX(),this.y=this.yPrev=this.getY(),null!=r.x?(this._addTween(this,"x",this.x,"max"===r.x?i(t,"x"):r.x,"scrollTo_x",!0),this._overwriteProps.push("scrollTo_x")):this.skipX=!0,null!=r.y?(this._addTween(this,"y",this.y,"max"===r.y?i(t,"y"):r.y,"scrollTo_y",!0),this._overwriteProps.push("scrollTo_y")):this.skipY=!0,!0},set:function(t){this._super.setRatio.call(this,t);var r=this._wdw||!this.skipX?this.getX():this.xPrev,s=this._wdw||!this.skipY?this.getY():this.yPrev,n=s-this.yPrev,a=r-this.xPrev;this._autoKill&&(!this.skipX&&(a>7||-7>a)&&i(this._target,"x")>r&&(this.skipX=!0),!this.skipY&&(n>7||-7>n)&&i(this._target,"y")>s&&(this.skipY=!0),this.skipX&&this.skipY&&(this._tween.kill(),this.vars.onAutoKill&&this.vars.onAutoKill.apply(this.vars.onAutoKillScope||this._tween,this.vars.onAutoKillParams||[]))),this._wdw?e.scrollTo(this.skipX?r:this.x,this.skipY?s:this.y):(this.skipY||(this._target.scrollTop=this.y),this.skipX||(this._target.scrollLeft=this.x)),this.xPrev=this.x,this.yPrev=this.y}}),s=r.prototype;r.max=i,s.getX=function(){return this._wdw?null!=e.pageXOffset?e.pageXOffset:null!=t.scrollLeft?t.scrollLeft:document.body.scrollLeft:this._target.scrollLeft},s.getY=function(){return this._wdw?null!=e.pageYOffset?e.pageYOffset:null!=t.scrollTop?t.scrollTop:document.body.scrollTop:this._target.scrollTop},s._kill=function(t){return t.scrollTo_x&&(this.skipX=!0),t.scrollTo_y&&(this.skipY=!0),this._super._kill.call(this,t)}}),_gsScope._gsDefine&&_gsScope._gsQueue.pop()();
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],261:[function(require,module,exports){
+},{}],260:[function(require,module,exports){
 (function (global){
 /*!
  * VERSION: 1.15.1

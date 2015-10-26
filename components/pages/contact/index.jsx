@@ -8,9 +8,6 @@ var Router = require('react-router');
 var Navigation = Router.Navigation;
 var Link = Router.Link;
 
-
-var Footer = require('../../common/footer.jsx');
-
 var ScrollMagic = require('scrollmagic');
 
 var management = require('../../common/management.json');
@@ -247,8 +244,6 @@ module.exports = React.createClass({
             <span className="name_item">Lisa Wiles</span>
           </div>
         </div>
-
-        <Footer />
       </div>
     )
   }

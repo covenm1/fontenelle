@@ -13,9 +13,6 @@ var load_image = [];
 
 var photogallery = require('../../common/fall.json');
 var acorngallery = require('../../common/littleexplorers.json');
-
-var Footer = require('../../common/footer.jsx');
-
 /**
  * Randomize array element order in-place.
  * Using Fisher-Yates shuffle algorithm.
@@ -1528,7 +1525,6 @@ var Main = React.createClass({
                 </div>
               </div>
 
-              <Footer />
             </div>
           </div>
           <div className='video-container'>

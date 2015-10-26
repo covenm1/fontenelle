@@ -8,11 +8,6 @@ var Router = require('react-router');
 var Navigation = Router.Navigation;
 var Link = Router.Link;
 
-var Footer = require('../../common/footer.jsx');
-// var ScrollMagic = require('scrollmagic');
-
-
-
 var poster_image;
 var Main = React.createClass({
   mixins: [ Router.State, Navigation ],
@@ -500,7 +495,6 @@ var Main = React.createClass({
                   <span className="next_page" onClick={self.moveRight}>Forest</span>
                 </div>
               </div>
-              <Footer />
             </div>
 
             <div className='video-container'>

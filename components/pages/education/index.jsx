@@ -8,9 +8,6 @@ var Router = require('react-router');
 var Navigation = Router.Navigation;
 var Link = Router.Link;
 
-
-var Footer = require('../../common/footer.jsx');
-
 var ScrollMagic = require('scrollmagic');
 var TweenMax = require('../../../public/js/tweenmax.js');
 require('../../../public/js/scrollTo.js');
@@ -299,7 +296,6 @@ var Main = React.createClass({
                   <span className="next_page" onClick={self.moveRight}>Programs</span>
                 </div>
               </div>
-              <Footer />
             </div>
           </div>
           <div className='video-container'>

@@ -8,10 +8,7 @@ var Router = require('react-router');
 var Navigation = Router.Navigation;
 var Link = Router.Link;
 
-var Footer = require('../../common/footer.jsx');
-
-var poster_image;
-var Main = React.createClass({
+module.exports = React.createClass({
   mixins: [ Router.State, Navigation ],
   getInitialState: function() {
     return {
@@ -128,10 +125,7 @@ var Main = React.createClass({
             <img src="/img/forest-now/social-media.jpg" />
           </div>
         </div>
-        <Footer />
       </div>
     )
   }
 });
-
-module.exports = Main;

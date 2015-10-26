@@ -8,8 +8,6 @@ var Router = require('react-router');
 var Navigation = Router.Navigation;
 var Link = Router.Link;
 
-var Footer = require('../../common/footer.jsx');
-
 var poster_image;
 var Main = React.createClass({
   mixins: [ Router.State, Navigation ],
@@ -477,8 +475,6 @@ var Main = React.createClass({
                   <span className="next_page" onClick={self.moveRight}>Education</span>
                 </div>
               </div>
-
-              <Footer />
             </div>
             <div className='video-container'>
               <video id="video-background" className="video-wrap" poster="/img/loop_conservation.jpg" autoPlay muted="muted" loop>
