@@ -31,6 +31,8 @@ var forest = require('../forest/index.jsx'),
 		savetheoaks = require('../save-the-oaks/index.jsx'),
 		contact = require('../contact/index.jsx');
 
+var Footer = require('../../common/footer.jsx');
+
 var slide_names = [ 'forest', 'natural-resources', 'education', 'programs'];
 var slide_count = 0;
 
@@ -264,7 +266,8 @@ var App = React.createClass({displayName: "App",
 
 		    	React.createElement(TransitionGroup, {transitionName: transition, className: "main_content", id: "main_content", component: "div"}, 
 			    	React.createElement(RouteHandler, {key: name, transition: self.setTransition, controller: controller})
-			    )
+			    ), 
+					React.createElement(Footer, null)
 			  )
 			)
 		} else {
@@ -315,7 +318,8 @@ var App = React.createClass({displayName: "App",
 					React.createElement("div", {className: "main_content", id: "main_content"}, 
 						React.createElement("i", {className: "fa fa-cog fa-spin"}), 
 						React.createElement("div", {className: "load_message"}, "Loading content for ", name, ".")
-					)
+					), 
+					React.createElement(Footer, null)
 				)
 			)
 		}
@@ -347,7 +351,7 @@ var routes = (
 		React.createElement(Route, {name: "contact", path: "/contact", handler: contact, addHandlerKey: true})
   )
 
-); 
+);
 
 
 // Router.run(routes, Router.HistoryLocation, function (Handler) {
@@ -363,7 +367,7 @@ router.run(function (Handler) {
   React.render(React.createElement(Handler, null), document.body);
 });
 
-},{"../../../public/js/scrollTo.js":260,"../../../public/js/tweenmax.js":261,"../board-of-directors/index.jsx":8,"../conservation/index.jsx":9,"../contact/index.jsx":10,"../education/index.jsx":11,"../forest-now/index.jsx":12,"../forest/index.jsx":13,"../found-raptor/index.jsx":14,"../get-involved/index.jsx":15,"../hours-and-admissions/index.jsx":16,"../meet-the-raptors/index.jsx":18,"../nature-notes/index.jsx":19,"../programs/index.jsx":20,"../save-the-oaks/index.jsx":21,"./VelocityTransitionGroup.jsx":17,"react":250,"react-hotkey":23,"react-router":63,"scrollmagic":251,"util":257}],2:[function(require,module,exports){
+},{"../../../public/js/scrollTo.js":260,"../../../public/js/tweenmax.js":261,"../../common/footer.jsx":4,"../board-of-directors/index.jsx":8,"../conservation/index.jsx":9,"../contact/index.jsx":10,"../education/index.jsx":11,"../forest-now/index.jsx":12,"../forest/index.jsx":13,"../found-raptor/index.jsx":14,"../get-involved/index.jsx":15,"../hours-and-admissions/index.jsx":16,"../meet-the-raptors/index.jsx":18,"../nature-notes/index.jsx":19,"../programs/index.jsx":20,"../save-the-oaks/index.jsx":21,"./VelocityTransitionGroup.jsx":17,"react":250,"react-hotkey":23,"react-router":63,"scrollmagic":251,"util":257}],2:[function(require,module,exports){
 module.exports=[
   {
     "name": "Critters on the Move",
@@ -1930,14 +1934,14 @@ var ClassThing = React.createClass({displayName: "ClassThing",
   render: function() {
     var self = this;
     return (
-      React.createElement("div", {className: "class"}, 
+      React.createElement("div", {className: "class", onClick: self.props.show}, 
          self.props.categories.length ?
           React.createElement("span", {className: "icons"}, 
              self.props.categories.indexOf('forest') > -1 ? React.createElement("img", {src: "/img/education/icon_outdoor-grey.svg"}) : null, 
              self.props.categories.indexOf('nature') > -1 ? React.createElement("img", {src: "/img/education/icon_indoor-grey.svg"}) : null
           )
         : null, 
-        React.createElement("h2", {className: "marker color", onClick: self.props.show}, self.props.name), 
+        React.createElement("h2", {className: "marker color"}, self.props.name), 
         React.createElement("p", null, self.props.level)
       )
     )
@@ -2508,20 +2512,17 @@ var Main = React.createClass({displayName: "Main",
   },
 
   hoverClass: function(index){
-    console.log("hoverClass " + index);
     this.setState({hover: index});
   },
 
   reset: function(){
     var self = this;
-    console.log('natureCenter');
     self.setState({ drawer: [], area: '' });
 
   },
 
   natureCenter: function(){
     var self = this;
-    console.log('natureCenter');
 
     var drawer = [
       {
@@ -2556,7 +2557,6 @@ var Main = React.createClass({displayName: "Main",
 
   greatMarsh: function(){
     var self = this;
-    console.log('greatMarsh');
 
     var drawer = [
       {
@@ -2585,7 +2585,6 @@ var Main = React.createClass({displayName: "Main",
 
   northernFloodplains: function(){
     var self = this;
-    console.log('northernFloodplains');
 
     var drawer = [
       {
@@ -2614,7 +2613,6 @@ var Main = React.createClass({displayName: "Main",
 
   northernUplands: function(){
     var self = this;
-    console.log('northernUplands');
 
     var drawer = [
       {
@@ -2643,7 +2641,6 @@ var Main = React.createClass({displayName: "Main",
 
   southernUplands: function(){
     var self = this;
-    console.log('southernUplands');
 
     var drawer_overview = {
         title: "Overview",
@@ -4596,6 +4593,46 @@ var Link = Router.Link;
 
 var Footer = require('../../common/footer.jsx');
 
+var Closing = React.createClass({displayName: "Closing",
+  getInitialState: function(){
+    return { content: false };
+  },
+  toggleContent: function(){
+    var self = this;
+    self.setState({content: !self.state.content})
+  },
+  render: function() {
+    var self = this;
+    if (self.props.content) {
+      return (
+         React.createElement("div", {className: "closing"}, 
+             self.state.content ?
+              React.createElement("div", {className: "image_container"}, 
+                React.createElement("p", {className: "closings_title"}, self.props.title, 
+                  React.createElement("span", {className: "more_closing", onClick: self.toggleContent}, "×")
+                ), 
+                React.createElement("div", {dangerouslySetInnerHTML: {__html: self.props.content}})
+              )
+            :
+              React.createElement("div", {className: "image_container"}, 
+                React.createElement("p", {className: "closings_title"}, self.props.title, 
+                  React.createElement("span", {className: "more_closing", onClick: self.toggleContent}, "More Info")
+                )
+              )
+            
+          )
+        )
+    } else {
+      return (
+         React.createElement("div", {className: "closing"}, 
+            React.createElement("div", {className: "image_container"}, 
+              React.createElement("p", {className: "closings_title"}, self.props.title)
+            )
+          )
+        )}
+    }
+});
+
 module.exports = React.createClass({displayName: "exports",
   mixins: [ Router.State, Navigation ],
 
@@ -4672,7 +4709,16 @@ module.exports = React.createClass({displayName: "exports",
   render: function() {
     var self = this;
     var wildlife = self.state.wildlife.map(function(object){
-      return React.createElement("h4", {className: "wildlife_title"}, object.title)
+      return (
+        React.createElement("div", {className: "nature_notes_item"}, 
+           object.featured_image ? React.createElement("img", {className: "plantlife_img", src: object.featured_image.attachment_meta.sizes.thumbnail.url}) : null, 
+          React.createElement("div", {className: "plantlife_copy"}, 
+            React.createElement("h4", {className: "plantlife_title"}, object.title), 
+            React.createElement("div", {dangerouslySetInnerHTML: {__html: object.content}}), 
+             object.meta ? React.createElement("a", {className: "plantlife_link", href: object.meta.naturesearch_link, target: "_blank"}, "Read more") : null
+          )
+        )
+      )
     });
     var plantlife = self.state.plantlife.map(function(object){
       return (
@@ -4688,29 +4734,28 @@ module.exports = React.createClass({displayName: "exports",
     });
 
     var closings = self.state.closings.map(function(object){
-      return React.createElement("p", {className: "closings_title"}, object.title)
+      return  React.createElement(Closing, {title: object.title, content: object.content})
     });
     return (
       React.createElement("div", {className: "page"}, 
-        React.createElement("div", {className: "egg_wrap static"}, 
+        React.createElement("div", {className: "nature_notes_header egg_wrap"}, 
+          React.createElement("h2", {className: "marker"}, "Nature Notes"), 
+          React.createElement("div", {className: "closings"}, 
+            closings
+          )
+        ), 
+        React.createElement("div", {className: "egg_wrap"}, 
           React.createElement("div", {className: "image_container"}, 
-            React.createElement("div", {className: "nature_notes_header"}, 
-              React.createElement("h2", {className: "marker"}, "Nature Notes"), 
-              React.createElement("div", {className: "closings"}, 
-                closings
-              )
-            ), 
             React.createElement("div", {className: "nature_notes"}, 
               React.createElement("div", {className: "plantlife"}, 
+                React.createElement("h3", {className: "plantlife_header"}, "PLANT LIFE"), 
                 plantlife
               ), 
               React.createElement("div", {className: "wildlife"}, 
+                React.createElement("h3", {className: "plantlife_header"}, "WILD LIFE"), 
                 wildlife
               )
             )
-          ), 
-          React.createElement("div", {className: "image_container"}, 
-            React.createElement("img", {src: "/img/forest-now/nature-notes-click.jpg"})
           )
         ), 
         React.createElement(Footer, null)

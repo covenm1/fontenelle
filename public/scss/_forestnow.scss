@@ -36,12 +36,45 @@
 .forest-now .static, .save-the-oaks .static, .get-involved .static {
 	padding: 60px 30px 50px !important;
 }
-
+.nature_notes_header {
+	padding-top: 60px;
+	padding-bottom: 1px;
+	h2.marker {
+		text-align: center;
+		background: $conservation_color;
+		color: white;
+    font-size: 40px;
+    line-height: 2;
+		margin-bottom: 0;
+	}
+	.closing {
+		background: $programs_color;
+		color: white;
+		margin: 2px 0;
+		transition: 0.15s ease-out;
+		.more_closing {
+			float: right;
+			font-family: 'roboto';
+			cursor: pointer;
+			&:hover {
+				opacity: 0.8;
+			}
+		}
+		p {
+			font-size: 18px;
+			margin: 0;
+			padding: 0 15px;
+			font-family: 'roboto_condensedbold';
+		}
+	}
+}
 .nature_notes {
 	display: flex;
 	flex-direction: row;
 	.plantlife, .wildlife {
 		flex: 1;
+		margin-right: 5%;
+    margin-bottom: 5%;
 	}
 	.nature_notes_item {
 		display: flex;
@@ -62,4 +95,10 @@
 			}
 		}
 	}
+}
+
+.plantlife_header {
+	color: $conservation_color;
+	border-bottom: #aaa 5px solid;
+	font-family: 'roboto_condensedbold';
 }

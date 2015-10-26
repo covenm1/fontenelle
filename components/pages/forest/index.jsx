@@ -117,20 +117,17 @@ var Main = React.createClass({
   },
 
   hoverClass: function(index){
-    console.log("hoverClass " + index);
     this.setState({hover: index});
   },
 
   reset: function(){
     var self = this;
-    console.log('natureCenter');
     self.setState({ drawer: [], area: '' });
 
   },
 
   natureCenter: function(){
     var self = this;
-    console.log('natureCenter');
 
     var drawer = [
       {
@@ -165,7 +162,6 @@ var Main = React.createClass({
 
   greatMarsh: function(){
     var self = this;
-    console.log('greatMarsh');
 
     var drawer = [
       {
@@ -194,7 +190,6 @@ var Main = React.createClass({
 
   northernFloodplains: function(){
     var self = this;
-    console.log('northernFloodplains');
 
     var drawer = [
       {
@@ -223,7 +218,6 @@ var Main = React.createClass({
 
   northernUplands: function(){
     var self = this;
-    console.log('northernUplands');
 
     var drawer = [
       {
@@ -252,7 +246,6 @@ var Main = React.createClass({
 
   southernUplands: function(){
     var self = this;
-    console.log('southernUplands');
 
     var drawer_overview = {
         title: "Overview",

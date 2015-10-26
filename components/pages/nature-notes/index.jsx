@@ -9,6 +9,46 @@ var Link = Router.Link;
 
 var Footer = require('../../common/footer.jsx');
 
+var Closing = React.createClass({
+  getInitialState: function(){
+    return { content: false };
+  },
+  toggleContent: function(){
+    var self = this;
+    self.setState({content: !self.state.content})
+  },
+  render: function() {
+    var self = this;
+    if (self.props.content) {
+      return (
+         <div className="closing">
+            { self.state.content ?
+              <div className='image_container'>
+                <p className="closings_title">{self.props.title}
+                  <span className="more_closing" onClick={self.toggleContent}>×</span>
+                </p>
+                <div dangerouslySetInnerHTML={{__html: self.props.content}}></div>
+              </div>
+            :
+              <div className='image_container'>
+                <p className="closings_title">{self.props.title}
+                  <span className="more_closing" onClick={self.toggleContent}>More Info</span>
+                </p>
+              </div>
+            }
+          </div>
+        )
+    } else {
+      return (
+         <div className="closing">
+            <div className='image_container'>
+              <p className="closings_title">{self.props.title}</p>
+            </div>
+          </div>
+        )}
+    }
+});
+
 module.exports = React.createClass({
   mixins: [ Router.State, Navigation ],
 
@@ -85,7 +125,16 @@ module.exports = React.createClass({
   render: function() {
     var self = this;
     var wildlife = self.state.wildlife.map(function(object){
-      return <h4 className="wildlife_title">{object.title}</h4>
+      return (
+        <div className="nature_notes_item">
+          { object.featured_image ? <img className="plantlife_img" src={object.featured_image.attachment_meta.sizes.thumbnail.url} /> : null }
+          <div className="plantlife_copy">
+            <h4 className="plantlife_title">{object.title}</h4>
+            <div dangerouslySetInnerHTML={{__html: object.content}}></div>
+            { object.meta ? <a className="plantlife_link" href={object.meta.naturesearch_link} target="_blank">Read more</a> : null }
+          </div>
+        </div>
+      )
     });
     var plantlife = self.state.plantlife.map(function(object){
       return (
@@ -101,29 +150,28 @@ module.exports = React.createClass({
     });
 
     var closings = self.state.closings.map(function(object){
-      return <p className="closings_title">{object.title}</p>
+      return  <Closing title={object.title} content={object.content}/>
     });
     return (
       <div className="page">
-        <div className="egg_wrap static">
+        <div className="nature_notes_header egg_wrap">
+          <h2 className="marker">Nature Notes</h2>
+          <div className="closings">
+            {closings}
+          </div>
+        </div>
+        <div className="egg_wrap">
           <div className='image_container'>
-            <div className="nature_notes_header">
-              <h2 className="marker">Nature Notes</h2>
-              <div className="closings">
-                {closings}
-              </div>
-            </div>
             <div className="nature_notes">
               <div className="plantlife">
+                <h3 className="plantlife_header">PLANT LIFE</h3>
                 {plantlife}
               </div>
               <div className="wildlife">
+                <h3 className="plantlife_header">WILD LIFE</h3>
                 {wildlife}
               </div>
             </div>
-          </div>
-          <div className='image_container'>
-            <img src="/img/forest-now/nature-notes-click.jpg" />
           </div>
         </div>
         <Footer />

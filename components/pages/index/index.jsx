@@ -30,6 +30,8 @@ var forest = require('../forest/index.jsx'),
 		savetheoaks = require('../save-the-oaks/index.jsx'),
 		contact = require('../contact/index.jsx');
 
+var Footer = require('../../common/footer.jsx');
+
 var slide_names = [ 'forest', 'natural-resources', 'education', 'programs'];
 var slide_count = 0;
 
@@ -252,7 +254,7 @@ var App = React.createClass({
 							<Link to="/hours-and-admissions" className="link" onClick={self.toggleMenu}><h2 className="main">Hours and Admissions</h2></Link>
 							<Link to="/contact" className="link" onClick={self.toggleMenu}><h2 className="main">Contact</h2></Link>
 						</div>
-					</div>
+					</div> 
 					{ main_pages ?
 					<div className="slide_controls">
 						<span className="left slider_button" onClick={self.onClickLeft}><img src="/img/icon_scroll-left.svg" /></span>
@@ -264,6 +266,7 @@ var App = React.createClass({
 		    	<TransitionGroup transitionName={transition} className="main_content" id="main_content" component="div">
 			    	<RouteHandler key={name} transition={self.setTransition} controller={controller}/>
 			    </TransitionGroup>
+					<Footer />
 			  </div>
 			)
 		} else {
@@ -315,6 +318,7 @@ var App = React.createClass({
 						<i className="fa fa-cog fa-spin"></i>
 						<div className="load_message">Loading content for {name}.</div>
 					</div>
+					<Footer />
 				</div>
 			)
 		}
@@ -346,7 +350,7 @@ var routes = (
 		<Route name="contact" path="/contact" handler={contact} addHandlerKey={true} />
   </Route>
 
-); 
+);
 
 
 // Router.run(routes, Router.HistoryLocation, function (Handler) {

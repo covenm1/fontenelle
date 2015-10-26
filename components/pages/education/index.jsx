@@ -21,14 +21,14 @@ var ClassThing = React.createClass({
   render: function() {
     var self = this;
     return (
-      <div className="class">
+      <div className="class" onClick={self.props.show}>
         { self.props.categories.length ?
           <span className="icons">
             { self.props.categories.indexOf('forest') > -1 ? <img src="/img/education/icon_outdoor-grey.svg" /> : null }
             { self.props.categories.indexOf('nature') > -1 ? <img src="/img/education/icon_indoor-grey.svg" /> : null }
           </span>
         : null }
-        <h2 className="marker color" onClick={self.props.show}>{self.props.name}</h2>
+        <h2 className="marker color">{self.props.name}</h2>
         <p>{self.props.level}</p>
       </div>
     )
