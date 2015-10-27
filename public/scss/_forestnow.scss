@@ -13,11 +13,9 @@
 .now-blue {
 	background-color: $conservation_color;
 	height: 60px;
-	max-width: 1440px;
 }
 
 .now-links {
-	display: inline-block;
 	margin: 0 auto;
 	text-align: center;
 	padding: 20px 170px;
@@ -101,4 +99,40 @@
 	color: $conservation_color;
 	border-bottom: #aaa 5px solid;
 	font-family: 'roboto_condensedbold';
+}
+
+.forest_now_top {
+	min-height: 600px;
+	color: white;
+	display: flex;
+	flex-direction: row;
+	.fn_top_right, .fn_top_left {
+		flex: 1;
+		background-size: cover;
+		background-position: center;
+		position: relative;
+
+	}
+	.fn_top_left {
+		display: flex;
+    flex-direction: column;
+		.fn_wrap {
+			flex: 1;
+			justify-content: flex-end;
+    	display: flex;
+			align-items: center;
+		}
+	}
+	.halfcontainer {
+		width: 720px;
+		max-width: 100%;
+	}
+	.fn_top_right {
+		background-color: $conservation_color;
+		background-blend-mode: multiply;
+	}
+	.blue_wrapper {
+		background: rgba(0,0,255,0.5);
+		position: relative;
+	}
 }

@@ -5,26 +5,10 @@ var Velocity = require('velocity-animate/velocity');
 var InlineSVG = require('react-inlinesvg');
 var Router = require('react-router');
 
+var jsonp = require('superagent-jsonp');
+
 var Navigation = Router.Navigation;
 var Link = Router.Link;
-// Require the module
-var Forecast = require('forecast');
-
-// Initialize
-var forecast = new Forecast({
-  service: 'forecast.io',
-  key: '428664b41344b3a66849ab1e8432105b',
-  units: 'f', // Only the first letter is parsed
-  cache: true,      // Cache API requests?
-  ttl: {            // How long to cache requests. Uses syntax from moment.js: http://momentjs.com/docs/#/durations/creating/
-    minutes: 5,
-    seconds: 0
-    }
-});
-
-var Wunderground = require('node-weatherunderground');
-
-var client = new Wunderground('42a6e811289e89d1');
 
 module.exports = React.createClass({
   mixins: [ Router.State, Navigation ],
@@ -33,8 +17,7 @@ module.exports = React.createClass({
       wildlife: [],
       plantlife: [],
       closings: [],
-      rweather: {},
-      fweather: {}
+      weather: {}
     };
   },
 
@@ -53,34 +36,33 @@ module.exports = React.createClass({
   loadWeather:function(){
     var self = this;
 
-    // forecast.get([41.1797155, -95.9200238], function(err, weather) {
-    //   if(err) return console.dir(err);
-    //   console.log("fweather: " + weather);
-    //   self.setState({fweather: weather});
-    // });
-    // request
-    //   .get('https://api.forecast.io/forecast/428664b41344b3a66849ab1e8432105b/41.1797155,-95.9200238')
-    //   .end(function(err, res) {
-    //     if (res.ok) {
-    //       var weather = res.body;
-    //       console.log("weather: " + weather);
-    //       self.setState({rweather: weather});
-    //
-    //     } else {
-    //       console.log('Oh no! error ' + res.text);
-    //     }
-    //   }.bind(self));
-      // var opts = {
-      //   state: '41.1797155,-95.9200238'
-      // }
-      var opts = {
-        city: 'Omaha',
-        state: 'NE'
-      }
-      client.conditions(opts, function(err, data) {
-        if (err) throw err;
-        else console.log("weather underground: " + data);
-      });
+    request
+      .get('https://api.forecast.io/forecast/428664b41344b3a66849ab1e8432105b/41.1797155,-95.9200238')
+      .use(jsonp)
+      .end(function(err, res) {
+        if (res) {
+          var weather = res.body;
+          self.setState({weather: weather});
+          console.log("forecast: " + util.inspect(weather));
+
+        } else {
+          console.log('Oh no! error ' + res);
+        }
+      }.bind(self));
+
+      // request
+      //   .get('http://api.wunderground.com/api/42a6e811289e89d1/conditions/q/41.1797155,-95.9200238.json')
+      //   .end(function(err, res) {
+      //     if (res.ok) {
+      //       var weather = res.body;
+      //       console.log("weather: " + util.inspect(weather));
+      //       self.setState({weather: weather});
+      //
+      //     } else {
+      //       console.log('Oh no! error ' + res.text);
+      //     }
+      //   }.bind(self));
+
   },
 
   loadPlantlife: function(){
@@ -138,10 +120,14 @@ module.exports = React.createClass({
   render: function() {
     var self = this;
     var classImage = "/img/forest-now/nature-notes.jpg";
-
-    var rtimezone = self.state.rweather.timezone;
-    var ftimezone = self.state.fweather.timezone;
-
+    var temp, currently, hourly, minutely, icon;
+    if (self.state.weather.currently) {
+      temp = self.state.weather.currently.temperature;
+      icon = self.state.weather.currently.icon;
+      currently = self.state.weather.currently.summary;
+      hourly = self.state.weather.hourly.summary;
+      minutely = self.state.weather.minutely.summary;
+    }
     var wildlife = self.state.wildlife.map(function(object){
       return <h4 className="wildlife_title">{object.title}</h4>
     });
@@ -159,21 +145,50 @@ module.exports = React.createClass({
     var closings = self.state.closings.map(function(object){
       return <p className="closings_title">{object.title}</p>
     });
+    var top_image = {
+      backgroundImage: "url(/img/weather/rain.jpg)"
+    }
+    var nature_notes_image = {
+      backgroundImage: "url(/img/forest-now/nature_notes_bkgd.jpg)"
+    }
+
     return (
       <div>
-        <div className="egg_wrap static">
-          <div className='image_container'>
-            <Link to="nature-notes"><img src={classImage} /></Link>
-            <p>{rtimezone}</p>
-            <p>{ftimezone}</p>
+        <div className="egg_wrap nature_notes_header">
+          <div className="forest_now_top">
+              <div className="fn_top_left" style={top_image}>
+                <div className="fn_wrap">
+                  <div className="halfcontainer left">
+                    <h3>Come Splash Around</h3>
+                    <h3 className="marker">in our backyard</h3>
+                  </div>
+                </div>
+                <div className="fn_wrap blue_wrapper">
+                  <div className="halfcontainer left">
+                    <p>Now: {temp}</p>
+                    <p>icon: {icon}</p>
+                    <p>currently: {currently}</p>
+                    <p>hourly: {hourly}</p>
+                    <p>minutely: {minutely}</p>
+                  </div>
+                </div>
+              </div>
+              <div className="fn_top_right" style={nature_notes_image}>
+                <Link to="nature-notes">nature notes</Link>
+              </div>
+
           </div>
-          <div className='image_container now-blue'>
-            <div className='now-links'>
+          <div className='now-blue'>
+            <div className='now-links image_container'>
               <a href="/hours-and-admissions">Hours and Admissions</a>
               <span>Trail Maps: <a target="_blank" href="http://fontenelleforest.org/images/stories/Trails/ffnc_trailmap_dec09.pdf">Fontenelle</a>|<a target="_blank" href="http://fontenelleforest.org/images/stories/Trails/neale_woods_map_printable.pdf">Neale Woods</a></span>
               <a href="#">Guidelines</a>
               <a href="/contact">Contact</a>
             </div>
+          </div>
+          <div className='image_container'>
+            <Link to="nature-notes"><img src={classImage} /></Link>
+
           </div>
           <div className='image_container'>
             <div className='now-left'>
