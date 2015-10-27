@@ -22,6 +22,10 @@ var forecast = new Forecast({
     }
 });
 
+var Wunderground = require('node-weatherunderground');
+
+var client = new Wunderground('42a6e811289e89d1');
+
 module.exports = React.createClass({
   mixins: [ Router.State, Navigation ],
   getInitialState: function() {
@@ -48,24 +52,35 @@ module.exports = React.createClass({
 
   loadWeather:function(){
     var self = this;
-    
-    forecast.get([41.1797155, -95.9200238], function(err, weather) {
-      if(err) return console.dir(err);
-      console.log("fweather: " + weather);
-      self.setState({fweather: weather});
-    });
-    request
-      .get('https://api.forecast.io/forecast/428664b41344b3a66849ab1e8432105b/41.1797155,-95.9200238')
-      .end(function(err, res) {
-        if (res.ok) {
-          var weather = res.body;
-          console.log("weather: " + weather);
-          self.setState({rweather: weather});
 
-        } else {
-          console.log('Oh no! error ' + res.text);
-        }
-      }.bind(self))
+    // forecast.get([41.1797155, -95.9200238], function(err, weather) {
+    //   if(err) return console.dir(err);
+    //   console.log("fweather: " + weather);
+    //   self.setState({fweather: weather});
+    // });
+    // request
+    //   .get('https://api.forecast.io/forecast/428664b41344b3a66849ab1e8432105b/41.1797155,-95.9200238')
+    //   .end(function(err, res) {
+    //     if (res.ok) {
+    //       var weather = res.body;
+    //       console.log("weather: " + weather);
+    //       self.setState({rweather: weather});
+    //
+    //     } else {
+    //       console.log('Oh no! error ' + res.text);
+    //     }
+    //   }.bind(self));
+      // var opts = {
+      //   state: '41.1797155,-95.9200238'
+      // }
+      var opts = {
+        city: 'Omaha',
+        state: 'NE'
+      }
+      client.conditions(opts, function(err, data) {
+        if (err) throw err;
+        else console.log("weather underground: " + data);
+      });
   },
 
   loadPlantlife: function(){
