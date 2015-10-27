@@ -19,13 +19,12 @@ module.exports = React.createClass({
     var self = this;
 
     return (
-      <div className="page">
+      <div>
         <div className="egg_wrap static">
           <div className='image_container'>
             <img src="/img/meet-the-raptors/page.png" />
           </div>
         </div>
-        <Footer />
       </div>
     )
   }

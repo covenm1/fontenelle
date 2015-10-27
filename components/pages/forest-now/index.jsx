@@ -7,6 +7,20 @@ var Router = require('react-router');
 
 var Navigation = Router.Navigation;
 var Link = Router.Link;
+// Require the module
+var Forecast = require('forecast');
+
+// Initialize
+var forecast = new Forecast({
+  service: 'forecast.io',
+  key: '428664b41344b3a66849ab1e8432105b',
+  units: 'f', // Only the first letter is parsed
+  cache: true,      // Cache API requests?
+  ttl: {            // How long to cache requests. Uses syntax from moment.js: http://momentjs.com/docs/#/durations/creating/
+    minutes: 5,
+    seconds: 0
+    }
+});
 
 module.exports = React.createClass({
   mixins: [ Router.State, Navigation ],
@@ -14,7 +28,10 @@ module.exports = React.createClass({
     return {
       wildlife: [],
       plantlife: [],
-      closings: []};
+      closings: [],
+      rweather: {},
+      fweather: {}
+    };
   },
 
   componentDidMount: function () {
@@ -22,9 +39,34 @@ module.exports = React.createClass({
     self.loadPlantlife();
     self.loadWildlife();
     self.loadClosings();
+
+    self.loadWeather();
+
   },
 
   componentWillReceiveProps: function () { },
+
+  loadWeather:function(){
+    var self = this;
+    
+    forecast.get([41.1797155, -95.9200238], function(err, weather) {
+      if(err) return console.dir(err);
+      console.log("fweather: " + weather);
+      self.setState({fweather: weather});
+    });
+    request
+      .get('https://api.forecast.io/forecast/428664b41344b3a66849ab1e8432105b/41.1797155,-95.9200238')
+      .end(function(err, res) {
+        if (res.ok) {
+          var weather = res.body;
+          console.log("weather: " + weather);
+          self.setState({rweather: weather});
+
+        } else {
+          console.log('Oh no! error ' + res.text);
+        }
+      }.bind(self))
+  },
 
   loadPlantlife: function(){
     var self = this;
@@ -82,6 +124,9 @@ module.exports = React.createClass({
     var self = this;
     var classImage = "/img/forest-now/nature-notes.jpg";
 
+    var rtimezone = self.state.rweather.timezone;
+    var ftimezone = self.state.fweather.timezone;
+
     var wildlife = self.state.wildlife.map(function(object){
       return <h4 className="wildlife_title">{object.title}</h4>
     });
@@ -100,10 +145,12 @@ module.exports = React.createClass({
       return <p className="closings_title">{object.title}</p>
     });
     return (
-      <div className="page">
+      <div>
         <div className="egg_wrap static">
           <div className='image_container'>
             <Link to="nature-notes"><img src={classImage} /></Link>
+            <p>{rtimezone}</p>
+            <p>{ftimezone}</p>
           </div>
           <div className='image_container now-blue'>
             <div className='now-links'>

@@ -117,7 +117,9 @@ var App = React.createClass({
 	},
 
 	onClickRight: function(){
-		var name = this.getHandlerKey();
+		var self = this;
+
+		var name = self.getHandlerKey();
 		slide_count = slide_names.indexOf(name);
 
 		if (slide_count ==  slide_names.length ) {
@@ -126,11 +128,14 @@ var App = React.createClass({
 			slide_count++;
 		}
 
-		this.setState({currentTransition: 'slide-forward'});
-		this.transitionTo(slide_names[slide_count% slide_names.length ]);
+		self.setState({currentTransition: 'slide-forward'});
+		self.transitionTo(slide_names[slide_count% slide_names.length ]);
+
+		setTimeout(function() { self.setState({currentTransition: 'default'}); }, 300);
 	},
 
 	onClickLeft: function(){
+		var self = this;
 		var name = this.getHandlerKey();
 
 		slide_count = slide_names.indexOf(name);
@@ -141,24 +146,27 @@ var App = React.createClass({
 			slide_count--;
 		}
 
-		this.setState({currentTransition: 'slide-back'});
-		this.transitionTo(slide_names[slide_count% slide_names.length ]);
+		self.setState({currentTransition: 'slide-back'});
+		self.transitionTo(slide_names[slide_count% slide_names.length ]);
+		setTimeout(function() { self.setState({currentTransition: 'default'}); }, 300);
 	},
 
 	rightLink: function(name){
-
+		var self = this;
 		slide_count = slide_names.indexOf(name);
 
-		this.setState({currentTransition: 'slide-forward'});
-		this.transitionTo(name);
+		self.setState({currentTransition: 'slide-forward'});
+		self.transitionTo(name);
+		setTimeout(function() { self.setState({currentTransition: 'default'}); }, 300);
 	},
 
 	leftLink: function(name){
-
+		var self = this;
 		slide_count = slide_names.indexOf(name);
 
-		this.setState({currentTransition: 'slide-back'});
-		this.transitionTo(slide_names[name]);
+		self.setState({currentTransition: 'slide-back'});
+		self.transitionTo(slide_names[name]);
+		setTimeout(function() { self.setState({currentTransition: 'default'}); }, 300);
 	},
 
 
@@ -194,16 +202,19 @@ var App = React.createClass({
 
 	render: function () {
 		var self = this;
-		var name = this.getHandlerKey();
+		var name = self.getHandlerKey();
 
 		var transition = self.state.currentTransition;
 		var menu = self.state.menu;
+
 		if (menu) {
 			var menu_class = " menu_open";
 		} else {
 			var menu_class = "";
 		}
+
 		var main_pages = slide_names.indexOf(name) > -1;
+
 		if (main_pages){
 			var header_up = "";
 		} else {
@@ -217,7 +228,7 @@ var App = React.createClass({
 			        <Link to="/" className="logo"><img src="/img/logo.png" alt="" /></Link>
 			        <span className="global_menu">
 			            <Link to="/found-raptor" className="link">Found Raptor</Link>
-			            <a href="/forest-now" className="link">Forest Now</a>
+			            <Link to="/forest-now" className="link">Forest Now</Link>
 									<Link to="/get-involved" className="link">Get Involved</Link>
 			        </span>
 							<span className="menu_icon" onClick={self.toggleMenu}><img src="/img/hamburger.png" className="hamburger" /> <span className="menu_label">Menu</span></span>
@@ -254,7 +265,7 @@ var App = React.createClass({
 							<Link to="/hours-and-admissions" className="link" onClick={self.toggleMenu}><h2 className="main">Hours and Admissions</h2></Link>
 							<Link to="/contact" className="link" onClick={self.toggleMenu}><h2 className="main">Contact</h2></Link>
 						</div>
-					</div> 
+					</div>
 					{ main_pages ?
 					<div className="slide_controls">
 						<span className="left slider_button" onClick={self.onClickLeft}><img src="/img/icon_scroll-left.svg" /></span>
@@ -276,7 +287,7 @@ var App = React.createClass({
 							<Link to="/" className="logo"><img src="/img/logo.png" alt="" /></Link>
 							<span className="global_menu">
 									<Link to="/found-raptor" className="link">Found Raptor</Link>
-									<a href="/forest-now" className="link">Forest Now</a>
+									<Link to="/forest-now" className="link">Forest Now</Link>
 									<Link to="/get-involved" className="link">Get Involved</Link>
 							</span>
 							<span className="menu_icon" onClick={self.toggleMenu}><img src="/img/hamburger.png" className="hamburger" /> <span className="menu_label">Menu</span></span>
@@ -327,11 +338,11 @@ var App = React.createClass({
 
 var routes = (
   <Route handler={App}>
-    <Route name="forest" path="/" handler={forest} ignoreScrollBehavior>
-			<Route path="/forest/:scroll" handler={forest} />
+    <Route name="forest" path="/" handler={forest} addHandlerKey={true} ignoreScrollBehavior>
+			<Route path="/forest/:scroll" handler={forest} addHandlerKey={true}/>
 		</Route>
-    <Route name="natural-resources" path="/natural-resources" handler={naturalresources} ignoreScrollBehavior>
-			<Route path="/natural-resources/:scroll" handler={naturalresources} />
+    <Route name="natural-resources" path="/natural-resources" handler={naturalresources} addHandlerKey={true} ignoreScrollBehavior>
+			<Route path="/natural-resources/:scroll" handler={naturalresources} addHandlerKey={true} />
 		</Route>
     <Route name="programs" path="/programs" handler={programs} addHandlerKey={true} ignoreScrollBehavior>
 			<Route path="/programs/:scroll" handler={programs} addHandlerKey={true} />

@@ -150,7 +150,7 @@ module.exports = React.createClass({
       return  <Closing title={object.title} content={object.content}/>
     });
     return (
-      <div className="page">
+      <div>
         <div className="nature_notes_header egg_wrap">
           <h2 className="marker">Nature Notes</h2>
           <div className="closings">

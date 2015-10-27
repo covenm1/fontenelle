@@ -104,7 +104,7 @@ module.exports = React.createClass({
     var self = this;
 
     return (
-      <div className="page">
+      <div>
         <div className="blue_wrap static">
           <div className="centered_content">
             <span className="phone_wrapper">
