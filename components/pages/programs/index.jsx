@@ -8,11 +8,6 @@ var Router = require('react-router');
 var Navigation = Router.Navigation;
 var Link = Router.Link;
 
-var Footer = require('../../common/footer.jsx');
-// var ScrollMagic = require('scrollmagic');
-
-
-
 var poster_image;
 var Main = React.createClass({
   mixins: [ Router.State, Navigation ],
@@ -39,21 +34,20 @@ var Main = React.createClass({
     var self = this;
 
     var load_images = self.state.load_images;
-    console.log("load_images: " + load_images);
     for (image in load_images) {
-      console.log("image: " + load_images[image]);
       tmp_image = new Image();
       tmp_image.onload = self.onLoad;
       tmp_image.src = load_images[image];
     }
   },
 
-  // componentWillReceiveProps: function () {
-  //   var self = this;
-  //   poster_image = new Image();
-  //   poster_image.onload = self.onLoad;
-  //   poster_image.src = "/img/loop_three.jpg";
-  // },
+  componentDidUpdate: function (prevProps, prevState) {
+    var self  = this;
+
+    if (prevProps.params != self.props.params){
+      self.scrollThing(self.props.params.scroll);
+    }
+  },
 
 
   onLoad: function() {
@@ -66,12 +60,27 @@ var Main = React.createClass({
 
       self.setState({pre_count: tmp_pre_count, percent_loaded: 100});
       setTimeout(function() { self.setState({loaded: true}); }, 150);
+      setTimeout(function() {
+        if (self.getParams().scroll) {
+          self.scrollThing(self.getParams().scroll)
+        }
+      }, 350);
 
     } else {
 
       var percent_loaded = (tmp_pre_count / self.state.load_images.length ) * 100;
       self.setState({pre_count: tmp_pre_count, percent_loaded: percent_loaded});
 
+    }
+  },
+
+  scrollThing: function(thing){
+    var self = this;
+    var controller = self.props.controller
+    if (thing) {
+      controller.scrollTo("#"+thing);
+    } else {
+      controller.scrollTo(0);
     }
   },
 
@@ -297,7 +306,7 @@ var Main = React.createClass({
                   </div>:
                   <div className="for_kids_container main_wrapper">
 
-                    <div className="for_kids copy_container">
+                    <div className="for_kids copy_container" id="kids">
                       <h2 className="marker color">For Kids</h2>
                       <p>What could be more fun than spending a week in the forest? Fontenelle’s Nature Discovery Day Camps feature fun, hands-on, science-based learning through play taught by our year-round professional educators. Camps are offered in the Summer and Winter. We also offer special camps for grandparents and grandkids to participate in together. Registration is limited and begins January 5th. Proof of age is required. Campers should bring their lunch. Snacks provided.</p>
 
@@ -391,7 +400,7 @@ var Main = React.createClass({
                       <div className="for_kids image_container">
                         <img onClick={self.spiderClick} className={ spider ? "rotated spider" : "spider" } src="/img/programs/spider.png" />
                       </div>
-                      <div className="for_kids copy_container">
+                      <div className="for_kids copy_container" id="adults">
                         <h2 className="marker color">For Adults</h2>
                         <p>A few of our most popular activities at the forest are birding, looking for insects, and shooting nature photography. We have clubs for each one, and more: </p>
 
@@ -465,7 +474,7 @@ var Main = React.createClass({
 
               </div>
               <div className="egg_wrap">
-                <div className='image_container'>
+                <div className='image_container' id="groups">
                   <img src="/img/programs/groups.png" />
                 </div>
               </div>
@@ -486,7 +495,6 @@ var Main = React.createClass({
                   <span className="next_page" onClick={self.moveRight}>Forest</span>
                 </div>
               </div>
-              <Footer />
             </div>
 
             <div className='video-container'>

@@ -8,9 +8,6 @@ var Router = require('react-router');
 var Navigation = Router.Navigation;
 var Link = Router.Link;
 
-
-var Footer = require('../../common/footer.jsx');
-
 var ScrollMagic = require('scrollmagic');
 var TweenMax = require('../../../public/js/tweenmax.js');
 require('../../../public/js/scrollTo.js');
@@ -21,14 +18,14 @@ var ClassThing = React.createClass({
   render: function() {
     var self = this;
     return (
-      <div className="class">
+      <div className="class" onClick={self.props.show}>
         { self.props.categories.length ?
           <span className="icons">
             { self.props.categories.indexOf('forest') > -1 ? <img src="/img/education/icon_outdoor-grey.svg" /> : null }
             { self.props.categories.indexOf('nature') > -1 ? <img src="/img/education/icon_indoor-grey.svg" /> : null }
           </span>
         : null }
-        <h2 className="marker color" onClick={self.props.show}>{self.props.name}</h2>
+        <h2 className="marker color">{self.props.name}</h2>
         <p>{self.props.level}</p>
       </div>
     )
@@ -151,27 +148,19 @@ var Main = React.createClass({
   componentDidMount: function () {
     var self = this;
 
-    console.log("this.getParams(): " + util.inspect(this.getParams()));
-
     var load_images = self.state.load_images;
-    console.log("load_images: " + load_images);
     for (image in load_images) {
-      console.log("image: " + load_images[image]);
       tmp_image = new Image();
       tmp_image.onload = self.onLoad;
       tmp_image.src = load_images[image];
     }
-    // if (self.getParams().scroll.length) {
-    //   console.log('fuck scrolling');
-    //   self.scrollThing(self.getParams().scroll)
-    // }
   },
 
-  componentWillReceiveProps: function () {
+  componentDidUpdate: function (prevProps, prevState) {
     var self  = this;
-    if (self.getParams().scroll.length) {
-      console.log('fuck scrolling');
-      self.scrollThing(self.getParams().scroll)
+
+    if (prevProps.params != self.props.params){
+      self.scrollThing(self.props.params.scroll);
     }
   },
 
@@ -188,8 +177,7 @@ var Main = React.createClass({
         self.setState({loaded: true});
       }, 150);
       setTimeout(function() {
-        if (self.getParams().scroll.length) {
-          console.log('fuck scrolling');
+        if (self.getParams().scroll) {
           self.scrollThing(self.getParams().scroll)
         }
       }, 350);
@@ -202,19 +190,13 @@ var Main = React.createClass({
   },
 
   scrollThing: function(thing){
-    var controller = new ScrollMagic.Controller();
-    controller.scrollTo(function(target) {
-
-      TweenMax.to(window, 0.5, {
-        scrollTo : {
-          y : target - 60, // scroll position of the target along y axis
-          autoKill : true // allows user to kill scroll action smoothly
-        },
-        ease : Cubic.easeInOut
-      });
-
-    });
-    controller.scrollTo("#"+thing);
+    var self = this;
+    var controller = self.props.controller
+    if (thing) {
+      controller.scrollTo("#"+thing);
+    } else {
+      controller.scrollTo(0);
+    }
   },
 
   moveLeft: function(){
@@ -249,14 +231,9 @@ var Main = React.createClass({
             <div className="page_container" id="page" style={loadStyle}>
               <div className="egg_wrap living_classroom_container">
                 <div className="living_classroom copy_container">
-                  <img src="/img/divider/VINE-top-long.svg" />
                   <h2 className="marker">A living classroom</h2>
                   <p>The Forest offers nearly unlimited opportunities for learning. Over 100,000 youth and adults each year take part in environmental education programs through Fontenelle.</p>
-                  <div className="vine_bottom">
-                    <img className="left-half" src="/img/divider/VINE-bottom-left-half.svg" />
-                    <img className="down-orange" src="/img/education/icon_down_green.svg" />
-                    <img className="right-half" src="/img/divider/VINE-bottom-right-half.svg" />
-                  </div>
+                  <img className="bottom_vine" src="/img/bottom_vine.svg" />
                 </div>
                 <div className="living_classroom image_container">
                   <img src="/img/education/caterpillar.png" />
@@ -319,7 +296,6 @@ var Main = React.createClass({
                   <span className="next_page" onClick={self.moveRight}>Programs</span>
                 </div>
               </div>
-              <Footer />
             </div>
           </div>
           <div className='video-container'>

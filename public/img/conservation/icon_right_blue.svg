@@ -4,27 +4,15 @@
 	 viewBox="0 0 47.989 47.989" style="enable-background:new 0 0 47.989 47.989;" xml:space="preserve">
 <g>
 	<g>
-		<path style="fill:none;stroke:#1461AE;stroke-width:2;stroke-linecap:round;stroke-miterlimit:10;" d="M27.247,24.038
+		<path style="fill:none;stroke:white;stroke-width:2;stroke-linecap:round;stroke-miterlimit:10;" d="M27.247,24.038
 			c0,0-0.941,1.485-0.941,4.193c0,2.514-0.552,3.358-0.552,3.601c0,0.407,0.274,0.672,0.663,0.477
 			c0.389-0.194,8.206-5.979,10.022-7.795c0,0,0.186-0.186,0.186-0.477V23.98c0-0.215-0.078-0.37-0.186-0.477
 			c-1.592-1.592-9.665-7.56-10.022-7.795c-0.283-0.186-0.689-0.133-0.663,0.477c0,0.244,0.552,1.087,0.552,3.601
 			C26.306,22.495,27.247,24.038,27.247,24.038z"/>
-		
-			<line style="fill:none;stroke:#1461AE;stroke-width:2;stroke-linecap:round;stroke-miterlimit:10;" x1="25.761" y1="24.038" x2="11.322" y2="24.038"/>
+
+			<line style="fill:none;stroke:white;stroke-width:2;stroke-linecap:round;stroke-miterlimit:10;" x1="25.761" y1="24.038" x2="11.322" y2="24.038"/>
 	</g>
-	
-		<circle style="fill:none;stroke:#CDCCCC;stroke-width:2;stroke-linecap:round;stroke-miterlimit:10;" cx="23.995" cy="23.995" r="22.995"/>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
+
+		<circle style="fill:none;stroke:white;stroke-width:2;stroke-linecap:round;stroke-miterlimit:10;" cx="23.995" cy="23.995" r="22.995"/>
 </g>
 </svg>

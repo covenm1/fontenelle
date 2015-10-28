@@ -8,11 +8,24 @@ var Router = require('react-router');
 var Navigation = Router.Navigation;
 var Link = Router.Link;
 
-var ScrollMagic = require('scrollmagic');
-var TweenMax = require('../../../public/js/tweenmax.js');
-require('../../../public/js/scrollTo.js');
 
-var Footer = require('../../common/footer.jsx');
+var HabitatThing = React.createClass({
+  render : function(){
+    var self = this;
+    return (
+      <div className="habitat_container main_wrapper">
+        <div className="quiet_wild image_container">
+          <img src={self.props.image} />
+          { self.props.credit ? <p className="photo_credit">Photo by {self.props.credit}</p> : null }
+        </div>
+        <div className="quiet_wild copy_container">
+          <h2>{self.props.title}</h2>
+          <p>{self.props.description}</p>
+        </div>
+      </div>
+    )
+  }
+});
 
 var poster_image;
 var Main = React.createClass({
@@ -31,7 +44,9 @@ var Main = React.createClass({
         "/img/conservation.png"
       ],
       left: 0,
-      windowWidth: window.innerWidth
+      windowWidth: window.innerWidth,
+      controller: {},
+      scrollPos: 0
     };
   },
 
@@ -181,57 +196,26 @@ var Main = React.createClass({
   },
 
   componentDidMount: function () {
-    console.log('componentDidMount');
     var self = this;
-
     var load_images = self.state.load_images;
-    console.log("load_images: " + load_images);
     for (image in load_images) {
-      console.log("image: " + load_images[image]);
       tmp_image = new Image();
       tmp_image.onload = self.onLoad;
       tmp_image.src = load_images[image];
     }
+  },
 
-    window.location.hash = window.decodeURIComponent(window.location.hash);
+  componentWillReceiveProps: function (nextProps) {
+    var self  = this;
+  },
 
-    console.log(window.location.hash);
+  componentDidUpdate: function (prevProps, prevState) {
+    var self  = this;
 
-    var hashParts = window.location.hash.split('#');
-
-    console.log(hashParts);
-
-    if (hashParts.length > 1) {
-      var hash = hashParts.slice(-1)[0];
-      // if(hash);
-      console.log(hash);
-      self.scrollThing(hash);
-    }
-    window.onhashchange = function() {
-      window.location.hash = window.decodeURIComponent(window.location.hash);
-
-      console.log(window.location.hash);
-
-      var hashParts = window.location.hash.split('#');
-
-      console.log(hashParts);
-
-      if (hashParts.length > 1) {
-        var hash = hashParts.slice(-1)[0];
-        // if(hash);
-        console.log(hash);
-        self.scrollThing(hash);
-      }
+    if (prevProps.params != self.props.params){
+      self.scrollThing(self.props.params.scroll);
     }
   },
-  // 
-  // componentWillReceiveProps: function () {
-  //   console.log('componentWillReceiveProps');
-  //   var self = this;
-  //   poster_image = new Image();
-  //   poster_image.onload = self.onLoad;
-  //   poster_image.src = "/img/loop_two.jpg";
-  // },
 
   onLoad: function() {
     var self = this;
@@ -242,7 +226,11 @@ var Main = React.createClass({
 
       self.setState({pre_count: tmp_pre_count, percent_loaded: 100});
       setTimeout(function() { self.setState({loaded: true}); }, 150);
-
+      setTimeout(function() {
+        if (self.getParams().scroll) {
+          self.scrollThing(self.getParams().scroll)
+        }
+      }, 350);
     } else {
 
       var percent_loaded = (tmp_pre_count / self.state.load_images.length ) * 100;
@@ -263,19 +251,13 @@ var Main = React.createClass({
   },
 
   scrollThing: function(thing){
-    var controller = new ScrollMagic.Controller();
-    controller.scrollTo(function(target) {
-
-      TweenMax.to(window, 0.5, {
-        scrollTo : {
-          y : target, // scroll position of the target along y axis
-          autoKill : true // allows user to kill scroll action smoothly
-        },
-        ease : Cubic.easeInOut
-      });
-
-    });
-    controller.scrollTo("#"+thing);
+    var self = this;
+    var controller = self.props.controller
+    if (thing) {
+      controller.scrollTo("#"+thing);
+    } else {
+      controller.scrollTo(0);
+    }
   },
 
   timelineRight: function(){
@@ -352,16 +334,11 @@ var Main = React.createClass({
                     <img src="/img/conservation/sign.png" />
                   </div>
                   <div className="quiet_wild copy_container">
-                    <img src="/img/divider/VINE-top-long.svg" />
                     <h2 className="marker">An Ongoing Story</h2>
                     <p>The forest is a complex ecosystem that is constantly evolving. It is part of our mission to both understand its history and to plan and protect its future. What you see when you look out into the dense trees, prairie grasses, and marshy wetlands today is different than what you would have seen 200, 100, or even 50 years ago.</p>
                     <p>As we interact with the Forest in a multitude of ways, we all have a role to play in this story. We are leaving our footprint on the Forest, and it’s vital that we consider its size and shape. We’ve learned that a purely “hands off” approach doesn’t work as well as you might guess. In the absence of proactive conservation efforts, the plant and animal life at the Forest would eventually fall out of harmony and reach a non-working state.</p>
                     <p>So we do research, and lots of it. We get out there and observe. We utilize the helping hand of hundreds of dedicated volunteers. We don’t disrupt the natural state of things, but we do encourage nature to thrive in every way we can. Conservation at Fontenelle Forest is the sum of our efforts, from pulling weeds to writing reports.</p>
-                    <div className="vine_bottom">
-                      <img className="left-half" src="/img/divider/VINE-bottom-left-half.svg" />
-                      <img className="down-orange" src="/img/conservation/icon_down_blue.svg" />
-                      <img className="right-half" src="/img/divider/VINE-bottom-right-half.svg" />
-                    </div>
+                    <img className="bottom_vine" src="/img/bottom_vine.svg" />
                   </div>
                   <div className="quiet_wild image_container">
                     <img src="/img/conservation/birds_left.png" />
@@ -403,47 +380,54 @@ var Main = React.createClass({
               </div>
 
               <div id="habitat" className="egg_wrap">
+                <h2 className="habitat_marker marker">If you have the habitat, you have the home.</h2>
                 <div className="habitat_home_container main_wrapper">
                   <div className="quiet_wild copy_container">
-                    <img src="/img/divider/VINE-top-long.svg" />
-                    <h2 className="marker">If you have the habitat, you have the home.</h2>
                     <p>Our main tenet of land stewardship at Fontenelle Forest is to facilitate the most balanced environment we can. With ideal living conditions, the animals follow—the invertebrates, insects, amphibians, reptiles, and mammals that make the Forest harmonious and happy.</p>
                     <p>Still, it’s vital that we let nature do what it wants to do. Our job is more to pay attention and interpret the natural signs that are out there.</p>
-                    <img src="/img/divider/VINE-top-long.svg" />
                   </div>
                 </div>
               </div>
 
-              <div className="egg_wrap">
-                <div className="habitat_container main_wrapper">
-                  <div className="quiet_wild image_container">
-                    <img src="/img/conservation/natures_helpers.png" />
-                  </div>
-                  <div className="quiet_wild copy_container">
-                    <h2>Nature’s Helpers</h2>
-                    <p>The signs are always out there—sometimes you just have to look. One recent Saturday, a group of volunteers was out in a corner of the Forest they hadn’t been in a while, surveying the land for planting opportunities and doing general maintenance. They came to a clearing, a beautiful expanse of rolling grass unmarked by much traffic. Someone in the team noted that it would be an excellent spot for an oak tree. And then, as if following a stage cue, a beam of sunlight revealed just that: a tiny oak tree in the center of the clearing. We returned with a protective cage that would allow the tree to flourish without first succumbing to hungry forest dwelling creatures. We must always remember we are working with nature, not against it or above it, to build the habitat needed to flourish.</p>
-                  </div>
-                </div>
-                <div className="habitat_container main_wrapper">
-                  <div className="quiet_wild image_container">
-                    <img src="/img/conservation/provenplan.png" />
-                  </div>
-                  <div className="quiet_wild copy_container">
-                    <h2>A Proven Plan</h2>
-                    <p>By the late 19th century in Bellevue, Nebraska, as buildings popped up and more and more humans made the area their home, large predators had all but disappeared. As a result, the deer population flourished greatly, to the point where the plant population, as the basis of the deer diet, began to suffer. As we know, this can cause the entire forest population to become imbalanced. To mitigate the issue, Fontenelle embarked on what has been a decades-long process: performing research, forming and enacting a plan, and constantly evaluating results. Since the official deer hunt program began in 1996, it has become known and accepted as the most successful conservation program in the history of the Forest. By dealing with deer overpopulation directly, the Forest had the chance to be a better habitat for other species to call home.</p>
-                  </div>
-                </div>
-                <div className="habitat_container main_wrapper">
-                  <div className="quiet_wild image_container">
-                    <img src="/img/conservation/locallysourced.png" />
-                  </div>
-                  <div className="quiet_wild copy_container">
-                    <h2>The Original “Locally Sourced”</h2>
-                    <p>Anything that we plant in the Forest comes from the Forest, in other words, we only plant “local ecotype:” things that come from within 50 miles (Eastern Nebraska or Western Iowa).</p>
-                    <p>This is because temperatures differ ever so slightly north to south and precipitation east to west and only plants from the immediate vicinity will truly thrive.</p>
-                  </div>
+              <div className="egg_wrap ">
+                <div className="image_container">
+
+                  <HabitatThing
+                    image="/img/conservation/natures_helpers.png"
+                    credit="Josh Preister"
+                    title="Habitat Restoration"
+                    description="Oak savanna and woodland habitats within Fontenelle Forest face severe decline. Their regeneration has been stunted due to the lack of open space resulting from fire suppression and the encroachment of invasive plants. To ensure the preservation and expansion of this ecological community, FF began an oak woodland restoration. Click to find out how we do it!" />
+
+                  <HabitatThing
+                    image="/img/conservation/provenplan.png"
+                    title="Deer Management"
+                    description="Since the 1980s, the deer population has exploded, due in part to the lack of larger predators and the abundance of food. To mitigate the issue, Fontenelle embarked on what has been a decades-long process: conducting research, forming and enacting a plan, and constantly evaluating results. Since the official deer hunt program began in 1996, it is arguably the most successful conservation program in the history of the forest. Deer management information can be found here." />
+
+                  <HabitatThing
+                    image="/img/conservation/locallysourced.png"
+                    credit="Josh Preister"
+                    title="Erosion Control"
+                    description="Due to years of storm runoff, Coffin Springs Hollow in Fontenelle Forest had eroded into a five-hundred-foot-long gully. Soil repeatedly washed from the area into the nearby stream and was thus threatening the health of our Great Marsh ecosystem. With help from our partners and supporters, Fontenelle Forest successfully completed a series of erosion controls in recent years. Check out our projects!" />
+
+                  <HabitatThing
+                    image="/img/conservation/locallysourced.png"
+                    credit="Alex Wiles"
+                    title="Prescribed fire"
+                    description="While a house on fire in a neighborhood is not a good thing, fire in a prairie or oak woodland IS! Both of these ecological communities are fire dependent and our trained prescribed burn crew reintroduces this often-missing component to the natural systems here at Fontenelle Forest. Read more about our prescribed fire program." />
+
+                  <HabitatThing
+                    image="/img/conservation/locallysourced.png"
+                    title="Invasive species control"
+                    description="We have many beautiful plants in Fontenelle Forest, but some can wreak havoc on our land. In order to restore and maintain our natural habitat, we remove invasive plants. Ornamentals that escape from yards, and plants accidentally brought from other countries can take over when an ecologically community is out of balance. Invasive removal is hard work." />
+
+                  <HabitatThing
+                    image="/img/conservation/locallysourced.png"
+                    title="Nature’s Helpers – Volunteers and YOU!"
+                    description="All of the work we do requires many hours of labor, which is where our land steward volunteers come in. Our dedicated group of people is invaluable in our conservation efforts. We also rely on our neighbors to help keep our forest healthy. What can YOU do?" />
+
                 </div>
               </div>
+
 
               <div id="raptor" className="egg_wrap">
                 <div className="raptor_container main_wrapper">
@@ -517,8 +501,6 @@ var Main = React.createClass({
                   <span className="next_page" onClick={self.moveRight}>Education</span>
                 </div>
               </div>
-
-              <Footer />
             </div>
             <div className='video-container'>
               <video id="video-background" className="video-wrap" poster="/img/loop_conservation.jpg" autoPlay muted="muted" loop>

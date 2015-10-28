@@ -1,78 +1,217 @@
 var React = require('react'),
     request = require('superagent'),
+    moment = require('moment'),
     util = require('util');
 var Velocity = require('velocity-animate/velocity');
 var InlineSVG = require('react-inlinesvg');
 var Router = require('react-router');
 
+var jsonp = require('superagent-jsonp');
+
 var Navigation = Router.Navigation;
 var Link = Router.Link;
 
-var Footer = require('../../common/footer.jsx');
-
-var poster_image;
-var Main = React.createClass({
+module.exports = React.createClass({
   mixins: [ Router.State, Navigation ],
   getInitialState: function() {
-    return { pre_count: 0, classImage: "/img/forest-now/nature-notes.jpg", video: false };
+    return {
+      wildlife: [],
+      plantlife: [],
+      closings: [],
+      weather: {}
+    };
   },
 
   componentDidMount: function () {
     var self = this;
-    poster_image = new Image();
-    poster_image.onload = self.onLoad;
-    poster_image.src = "/img/loop_three.jpg";
+    self.loadPlantlife();
+    self.loadWildlife();
+    self.loadClosings();
+
+    self.loadWeather();
+
   },
 
-  componentWillReceiveProps: function () {
+  componentWillReceiveProps: function () { },
+
+  loadWeather:function(){
     var self = this;
-    poster_image = new Image();
-    poster_image.onload = self.onLoad;
-    poster_image.src = "/img/loop_three.jpg";
+
+    request
+      .get('https://api.forecast.io/forecast/428664b41344b3a66849ab1e8432105b/41.1797155,-95.9200238')
+      .use(jsonp)
+      .end(function(err, res) {
+        if (res) {
+          var weather = res.body;
+          self.setState({weather: weather});
+          console.log("forecast: " + util.inspect(weather));
+
+        } else {
+          console.log('Oh no! error ' + res);
+        }
+      }.bind(self));
+
+      // request
+      //   .get('http://api.wunderground.com/api/42a6e811289e89d1/conditions/q/41.1797155,-95.9200238.json')
+      //   .end(function(err, res) {
+      //     if (res.ok) {
+      //       var weather = res.body;
+      //       console.log("weather: " + util.inspect(weather));
+      //       self.setState({weather: weather});
+      //
+      //     } else {
+      //       console.log('Oh no! error ' + res.text);
+      //     }
+      //   }.bind(self));
 
   },
 
-  onLoad: function() {
+  loadPlantlife: function(){
     var self = this;
-    self.setState({loaded: true});
+      request
+        .get('http://fontenelle.flywheelsites.com/wp-json/posts')
+        .query('type[]=plantlife&filter[posts_per_page]=-1')
+        .end(function(err, res) {
+      if (res.ok) {
+        var plantlife = res.body;
+
+        self.setState({plantlife: plantlife});
+
+      } else {
+        console.log('Oh no! error ' + res.text);
+      }
+        }.bind(self));
   },
 
-  moveLeft: function(){
-    this.props.transition('slide-back');
-    this.transitionTo('conservation');
+
+  loadWildlife: function(){
+    var self = this;
+      request
+        .get('http://fontenelle.flywheelsites.com/wp-json/posts')
+        .query('type[]=wildlife&filter[posts_per_page]=-1')
+        .end(function(err, res) {
+      if (res.ok) {
+        var wildlife = res.body;
+
+        self.setState({wildlife: wildlife});
+
+      } else {
+        console.log('Oh no! error ' + res.text);
+      }
+        }.bind(self));
   },
 
+  loadClosings: function(){
+    var self = this;
+      request
+        .get('http://fontenelle.flywheelsites.com/wp-json/posts')
+        .query('type[]=closings&filter[posts_per_page]=-1')
+        .end(function(err, res) {
+      if (res.ok) {
+        var closings = res.body;
 
-  moveRight: function(){
-    this.props.transition('slide-forward');
-    this.transitionTo('programs');
-  },
+        self.setState({closings: closings});
 
-  toggleClass: function(){
-    if (this.state.classImage == "/img/forest-now/nature-notes.jpg") {
-      this.setState({classImage: "/img/forest-now/nature-notes-click.jpg"});
-    } else {
-      this.setState({classImage: "/img/forest-now/nature-notes.jpg"});
-    }
+      } else {
+        console.log('Oh no! error ' + res.text);
+      }
+        }.bind(self));
   },
 
   render: function() {
     var self = this;
-    var classImage = self.state.classImage;
+    var classImage = "/img/forest-now/nature-notes.jpg";
+    var temp, currently, hourly, minutely, icon;
+    if (self.state.weather.currently) {
+      temp = self.state.weather.currently.temperature;
+      icon = self.state.weather.currently.icon;
+      currently = self.state.weather.currently.precipProbability;
+      hourly = self.state.weather.hourly.summary;
+    }
+    var wildlife = self.state.wildlife.map(function(object){
+      return <h4 className="wildlife_title">{object.title}</h4>
+    });
+    var plantlife = self.state.plantlife.map(function(object){
+      return (
+        <div className="nature_notes_item">
+          <img src={object.featured_image.attachment_meta.sizes.thumbnail.url} />
+          <h4 className="plantlife_title">{object.title}</h4>
+          <div dangerouslySetInnerHTML={{__html: object.content}}></div>
+          <a href={object.meta.naturesearch_link} target="_blank">Read more</a>
+        </div>
+      )
+    });
+
+    var closings = self.state.closings.map(function(object){
+      return <p className="closings_title">{object.title}</p>
+    });
+    var top_image = {
+      backgroundImage: "url(/img/weather/rain.jpg)"
+    }
+    var nature_notes_image = {
+      backgroundImage: "url(/img/forest-now/nature_notes_bkgd.jpg)"
+    }
 
     return (
-      <div className="page">
-        <div className="egg_wrap static">
-          <div className='image_container'>
-            <img src={classImage} onClick={self.toggleClass}/>
+      <div>
+        <div className="egg_wrap nature_notes_header">
+          <div className="forest_now_top">
+              <div className="fn_top_left" style={top_image}>
+                <div className="fn_wrap">
+                  <div className="halfcontainer left">
+                    <h3 className="main_title">Come Splash Around</h3>
+                    <h3 className="marker sub_title">in our backyard</h3>
+                  </div>
+                </div>
+                <div className="fn_wrap blue_wrapper">
+                  {self.state.weather.currently ?
+                    <div className="halfcontainer left">
+                      <p className="date">{moment().format('MMMM Do, YYYY')}</p>
+                      <p className="temp">{Math.ceil(temp)}°</p>
+                      <p className="desc">{hourly}</p>
+                      <p className="desc">{currently}% Chance of rain</p>
+                    </div>
+                  :
+                    <div className="halfcontainer left">
+                      <p className="date">{moment().format('MMMM Do, YYYY')}</p>
+                      <p className="weather_loader"><i className="fa fa-spinner fa-spin"></i> brb, grabbing the forecast.</p>
+                    </div>
+                  }
+                </div>
+              </div>
+              <div className="fn_top_right" style={nature_notes_image}>
+                <div className="nn_wrap">
+                  { (self.state.closings.length > 0) ?
+                    <Link to="nature-notes">
+                      <div className="closings_bar">
+                        <div className="halfcontainer right">
+                          {self.state.closings.length} Closings
+                        </div>
+                      </div>
+                    </Link>
+                  : null }
+                  <div className="halfcontainer right">
+                    <h2 className="marker nn_main_title">nature notes</h2>
+                    <h3 className="nn_title">PLANTLIFE</h3>
+                    <h3 className="nn_title">WILDLIFE</h3>
+                    <Link to="nature-notes" className="marker nn_link">see all</Link>
+                  </div>
+                </div>
+                <div className="nature_notes_overlay"></div>
+              </div>
+
           </div>
-          <div className='image_container now-blue'>
-            <div className='now-links'>
+          <div className='now-blue'>
+            <div className='now-links image_container'>
               <a href="/hours-and-admissions">Hours and Admissions</a>
               <span>Trail Maps: <a target="_blank" href="http://fontenelleforest.org/images/stories/Trails/ffnc_trailmap_dec09.pdf">Fontenelle</a>|<a target="_blank" href="http://fontenelleforest.org/images/stories/Trails/neale_woods_map_printable.pdf">Neale Woods</a></span>
               <a href="#">Guidelines</a>
               <a href="/contact">Contact</a>
             </div>
+          </div>
+          <div className='image_container'>
+            <Link to="nature-notes"><img src={classImage} /></Link>
+
           </div>
           <div className='image_container'>
             <div className='now-left'>
@@ -86,10 +225,7 @@ var Main = React.createClass({
             <img src="/img/forest-now/social-media.jpg" />
           </div>
         </div>
-        <Footer />
       </div>
     )
   }
 });
-
-module.exports = Main;

@@ -1,14 +1,15 @@
 .time_title {
   text-align: center;
-  font-size: 70px;
-  color: $conservation_color;
+  font-size: 65px;
+  background: $conservation_color;
+  color: white;
 }
 
 .timeline_wrapper {
 	width: 100%;
 	overflow: hidden;
+  padding: 0 0 50px;
 
-  padding: 50px 0;
   .year {
     text-align: center;
     color: $grey;
@@ -32,7 +33,7 @@
       position: absolute;
       margin: 15px;
       left: 100px;
-      top: 83px;
+      top: 70px;
     }
 		.timeline_item {
 			width: 400px;
@@ -48,6 +49,7 @@
 
         .title {
           text-align: center;
+          color: $conservation_color;
         }
         &:before {
           content: '';
@@ -107,17 +109,16 @@
 .timeline_button {
   position: absolute;
   width: 50px;
-  // transition: 0.15s ease-out;
+  transition: 0.15s ease-out;
   z-index: 1;
   cursor: pointer;
-
+  line-height: 0;
+  top: 25px;
   &.right {
-    top: 75px;
     right: 15px;
   }
   &.left {
     left: 15px;
-    top: 70px;
     transform: rotate(180deg);
   }
   &:hover {
@@ -147,9 +148,12 @@
 }
 
 .habitat_container {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+  width: 45%;
+  display: inline-block;
+  vertical-align: top;
+  &:nth-child(2n-1){
+    margin-right: 10%;
+  }
   padding: 50px 0;
   .image_container {
     flex: 2;
@@ -169,6 +173,14 @@
       padding-top: 1em;
     }
   }
+}
+
+.habitat_marker {
+  background: $conservation_color;
+  text-align: center;
+  line-height: 2;
+  font-size: 40px;
+  color: white;
 }
 
 .raptor_container {

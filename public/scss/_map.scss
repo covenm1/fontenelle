@@ -192,6 +192,7 @@
 
 .map_wrapper {
 	svg.trailmap {
+		width: 100%;
 		#south-floodplain, #south-uplands, #north-floodplain, #north-uplands, #nature-center {
 			stroke: #D1D1D1;
 			transition: 0.15s ease-out;
