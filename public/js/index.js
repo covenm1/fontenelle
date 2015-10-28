@@ -791,7 +791,27 @@ module.exports = React.createClass({displayName: "exports",
   render: function() {
     return (
       React.createElement("footer", null, 
-        React.createElement("img", {src: "/img/footer.png"})
+        React.createElement("div", {className: "footer_top copy_container"}, 
+          React.createElement("nav", null, 
+              React.createElement("a", {className: "social_fb", target: "_blank", href: ""}, "Facebook"), 
+              React.createElement("a", {className: "social_tw", target: "_blank", href: ""}, "Twitter"), 
+              React.createElement("a", {className: "social_ig", target: "_blank", href: ""}, "Instagram"), 
+              React.createElement("a", {className: "social_yt", target: "_blank", href: ""}, "YouTube"), 
+              React.createElement("a", {className: "social_fl", target: "_blank", href: ""}, "Flickr")
+          ), 
+          React.createElement("div", {className: "newsletter"}, 
+            "Sign up for our newsletter ", React.createElement("a", {target: "_blank", href: "http://visitor.r20.constantcontact.com/d.jsp?llr=imwa5ckab&p=oi&m=1110347635080&sit=ysqei7ahb&f=025c8173-5ba1-4aed-92a6-a9f9aebb2d65"}, "SUBSCRIBE")
+          )
+        ), 
+        React.createElement("div", {className: "contactinfo footer_bottom copy_container"}, 
+          React.createElement("ul", null, 
+            React.createElement("li", null, "Fontenelle Forest"), 
+            React.createElement("li", null, "1111 Bellevue Blvd. N. Bellevue, NE 68005"), 
+            React.createElement("li", null, "Phone (402) 731-3140"), 
+            React.createElement("li", null, "Fax (402) 731-2403"), 
+            React.createElement("li", null, React.createElement("a", {target: "_blank", href: "mailto:info@fontenelleforest.org"}, "info@fontenelleforest.org"))
+          )
+        )
       )
     )
   }
@@ -35664,7 +35684,7 @@ function hasOwnProperty(obj, prop) {
 
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{"./support/isBuffer":255,"_process":21,"inherits":254}],257:[function(require,module,exports){
-/*! VelocityJS.org (1.2.3). (C) 2014 Julian Shapiro. MIT @license: en.wikipedia.org/wiki/MIT_License */
+/*! VelocityJS.org (1.2.2). (C) 2014 Julian Shapiro. MIT @license: en.wikipedia.org/wiki/MIT_License */
 
 /*************************
    Velocity jQuery Shim
@@ -37740,7 +37760,7 @@ return function (global, window, document, undefined) {
         /* Support is included for jQuery's argument overloading: $.animate(propertyMap [, duration] [, easing] [, complete]).
            Overloading is detected by checking for the absence of an object being passed into options. */
         /* Note: The stop and finish actions do not accept animation options, and are therefore excluded from this check. */
-        if (!/^(stop|finish|finishAll)$/i.test(propertiesMap) && !$.isPlainObject(options)) {
+        if (!/^(stop|finish)$/i.test(propertiesMap) && !$.isPlainObject(options)) {
             /* The utility function shifts all arguments one position to the right, so we adjust for that offset. */
             var startingArgumentPosition = argumentIndex + 1;
 
@@ -37806,7 +37826,6 @@ return function (global, window, document, undefined) {
                 break;
 
             case "finish":
-            case "finishAll":
             case "stop":
                 /*******************
                     Action: Stop
@@ -37824,22 +37843,6 @@ return function (global, window, document, undefined) {
                         }
 
                         delete Data(element).delayTimer;
-                    }
-
-                    /* If we want to finish everything in the queue, we have to iterate through it
-                       and call each function. This will make them active calls below, which will
-                       cause them to be applied via the duration setting. */
-                    if (propertiesMap === "finishAll" && (options === true || Type.isString(options))) {
-                        /* Iterate through the items in the element's queue. */
-                        $.each($.queue(element, Type.isString(options) ? options : ""), function(_, item) {
-                            /* The queue array can contain an "inprogress" string, which we skip. */
-                            if (Type.isFunction(item)) {
-                                item();
-                            }
-                        });
-
-                        /* Clearing the $.queue() array is achieved by resetting it to []. */
-                        $.queue(element, Type.isString(options) ? options : "", []);
                     }
                 });
 
@@ -37873,11 +37876,10 @@ return function (global, window, document, undefined) {
                             }
 
                             /* Iterate through the calls targeted by the stop command. */
-                            $.each(elements, function(l, element) {
+                            $.each(elements, function(l, element) {                                
                                 /* Check that this call was applied to the target element. */
                                 if (element === activeElement) {
-                                    /* Optionally clear the remaining queued calls. If we're doing "finishAll" this won't find anything,
-                                       due to the queue-clearing above. */
+                                    /* Optionally clear the remaining queued calls. */
                                     if (options === true || Type.isString(options)) {
                                         /* Iterate through the items in the element's queue. */
                                         $.each($.queue(element, Type.isString(options) ? options : ""), function(_, item) {
@@ -37905,7 +37907,7 @@ return function (global, window, document, undefined) {
                                         }
 
                                         callsToStop.push(i);
-                                    } else if (propertiesMap === "finish" || propertiesMap === "finishAll") {
+                                    } else if (propertiesMap === "finish") {
                                         /* To get active tweens to finish immediately, we forcefully shorten their durations to 1ms so that
                                         they finish upon the next rAf tick then proceed with normal call completion logic. */
                                         activeCall[2].duration = 1;
@@ -39157,7 +39159,7 @@ return function (global, window, document, undefined) {
                             tween.currentValue = currentValue;
 
                             /* If we're tweening a fake 'tween' property in order to log transition values, update the one-per-call variable so that
-                               it can be passed into the progress callback. */
+                               it can be passed into the progress callback. */ 
                             if (property === "tween") {
                                 tweenDummyValue = currentValue;
                             } else {

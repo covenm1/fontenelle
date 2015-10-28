@@ -432,6 +432,66 @@ footer img {
 	display: table;
 }
 
+footer div ul li:first-child:before {
+    content: "";
+}
+footer div ul li:before {
+    content: "| ";
+}
+footer div ul li {
+    display: inline-block;
+    padding-right: 7px;
+}
+
+footer {
+    display: flex;
+    flex-direction: column;
+}
+
+footer nav a {
+  background-repeat: no-repeat;
+  text-indent: -9999px;
+  width: 47px;
+  height: 47px;
+  display: inline-block;
+}
+
+footer nav a.social_fb {background-image: url(/img/social-fb.png);}
+footer nav a.social_tw {background-image: url(/img/social-tw.png);}
+footer nav a.social_ig {background-image: url(/img/social-ig.png);}
+footer nav a.social_yt {background-image: url(/img/social-yt.png);}
+footer nav a.social_fl {background-image: url(/img/social-fl.png);}
+
+.footer_top.copy_container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.newsletter {
+  padding-top: 12px;
+}
+
+.newsletter a {
+    border-radius: 5px;
+    background-color: #fff;
+    color: #000;
+    padding: 5px 38px 5px 10px;
+    background-image: url(/img/subscribe-arrow.gif);
+    background-repeat: no-repeat;
+    background-position: right;
+}
+
+.newsletter a:hover {
+  color: #000;
+  text-decoration: underline;
+}
+
+.contactinfo ul {
+    display: flex;
+    flex-wrap: wrap;
+}
+
 .example-enter {
   opacity: 0.01;
   transition: opacity .5s ease-out;
