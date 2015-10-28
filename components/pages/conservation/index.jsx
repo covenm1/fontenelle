@@ -8,6 +8,25 @@ var Router = require('react-router');
 var Navigation = Router.Navigation;
 var Link = Router.Link;
 
+
+var HabitatThing = React.createClass({
+  render : function(){
+    var self = this;
+    return (
+      <div className="habitat_container main_wrapper">
+        <div className="quiet_wild image_container">
+          <img src={self.props.image} />
+          { self.props.credit ? <p className="photo_credit">Photo by {self.props.credit}</p> : null }
+        </div>
+        <div className="quiet_wild copy_container">
+          <h2>{self.props.title}</h2>
+          <p>{self.props.description}</p>
+        </div>
+      </div>
+    )
+  }
+});
+
 var poster_image;
 var Main = React.createClass({
   mixins: [ Router.State, Navigation ],
@@ -361,47 +380,54 @@ var Main = React.createClass({
               </div>
 
               <div id="habitat" className="egg_wrap">
+                <h2 className="habitat_marker marker">If you have the habitat, you have the home.</h2>
                 <div className="habitat_home_container main_wrapper">
                   <div className="quiet_wild copy_container">
-                    <img src="/img/divider/VINE-top-long.svg" />
-                    <h2 className="marker">If you have the habitat, you have the home.</h2>
                     <p>Our main tenet of land stewardship at Fontenelle Forest is to facilitate the most balanced environment we can. With ideal living conditions, the animals follow—the invertebrates, insects, amphibians, reptiles, and mammals that make the Forest harmonious and happy.</p>
                     <p>Still, it’s vital that we let nature do what it wants to do. Our job is more to pay attention and interpret the natural signs that are out there.</p>
-                    <img src="/img/divider/VINE-top-long.svg" />
                   </div>
                 </div>
               </div>
 
-              <div className="egg_wrap">
-                <div className="habitat_container main_wrapper">
-                  <div className="quiet_wild image_container">
-                    <img src="/img/conservation/natures_helpers.png" />
-                  </div>
-                  <div className="quiet_wild copy_container">
-                    <h2>Nature’s Helpers</h2>
-                    <p>The signs are always out there—sometimes you just have to look. One recent Saturday, a group of volunteers was out in a corner of the Forest they hadn’t been in a while, surveying the land for planting opportunities and doing general maintenance. They came to a clearing, a beautiful expanse of rolling grass unmarked by much traffic. Someone in the team noted that it would be an excellent spot for an oak tree. And then, as if following a stage cue, a beam of sunlight revealed just that: a tiny oak tree in the center of the clearing. We returned with a protective cage that would allow the tree to flourish without first succumbing to hungry forest dwelling creatures. We must always remember we are working with nature, not against it or above it, to build the habitat needed to flourish.</p>
-                  </div>
-                </div>
-                <div className="habitat_container main_wrapper">
-                  <div className="quiet_wild image_container">
-                    <img src="/img/conservation/provenplan.png" />
-                  </div>
-                  <div className="quiet_wild copy_container">
-                    <h2>A Proven Plan</h2>
-                    <p>By the late 19th century in Bellevue, Nebraska, as buildings popped up and more and more humans made the area their home, large predators had all but disappeared. As a result, the deer population flourished greatly, to the point where the plant population, as the basis of the deer diet, began to suffer. As we know, this can cause the entire forest population to become imbalanced. To mitigate the issue, Fontenelle embarked on what has been a decades-long process: performing research, forming and enacting a plan, and constantly evaluating results. Since the official deer hunt program began in 1996, it has become known and accepted as the most successful conservation program in the history of the Forest. By dealing with deer overpopulation directly, the Forest had the chance to be a better habitat for other species to call home.</p>
-                  </div>
-                </div>
-                <div className="habitat_container main_wrapper">
-                  <div className="quiet_wild image_container">
-                    <img src="/img/conservation/locallysourced.png" />
-                  </div>
-                  <div className="quiet_wild copy_container">
-                    <h2>The Original “Locally Sourced”</h2>
-                    <p>Anything that we plant in the Forest comes from the Forest, in other words, we only plant “local ecotype:” things that come from within 50 miles (Eastern Nebraska or Western Iowa).</p>
-                    <p>This is because temperatures differ ever so slightly north to south and precipitation east to west and only plants from the immediate vicinity will truly thrive.</p>
-                  </div>
+              <div className="egg_wrap ">
+                <div className="image_container">
+
+                  <HabitatThing
+                    image="/img/conservation/natures_helpers.png"
+                    credit="Josh Preister"
+                    title="Habitat Restoration"
+                    description="Oak savanna and woodland habitats within Fontenelle Forest face severe decline. Their regeneration has been stunted due to the lack of open space resulting from fire suppression and the encroachment of invasive plants. To ensure the preservation and expansion of this ecological community, FF began an oak woodland restoration. Click to find out how we do it!" />
+
+                  <HabitatThing
+                    image="/img/conservation/provenplan.png"
+                    title="Deer Management"
+                    description="Since the 1980s, the deer population has exploded, due in part to the lack of larger predators and the abundance of food. To mitigate the issue, Fontenelle embarked on what has been a decades-long process: conducting research, forming and enacting a plan, and constantly evaluating results. Since the official deer hunt program began in 1996, it is arguably the most successful conservation program in the history of the forest. Deer management information can be found here." />
+
+                  <HabitatThing
+                    image="/img/conservation/locallysourced.png"
+                    credit="Josh Preister"
+                    title="Erosion Control"
+                    description="Due to years of storm runoff, Coffin Springs Hollow in Fontenelle Forest had eroded into a five-hundred-foot-long gully. Soil repeatedly washed from the area into the nearby stream and was thus threatening the health of our Great Marsh ecosystem. With help from our partners and supporters, Fontenelle Forest successfully completed a series of erosion controls in recent years. Check out our projects!" />
+
+                  <HabitatThing
+                    image="/img/conservation/locallysourced.png"
+                    credit="Alex Wiles"
+                    title="Prescribed fire"
+                    description="While a house on fire in a neighborhood is not a good thing, fire in a prairie or oak woodland IS! Both of these ecological communities are fire dependent and our trained prescribed burn crew reintroduces this often-missing component to the natural systems here at Fontenelle Forest. Read more about our prescribed fire program." />
+
+                  <HabitatThing
+                    image="/img/conservation/locallysourced.png"
+                    title="Invasive species control"
+                    description="We have many beautiful plants in Fontenelle Forest, but some can wreak havoc on our land. In order to restore and maintain our natural habitat, we remove invasive plants. Ornamentals that escape from yards, and plants accidentally brought from other countries can take over when an ecologically community is out of balance. Invasive removal is hard work." />
+
+                  <HabitatThing
+                    image="/img/conservation/locallysourced.png"
+                    title="Nature’s Helpers – Volunteers and YOU!"
+                    description="All of the work we do requires many hours of labor, which is where our land steward volunteers come in. Our dedicated group of people is invaluable in our conservation efforts. We also rely on our neighbors to help keep our forest healthy. What can YOU do?" />
+
                 </div>
               </div>
+
 
               <div id="raptor" className="egg_wrap">
                 <div className="raptor_container main_wrapper">

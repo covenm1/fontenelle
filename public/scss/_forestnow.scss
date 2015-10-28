@@ -106,12 +106,91 @@
 	color: white;
 	display: flex;
 	flex-direction: row;
+	font-family: 'roboto_condensedbold';
+	p {
+		line-height: 1;
+	}
+	.temp {
+		font-size: 75px;
+	}
+	.desc {
+		font-size: 25px;
+	}
+	.date {
+		font-size: 20px;
+	}
+	.main_title {
+		font-size: 75px;
+		line-height: 1;
+	}
+	.sub_title {
+		font-size: 50px;
+		line-height: 1;
+		margin: 0;
+	}
+	.weather_loader {
+		font-size: 30px;
+		i {
+			font-size: 45px;
+		}
+
+		line-height: 1.5;
+	}
+	.nature_notes_overlay {
+		background-image: url('/img/conservation/pattern_video-overlay.svg');
+		opacity: 0.6;
+		position: absolute;
+		height: 100%;
+		width: 100%;
+		top: 0;
+		left: 0;
+		background-size: 10px;
+	}
 	.fn_top_right, .fn_top_left {
 		flex: 1;
 		background-size: cover;
 		background-position: center;
 		position: relative;
 
+	}
+	.fn_top_right {
+		display: flex;
+		flex-direction: column;
+		.closings_bar {
+			background: $programs_color;
+			padding: 15px 40px;
+		}
+		.nn_title {
+			padding: 15px 40px;
+		}
+		.nn_link {
+			border: 2px solid white;
+			border-radius: 5px;
+			padding: 5px 50px;
+			margin: auto;
+			display: table;
+			cursor: pointer;
+			transition: 0.15s ease-out;
+			text-decoration: none;
+			&:hover {
+				background: white;
+				color: $conservation_color;
+				text-decoration: none;
+			}
+		}
+		.nn_main_title {
+			text-align: center;
+			line-height: 2;
+			background: transparent;
+		}
+		.nn_wrap {
+			flex-direction: column;
+			position: relative;
+	    z-index: 1;
+	    flex: 1;
+			display: flex;
+			justify-content: flex-start;
+		}
 	}
 	.fn_top_left {
 		display: flex;
@@ -132,7 +211,7 @@
 		background-blend-mode: multiply;
 	}
 	.blue_wrapper {
-		background: rgba(0,0,255,0.5);
+		background: rgba(18,97,174,0.5);
 		position: relative;
 	}
 }

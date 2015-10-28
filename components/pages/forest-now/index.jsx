@@ -1,5 +1,6 @@
 var React = require('react'),
     request = require('superagent'),
+    moment = require('moment'),
     util = require('util');
 var Velocity = require('velocity-animate/velocity');
 var InlineSVG = require('react-inlinesvg');
@@ -124,9 +125,8 @@ module.exports = React.createClass({
     if (self.state.weather.currently) {
       temp = self.state.weather.currently.temperature;
       icon = self.state.weather.currently.icon;
-      currently = self.state.weather.currently.summary;
+      currently = self.state.weather.currently.precipProbability;
       hourly = self.state.weather.hourly.summary;
-      minutely = self.state.weather.minutely.summary;
     }
     var wildlife = self.state.wildlife.map(function(object){
       return <h4 className="wildlife_title">{object.title}</h4>
@@ -159,22 +159,45 @@ module.exports = React.createClass({
               <div className="fn_top_left" style={top_image}>
                 <div className="fn_wrap">
                   <div className="halfcontainer left">
-                    <h3>Come Splash Around</h3>
-                    <h3 className="marker">in our backyard</h3>
+                    <h3 className="main_title">Come Splash Around</h3>
+                    <h3 className="marker sub_title">in our backyard</h3>
                   </div>
                 </div>
                 <div className="fn_wrap blue_wrapper">
-                  <div className="halfcontainer left">
-                    <p>Now: {temp}</p>
-                    <p>icon: {icon}</p>
-                    <p>currently: {currently}</p>
-                    <p>hourly: {hourly}</p>
-                    <p>minutely: {minutely}</p>
-                  </div>
+                  {self.state.weather.currently ?
+                    <div className="halfcontainer left">
+                      <p className="date">{moment().format('MMMM Do, YYYY')}</p>
+                      <p className="temp">{Math.ceil(temp)}°</p>
+                      <p className="desc">{hourly}</p>
+                      <p className="desc">{currently}% Chance of rain</p>
+                    </div>
+                  :
+                    <div className="halfcontainer left">
+                      <p className="date">{moment().format('MMMM Do, YYYY')}</p>
+                      <p className="weather_loader"><i className="fa fa-spinner fa-spin"></i> brb, grabbing the forecast.</p>
+                    </div>
+                  }
                 </div>
               </div>
               <div className="fn_top_right" style={nature_notes_image}>
-                <Link to="nature-notes">nature notes</Link>
+                <div className="nn_wrap">
+                  { (self.state.closings.length > 0) ?
+                    <Link to="nature-notes">
+                      <div className="closings_bar">
+                        <div className="halfcontainer right">
+                          {self.state.closings.length} Closings
+                        </div>
+                      </div>
+                    </Link>
+                  : null }
+                  <div className="halfcontainer right">
+                    <h2 className="marker nn_main_title">nature notes</h2>
+                    <h3 className="nn_title">PLANTLIFE</h3>
+                    <h3 className="nn_title">WILDLIFE</h3>
+                    <Link to="nature-notes" className="marker nn_link">see all</Link>
+                  </div>
+                </div>
+                <div className="nature_notes_overlay"></div>
               </div>
 
           </div>
