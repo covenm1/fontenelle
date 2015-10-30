@@ -466,6 +466,7 @@ footer nav a {
   width: 47px;
   height: 47px;
   display: inline-block;
+  padding-right: 55px;
 }
 
 footer nav a.social_fb {background-image: url(/img/social-fb.png);}
@@ -478,6 +479,9 @@ footer nav a.social_fl {background-image: url(/img/social-fl.png);}
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    width: 90%;
+    justify-content: space-around;
+    align-items: center;
 }
 
 .newsletter {
