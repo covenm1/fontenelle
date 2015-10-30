@@ -28,8 +28,12 @@ var forest = require('../forest/index.jsx'),
 		forestnow = require('../forest-now/index.jsx'),
 		naturenotes = require('../nature-notes/index.jsx'),
 		savetheoaks = require('../save-the-oaks/index.jsx'),
-		contact = require('../contact/index.jsx');
+		contact = require('../contact/index.jsx'),
+		posts = require('../posts/index.jsx'),
+		post = require('../post/index.jsx');
 
+
+var Loading = require('../../common/loading_arrows.jsx');
 var Footer = require('../../common/footer.jsx');
 
 var slide_names = [ 'forest', 'natural-resources', 'education', 'programs'];
@@ -218,10 +222,11 @@ var App = React.createClass({
 		if (main_pages){
 			var header_up = "";
 		} else {
-			var header_up = " header_up";
+			var header_up = " header_up ";
 		}
 		if (self.state.loaded == true) {
 			var controller = self.state.controller;
+			document.documentElement.classList.remove('loading');
 			return (
 			  <div className={"fontenelle " + name + menu_class + header_up} >
 			    <header className="header">
@@ -281,8 +286,9 @@ var App = React.createClass({
 			  </div>
 			)
 		} else {
+			document.documentElement.classList.add('loading');
 			return (
-				<div className={"fontenelle loading header_up" + name + menu_class} >
+				<div className={"fontenelle loading header_up " + name + menu_class} >
 					<header className="header">
 							<Link to="/" className="logo"><img src="/img/logo.png" alt="" /></Link>
 							<span className="global_menu">
@@ -326,8 +332,10 @@ var App = React.createClass({
 						</div>
 					</div>
 					<div className="main_content" id="main_content">
-						<i className="fa fa-cog fa-spin"></i>
-						<div className="load_message">Loading content for {name}.</div>
+						<div className="loading-container">
+							<Loading />
+							<div className="load_message marker">Loading</div>
+						</div>
 					</div>
 					<Footer />
 				</div>
@@ -359,6 +367,8 @@ var routes = (
 		<Route name="nature-notes" path="/forest-now/nature-notes" handler={naturenotes} addHandlerKey={true} />
     <Route name="save-the-oaks" path="/save-the-oaks" handler={savetheoaks} addHandlerKey={true} />
 		<Route name="contact" path="/contact" handler={contact} addHandlerKey={true} />
+		<Route path="/post/:name" handler={post} addHandlerKey={true} />
+		<Route path="/posts" handler={posts} addHandlerKey={true} />
   </Route>
 
 );

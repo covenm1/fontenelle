@@ -22,6 +22,69 @@ $grey: #808080;
 
 
 .page.velocity-animating {
-	position: absolute;
+	position: relative;
 	top: 0;
+}
+
+
+.st1{opacity:0.5;fill:#B32226;enable-background:new    ;}
+.st2{fill:none;stroke:#FFFFFF;stroke-width:9;stroke-miterlimit:10;}
+.st3{opacity:0.5;fill:#698348;enable-background:new    ;}
+.st4{fill:#FFFFFF;}
+.st5{opacity:0.7;fill:#1A62AE;enable-background:new    ;}
+.st6{fill:#A44F24;stroke:#FFFFFF;stroke-width:3;stroke-miterlimit:10;}
+.st7{fill:none;stroke:#FFFFFF;stroke-width:3;stroke-linecap:round;stroke-miterlimit:10;}
+
+html.loading {
+	  height: 100%;
+		body {
+			height: 100%;
+		}
+		.fontenelle {
+			display: flex;
+			flex-direction: column;
+			height: 100%;
+			.main_content {
+				flex:1;
+			}
+		}
+}
+
+.loading_arrow {
+	width: 100px;
+	display: table;
+	margin: auto;
+	#Layer_4, #Layer_3, #Layer_2, #Layer_1 {
+		display:none;
+	}
+	&.arrow_1 #Layer_1 {
+		display:block;
+	}
+	&.arrow_2 #Layer_2 {
+		display:block;
+	}
+	&.arrow_3 #Layer_3 {
+		display:block;
+	}
+	&.arrow_4 #Layer_4 {
+		display:block;
+	}
+}
+
+.load_message {
+	text-align: center;
+	font-size: 25px;
+	line-height: 2;
+}
+
+.post_container {
+	padding-top: 60px;
+	.featured_image {
+		background-size: cover;
+		height: 500px;
+		background-position: center;
+	}
+	.copy_container {
+
+	}
 }

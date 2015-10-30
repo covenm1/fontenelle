@@ -79,7 +79,8 @@ var ClassList = React.createClass({
         categories={object.categories}
         length={object.length}
         description={object.description}
-        show={self.showClass.bind(self,object)} />
+        show={self.showClass.bind(self,object)}
+        key={object.name}  />
 
     });
     var current_class = self.state.current_class;
@@ -139,7 +140,6 @@ var Main = React.createClass({
         "/img/education.png",
         "/img/education/flowers.png",
         "/img/education/caterpillar.png"
-
       ]
 
     };

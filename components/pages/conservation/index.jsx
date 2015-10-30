@@ -27,6 +27,26 @@ var HabitatThing = React.createClass({
   }
 });
 
+
+var TimelineThing = React.createClass({
+  render : function(){
+    var self = this;
+    return (
+      <div className="timeline_item" >
+        <h4 className="year">{self.props.year}</h4>
+        <span className="circle"></span>
+        <div className="timeline_container">
+          <div className="description">
+            <h4 className="title marker">{self.props.title}</h4>
+            <p>{self.props.description}</p>
+          </div>
+        </div>
+      </div>
+    )
+  }
+});
+
+
 var poster_image;
 var Main = React.createClass({
   mixins: [ Router.State, Navigation ],
@@ -285,18 +305,11 @@ var Main = React.createClass({
     var self = this;
 
     var timeline = self.state.timeline.map(function(object) {
-      return (
-        <div className="timeline_item" >
-          <h4 className="year">{object.year}</h4>
-          <span className="circle"></span>
-          <div className="timeline_container">
-            <div className="description">
-              <h4 className="title marker">{object.title}</h4>
-              <p>{object.description}</p>
-            </div>
-          </div>
-        </div>
-      )
+      return <TimelineThing
+          year={object.year}
+          title={object.title}
+          description={object.description}
+          key={object.title} />
     });
 
     var timelineStyles = {
@@ -396,33 +409,39 @@ var Main = React.createClass({
                     image="/img/conservation/natures_helpers.png"
                     credit="Josh Preister"
                     title="Habitat Restoration"
+                    key="habitat"
                     description="Oak savanna and woodland habitats within Fontenelle Forest face severe decline. Their regeneration has been stunted due to the lack of open space resulting from fire suppression and the encroachment of invasive plants. To ensure the preservation and expansion of this ecological community, FF began an oak woodland restoration. Click to find out how we do it!" />
 
                   <HabitatThing
                     image="/img/conservation/provenplan.png"
                     title="Deer Management"
+                    key="deer"
                     description="Since the 1980s, the deer population has exploded, due in part to the lack of larger predators and the abundance of food. To mitigate the issue, Fontenelle embarked on what has been a decades-long process: conducting research, forming and enacting a plan, and constantly evaluating results. Since the official deer hunt program began in 1996, it is arguably the most successful conservation program in the history of the forest. Deer management information can be found here." />
 
                   <HabitatThing
                     image="/img/conservation/locallysourced.png"
                     credit="Josh Preister"
                     title="Erosion Control"
+                    key="erosion"
                     description="Due to years of storm runoff, Coffin Springs Hollow in Fontenelle Forest had eroded into a five-hundred-foot-long gully. Soil repeatedly washed from the area into the nearby stream and was thus threatening the health of our Great Marsh ecosystem. With help from our partners and supporters, Fontenelle Forest successfully completed a series of erosion controls in recent years. Check out our projects!" />
 
                   <HabitatThing
                     image="/img/conservation/locallysourced.png"
                     credit="Alex Wiles"
                     title="Prescribed fire"
+                    key="fire"
                     description="While a house on fire in a neighborhood is not a good thing, fire in a prairie or oak woodland IS! Both of these ecological communities are fire dependent and our trained prescribed burn crew reintroduces this often-missing component to the natural systems here at Fontenelle Forest. Read more about our prescribed fire program." />
 
                   <HabitatThing
                     image="/img/conservation/locallysourced.png"
                     title="Invasive species control"
+                    key="invasive"
                     description="We have many beautiful plants in Fontenelle Forest, but some can wreak havoc on our land. In order to restore and maintain our natural habitat, we remove invasive plants. Ornamentals that escape from yards, and plants accidentally brought from other countries can take over when an ecologically community is out of balance. Invasive removal is hard work." />
 
                   <HabitatThing
                     image="/img/conservation/locallysourced.png"
                     title="Nature’s Helpers – Volunteers and YOU!"
+                    key="nature"
                     description="All of the work we do requires many hours of labor, which is where our land steward volunteers come in. Our dedicated group of people is invaluable in our conservation efforts. We also rely on our neighbors to help keep our forest healthy. What can YOU do?" />
 
                 </div>

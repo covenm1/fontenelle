@@ -209,16 +209,13 @@ module.exports = React.createClass({
               <a href="/contact">Contact</a>
             </div>
           </div>
-          <div className='image_container'>
-            <Link to="nature-notes"><img src={classImage} /></Link>
 
-          </div>
           <div className='image_container'>
             <div className='now-left'>
               <img src="/img/forest-now/calendar.jpg" />
             </div>
             <div className='now-right'>
-              <Link to='/save-the-oaks'><img src="/img/forest-now/blog.jpg" /></Link>
+              <Link to='/posts'><img src="/img/forest-now/blog.jpg" /></Link>
             </div>
           </div>
           <div className='image_container'>
