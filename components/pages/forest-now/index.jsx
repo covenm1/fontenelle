@@ -11,6 +11,66 @@ var jsonp = require('superagent-jsonp');
 var Navigation = Router.Navigation;
 var Link = Router.Link;
 
+
+var Event = React.createClass({
+  render : function(){
+    var self = this;
+    if (self.props.age_group == "all") {
+      var age = "All Ages";
+    } else if (self.props.age_group == "adults") {
+      var age = "Adults";
+    } else if (self.props.age_group == "children") {
+      var age = "Children";
+    } else {
+      var age = null;
+    }
+
+    if (self.props.end_date){
+      return (
+        <div className="event green">
+          <h4 className="event_title">{self.props.title}
+            <span className="age">{age}</span>
+          </h4>
+          <div className="event_bar">
+            <span className="date">{moment(self.props.start_date, "YYYYMMDD").format("M/D")} - {moment(self.props.end_date, "YYYYMMDD").format("M/D")}</span>
+            <span className="days">
+              <span className={ ( self.props.days.indexOf('sun') > -1) ? "day active" : "day" }>s</span>
+              <span className={ ( self.props.days.indexOf('mon') > -1) ? "day active" : "day" }>m</span>
+              <span className={ ( self.props.days.indexOf('tues') > -1) ? "day active" : "day" }>t</span>
+              <span className={ ( self.props.days.indexOf('wed') > -1) ? "day active" : "day" }>w</span>
+              <span className={ ( self.props.days.indexOf('thurs') > -1) ? "day active" : "day" }>t</span>
+              <span className={ ( self.props.days.indexOf('fri') > -1) ? "day active" : "day" }>f</span>
+              <span className={ ( self.props.days.indexOf('sat') > -1) ? "day active" : "day" }>s</span>
+            </span>
+            <span className="time">{self.props.start_time}-{self.props.end_time}</span>
+          </div>
+        </div>
+      )
+    } else {
+      return (
+        <div className="event blue">
+          <h4 className="event_title">{self.props.title}
+            <span className="age">{age}</span>
+          </h4>
+          <div className="event_bar">
+            <span className="date">{moment(self.props.start_date, "YYYYMMDD").format("M/D")}</span>
+            <span className="days">
+              <span className={ ( self.props.days.indexOf('sun') > -1) ? "day active" : "day" }>s</span>
+              <span className={ ( self.props.days.indexOf('mon') > -1) ? "day active" : "day" }>m</span>
+              <span className={ ( self.props.days.indexOf('tues') > -1) ? "day active" : "day" }>t</span>
+              <span className={ ( self.props.days.indexOf('wed') > -1) ? "day active" : "day" }>w</span>
+              <span className={ ( self.props.days.indexOf('thurs') > -1) ? "day active" : "day" }>t</span>
+              <span className={ ( self.props.days.indexOf('fri') > -1) ? "day active" : "day" }>f</span>
+              <span className={ ( self.props.days.indexOf('sat') > -1) ? "day active" : "day" }>s</span>
+            </span>
+            <span className="time">{self.props.start_time}-{self.props.end_time}</span>
+          </div>
+        </div>
+      )
+    }
+  }
+});
+
 module.exports = React.createClass({
   mixins: [ Router.State, Navigation ],
   getInitialState: function() {
@@ -18,6 +78,8 @@ module.exports = React.createClass({
       wildlife: [],
       plantlife: [],
       closings: [],
+      posts: [],
+      events: [],
       weather: {}
     };
   },
@@ -29,6 +91,8 @@ module.exports = React.createClass({
     self.loadClosings();
 
     self.loadWeather();
+    self.loadPosts();
+    self.loadEvents();
 
   },
 
@@ -83,7 +147,6 @@ module.exports = React.createClass({
         }.bind(self));
   },
 
-
   loadWildlife: function(){
     var self = this;
       request
@@ -118,6 +181,40 @@ module.exports = React.createClass({
         }.bind(self));
   },
 
+  loadPosts: function(){
+    var self = this;
+    request
+      .get('http://fontenelle.flywheelsites.com/wp-json/posts')
+      .query('type[]=post&filter[posts_per_page]=-1')
+      .end(function(err, res) {
+        if (res.ok) {
+          var posts = res.body;
+          console.log("loadPosts count: " + posts.length);
+          self.setState({ posts: posts });
+
+        } else {
+          console.log('Oh no! error ' + res.text);
+        }
+          }.bind(self));
+  },
+
+  loadEvents: function(){
+    var self = this;
+    request
+      .get('http://fontenelle.flywheelsites.com/wp-json/posts')
+      .query('type[]=events&filter[posts_per_page]=-1')
+      .end(function(err, res) {
+        if (res.ok) {
+          var events = res.body;
+          console.log("loadPosts count: " + events.length);
+          self.setState({ events: events });
+
+        } else {
+          console.log('Oh no! error ' + res.text);
+        }
+          }.bind(self));
+  },
+
   render: function() {
     var self = this;
     var classImage = "/img/forest-now/nature-notes.jpg";
@@ -138,6 +235,29 @@ module.exports = React.createClass({
           <h4 className="plantlife_title">{object.title}</h4>
           <div dangerouslySetInnerHTML={{__html: object.content}}></div>
           <a href={object.meta.naturesearch_link} target="_blank">Read more</a>
+        </div>
+      )
+    });
+
+    var events = self.state.events.map(function(object){
+      return (
+        <Event
+          title={object.title}
+          start_time={object.meta.start_time}
+          end_time={object.meta.end_time}
+          start_date={object.meta.start_date}
+          end_date={object.meta.end_date}
+          days={object.meta.days}
+          age_group={object.meta.age_group}
+          signup_link={object.meta.signup_link} />
+      )
+    });
+
+    var posts = self.state.posts.map(function(object){
+      return (
+        <div className="post">
+          <h4 className="post_headline">{object.title}</h4>
+          <Link className="post_link" to={"/post/" + object.slug}>Read more</Link>
         </div>
       )
     });
@@ -207,6 +327,17 @@ module.exports = React.createClass({
               <span>Trail Maps: <a target="_blank" href="http://fontenelleforest.org/images/stories/Trails/ffnc_trailmap_dec09.pdf">Fontenelle</a>|<a target="_blank" href="http://fontenelleforest.org/images/stories/Trails/neale_woods_map_printable.pdf">Neale Woods</a></span>
               <a href="#">Guidelines</a>
               <a href="/contact">Contact</a>
+            </div>
+          </div>
+
+          <div className='image_container'>
+            <div className='now-left'>
+              <h3 className="week_title marker">This Week: <span className="actual_week">{moment().startOf('week').format('MMMM D')} - {moment().endOf('week').format('MMMM D')} </span></h3>
+              {events}
+            </div>
+            <div className='now-right'>
+              {posts}
+              <Link to='/posts'>VIEW ALL POSTS</Link>
             </div>
           </div>
 

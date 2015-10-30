@@ -120,7 +120,7 @@
 		font-size: 20px;
 	}
 	.main_title {
-		font-size: 75px;
+		font-size: 69px;
 		line-height: 1;
 	}
 	.sub_title {
@@ -205,6 +205,7 @@
 	.halfcontainer {
 		width: 720px;
 		max-width: 100%;
+		padding: 0 30px;
 	}
 	.fn_top_right {
 		background-color: $conservation_color;
@@ -213,5 +214,78 @@
 	.blue_wrapper {
 		background: rgba(18,97,174,0.5);
 		position: relative;
+	}
+}
+
+.event {
+	margin: 0 30px;
+	.event_title {
+		font-family: 'roboto_condensedbold';
+		text-transform: uppercase;
+		 .age {
+			color: #989797;
+			float: right;
+			text-transform: none;
+		}
+	}
+	.event_bar {
+		background: #ebebeb;
+		display: flex;
+		flex-direction: row;
+		.date {
+			color: white;
+			padding: 10px;
+		}
+		.days, .time {
+			flex: 1;
+			text-align: center;
+			padding: 10px 30px;
+			.day {
+				text-transform: uppercase;
+				padding: 0 5px;
+				font-weight: bold;
+				color: #a1a1a1;
+				font-family: 'roboto_condensedbold';
+				font-size: 20px;
+			}
+		}
+		.days {
+			border-right: #d9d9d9 2px solid;
+		}
+	}
+
+	&.blue {
+		.event_title {
+			color: $conservation_color;
+		}
+		.event_bar .date {
+			background: $conservation_color;
+		}
+		.day.active {
+			color: $conservation_color;
+		}
+	}
+	&.green {
+		.event_title {
+			color: #00a098;
+		}
+		.event_bar .date {
+			background: #00a098;
+		}
+		.day.active {
+			color: #00a098;
+		}
+	}
+}
+
+
+.week_title {
+	color: $conservation_color;
+	text-align: center;
+	font-size: 25px;
+	.actual_week {
+		font-family: 'roboto_condensedbold';
+		color:black;
+		font-size: 20px;
 	}
 }
