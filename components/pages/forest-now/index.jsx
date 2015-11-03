@@ -11,6 +11,58 @@ var jsonp = require('superagent-jsonp');
 var Navigation = Router.Navigation;
 var Link = Router.Link;
 
+var Instagram = React.createClass({
+  render: function(){
+    var self = this;
+    var content = self.props.content;
+    var time = self.props.time;
+    var style = {
+      backgroundImage: "url("+content.images.standard_resolution.url+")"
+    }
+    return (
+      <div className="social instagram" style={style}>
+        <div className="social_content">
+          <p className="tweet_text">{content.caption.text}</p>
+          <a href={content.link} className="social_icon" target="_blank"><i className="fa fa-instagram"></i></a>
+        </div>
+        <a href={content.link} className="social_icon" target="_blank"><i className="fa fa-instagram"></i></a>
+      </div>
+    )
+  }
+});
+
+var Tweet = React.createClass({
+  render: function(){
+    var self = this;
+    var content = self.props.content;
+    var time = self.props.time;
+    if (content.extended_entities) {
+      var style = {
+        backgroundImage: "url(" + content.extended_entities.media[0].media_url + ")"
+      }
+    }
+    if ( style ) {
+      return (
+        <div className="social tweet tweetwimage" style={style}>
+          <div className="social_content">
+            <p className="tweet_text">{content.text}</p>
+            <a href={"https://twitter.com/fontenelle4est/status/"+content.id_str} className="social_icon" target="_blank"><i className="fa fa-twitter"></i></a>
+          </div>
+          <a href={"https://twitter.com/fontenelle4est/status/"+content.id_str} className="social_icon" target="_blank"><i className="fa fa-twitter"></i></a>
+        </div>
+      )
+    } else {
+      return (
+        <div className="social tweet">
+          <div className="social_content">
+            <p className="tweet_text">{content.text}</p>
+            <a href={"https://twitter.com/fontenelle4est/status/"+content.id_str} className="social_icon" target="_blank"><i className="fa fa-twitter"></i></a>
+          </div>
+        </div>
+      )
+    }
+  }
+});
 
 var Event = React.createClass({
   render : function(){
@@ -80,7 +132,10 @@ module.exports = React.createClass({
       closings: [],
       posts: [],
       events: [],
-      weather: {}
+      twistagrams: [],
+      weather: {},
+      wildlife_excerpt: "",
+      plantlife_excerpt: ""
     };
   },
 
@@ -93,6 +148,9 @@ module.exports = React.createClass({
     self.loadWeather();
     self.loadPosts();
     self.loadEvents();
+
+    self.loadExcerpts();
+    self.loadTwistagrams();
 
   },
 
@@ -215,6 +273,43 @@ module.exports = React.createClass({
           }.bind(self));
   },
 
+  loadExcerpts: function(){
+    var self = this;
+    request
+      .get('http://fontenelle.flywheelsites.com/wp-json/pages')
+      .query('filter[name]=nature-notes')
+      .end(function(err, res) {
+        if (res.ok) {
+          var page = res.body[0];
+
+          var wildlife_excerpt = page.meta.wildlife;
+          var plantlife_excerpt = page.meta.plantlife;
+
+          self.setState({ wildlife_excerpt: wildlife_excerpt, plantlife_excerpt: plantlife_excerpt });
+
+        } else {
+          console.log('Oh no! error ' + res.text);
+        }
+          }.bind(self));
+  },
+
+  loadTwistagrams: function(){
+    var self = this;
+    request
+      .get('/twistagrams')
+      .end(function(err, res) {
+        if (res.ok) {
+          var twistagrams = res.body;
+
+          self.setState({ twistagrams: twistagrams});
+
+        } else {
+          console.log('Oh no! error ' + res.text);
+        }
+          }.bind(self));
+  },
+
+
   render: function() {
     var self = this;
     var classImage = "/img/forest-now/nature-notes.jpg";
@@ -272,6 +367,17 @@ module.exports = React.createClass({
       backgroundImage: "url(/img/forest-now/nature_notes_bkgd.jpg)"
     }
 
+    var wild_excerpt = self.state.wildlife_excerpt;
+    var plant_excerpt = self.state.plantlife_excerpt;
+
+    var twistagrams = self.state.twistagrams.map(function(object){
+      if (object.type == "instagram") {
+        return <Instagram content={object.content} time={object.time} />
+      } else if (object.type == "tweet") {
+        return <Tweet content={object.content} time={object.time} />
+      }
+    });
+
     return (
       <div>
         <div className="egg_wrap nature_notes_header">
@@ -313,7 +419,9 @@ module.exports = React.createClass({
                   <div className="halfcontainer right">
                     <h2 className="marker nn_main_title">nature notes</h2>
                     <h3 className="nn_title">PLANTLIFE</h3>
+                    <p className="excerpt">{plant_excerpt}</p>
                     <h3 className="nn_title">WILDLIFE</h3>
+                    <p className="excerpt">{wild_excerpt}</p>
                     <Link to="nature-notes" className="marker nn_link">see all</Link>
                   </div>
                 </div>
@@ -351,6 +459,10 @@ module.exports = React.createClass({
           </div>
           <div className='image_container'>
             <img src="/img/forest-now/social-media.jpg" />
+          </div>
+
+          <div className='social_wrapper'>
+            {twistagrams}
           </div>
         </div>
       </div>
