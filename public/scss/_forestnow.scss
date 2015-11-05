@@ -225,6 +225,7 @@
 	.event_title {
 		font-family: 'roboto_condensedbold';
 		text-transform: uppercase;
+		font-size: 20px;
 		 .age {
 			color: #989797;
 			float: right;
@@ -286,10 +287,24 @@
 	color: $conservation_color;
 	text-align: center;
 	font-size: 25px;
+	position: relative;
+	line-height: 75px;
+
 	.actual_week {
 		font-family: 'roboto_condensedbold';
 		color:black;
 		font-size: 20px;
+	}
+
+	.arrow_circle {
+		position: absolute;
+		margin: 15px 0;
+		&.left_arrow {
+			left: 25px;
+		}
+		&.right_arrow {
+			right: 25px;
+		}
 	}
 }
 

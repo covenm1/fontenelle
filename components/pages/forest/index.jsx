@@ -53,7 +53,8 @@ var Main = React.createClass({
       acornLeft: 0,
       windowWidth: window.innerWidth,
       videoOne: false,
-      videoTwo: false
+      videoTwo: false,
+      arrow_class: false
     };
   },
 
@@ -68,6 +69,9 @@ var Main = React.createClass({
       tmp_image.onload = self.onLoad;
       tmp_image.src = load_images[image];
     }
+
+    setInterval(function() { self.setState({arrow_class: !self.state.arrow_class}); }, 500);
+
 
   },
 
@@ -355,6 +359,8 @@ var Main = React.createClass({
     var loadStyle = {
       width: self.state.percent_loaded + "%"
     }
+    var arrow_class = self.state.arrow_class;
+
     if (self.state.loaded == true) {
 
       var drawer = self.state.drawer.map(function(object, index) {
@@ -1520,8 +1526,28 @@ var Main = React.createClass({
 
               <div className="egg_wrap">
                 <div className="main_wrapper bottom_nav">
-                  <span className="prev_page" onClick={self.moveLeft}>Programs</span>
-                  <span className="next_page" onClick={self.moveRight}>Natural Resources</span>
+                  <span className="prev_page" onClick={self.moveLeft}>
+                    <svg className="arrow_circle black left_arrow" x="0px" y="0px" viewBox="0 0 52 52" enableBackground="new 0 0 52 52" >
+                    	<path className="circle" strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"/>
+                    	<g className="arrow" >
+                    		<path strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M22.6,25.9c0,0,1,1.6,1,4.4c0,2.6,0.6,3.5,0.6,3.8c0,0.4-0.3,0.7-0.7,0.5s-8.6-6.2-10.5-8.1
+                    			c0,0-0.2-0.2-0.2-0.5v-0.1c0-0.2,0.1-0.4,0.2-0.5c1.7-1.7,10.1-7.9,10.5-8.1c0.3-0.2,0.7-0.1,0.7,0.5c0,0.3-0.6,1.1-0.6,3.8
+                    			C23.6,24.3,22.6,25.9,22.6,25.9z" />
+                    		<line strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' x1="24.2" y1="25.9" x2="39.3" y2="25.9"/>
+                    	</g>
+                    </svg>
+                    Programs</span>
+                  <span className="next_page" onClick={self.moveRight}>Natural Resources
+                    <svg className="arrow_circle black right_arrow" x="0px" y="0px" viewBox="0 0 52 52" enableBackground="new 0 0 52 52" >
+                    	<path className="circle" strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"/>
+                    	<g className="arrow" >
+                    		<path strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M29.4,25.9c0,0-1,1.6-1,4.4c0,2.6-0.6,3.5-0.6,3.8c0,0.4,0.3,0.7,0.7,0.5s8.6-6.2,10.5-8.1
+                    		c0,0,0.2-0.2,0.2-0.5v-0.1c0-0.2-0.1-0.4-0.2-0.5c-1.7-1.7-10.1-7.9-10.5-8.1c-0.3-0.2-0.7-0.1-0.7,0.5c0,0.3,0.6,1.1,0.6,3.8
+                    		C28.4,24.3,29.4,25.9,29.4,25.9z"/>
+                    		<line strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' x1="27.8" y1="25.9" x2="12.7" y2="25.9"/>
+                    	</g>
+                    </svg>
+                  </span>
                 </div>
               </div>
 
@@ -1534,7 +1560,19 @@ var Main = React.createClass({
             <div className="content_container">
               <div className="video_overlay"></div>
               <div className="content_wrapper">
-                <img src="/img/forest.png" />
+                <img className="old_hero_image" src="/img/forest.png" />
+                <div className="hero_content">
+                  <h1 className="hero_header">INTO THE WOODS</h1>
+                  <h3 className="hero_subheader marker">each visit is its own unique adventure</h3>
+                  <div className="hero_textured_color">
+                    <p> A general overview of Fontenelle, including: locations oand hours, an interactive trail map and wildlife photo gallery</p>
+                  </div>
+                  <div className="hero_icon_wrap">
+                    <span className="line left_line"></span>
+                    <img className={ arrow_class ? "hero_icon up" : "hero_icon" } src="/img/forest/icon_forest.svg" />
+                    <span className="line right_line"></span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -1555,7 +1593,19 @@ var Main = React.createClass({
             <div className="content_container">
               <div className="video_overlay"></div>
               <div className="content_wrapper">
-                <img src="/img/forest.png" />
+                <img className="old_hero_image" src="/img/forest.png" />
+                <div className="hero_content">
+                  <h1 className="hero_header">INTO THE WOODS</h1>
+                  <h3 className="hero_subheader marker">each visit is its own unique adventure</h3>
+                  <div className="hero_textured_color" >
+                    <p> A general overview of Fontenelle, including: locations oand hours, an interactive trail map and wildlife photo gallery</p>
+                  </div>
+                  <div className="hero_icon_wrap">
+                    <span className="line left_line"></span>
+                    <img className={ arrow_class ? "hero_icon up" : "hero_icon" } src="/img/forest/icon_forest.svg" />
+                    <span className="line right_line"></span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
