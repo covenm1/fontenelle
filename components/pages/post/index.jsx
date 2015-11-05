@@ -2,10 +2,6 @@ var React = require('react'),
     request = require('superagent'),
     moment = require('moment'),
     util = require('util');
-
-var jsonp = require('superagent-jsonp');
-var noCache = require('superagent-no-cache')
-
 var Velocity = require('velocity-animate/velocity');
 var InlineSVG = require('react-inlinesvg');
 var Router = require('react-router');
@@ -26,27 +22,23 @@ module.exports = React.createClass({
     self.loadPost();
   },
 
-  componentWillReceiveProps: function () { },
+  componentWillReceiveProps: function () {
+    var self = this;
+    self.loadPost();
+  },
 
   loadPost: function(){
     var self = this;
 
     console.log("loadPost name: " + self.getParams().name);
 
-    // request.set('X-Requested-With', 'XMLHttpRequest')
-    // request.set('Expires', '-1')
-    // request.set('Cache-Control', 'no-cache,no-store,must-revalidate,max-age=-1,private')
-
     request
       .get('http://fontenelle.flywheelsites.com/wp-json/posts')
       .query('filter[name]='+ self.getParams().name)
-      .set('X-Requested-With', 'XMLHttpRequest')
-      .set('Expires', '-1')
-      .set('Cache-Control', 'no-cache,no-store,must-revalidate,max-age=-1,private')
       .end(function(err, res) {
         if (res.ok) {
           var post = res.body;
-          console.log("loadPost content: " + util.inspect(post[0].content));
+
           self.setState({
             title: post[0].title,
             featured_image: post[0].featured_image,
