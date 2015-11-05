@@ -2534,7 +2534,6 @@ module.exports = React.createClass({displayName: "exports",
     request
       .get('https://api.forecast.io/forecast/428664b41344b3a66849ab1e8432105b/41.1797155,-95.9200238')
       .use(jsonp)
-      .set('Cache-Control', 'no-cache,no-store,must-revalidate,max-age=-1,private')
       .end(function(err, res) {
         if (res) {
           var weather = res.body;
@@ -2776,10 +2775,16 @@ module.exports = React.createClass({displayName: "exports",
     });
 
     var posts = self.state.posts.map(function(object){
+      var post_style ={
+        backgroundImage: "url("+ object.featured_image.guid +")"
+      }
       return (
         React.createElement("div", {className: "post"}, 
-          React.createElement("h4", {className: "post_headline"}, object.title), 
-          React.createElement(Link, {className: "post_link", to: "/post/" + object.slug}, "Read more")
+          React.createElement("div", {className: "post_image", style: post_style}), 
+          React.createElement("div", {className: "post_content"}, 
+            React.createElement("h4", {className: "post_headline"}, object.title), 
+            React.createElement(Link, {className: "post_link", to: "/post/" + object.slug}, "Read more")
+          )
         )
       )
     });
@@ -2838,7 +2843,7 @@ module.exports = React.createClass({displayName: "exports",
                     React.createElement(Link, {to: "nature-notes"}, 
                       React.createElement("div", {className: "closings_bar"}, 
                         React.createElement("div", {className: "halfcontainer right"}, 
-                          self.state.closings.length, " Closings"
+                          self.state.closings.length, " Alert", (self.state.closings.length > 1) ? "s" : null
                         )
                       )
                     )
@@ -2874,7 +2879,7 @@ module.exports = React.createClass({displayName: "exports",
             ), 
             React.createElement("div", {className: "now-right"}, 
               posts, 
-              React.createElement(Link, {to: "/posts"}, "VIEW ALL POSTS")
+              React.createElement(Link, {to: "/posts", className: "all_posts_link"}, "VIEW ALL POSTS")
             )
           ), 
 
@@ -5265,6 +5270,7 @@ module.exports = React.createClass({displayName: "exports",
     request
       .get('http://fontenelle.flywheelsites.com/wp-json/posts')
       .query('filter[name]='+ self.getParams().name)
+      .set('Cache-Control', 'no-cache,no-store,must-revalidate,max-age=-1,private')
       .end(function(err, res) {
         if (res.ok) {
           var post = res.body;
@@ -5338,6 +5344,7 @@ module.exports = React.createClass({displayName: "exports",
     request
       .get('http://fontenelle.flywheelsites.com/wp-json/posts')
       .query('type[]=post&filter[posts_per_page]=-1')
+      .set('Cache-Control', 'no-cache,no-store,must-revalidate,max-age=-1,private')
       .end(function(err, res) {
         if (res.ok) {
           var posts = res.body;
@@ -5353,10 +5360,16 @@ module.exports = React.createClass({displayName: "exports",
   render: function() {
     var self = this;
     var posts = self.state.posts.map(function(object){
+      var post_style ={
+        backgroundImage: "url("+ object.featured_image.guid +")"
+      }
       return (
         React.createElement("div", {className: "post"}, 
-          React.createElement("h4", {className: "post_headline"}, object.title), 
-          React.createElement(Link, {className: "post_link", to: "/post/" + object.slug}, "Read more")
+          React.createElement("div", {className: "post_image", style: post_style}), 
+          React.createElement("div", {className: "post_content"}, 
+            React.createElement("h4", {className: "post_headline"}, object.title), 
+            React.createElement(Link, {className: "post_link", to: "/post/" + object.slug}, "Read more")
+          )
         )
       )
     });

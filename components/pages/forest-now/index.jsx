@@ -163,7 +163,6 @@ module.exports = React.createClass({
     request
       .get('https://api.forecast.io/forecast/428664b41344b3a66849ab1e8432105b/41.1797155,-95.9200238')
       .use(jsonp)
-      .set('Cache-Control', 'no-cache,no-store,must-revalidate,max-age=-1,private')
       .end(function(err, res) {
         if (res) {
           var weather = res.body;
@@ -405,10 +404,16 @@ module.exports = React.createClass({
     });
 
     var posts = self.state.posts.map(function(object){
+      var post_style ={
+        backgroundImage: "url("+ object.featured_image.guid +")"
+      }
       return (
         <div className="post">
-          <h4 className="post_headline">{object.title}</h4>
-          <Link className="post_link" to={"/post/" + object.slug}>Read more</Link>
+          <div className="post_image" style={post_style}></div>
+          <div className="post_content">
+            <h4 className="post_headline">{object.title}</h4>
+            <Link className="post_link" to={"/post/" + object.slug}>Read more</Link>
+          </div>
         </div>
       )
     });
@@ -467,7 +472,7 @@ module.exports = React.createClass({
                     <Link to="nature-notes">
                       <div className="closings_bar">
                         <div className="halfcontainer right">
-                          {self.state.closings.length} Closings
+                          {self.state.closings.length} Alert{(self.state.closings.length > 1) ? "s" : null}
                         </div>
                       </div>
                     </Link>
@@ -503,7 +508,7 @@ module.exports = React.createClass({
             </div>
             <div className='now-right'>
               {posts}
-              <Link to='/posts'>VIEW ALL POSTS</Link>
+              <Link to='/posts' className="all_posts_link">VIEW ALL POSTS</Link>
             </div>
           </div>
 
