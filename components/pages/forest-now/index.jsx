@@ -11,6 +11,118 @@ var jsonp = require('superagent-jsonp');
 var Navigation = Router.Navigation;
 var Link = Router.Link;
 
+var Instagram = React.createClass({
+  render: function(){
+    var self = this;
+    var content = self.props.content;
+    var time = self.props.time;
+    var style = {
+      backgroundImage: "url("+content.images.standard_resolution.url+")"
+    }
+    return (
+      <div className="social instagram" style={style}>
+        <div className="social_content">
+          <p className="tweet_text">{content.caption.text}</p>
+          <a href={content.link} className="social_icon" target="_blank"><i className="fa fa-instagram"></i></a>
+        </div>
+        <a href={content.link} className="social_icon" target="_blank"><i className="fa fa-instagram"></i></a>
+      </div>
+    )
+  }
+});
+
+var Tweet = React.createClass({
+  render: function(){
+    var self = this;
+    var content = self.props.content;
+    var time = self.props.time;
+    if (content.extended_entities) {
+      var style = {
+        backgroundImage: "url(" + content.extended_entities.media[0].media_url + ")"
+      }
+    }
+    if ( style ) {
+      return (
+        <div className="social tweet tweetwimage" style={style}>
+          <div className="social_content">
+            <p className="tweet_text">{content.text}</p>
+            <a href={"https://twitter.com/fontenelle4est/status/"+content.id_str} className="social_icon" target="_blank"><i className="fa fa-twitter"></i></a>
+          </div>
+          <a href={"https://twitter.com/fontenelle4est/status/"+content.id_str} className="social_icon" target="_blank"><i className="fa fa-twitter"></i></a>
+        </div>
+      )
+    } else {
+      return (
+        <div className="social tweet">
+          <div className="social_content">
+            <p className="tweet_text">{content.text}</p>
+            <a href={"https://twitter.com/fontenelle4est/status/"+content.id_str} className="social_icon" target="_blank"><i className="fa fa-twitter"></i></a>
+          </div>
+        </div>
+      )
+    }
+  }
+});
+
+var Event = React.createClass({
+  render : function(){
+    var self = this;
+    if (self.props.age_group == "all") {
+      var age = "All Ages";
+    } else if (self.props.age_group == "adults") {
+      var age = "Adults";
+    } else if (self.props.age_group == "children") {
+      var age = "Children";
+    } else {
+      var age = null;
+    }
+
+    if (self.props.end_date){
+      return (
+        <div className="event green">
+          <h4 className="event_title">{self.props.title}
+            <span className="age">{age}</span>
+          </h4>
+          <div className="event_bar">
+            <span className="date">{moment(self.props.start_date, "YYYYMMDD").format("M/D")} - {moment(self.props.end_date, "YYYYMMDD").format("M/D")}</span>
+            <span className="days">
+              <span className={ ( self.props.days.indexOf('sun') > -1) ? "day active" : "day" }>s</span>
+              <span className={ ( self.props.days.indexOf('mon') > -1) ? "day active" : "day" }>m</span>
+              <span className={ ( self.props.days.indexOf('tues') > -1) ? "day active" : "day" }>t</span>
+              <span className={ ( self.props.days.indexOf('wed') > -1) ? "day active" : "day" }>w</span>
+              <span className={ ( self.props.days.indexOf('thurs') > -1) ? "day active" : "day" }>t</span>
+              <span className={ ( self.props.days.indexOf('fri') > -1) ? "day active" : "day" }>f</span>
+              <span className={ ( self.props.days.indexOf('sat') > -1) ? "day active" : "day" }>s</span>
+            </span>
+            <span className="time">{self.props.start_time}-{self.props.end_time}</span>
+          </div>
+        </div>
+      )
+    } else {
+      return (
+        <div className="event blue">
+          <h4 className="event_title">{self.props.title}
+            <span className="age">{age}</span>
+          </h4>
+          <div className="event_bar">
+            <span className="date">{moment(self.props.start_date, "YYYYMMDD").format("M/D")}</span>
+            <span className="days">
+              <span className={ ( self.props.days.indexOf('sun') > -1) ? "day active" : "day" }>s</span>
+              <span className={ ( self.props.days.indexOf('mon') > -1) ? "day active" : "day" }>m</span>
+              <span className={ ( self.props.days.indexOf('tues') > -1) ? "day active" : "day" }>t</span>
+              <span className={ ( self.props.days.indexOf('wed') > -1) ? "day active" : "day" }>w</span>
+              <span className={ ( self.props.days.indexOf('thurs') > -1) ? "day active" : "day" }>t</span>
+              <span className={ ( self.props.days.indexOf('fri') > -1) ? "day active" : "day" }>f</span>
+              <span className={ ( self.props.days.indexOf('sat') > -1) ? "day active" : "day" }>s</span>
+            </span>
+            <span className="time">{self.props.start_time}-{self.props.end_time}</span>
+          </div>
+        </div>
+      )
+    }
+  }
+});
+
 module.exports = React.createClass({
   mixins: [ Router.State, Navigation ],
   getInitialState: function() {
@@ -18,7 +130,12 @@ module.exports = React.createClass({
       wildlife: [],
       plantlife: [],
       closings: [],
-      weather: {}
+      posts: [],
+      events: [],
+      twistagrams: [],
+      weather: {},
+      wildlife_excerpt: "",
+      plantlife_excerpt: ""
     };
   },
 
@@ -29,6 +146,11 @@ module.exports = React.createClass({
     self.loadClosings();
 
     self.loadWeather();
+    self.loadPosts();
+    self.loadEvents();
+
+    self.loadExcerpts();
+    self.loadTwistagrams();
 
   },
 
@@ -83,7 +205,6 @@ module.exports = React.createClass({
         }.bind(self));
   },
 
-
   loadWildlife: function(){
     var self = this;
       request
@@ -118,6 +239,77 @@ module.exports = React.createClass({
         }.bind(self));
   },
 
+  loadPosts: function(){
+    var self = this;
+    request
+      .get('http://fontenelle.flywheelsites.com/wp-json/posts')
+      .query('type[]=post&filter[posts_per_page]=-1')
+      .end(function(err, res) {
+        if (res.ok) {
+          var posts = res.body;
+          console.log("loadPosts count: " + posts.length);
+          self.setState({ posts: posts });
+
+        } else {
+          console.log('Oh no! error ' + res.text);
+        }
+          }.bind(self));
+  },
+
+  loadEvents: function(){
+    var self = this;
+    request
+      .get('http://fontenelle.flywheelsites.com/wp-json/posts')
+      .query('type[]=events&filter[posts_per_page]=-1')
+      .end(function(err, res) {
+        if (res.ok) {
+          var events = res.body;
+          console.log("loadPosts count: " + events.length);
+          self.setState({ events: events });
+
+        } else {
+          console.log('Oh no! error ' + res.text);
+        }
+          }.bind(self));
+  },
+
+  loadExcerpts: function(){
+    var self = this;
+    request
+      .get('http://fontenelle.flywheelsites.com/wp-json/pages')
+      .query('filter[name]=nature-notes')
+      .end(function(err, res) {
+        if (res.ok) {
+          var page = res.body[0];
+
+          var wildlife_excerpt = page.meta.wildlife;
+          var plantlife_excerpt = page.meta.plantlife;
+
+          self.setState({ wildlife_excerpt: wildlife_excerpt, plantlife_excerpt: plantlife_excerpt });
+
+        } else {
+          console.log('Oh no! error ' + res.text);
+        }
+          }.bind(self));
+  },
+
+  loadTwistagrams: function(){
+    var self = this;
+    request
+      .get('/twistagrams')
+      .end(function(err, res) {
+        if (res.ok) {
+          var twistagrams = res.body;
+
+          self.setState({ twistagrams: twistagrams});
+
+        } else {
+          console.log('Oh no! error ' + res.text);
+        }
+          }.bind(self));
+  },
+
+
   render: function() {
     var self = this;
     var classImage = "/img/forest-now/nature-notes.jpg";
@@ -142,6 +334,29 @@ module.exports = React.createClass({
       )
     });
 
+    var events = self.state.events.map(function(object){
+      return (
+        <Event
+          title={object.title}
+          start_time={object.meta.start_time}
+          end_time={object.meta.end_time}
+          start_date={object.meta.start_date}
+          end_date={object.meta.end_date}
+          days={object.meta.days}
+          age_group={object.meta.age_group}
+          signup_link={object.meta.signup_link} />
+      )
+    });
+
+    var posts = self.state.posts.map(function(object){
+      return (
+        <div className="post">
+          <h4 className="post_headline">{object.title}</h4>
+          <Link className="post_link" to={"/post/" + object.slug}>Read more</Link>
+        </div>
+      )
+    });
+
     var closings = self.state.closings.map(function(object){
       return <p className="closings_title">{object.title}</p>
     });
@@ -151,6 +366,17 @@ module.exports = React.createClass({
     var nature_notes_image = {
       backgroundImage: "url(/img/forest-now/nature_notes_bkgd.jpg)"
     }
+
+    var wild_excerpt = self.state.wildlife_excerpt;
+    var plant_excerpt = self.state.plantlife_excerpt;
+
+    var twistagrams = self.state.twistagrams.map(function(object){
+      if (object.type == "instagram") {
+        return <Instagram content={object.content} time={object.time} />
+      } else if (object.type == "tweet") {
+        return <Tweet content={object.content} time={object.time} />
+      }
+    });
 
     return (
       <div>
@@ -193,7 +419,9 @@ module.exports = React.createClass({
                   <div className="halfcontainer right">
                     <h2 className="marker nn_main_title">nature notes</h2>
                     <h3 className="nn_title">PLANTLIFE</h3>
+                    <p className="excerpt">{plant_excerpt}</p>
                     <h3 className="nn_title">WILDLIFE</h3>
+                    <p className="excerpt">{wild_excerpt}</p>
                     <Link to="nature-notes" className="marker nn_link">see all</Link>
                   </div>
                 </div>
@@ -209,20 +437,32 @@ module.exports = React.createClass({
               <a href="/contact">Contact</a>
             </div>
           </div>
-          <div className='image_container'>
-            <Link to="nature-notes"><img src={classImage} /></Link>
 
+          <div className='image_container'>
+            <div className='now-left'>
+              <h3 className="week_title marker">This Week: <span className="actual_week">{moment().startOf('week').format('MMMM D')} - {moment().endOf('week').format('MMMM D')} </span></h3>
+              {events}
+            </div>
+            <div className='now-right'>
+              {posts}
+              <Link to='/posts'>VIEW ALL POSTS</Link>
+            </div>
           </div>
+
           <div className='image_container'>
             <div className='now-left'>
               <img src="/img/forest-now/calendar.jpg" />
             </div>
             <div className='now-right'>
-              <Link to='/save-the-oaks'><img src="/img/forest-now/blog.jpg" /></Link>
+              <Link to='/posts'><img src="/img/forest-now/blog.jpg" /></Link>
             </div>
           </div>
           <div className='image_container'>
             <img src="/img/forest-now/social-media.jpg" />
+          </div>
+
+          <div className='social_wrapper'>
+            {twistagrams}
           </div>
         </div>
       </div>
