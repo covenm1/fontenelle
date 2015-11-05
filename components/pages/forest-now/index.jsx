@@ -163,6 +163,7 @@ module.exports = React.createClass({
     request
       .get('https://api.forecast.io/forecast/428664b41344b3a66849ab1e8432105b/41.1797155,-95.9200238')
       .use(jsonp)
+      .set('Cache-Control', 'no-cache,no-store,must-revalidate,max-age=-1,private')
       .end(function(err, res) {
         if (res) {
           var weather = res.body;
@@ -180,6 +181,7 @@ module.exports = React.createClass({
       request
         .get('http://fontenelle.flywheelsites.com/wp-json/posts')
         .query('type[]=plantlife&filter[posts_per_page]=-1')
+        .set('Cache-Control', 'no-cache,no-store,must-revalidate,max-age=-1,private')
         .end(function(err, res) {
       if (res.ok) {
         var plantlife = res.body;
@@ -197,6 +199,7 @@ module.exports = React.createClass({
       request
         .get('http://fontenelle.flywheelsites.com/wp-json/posts')
         .query('type[]=wildlife&filter[posts_per_page]=-1')
+        .set('Cache-Control', 'no-cache,no-store,must-revalidate,max-age=-1,private')
         .end(function(err, res) {
       if (res.ok) {
         var wildlife = res.body;
@@ -214,6 +217,7 @@ module.exports = React.createClass({
       request
         .get('http://fontenelle.flywheelsites.com/wp-json/posts')
         .query('type[]=closings&filter[posts_per_page]=-1')
+        .set('Cache-Control', 'no-cache,no-store,must-revalidate,max-age=-1,private')
         .end(function(err, res) {
       if (res.ok) {
         var closings = res.body;
@@ -231,6 +235,7 @@ module.exports = React.createClass({
     request
       .get('http://fontenelle.flywheelsites.com/wp-json/posts')
       .query('type[]=post&filter[posts_per_page]=-1')
+      .set('Cache-Control', 'no-cache,no-store,must-revalidate,max-age=-1,private')
       .end(function(err, res) {
         if (res.ok) {
           var posts = res.body;
@@ -251,6 +256,7 @@ module.exports = React.createClass({
     request
       .get('http://fontenelle.flywheelsites.com/wp-json/posts')
       .query('type[]=events&filter[posts_per_page]=-1&filter[meta_query]&filter[meta_key]=week&filter[meta_value]=' + this_week)
+      .set('Cache-Control', 'no-cache,no-store,must-revalidate,max-age=-1,private')
       .end(function(err, res) {
         if (res.ok) {
           var events = res.body;
@@ -275,6 +281,7 @@ module.exports = React.createClass({
     request
       .get('http://fontenelle.flywheelsites.com/wp-json/posts')
       .query('type[]=events&filter[posts_per_page]=-1&filter[meta_query]&filter[meta_key]=week&filter[meta_value]=' + this_week)
+      .set('Cache-Control', 'no-cache,no-store,must-revalidate,max-age=-1,private')
       .end(function(err, res) {
         if (res.ok) {
           var events = res.body;
@@ -300,6 +307,7 @@ module.exports = React.createClass({
     request
       .get('http://fontenelle.flywheelsites.com/wp-json/posts')
       .query('type[]=events&filter[posts_per_page]=-1&filter[meta_query]&filter[meta_key]=week&filter[meta_value]=' + this_week)
+      .set('Cache-Control', 'no-cache,no-store,must-revalidate,max-age=-1,private')
       .end(function(err, res) {
         if (res.ok) {
           var events = res.body;
@@ -317,12 +325,13 @@ module.exports = React.createClass({
         }
           }.bind(self));
   },
- 
+
   loadExcerpts: function(){
     var self = this;
     request
       .get('http://fontenelle.flywheelsites.com/wp-json/pages')
       .query('filter[name]=nature-notes')
+      .set('Cache-Control', 'no-cache,no-store,must-revalidate,max-age=-1,private')
       .end(function(err, res) {
         if (res.ok) {
           var page = res.body[0];
@@ -342,6 +351,7 @@ module.exports = React.createClass({
     var self = this;
     request
       .get('/twistagrams')
+      .set('Cache-Control', 'no-cache,no-store,must-revalidate,max-age=-1,private')
       .end(function(err, res) {
         if (res.ok) {
           var twistagrams = res.body;

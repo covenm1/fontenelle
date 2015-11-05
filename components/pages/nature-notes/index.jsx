@@ -72,6 +72,7 @@ module.exports = React.createClass({
       request
         .get('http://fontenelle.flywheelsites.com/wp-json/posts')
         .query('type[]=plantlife&filter[posts_per_page]=-1')
+        .set('Cache-Control', 'no-cache,no-store,must-revalidate,max-age=-1,private')
         .end(function(err, res) {
       if (res.ok) {
         var plantlife = res.body;
@@ -90,6 +91,7 @@ module.exports = React.createClass({
       request
         .get('http://fontenelle.flywheelsites.com/wp-json/posts')
         .query('type[]=wildlife&filter[posts_per_page]=-1')
+        .set('Cache-Control', 'no-cache,no-store,must-revalidate,max-age=-1,private')
         .end(function(err, res) {
       if (res.ok) {
         var wildlife = res.body;
@@ -107,6 +109,7 @@ module.exports = React.createClass({
       request
         .get('http://fontenelle.flywheelsites.com/wp-json/posts')
         .query('type[]=closings&filter[posts_per_page]=-1')
+        .set('Cache-Control', 'no-cache,no-store,must-revalidate,max-age=-1,private')
         .end(function(err, res) {
       if (res.ok) {
         var closings = res.body;
