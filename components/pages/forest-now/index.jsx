@@ -317,7 +317,7 @@ module.exports = React.createClass({
         }
           }.bind(self));
   },
-
+ 
   loadExcerpts: function(){
     var self = this;
     request
@@ -378,7 +378,7 @@ module.exports = React.createClass({
         </div>
       )
     });
-    
+
     var events = self.state.events.map(function(object){
       return (
         <Event

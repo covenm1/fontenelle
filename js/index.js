@@ -2506,7 +2506,8 @@ module.exports = React.createClass({displayName: "exports",
       twistagrams: [],
       weather: {},
       wildlife_excerpt: "",
-      plantlife_excerpt: ""
+      plantlife_excerpt: "",
+      week: ''
     };
   },
 
@@ -2615,14 +2616,22 @@ module.exports = React.createClass({displayName: "exports",
 
   loadEvents: function(){
     var self = this;
+
+    var this_week = moment().startOf('week').add(1, 'd').format('DDMMYYYY');
+
     request
       .get('http://fontenelle.flywheelsites.com/wp-json/posts')
-      .query('type[]=events&filter[posts_per_page]=-1')
+      .query('type[]=events&filter[posts_per_page]=-1&filter[meta_query]&filter[meta_key]=week&filter[meta_value]=' + this_week)
       .end(function(err, res) {
         if (res.ok) {
           var events = res.body;
-          console.log("loadPosts count: " + events.length);
-          self.setState({ events: events });
+
+          var sorted_events = events.sort(function(a, b) {
+            return parseInt(a.meta.start_date) - parseInt(b.meta.start_date) ;
+          });
+
+
+          self.setState({ events: sorted_events, week: this_week });
 
         } else {
           console.log('Oh no! error ' + res.text);
@@ -2630,6 +2639,56 @@ module.exports = React.createClass({displayName: "exports",
           }.bind(self));
   },
 
+  nextWeek: function(){
+    var self = this;
+    var this_week = moment(self.state.week, 'DDMMYYYY').add(1, 'w').startOf('week').add(1, 'd').format('DDMMYYYY');
+
+    request
+      .get('http://fontenelle.flywheelsites.com/wp-json/posts')
+      .query('type[]=events&filter[posts_per_page]=-1&filter[meta_query]&filter[meta_key]=week&filter[meta_value]=' + this_week)
+      .end(function(err, res) {
+        if (res.ok) {
+          var events = res.body;
+
+          var sorted_events = events.sort(function(a, b) {
+            return parseInt(a.meta.start_date) - parseInt(b.meta.start_date) ;
+          });
+
+          console.log('nextWeek: ' + events.length);
+
+          self.setState({ events: sorted_events, week: this_week });
+
+        } else {
+          console.log('Oh no! error ' + res.text);
+        }
+          }.bind(self));
+  },
+
+  prevWeek: function(){
+    var self = this;
+    var this_week = moment(self.state.week, 'DDMMYYYY').subtract(1, 'w').startOf('week').add(1, 'd').format('DDMMYYYY');
+
+    request
+      .get('http://fontenelle.flywheelsites.com/wp-json/posts')
+      .query('type[]=events&filter[posts_per_page]=-1&filter[meta_query]&filter[meta_key]=week&filter[meta_value]=' + this_week)
+      .end(function(err, res) {
+        if (res.ok) {
+          var events = res.body;
+          console.log('prevWeek: ' + events.length);
+
+          var sorted_events = events.sort(function(a, b) {
+            return parseInt(a.meta.start_date) - parseInt(b.meta.start_date) ;
+          });
+
+
+          self.setState({ events: sorted_events, week: this_week });
+
+        } else {
+          console.log('Oh no! error ' + res.text);
+        }
+          }.bind(self));
+  },
+ 
   loadExcerpts: function(){
     var self = this;
     request
@@ -2701,7 +2760,8 @@ module.exports = React.createClass({displayName: "exports",
           end_date: object.meta.end_date, 
           days: object.meta.days, 
           age_group: object.meta.age_group, 
-          signup_link: object.meta.signup_link})
+          signup_link: object.meta.signup_link, 
+          key: Math.random()})
       )
     });
 
@@ -2797,7 +2857,9 @@ module.exports = React.createClass({displayName: "exports",
 
           React.createElement("div", {className: "image_container"}, 
             React.createElement("div", {className: "now-left"}, 
-              React.createElement("h3", {className: "week_title marker"}, "This Week: ", React.createElement("span", {className: "actual_week"}, moment().startOf('week').format('MMMM D'), " - ", moment().endOf('week').format('MMMM D'), " ")), 
+              React.createElement("h3", {className: "week_title marker"}, "This Week: ", React.createElement("span", {className: "actual_week"}, moment(self.state.week, 'DDMMYYYY').startOf('week').format('MMMM D'), " - ", moment(self.state.week, 'DDMMYYYY').endOf('week').format('MMMM D'), " ")), 
+              React.createElement("span", {className: "prev_week", onClick: self.prevWeek}, "Previous Week"), 
+              React.createElement("span", {className: "next_week", onClick: self.nextWeek}, "Next Week"), 
               events
             ), 
             React.createElement("div", {className: "now-right"}, 
@@ -2806,18 +2868,11 @@ module.exports = React.createClass({displayName: "exports",
             )
           ), 
 
-          React.createElement("div", {className: "image_container"}, 
-            React.createElement("div", {className: "now-left"}, 
-              React.createElement("img", {src: "/img/forest-now/calendar.jpg"})
-            ), 
-            React.createElement("div", {className: "now-right"}, 
-              React.createElement(Link, {to: "/posts"}, React.createElement("img", {src: "/img/forest-now/blog.jpg"}))
+          React.createElement("div", {className: "now-blue social_blue"}, 
+            React.createElement("div", {className: "now-links image_container marker"}, 
+              "@fontenelleforest / #4estnow / #fontenelleforest"
             )
           ), 
-          React.createElement("div", {className: "image_container"}, 
-            React.createElement("img", {src: "/img/forest-now/social-media.jpg"})
-          ), 
-
           React.createElement("div", {className: "social_wrapper"}, 
             twistagrams
           )
@@ -4420,6 +4475,88 @@ module.exports =  React.createClass({displayName: "exports",
 
     return (
       React.createElement("div", null, 
+        React.createElement("div", {className: "egg_wrap fb_container"}, 
+          React.createElement("div", {className: "featured_image"})
+        ), 
+        React.createElement("div", {className: "egg_wrap fb_container"}, 
+          React.createElement("div", {className: "fb_wrapper gi_wrapper main_wrapper"}, 
+            React.createElement("div", {className: "centered_content fb_intro donate"}, 
+              React.createElement("h2", {className: "marker"}, "CONTACT"), 
+              React.createElement("p", null, "If you find an injured or downed raptor, please call the FFRR Center or one of the numbers listed below. Leave a voicemail if there is no answer, and your call will be returned. You may also contact the nearest Nebraska Games & Parks Conservation Officer, your local Humane Society, or local law enforcement."), 
+              React.createElement("img", {className: "fb_break", src: "/img/conservation/divider_bottom_grey.png"})
+            )
+          )
+        ), 
+        React.createElement("div", {className: "egg_wrap fb_container"}, 
+          React.createElement("div", {className: "fb_wrapper gi_wrapper main_wrapper"}, 
+            React.createElement("div", {className: "centered_content fb_contact donate"}, 
+              React.createElement("div", {className: "fb_numbers"}, 
+                React.createElement("ul", null, 
+                  React.createElement("li", null, 
+                    React.createElement("h3", null, "FFRR Center"), 
+                    React.createElement("p", null, "Betsy: 402-994-2009")
+                  ), 
+                  React.createElement("li", null, 
+                    React.createElement("h3", null, "A - Omaha Area"), 
+                    React.createElement("p", null, "Denise: 402-994-2009"), 
+                    React.createElement("p", null, "Warren: 402-990-9779")
+                  ), 
+                  React.createElement("li", null, 
+                    React.createElement("h3", null, "B - North East Nebraska"), 
+                    React.createElement("p", null, "Natalie: 402-863-2261")
+                  ), 
+                  React.createElement("li", null, 
+                    React.createElement("h3", null, "C - South East Nebraska"), 
+                    React.createElement("p", null, "Janet: 402-525-8682"), 
+                    React.createElement("p", null, "Elaine: 402-488-7586"), 
+                    React.createElement("p", null, "Carri: 402-483-4303")
+                  ), 
+                  React.createElement("li", null, 
+                    React.createElement("h3", null, "D - Central/Western Nebraska"), 
+                    React.createElement("p", null, "Vickie: 308-750-3816"), 
+                    React.createElement("p", null, "Blake: 308-383-1875")
+                  )
+                )
+              ), 
+              React.createElement("div", {className: "fb_map"}, 
+                React.createElement("img", {src: "/img/found-raptor/foundbird_map.svg"})
+              )
+            )
+          )
+        ), 
+        React.createElement("div", {className: "egg_wrap fb_container"}, 
+          React.createElement("div", {className: "fb_wrapper gi_wrapper main_wrapper"}, 
+            React.createElement("div", {className: "centered_content fb_guidelines donate"}, 
+              React.createElement("h2", {className: "marker"}, "IMPORTANT GUIDELINES"), 
+              React.createElement("div", {className: "fb_columns"}, 
+                React.createElement("ul", null, 
+                  React.createElement("li", {className: "fb_listhead"}, "FIRST RULE OF RAPTOR HANDLING\u0003"), 
+                  React.createElement("li", null, "Keep yourself safe! If you don't feel comfortable or are not able to capture the bird, please try to cover it with a laundry basket or ventilated cardboard box until a representative from FFRR can arrive."), 
+                  React.createElement("li", null, "The raptor you are attempting to rescue will NOT understand that you are trying to help it. When you approach, it will likely try to protect itself and may attack you."), 
+                  React.createElement("li", null, "Approach the bird from behind, if possible."), 
+                  React.createElement("li", null, "Cover the bird completely with a large towel, blanket, jacket, or any light-weight item."), 
+                  React.createElement("li", null, "Cautiously and slowly approach the bird and gently restrain it with the covering - locate the legs and grasp them gently with a finger in between the legs (birds seldom respond to something slowly coming at their feet)."), 
+                  React.createElement("li", null, "As the bird calms down, gather the covering together, being careful to keep the bird covered completely - be sure the wings are folded against its body, and be careful of its talons."), 
+                  React.createElement("li", {className: "fb_listhead"}, "WHEN TO OBSERVE"), 
+                  React.createElement("li", null, "Sometimes, members of the public happen upon a young raptor and pick up the bird believing it is orphaned, not realizing the parents are watching. Before removing a young bird from its home, observe and watch to determine if parents are returning with food. A young raptor’s best chance of survival is to be raised by its parents in the wild. If the youngster’s parents are still providing food, leave the bird alone. If the young raptor is in immediate danger from predators such as cats and dogs, try placing it on a higher branch off the ground.")
+                ), 
+                React.createElement("ul", null, 
+                  React.createElement("li", null, "Transfer the bird to a well-ventilated cardboard box (i.e. with small air holes) as soon as possible—the box should be big enough for the bird to stand up, but not turn around easily (if available, please put a piece of old carpet in the bottom of the box—helps keep the bird from sliding around and being further injured)."), 
+                  React.createElement("li", null, "Contact Fontenelle Forest's Raptor Recovery or the Nebraska Game and Parks Commission (if not already accomplished)."), 
+                  React.createElement("li", null, "Do not attempt to treat or feed the bird yourself! Many well-meaning attempts have resulted in further injury or the death of a bird"), 
+                  React.createElement("li", null, "All wild birds are protected under Nebraska and federal laws. It is illegal for you to possess or keep a wild bird unless you aretemporarily transporting an injured bird to a permitted rehabilitator."), 
+                  React.createElement("li", {className: "fb_listhead"}, "WHEN TO TAKE ACTION/CALL\u0003The bird is obviously injured, a wing is drooping, you see blood, or the bird is lying on the ground, is trapped, or caught in something, e.g. barbed wire or other fence/netting"), 
+                  React.createElement("li", null, "The bird is in obvious danger from a predator or in danger of being captured by one."), 
+                  React.createElement("li", null, "There are hazards nearby like busy roads or large pools of water."), 
+                  React.createElement("li", null, "The parents have been killed or seriously injured."), 
+                  React.createElement("li", null, "The bird has its eyes closed and does not respond to your presence."), 
+                  React.createElement("li", {className: "fb_listhead"}, "NON-RAPTOR BIRD RESCUE"), 
+                  React.createElement("li", null, "Please bear in mind that Fontenelle Forest Raptor Recovery only cares for birds of prey. If you find non-raptor birds that are injured, please call Nebraska Wildlife Rehabilitation at 402-234-2473 or visit their website: nebraskawildliferehab.org.")
+                )
+              )
+            )
+          )
+        ), 
         React.createElement("div", {className: "egg_wrap static"}, 
           React.createElement("div", {className: "main_wrapper"}, 
             React.createElement("img", {src: "/img/found-raptor/page.png"})
@@ -4452,12 +4589,129 @@ module.exports = React.createClass({displayName: "exports",
     var self = this;
 
     return (
-      React.createElement("div", null, 
-        React.createElement("div", {className: "egg_wrap static"}, 
-          React.createElement("div", {className: "image_container"}, 
-            React.createElement("img", {src: "/img/get-involved/Get-involved-donate.jpg"}), 
-            React.createElement("img", {src: "/img/get-involved/Get-involved-membership.jpg"}), 
-            React.createElement("img", {src: "/img/get-involved/Get-involved-volunteer.jpg"})
+      React.createElement("div", {className: "egg_wrap"}, 
+        React.createElement("div", {className: "gi_video"}, 
+          React.createElement("div", {id: "donate", className: "donate video_overlay"}), 
+          React.createElement("div", {className: "gi_wrapper"}, 
+            React.createElement("div", {className: "centered_content"}, 
+              React.createElement("img", {className: "arrow_gi", src: "/img/get-involved/arrow_donate-01.svg"})
+            )
+          )
+        ), 
+        React.createElement("div", {className: "egg_wrap donate_container"}, 
+          React.createElement("div", {className: "gi_wrapper main_wrapper"}, 
+            React.createElement("div", {className: "centered_content donate"}, 
+              React.createElement("h2", {className: "marker"}, "DONATE"), 
+              React.createElement("p", null, "It is because of our many generous donors that we are able to offer such a breadth and depth of conservation initiatives, educational activities, and other programs in the forest. Your tax-deductible gifts will go toward ongoing stewardship of over 2,000 acres of natural land and programs that benefit over 80,000 visitors each year."), 
+              React.createElement("img", {className: "gi_break", src: "/img/conservation/divider_bottom_grey.png"}), 
+              React.createElement("div", {className: "element_contain"}, 
+                React.createElement("a", {className: "gi_button marker", href: ""}, "Donate")
+              )
+            )
+          )
+        ), 
+
+        React.createElement("div", {className: "gi_video"}, 
+          React.createElement("div", {id: "membership", className: "join video_overlay"}), 
+          React.createElement("div", {className: "gi_wrapper"}, 
+            React.createElement("div", {className: "centered_content"}, 
+              React.createElement("img", {className: "arrow_gi", src: "/img/get-involved/arrow_join-01.svg"})
+            )
+          )
+        ), 
+        React.createElement("div", {className: "egg_wrap join_container"}, 
+          React.createElement("div", {className: "gi_wrapper main_wrapper"}, 
+            React.createElement("div", {className: "centered_content join"}, 
+              React.createElement("h2", {className: "marker"}, "JOIN"), 
+              React.createElement("p", null, "Become a Fontenelle Forest member today and over 2,000 acres of land will become your backyard to explore as often as you like. Your whole family will enjoy weekly programming, special events, educational classes, and unique encounters that bring a new adventure with every visit."), 
+              React.createElement("img", {className: "gi_break", src: "/img/conservation/divider_bottom_grey.png"}), 
+              React.createElement("div", {className: "element_contain"}, 
+                React.createElement("a", {className: "gi_button marker", href: ""}, "Join or Renew Membership"), 
+                React.createElement("a", {className: "gi_button marker", href: ""}, "Purchase Giftcard")
+              )
+            ), 
+            React.createElement("div", {className: "centered_content join"}, 
+              React.createElement("h3", null, "MEMBERSHIP BENEFITS"), 
+              React.createElement("hr", null), 
+              React.createElement("div", {className: "element_contain"}, 
+                React.createElement("ul", null, 
+                  React.createElement("li", null, "Free admission to Fontenelle Forest Nature Center and Neale Woods for 12 months"), 
+                  React.createElement("li", null, "26 miles of marked trails within the extraordinary Loess Hills"), 
+                  React.createElement("li", null, "Two wheelchair accessible boardwalks with Missouri River and wetland views"), 
+                  React.createElement("li", null, "Diverse ecosystems, hidden lakes, and rare wildflowers"), 
+                  React.createElement("li", null, "A premier birding location with over 246 recorded species"), 
+                  React.createElement("li", null, "Family-friendly exhibits and Acorn Acres, a forest playscape with nine exploration areas"), 
+                  React.createElement("li", null, "Habitat Hollow for indoor play and learning")
+                ), 
+                React.createElement("ul", null, 
+                  React.createElement("li", null, "Unique entertainment options: critter encounters, guided hikes, children's programs"), 
+                  React.createElement("li", null, "Members-only events and other programming"), 
+                  React.createElement("li", null, "10% discount at The Gift Shop at Fontenelle Forest"), 
+                  React.createElement("li", null, "Subscription to Fontenelle Forest's newsletter \"The Leaflet\""), 
+                  React.createElement("li", null, "Free or discounted admission to over 180 nature centers nationwide through ANCA"), 
+                  React.createElement("li", null, "Every time you visit, two of your guests can receive 1/2 priced admission"), 
+                  React.createElement("li", null, "Discounts on Winter and Summer Camps"), 
+                  React.createElement("li", null, "Access to trails before and after hours")
+                )
+              ), 
+              React.createElement("hr", null), 
+              React.createElement("div", {className: "gi_pricing"}, 
+                React.createElement("h3", {className: "element_spread"}, React.createElement("span", null, "MEMBERSHIP"), React.createElement("span", null, "PRICE")), 
+                React.createElement("ul", null, 
+                  React.createElement("li", null, React.createElement("span", null, "Individual", React.createElement("br", null), React.createElement("em", null, "One Adult")), React.createElement("span", null, "$35")), 
+                  React.createElement("li", null, React.createElement("span", null, "Two Individuals", React.createElement("br", null), React.createElement("em", null, "Two adults living in the same household")), React.createElement("span", null, "$45")), 
+                  React.createElement("li", null, React.createElement("span", null, "Household", React.createElement("br", null), React.createElement("em", null, "Two adults, children, or grandchildren (under age 18)")), React.createElement("span", null, "$55"))
+                )
+              ), 
+              React.createElement("div", {className: "gi_pricing"}, 
+                React.createElement("h3", {className: "element_spread"}, React.createElement("span", null, "BECOME A PATRON", React.createElement("br", null), React.createElement("em", null, "Fully tax deductible")), React.createElement("span", null, "PRICE")), 
+                React.createElement("ul", null, 
+                  React.createElement("li", null, React.createElement("span", null, "Patron", React.createElement("br", null), React.createElement("em", null, "ADDITIONAL BENEFITS: 4 guest passes, 15% gift shop discount")), React.createElement("span", null, "$150-249")), 
+                  React.createElement("li", null, React.createElement("span", null, "Supporting Patron", React.createElement("br", null), React.createElement("em", null, "ADDITIONAL BENEFITS: 10 guest passes, 20% gift shop discount")), React.createElement("span", null, "$250-499")), 
+                  React.createElement("li", null, React.createElement("span", null, "Sustaining Patron", React.createElement("br", null), React.createElement("em", null, "ADDITIONAL BENEFITS: 10 guest passes, 25% gift shop discount")), React.createElement("span", null, "$500-999")), 
+                  React.createElement("li", null, React.createElement("span", null, "Distinguished Patron", React.createElement("br", null), React.createElement("em", null, "ADDITIONAL BENEFITS: 20 guest passes, 30% gift shop discount")), React.createElement("span", null, "$1,000-2,499")), 
+                  React.createElement("li", null, React.createElement("span", null, "Benefactor", React.createElement("br", null), React.createElement("em", null, "ADDITIONAL BENEFITS: 20 guest passes, 30% gift shop discount")), React.createElement("span", null, "$2,500+"))
+                )
+              ), 
+              React.createElement("div", {className: "element_contain"}, 
+                React.createElement("a", {className: "gi_button marker", href: ""}, "Join or Renew Membership"), 
+                React.createElement("a", {className: "gi_button marker", href: ""}, "Purchase Giftcard")
+              )
+            )
+          )
+        ), 
+
+        React.createElement("div", {className: "gi_video"}, 
+          React.createElement("div", {id: "volunteer", className: "volunteer video_overlay"}), 
+          React.createElement("div", {className: "gi_wrapper"}, 
+            React.createElement("div", {className: "centered_content"}, 
+              React.createElement("img", {className: "arrow_gi", src: "/img/get-involved/arrow_volunteer-01.svg"})
+            )
+          )
+        ), 
+        React.createElement("div", {className: "egg_wrap volunteer_container"}, 
+          React.createElement("div", {className: "gi_wrapper main_wrapper"}, 
+            React.createElement("div", {className: "centered_content volunteer"}, 
+              React.createElement("h2", {className: "marker"}, "VOLUNTEER"), 
+              React.createElement("p", null, "Our dedicated volunteers are vital to our ongoing educational programs, land stewardship, special events, administration, and many other areas. When you give your time, you are strengthening our ability to preserve historically and ecologically significant land while educating the public about our natural world. We welcome volunteers of all backgrounds and experience levels."), 
+              React.createElement("img", {className: "gi_break", src: "/img/conservation/divider_bottom_grey.png"})
+            ), 
+            React.createElement("div", {className: "centered_content volunteer"}, 
+              React.createElement("h3", null, "QUALIFICATIONS"), 
+              React.createElement("hr", null), 
+              React.createElement("ul", null, 
+                React.createElement("li", null, "Be at least 16 years old (unless you are applying for Teen Naturalist Trainee)"), 
+                React.createElement("li", null, "Commitment of four hours per month"), 
+                React.createElement("li", null, "Commitment of at least six months"), 
+                React.createElement("li", null, "Attend an orientation session"), 
+                React.createElement("li", null, "Sign a waiver/release form")
+              ), 
+              React.createElement("hr", null), 
+              React.createElement("div", {className: "element_contain"}, 
+                React.createElement("a", {className: "gi_button marker", href: ""}, "Volunteer Form"), 
+                React.createElement("a", {className: "gi_button marker", href: ""}, "Volunteer Waiver")
+              )
+            )
           )
         )
       )
