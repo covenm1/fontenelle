@@ -4432,6 +4432,88 @@ module.exports =  React.createClass({displayName: "exports",
 
     return (
       React.createElement("div", null, 
+        React.createElement("div", {className: "egg_wrap fb_container"}, 
+          React.createElement("div", {className: "featured_image"})
+        ), 
+        React.createElement("div", {className: "egg_wrap fb_container"}, 
+          React.createElement("div", {className: "fb_wrapper gi_wrapper main_wrapper"}, 
+            React.createElement("div", {className: "centered_content fb_intro donate"}, 
+              React.createElement("h2", {className: "marker"}, "CONTACT"), 
+              React.createElement("p", null, "If you find an injured or downed raptor, please call the FFRR Center or one of the numbers listed below. Leave a voicemail if there is no answer, and your call will be returned. You may also contact the nearest Nebraska Games & Parks Conservation Officer, your local Humane Society, or local law enforcement."), 
+              React.createElement("img", {className: "fb_break", src: "/img/conservation/divider_bottom_grey.png"})
+            )
+          )
+        ), 
+        React.createElement("div", {className: "egg_wrap fb_container"}, 
+          React.createElement("div", {className: "fb_wrapper gi_wrapper main_wrapper"}, 
+            React.createElement("div", {className: "centered_content fb_contact donate"}, 
+              React.createElement("div", {className: "fb_numbers"}, 
+                React.createElement("ul", null, 
+                  React.createElement("li", null, 
+                    React.createElement("h3", null, "FFRR Center"), 
+                    React.createElement("p", null, "Betsy: 402-994-2009")
+                  ), 
+                  React.createElement("li", null, 
+                    React.createElement("h3", null, "A - Omaha Area"), 
+                    React.createElement("p", null, "Denise: 402-994-2009"), 
+                    React.createElement("p", null, "Warren: 402-990-9779")
+                  ), 
+                  React.createElement("li", null, 
+                    React.createElement("h3", null, "B - North East Nebraska"), 
+                    React.createElement("p", null, "Natalie: 402-863-2261")
+                  ), 
+                  React.createElement("li", null, 
+                    React.createElement("h3", null, "C - South East Nebraska"), 
+                    React.createElement("p", null, "Janet: 402-525-8682"), 
+                    React.createElement("p", null, "Elaine: 402-488-7586"), 
+                    React.createElement("p", null, "Carri: 402-483-4303")
+                  ), 
+                  React.createElement("li", null, 
+                    React.createElement("h3", null, "D - Central/Western Nebraska"), 
+                    React.createElement("p", null, "Vickie: 308-750-3816"), 
+                    React.createElement("p", null, "Blake: 308-383-1875")
+                  )
+                )
+              ), 
+              React.createElement("div", {className: "fb_map"}, 
+                React.createElement("img", {src: "/img/found-raptor/foundbird_map.svg"})
+              )
+            )
+          )
+        ), 
+        React.createElement("div", {className: "egg_wrap fb_container"}, 
+          React.createElement("div", {className: "fb_wrapper gi_wrapper main_wrapper"}, 
+            React.createElement("div", {className: "centered_content fb_guidelines donate"}, 
+              React.createElement("h2", {className: "marker"}, "IMPORTANT GUIDELINES"), 
+              React.createElement("div", {className: "fb_columns"}, 
+                React.createElement("ul", null, 
+                  React.createElement("li", {className: "fb_listhead"}, "FIRST RULE OF RAPTOR HANDLING\u0003"), 
+                  React.createElement("li", null, "Keep yourself safe! If you don't feel comfortable or are not able to capture the bird, please try to cover it with a laundry basket or ventilated cardboard box until a representative from FFRR can arrive."), 
+                  React.createElement("li", null, "The raptor you are attempting to rescue will NOT understand that you are trying to help it. When you approach, it will likely try to protect itself and may attack you."), 
+                  React.createElement("li", null, "Approach the bird from behind, if possible."), 
+                  React.createElement("li", null, "Cover the bird completely with a large towel, blanket, jacket, or any light-weight item."), 
+                  React.createElement("li", null, "Cautiously and slowly approach the bird and gently restrain it with the covering - locate the legs and grasp them gently with a finger in between the legs (birds seldom respond to something slowly coming at their feet)."), 
+                  React.createElement("li", null, "As the bird calms down, gather the covering together, being careful to keep the bird covered completely - be sure the wings are folded against its body, and be careful of its talons."), 
+                  React.createElement("li", {className: "fb_listhead"}, "WHEN TO OBSERVE"), 
+                  React.createElement("li", null, "Sometimes, members of the public happen upon a young raptor and pick up the bird believing it is orphaned, not realizing the parents are watching. Before removing a young bird from its home, observe and watch to determine if parents are returning with food. A young raptor’s best chance of survival is to be raised by its parents in the wild. If the youngster’s parents are still providing food, leave the bird alone. If the young raptor is in immediate danger from predators such as cats and dogs, try placing it on a higher branch off the ground.")
+                ), 
+                React.createElement("ul", null, 
+                  React.createElement("li", null, "Transfer the bird to a well-ventilated cardboard box (i.e. with small air holes) as soon as possible—the box should be big enough for the bird to stand up, but not turn around easily (if available, please put a piece of old carpet in the bottom of the box—helps keep the bird from sliding around and being further injured)."), 
+                  React.createElement("li", null, "Contact Fontenelle Forest's Raptor Recovery or the Nebraska Game and Parks Commission (if not already accomplished)."), 
+                  React.createElement("li", null, "Do not attempt to treat or feed the bird yourself! Many well-meaning attempts have resulted in further injury or the death of a bird"), 
+                  React.createElement("li", null, "All wild birds are protected under Nebraska and federal laws. It is illegal for you to possess or keep a wild bird unless you aretemporarily transporting an injured bird to a permitted rehabilitator."), 
+                  React.createElement("li", {className: "fb_listhead"}, "WHEN TO TAKE ACTION/CALL\u0003The bird is obviously injured, a wing is drooping, you see blood, or the bird is lying on the ground, is trapped, or caught in something, e.g. barbed wire or other fence/netting"), 
+                  React.createElement("li", null, "The bird is in obvious danger from a predator or in danger of being captured by one."), 
+                  React.createElement("li", null, "There are hazards nearby like busy roads or large pools of water."), 
+                  React.createElement("li", null, "The parents have been killed or seriously injured."), 
+                  React.createElement("li", null, "The bird has its eyes closed and does not respond to your presence."), 
+                  React.createElement("li", {className: "fb_listhead"}, "NON-RAPTOR BIRD RESCUE"), 
+                  React.createElement("li", null, "Please bear in mind that Fontenelle Forest Raptor Recovery only cares for birds of prey. If you find non-raptor birds that are injured, please call Nebraska Wildlife Rehabilitation at 402-234-2473 or visit their website: nebraskawildliferehab.org.")
+                )
+              )
+            )
+          )
+        ), 
         React.createElement("div", {className: "egg_wrap static"}, 
           React.createElement("div", {className: "main_wrapper"}, 
             React.createElement("img", {src: "/img/found-raptor/page.png"})
