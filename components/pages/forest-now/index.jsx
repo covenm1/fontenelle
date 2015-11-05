@@ -135,7 +135,8 @@ module.exports = React.createClass({
       twistagrams: [],
       weather: {},
       wildlife_excerpt: "",
-      plantlife_excerpt: ""
+      plantlife_excerpt: "",
+      week: ''
     };
   },
 
@@ -244,14 +245,72 @@ module.exports = React.createClass({
 
   loadEvents: function(){
     var self = this;
+
+    var this_week = moment().startOf('week').add(1, 'd').format('DDMMYYYY');
+
     request
       .get('http://fontenelle.flywheelsites.com/wp-json/posts')
-      .query('type[]=events&filter[posts_per_page]=-1')
+      .query('type[]=events&filter[posts_per_page]=-1&filter[meta_query]&filter[meta_key]=week&filter[meta_value]=' + this_week)
       .end(function(err, res) {
         if (res.ok) {
           var events = res.body;
-          console.log("loadPosts count: " + events.length);
-          self.setState({ events: events });
+
+          var sorted_events = events.sort(function(a, b) {
+            return parseInt(a.meta.start_date) - parseInt(b.meta.start_date) ;
+          });
+
+
+          self.setState({ events: sorted_events, week: this_week });
+
+        } else {
+          console.log('Oh no! error ' + res.text);
+        }
+          }.bind(self));
+  },
+
+  nextWeek: function(){
+    var self = this;
+    var this_week = moment(self.state.week, 'DDMMYYYY').add(1, 'w').startOf('week').add(1, 'd').format('DDMMYYYY');
+
+    request
+      .get('http://fontenelle.flywheelsites.com/wp-json/posts')
+      .query('type[]=events&filter[posts_per_page]=-1&filter[meta_query]&filter[meta_key]=week&filter[meta_value]=' + this_week)
+      .end(function(err, res) {
+        if (res.ok) {
+          var events = res.body;
+
+          var sorted_events = events.sort(function(a, b) {
+            return parseInt(a.meta.start_date) - parseInt(b.meta.start_date) ;
+          });
+
+          console.log('nextWeek: ' + events.length);
+
+          self.setState({ events: sorted_events, week: this_week });
+
+        } else {
+          console.log('Oh no! error ' + res.text);
+        }
+          }.bind(self));
+  },
+
+  prevWeek: function(){
+    var self = this;
+    var this_week = moment(self.state.week, 'DDMMYYYY').subtract(1, 'w').startOf('week').add(1, 'd').format('DDMMYYYY');
+
+    request
+      .get('http://fontenelle.flywheelsites.com/wp-json/posts')
+      .query('type[]=events&filter[posts_per_page]=-1&filter[meta_query]&filter[meta_key]=week&filter[meta_value]=' + this_week)
+      .end(function(err, res) {
+        if (res.ok) {
+          var events = res.body;
+          console.log('prevWeek: ' + events.length);
+
+          var sorted_events = events.sort(function(a, b) {
+            return parseInt(a.meta.start_date) - parseInt(b.meta.start_date) ;
+          });
+
+
+          self.setState({ events: sorted_events, week: this_week });
 
         } else {
           console.log('Oh no! error ' + res.text);
@@ -319,7 +378,7 @@ module.exports = React.createClass({
         </div>
       )
     });
-
+    
     var events = self.state.events.map(function(object){
       return (
         <Event
@@ -330,7 +389,8 @@ module.exports = React.createClass({
           end_date={object.meta.end_date}
           days={object.meta.days}
           age_group={object.meta.age_group}
-          signup_link={object.meta.signup_link} />
+          signup_link={object.meta.signup_link}
+          key={Math.random()} />
       )
     });
 
@@ -426,7 +486,9 @@ module.exports = React.createClass({
 
           <div className='image_container'>
             <div className='now-left'>
-              <h3 className="week_title marker">This Week: <span className="actual_week">{moment().startOf('week').format('MMMM D')} - {moment().endOf('week').format('MMMM D')} </span></h3>
+              <h3 className="week_title marker">This Week: <span className="actual_week">{moment(self.state.week, 'DDMMYYYY').startOf('week').format('MMMM D')} - {moment(self.state.week, 'DDMMYYYY').endOf('week').format('MMMM D')} </span></h3>
+              <span className="prev_week" onClick={self.prevWeek}>Previous Week</span>
+              <span className="next_week" onClick={self.nextWeek}>Next Week</span>
               {events}
             </div>
             <div className='now-right'>
@@ -435,18 +497,11 @@ module.exports = React.createClass({
             </div>
           </div>
 
-          <div className='image_container'>
-            <div className='now-left'>
-              <img src="/img/forest-now/calendar.jpg" />
-            </div>
-            <div className='now-right'>
-              <Link to='/posts'><img src="/img/forest-now/blog.jpg" /></Link>
+          <div className='now-blue social_blue'>
+            <div className='now-links image_container marker'>
+              @fontenelleforest / #4estnow / #fontenelleforest
             </div>
           </div>
-          <div className='image_container'>
-            <img src="/img/forest-now/social-media.jpg" />
-          </div>
-
           <div className='social_wrapper'>
             {twistagrams}
           </div>

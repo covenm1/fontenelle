@@ -18,7 +18,8 @@
 .now-links {
 	margin: 0 auto;
 	text-align: center;
-	padding: 20px 170px;
+	padding: 0 170px;
+	line-height: 60px;
 }
 
 .now-links a, .now-links span {
@@ -290,13 +291,19 @@
 	}
 }
 
+.social_blue {
+	color: white;
+	margin: 25px 0;
+	font-size: 25px;
+}
+
 .social_wrapper {
 	display: flex;
 	flex-flow: row wrap;
 	align-content: flex-end;
 	align-items: center;
 	justify-content: center;
-
+	width: 100%;
 	.social {
 		width: 350px;
 		height: 350px;

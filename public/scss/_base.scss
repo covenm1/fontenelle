@@ -112,6 +112,24 @@ img.bottom_vine {
     }
 }
 
+.image_container:after{
+  content: '';
+  display: table;
+  clear: both;
+}
+
+.image_container:before,
+.image_container:after {
+  content: '';
+  display: table;
+}
+.image_container:after {
+  clear: both;
+}
+.image_container {
+  zoom: 1;
+}
+
 .egg_wrap {
   background: url(/img/eggshell.jpg);
   &.padded {
