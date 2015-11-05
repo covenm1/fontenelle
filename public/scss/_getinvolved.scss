@@ -1,0 +1,151 @@
+.donate.video_overlay {
+    background-image: url('../img/conservation/pattern_video-overlay.svg');
+    opacity: 0.9;
+}
+
+.join.video_overlay {
+    background-image: url('../img/forest/pattern_video-overlay.svg');
+    opacity: 0.9;
+}
+
+.volunteer.video_overlay {
+    background-image: url('../img/education/pattern_video-overlay.svg');
+    opacity: 0.9;
+}
+
+.arrow_gi {
+  width:100px;
+}
+
+.gi_video {
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.gi_video .gi_wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 50px 0;
+    position: relative;
+}
+
+.gi_video .gi_wrapper .centered_content {
+    max-width: 100%;
+    width: 500px;
+    text-align: center;
+    color: white;
+    position: relative;
+    bottom: -100px;
+    padding: 0;
+}
+
+.gi_wrapper .centered_content h2 {
+    font-size: 50px;
+    text-align: center;
+    padding-top: 45px;
+}
+
+.gi_wrapper .centered_content p {
+    text-align: center;
+}
+
+.gi_break {
+    width: 50%;
+    padding: 25px 0;
+    margin: 0 auto;
+    display: flex;
+}
+
+.donate h2, .donate h3 {color: #1261ac;}
+.join h2, .join h3 {color: #a04e23;}
+.volunteer h2, .volunteer h3 {color: #68814b;}
+
+a.gi_button {
+  border: 3px solid;
+  border-radius: 10px;
+  padding: 2px 15px;
+  text-decoration: none;
+  font-size: 18px;
+  text-align: center;
+}
+
+a.gi_button:first-child {
+  margin-right: 15px;
+}
+
+.donate a.gi_button {
+  color: #1261ac;
+}
+
+.donate a.gi_button:hover {
+  background-color: #1261ac;
+  border-color: #1261ac;
+  color: #fff;
+}
+
+.join a.gi_button {
+  color: #a04e23;
+}
+
+.join a.gi_button:hover {
+  background-color: #a04e23;
+  border-color: #a04e23;
+  color: #fff;
+}
+
+.volunteer a.gi_button {
+  color: #68814b;
+}
+
+.volunteer a.gi_button:hover {
+  background-color: #68814b;
+  border-color: #68814b;
+  color: #fff;
+}
+
+.donate_container, .join_container, .volunteer_container {
+  padding-bottom:50px;
+}
+
+.element_contain {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  padding: 0 15px;
+}
+
+.element_spread, .gi_pricing ul li {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.gi_pricing {
+  padding-top: 20px;
+}
+
+.gi_pricing ul {
+  padding: 0;
+}
+
+.gi_pricing ul li {
+  border-top: 1px solid #999;
+  padding: 15px 0;
+  font-size: 25px;
+  font-weight: bold;
+  color: #000;
+}
+
+.gi_pricing ul li:last-child {
+  border-bottom: 1px solid #999;
+}
+
+.gi_pricing ul li span em, .gi_pricing h3 span em {
+  font-style: normal;
+  font-size: 14px;
+  font-weight: normal;
+  color: #000;
+}

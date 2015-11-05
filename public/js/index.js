@@ -4072,12 +4072,129 @@ module.exports = React.createClass({displayName: "exports",
     var self = this;
 
     return (
-      React.createElement("div", null, 
-        React.createElement("div", {className: "egg_wrap static"}, 
-          React.createElement("div", {className: "image_container"}, 
-            React.createElement("img", {src: "/img/get-involved/Get-involved-donate.jpg"}), 
-            React.createElement("img", {src: "/img/get-involved/Get-involved-membership.jpg"}), 
-            React.createElement("img", {src: "/img/get-involved/Get-involved-volunteer.jpg"})
+      React.createElement("div", {className: "egg_wrap"}, 
+        React.createElement("div", {className: "gi_video"}, 
+          React.createElement("div", {id: "donate", className: "donate video_overlay"}), 
+          React.createElement("div", {className: "gi_wrapper"}, 
+            React.createElement("div", {className: "centered_content"}, 
+              React.createElement("img", {className: "arrow_gi", src: "/img/get-involved/arrow_donate-01.svg"})
+            )
+          )
+        ), 
+        React.createElement("div", {className: "egg_wrap donate_container"}, 
+          React.createElement("div", {className: "gi_wrapper main_wrapper"}, 
+            React.createElement("div", {className: "centered_content donate"}, 
+              React.createElement("h2", {className: "marker"}, "DONATE"), 
+              React.createElement("p", null, "It is because of our many generous donors that we are able to offer such a breadth and depth of conservation initiatives, educational activities, and other programs in the forest. Your tax-deductible gifts will go toward ongoing stewardship of over 2,000 acres of natural land and programs that benefit over 80,000 visitors each year."), 
+              React.createElement("img", {className: "gi_break", src: "/img/conservation/divider_bottom_grey.png"}), 
+              React.createElement("div", {className: "element_contain"}, 
+                React.createElement("a", {className: "gi_button marker", href: ""}, "Donate")
+              )
+            )
+          )
+        ), 
+
+        React.createElement("div", {className: "gi_video"}, 
+          React.createElement("div", {id: "membership", className: "join video_overlay"}), 
+          React.createElement("div", {className: "gi_wrapper"}, 
+            React.createElement("div", {className: "centered_content"}, 
+              React.createElement("img", {className: "arrow_gi", src: "/img/get-involved/arrow_join-01.svg"})
+            )
+          )
+        ), 
+        React.createElement("div", {className: "egg_wrap join_container"}, 
+          React.createElement("div", {className: "gi_wrapper main_wrapper"}, 
+            React.createElement("div", {className: "centered_content join"}, 
+              React.createElement("h2", {className: "marker"}, "JOIN"), 
+              React.createElement("p", null, "Become a Fontenelle Forest member today and over 2,000 acres of land will become your backyard to explore as often as you like. Your whole family will enjoy weekly programming, special events, educational classes, and unique encounters that bring a new adventure with every visit."), 
+              React.createElement("img", {className: "gi_break", src: "/img/conservation/divider_bottom_grey.png"}), 
+              React.createElement("div", {className: "element_contain"}, 
+                React.createElement("a", {className: "gi_button marker", href: ""}, "Join or Renew Membership"), 
+                React.createElement("a", {className: "gi_button marker", href: ""}, "Purchase Giftcard")
+              )
+            ), 
+            React.createElement("div", {className: "centered_content join"}, 
+              React.createElement("h3", null, "MEMBERSHIP BENEFITS"), 
+              React.createElement("hr", null), 
+              React.createElement("div", {className: "element_contain"}, 
+                React.createElement("ul", null, 
+                  React.createElement("li", null, "Free admission to Fontenelle Forest Nature Center and Neale Woods for 12 months"), 
+                  React.createElement("li", null, "26 miles of marked trails within the extraordinary Loess Hills"), 
+                  React.createElement("li", null, "Two wheelchair accessible boardwalks with Missouri River and wetland views"), 
+                  React.createElement("li", null, "Diverse ecosystems, hidden lakes, and rare wildflowers"), 
+                  React.createElement("li", null, "A premier birding location with over 246 recorded species"), 
+                  React.createElement("li", null, "Family-friendly exhibits and Acorn Acres, a forest playscape with nine exploration areas"), 
+                  React.createElement("li", null, "Habitat Hollow for indoor play and learning")
+                ), 
+                React.createElement("ul", null, 
+                  React.createElement("li", null, "Unique entertainment options: critter encounters, guided hikes, children's programs"), 
+                  React.createElement("li", null, "Members-only events and other programming"), 
+                  React.createElement("li", null, "10% discount at The Gift Shop at Fontenelle Forest"), 
+                  React.createElement("li", null, "Subscription to Fontenelle Forest's newsletter \"The Leaflet\""), 
+                  React.createElement("li", null, "Free or discounted admission to over 180 nature centers nationwide through ANCA"), 
+                  React.createElement("li", null, "Every time you visit, two of your guests can receive 1/2 priced admission"), 
+                  React.createElement("li", null, "Discounts on Winter and Summer Camps"), 
+                  React.createElement("li", null, "Access to trails before and after hours")
+                )
+              ), 
+              React.createElement("hr", null), 
+              React.createElement("div", {className: "gi_pricing"}, 
+                React.createElement("h3", {className: "element_spread"}, React.createElement("span", null, "MEMBERSHIP"), React.createElement("span", null, "PRICE")), 
+                React.createElement("ul", null, 
+                  React.createElement("li", null, React.createElement("span", null, "Individual", React.createElement("br", null), React.createElement("em", null, "One Adult")), React.createElement("span", null, "$35")), 
+                  React.createElement("li", null, React.createElement("span", null, "Two Individuals", React.createElement("br", null), React.createElement("em", null, "Two adults living in the same household")), React.createElement("span", null, "$45")), 
+                  React.createElement("li", null, React.createElement("span", null, "Household", React.createElement("br", null), React.createElement("em", null, "Two adults, children, or grandchildren (under age 18)")), React.createElement("span", null, "$55"))
+                )
+              ), 
+              React.createElement("div", {className: "gi_pricing"}, 
+                React.createElement("h3", {className: "element_spread"}, React.createElement("span", null, "BECOME A PATRON", React.createElement("br", null), React.createElement("em", null, "Fully tax deductible")), React.createElement("span", null, "PRICE")), 
+                React.createElement("ul", null, 
+                  React.createElement("li", null, React.createElement("span", null, "Patron", React.createElement("br", null), React.createElement("em", null, "ADDITIONAL BENEFITS: 4 guest passes, 15% gift shop discount")), React.createElement("span", null, "$150-249")), 
+                  React.createElement("li", null, React.createElement("span", null, "Supporting Patron", React.createElement("br", null), React.createElement("em", null, "ADDITIONAL BENEFITS: 10 guest passes, 20% gift shop discount")), React.createElement("span", null, "$250-499")), 
+                  React.createElement("li", null, React.createElement("span", null, "Sustaining Patron", React.createElement("br", null), React.createElement("em", null, "ADDITIONAL BENEFITS: 10 guest passes, 25% gift shop discount")), React.createElement("span", null, "$500-999")), 
+                  React.createElement("li", null, React.createElement("span", null, "Distinguished Patron", React.createElement("br", null), React.createElement("em", null, "ADDITIONAL BENEFITS: 20 guest passes, 30% gift shop discount")), React.createElement("span", null, "$1,000-2,499")), 
+                  React.createElement("li", null, React.createElement("span", null, "Benefactor", React.createElement("br", null), React.createElement("em", null, "ADDITIONAL BENEFITS: 20 guest passes, 30% gift shop discount")), React.createElement("span", null, "$2,500+"))
+                )
+              ), 
+              React.createElement("div", {className: "element_contain"}, 
+                React.createElement("a", {className: "gi_button marker", href: ""}, "Join or Renew Membership"), 
+                React.createElement("a", {className: "gi_button marker", href: ""}, "Purchase Giftcard")
+              )
+            )
+          )
+        ), 
+
+        React.createElement("div", {className: "gi_video"}, 
+          React.createElement("div", {id: "volunteer", className: "volunteer video_overlay"}), 
+          React.createElement("div", {className: "gi_wrapper"}, 
+            React.createElement("div", {className: "centered_content"}, 
+              React.createElement("img", {className: "arrow_gi", src: "/img/get-involved/arrow_volunteer-01.svg"})
+            )
+          )
+        ), 
+        React.createElement("div", {className: "egg_wrap volunteer_container"}, 
+          React.createElement("div", {className: "gi_wrapper main_wrapper"}, 
+            React.createElement("div", {className: "centered_content volunteer"}, 
+              React.createElement("h2", {className: "marker"}, "VOLUNTEER"), 
+              React.createElement("p", null, "Our dedicated volunteers are vital to our ongoing educational programs, land stewardship, special events, administration, and many other areas. When you give your time, you are strengthening our ability to preserve historically and ecologically significant land while educating the public about our natural world. We welcome volunteers of all backgrounds and experience levels."), 
+              React.createElement("img", {className: "gi_break", src: "/img/conservation/divider_bottom_grey.png"})
+            ), 
+            React.createElement("div", {className: "centered_content volunteer"}, 
+              React.createElement("h3", null, "QUALIFICATIONS"), 
+              React.createElement("hr", null), 
+              React.createElement("ul", null, 
+                React.createElement("li", null, "Be at least 16 years old (unless you are applying for Teen Naturalist Trainee)"), 
+                React.createElement("li", null, "Commitment of four hours per month"), 
+                React.createElement("li", null, "Commitment of at least six months"), 
+                React.createElement("li", null, "Attend an orientation session"), 
+                React.createElement("li", null, "Sign a waiver/release form")
+              ), 
+              React.createElement("hr", null), 
+              React.createElement("div", {className: "element_contain"}, 
+                React.createElement("a", {className: "gi_button marker", href: ""}, "Volunteer Form"), 
+                React.createElement("a", {className: "gi_button marker", href: ""}, "Volunteer Waiver")
+              )
+            )
           )
         )
       )
