@@ -79,6 +79,7 @@ html.loading {
 
 .post_container {
 	padding-top: 60px;
+	padding-bottom:  60px;
 	.featured_image {
 		background-size: cover;
 		height: 500px;
@@ -87,4 +88,38 @@ html.loading {
 	.copy_container {
 
 	}
+	.post_title {
+		color: black;
+		font-size: 50px;
+	}
+	img, figure {
+		max-width: 100%;
+		&.aligncenter {
+			display: table;
+			margin: auto;
+		}
+		&.alignleft {
+			float: left;
+			margin: 0 15px;
+		}
+		&.alignright {
+			float:right;
+			margin: 0 15px;
+		}
+		figcaption {
+			background: #ddd;
+			line-height: 2;
+			margin-top: -5px;
+			text-align: center;
+		}
+	}
+	p {
+		margin: 30px 0;
+	}
+
+	.main_wrapper {
+		width: 900px;
+		padding: 0 15px;
+	}
+
 }

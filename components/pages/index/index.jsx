@@ -15,13 +15,13 @@ var Route = Router.Route,
   	RouteHandler = Router.RouteHandler,
   	Link = Router.Link;
 
-
 var forest = require('../forest/index.jsx'),
 		naturalresources = require('../conservation/index.jsx'),
 		programs = require('../programs/index.jsx'),
 		education = require('../education/index.jsx'),
 		foundraptor = require('../found-raptor/index.jsx'),
-		meettheraptors = require('../meet-the-raptors/index.jsx'),
+		meettheraptors = require('../meet-the-birds/index.jsx'),
+		urbanwildlife = require('../urban-wildlife/index.jsx'),
 		getinvolved = require('../get-involved/index.jsx'),
 		boardofdirectors = require('../board-of-directors/index.jsx'),
 		hoursandadmissions = require('../hours-and-admissions/index.jsx'),
@@ -367,8 +367,10 @@ var routes = (
 		<Route name="nature-notes" path="/forest-now/nature-notes" handler={naturenotes} addHandlerKey={true} />
     <Route name="save-the-oaks" path="/save-the-oaks" handler={savetheoaks} addHandlerKey={true} />
 		<Route name="contact" path="/contact" handler={contact} addHandlerKey={true} />
-		<Route path="/post/:name" handler={post} addHandlerKey={true} />
+		<Route path="/post/:name" handler={post} key={Math.random()} />
 		<Route path="/posts" handler={posts} addHandlerKey={true} />
+		<Route path="/urban-wildlife" handler={urbanwildlife} addHandlerKey={true} />
+
   </Route>
 
 );

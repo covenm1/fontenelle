@@ -67,7 +67,7 @@ var Main = React.createClass({
       left: 0,
       windowWidth: window.innerWidth,
       controller: {},
-      scrollPos: 0,
+      scrollPos: 0, 
       timeline: timeline
     };
   },
@@ -363,7 +363,7 @@ var Main = React.createClass({
                   <div className="centered_content">
                     <h2 className="marker">Living With Urban Wildlife</h2>
                     <p>City life is often filled with wildlife interactions. Find out some ways to make it more harmonious and see how Fontenelle Forest can help you do so.</p>
-                    <img src="/img/conservation/arrow_right.png" />
+                    <Link to="/urban-wildlife"><img src="/img/conservation/arrow_right.png" /></Link>
                   </div>
                 </div>
               </div>

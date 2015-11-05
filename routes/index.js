@@ -28,7 +28,6 @@ module.exports = function(app) {
 	app.get('/twitter', function(req, res) {
 		var params = {screen_name: 'fontenelle4est'};
 		client.get('statuses/user_timeline', params, function(error, tweets, response){
-			console.log("tweets: " + tweets.length);
 		  if (!error) {
 		    res.json(tweets);
 		  }
@@ -37,7 +36,6 @@ module.exports = function(app) {
 
 	app.get('/instagram', function(req, res) {
 		Instagram.user_media_recent('299247338',  function(error, medias, pagination, remaining, limit) {
-			console.log("instagrams: " + medias.length);
 			if (!error) {
 				res.json(medias);
 			}
@@ -47,7 +45,6 @@ module.exports = function(app) {
 	app.get('/twistagrams', function(req, res) {
 		var params = {screen_name: 'fontenelle4est'};
 		client.get('statuses/user_timeline', params, function(error, tweets, response){
-			console.log("tweets: " + tweets.length);
 
 			var formattedTweets = tweets.map(function(obj){
 				var created_at = obj.created_at;
@@ -61,7 +58,6 @@ module.exports = function(app) {
 
 			if (!error) {
 				Instagram.user_media_recent('299247338',  function(error, instagrams, pagination, remaining, limit) {
-					console.log("instagrams: " + instagrams.length);
 
 					var formattedInstagrams = instagrams.map(function(obj){
 						var created_time = moment.unix(obj.created_time);
@@ -74,8 +70,6 @@ module.exports = function(app) {
 					});
 					var twistagrams = formattedTweets.concat(formattedInstagrams);
 					var formattedTwistagrams = twistagrams.sort(function(a,b){
-					  // Turn your strings into dates, and then subtract them
-					  // to get a value that is either negative, positive, or zero.
 					  return new Date(b.time) - new Date(a.time);
 					});
 

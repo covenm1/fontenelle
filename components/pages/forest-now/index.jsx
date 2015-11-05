@@ -166,25 +166,11 @@ module.exports = React.createClass({
         if (res) {
           var weather = res.body;
           self.setState({weather: weather});
-          console.log("forecast: " + util.inspect(weather));
 
         } else {
           console.log('Oh no! error ' + res);
         }
       }.bind(self));
-
-      // request
-      //   .get('http://api.wunderground.com/api/42a6e811289e89d1/conditions/q/41.1797155,-95.9200238.json')
-      //   .end(function(err, res) {
-      //     if (res.ok) {
-      //       var weather = res.body;
-      //       console.log("weather: " + util.inspect(weather));
-      //       self.setState({weather: weather});
-      //
-      //     } else {
-      //       console.log('Oh no! error ' + res.text);
-      //     }
-      //   }.bind(self));
 
   },
 

@@ -71,6 +71,22 @@ gulp.task('build-styles', function() {
           .pipe(gulp.dest('./public/css'));
 });
 
+gulp.task('lint', function() {
+    return gulp.src('js/*.js')
+        .pipe(jshint())
+        .pipe(jshint.reporter('default'));
+});
+
+
+gulp.task('server', function () {
+  nodemon({ script: 'app.js', ext: 'html', ignore: ['ignored.js'] })
+    .on('change', ['lint'])
+    .on('restart', function () {
+      console.log('restarted!')
+    })
+})
+
+
 
 // Watch Files For Changes
 gulp.task('watch', function() {
@@ -80,5 +96,5 @@ gulp.task('watch', function() {
 });
 
 // Default Task
-gulp.task('default', ['build-styles', 'build-reacts', 'watch' ]);
+gulp.task('default', ['build-styles', 'build-reacts', 'server', 'watch' ]);
 gulp.task('build', ['build-styles-production', 'build-styles', 'build-reacts', 'build-reacts-production' ]);

@@ -303,12 +303,12 @@
 		background-position: center;
 		background-size: cover;
 		position: relative;
-		background: white;
+		background-color: white;
 		color: white;
 		display: flex;
 		align-items: center;
 		justify-content: center;
-
+		margin: 5px;
 		.social_icon {
 			height: 35px;
 	    width: 35px;
@@ -321,6 +321,10 @@
 			margin: 15px;
 	    bottom: 0;
 	    right: 0;
+		}
+		.social_content {
+			padding: 15px;
+			text-align: center;
 		}
 		&.tweet {
 			color: $conservation_color;
@@ -359,7 +363,6 @@
 					color: $conservation_color;
 					height: 100%;
 					width: 100%;
-					padding: 15px;
 					display: flex;
 					justify-content: center;
 					align-items: center;
