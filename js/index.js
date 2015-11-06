@@ -1363,6 +1363,19 @@ var Link = Router.Link;
 
 var timeline = require('../../common/timeline.json');
 
+var SetIntervalMixin = {
+  componentWillMount: function() {
+    this.intervals = [];
+  },
+  setInterval: function() {
+    this.intervals.push(setInterval.apply(null, arguments));
+  },
+  componentWillUnmount: function() {
+    this.intervals.forEach(clearInterval);
+  }
+};
+
+
 var HabitatThing = React.createClass({displayName: "HabitatThing",
   render : function(){
     var self = this;
@@ -1403,7 +1416,7 @@ var TimelineThing = React.createClass({displayName: "TimelineThing",
 
 var poster_image;
 var Main = React.createClass({displayName: "Main",
-  mixins: [ Router.State, Navigation ],
+  mixins: [ Router.State, Navigation, SetIntervalMixin ],
   getInitialState: function() {
     return {
       pre_count: 0,
@@ -1421,7 +1434,8 @@ var Main = React.createClass({displayName: "Main",
       windowWidth: window.innerWidth,
       controller: {},
       scrollPos: 0,
-      timeline: timeline
+      timeline: timeline,
+      arrow_class: false
     };
   },
 
@@ -1440,6 +1454,8 @@ var Main = React.createClass({displayName: "Main",
       tmp_image.onload = self.onLoad;
       tmp_image.src = load_images[image];
     }
+
+    self.setInterval(function() { self.setState({arrow_class: !self.state.arrow_class}); }, 500);
   },
 
   componentWillReceiveProps: function (nextProps) {
@@ -1520,6 +1536,8 @@ var Main = React.createClass({displayName: "Main",
 
   render: function() {
     var self = this;
+
+    var arrow_class = self.state.arrow_class;
 
     var timeline = self.state.timeline.map(function(object) {
       return React.createElement(TimelineThing, {
@@ -1620,7 +1638,7 @@ var Main = React.createClass({displayName: "Main",
               ), 
 
               React.createElement("div", {className: "egg_wrap "}, 
-                React.createElement("div", {className: "image_container"}, 
+                React.createElement("div", {className: "main_wrapper"}, 
 
                   React.createElement(HabitatThing, {
                     image: "/img/conservation/natures_helpers.png", 
@@ -1628,7 +1646,7 @@ var Main = React.createClass({displayName: "Main",
                     title: "Habitat Restoration", 
                     key: "habitat", 
                     description: "Oak savanna and woodland habitats within Fontenelle Forest face severe decline. Their regeneration has been stunted due to the lack of open space resulting from fire suppression and the encroachment of invasive plants. To ensure the preservation and expansion of this ecological community, FF began an oak woodland restoration. Click to find out how we do it!"}), 
-
+ 
                   React.createElement(HabitatThing, {
                     image: "/img/conservation/provenplan.png", 
                     title: "Deer Management", 
@@ -1765,7 +1783,20 @@ var Main = React.createClass({displayName: "Main",
               React.createElement("div", {className: "content_container"}, 
                 React.createElement("div", {className: "video_overlay"}), 
                 React.createElement("div", {className: "content_wrapper"}, 
-                  React.createElement("img", {src: "/img/conservation.png"})
+                  React.createElement("img", {className: "old_hero_image", src: "/img/conservation.png"}), 
+                  React.createElement("div", {className: "hero_content"}, 
+                    React.createElement("h1", {className: "hero_header"}, "SEE THE FOREST"), 
+                    React.createElement("h3", {className: "hero_subheader marker"}, "AND THE TREES"), 
+                    React.createElement("div", {className: "hero_textured_color"}, 
+                      React.createElement("p", null, "We invite you to explore ways you can get involved in our conservation initiatives. As stewards of the land, we are dedicated to the conservation and preservation of our local environment so that future generations can continue to enjoy the forest.")
+                    ), 
+                    React.createElement("div", {className: "hero_icon_wrap"}, 
+                      React.createElement("span", {className: "line left_line"}), 
+                      React.createElement("img", {className:  arrow_class ? "hero_icon up" : "hero_icon", src: "/img/conservation/icon_conservation.svg"}), 
+                      React.createElement("span", {className: "line right_line"})
+                    )
+                  )
+
                 )
               )
             )
@@ -1784,7 +1815,20 @@ var Main = React.createClass({displayName: "Main",
               React.createElement("div", {className: "content_container"}, 
                 React.createElement("div", {className: "video_overlay"}), 
                 React.createElement("div", {className: "content_wrapper"}, 
-                  React.createElement("img", {src: "/img/conservation.png"})
+                  React.createElement("img", {className: "old_hero_image", src: "/img/conservation.png"}), 
+                  React.createElement("div", {className: "hero_content"}, 
+                    React.createElement("h1", {className: "hero_header"}, "SEE THE FOREST"), 
+                    React.createElement("h3", {className: "hero_subheader marker"}, "AND THE TREES"), 
+                    React.createElement("div", {className: "hero_textured_color"}, 
+                      React.createElement("p", null, "We invite you to explore ways you can get involved in our conservation initiatives. As stewards of the land, we are dedicated to the conservation and preservation of our local environment so that future generations can continue to enjoy the forest.")
+                    ), 
+                    React.createElement("div", {className: "hero_icon_wrap"}, 
+                      React.createElement("span", {className: "line left_line"}), 
+                      React.createElement("img", {className:  arrow_class ? "hero_icon up" : "hero_icon", src: "/img/conservation/icon_conservation.svg"}), 
+                      React.createElement("span", {className: "line right_line"})
+                    )
+                  )
+
                 )
               )
             )
@@ -2066,6 +2110,19 @@ require('../../../public/js/scrollTo.js');
 
 var classes_data = require('../../common/classes.json');
 
+var SetIntervalMixin = {
+  componentWillMount: function() {
+    this.intervals = [];
+  },
+  setInterval: function() {
+    this.intervals.push(setInterval.apply(null, arguments));
+  },
+  componentWillUnmount: function() {
+    this.intervals.forEach(clearInterval);
+  }
+};
+
+
 var ClassThing = React.createClass({displayName: "ClassThing",
   render: function() {
     var self = this;
@@ -2180,7 +2237,7 @@ var ClassList = React.createClass({displayName: "ClassList",
 
 var poster_image;
 var Main = React.createClass({displayName: "Main",
-  mixins: [ Router.State, Navigation ],
+  mixins: [ Router.State, Navigation, SetIntervalMixin ],
   getInitialState: function() {
     return {
       pre_count: 0,
@@ -2192,7 +2249,8 @@ var Main = React.createClass({displayName: "Main",
         "/img/education.png",
         "/img/education/flowers.png",
         "/img/education/caterpillar.png"
-      ]
+      ],
+      arrow_class: false
 
     };
   },
@@ -2206,6 +2264,8 @@ var Main = React.createClass({displayName: "Main",
       tmp_image.onload = self.onLoad;
       tmp_image.src = load_images[image];
     }
+
+    self.setInterval(function() { self.setState({arrow_class: !self.state.arrow_class}); }, 500);
   },
 
   componentDidUpdate: function (prevProps, prevState) {
@@ -2276,19 +2336,20 @@ var Main = React.createClass({displayName: "Main",
     var loadStyle = {
       width: self.state.percent_loaded + "%"
     }
+    var arrow_class = self.state.arrow_class;
     if (self.state.loaded == true) {
       return (
         React.createElement("div", {className: "page"}, 
           React.createElement("div", {className: "page_wrapper"}, 
             React.createElement("div", {className: "page_container", id: "page", style: loadStyle}, 
               React.createElement("div", {className: "egg_wrap living_classroom_container"}, 
+                React.createElement("div", {className: "living_classroom image_container"}, 
+                  React.createElement("img", {src: "/img/education/caterpillar.png"})
+                ), 
                 React.createElement("div", {className: "living_classroom copy_container"}, 
                   React.createElement("h2", {className: "marker"}, "A living classroom"), 
                   React.createElement("p", null, "The Forest offers nearly unlimited opportunities for learning. Over 100,000 youth and adults each year take part in environmental education programs through Fontenelle."), 
                   React.createElement("img", {className: "bottom_vine", src: "/img/bottom_vine.svg"})
-                ), 
-                React.createElement("div", {className: "living_classroom image_container"}, 
-                  React.createElement("img", {src: "/img/education/caterpillar.png"})
                 )
               ), 
 
@@ -2309,21 +2370,23 @@ var Main = React.createClass({displayName: "Main",
                 )
               ), 
 
-              React.createElement("div", {id: "classes", className: "egg_wrap classes_container"}, 
-                React.createElement("div", {className: "living_classroom copy_container"}, 
-                  React.createElement("h2", {className: "marker in_forest"}, "In the Forest"), 
-                  React.createElement("p", null, "Book your next field trip with Fontenelle Forest! Our experienced educators will provide an engaging, hands-on program for your group. Each program includes an indoor and outdoor portion. To register for a school program for the 2011/2012 school year, please contact the FF Education Department at (402) 731-3140. For directions to the nature centers, click here."), 
-                  React.createElement("p", {className: "small_text"}, React.createElement("strong", null, "Once you have booked a field trip"), ", be sure to take advantage of the activities provided below. These activities will greatly enhance your students' field trip experience - and they're a lot of fun!")
-                ), 
-                React.createElement("div", {className: "living_classroom copy_container"}, 
-                  React.createElement("h2", {className: "marker on_go"}, "Nature On-The-Go"), 
-                  React.createElement("p", null, "Nature-On-the-Go traveling programs introduce hands-on natural science programs to your students. During each program, your students will explore a \u0003variety of topics. These are great to supplement your school-day lessons or as an after-school program."), 
-                  React.createElement("p", {className: "small_text"}, React.createElement("strong", null, "To schedule a program"), ", call our Manager of Programming and Outreach at 402-731-3140 x1026"), 
-                  React.createElement("p", {className: "small_text"}, "All programs are aligned with Nebraska State Science Standards."), 
-                  React.createElement("p", {className: "small_text"}, "Each program is 45–60 minutes long. Maximum 30 students per On-the-Go program. For groups larger than 30, multiple programs must be scheduled.")
-                ), 
-                React.createElement("div", {className: "image_container"}, 
-                  React.createElement("img", {src: "/img/education/flowers.png"})
+              React.createElement("div", {id: "classes", className: "egg_wrap"}, 
+                React.createElement("div", {id: "classes", className: "image_container classes_container"}, 
+                  React.createElement("div", {className: "living_classroom copy_container"}, 
+                    React.createElement("h2", {className: "marker in_forest"}, "In the Forest"), 
+                    React.createElement("p", null, "Book your next field trip with Fontenelle Forest! Our experienced educators will provide an engaging, hands-on program for your group. Each program includes an indoor and outdoor portion. To register for a school program for the 2011/2012 school year, please contact the FF Education Department at (402) 731-3140. For directions to the nature centers, click here."), 
+                    React.createElement("p", {className: "small_text"}, React.createElement("strong", null, "Once you have booked a field trip"), ", be sure to take advantage of the activities provided below. These activities will greatly enhance your students' field trip experience - and they're a lot of fun!")
+                  ), 
+                  React.createElement("div", {className: "living_classroom copy_container"}, 
+                    React.createElement("h2", {className: "marker on_go"}, "Nature On-The-Go"), 
+                    React.createElement("p", null, "Nature-On-the-Go traveling programs introduce hands-on natural science programs to your students. During each program, your students will explore a \u0003variety of topics. These are great to supplement your school-day lessons or as an after-school program."), 
+                    React.createElement("p", {className: "small_text"}, React.createElement("strong", null, "To schedule a program"), ", call our Manager of Programming and Outreach at 402-731-3140 x1026"), 
+                    React.createElement("p", {className: "small_text"}, "All programs are aligned with Nebraska State Science Standards."), 
+                    React.createElement("p", {className: "small_text"}, "Each program is 45–60 minutes long. Maximum 30 students per On-the-Go program. For groups larger than 30, multiple programs must be scheduled.")
+                  ), 
+                  React.createElement("div", {className: "image_container"}, 
+                    React.createElement("img", {src: "/img/education/flowers.png"})
+                  )
                 )
               ), 
 
@@ -2377,7 +2440,19 @@ var Main = React.createClass({displayName: "Main",
             React.createElement("div", {className: "content_container"}, 
               React.createElement("div", {className: "video_overlay"}), 
               React.createElement("div", {className: "content_wrapper"}, 
-                React.createElement("img", {src: "/img/education.png"})
+                React.createElement("img", {className: "old_hero_image", src: "/img/education.png"}), 
+                React.createElement("div", {className: "hero_content"}, 
+                  React.createElement("h1", {className: "hero_header"}, "CALL OF THE WILD BECKONS"), 
+                  React.createElement("h3", {className: "hero_subheader marker"}, "Teachers, administrator and scout leaders"), 
+                  React.createElement("div", {className: "hero_textured_color"}, 
+                    React.createElement("p", null, "We invite you to explore opportunities for your school group, including curriculum tied to state science standards. Fontenelle's educational programs take many forms - from field trips, classes, and camps in the forest to hands-on, nature-on-the-go presentations at schools, to community art projects.")
+                  ), 
+                  React.createElement("div", {className: "hero_icon_wrap"}, 
+                    React.createElement("span", {className: "line left_line"}), 
+                    React.createElement("img", {className:  arrow_class ? "hero_icon up" : "hero_icon", src: "/img/education/icon_education.svg"}), 
+                    React.createElement("span", {className: "line right_line"})
+                  )
+                )
               )
             )
           )
@@ -2396,7 +2471,20 @@ var Main = React.createClass({displayName: "Main",
             React.createElement("div", {className: "content_container"}, 
               React.createElement("div", {className: "video_overlay"}), 
               React.createElement("div", {className: "content_wrapper"}, 
-                React.createElement("img", {src: "/img/education.png"})
+                React.createElement("img", {className: "old_hero_image", src: "/img/education.png"}), 
+                React.createElement("div", {className: "hero_content"}, 
+                  React.createElement("h1", {className: "hero_header"}, "CALL OF THE WILD BECKONS"), 
+                  React.createElement("h3", {className: "hero_subheader marker"}, "Teachers, administrator and scout leaders"), 
+                  React.createElement("div", {className: "hero_textured_color"}, 
+                    React.createElement("p", null, "We invite you to explore opportunities for your school group, including curriculum tied to state science standards. Fontenelle's educational programs take many forms - from field trips, classes, and camps in the forest to hands-on, nature-on-the-go presentations at schools, to community art projects.")
+                  ), 
+                  React.createElement("div", {className: "hero_icon_wrap"}, 
+                    React.createElement("span", {className: "line left_line"}), 
+                    React.createElement("img", {className:  arrow_class ? "hero_icon up" : "hero_icon", src: "/img/education/icon_education.svg"}), 
+                    React.createElement("span", {className: "line right_line"})
+                  )
+                )
+
               )
             )
           )
@@ -2989,8 +3077,20 @@ function shuffleArray(array) {
     return array;
 }
 
+var SetIntervalMixin = {
+  componentWillMount: function() {
+    this.intervals = [];
+  },
+  setInterval: function() {
+    this.intervals.push(setInterval.apply(null, arguments));
+  },
+  componentWillUnmount: function() {
+    this.intervals.forEach(clearInterval);
+  }
+};
+
 var Main = React.createClass({displayName: "Main",
-  mixins: [ Router.State, Navigation ],
+  mixins: [ Router.State, Navigation, SetIntervalMixin ],
   getInitialState: function() {
     return {
       duration: 750,
@@ -3032,10 +3132,10 @@ var Main = React.createClass({displayName: "Main",
       tmp_image.src = load_images[image];
     }
 
-    setInterval(function() { self.setState({arrow_class: !self.state.arrow_class}); }, 500);
-
+    self.setInterval(function() { self.setState({arrow_class: !self.state.arrow_class}); }, 500);
 
   },
+
 
   componentDidUpdate: function (prevProps, prevState) {
     var self  = this;
@@ -4522,12 +4622,11 @@ var Main = React.createClass({displayName: "Main",
             React.createElement("div", {className: "content_container"}, 
               React.createElement("div", {className: "video_overlay"}), 
               React.createElement("div", {className: "content_wrapper"}, 
-                React.createElement("img", {className: "old_hero_image", src: "/img/forest.png"}), 
                 React.createElement("div", {className: "hero_content"}, 
                   React.createElement("h1", {className: "hero_header"}, "INTO THE WOODS"), 
                   React.createElement("h3", {className: "hero_subheader marker"}, "each visit is its own unique adventure"), 
                   React.createElement("div", {className: "hero_textured_color"}, 
-                    React.createElement("p", null, " A general overview of Fontenelle, including: locations oand hours, an interactive trail map and wildlife photo gallery")
+                    React.createElement("p", null, " A general overview of Fontenelle, including: locations and hours, an interactive trail map and wildlife photo gallery")
                   ), 
                   React.createElement("div", {className: "hero_icon_wrap"}, 
                     React.createElement("span", {className: "line left_line"}), 
@@ -4555,12 +4654,11 @@ var Main = React.createClass({displayName: "Main",
             React.createElement("div", {className: "content_container"}, 
               React.createElement("div", {className: "video_overlay"}), 
               React.createElement("div", {className: "content_wrapper"}, 
-                React.createElement("img", {className: "old_hero_image", src: "/img/forest.png"}), 
                 React.createElement("div", {className: "hero_content"}, 
                   React.createElement("h1", {className: "hero_header"}, "INTO THE WOODS"), 
                   React.createElement("h3", {className: "hero_subheader marker"}, "each visit is its own unique adventure"), 
                   React.createElement("div", {className: "hero_textured_color"}, 
-                    React.createElement("p", null, " A general overview of Fontenelle, including: locations oand hours, an interactive trail map and wildlife photo gallery")
+                    React.createElement("p", null, " A general overview of Fontenelle, including: locations and hours, an interactive trail map and wildlife photo gallery")
                   ), 
                   React.createElement("div", {className: "hero_icon_wrap"}, 
                     React.createElement("span", {className: "line left_line"}), 
@@ -5513,9 +5611,21 @@ var Router = require('react-router');
 var Navigation = Router.Navigation;
 var Link = Router.Link;
 
+var SetIntervalMixin = {
+  componentWillMount: function() {
+    this.intervals = [];
+  },
+  setInterval: function() {
+    this.intervals.push(setInterval.apply(null, arguments));
+  },
+  componentWillUnmount: function() {
+    this.intervals.forEach(clearInterval);
+  }
+};
+
 var poster_image;
 var Main = React.createClass({displayName: "Main",
-  mixins: [ Router.State, Navigation ],
+  mixins: [ Router.State, Navigation, SetIntervalMixin ],
   getInitialState: function() {
     return {
       pre_count: 0,
@@ -5531,7 +5641,8 @@ var Main = React.createClass({displayName: "Main",
       video: false,
       content: '',
       parent: '',
-      spider: 0 };
+      spider: 0,
+      arrow_class: false };
   },
 
 
@@ -5544,6 +5655,8 @@ var Main = React.createClass({displayName: "Main",
       tmp_image.onload = self.onLoad;
       tmp_image.src = load_images[image];
     }
+
+    self.setInterval(function() { self.setState({arrow_class: !self.state.arrow_class}); }, 500);
   },
 
   componentDidUpdate: function (prevProps, prevState) {
@@ -5797,6 +5910,9 @@ var Main = React.createClass({displayName: "Main",
     var loadStyle = {
       width: self.state.percent_loaded + "%"
     }
+
+    var arrow_class = self.state.arrow_class;
+
     if (self.state.loaded == true) {
       return (
         React.createElement("div", {className: "page"}, 
@@ -6107,7 +6223,20 @@ var Main = React.createClass({displayName: "Main",
               React.createElement("div", {className: "content_container"}, 
                 React.createElement("div", {className: "video_overlay"}), 
                 React.createElement("div", {className: "content_wrapper"}, 
-                  React.createElement("img", {src: "/img/programs.png"})
+                  React.createElement("img", {className: "old_hero_image", src: "/img/programs.png"}), 
+                  React.createElement("div", {className: "hero_content"}, 
+                    React.createElement("h1", {className: "hero_header"}, "WHAT YOU CAN FIND HERE"), 
+                    React.createElement("h3", {className: "hero_subheader marker"}, "Is infinite, and it is yours"), 
+                    React.createElement("div", {className: "hero_textured_color"}, 
+                      React.createElement("p", null, "Camps, clubs, events and other programs for forest explorers of every age - from pre-schoolers to seniors and everyone in between.")
+                    ), 
+                    React.createElement("div", {className: "hero_icon_wrap"}, 
+                      React.createElement("span", {className: "line left_line"}), 
+                      React.createElement("img", {className:  arrow_class ? "hero_icon up" : "hero_icon", src: "/img/programs/icon_programs.svg"}), 
+                      React.createElement("span", {className: "line right_line"})
+                    )
+                  )
+
                 )
               )
             )
@@ -6127,7 +6256,20 @@ var Main = React.createClass({displayName: "Main",
               React.createElement("div", {className: "content_container"}, 
                 React.createElement("div", {className: "video_overlay"}), 
                 React.createElement("div", {className: "content_wrapper"}, 
-                  React.createElement("img", {src: "/img/programs.png"})
+                  React.createElement("img", {className: "old_hero_image", src: "/img/programs.png"}), 
+                  React.createElement("div", {className: "hero_content"}, 
+                    React.createElement("h1", {className: "hero_header"}, "WHAT YOU CAN FIND HERE"), 
+                    React.createElement("h3", {className: "hero_subheader marker"}, "Is infinite, and it is yours"), 
+                    React.createElement("div", {className: "hero_textured_color"}, 
+                      React.createElement("p", null, "Camps, clubs, events and other programs for forest explorers of every age - from pre-schoolers to seniors and everyone in between.")
+                    ), 
+                    React.createElement("div", {className: "hero_icon_wrap"}, 
+                      React.createElement("span", {className: "line left_line"}), 
+                      React.createElement("img", {className:  arrow_class ? "hero_icon up" : "hero_icon", src: "/img/programs/icon_programs.svg"}), 
+                      React.createElement("span", {className: "line right_line"})
+                    )
+                  )
+
                 )
               )
             )

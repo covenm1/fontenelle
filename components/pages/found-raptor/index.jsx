@@ -103,7 +103,7 @@ module.exports =  React.createClass({
           </div>
         </div>
         <div className="egg_wrap static">
-          <div className='main_wrapper'>
+          <div className='main_wrapper'> 
             <img src="/img/found-raptor/page.png" />
           </div>
         </div>
