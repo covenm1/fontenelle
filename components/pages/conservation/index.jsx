@@ -10,6 +10,19 @@ var Link = Router.Link;
 
 var timeline = require('../../common/timeline.json');
 
+var SetIntervalMixin = {
+  componentWillMount: function() {
+    this.intervals = [];
+  },
+  setInterval: function() {
+    this.intervals.push(setInterval.apply(null, arguments));
+  },
+  componentWillUnmount: function() {
+    this.intervals.forEach(clearInterval);
+  }
+};
+
+
 var HabitatThing = React.createClass({
   render : function(){
     var self = this;
@@ -50,7 +63,7 @@ var TimelineThing = React.createClass({
 
 var poster_image;
 var Main = React.createClass({
-  mixins: [ Router.State, Navigation ],
+  mixins: [ Router.State, Navigation, SetIntervalMixin ],
   getInitialState: function() {
     return {
       pre_count: 0,
@@ -68,7 +81,8 @@ var Main = React.createClass({
       windowWidth: window.innerWidth,
       controller: {},
       scrollPos: 0,
-      timeline: timeline
+      timeline: timeline,
+      arrow_class: false
     };
   },
 
@@ -87,6 +101,8 @@ var Main = React.createClass({
       tmp_image.onload = self.onLoad;
       tmp_image.src = load_images[image];
     }
+
+    self.setInterval(function() { self.setState({arrow_class: !self.state.arrow_class}); }, 500);
   },
 
   componentWillReceiveProps: function (nextProps) {
@@ -167,6 +183,8 @@ var Main = React.createClass({
 
   render: function() {
     var self = this;
+
+    var arrow_class = self.state.arrow_class;
 
     var timeline = self.state.timeline.map(function(object) {
       return <TimelineThing
@@ -267,7 +285,7 @@ var Main = React.createClass({
               </div>
 
               <div className="egg_wrap ">
-                <div className="image_container">
+                <div className="main_wrapper">
 
                   <HabitatThing
                     image="/img/conservation/natures_helpers.png"
@@ -275,7 +293,7 @@ var Main = React.createClass({
                     title="Habitat Restoration"
                     key="habitat"
                     description="Oak savanna and woodland habitats within Fontenelle Forest face severe decline. Their regeneration has been stunted due to the lack of open space resulting from fire suppression and the encroachment of invasive plants. To ensure the preservation and expansion of this ecological community, FF began an oak woodland restoration. Click to find out how we do it!" />
-
+ 
                   <HabitatThing
                     image="/img/conservation/provenplan.png"
                     title="Deer Management"
@@ -412,7 +430,20 @@ var Main = React.createClass({
               <div className="content_container">
                 <div className="video_overlay"></div>
                 <div className="content_wrapper">
-                  <img src="/img/conservation.png" />
+                  <img className="old_hero_image" src="/img/conservation.png" />
+                  <div className="hero_content">
+                    <h1 className="hero_header">SEE THE FOREST</h1>
+                    <h3 className="hero_subheader marker">AND THE TREES</h3>
+                    <div className="hero_textured_color" >
+                      <p>We invite you to explore ways you can get involved in our conservation initiatives. As stewards of the land, we are dedicated to the conservation and preservation of our local environment so that future generations can continue to enjoy the forest.</p>
+                    </div>
+                    <div className="hero_icon_wrap">
+                      <span className="line left_line"></span>
+                      <img className={ arrow_class ? "hero_icon up" : "hero_icon" } src="/img/conservation/icon_conservation.svg" />
+                      <span className="line right_line"></span>
+                    </div>
+                  </div>
+
                 </div>
               </div>
             </div>
@@ -431,7 +462,20 @@ var Main = React.createClass({
               <div className="content_container">
                 <div className="video_overlay"></div>
                 <div className="content_wrapper">
-                  <img src="/img/conservation.png" />
+                  <img className="old_hero_image" src="/img/conservation.png" />
+                  <div className="hero_content">
+                    <h1 className="hero_header">SEE THE FOREST</h1>
+                    <h3 className="hero_subheader marker">AND THE TREES</h3>
+                    <div className="hero_textured_color" >
+                      <p>We invite you to explore ways you can get involved in our conservation initiatives. As stewards of the land, we are dedicated to the conservation and preservation of our local environment so that future generations can continue to enjoy the forest.</p>
+                    </div>
+                    <div className="hero_icon_wrap">
+                      <span className="line left_line"></span>
+                      <img className={ arrow_class ? "hero_icon up" : "hero_icon" } src="/img/conservation/icon_conservation.svg" />
+                      <span className="line right_line"></span>
+                    </div>
+                  </div>
+
                 </div>
               </div>
             </div>

@@ -27,8 +27,20 @@ function shuffleArray(array) {
     return array;
 }
 
+var SetIntervalMixin = {
+  componentWillMount: function() {
+    this.intervals = [];
+  },
+  setInterval: function() {
+    this.intervals.push(setInterval.apply(null, arguments));
+  },
+  componentWillUnmount: function() {
+    this.intervals.forEach(clearInterval);
+  }
+};
+
 var Main = React.createClass({
-  mixins: [ Router.State, Navigation ],
+  mixins: [ Router.State, Navigation, SetIntervalMixin ],
   getInitialState: function() {
     return {
       duration: 750,
@@ -70,10 +82,10 @@ var Main = React.createClass({
       tmp_image.src = load_images[image];
     }
 
-    setInterval(function() { self.setState({arrow_class: !self.state.arrow_class}); }, 500);
-
+    self.setInterval(function() { self.setState({arrow_class: !self.state.arrow_class}); }, 500);
 
   },
+
 
   componentDidUpdate: function (prevProps, prevState) {
     var self  = this;
@@ -1560,12 +1572,11 @@ var Main = React.createClass({
             <div className="content_container">
               <div className="video_overlay"></div>
               <div className="content_wrapper">
-                <img className="old_hero_image" src="/img/forest.png" />
                 <div className="hero_content">
                   <h1 className="hero_header">INTO THE WOODS</h1>
                   <h3 className="hero_subheader marker">each visit is its own unique adventure</h3>
                   <div className="hero_textured_color">
-                    <p> A general overview of Fontenelle, including: locations oand hours, an interactive trail map and wildlife photo gallery</p>
+                    <p> A general overview of Fontenelle, including: locations and hours, an interactive trail map and wildlife photo gallery</p>
                   </div>
                   <div className="hero_icon_wrap">
                     <span className="line left_line"></span>
@@ -1593,12 +1604,11 @@ var Main = React.createClass({
             <div className="content_container">
               <div className="video_overlay"></div>
               <div className="content_wrapper">
-                <img className="old_hero_image" src="/img/forest.png" />
                 <div className="hero_content">
                   <h1 className="hero_header">INTO THE WOODS</h1>
                   <h3 className="hero_subheader marker">each visit is its own unique adventure</h3>
                   <div className="hero_textured_color" >
-                    <p> A general overview of Fontenelle, including: locations oand hours, an interactive trail map and wildlife photo gallery</p>
+                    <p> A general overview of Fontenelle, including: locations and hours, an interactive trail map and wildlife photo gallery</p>
                   </div>
                   <div className="hero_icon_wrap">
                     <span className="line left_line"></span>

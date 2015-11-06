@@ -14,6 +14,19 @@ require('../../../public/js/scrollTo.js');
 
 var classes_data = require('../../common/classes.json');
 
+var SetIntervalMixin = {
+  componentWillMount: function() {
+    this.intervals = [];
+  },
+  setInterval: function() {
+    this.intervals.push(setInterval.apply(null, arguments));
+  },
+  componentWillUnmount: function() {
+    this.intervals.forEach(clearInterval);
+  }
+};
+
+
 var ClassThing = React.createClass({
   render: function() {
     var self = this;
@@ -128,7 +141,7 @@ var ClassList = React.createClass({
 
 var poster_image;
 var Main = React.createClass({
-  mixins: [ Router.State, Navigation ],
+  mixins: [ Router.State, Navigation, SetIntervalMixin ],
   getInitialState: function() {
     return {
       pre_count: 0,
@@ -140,7 +153,8 @@ var Main = React.createClass({
         "/img/education.png",
         "/img/education/flowers.png",
         "/img/education/caterpillar.png"
-      ]
+      ],
+      arrow_class: false
 
     };
   },
@@ -154,6 +168,8 @@ var Main = React.createClass({
       tmp_image.onload = self.onLoad;
       tmp_image.src = load_images[image];
     }
+
+    self.setInterval(function() { self.setState({arrow_class: !self.state.arrow_class}); }, 500);
   },
 
   componentDidUpdate: function (prevProps, prevState) {
@@ -224,19 +240,20 @@ var Main = React.createClass({
     var loadStyle = {
       width: self.state.percent_loaded + "%"
     }
+    var arrow_class = self.state.arrow_class;
     if (self.state.loaded == true) {
       return (
         <div className="page">
           <div className="page_wrapper">
             <div className="page_container" id="page" style={loadStyle}>
               <div className="egg_wrap living_classroom_container">
+                <div className="living_classroom image_container">
+                  <img src="/img/education/caterpillar.png" />
+                </div>
                 <div className="living_classroom copy_container">
                   <h2 className="marker">A living classroom</h2>
                   <p>The Forest offers nearly unlimited opportunities for learning. Over 100,000 youth and adults each year take part in environmental education programs through Fontenelle.</p>
                   <img className="bottom_vine" src="/img/bottom_vine.svg" />
-                </div>
-                <div className="living_classroom image_container">
-                  <img src="/img/education/caterpillar.png" />
                 </div>
               </div>
 
@@ -257,21 +274,23 @@ var Main = React.createClass({
                 </div>
               </div>
 
-              <div id="classes" className="egg_wrap classes_container">
-                <div className="living_classroom copy_container">
-                  <h2 className="marker in_forest">In the Forest</h2>
-                  <p>Book your next field trip with Fontenelle Forest! Our experienced educators will provide an engaging, hands-on program for your group. Each program includes an indoor and outdoor portion. To register for a school program for the 2011/2012 school year, please contact the FF Education Department at (402) 731-3140. For directions to the nature centers, click here.</p>
-                  <p className="small_text"><strong>Once you have booked a field trip</strong>, be sure to take advantage of the activities provided below. These activities will greatly enhance your students' field trip experience - and they're a lot of fun!</p>
-                </div>
-                <div className="living_classroom copy_container">
-                  <h2 className="marker on_go">Nature On-The-Go</h2>
-                  <p>Nature-On-the-Go traveling programs introduce hands-on natural science programs to your students. During each program, your students will explore a variety of topics. These are great to supplement your school-day lessons or as an after-school program.</p>
-                  <p className="small_text"><strong>To schedule a program</strong>, call our Manager of Programming and Outreach at 402-731-3140 x1026</p>
-                  <p className="small_text">All programs are aligned with Nebraska State Science Standards.</p>
-                  <p className="small_text">Each program is 45–60 minutes long. Maximum 30 students per On-the-Go program. For groups larger than 30, multiple programs must be scheduled.</p>
-                </div>
-                <div className='image_container'>
-                  <img src="/img/education/flowers.png" />
+              <div id="classes" className="egg_wrap">
+                <div id="classes" className="image_container classes_container">
+                  <div className="living_classroom copy_container">
+                    <h2 className="marker in_forest">In the Forest</h2>
+                    <p>Book your next field trip with Fontenelle Forest! Our experienced educators will provide an engaging, hands-on program for your group. Each program includes an indoor and outdoor portion. To register for a school program for the 2011/2012 school year, please contact the FF Education Department at (402) 731-3140. For directions to the nature centers, click here.</p>
+                    <p className="small_text"><strong>Once you have booked a field trip</strong>, be sure to take advantage of the activities provided below. These activities will greatly enhance your students' field trip experience - and they're a lot of fun!</p>
+                  </div>
+                  <div className="living_classroom copy_container">
+                    <h2 className="marker on_go">Nature On-The-Go</h2>
+                    <p>Nature-On-the-Go traveling programs introduce hands-on natural science programs to your students. During each program, your students will explore a variety of topics. These are great to supplement your school-day lessons or as an after-school program.</p>
+                    <p className="small_text"><strong>To schedule a program</strong>, call our Manager of Programming and Outreach at 402-731-3140 x1026</p>
+                    <p className="small_text">All programs are aligned with Nebraska State Science Standards.</p>
+                    <p className="small_text">Each program is 45–60 minutes long. Maximum 30 students per On-the-Go program. For groups larger than 30, multiple programs must be scheduled.</p>
+                  </div>
+                  <div className='image_container'>
+                    <img src="/img/education/flowers.png" />
+                  </div>
                 </div>
               </div>
 
@@ -325,7 +344,19 @@ var Main = React.createClass({
             <div className="content_container">
               <div className="video_overlay"></div>
               <div className="content_wrapper">
-                <img src="/img/education.png" />
+                <img className="old_hero_image" src="/img/education.png" />
+                <div className="hero_content">
+                  <h1 className="hero_header">CALL OF THE WILD BECKONS</h1>
+                  <h3 className="hero_subheader marker">Teachers, administrator and scout leaders</h3>
+                  <div className="hero_textured_color" >
+                    <p>We invite you to explore opportunities for your school group, including curriculum tied to state science standards. Fontenelle's educational programs take many forms - from field trips, classes, and camps in the forest to hands-on, nature-on-the-go presentations at schools, to community art projects.</p>
+                  </div>
+                  <div className="hero_icon_wrap">
+                    <span className="line left_line"></span>
+                    <img className={ arrow_class ? "hero_icon up" : "hero_icon" } src="/img/education/icon_education.svg" />
+                    <span className="line right_line"></span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -344,7 +375,20 @@ var Main = React.createClass({
             <div className="content_container">
               <div className="video_overlay"></div>
               <div className="content_wrapper">
-                <img src="/img/education.png" />
+                <img className="old_hero_image" src="/img/education.png" />
+                <div className="hero_content">
+                  <h1 className="hero_header">CALL OF THE WILD BECKONS</h1>
+                  <h3 className="hero_subheader marker">Teachers, administrator and scout leaders</h3>
+                  <div className="hero_textured_color" >
+                    <p>We invite you to explore opportunities for your school group, including curriculum tied to state science standards. Fontenelle's educational programs take many forms - from field trips, classes, and camps in the forest to hands-on, nature-on-the-go presentations at schools, to community art projects.</p>
+                  </div>
+                  <div className="hero_icon_wrap">
+                    <span className="line left_line"></span>
+                    <img className={ arrow_class ? "hero_icon up" : "hero_icon" } src="/img/education/icon_education.svg" />
+                    <span className="line right_line"></span>
+                  </div>
+                </div>
+
               </div>
             </div>
           </div>

@@ -203,15 +203,17 @@
 .living_classroom_container {
   padding: 50px;
   .image_container {
-    width: 80%;
+    width: 650px;
+    max-width: 100%;
     img {
       max-width: 100%;
     }
   }
   .copy_container {
     text-align: center;
-    width: 50%;
-    float: right;
+    width: 650px;
+    max-width: 100%;
+    margin: auto;
     h2 {
       color: $education_color;
       font-size: 50px;
@@ -260,5 +262,14 @@
         font-weight: bold;
       }
     }
+  }
+}
+
+.education .hero_content {
+  .hero_header {
+    font-size: 60px;
+  }
+  .hero_textured_color {
+    background-image: url(/img/education/texture.svg);
   }
 }

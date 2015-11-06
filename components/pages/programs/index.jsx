@@ -8,9 +8,21 @@ var Router = require('react-router');
 var Navigation = Router.Navigation;
 var Link = Router.Link;
 
+var SetIntervalMixin = {
+  componentWillMount: function() {
+    this.intervals = [];
+  },
+  setInterval: function() {
+    this.intervals.push(setInterval.apply(null, arguments));
+  },
+  componentWillUnmount: function() {
+    this.intervals.forEach(clearInterval);
+  }
+};
+
 var poster_image;
 var Main = React.createClass({
-  mixins: [ Router.State, Navigation ],
+  mixins: [ Router.State, Navigation, SetIntervalMixin ],
   getInitialState: function() {
     return {
       pre_count: 0,
@@ -26,7 +38,8 @@ var Main = React.createClass({
       video: false,
       content: '',
       parent: '',
-      spider: 0 };
+      spider: 0,
+      arrow_class: false };
   },
 
 
@@ -39,6 +52,8 @@ var Main = React.createClass({
       tmp_image.onload = self.onLoad;
       tmp_image.src = load_images[image];
     }
+
+    self.setInterval(function() { self.setState({arrow_class: !self.state.arrow_class}); }, 500);
   },
 
   componentDidUpdate: function (prevProps, prevState) {
@@ -292,6 +307,9 @@ var Main = React.createClass({
     var loadStyle = {
       width: self.state.percent_loaded + "%"
     }
+
+    var arrow_class = self.state.arrow_class;
+
     if (self.state.loaded == true) {
       return (
         <div className="page">
@@ -602,7 +620,20 @@ var Main = React.createClass({
               <div className="content_container">
                 <div className="video_overlay"></div>
                 <div className="content_wrapper">
-                  <img src="/img/programs.png" />
+                  <img className="old_hero_image" src="/img/programs.png" />
+                  <div className="hero_content">
+                    <h1 className="hero_header">WHAT YOU CAN FIND HERE</h1>
+                    <h3 className="hero_subheader marker">Is infinite, and it is yours</h3>
+                    <div className="hero_textured_color" >
+                      <p>Camps, clubs, events and other programs for forest explorers of every age - from pre-schoolers to seniors and everyone in between.</p>
+                    </div>
+                    <div className="hero_icon_wrap">
+                      <span className="line left_line"></span>
+                      <img className={ arrow_class ? "hero_icon up" : "hero_icon" } src="/img/programs/icon_programs.svg" />
+                      <span className="line right_line"></span>
+                    </div>
+                  </div>
+
                 </div>
               </div>
             </div>
@@ -622,7 +653,20 @@ var Main = React.createClass({
               <div className="content_container">
                 <div className="video_overlay"></div>
                 <div className="content_wrapper">
-                  <img src="/img/programs.png" />
+                  <img className="old_hero_image" src="/img/programs.png" />
+                  <div className="hero_content">
+                    <h1 className="hero_header">WHAT YOU CAN FIND HERE</h1>
+                    <h3 className="hero_subheader marker">Is infinite, and it is yours</h3>
+                    <div className="hero_textured_color" >
+                      <p>Camps, clubs, events and other programs for forest explorers of every age - from pre-schoolers to seniors and everyone in between.</p>
+                    </div>
+                    <div className="hero_icon_wrap">
+                      <span className="line left_line"></span>
+                      <img className={ arrow_class ? "hero_icon up" : "hero_icon" } src="/img/programs/icon_programs.svg" />
+                      <span className="line right_line"></span>
+                    </div>
+                  </div>
+
                 </div>
               </div>
             </div>
