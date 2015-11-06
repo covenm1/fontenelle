@@ -130,6 +130,24 @@ img.bottom_vine {
   zoom: 1;
 }
 
+.cf:after{
+  content: '';
+  display: table;
+  clear: both;
+}
+
+.cf:before,
+.cf:after {
+  content: '';
+  display: table;
+}
+.cf:after {
+  clear: both;
+}
+.cf {
+  zoom: 1;
+}
+
 .egg_wrap {
   background: url(/img/eggshell.jpg);
   &.padded {
@@ -708,18 +726,10 @@ footer nav a.social_fl {background-image: url(/img/social-fl.png);}
 }
 
 .prev_page {
-  background-image: url(/img/page-left.png);
-  background-repeat: no-repeat;
-  background-position: left;
-  padding-left: 60px;
 }
 
 .next_page {
   float: right;
-  background-image: url(/img/page-right.png);
-  background-repeat: no-repeat;
-  background-position: right;
-  padding-right: 60px;
 }
 
 .content_container {

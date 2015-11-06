@@ -1420,7 +1420,7 @@ var Main = React.createClass({displayName: "Main",
       left: 0,
       windowWidth: window.innerWidth,
       controller: {},
-      scrollPos: 0, 
+      scrollPos: 0,
       timeline: timeline
     };
   },
@@ -1733,8 +1733,28 @@ var Main = React.createClass({displayName: "Main",
 
               React.createElement("div", {className: "egg_wrap"}, 
                 React.createElement("div", {className: "main_wrapper bottom_nav"}, 
-                  React.createElement("span", {className: "prev_page", onClick: self.moveLeft}, "Forest"), 
-                  React.createElement("span", {className: "next_page", onClick: self.moveRight}, "Education")
+                  React.createElement("span", {className: "prev_page", onClick: self.moveLeft}, 
+                    React.createElement("svg", {className: "arrow_circle black left_arrow", x: "0px", y: "0px", viewBox: "0 0 52 52", enableBackground: "new 0 0 52 52"}, 
+                    	React.createElement("path", {className: "circle", strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"}), 
+                    	React.createElement("g", {className: "arrow"}, 
+                    		React.createElement("path", {strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M22.6,25.9c0,0,1,1.6,1,4.4c0,2.6,0.6,3.5,0.6,3.8c0,0.4-0.3,0.7-0.7,0.5s-8.6-6.2-10.5-8.1" + ' ' +
+                    			"c0,0-0.2-0.2-0.2-0.5v-0.1c0-0.2,0.1-0.4,0.2-0.5c1.7-1.7,10.1-7.9,10.5-8.1c0.3-0.2,0.7-0.1,0.7,0.5c0,0.3-0.6,1.1-0.6,3.8" + ' ' +
+                    			"C23.6,24.3,22.6,25.9,22.6,25.9z"}), 
+                    		React.createElement("line", {strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", x1: "24.2", y1: "25.9", x2: "39.3", y2: "25.9"})
+                    	)
+                    ), 
+                    "Forest"), 
+                  React.createElement("span", {className: "next_page", onClick: self.moveRight}, "Education", 
+                    React.createElement("svg", {className: "arrow_circle black right_arrow", x: "0px", y: "0px", viewBox: "0 0 52 52", enableBackground: "new 0 0 52 52"}, 
+                    	React.createElement("path", {className: "circle", strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"}), 
+                    	React.createElement("g", {className: "arrow"}, 
+                    		React.createElement("path", {strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M29.4,25.9c0,0-1,1.6-1,4.4c0,2.6-0.6,3.5-0.6,3.8c0,0.4,0.3,0.7,0.7,0.5s8.6-6.2,10.5-8.1" + ' ' +
+                    		"c0,0,0.2-0.2,0.2-0.5v-0.1c0-0.2-0.1-0.4-0.2-0.5c-1.7-1.7-10.1-7.9-10.5-8.1c-0.3-0.2-0.7-0.1-0.7,0.5c0,0.3,0.6,1.1,0.6,3.8" + ' ' +
+                    		"C28.4,24.3,29.4,25.9,29.4,25.9z"}), 
+                    		React.createElement("line", {strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", x1: "27.8", y1: "25.9", x2: "12.7", y2: "25.9"})
+                    	)
+                    )
+                  )
                 )
               )
             ), 
@@ -2324,8 +2344,28 @@ var Main = React.createClass({displayName: "Main",
               ), 
               React.createElement("div", {className: "egg_wrap"}, 
                 React.createElement("div", {className: "main_wrapper bottom_nav"}, 
-                  React.createElement("span", {className: "prev_page", onClick: self.moveLeft}, "Natural Resources"), 
-                  React.createElement("span", {className: "next_page", onClick: self.moveRight}, "Programs")
+                  React.createElement("span", {className: "prev_page", onClick: self.moveLeft}, 
+                    React.createElement("svg", {className: "arrow_circle black left_arrow", x: "0px", y: "0px", viewBox: "0 0 52 52", enableBackground: "new 0 0 52 52"}, 
+                    	React.createElement("path", {className: "circle", strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"}), 
+                    	React.createElement("g", {className: "arrow"}, 
+                    		React.createElement("path", {strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M22.6,25.9c0,0,1,1.6,1,4.4c0,2.6,0.6,3.5,0.6,3.8c0,0.4-0.3,0.7-0.7,0.5s-8.6-6.2-10.5-8.1" + ' ' +
+                    			"c0,0-0.2-0.2-0.2-0.5v-0.1c0-0.2,0.1-0.4,0.2-0.5c1.7-1.7,10.1-7.9,10.5-8.1c0.3-0.2,0.7-0.1,0.7,0.5c0,0.3-0.6,1.1-0.6,3.8" + ' ' +
+                    			"C23.6,24.3,22.6,25.9,22.6,25.9z"}), 
+                    		React.createElement("line", {strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", x1: "24.2", y1: "25.9", x2: "39.3", y2: "25.9"})
+                    	)
+                    ), 
+                    "Natural Resources"), 
+                  React.createElement("span", {className: "next_page", onClick: self.moveRight}, "Programs", 
+                    React.createElement("svg", {className: "arrow_circle black right_arrow", x: "0px", y: "0px", viewBox: "0 0 52 52", enableBackground: "new 0 0 52 52"}, 
+                    	React.createElement("path", {className: "circle", strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"}), 
+                    	React.createElement("g", {className: "arrow"}, 
+                    		React.createElement("path", {strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M29.4,25.9c0,0-1,1.6-1,4.4c0,2.6-0.6,3.5-0.6,3.8c0,0.4,0.3,0.7,0.7,0.5s8.6-6.2,10.5-8.1" + ' ' +
+                    		"c0,0,0.2-0.2,0.2-0.5v-0.1c0-0.2-0.1-0.4-0.2-0.5c-1.7-1.7-10.1-7.9-10.5-8.1c-0.3-0.2-0.7-0.1-0.7,0.5c0,0.3,0.6,1.1,0.6,3.8" + ' ' +
+                    		"C28.4,24.3,29.4,25.9,29.4,25.9z"}), 
+                    		React.createElement("line", {strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", x1: "27.8", y1: "25.9", x2: "12.7", y2: "25.9"})
+                    	)
+                    )
+                  )
                 )
               )
             )
@@ -2551,6 +2591,7 @@ module.exports = React.createClass({displayName: "exports",
       request
         .get('http://fontenelle.flywheelsites.com/wp-json/posts')
         .query('type[]=plantlife&filter[posts_per_page]=-1')
+        .set('Cache-Control', 'no-cache,no-store,must-revalidate,max-age=-1,private')
         .end(function(err, res) {
       if (res.ok) {
         var plantlife = res.body;
@@ -2568,6 +2609,7 @@ module.exports = React.createClass({displayName: "exports",
       request
         .get('http://fontenelle.flywheelsites.com/wp-json/posts')
         .query('type[]=wildlife&filter[posts_per_page]=-1')
+        .set('Cache-Control', 'no-cache,no-store,must-revalidate,max-age=-1,private')
         .end(function(err, res) {
       if (res.ok) {
         var wildlife = res.body;
@@ -2585,6 +2627,7 @@ module.exports = React.createClass({displayName: "exports",
       request
         .get('http://fontenelle.flywheelsites.com/wp-json/posts')
         .query('type[]=closings&filter[posts_per_page]=-1')
+        .set('Cache-Control', 'no-cache,no-store,must-revalidate,max-age=-1,private')
         .end(function(err, res) {
       if (res.ok) {
         var closings = res.body;
@@ -2602,6 +2645,7 @@ module.exports = React.createClass({displayName: "exports",
     request
       .get('http://fontenelle.flywheelsites.com/wp-json/posts')
       .query('type[]=post&filter[posts_per_page]=-1')
+      .set('Cache-Control', 'no-cache,no-store,must-revalidate,max-age=-1,private')
       .end(function(err, res) {
         if (res.ok) {
           var posts = res.body;
@@ -2622,6 +2666,7 @@ module.exports = React.createClass({displayName: "exports",
     request
       .get('http://fontenelle.flywheelsites.com/wp-json/posts')
       .query('type[]=events&filter[posts_per_page]=-1&filter[meta_query]&filter[meta_key]=week&filter[meta_value]=' + this_week)
+      .set('Cache-Control', 'no-cache,no-store,must-revalidate,max-age=-1,private')
       .end(function(err, res) {
         if (res.ok) {
           var events = res.body;
@@ -2646,6 +2691,7 @@ module.exports = React.createClass({displayName: "exports",
     request
       .get('http://fontenelle.flywheelsites.com/wp-json/posts')
       .query('type[]=events&filter[posts_per_page]=-1&filter[meta_query]&filter[meta_key]=week&filter[meta_value]=' + this_week)
+      .set('Cache-Control', 'no-cache,no-store,must-revalidate,max-age=-1,private')
       .end(function(err, res) {
         if (res.ok) {
           var events = res.body;
@@ -2671,6 +2717,7 @@ module.exports = React.createClass({displayName: "exports",
     request
       .get('http://fontenelle.flywheelsites.com/wp-json/posts')
       .query('type[]=events&filter[posts_per_page]=-1&filter[meta_query]&filter[meta_key]=week&filter[meta_value]=' + this_week)
+      .set('Cache-Control', 'no-cache,no-store,must-revalidate,max-age=-1,private')
       .end(function(err, res) {
         if (res.ok) {
           var events = res.body;
@@ -2688,12 +2735,13 @@ module.exports = React.createClass({displayName: "exports",
         }
           }.bind(self));
   },
- 
+
   loadExcerpts: function(){
     var self = this;
     request
       .get('http://fontenelle.flywheelsites.com/wp-json/pages')
       .query('filter[name]=nature-notes')
+      .set('Cache-Control', 'no-cache,no-store,must-revalidate,max-age=-1,private')
       .end(function(err, res) {
         if (res.ok) {
           var page = res.body[0];
@@ -2713,6 +2761,7 @@ module.exports = React.createClass({displayName: "exports",
     var self = this;
     request
       .get('/twistagrams')
+      .set('Cache-Control', 'no-cache,no-store,must-revalidate,max-age=-1,private')
       .end(function(err, res) {
         if (res.ok) {
           var twistagrams = res.body;
@@ -2766,10 +2815,16 @@ module.exports = React.createClass({displayName: "exports",
     });
 
     var posts = self.state.posts.map(function(object){
+      var post_style ={
+        backgroundImage: "url("+ object.featured_image.guid +")"
+      }
       return (
         React.createElement("div", {className: "post"}, 
-          React.createElement("h4", {className: "post_headline"}, object.title), 
-          React.createElement(Link, {className: "post_link", to: "/post/" + object.slug}, "Read more")
+          React.createElement("div", {className: "post_image", style: post_style}), 
+          React.createElement("div", {className: "post_content"}, 
+            React.createElement("h4", {className: "post_headline"}, object.title), 
+            React.createElement(Link, {className: "post_link", to: "/post/" + object.slug}, "Read more")
+          )
         )
       )
     });
@@ -2828,7 +2883,7 @@ module.exports = React.createClass({displayName: "exports",
                     React.createElement(Link, {to: "nature-notes"}, 
                       React.createElement("div", {className: "closings_bar"}, 
                         React.createElement("div", {className: "halfcontainer right"}, 
-                          self.state.closings.length, " Closings"
+                          self.state.closings.length, " Alert", (self.state.closings.length > 1) ? "s" : null
                         )
                       )
                     )
@@ -2857,14 +2912,36 @@ module.exports = React.createClass({displayName: "exports",
 
           React.createElement("div", {className: "image_container"}, 
             React.createElement("div", {className: "now-left"}, 
-              React.createElement("h3", {className: "week_title marker"}, "This Week: ", React.createElement("span", {className: "actual_week"}, moment(self.state.week, 'DDMMYYYY').startOf('week').format('MMMM D'), " - ", moment(self.state.week, 'DDMMYYYY').endOf('week').format('MMMM D'), " ")), 
-              React.createElement("span", {className: "prev_week", onClick: self.prevWeek}, "Previous Week"), 
-              React.createElement("span", {className: "next_week", onClick: self.nextWeek}, "Next Week"), 
+              React.createElement("h3", {className: "week_title marker"}, 
+                React.createElement("span", {className: "prev_week", onClick: self.prevWeek}, 
+                  React.createElement("svg", {className: "arrow_circle blue left_arrow", x: "0px", y: "0px", viewBox: "0 0 52 52", enableBackground: "new 0 0 52 52"}, 
+                  	React.createElement("path", {className: "circle", strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"}), 
+                  	React.createElement("g", {className: "arrow"}, 
+                  		React.createElement("path", {strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M22.6,25.9c0,0,1,1.6,1,4.4c0,2.6,0.6,3.5,0.6,3.8c0,0.4-0.3,0.7-0.7,0.5s-8.6-6.2-10.5-8.1" + ' ' +
+                  			"c0,0-0.2-0.2-0.2-0.5v-0.1c0-0.2,0.1-0.4,0.2-0.5c1.7-1.7,10.1-7.9,10.5-8.1c0.3-0.2,0.7-0.1,0.7,0.5c0,0.3-0.6,1.1-0.6,3.8" + ' ' +
+                  			"C23.6,24.3,22.6,25.9,22.6,25.9z"}), 
+                  		React.createElement("line", {strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", x1: "24.2", y1: "25.9", x2: "39.3", y2: "25.9"})
+                  	)
+                  )
+                ), 
+                "This Week: ", React.createElement("span", {className: "actual_week"}, moment(self.state.week, 'DDMMYYYY').startOf('week').format('MMMM D'), " - ", moment(self.state.week, 'DDMMYYYY').endOf('week').format('MMMM D'), " "), 
+                React.createElement("span", {className: "next_week", onClick: self.nextWeek}, 
+                  React.createElement("svg", {className: "arrow_circle blue right_arrow", x: "0px", y: "0px", viewBox: "0 0 52 52", enableBackground: "new 0 0 52 52"}, 
+                    React.createElement("path", {className: "circle", strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"}), 
+                    React.createElement("g", {className: "arrow"}, 
+                      React.createElement("path", {strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M29.4,25.9c0,0-1,1.6-1,4.4c0,2.6-0.6,3.5-0.6,3.8c0,0.4,0.3,0.7,0.7,0.5s8.6-6.2,10.5-8.1" + ' ' +
+                      "c0,0,0.2-0.2,0.2-0.5v-0.1c0-0.2-0.1-0.4-0.2-0.5c-1.7-1.7-10.1-7.9-10.5-8.1c-0.3-0.2-0.7-0.1-0.7,0.5c0,0.3,0.6,1.1,0.6,3.8" + ' ' +
+                      "C28.4,24.3,29.4,25.9,29.4,25.9z"}), 
+                      React.createElement("line", {strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", x1: "27.8", y1: "25.9", x2: "12.7", y2: "25.9"})
+                    )
+                  )
+                )
+              ), 
               events
             ), 
             React.createElement("div", {className: "now-right"}, 
               posts, 
-              React.createElement(Link, {to: "/posts"}, "VIEW ALL POSTS")
+              React.createElement(Link, {to: "/posts", className: "all_posts_link"}, "VIEW ALL POSTS")
             )
           ), 
 
@@ -2938,7 +3015,8 @@ var Main = React.createClass({displayName: "Main",
       acornLeft: 0,
       windowWidth: window.innerWidth,
       videoOne: false,
-      videoTwo: false
+      videoTwo: false,
+      arrow_class: false
     };
   },
 
@@ -2953,6 +3031,9 @@ var Main = React.createClass({displayName: "Main",
       tmp_image.onload = self.onLoad;
       tmp_image.src = load_images[image];
     }
+
+    setInterval(function() { self.setState({arrow_class: !self.state.arrow_class}); }, 500);
+
 
   },
 
@@ -3240,6 +3321,8 @@ var Main = React.createClass({displayName: "Main",
     var loadStyle = {
       width: self.state.percent_loaded + "%"
     }
+    var arrow_class = self.state.arrow_class;
+
     if (self.state.loaded == true) {
 
       var drawer = self.state.drawer.map(function(object, index) {
@@ -4405,8 +4488,28 @@ var Main = React.createClass({displayName: "Main",
 
               React.createElement("div", {className: "egg_wrap"}, 
                 React.createElement("div", {className: "main_wrapper bottom_nav"}, 
-                  React.createElement("span", {className: "prev_page", onClick: self.moveLeft}, "Programs"), 
-                  React.createElement("span", {className: "next_page", onClick: self.moveRight}, "Natural Resources")
+                  React.createElement("span", {className: "prev_page", onClick: self.moveLeft}, 
+                    React.createElement("svg", {className: "arrow_circle black left_arrow", x: "0px", y: "0px", viewBox: "0 0 52 52", enableBackground: "new 0 0 52 52"}, 
+                    	React.createElement("path", {className: "circle", strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"}), 
+                    	React.createElement("g", {className: "arrow"}, 
+                    		React.createElement("path", {strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M22.6,25.9c0,0,1,1.6,1,4.4c0,2.6,0.6,3.5,0.6,3.8c0,0.4-0.3,0.7-0.7,0.5s-8.6-6.2-10.5-8.1" + ' ' +
+                    			"c0,0-0.2-0.2-0.2-0.5v-0.1c0-0.2,0.1-0.4,0.2-0.5c1.7-1.7,10.1-7.9,10.5-8.1c0.3-0.2,0.7-0.1,0.7,0.5c0,0.3-0.6,1.1-0.6,3.8" + ' ' +
+                    			"C23.6,24.3,22.6,25.9,22.6,25.9z"}), 
+                    		React.createElement("line", {strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", x1: "24.2", y1: "25.9", x2: "39.3", y2: "25.9"})
+                    	)
+                    ), 
+                    "Programs"), 
+                  React.createElement("span", {className: "next_page", onClick: self.moveRight}, "Natural Resources", 
+                    React.createElement("svg", {className: "arrow_circle black right_arrow", x: "0px", y: "0px", viewBox: "0 0 52 52", enableBackground: "new 0 0 52 52"}, 
+                    	React.createElement("path", {className: "circle", strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"}), 
+                    	React.createElement("g", {className: "arrow"}, 
+                    		React.createElement("path", {strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M29.4,25.9c0,0-1,1.6-1,4.4c0,2.6-0.6,3.5-0.6,3.8c0,0.4,0.3,0.7,0.7,0.5s8.6-6.2,10.5-8.1" + ' ' +
+                    		"c0,0,0.2-0.2,0.2-0.5v-0.1c0-0.2-0.1-0.4-0.2-0.5c-1.7-1.7-10.1-7.9-10.5-8.1c-0.3-0.2-0.7-0.1-0.7,0.5c0,0.3,0.6,1.1,0.6,3.8" + ' ' +
+                    		"C28.4,24.3,29.4,25.9,29.4,25.9z"}), 
+                    		React.createElement("line", {strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", x1: "27.8", y1: "25.9", x2: "12.7", y2: "25.9"})
+                    	)
+                    )
+                  )
                 )
               )
 
@@ -4419,7 +4522,19 @@ var Main = React.createClass({displayName: "Main",
             React.createElement("div", {className: "content_container"}, 
               React.createElement("div", {className: "video_overlay"}), 
               React.createElement("div", {className: "content_wrapper"}, 
-                React.createElement("img", {src: "/img/forest.png"})
+                React.createElement("img", {className: "old_hero_image", src: "/img/forest.png"}), 
+                React.createElement("div", {className: "hero_content"}, 
+                  React.createElement("h1", {className: "hero_header"}, "INTO THE WOODS"), 
+                  React.createElement("h3", {className: "hero_subheader marker"}, "each visit is its own unique adventure"), 
+                  React.createElement("div", {className: "hero_textured_color"}, 
+                    React.createElement("p", null, " A general overview of Fontenelle, including: locations oand hours, an interactive trail map and wildlife photo gallery")
+                  ), 
+                  React.createElement("div", {className: "hero_icon_wrap"}, 
+                    React.createElement("span", {className: "line left_line"}), 
+                    React.createElement("img", {className:  arrow_class ? "hero_icon up" : "hero_icon", src: "/img/forest/icon_forest.svg"}), 
+                    React.createElement("span", {className: "line right_line"})
+                  )
+                )
               )
             )
           )
@@ -4440,7 +4555,19 @@ var Main = React.createClass({displayName: "Main",
             React.createElement("div", {className: "content_container"}, 
               React.createElement("div", {className: "video_overlay"}), 
               React.createElement("div", {className: "content_wrapper"}, 
-                React.createElement("img", {src: "/img/forest.png"})
+                React.createElement("img", {className: "old_hero_image", src: "/img/forest.png"}), 
+                React.createElement("div", {className: "hero_content"}, 
+                  React.createElement("h1", {className: "hero_header"}, "INTO THE WOODS"), 
+                  React.createElement("h3", {className: "hero_subheader marker"}, "each visit is its own unique adventure"), 
+                  React.createElement("div", {className: "hero_textured_color"}, 
+                    React.createElement("p", null, " A general overview of Fontenelle, including: locations oand hours, an interactive trail map and wildlife photo gallery")
+                  ), 
+                  React.createElement("div", {className: "hero_icon_wrap"}, 
+                    React.createElement("span", {className: "line left_line"}), 
+                    React.createElement("img", {className:  arrow_class ? "hero_icon up" : "hero_icon", src: "/img/forest/icon_forest.svg"}), 
+                    React.createElement("span", {className: "line right_line"})
+                  )
+                )
               )
             )
           )
@@ -4987,6 +5114,7 @@ module.exports = React.createClass({displayName: "exports",
       request
         .get('http://fontenelle.flywheelsites.com/wp-json/posts')
         .query('type[]=raptors&filter[posts_per_page]=-1')
+        .set('Cache-Control', 'no-cache,no-store,must-revalidate,max-age=-1,private')
         .end(function(err, res) {
       if (res.ok) {
         var birds = res.body;
@@ -5009,7 +5137,7 @@ module.exports = React.createClass({displayName: "exports",
           React.createElement("div", {className: "bird_copy"}, 
             React.createElement("h2", {className: "bird_title marker"}, object.title), 
             React.createElement("h4", {className: "bird_species"}, object.meta.species), 
-            React.createElement("h4", {className: "bird_date"}, object.meta.date_added), 
+            React.createElement("h4", {className: "bird_date"}, "Date added: ", object.meta.date_added), 
             React.createElement("p", {className: "bird_overview"}, object.meta.overview)
           )
         )
@@ -5109,6 +5237,7 @@ module.exports = React.createClass({displayName: "exports",
       request
         .get('http://fontenelle.flywheelsites.com/wp-json/posts')
         .query('type[]=plantlife&filter[posts_per_page]=-1')
+        .set('Cache-Control', 'no-cache,no-store,must-revalidate,max-age=-1,private')
         .end(function(err, res) {
       if (res.ok) {
         var plantlife = res.body;
@@ -5127,6 +5256,7 @@ module.exports = React.createClass({displayName: "exports",
       request
         .get('http://fontenelle.flywheelsites.com/wp-json/posts')
         .query('type[]=wildlife&filter[posts_per_page]=-1')
+        .set('Cache-Control', 'no-cache,no-store,must-revalidate,max-age=-1,private')
         .end(function(err, res) {
       if (res.ok) {
         var wildlife = res.body;
@@ -5144,6 +5274,7 @@ module.exports = React.createClass({displayName: "exports",
       request
         .get('http://fontenelle.flywheelsites.com/wp-json/posts')
         .query('type[]=closings&filter[posts_per_page]=-1')
+        .set('Cache-Control', 'no-cache,no-store,must-revalidate,max-age=-1,private')
         .end(function(err, res) {
       if (res.ok) {
         var closings = res.body;
@@ -5251,6 +5382,7 @@ module.exports = React.createClass({displayName: "exports",
     request
       .get('http://fontenelle.flywheelsites.com/wp-json/posts')
       .query('filter[name]='+ self.getParams().name)
+      .set('Cache-Control', 'no-cache,no-store,must-revalidate,max-age=-1,private')
       .end(function(err, res) {
         if (res.ok) {
           var post = res.body;
@@ -5324,6 +5456,7 @@ module.exports = React.createClass({displayName: "exports",
     request
       .get('http://fontenelle.flywheelsites.com/wp-json/posts')
       .query('type[]=post&filter[posts_per_page]=-1')
+      .set('Cache-Control', 'no-cache,no-store,must-revalidate,max-age=-1,private')
       .end(function(err, res) {
         if (res.ok) {
           var posts = res.body;
@@ -5339,10 +5472,16 @@ module.exports = React.createClass({displayName: "exports",
   render: function() {
     var self = this;
     var posts = self.state.posts.map(function(object){
+      var post_style ={
+        backgroundImage: "url("+ object.featured_image.guid +")"
+      }
       return (
         React.createElement("div", {className: "post"}, 
-          React.createElement("h4", {className: "post_headline"}, object.title), 
-          React.createElement(Link, {className: "post_link", to: "/post/" + object.slug}, "Read more")
+          React.createElement("div", {className: "post_image", style: post_style}), 
+          React.createElement("div", {className: "post_content"}, 
+            React.createElement("h4", {className: "post_headline"}, object.title), 
+            React.createElement(Link, {className: "post_link", to: "/post/" + object.slug}, "Read more")
+          )
         )
       )
     });
@@ -5667,7 +5806,16 @@ var Main = React.createClass({displayName: "Main",
 
                  content ?
                   React.createElement("div", {className: "current_class main_wrapper"}, 
-                    React.createElement("p", {className: "reset_class", onClick: self.closeContent}, "<"), 
+
+                    React.createElement("svg", {onClick: self.closeContent, className: "arrow_circle red left_arrow reset_class", x: "0px", y: "0px", viewBox: "0 0 52 52", enableBackground: "new 0 0 52 52"}, 
+                    	React.createElement("path", {className: "circle", strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"}), 
+                    	React.createElement("g", {className: "arrow"}, 
+                    		React.createElement("path", {strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M22.6,25.9c0,0,1,1.6,1,4.4c0,2.6,0.6,3.5,0.6,3.8c0,0.4-0.3,0.7-0.7,0.5s-8.6-6.2-10.5-8.1" + ' ' +
+                    			"c0,0-0.2-0.2-0.2-0.5v-0.1c0-0.2,0.1-0.4,0.2-0.5c1.7-1.7,10.1-7.9,10.5-8.1c0.3-0.2,0.7-0.1,0.7,0.5c0,0.3-0.6,1.1-0.6,3.8" + ' ' +
+                    			"C23.6,24.3,22.6,25.9,22.6,25.9z"}), 
+                    		React.createElement("line", {strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", x1: "24.2", y1: "25.9", x2: "39.3", y2: "25.9"})
+                    	)
+                    ), 
                     content
                   ):
                   React.createElement("div", {className: "for_kids_container main_wrapper"}, 
@@ -5682,7 +5830,15 @@ var Main = React.createClass({displayName: "Main",
                           React.createElement("span", {className: "program_description"}, "Mud Pies is a relaxed, drop-in-and-play program that encourages interaction between adult and child.")
                         ), 
                         React.createElement("span", {className: "program_arrow"}, 
-                          React.createElement("img", {src: "/img/programs/icon_right-arrow-red.svg"}), 
+                          React.createElement("svg", {className: "arrow_circle red right_arrow", x: "0px", y: "0px", viewBox: "0 0 52 52", enableBackground: "new 0 0 52 52"}, 
+                          	React.createElement("path", {className: "circle", strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"}), 
+                          	React.createElement("g", {className: "arrow"}, 
+                          		React.createElement("path", {strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M29.4,25.9c0,0-1,1.6-1,4.4c0,2.6-0.6,3.5-0.6,3.8c0,0.4,0.3,0.7,0.7,0.5s8.6-6.2,10.5-8.1" + ' ' +
+                          		"c0,0,0.2-0.2,0.2-0.5v-0.1c0-0.2-0.1-0.4-0.2-0.5c-1.7-1.7-10.1-7.9-10.5-8.1c-0.3-0.2-0.7-0.1-0.7,0.5c0,0.3,0.6,1.1,0.6,3.8" + ' ' +
+                          		"C28.4,24.3,29.4,25.9,29.4,25.9z"}), 
+                          		React.createElement("line", {strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", x1: "27.8", y1: "25.9", x2: "12.7", y2: "25.9"})
+                          	)
+                          ), 
                           React.createElement("span", {className: "more_info"}, "More Info")
                         )
                       ), 
@@ -5693,7 +5849,15 @@ var Main = React.createClass({displayName: "Main",
                           React.createElement("span", {className: "program_description"}, "Etiam porta sem malesuada magna mollis euismod.")
                         ), 
                         React.createElement("span", {className: "program_arrow"}, 
-                          React.createElement("img", {src: "/img/programs/icon_right-arrow-red.svg"}), 
+                          React.createElement("svg", {className: "arrow_circle red right_arrow", x: "0px", y: "0px", viewBox: "0 0 52 52", enableBackground: "new 0 0 52 52"}, 
+                          	React.createElement("path", {className: "circle", strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"}), 
+                          	React.createElement("g", {className: "arrow"}, 
+                          		React.createElement("path", {strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M29.4,25.9c0,0-1,1.6-1,4.4c0,2.6-0.6,3.5-0.6,3.8c0,0.4,0.3,0.7,0.7,0.5s8.6-6.2,10.5-8.1" + ' ' +
+                          		"c0,0,0.2-0.2,0.2-0.5v-0.1c0-0.2-0.1-0.4-0.2-0.5c-1.7-1.7-10.1-7.9-10.5-8.1c-0.3-0.2-0.7-0.1-0.7,0.5c0,0.3,0.6,1.1,0.6,3.8" + ' ' +
+                          		"C28.4,24.3,29.4,25.9,29.4,25.9z"}), 
+                          		React.createElement("line", {strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", x1: "27.8", y1: "25.9", x2: "12.7", y2: "25.9"})
+                          	)
+                          ), 
                           React.createElement("span", {className: "more_info"}, "More Info")
                         )
                       ), 
@@ -5704,7 +5868,15 @@ var Main = React.createClass({displayName: "Main",
                           React.createElement("span", {className: "program_description"}, "Etiam porta sem malesuada magna mollis euismod.")
                         ), 
                         React.createElement("span", {className: "program_arrow"}, 
-                          React.createElement("img", {src: "/img/programs/icon_right-arrow-red.svg"}), 
+                          React.createElement("svg", {className: "arrow_circle red right_arrow", x: "0px", y: "0px", viewBox: "0 0 52 52", enableBackground: "new 0 0 52 52"}, 
+                          	React.createElement("path", {className: "circle", strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"}), 
+                          	React.createElement("g", {className: "arrow"}, 
+                          		React.createElement("path", {strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M29.4,25.9c0,0-1,1.6-1,4.4c0,2.6-0.6,3.5-0.6,3.8c0,0.4,0.3,0.7,0.7,0.5s8.6-6.2,10.5-8.1" + ' ' +
+                          		"c0,0,0.2-0.2,0.2-0.5v-0.1c0-0.2-0.1-0.4-0.2-0.5c-1.7-1.7-10.1-7.9-10.5-8.1c-0.3-0.2-0.7-0.1-0.7,0.5c0,0.3,0.6,1.1,0.6,3.8" + ' ' +
+                          		"C28.4,24.3,29.4,25.9,29.4,25.9z"}), 
+                          		React.createElement("line", {strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", x1: "27.8", y1: "25.9", x2: "12.7", y2: "25.9"})
+                          	)
+                          ), 
                           React.createElement("span", {className: "more_info"}, "More Info")
                         )
                       ), 
@@ -5715,18 +5887,20 @@ var Main = React.createClass({displayName: "Main",
                           React.createElement("span", {className: "program_description"}, "Etiam porta sem malesuada magna mollis euismod.")
                         ), 
                         React.createElement("span", {className: "program_arrow"}, 
-                          React.createElement("img", {src: "/img/programs/icon_right-arrow-red.svg"}), 
+                          React.createElement("svg", {className: "arrow_circle red right_arrow", x: "0px", y: "0px", viewBox: "0 0 52 52", enableBackground: "new 0 0 52 52"}, 
+                          	React.createElement("path", {className: "circle", strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"}), 
+                          	React.createElement("g", {className: "arrow"}, 
+                          		React.createElement("path", {strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M29.4,25.9c0,0-1,1.6-1,4.4c0,2.6-0.6,3.5-0.6,3.8c0,0.4,0.3,0.7,0.7,0.5s8.6-6.2,10.5-8.1" + ' ' +
+                          		"c0,0,0.2-0.2,0.2-0.5v-0.1c0-0.2-0.1-0.4-0.2-0.5c-1.7-1.7-10.1-7.9-10.5-8.1c-0.3-0.2-0.7-0.1-0.7,0.5c0,0.3,0.6,1.1,0.6,3.8" + ' ' +
+                          		"C28.4,24.3,29.4,25.9,29.4,25.9z"}), 
+                          		React.createElement("line", {strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", x1: "27.8", y1: "25.9", x2: "12.7", y2: "25.9"})
+                          	)
+                          ), 
                           React.createElement("span", {className: "more_info"}, "More Info")
                         )
                       ), 
 
-                      React.createElement("h5", {className: "preogram_forest_now"}, "Check ", React.createElement(Link, {to: "forest-now", className: "color"}, "FOREST NOW"), " for updates and registration"), 
-
-                      React.createElement("div", {className: "vine_bottom"}, 
-                        React.createElement("img", {className: "left-half", src: "/img/divider/VINE-bottom-left-half.svg"}), 
-                        React.createElement("img", {className: "down-orange", src: "/img/programs/icon_right-arrow-red.svg"}), 
-                        React.createElement("img", {className: "right-half", src: "/img/divider/VINE-bottom-right-half.svg"})
-                      )
+                      React.createElement("h5", {className: "preogram_forest_now"}, "Check ", React.createElement(Link, {to: "forest-now", className: "color"}, "FOREST NOW"), " for updates and registration")
 
                     ), 
                     React.createElement("div", {className: "for_kids image_container"}, 
@@ -5759,7 +5933,15 @@ var Main = React.createClass({displayName: "Main",
               React.createElement("div", {className: "egg_wrap"}, 
                    adult ?
                     React.createElement("div", {className: "current_class main_wrapper"}, 
-                      React.createElement("p", {className: "reset_class", onClick: self.closeAdult}, "<"), 
+                      React.createElement("svg", {onClick: self.closeAdult, className: "arrow_circle red left_arrow reset_class", x: "0px", y: "0px", viewBox: "0 0 52 52", enableBackground: "new 0 0 52 52"}, 
+                      	React.createElement("path", {className: "circle", strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"}), 
+                      	React.createElement("g", {className: "arrow"}, 
+                      		React.createElement("path", {strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M22.6,25.9c0,0,1,1.6,1,4.4c0,2.6,0.6,3.5,0.6,3.8c0,0.4-0.3,0.7-0.7,0.5s-8.6-6.2-10.5-8.1" + ' ' +
+                      			"c0,0-0.2-0.2-0.2-0.5v-0.1c0-0.2,0.1-0.4,0.2-0.5c1.7-1.7,10.1-7.9,10.5-8.1c0.3-0.2,0.7-0.1,0.7,0.5c0,0.3-0.6,1.1-0.6,3.8" + ' ' +
+                      			"C23.6,24.3,22.6,25.9,22.6,25.9z"}), 
+                      		React.createElement("line", {strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", x1: "24.2", y1: "25.9", x2: "39.3", y2: "25.9"})
+                      	)
+                      ), 
                       adult
                     ):
                     React.createElement("div", {className: "for_kids_container main_wrapper"}, 
@@ -5776,7 +5958,15 @@ var Main = React.createClass({displayName: "Main",
                             React.createElement("span", {className: "program_description"}, "as they are known, organize monthly field trips and other activities.")
                           ), 
                           React.createElement("span", {className: "program_arrow"}, 
-                            React.createElement("img", {src: "/img/programs/icon_right-arrow-red.svg"}), 
+                            React.createElement("svg", {className: "arrow_circle red right_arrow", x: "0px", y: "0px", viewBox: "0 0 52 52", enableBackground: "new 0 0 52 52"}, 
+                            	React.createElement("path", {className: "circle", strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"}), 
+                            	React.createElement("g", {className: "arrow"}, 
+                            		React.createElement("path", {strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M29.4,25.9c0,0-1,1.6-1,4.4c0,2.6-0.6,3.5-0.6,3.8c0,0.4,0.3,0.7,0.7,0.5s8.6-6.2,10.5-8.1" + ' ' +
+                            		"c0,0,0.2-0.2,0.2-0.5v-0.1c0-0.2-0.1-0.4-0.2-0.5c-1.7-1.7-10.1-7.9-10.5-8.1c-0.3-0.2-0.7-0.1-0.7,0.5c0,0.3,0.6,1.1,0.6,3.8" + ' ' +
+                            		"C28.4,24.3,29.4,25.9,29.4,25.9z"}), 
+                            		React.createElement("line", {strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", x1: "27.8", y1: "25.9", x2: "12.7", y2: "25.9"})
+                            	)
+                            ), 
                             React.createElement("span", {className: "more_info"}, "More Info")
                           )
                         ), 
@@ -5787,7 +5977,15 @@ var Main = React.createClass({displayName: "Main",
                             React.createElement("span", {className: "program_description"}, "is our newest club, but already one of our most active, with a variety of activities \u0003centered around the numerous tiny species that share the forest.")
                           ), 
                           React.createElement("span", {className: "program_arrow"}, 
-                            React.createElement("img", {src: "/img/programs/icon_right-arrow-red.svg"}), 
+                            React.createElement("svg", {className: "arrow_circle red right_arrow", x: "0px", y: "0px", viewBox: "0 0 52 52", enableBackground: "new 0 0 52 52"}, 
+                            	React.createElement("path", {className: "circle", strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"}), 
+                            	React.createElement("g", {className: "arrow"}, 
+                            		React.createElement("path", {strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M29.4,25.9c0,0-1,1.6-1,4.4c0,2.6-0.6,3.5-0.6,3.8c0,0.4,0.3,0.7,0.7,0.5s8.6-6.2,10.5-8.1" + ' ' +
+                            		"c0,0,0.2-0.2,0.2-0.5v-0.1c0-0.2-0.1-0.4-0.2-0.5c-1.7-1.7-10.1-7.9-10.5-8.1c-0.3-0.2-0.7-0.1-0.7,0.5c0,0.3,0.6,1.1,0.6,3.8" + ' ' +
+                            		"C28.4,24.3,29.4,25.9,29.4,25.9z"}), 
+                            		React.createElement("line", {strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", x1: "27.8", y1: "25.9", x2: "12.7", y2: "25.9"})
+                            	)
+                            ), 
                             React.createElement("span", {className: "more_info"}, "More Info")
                           )
                         ), 
@@ -5798,7 +5996,15 @@ var Main = React.createClass({displayName: "Main",
                             React.createElement("span", {className: "program_description"}, "draws avid photographers of all ages, from beginners to seasoned pros, who all share a love of nature photography.")
                           ), 
                           React.createElement("span", {className: "program_arrow"}, 
-                            React.createElement("img", {src: "/img/programs/icon_right-arrow-red.svg"}), 
+                            React.createElement("svg", {className: "arrow_circle red right_arrow", x: "0px", y: "0px", viewBox: "0 0 52 52", enableBackground: "new 0 0 52 52"}, 
+                            	React.createElement("path", {className: "circle", strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"}), 
+                            	React.createElement("g", {className: "arrow"}, 
+                            		React.createElement("path", {strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M29.4,25.9c0,0-1,1.6-1,4.4c0,2.6-0.6,3.5-0.6,3.8c0,0.4,0.3,0.7,0.7,0.5s8.6-6.2,10.5-8.1" + ' ' +
+                            		"c0,0,0.2-0.2,0.2-0.5v-0.1c0-0.2-0.1-0.4-0.2-0.5c-1.7-1.7-10.1-7.9-10.5-8.1c-0.3-0.2-0.7-0.1-0.7,0.5c0,0.3,0.6,1.1,0.6,3.8" + ' ' +
+                            		"C28.4,24.3,29.4,25.9,29.4,25.9z"}), 
+                            		React.createElement("line", {strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", x1: "27.8", y1: "25.9", x2: "12.7", y2: "25.9"})
+                            	)
+                            ), 
                             React.createElement("span", {className: "more_info"}, "More Info")
                           )
                         ), 
@@ -5809,7 +6015,15 @@ var Main = React.createClass({displayName: "Main",
                             React.createElement("span", {className: "program_description"}, "is a citizen-science organization designed for long-term monitoring of frog and toad populations.")
                           ), 
                           React.createElement("span", {className: "program_arrow"}, 
-                            React.createElement("img", {src: "/img/programs/icon_right-arrow-red.svg"}), 
+                            React.createElement("svg", {className: "arrow_circle red right_arrow", x: "0px", y: "0px", viewBox: "0 0 52 52", enableBackground: "new 0 0 52 52"}, 
+                            	React.createElement("path", {className: "circle", strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"}), 
+                            	React.createElement("g", {className: "arrow"}, 
+                            		React.createElement("path", {strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M29.4,25.9c0,0-1,1.6-1,4.4c0,2.6-0.6,3.5-0.6,3.8c0,0.4,0.3,0.7,0.7,0.5s8.6-6.2,10.5-8.1" + ' ' +
+                            		"c0,0,0.2-0.2,0.2-0.5v-0.1c0-0.2-0.1-0.4-0.2-0.5c-1.7-1.7-10.1-7.9-10.5-8.1c-0.3-0.2-0.7-0.1-0.7,0.5c0,0.3,0.6,1.1,0.6,3.8" + ' ' +
+                            		"C28.4,24.3,29.4,25.9,29.4,25.9z"}), 
+                            		React.createElement("line", {strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", x1: "27.8", y1: "25.9", x2: "12.7", y2: "25.9"})
+                            	)
+                            ), 
                             React.createElement("span", {className: "more_info"}, "More Info")
                           )
                         ), 
@@ -5820,18 +6034,20 @@ var Main = React.createClass({displayName: "Main",
                             React.createElement("span", {className: "program_description"}, "We also offer a breadth of events, programs, and activities tailored to seniors, \u0003who are some of our most active visitors to the forest. ")
                           ), 
                           React.createElement("span", {className: "program_arrow"}, 
-                            React.createElement("img", {src: "/img/programs/icon_right-arrow-red.svg"}), 
+                            React.createElement("svg", {className: "arrow_circle red right_arrow", x: "0px", y: "0px", viewBox: "0 0 52 52", enableBackground: "new 0 0 52 52"}, 
+                            	React.createElement("path", {className: "circle", strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"}), 
+                            	React.createElement("g", {className: "arrow"}, 
+                            		React.createElement("path", {strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M29.4,25.9c0,0-1,1.6-1,4.4c0,2.6-0.6,3.5-0.6,3.8c0,0.4,0.3,0.7,0.7,0.5s8.6-6.2,10.5-8.1" + ' ' +
+                            		"c0,0,0.2-0.2,0.2-0.5v-0.1c0-0.2-0.1-0.4-0.2-0.5c-1.7-1.7-10.1-7.9-10.5-8.1c-0.3-0.2-0.7-0.1-0.7,0.5c0,0.3,0.6,1.1,0.6,3.8" + ' ' +
+                            		"C28.4,24.3,29.4,25.9,29.4,25.9z"}), 
+                            		React.createElement("line", {strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", x1: "27.8", y1: "25.9", x2: "12.7", y2: "25.9"})
+                            	)
+                            ), 
                             React.createElement("span", {className: "more_info"}, "More Info")
                           )
                         ), 
 
-                        React.createElement("h5", {className: "preogram_forest_now"}, "Check ", React.createElement(Link, {to: "forest-now", className: "color"}, "FOREST NOW"), " for updates and registration"), 
-
-                        React.createElement("div", {className: "vine_bottom"}, 
-                          React.createElement("img", {className: "left-half", src: "/img/divider/VINE-bottom-left-half.svg"}), 
-                          React.createElement("img", {className: "down-orange", src: "/img/programs/icon_right-arrow-red.svg"}), 
-                          React.createElement("img", {className: "right-half", src: "/img/divider/VINE-bottom-right-half.svg"})
-                        )
+                        React.createElement("h5", {className: "preogram_forest_now"}, "Check ", React.createElement(Link, {to: "forest-now", className: "color"}, "FOREST NOW"), " for updates and registration")
 
                       )
 
@@ -5855,10 +6071,31 @@ var Main = React.createClass({displayName: "Main",
                 )
               ), 
 
-              React.createElement("div", {className: "egg_wrap"}, 
+              React.createElement("div", {className: "egg_wrap cf"}, 
                 React.createElement("div", {className: "main_wrapper bottom_nav"}, 
-                  React.createElement("span", {className: "prev_page", onClick: self.moveLeft}, "Education"), 
-                  React.createElement("span", {className: "next_page", onClick: self.moveRight}, "Forest")
+                  React.createElement("span", {className: "prev_page", onClick: self.moveLeft}, 
+                    React.createElement("svg", {className: "arrow_circle black left_arrow", x: "0px", y: "0px", viewBox: "0 0 52 52", enableBackground: "new 0 0 52 52"}, 
+                    	React.createElement("path", {className: "circle", strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"}), 
+                    	React.createElement("g", {className: "arrow"}, 
+                    		React.createElement("path", {strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M22.6,25.9c0,0,1,1.6,1,4.4c0,2.6,0.6,3.5,0.6,3.8c0,0.4-0.3,0.7-0.7,0.5s-8.6-6.2-10.5-8.1" + ' ' +
+                    			"c0,0-0.2-0.2-0.2-0.5v-0.1c0-0.2,0.1-0.4,0.2-0.5c1.7-1.7,10.1-7.9,10.5-8.1c0.3-0.2,0.7-0.1,0.7,0.5c0,0.3-0.6,1.1-0.6,3.8" + ' ' +
+                    			"C23.6,24.3,22.6,25.9,22.6,25.9z"}), 
+                    		React.createElement("line", {strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", x1: "24.2", y1: "25.9", x2: "39.3", y2: "25.9"})
+                    	)
+                    ), 
+                    "Education"
+                  ), 
+                  React.createElement("span", {className: "next_page", onClick: self.moveRight}, "Forest", 
+                    React.createElement("svg", {className: "arrow_circle black right_arrow", x: "0px", y: "0px", viewBox: "0 0 52 52", enableBackground: "new 0 0 52 52"}, 
+                    	React.createElement("path", {className: "circle", strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"}), 
+                    	React.createElement("g", {className: "arrow"}, 
+                    		React.createElement("path", {strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M29.4,25.9c0,0-1,1.6-1,4.4c0,2.6-0.6,3.5-0.6,3.8c0,0.4,0.3,0.7,0.7,0.5s8.6-6.2,10.5-8.1" + ' ' +
+                    		"c0,0,0.2-0.2,0.2-0.5v-0.1c0-0.2-0.1-0.4-0.2-0.5c-1.7-1.7-10.1-7.9-10.5-8.1c-0.3-0.2-0.7-0.1-0.7,0.5c0,0.3,0.6,1.1,0.6,3.8" + ' ' +
+                    		"C28.4,24.3,29.4,25.9,29.4,25.9z"}), 
+                    		React.createElement("line", {strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", x1: "27.8", y1: "25.9", x2: "12.7", y2: "25.9"})
+                    	)
+                    )
+                  )
                 )
               )
             ), 

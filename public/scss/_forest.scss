@@ -44,7 +44,7 @@
   border-bottom : 2px solid #d1d1d1;
   padding: 10px 0;
   cursor: pointer;
-  
+
   .name {
     flex: 2;
     margin: 0;
@@ -203,7 +203,7 @@
   .content_container {
     .video_overlay {
       background-image: url('/img/forest/pattern_video-overlay.svg');
-      opacity: 0.6;
+      opacity: 0.45;
     }
   }
 }
@@ -217,5 +217,62 @@
   h3 {
     font-size: 50px;
     margin-bottom: 10px;
+  }
+}
+
+.old_hero_image {
+  display: none !important;
+}
+.hero_content {
+  display: table;
+  margin: auto;
+  width: 100%;
+  max-width: 725px;
+  border: 3px white solid;
+  border-bottom: none;
+  color: white;
+  text-align: center;
+  .hero_header {
+    font-family: 'roboto_condensedbold';
+    margin: 0;
+    font-size: 75px;
+    line-height: 1;
+    margin-top: 50px;
+  }
+  .hero_subheader {
+    margin: 0;
+    font-size: 25px;
+    margin-bottom: 25px;
+  }
+  .hero_icon_wrap {
+    display: flex;
+    flex-direction: row;
+
+    .line {
+      border-bottom: 3px solid white;
+      flex: 1;
+      &.right_line {
+        margin-left: 25px;
+      }
+      &.left_line {
+        margin-right: 25px;
+      }
+    }
+  }
+  .hero_icon {
+    width: 90px;
+    position: relative;
+    top: 39px;
+    transition: .5s cubic-bezier(0.445, 0.050, 0.550, 0.950);
+    &.up {
+      top: 30px;
+    }
+  }
+
+  .hero_textured_color {
+    background-image: url(/img/texture.svg);
+    padding: 25px 50px;
+    background-repeat: no-repeat;
+    background-size: cover;
   }
 }

@@ -29,6 +29,7 @@ module.exports = React.createClass({
     request
       .get('http://fontenelle.flywheelsites.com/wp-json/posts')
       .query('type[]=post&filter[posts_per_page]=-1')
+      .set('Cache-Control', 'no-cache,no-store,must-revalidate,max-age=-1,private')
       .end(function(err, res) {
         if (res.ok) {
           var posts = res.body;
@@ -44,10 +45,16 @@ module.exports = React.createClass({
   render: function() {
     var self = this;
     var posts = self.state.posts.map(function(object){
+      var post_style ={
+        backgroundImage: "url("+ object.featured_image.guid +")"
+      }
       return (
         <div className="post">
-          <h4 className="post_headline">{object.title}</h4>
-          <Link className="post_link" to={"/post/" + object.slug}>Read more</Link>
+          <div className="post_image" style={post_style}></div>
+          <div className="post_content">
+            <h4 className="post_headline">{object.title}</h4>
+            <Link className="post_link" to={"/post/" + object.slug}>Read more</Link>
+          </div>
         </div>
       )
     });

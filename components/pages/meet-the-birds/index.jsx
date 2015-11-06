@@ -68,6 +68,7 @@ module.exports = React.createClass({
       request
         .get('http://fontenelle.flywheelsites.com/wp-json/posts')
         .query('type[]=raptors&filter[posts_per_page]=-1')
+        .set('Cache-Control', 'no-cache,no-store,must-revalidate,max-age=-1,private')
         .end(function(err, res) {
       if (res.ok) {
         var birds = res.body;
@@ -90,7 +91,7 @@ module.exports = React.createClass({
           <div className="bird_copy">
             <h2 className="bird_title marker">{object.title}</h2>
             <h4 className="bird_species">{object.meta.species}</h4>
-            <h4 className="bird_date">{object.meta.date_added}</h4>
+            <h4 className="bird_date">Date added: {object.meta.date_added}</h4>
             <p className="bird_overview">{object.meta.overview}</p>
           </div>
         </div>

@@ -35,6 +35,7 @@ module.exports = React.createClass({
     request
       .get('http://fontenelle.flywheelsites.com/wp-json/posts')
       .query('filter[name]='+ self.getParams().name)
+      .set('Cache-Control', 'no-cache,no-store,must-revalidate,max-age=-1,private')
       .end(function(err, res) {
         if (res.ok) {
           var post = res.body;

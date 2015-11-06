@@ -301,7 +301,16 @@ var Main = React.createClass({
 
                 { content ?
                   <div className="current_class main_wrapper">
-                    <p className="reset_class" onClick={self.closeContent}>&lt;</p>
+
+                    <svg onClick={self.closeContent} className="arrow_circle red left_arrow reset_class" x="0px" y="0px" viewBox="0 0 52 52" enableBackground="new 0 0 52 52" >
+                    	<path className="circle" strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"/>
+                    	<g className="arrow" >
+                    		<path strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M22.6,25.9c0,0,1,1.6,1,4.4c0,2.6,0.6,3.5,0.6,3.8c0,0.4-0.3,0.7-0.7,0.5s-8.6-6.2-10.5-8.1
+                    			c0,0-0.2-0.2-0.2-0.5v-0.1c0-0.2,0.1-0.4,0.2-0.5c1.7-1.7,10.1-7.9,10.5-8.1c0.3-0.2,0.7-0.1,0.7,0.5c0,0.3-0.6,1.1-0.6,3.8
+                    			C23.6,24.3,22.6,25.9,22.6,25.9z" />
+                    		<line strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' x1="24.2" y1="25.9" x2="39.3" y2="25.9"/>
+                    	</g>
+                    </svg>
                     {content}
                   </div>:
                   <div className="for_kids_container main_wrapper">
@@ -316,7 +325,15 @@ var Main = React.createClass({
                           <span className="program_description">Mud Pies is a relaxed, drop-in-and-play program that encourages interaction between adult and child.</span>
                         </h4>
                         <span className="program_arrow">
-                          <img src="/img/programs/icon_right-arrow-red.svg" />
+                          <svg className="arrow_circle red right_arrow" x="0px" y="0px" viewBox="0 0 52 52" enableBackground="new 0 0 52 52" >
+                          	<path className="circle" strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"/>
+                          	<g className="arrow" >
+                          		<path strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M29.4,25.9c0,0-1,1.6-1,4.4c0,2.6-0.6,3.5-0.6,3.8c0,0.4,0.3,0.7,0.7,0.5s8.6-6.2,10.5-8.1
+                          		c0,0,0.2-0.2,0.2-0.5v-0.1c0-0.2-0.1-0.4-0.2-0.5c-1.7-1.7-10.1-7.9-10.5-8.1c-0.3-0.2-0.7-0.1-0.7,0.5c0,0.3,0.6,1.1,0.6,3.8
+                          		C28.4,24.3,29.4,25.9,29.4,25.9z"/>
+                          		<line strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' x1="27.8" y1="25.9" x2="12.7" y2="25.9"/>
+                          	</g>
+                          </svg>
                           <span className="more_info">More Info</span>
                         </span>
                       </div>
@@ -327,7 +344,15 @@ var Main = React.createClass({
                           <span className="program_description">Etiam porta sem malesuada magna mollis euismod.</span>
                         </h4>
                         <span className="program_arrow">
-                          <img src="/img/programs/icon_right-arrow-red.svg" />
+                          <svg className="arrow_circle red right_arrow" x="0px" y="0px" viewBox="0 0 52 52" enableBackground="new 0 0 52 52" >
+                          	<path className="circle" strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"/>
+                          	<g className="arrow" >
+                          		<path strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M29.4,25.9c0,0-1,1.6-1,4.4c0,2.6-0.6,3.5-0.6,3.8c0,0.4,0.3,0.7,0.7,0.5s8.6-6.2,10.5-8.1
+                          		c0,0,0.2-0.2,0.2-0.5v-0.1c0-0.2-0.1-0.4-0.2-0.5c-1.7-1.7-10.1-7.9-10.5-8.1c-0.3-0.2-0.7-0.1-0.7,0.5c0,0.3,0.6,1.1,0.6,3.8
+                          		C28.4,24.3,29.4,25.9,29.4,25.9z"/>
+                          		<line strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' x1="27.8" y1="25.9" x2="12.7" y2="25.9"/>
+                          	</g>
+                          </svg>
                           <span className="more_info">More Info</span>
                         </span>
                       </div>
@@ -338,7 +363,15 @@ var Main = React.createClass({
                           <span className="program_description">Etiam porta sem malesuada magna mollis euismod.</span>
                         </h4>
                         <span className="program_arrow">
-                          <img src="/img/programs/icon_right-arrow-red.svg" />
+                          <svg className="arrow_circle red right_arrow" x="0px" y="0px" viewBox="0 0 52 52" enableBackground="new 0 0 52 52" >
+                          	<path className="circle" strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"/>
+                          	<g className="arrow" >
+                          		<path strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M29.4,25.9c0,0-1,1.6-1,4.4c0,2.6-0.6,3.5-0.6,3.8c0,0.4,0.3,0.7,0.7,0.5s8.6-6.2,10.5-8.1
+                          		c0,0,0.2-0.2,0.2-0.5v-0.1c0-0.2-0.1-0.4-0.2-0.5c-1.7-1.7-10.1-7.9-10.5-8.1c-0.3-0.2-0.7-0.1-0.7,0.5c0,0.3,0.6,1.1,0.6,3.8
+                          		C28.4,24.3,29.4,25.9,29.4,25.9z"/>
+                          		<line strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' x1="27.8" y1="25.9" x2="12.7" y2="25.9"/>
+                          	</g>
+                          </svg>
                           <span className="more_info">More Info</span>
                         </span>
                       </div>
@@ -349,18 +382,20 @@ var Main = React.createClass({
                           <span className="program_description">Etiam porta sem malesuada magna mollis euismod.</span>
                         </h4>
                         <span className="program_arrow">
-                          <img src="/img/programs/icon_right-arrow-red.svg" />
+                          <svg className="arrow_circle red right_arrow" x="0px" y="0px" viewBox="0 0 52 52" enableBackground="new 0 0 52 52" >
+                          	<path className="circle" strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"/>
+                          	<g className="arrow" >
+                          		<path strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M29.4,25.9c0,0-1,1.6-1,4.4c0,2.6-0.6,3.5-0.6,3.8c0,0.4,0.3,0.7,0.7,0.5s8.6-6.2,10.5-8.1
+                          		c0,0,0.2-0.2,0.2-0.5v-0.1c0-0.2-0.1-0.4-0.2-0.5c-1.7-1.7-10.1-7.9-10.5-8.1c-0.3-0.2-0.7-0.1-0.7,0.5c0,0.3,0.6,1.1,0.6,3.8
+                          		C28.4,24.3,29.4,25.9,29.4,25.9z"/>
+                          		<line strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' x1="27.8" y1="25.9" x2="12.7" y2="25.9"/>
+                          	</g>
+                          </svg>
                           <span className="more_info">More Info</span>
                         </span>
                       </div>
 
                       <h5 className="preogram_forest_now">Check <Link to="forest-now" className="color">FOREST NOW</Link> for updates and registration</h5>
-
-                      <div className="vine_bottom">
-                        <img className="left-half" src="/img/divider/VINE-bottom-left-half.svg" />
-                        <img className="down-orange" src="/img/programs/icon_right-arrow-red.svg" />
-                        <img className="right-half" src="/img/divider/VINE-bottom-right-half.svg" />
-                      </div>
 
                     </div>
                     <div className="for_kids image_container">
@@ -393,7 +428,15 @@ var Main = React.createClass({
               <div className="egg_wrap">
                   { adult ?
                     <div className="current_class main_wrapper">
-                      <p className="reset_class" onClick={self.closeAdult}>&lt;</p>
+                      <svg onClick={self.closeAdult} className="arrow_circle red left_arrow reset_class" x="0px" y="0px" viewBox="0 0 52 52" enableBackground="new 0 0 52 52" >
+                      	<path className="circle" strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"/>
+                      	<g className="arrow" >
+                      		<path strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M22.6,25.9c0,0,1,1.6,1,4.4c0,2.6,0.6,3.5,0.6,3.8c0,0.4-0.3,0.7-0.7,0.5s-8.6-6.2-10.5-8.1
+                      			c0,0-0.2-0.2-0.2-0.5v-0.1c0-0.2,0.1-0.4,0.2-0.5c1.7-1.7,10.1-7.9,10.5-8.1c0.3-0.2,0.7-0.1,0.7,0.5c0,0.3-0.6,1.1-0.6,3.8
+                      			C23.6,24.3,22.6,25.9,22.6,25.9z" />
+                      		<line strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' x1="24.2" y1="25.9" x2="39.3" y2="25.9"/>
+                      	</g>
+                      </svg>
                       {adult}
                     </div>:
                     <div className="for_kids_container main_wrapper">
@@ -410,7 +453,15 @@ var Main = React.createClass({
                             <span className="program_description">as they are known, organize monthly field trips and other activities.</span>
                           </h4>
                           <span className="program_arrow">
-                            <img src="/img/programs/icon_right-arrow-red.svg" />
+                            <svg className="arrow_circle red right_arrow" x="0px" y="0px" viewBox="0 0 52 52" enableBackground="new 0 0 52 52" >
+                            	<path className="circle" strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"/>
+                            	<g className="arrow" >
+                            		<path strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M29.4,25.9c0,0-1,1.6-1,4.4c0,2.6-0.6,3.5-0.6,3.8c0,0.4,0.3,0.7,0.7,0.5s8.6-6.2,10.5-8.1
+                            		c0,0,0.2-0.2,0.2-0.5v-0.1c0-0.2-0.1-0.4-0.2-0.5c-1.7-1.7-10.1-7.9-10.5-8.1c-0.3-0.2-0.7-0.1-0.7,0.5c0,0.3,0.6,1.1,0.6,3.8
+                            		C28.4,24.3,29.4,25.9,29.4,25.9z"/>
+                            		<line strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' x1="27.8" y1="25.9" x2="12.7" y2="25.9"/>
+                            	</g>
+                            </svg>
                             <span className="more_info">More Info</span>
                           </span>
                         </div>
@@ -421,7 +472,15 @@ var Main = React.createClass({
                             <span className="program_description">is our newest club, but already one of our most active, with a variety of activities centered around the numerous tiny species that share the forest.</span>
                           </h4>
                           <span className="program_arrow">
-                            <img src="/img/programs/icon_right-arrow-red.svg" />
+                            <svg className="arrow_circle red right_arrow" x="0px" y="0px" viewBox="0 0 52 52" enableBackground="new 0 0 52 52" >
+                            	<path className="circle" strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"/>
+                            	<g className="arrow" >
+                            		<path strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M29.4,25.9c0,0-1,1.6-1,4.4c0,2.6-0.6,3.5-0.6,3.8c0,0.4,0.3,0.7,0.7,0.5s8.6-6.2,10.5-8.1
+                            		c0,0,0.2-0.2,0.2-0.5v-0.1c0-0.2-0.1-0.4-0.2-0.5c-1.7-1.7-10.1-7.9-10.5-8.1c-0.3-0.2-0.7-0.1-0.7,0.5c0,0.3,0.6,1.1,0.6,3.8
+                            		C28.4,24.3,29.4,25.9,29.4,25.9z"/>
+                            		<line strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' x1="27.8" y1="25.9" x2="12.7" y2="25.9"/>
+                            	</g>
+                            </svg>
                             <span className="more_info">More Info</span>
                           </span>
                         </div>
@@ -432,7 +491,15 @@ var Main = React.createClass({
                             <span className="program_description">draws avid photographers of all ages, from beginners to seasoned pros, who all share a love of nature photography.</span>
                           </h4>
                           <span className="program_arrow">
-                            <img src="/img/programs/icon_right-arrow-red.svg" />
+                            <svg className="arrow_circle red right_arrow" x="0px" y="0px" viewBox="0 0 52 52" enableBackground="new 0 0 52 52" >
+                            	<path className="circle" strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"/>
+                            	<g className="arrow" >
+                            		<path strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M29.4,25.9c0,0-1,1.6-1,4.4c0,2.6-0.6,3.5-0.6,3.8c0,0.4,0.3,0.7,0.7,0.5s8.6-6.2,10.5-8.1
+                            		c0,0,0.2-0.2,0.2-0.5v-0.1c0-0.2-0.1-0.4-0.2-0.5c-1.7-1.7-10.1-7.9-10.5-8.1c-0.3-0.2-0.7-0.1-0.7,0.5c0,0.3,0.6,1.1,0.6,3.8
+                            		C28.4,24.3,29.4,25.9,29.4,25.9z"/>
+                            		<line strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' x1="27.8" y1="25.9" x2="12.7" y2="25.9"/>
+                            	</g>
+                            </svg>
                             <span className="more_info">More Info</span>
                           </span>
                         </div>
@@ -443,7 +510,15 @@ var Main = React.createClass({
                             <span className="program_description">is a citizen-science organization designed for long-term monitoring of frog and toad populations.</span>
                           </h4>
                           <span className="program_arrow">
-                            <img src="/img/programs/icon_right-arrow-red.svg" />
+                            <svg className="arrow_circle red right_arrow" x="0px" y="0px" viewBox="0 0 52 52" enableBackground="new 0 0 52 52" >
+                            	<path className="circle" strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"/>
+                            	<g className="arrow" >
+                            		<path strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M29.4,25.9c0,0-1,1.6-1,4.4c0,2.6-0.6,3.5-0.6,3.8c0,0.4,0.3,0.7,0.7,0.5s8.6-6.2,10.5-8.1
+                            		c0,0,0.2-0.2,0.2-0.5v-0.1c0-0.2-0.1-0.4-0.2-0.5c-1.7-1.7-10.1-7.9-10.5-8.1c-0.3-0.2-0.7-0.1-0.7,0.5c0,0.3,0.6,1.1,0.6,3.8
+                            		C28.4,24.3,29.4,25.9,29.4,25.9z"/>
+                            		<line strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' x1="27.8" y1="25.9" x2="12.7" y2="25.9"/>
+                            	</g>
+                            </svg>
                             <span className="more_info">More Info</span>
                           </span>
                         </div>
@@ -454,18 +529,20 @@ var Main = React.createClass({
                             <span className="program_description">We also offer a breadth of events, programs, and activities tailored to seniors, who are some of our most active visitors to the forest. </span>
                           </h4>
                           <span className="program_arrow">
-                            <img src="/img/programs/icon_right-arrow-red.svg" />
+                            <svg className="arrow_circle red right_arrow" x="0px" y="0px" viewBox="0 0 52 52" enableBackground="new 0 0 52 52" >
+                            	<path className="circle" strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"/>
+                            	<g className="arrow" >
+                            		<path strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M29.4,25.9c0,0-1,1.6-1,4.4c0,2.6-0.6,3.5-0.6,3.8c0,0.4,0.3,0.7,0.7,0.5s8.6-6.2,10.5-8.1
+                            		c0,0,0.2-0.2,0.2-0.5v-0.1c0-0.2-0.1-0.4-0.2-0.5c-1.7-1.7-10.1-7.9-10.5-8.1c-0.3-0.2-0.7-0.1-0.7,0.5c0,0.3,0.6,1.1,0.6,3.8
+                            		C28.4,24.3,29.4,25.9,29.4,25.9z"/>
+                            		<line strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' x1="27.8" y1="25.9" x2="12.7" y2="25.9"/>
+                            	</g>
+                            </svg>
                             <span className="more_info">More Info</span>
                           </span>
                         </div>
 
                         <h5 className="preogram_forest_now">Check <Link to="forest-now" className="color">FOREST NOW</Link> for updates and registration</h5>
-
-                        <div className="vine_bottom">
-                          <img className="left-half" src="/img/divider/VINE-bottom-left-half.svg" />
-                          <img className="down-orange" src="/img/programs/icon_right-arrow-red.svg" />
-                          <img className="right-half" src="/img/divider/VINE-bottom-right-half.svg" />
-                        </div>
 
                       </div>
 
@@ -489,10 +566,31 @@ var Main = React.createClass({
                 </div>
               </div>
 
-              <div className="egg_wrap">
+              <div className="egg_wrap cf">
                 <div className="main_wrapper bottom_nav">
-                  <span className="prev_page" onClick={self.moveLeft}>Education</span>
-                  <span className="next_page" onClick={self.moveRight}>Forest</span>
+                  <span className="prev_page" onClick={self.moveLeft}>
+                    <svg className="arrow_circle black left_arrow" x="0px" y="0px" viewBox="0 0 52 52" enableBackground="new 0 0 52 52" >
+                    	<path className="circle" strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"/>
+                    	<g className="arrow" >
+                    		<path strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M22.6,25.9c0,0,1,1.6,1,4.4c0,2.6,0.6,3.5,0.6,3.8c0,0.4-0.3,0.7-0.7,0.5s-8.6-6.2-10.5-8.1
+                    			c0,0-0.2-0.2-0.2-0.5v-0.1c0-0.2,0.1-0.4,0.2-0.5c1.7-1.7,10.1-7.9,10.5-8.1c0.3-0.2,0.7-0.1,0.7,0.5c0,0.3-0.6,1.1-0.6,3.8
+                    			C23.6,24.3,22.6,25.9,22.6,25.9z" />
+                    		<line strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' x1="24.2" y1="25.9" x2="39.3" y2="25.9"/>
+                    	</g>
+                    </svg>
+                    Education
+                  </span>
+                  <span className="next_page" onClick={self.moveRight}>Forest
+                    <svg className="arrow_circle black right_arrow" x="0px" y="0px" viewBox="0 0 52 52" enableBackground="new 0 0 52 52" >
+                    	<path className="circle" strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"/>
+                    	<g className="arrow" >
+                    		<path strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M29.4,25.9c0,0-1,1.6-1,4.4c0,2.6-0.6,3.5-0.6,3.8c0,0.4,0.3,0.7,0.7,0.5s8.6-6.2,10.5-8.1
+                    		c0,0,0.2-0.2,0.2-0.5v-0.1c0-0.2-0.1-0.4-0.2-0.5c-1.7-1.7-10.1-7.9-10.5-8.1c-0.3-0.2-0.7-0.1-0.7,0.5c0,0.3,0.6,1.1,0.6,3.8
+                    		C28.4,24.3,29.4,25.9,29.4,25.9z"/>
+                    		<line strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' x1="27.8" y1="25.9" x2="12.7" y2="25.9"/>
+                    	</g>
+                    </svg>
+                  </span>
                 </div>
               </div>
             </div>
