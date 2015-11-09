@@ -136,7 +136,8 @@ module.exports = React.createClass({
       weather: {},
       wildlife_excerpt: "",
       plantlife_excerpt: "",
-      week: ''
+      week: '',
+      this_week: ''
     };
   },
 
@@ -265,7 +266,7 @@ module.exports = React.createClass({
           });
 
 
-          self.setState({ events: sorted_events, week: this_week });
+          self.setState({ events: sorted_events, week: this_week, this_week: this_week });
 
         } else {
           console.log('Oh no! error ' + res.text);
@@ -439,6 +440,12 @@ module.exports = React.createClass({
       }
     });
 
+    if(self.state.week == self.state.this_week) {
+      var week_text = "This Week: ";
+    } else {
+      var week_text = "Week of: "
+    }
+
     return (
       <div>
         <div className="egg_wrap nature_notes_header">
@@ -513,7 +520,7 @@ module.exports = React.createClass({
                   	</g>
                   </svg>
                 </span>
-                This Week: <span className="actual_week">{moment(self.state.week, 'DDMMYYYY').startOf('week').format('MMMM D')} - {moment(self.state.week, 'DDMMYYYY').endOf('week').format('MMMM D')} </span>
+                {week_text}<span className="actual_week">{moment(self.state.week, 'DDMMYYYY').startOf('week').format('MMMM D')} - {moment(self.state.week, 'DDMMYYYY').endOf('week').format('MMMM D')} </span>
                 <span className="next_week" onClick={self.nextWeek}>
                   <svg className="arrow_circle blue right_arrow" x="0px" y="0px" viewBox="0 0 52 52" enableBackground="new 0 0 52 52" >
                     <path className="circle" strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"/>

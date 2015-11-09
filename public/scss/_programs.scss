@@ -42,10 +42,6 @@
 .video_play {
   width: 60px;
   cursor: pointer;
-  transition: 0.15s ease-out;
-  &:hover {
-    opacity: 0.8
-  }
 }
 
 .for_kids_container {
@@ -72,6 +68,8 @@
 
 .spider {
   transition: 0.15s ease-out;
+  width: 350px;
+  max-width: 100%;
   &.rotated {
     transform: rotateY(180deg) rotate(-125deg);
   }

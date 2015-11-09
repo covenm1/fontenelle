@@ -20,9 +20,9 @@ var Closing = React.createClass({
       return (
          <div className="closing">
             { self.state.content ?
-              <div className='image_container'>
+              <div className='image_container closing_open' >
                 <p className="closings_title">{self.props.title}
-                  <span className="more_closing" onClick={self.toggleContent}>×</span>
+                  <span className="more_closing exx" onClick={self.toggleContent}>×</span>
                 </p>
                 <div dangerouslySetInnerHTML={{__html: self.props.content}}></div>
               </div>

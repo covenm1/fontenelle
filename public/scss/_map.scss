@@ -10,13 +10,16 @@
 		display: flex;
 		flex-direction: row;
 	}
+
 	.map_content {
 		display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    text-align: center;
     padding: 50px 15px;
+		h2.color {
+			text-align: left;
+		}
 		.copy_container, .trail_map_container {
 			flex: 1;
 		}
@@ -59,10 +62,6 @@
 		.map_button.active, .map_button:hover {
 			color: white;
 			background: rgba(161,70,22,0.9);
-		}
-
-		.reset_button {
-			display: none;
 		}
 	}
 
@@ -135,21 +134,11 @@
 		.reset_button {
 		  display: block;
 		  position: absolute;
-		  line-height: 40px;
 		  top: 15px;
 			left: 15px;
 		  cursor: pointer;
-			border: 2px solid white;
-			color: white;
-			border-radius: 50%;
 			height: 50px;
 			width: 50px;
-			text-align: center;
-			line-height: 45px;
-			&:hover {
-				color: $orange;
-				border-color: $orange;
-			}
 		}
 		.reset_button:before {
 			content: '<';
@@ -182,6 +171,8 @@
 		 color: #444;
 		 h3 {
 		 	margin: 0;
+			color: $forest_color;
+			margin-top: 15px;
 		 }
 		 p {
 		 	font-size: 14px;
@@ -204,11 +195,19 @@
 			stroke: $forest_color;
 			stroke-width: 4;
 		}
+		.map_button.natureCenter {
+			color: white;
+			background: rgba(161,70,22,0.9);
+		}
 	}
 	&.northernFloodplains {
 		svg.trailmap #north-floodplain {
 			stroke: $forest_color;
 			stroke-width: 4;
+		}
+		.map_button.northernFloodplains {
+			color: white;
+			background: rgba(161,70,22,0.9);
 		}
 	}
 	&.northernUplands {
@@ -216,17 +215,29 @@
 			stroke: $forest_color;
 			stroke-width: 4;
 		}
+		.map_button.northernUplands {
+			color: white;
+			background: rgba(161,70,22,0.9);
+		}
 	}
 	&.southernUplands {
 		svg.trailmap #south-uplands {
 			stroke: $forest_color;
 			stroke-width: 4;
 		}
+		.map_button.southernUplands {
+			color: white;
+			background: rgba(161,70,22,0.9);
+		}
 	}
 	&.greatMarsh {
 		svg.trailmap #south-floodplain {
 			stroke: $forest_color;
 			stroke-width: 4;
+		}
+		.map_button.greatMarsh {
+			color: white;
+			background: rgba(161,70,22,0.9);
 		}
 	}
 }

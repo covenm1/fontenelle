@@ -100,7 +100,15 @@ var ClassList = React.createClass({
     if (current_class.length) {
       return (
         <div className="current_class" id="class_section">
-          <p className="reset_class"  onClick={self.resetClass}>&lt;</p>
+          <svg onClick={self.resetClass} className="arrow_circle green left_arrow reset_class" x="0px" y="0px" viewBox="0 0 52 52" enableBackground="new 0 0 52 52" >
+            <path className="circle" strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"/>
+            <g className="arrow" >
+              <path strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M22.6,25.9c0,0,1,1.6,1,4.4c0,2.6,0.6,3.5,0.6,3.8c0,0.4-0.3,0.7-0.7,0.5s-8.6-6.2-10.5-8.1
+                c0,0-0.2-0.2-0.2-0.5v-0.1c0-0.2,0.1-0.4,0.2-0.5c1.7-1.7,10.1-7.9,10.5-8.1c0.3-0.2,0.7-0.1,0.7,0.5c0,0.3-0.6,1.1-0.6,3.8
+                C23.6,24.3,22.6,25.9,22.6,25.9z" />
+              <line strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' x1="24.2" y1="25.9" x2="39.3" y2="25.9"/>
+            </g>
+          </svg>
           <div className="main_class">
             <h2 className="marker color">{ current_class.name }</h2>
             <p>{ current_class.description }</p>
@@ -230,6 +238,11 @@ var Main = React.createClass({
     this.setState({video: !this.state.video});
   },
 
+  topScroll: function(){
+    this.scrollThing('page');
+  },
+
+
   render: function() {
     var self = this;
     var classImage = self.state.classImage;
@@ -268,14 +281,22 @@ var Main = React.createClass({
                   :
                     <div className="centered_content">
                       <h2 className="marker">The Walls Became the World All Around</h2>
-                      <img className="video_play" onClick={self.toggleVideo} src="/img/icon_play-video.svg" />
+
+                      <svg onClick={self.toggleVideo} className="video_play play_button education" x="0px" y="0px" viewBox="0 0 76 76" >
+                        <g>
+                          <circle className="circle" cx="38" cy="38" r="36.5"/>
+                          <path className="triangle" d="M31.3,38.2c0,0-2.8,4.4-2.8,12.4c0,7.5-1.6,10-1.6,10.7c0,1.2,0.8,2,2,1.4S53.2,45,58.6,39.6
+                            c0,0,0.6-0.6,0.6-1.4V38c0-0.6-0.2-1.1-0.6-1.4c-4.7-4.7-28.7-22.4-29.7-23.1c-0.8-0.6-2-0.4-2,1.4c0,0.7,1.6,3.2,1.6,10.7
+                            C28.6,33.6,31.3,38.2,31.3,38.2z"/>
+                        </g>
+                      </svg>
                     </div>
                   }
                 </div>
               </div>
 
               <div id="classes" className="egg_wrap">
-                <div id="classes" className="image_container classes_container">
+                <div id="classes" className="main_wrapper classes_container">
                   <div className="living_classroom copy_container">
                     <h2 className="marker in_forest">In the Forest</h2>
                     <p>Book your next field trip with Fontenelle Forest! Our experienced educators will provide an engaging, hands-on program for your group. Each program includes an indoor and outdoor portion. To register for a school program for the 2011/2012 school year, please contact the FF Education Department at (402) 731-3140. For directions to the nature centers, click here.</p>
@@ -288,7 +309,7 @@ var Main = React.createClass({
                     <p className="small_text">All programs are aligned with Nebraska State Science Standards.</p>
                     <p className="small_text">Each program is 45–60 minutes long. Maximum 30 students per On-the-Go program. For groups larger than 30, multiple programs must be scheduled.</p>
                   </div>
-                  <div className='image_container'>
+                  <div className="flower_image">
                     <img src="/img/education/flowers.png" />
                   </div>
                 </div>
@@ -353,7 +374,7 @@ var Main = React.createClass({
                   </div>
                   <div className="hero_icon_wrap">
                     <span className="line left_line"></span>
-                    <img className={ arrow_class ? "hero_icon up" : "hero_icon" } src="/img/education/icon_education.svg" />
+                    <img className={ arrow_class ? "hero_icon up" : "hero_icon" } src="/img/education/icon_education.svg" onClick={self.topScroll} />
                     <span className="line right_line"></span>
                   </div>
                 </div>

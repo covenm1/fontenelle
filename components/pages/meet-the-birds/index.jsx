@@ -102,7 +102,12 @@ module.exports = React.createClass({
       <div>
         <div className="nature_notes_header egg_wrap">
           <div className="raptor">
-              <h1 className="marker">Meet the Birds</h1>
+              <h1 className="marker">Meet the Raptors</h1>
+              <h3>Scheduling an Educational Raptor Event</h3>
+              <p>Want to learn about how your school, organization, or club can invite some Fontenelle Forest Raptor Recovery educational birds to visit? Our trained staff and volunteer presenters are experienced in tailoring presentations to a wide variety of audiences and group sizes.</p>
+
+              <p>To find out more information about educational programs, please fill out the form below or contact Denise Lewis at <a href="mailto:dlewis@fontenelleforest.org" target="_blank">dlewis@fontenelleforest.org</a> / <a href="tel:4027313140x1031" target="_blank">402-731-3140 x1031</a>.</p>
+
               <img src="/img/conservation/divider_bottom_grey.png" />
             </div>
         </div>
