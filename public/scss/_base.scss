@@ -770,3 +770,12 @@ footer nav a.social_fl {background-image: url(/img/social-fl.png);}
     vertical-align: middle;
   }
 }
+
+.page.velocity-animating {
+	position: relative;
+	top: 0;
+}
+
+img {
+	max-width: 100%;
+}

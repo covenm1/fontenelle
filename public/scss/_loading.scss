@@ -1,0 +1,41 @@
+html.loading {
+	  height: 100%;
+		body {
+			height: 100%;
+		}
+		.fontenelle {
+			display: flex;
+			flex-direction: column;
+			height: 100%;
+			.main_content {
+				flex:1;
+			}
+		}
+}
+
+.loading_arrow {
+	width: 100px;
+	display: table;
+	margin: auto;
+	#Layer_4, #Layer_3, #Layer_2, #Layer_1 {
+		display:none;
+	}
+	&.arrow_1 #Layer_1 {
+		display:block;
+	}
+	&.arrow_2 #Layer_2 {
+		display:block;
+	}
+	&.arrow_3 #Layer_3 {
+		display:block;
+	}
+	&.arrow_4 #Layer_4 {
+		display:block;
+	}
+}
+
+.load_message {
+	text-align: center;
+	font-size: 25px;
+	line-height: 2;
+}

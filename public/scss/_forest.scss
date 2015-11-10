@@ -292,3 +292,9 @@
       background-image: url(/img/forest/texture.svg);
     }
 }
+
+.photogallery_wrapper.acorns.wide {
+  .gallery_button {
+    display: none;
+  }
+}

@@ -34,6 +34,7 @@ var HabitatThing = React.createClass({
         <div className="quiet_wild copy_container">
           <h2>{self.props.title}</h2>
           <p>{self.props.description}</p>
+          {self.props.link ? <Link className="habitat_thing_link" to={self.props.link}>Read More</Link> : null}
         </div>
       </div>
     )
@@ -326,6 +327,7 @@ var Main = React.createClass({
                     image="/img/conservation/habitat/erosion_control.jpg"
                     credit="Josh Preister"
                     title="Erosion Control"
+                    link="/post/erosion-control"
                     key="erosion"
                     description="Due to years of storm runoff, Coffin Springs Hollow in Fontenelle Forest had eroded into a five-hundred-foot-long gully. Soil repeatedly washed from the area into the nearby stream and was thus threatening the health of our Great Marsh ecosystem. With help from our partners and supporters, Fontenelle Forest successfully completed a series of erosion controls in recent years. Check out our projects!" />
 
@@ -333,11 +335,12 @@ var Main = React.createClass({
                     image="/img/conservation/habitat/prescribed_burn.jpg"
                     credit="Alex Wiles"
                     title="Prescribed fire"
+                    link="/post/prescribed-burn"
                     key="fire"
                     description="While a house on fire in a neighborhood is not a good thing, fire in a prairie or oak woodland IS! Both of these ecological communities are fire dependent and our trained prescribed burn crew reintroduces this often-missing component to the natural systems here at Fontenelle Forest. Read more about our prescribed fire program." />
 
                   <HabitatThing
-                    image="/img/conservation/locallysourced.png"
+                    image="/img/conservation/habitat/invasive_species.jpg"
                     title="Invasive species control"
                     key="invasive"
                     description="We have many beautiful plants in Fontenelle Forest, but some can wreak havoc on our land. In order to restore and maintain our natural habitat, we remove invasive plants. Ornamentals that escape from yards, and plants accidentally brought from other countries can take over when an ecologically community is out of balance. Invasive removal is hard work." />
@@ -345,6 +348,7 @@ var Main = React.createClass({
                   <HabitatThing
                     image="/img/conservation/habitat/natures_helpers.jpg"
                     title="Nature’s Helpers – Volunteers and YOU!"
+                    link="/post/natures-helpers"
                     key="nature"
                     description="All of the work we do requires many hours of labor, which is where our land steward volunteers come in. Our dedicated group of people is invaluable in our conservation efforts. We also rely on our neighbors to help keep our forest healthy. What can YOU do?" />
 

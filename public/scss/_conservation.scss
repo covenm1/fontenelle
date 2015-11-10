@@ -5,6 +5,10 @@
   color: white;
 }
 
+.habitat_thing_link,.habitat_thing_link:visited, .habitat_thing_link:hover  {
+  color: $conservation_color;
+}
+
 .timeline_wrapper {
 	width: 100%;
 	overflow: hidden;

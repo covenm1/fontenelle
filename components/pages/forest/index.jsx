@@ -169,7 +169,7 @@ var Main = React.createClass({
       {
         title: "Habitat Hollow",
         description: "This short, level trail is a great option when you want a short jaunt off the boardwalk. ",
-        image: "/img/map_photos/small/nature-center.jpg"
+        image: "/img/map_photos/small/habitat-hollow.jpg"
       },
       {
         title: "Riverview Boardwalk",
@@ -193,7 +193,7 @@ var Main = React.createClass({
       {
         title: "Trailheads at the Wetlands Learning Center",
         description: "With 5 trailheads nearby, the Wetlands Learning center is a great spot to park and while you discover a new trail.",
-        image: "/img/map_photos/small/nature-center.jpg"
+        image: "/img/map_photos/small/trailheads.jpg"
       },
       {
         title: "Gifford Memorial Boardwalk",
@@ -221,7 +221,7 @@ var Main = React.createClass({
       {
         title: "Camp Gifford",
         description: "A young Henry Fonda spent time with other scouts at Camp Gifford. You can still see concrete bunkhouse foundations from Stream Trail.",
-        image: "/img/map_photos/small/nature-center.jpg"
+        image: "/img/map_photos/small/camp_gifford.jpg"
       },
       {
         title: "Stream Trail",
@@ -249,7 +249,7 @@ var Main = React.createClass({
       {
         title: "Earth Lodges",
         description: "Along the ridges of Oak Trail and Hawthorn Trail you can find depressions that mark 1000 year old sites of Native American earth lodges.",
-        image: "/img/map_photos/small/nature-center.jpg"
+        image: "/img/map_photos/small/earth_lodge.jpg"
       },
       {
         title: "Scenic, ridge-top Oak Trail",
@@ -459,10 +459,25 @@ var Main = React.createClass({
         };
       }
 
-      var acorngalleryStyles = {
-        width: Math.ceil(acorngallery.length/2) * 450 +"px",
-        marginLeft: "-" + self.state.acornLeft + "px"
-      };
+      var gallery_width = Math.ceil(self.state.acorngallery.length/2) * 450;
+
+      var window_width = self.state.windowWidth;
+      var acornLeft = self.state.acornLeft;
+      if (window_width <= (gallery_width)){
+        var acornClass="acorns medium";
+        var acorngalleryStyles = {
+          width: Math.ceil(acorngallery.length/2) * 450 +"px",
+          marginLeft: "-" + self.state.acornLeft + "px"
+        };
+      } else {
+        var acornClass="acorns wide";
+        var acorngalleryStyles = {
+          width: Math.ceil(acorngallery.length/2) * 450 +"px",
+          marginLeft: "auto",
+          marginRight: "auto",
+          position: 'relative'
+        };
+      }
 
       var map_class = "map_wrapper";
 
@@ -1596,7 +1611,7 @@ var Main = React.createClass({
               </div>
 
               <div className="egg_wrap">
-                <div className="photogallery_wrapper">
+                <div className={"photogallery_wrapper " + acornClass} >
                   <svg onClick={self.acornLeft} className="arrow_circle orange left_arrow left gallery_button" x="0px" y="0px" viewBox="0 0 52 52" enableBackground="new 0 0 52 52" >
                     <path className="circle" strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"/>
                     <g className="arrow" >

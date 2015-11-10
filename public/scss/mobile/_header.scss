@@ -1,0 +1,49 @@
+header.header {
+  background: black;
+  background: rgba(0,0,0,.8);
+  color: #fff;
+}
+.global_menu {
+  display: none;
+}
+video#video-background {
+  display:none;
+}
+
+.hero_content {
+  border: none;
+  .hero_header {
+    font-size: 50px;
+    margin-top: 25px;
+  }
+  .hero_textured_color {
+    margin-left: -5px;
+    padding: 5px 25px;
+    p {
+      font-size: 14px;
+    }
+  }
+}
+
+.video-container {
+  .forest & {
+    background-image: url(/img/loop_one.jpg);
+    background-position: center;
+    background-size: cover;
+  }
+}
+
+.hero_icon_wrap {
+  .line {
+    border: none;
+    display: none;
+  }
+
+  .hero_icon {
+    width: 75px;
+    top: 30px;
+    &.up {
+      top: 20px;
+    }
+  }
+}

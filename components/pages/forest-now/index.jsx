@@ -65,6 +65,15 @@ var Tweet = React.createClass({
 });
 
 var Event = React.createClass({
+  getInitialState: function(){
+    return {
+      open: false
+    }
+  },
+  toggleContent: function(){
+    var self = this;
+    self.setState({open: !self.state.open});
+  },
   render : function(){
     var self = this;
     if (self.props.age_group == "all") {
@@ -77,12 +86,27 @@ var Event = React.createClass({
       var age = null;
     }
 
-    if (self.props.end_date){
+    var open = self.state.open;
+    var location_map_url = self.props.location_map_url;
+    var location = self.props.location;
+    var content = self.props.content;
+
+    if (self.props.signup_link){
       return (
         <div className="event green">
-          <h4 className="event_title">{self.props.title}
+          <h4 className="event_title" onClick={self.toggleContent}>{self.props.title}
             <span className="age">{age}</span>
           </h4>
+          { open ?
+            <div className="description_wrapper">
+              { location_map_url ?
+                <a className="event_link" href={location_map_url} target="_blank"><p><i className="fa fa-map-marker"></i> {location}</p></a>
+                : <p>{location}</p>
+              }
+              <div className="event_description" dangerouslySetInnerHTML={{__html: content}}></div>
+              <a className="event_link" href={self.props.signup_link} target="_blank"><p>Register for this Event.</p></a>
+            </div>
+          : null }
           <div className="event_bar">
             <span className="date">{moment(self.props.start_date, "YYYYMMDD").format("M/D")} - {moment(self.props.end_date, "YYYYMMDD").format("M/D")}</span>
             <span className="days">
@@ -101,9 +125,18 @@ var Event = React.createClass({
     } else {
       return (
         <div className="event blue">
-          <h4 className="event_title">{self.props.title}
+          <h4 className="event_title" onClick={self.toggleContent}>{self.props.title}
             <span className="age">{age}</span>
           </h4>
+          { open ?
+            <div className="description_wrapper">
+              { location_map_url ?
+                <a className="event_link" href={location_map_url} target="_blank"><p><i className="fa fa-map-marker"></i> {location}</p></a>
+                : <p>{location}</p>
+              }
+              <div className="event_description" dangerouslySetInnerHTML={{__html: content}}></div>
+            </div>
+          : null }
           <div className="event_bar">
             <span className="date">{moment(self.props.start_date, "YYYYMMDD").format("M/D")}</span>
             <span className="days">
@@ -393,6 +426,7 @@ module.exports = React.createClass({
       return (
         <Event
           title={object.title}
+          content={object.content}
           start_time={object.meta.start_time}
           end_time={object.meta.end_time}
           start_date={object.meta.start_date}
@@ -400,6 +434,8 @@ module.exports = React.createClass({
           days={object.meta.days}
           age_group={object.meta.age_group}
           signup_link={object.meta.signup_link}
+          location={object.meta.location}
+          location_map_url={object.meta.location_map_url}
           key={Math.random()} />
       )
     });
@@ -408,11 +444,15 @@ module.exports = React.createClass({
       var post_style ={
         backgroundImage: "url("+ object.featured_image.guid +")"
       }
+      if (object.meta){
+        var subheader = object.meta.subheader || "";
+      }
       return (
         <div className="post">
           <div className="post_image" style={post_style}></div>
           <div className="post_content">
-            <h4 className="post_headline">{object.title}</h4>
+            <h4 className="post_headline" dangerouslySetInnerHTML={{__html: object.title}}></h4>
+            { subheader ? <p className="post_subheader">{subheader}</p> : null }
             <Link className="post_link" to={"/post/" + object.slug}>Read more</Link>
           </div>
         </div>
