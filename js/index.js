@@ -1363,14 +1363,26 @@ var Link = Router.Link;
 
 var timeline = require('../../common/timeline.json');
 
+var SetIntervalMixin = {
+  componentWillMount: function() {
+    this.intervals = [];
+  },
+  setInterval: function() {
+    this.intervals.push(setInterval.apply(null, arguments));
+  },
+  componentWillUnmount: function() {
+    this.intervals.forEach(clearInterval);
+  }
+};
+
+
 var HabitatThing = React.createClass({displayName: "HabitatThing",
   render : function(){
     var self = this;
     return (
       React.createElement("div", {className: "habitat_container main_wrapper"}, 
         React.createElement("div", {className: "quiet_wild image_container"}, 
-          React.createElement("img", {src: self.props.image}), 
-           self.props.credit ? React.createElement("p", {className: "photo_credit"}, "Photo by ", self.props.credit) : null
+          React.createElement("img", {src: self.props.image})
         ), 
         React.createElement("div", {className: "quiet_wild copy_container"}, 
           React.createElement("h2", null, self.props.title), 
@@ -1391,8 +1403,8 @@ var TimelineThing = React.createClass({displayName: "TimelineThing",
         React.createElement("span", {className: "circle"}), 
         React.createElement("div", {className: "timeline_container"}, 
           React.createElement("div", {className: "description"}, 
-            React.createElement("h4", {className: "title marker"}, self.props.title), 
-            React.createElement("p", null, self.props.description)
+            React.createElement("h4", {className: "title"}, self.props.title), 
+            React.createElement("p", {className: "description"}, self.props.description)
           )
         )
       )
@@ -1403,7 +1415,7 @@ var TimelineThing = React.createClass({displayName: "TimelineThing",
 
 var poster_image;
 var Main = React.createClass({displayName: "Main",
-  mixins: [ Router.State, Navigation ],
+  mixins: [ Router.State, Navigation, SetIntervalMixin ],
   getInitialState: function() {
     return {
       pre_count: 0,
@@ -1421,7 +1433,8 @@ var Main = React.createClass({displayName: "Main",
       windowWidth: window.innerWidth,
       controller: {},
       scrollPos: 0,
-      timeline: timeline
+      timeline: timeline,
+      arrow_class: false
     };
   },
 
@@ -1440,6 +1453,8 @@ var Main = React.createClass({displayName: "Main",
       tmp_image.onload = self.onLoad;
       tmp_image.src = load_images[image];
     }
+
+    self.setInterval(function() { self.setState({arrow_class: !self.state.arrow_class}); }, 500);
   },
 
   componentWillReceiveProps: function (nextProps) {
@@ -1518,8 +1533,15 @@ var Main = React.createClass({displayName: "Main",
     }
   },
 
+  topScroll: function(){
+    this.scrollThing('page');
+  },
+
+
   render: function() {
     var self = this;
+
+    var arrow_class = self.state.arrow_class;
 
     var timeline = self.state.timeline.map(function(object) {
       return React.createElement(TimelineThing, {
@@ -1559,8 +1581,13 @@ var Main = React.createClass({displayName: "Main",
           React.createElement("div", {className: "page_wrapper"}, 
             React.createElement("div", {className: "page_container", id: "page", style: loadStyle}, 
               React.createElement("div", {className: "egg_wrap"}, 
+                React.createElement("div", {className: "ongoing_story_container main_wrapper birds_container"}, 
+                  React.createElement("div", {className: "quiet_wild birds_right"}, 
+                    React.createElement("img", {src: "/img/conservation/birds_left.png"})
+                  )
+                ), 
                 React.createElement("div", {className: "ongoing_story_container main_wrapper"}, 
-                  React.createElement("div", {className: "quiet_wild image_container"}, 
+                  React.createElement("div", {className: "quiet_wild streetsign"}, 
                     React.createElement("img", {src: "/img/conservation/sign.png"})
                   ), 
                   React.createElement("div", {className: "quiet_wild copy_container"}, 
@@ -1569,9 +1596,6 @@ var Main = React.createClass({displayName: "Main",
                     React.createElement("p", null, "As we interact with the Forest in a multitude of ways, we all have a role to play in this story. We are leaving our footprint on the Forest, and it’s vital that we consider its size and shape. We’ve learned that a purely “hands off” approach doesn’t work as well as you might guess. In the absence of proactive conservation efforts, the plant and animal life at the Forest would eventually fall out of harmony and reach a non-working state."), 
                     React.createElement("p", null, "So we do research, and lots of it. We get out there and observe. We utilize the helping hand of hundreds of dedicated volunteers. We don’t disrupt the natural state of things, but we do encourage nature to thrive in every way we can. Conservation at Fontenelle Forest is the sum of our efforts, from pulling weeds to writing reports."), 
                     React.createElement("img", {className: "bottom_vine", src: "/img/bottom_vine.svg"})
-                  ), 
-                  React.createElement("div", {className: "quiet_wild image_container"}, 
-                    React.createElement("img", {src: "/img/conservation/birds_left.png"})
                   )
                 )
               ), 
@@ -1580,7 +1604,6 @@ var Main = React.createClass({displayName: "Main",
                 React.createElement("div", {className: "thousandyears video_overlay"}), 
                 React.createElement("div", {id: "history", className: "tearjerker_wrapper"}, 
                   React.createElement("div", {className: "centered_content"}, 
-                    React.createElement("img", {src: "/img/conservation/divider_top_thing.png"}), 
                     React.createElement("h2", {className: "marker"}, "Thousands of Years Plus a Century"), 
                     React.createElement("p", null, "Humans have been interacting with the land that is now Fontenelle Forest for hundreds of thousands of years. But, it wasn’t until 1913 that the land was officially protected with the founding of the Fontenelle Nature Association. Though this subsequent centennial is but a sliver of time in the grand scheme of things, it has been marked by dramatic milestones in the area of forest conservation. Learning about the Forest’s history helps us appreciate it even more today and ensures solid stewardship of this land for years to come."), 
                     React.createElement("img", {src: "/img/conservation/divider_bottom_thing.png"})
@@ -1591,8 +1614,26 @@ var Main = React.createClass({displayName: "Main",
               React.createElement("div", {className: "egg_wrap timeline_wrapper"}, 
                 React.createElement("h2", {className: "time_title marker"}, "Timeline"), 
 
-                  React.createElement("span", {className: "left timeline_button", onClick: self.timelineLeft}, React.createElement("img", {src: "/img/conservation/icon_right_blue.svg"})), 
-                  React.createElement("span", {className: "right timeline_button", onClick: self.timelineRight}, React.createElement("img", {src: "/img/conservation/icon_right_blue.svg"})), 
+                React.createElement("svg", {onClick: self.timelineLeft, className: "arrow_circle blue_white left_arrow left timeline_button", x: "0px", y: "0px", viewBox: "0 0 52 52", enableBackground: "new 0 0 52 52"}, 
+                  React.createElement("path", {className: "circle", strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"}), 
+                  React.createElement("g", {className: "arrow"}, 
+                    React.createElement("path", {strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M22.6,25.9c0,0,1,1.6,1,4.4c0,2.6,0.6,3.5,0.6,3.8c0,0.4-0.3,0.7-0.7,0.5s-8.6-6.2-10.5-8.1" + ' ' +
+                      "c0,0-0.2-0.2-0.2-0.5v-0.1c0-0.2,0.1-0.4,0.2-0.5c1.7-1.7,10.1-7.9,10.5-8.1c0.3-0.2,0.7-0.1,0.7,0.5c0,0.3-0.6,1.1-0.6,3.8" + ' ' +
+                      "C23.6,24.3,22.6,25.9,22.6,25.9z"}), 
+                    React.createElement("line", {strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", x1: "24.2", y1: "25.9", x2: "39.3", y2: "25.9"})
+                  )
+                ), 
+
+                React.createElement("svg", {onClick: self.timelineRight, className: "arrow_circle blue_white right_arrow right timeline_button", x: "0px", y: "0px", viewBox: "0 0 52 52", enableBackground: "new 0 0 52 52"}, 
+                  React.createElement("path", {className: "circle", strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"}), 
+                  React.createElement("g", {className: "arrow"}, 
+                    React.createElement("path", {strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M29.4,25.9c0,0-1,1.6-1,4.4c0,2.6-0.6,3.5-0.6,3.8c0,0.4,0.3,0.7,0.7,0.5s8.6-6.2,10.5-8.1" + ' ' +
+                    "c0,0,0.2-0.2,0.2-0.5v-0.1c0-0.2-0.1-0.4-0.2-0.5c-1.7-1.7-10.1-7.9-10.5-8.1c-0.3-0.2-0.7-0.1-0.7,0.5c0,0.3,0.6,1.1,0.6,3.8" + ' ' +
+                    "C28.4,24.3,29.4,25.9,29.4,25.9z"}), 
+                    React.createElement("line", {strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", x1: "27.8", y1: "25.9", x2: "12.7", y2: "25.9"})
+                  )
+                ), 
+
                 React.createElement("div", {className: "timeline_wrapper"}, 
                   React.createElement("div", {className: "timeline", style: timelineStyles}, 
                     React.createElement("span", {className: "the_line", style: thelineStyles}), 
@@ -1603,7 +1644,7 @@ var Main = React.createClass({displayName: "Main",
 
               React.createElement("div", {className: "egg_wrap"}, 
                 React.createElement("div", {className: "ongoing_story_container main_wrapper"}, 
-                  React.createElement("div", {className: "quiet_wild image_container"}, 
+                  React.createElement("div", {className: "quiet_wild"}, 
                     React.createElement("img", {src: "/img/conservation/log.png"})
                   )
                 )
@@ -1613,37 +1654,36 @@ var Main = React.createClass({displayName: "Main",
                 React.createElement("h2", {className: "habitat_marker marker"}, "If you have the habitat, you have the home."), 
                 React.createElement("div", {className: "habitat_home_container main_wrapper"}, 
                   React.createElement("div", {className: "quiet_wild copy_container"}, 
-                    React.createElement("p", null, "Our main tenet of land stewardship at Fontenelle Forest is to facilitate the most balanced environment we can. With ideal living conditions, the animals follow—the invertebrates, insects, amphibians, reptiles, and mammals that make the Forest harmonious and happy."), 
-                    React.createElement("p", null, "Still, it’s vital that we let nature do what it wants to do. Our job is more to pay attention and interpret the natural signs that are out there.")
+                    React.createElement("p", null, "Our main tenet of land stewardship at Fontenelle Forest is to facilitate the most balanced environment we can. With ideal living conditions, the animals follow—the invertebrates, insects, amphibians, reptiles, and mammals that make the Forest harmonious and happy. Still, it’s vital that we let nature do what it wants to do. Our job is more to pay attention and interpret the natural signs that are out there.")
                   )
                 )
               ), 
 
               React.createElement("div", {className: "egg_wrap "}, 
-                React.createElement("div", {className: "image_container"}, 
+                React.createElement("div", {className: "main_wrapper"}, 
 
                   React.createElement(HabitatThing, {
-                    image: "/img/conservation/natures_helpers.png", 
+                    image: "/img/conservation/habitat/habitat_restoration.jpg", 
                     credit: "Josh Preister", 
                     title: "Habitat Restoration", 
                     key: "habitat", 
                     description: "Oak savanna and woodland habitats within Fontenelle Forest face severe decline. Their regeneration has been stunted due to the lack of open space resulting from fire suppression and the encroachment of invasive plants. To ensure the preservation and expansion of this ecological community, FF began an oak woodland restoration. Click to find out how we do it!"}), 
 
                   React.createElement(HabitatThing, {
-                    image: "/img/conservation/provenplan.png", 
+                    image: "/img/conservation/habitat/deer_management.jpg", 
                     title: "Deer Management", 
                     key: "deer", 
                     description: "Since the 1980s, the deer population has exploded, due in part to the lack of larger predators and the abundance of food. To mitigate the issue, Fontenelle embarked on what has been a decades-long process: conducting research, forming and enacting a plan, and constantly evaluating results. Since the official deer hunt program began in 1996, it is arguably the most successful conservation program in the history of the forest. Deer management information can be found here."}), 
 
                   React.createElement(HabitatThing, {
-                    image: "/img/conservation/locallysourced.png", 
+                    image: "/img/conservation/habitat/erosion_control.jpg", 
                     credit: "Josh Preister", 
                     title: "Erosion Control", 
                     key: "erosion", 
                     description: "Due to years of storm runoff, Coffin Springs Hollow in Fontenelle Forest had eroded into a five-hundred-foot-long gully. Soil repeatedly washed from the area into the nearby stream and was thus threatening the health of our Great Marsh ecosystem. With help from our partners and supporters, Fontenelle Forest successfully completed a series of erosion controls in recent years. Check out our projects!"}), 
 
                   React.createElement(HabitatThing, {
-                    image: "/img/conservation/locallysourced.png", 
+                    image: "/img/conservation/habitat/prescribed_burn.jpg", 
                     credit: "Alex Wiles", 
                     title: "Prescribed fire", 
                     key: "fire", 
@@ -1656,7 +1696,7 @@ var Main = React.createClass({displayName: "Main",
                     description: "We have many beautiful plants in Fontenelle Forest, but some can wreak havoc on our land. In order to restore and maintain our natural habitat, we remove invasive plants. Ornamentals that escape from yards, and plants accidentally brought from other countries can take over when an ecologically community is out of balance. Invasive removal is hard work."}), 
 
                   React.createElement(HabitatThing, {
-                    image: "/img/conservation/locallysourced.png", 
+                    image: "/img/conservation/habitat/natures_helpers.jpg", 
                     title: "Nature’s Helpers – Volunteers and YOU!", 
                     key: "nature", 
                     description: "All of the work we do requires many hours of labor, which is where our land steward volunteers come in. Our dedicated group of people is invaluable in our conservation efforts. We also rely on our neighbors to help keep our forest healthy. What can YOU do?"})
@@ -1669,7 +1709,6 @@ var Main = React.createClass({displayName: "Main",
                 React.createElement("div", {className: "raptor_container main_wrapper"}, 
                   React.createElement("div", {className: "quiet_wild copy_container"}, 
                     React.createElement("div", {className: "raptor"}, 
-                      React.createElement("img", {src: "/img/conservation/divider_top_grey.png"}), 
                       React.createElement("h2", {className: "marker"}, "Raptor Recovery"), 
                       React.createElement("p", null, "Birds of prey, such as eagles, falcons, hawks, owls, and vultures, have a vital role in our ecosystem. Fontenelle Forest’s Raptor Recovery is focused on the conservation of these birds through education, research, and the rehabilitation of injured and orphaned raptors."), 
                       React.createElement("img", {src: "/img/conservation/divider_bottom_grey.png"})
@@ -1679,7 +1718,7 @@ var Main = React.createClass({displayName: "Main",
                     React.createElement("h2", null, "Rehabilitate"), 
                     React.createElement("p", null, "Birds are evaluated immediately upon arrival to our trauma care unit. Trained rehabilitators and veterinarians provide treatment, medication, and surgery if needed. Some patients may take a few days to mend; others might take months or even years.")
                   ), 
-                  React.createElement("div", {className: "quiet_wild image_container"}, 
+                  React.createElement("div", {className: "quiet_wild the_raptor"}, 
                     React.createElement("img", {src: "/img/conservation/raptor.png"})
                   )
                 )
@@ -1691,7 +1730,17 @@ var Main = React.createClass({displayName: "Main",
                   React.createElement("div", {className: "centered_content"}, 
                     React.createElement("h2", {className: "marker"}, "Meet the Raptors"), 
                     React.createElement("p", null, "See some of the injured birds now rehabbing at Fontenelle"), 
-                    React.createElement(Link, {to: "/meet-the-raptors"}, React.createElement("img", {src: "/img/conservation/arrow_right.png"}))
+                    React.createElement(Link, {to: "/meet-the-raptors"}, 
+                      React.createElement("svg", {className: "arrow_circle blue_white right_arrow", x: "0px", y: "0px", viewBox: "0 0 52 52", enableBackground: "new 0 0 52 52"}, 
+                        React.createElement("path", {className: "circle", strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"}), 
+                        React.createElement("g", {className: "arrow"}, 
+                          React.createElement("path", {strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M29.4,25.9c0,0-1,1.6-1,4.4c0,2.6-0.6,3.5-0.6,3.8c0,0.4,0.3,0.7,0.7,0.5s8.6-6.2,10.5-8.1" + ' ' +
+                          "c0,0,0.2-0.2,0.2-0.5v-0.1c0-0.2-0.1-0.4-0.2-0.5c-1.7-1.7-10.1-7.9-10.5-8.1c-0.3-0.2-0.7-0.1-0.7,0.5c0,0.3,0.6,1.1,0.6,3.8" + ' ' +
+                          "C28.4,24.3,29.4,25.9,29.4,25.9z"}), 
+                          React.createElement("line", {strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", x1: "27.8", y1: "25.9", x2: "12.7", y2: "25.9"})
+                        )
+                      )
+                    )
                   )
                 )
               ), 
@@ -1704,7 +1753,7 @@ var Main = React.createClass({displayName: "Main",
                     React.createElement("h2", null, "Educate"), 
                     React.createElement("p", null, "Even after treatment and months of rehabilitation, a raptor might be unable to fly or hunt due to a variety of factors and cannot be released. Non-releasable birds are channeled into breeding programs, recruited as “foster parents” for young orphans, utilized in research, or join our roster of educational birds for outreach and education programs. Fontenelle Forest Raptor Recovery reaches 20,000 people each year during our live raptor programs.")
                   ), 
-                  React.createElement("div", {className: "quiet_wild image_container"}, 
+                  React.createElement("div", {className: "quiet_wild"}, 
                     React.createElement("img", {src: "/img/conservation/birds_right.png"})
                   )
                 )
@@ -1716,7 +1765,17 @@ var Main = React.createClass({displayName: "Main",
                   React.createElement("div", {className: "centered_content"}, 
                     React.createElement("h2", {className: "marker"}, "Living With Urban Wildlife"), 
                     React.createElement("p", null, "City life is often filled with wildlife interactions. Find out some ways to make it more harmonious and see how Fontenelle Forest can help you do so."), 
-                    React.createElement(Link, {to: "/urban-wildlife"}, React.createElement("img", {src: "/img/conservation/arrow_right.png"}))
+                    React.createElement(Link, {to: "/urban-wildlife"}, 
+                      React.createElement("svg", {className: "arrow_circle blue_white right_arrow", x: "0px", y: "0px", viewBox: "0 0 52 52", enableBackground: "new 0 0 52 52"}, 
+                        React.createElement("path", {className: "circle", strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"}), 
+                        React.createElement("g", {className: "arrow"}, 
+                          React.createElement("path", {strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M29.4,25.9c0,0-1,1.6-1,4.4c0,2.6-0.6,3.5-0.6,3.8c0,0.4,0.3,0.7,0.7,0.5s8.6-6.2,10.5-8.1" + ' ' +
+                          "c0,0,0.2-0.2,0.2-0.5v-0.1c0-0.2-0.1-0.4-0.2-0.5c-1.7-1.7-10.1-7.9-10.5-8.1c-0.3-0.2-0.7-0.1-0.7,0.5c0,0.3,0.6,1.1,0.6,3.8" + ' ' +
+                          "C28.4,24.3,29.4,25.9,29.4,25.9z"}), 
+                          React.createElement("line", {strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", x1: "27.8", y1: "25.9", x2: "12.7", y2: "25.9"})
+                        )
+                      )
+                    )
                   )
                 )
               ), 
@@ -1765,7 +1824,20 @@ var Main = React.createClass({displayName: "Main",
               React.createElement("div", {className: "content_container"}, 
                 React.createElement("div", {className: "video_overlay"}), 
                 React.createElement("div", {className: "content_wrapper"}, 
-                  React.createElement("img", {src: "/img/conservation.png"})
+                  React.createElement("img", {className: "old_hero_image", src: "/img/conservation.png"}), 
+                  React.createElement("div", {className: "hero_content"}, 
+                    React.createElement("h1", {className: "hero_header"}, "SEE THE FOREST"), 
+                    React.createElement("h3", {className: "hero_subheader marker"}, "AND THE TREES"), 
+                    React.createElement("div", {className: "hero_textured_color"}, 
+                      React.createElement("p", null, "We invite you to explore ways you can get involved in our conservation initiatives. As stewards of the land, we are dedicated to the conservation and preservation of our local environment so that future generations can continue to enjoy the forest.")
+                    ), 
+                    React.createElement("div", {className: "hero_icon_wrap"}, 
+                      React.createElement("span", {className: "line left_line"}), 
+                      React.createElement("img", {className:  arrow_class ? "hero_icon up" : "hero_icon", src: "/img/conservation/icon_conservation.svg", onClick: self.topScroll}), 
+                      React.createElement("span", {className: "line right_line"})
+                    )
+                  )
+
                 )
               )
             )
@@ -1784,7 +1856,20 @@ var Main = React.createClass({displayName: "Main",
               React.createElement("div", {className: "content_container"}, 
                 React.createElement("div", {className: "video_overlay"}), 
                 React.createElement("div", {className: "content_wrapper"}, 
-                  React.createElement("img", {src: "/img/conservation.png"})
+                  React.createElement("img", {className: "old_hero_image", src: "/img/conservation.png"}), 
+                  React.createElement("div", {className: "hero_content"}, 
+                    React.createElement("h1", {className: "hero_header"}, "SEE THE FOREST"), 
+                    React.createElement("h3", {className: "hero_subheader marker"}, "AND THE TREES"), 
+                    React.createElement("div", {className: "hero_textured_color"}, 
+                      React.createElement("p", null, "We invite you to explore ways you can get involved in our conservation initiatives. As stewards of the land, we are dedicated to the conservation and preservation of our local environment so that future generations can continue to enjoy the forest.")
+                    ), 
+                    React.createElement("div", {className: "hero_icon_wrap"}, 
+                      React.createElement("span", {className: "line left_line"}), 
+                      React.createElement("img", {className:  arrow_class ? "hero_icon up" : "hero_icon", src: "/img/conservation/icon_conservation.svg"}), 
+                      React.createElement("span", {className: "line right_line"})
+                    )
+                  )
+
                 )
               )
             )
@@ -2066,6 +2151,19 @@ require('../../../public/js/scrollTo.js');
 
 var classes_data = require('../../common/classes.json');
 
+var SetIntervalMixin = {
+  componentWillMount: function() {
+    this.intervals = [];
+  },
+  setInterval: function() {
+    this.intervals.push(setInterval.apply(null, arguments));
+  },
+  componentWillUnmount: function() {
+    this.intervals.forEach(clearInterval);
+  }
+};
+
+
 var ClassThing = React.createClass({displayName: "ClassThing",
   render: function() {
     var self = this;
@@ -2139,7 +2237,15 @@ var ClassList = React.createClass({displayName: "ClassList",
     if (current_class.length) {
       return (
         React.createElement("div", {className: "current_class", id: "class_section"}, 
-          React.createElement("p", {className: "reset_class", onClick: self.resetClass}, "<"), 
+          React.createElement("svg", {onClick: self.resetClass, className: "arrow_circle green left_arrow reset_class", x: "0px", y: "0px", viewBox: "0 0 52 52", enableBackground: "new 0 0 52 52"}, 
+            React.createElement("path", {className: "circle", strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"}), 
+            React.createElement("g", {className: "arrow"}, 
+              React.createElement("path", {strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M22.6,25.9c0,0,1,1.6,1,4.4c0,2.6,0.6,3.5,0.6,3.8c0,0.4-0.3,0.7-0.7,0.5s-8.6-6.2-10.5-8.1" + ' ' +
+                "c0,0-0.2-0.2-0.2-0.5v-0.1c0-0.2,0.1-0.4,0.2-0.5c1.7-1.7,10.1-7.9,10.5-8.1c0.3-0.2,0.7-0.1,0.7,0.5c0,0.3-0.6,1.1-0.6,3.8" + ' ' +
+                "C23.6,24.3,22.6,25.9,22.6,25.9z"}), 
+              React.createElement("line", {strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", x1: "24.2", y1: "25.9", x2: "39.3", y2: "25.9"})
+            )
+          ), 
           React.createElement("div", {className: "main_class"}, 
             React.createElement("h2", {className: "marker color"},  current_class.name), 
             React.createElement("p", null,  current_class.description), 
@@ -2180,7 +2286,7 @@ var ClassList = React.createClass({displayName: "ClassList",
 
 var poster_image;
 var Main = React.createClass({displayName: "Main",
-  mixins: [ Router.State, Navigation ],
+  mixins: [ Router.State, Navigation, SetIntervalMixin ],
   getInitialState: function() {
     return {
       pre_count: 0,
@@ -2192,7 +2298,8 @@ var Main = React.createClass({displayName: "Main",
         "/img/education.png",
         "/img/education/flowers.png",
         "/img/education/caterpillar.png"
-      ]
+      ],
+      arrow_class: false
 
     };
   },
@@ -2206,6 +2313,8 @@ var Main = React.createClass({displayName: "Main",
       tmp_image.onload = self.onLoad;
       tmp_image.src = load_images[image];
     }
+
+    self.setInterval(function() { self.setState({arrow_class: !self.state.arrow_class}); }, 500);
   },
 
   componentDidUpdate: function (prevProps, prevState) {
@@ -2266,6 +2375,11 @@ var Main = React.createClass({displayName: "Main",
     this.setState({video: !this.state.video});
   },
 
+  topScroll: function(){
+    this.scrollThing('page');
+  },
+
+
   render: function() {
     var self = this;
     var classImage = self.state.classImage;
@@ -2276,19 +2390,20 @@ var Main = React.createClass({displayName: "Main",
     var loadStyle = {
       width: self.state.percent_loaded + "%"
     }
+    var arrow_class = self.state.arrow_class;
     if (self.state.loaded == true) {
       return (
         React.createElement("div", {className: "page"}, 
           React.createElement("div", {className: "page_wrapper"}, 
             React.createElement("div", {className: "page_container", id: "page", style: loadStyle}, 
               React.createElement("div", {className: "egg_wrap living_classroom_container"}, 
+                React.createElement("div", {className: "living_classroom image_container"}, 
+                  React.createElement("img", {src: "/img/education/caterpillar.png"})
+                ), 
                 React.createElement("div", {className: "living_classroom copy_container"}, 
                   React.createElement("h2", {className: "marker"}, "A living classroom"), 
                   React.createElement("p", null, "The Forest offers nearly unlimited opportunities for learning. Over 100,000 youth and adults each year take part in environmental education programs through Fontenelle."), 
                   React.createElement("img", {className: "bottom_vine", src: "/img/bottom_vine.svg"})
-                ), 
-                React.createElement("div", {className: "living_classroom image_container"}, 
-                  React.createElement("img", {src: "/img/education/caterpillar.png"})
                 )
               ), 
 
@@ -2303,27 +2418,37 @@ var Main = React.createClass({displayName: "Main",
                   :
                     React.createElement("div", {className: "centered_content"}, 
                       React.createElement("h2", {className: "marker"}, "The Walls Became the World All Around"), 
-                      React.createElement("img", {className: "video_play", onClick: self.toggleVideo, src: "/img/icon_play-video.svg"})
+
+                      React.createElement("svg", {onClick: self.toggleVideo, className: "video_play play_button education", x: "0px", y: "0px", viewBox: "0 0 76 76"}, 
+                        React.createElement("g", null, 
+                          React.createElement("circle", {className: "circle", cx: "38", cy: "38", r: "36.5"}), 
+                          React.createElement("path", {className: "triangle", d: "M31.3,38.2c0,0-2.8,4.4-2.8,12.4c0,7.5-1.6,10-1.6,10.7c0,1.2,0.8,2,2,1.4S53.2,45,58.6,39.6" + ' ' +
+                            "c0,0,0.6-0.6,0.6-1.4V38c0-0.6-0.2-1.1-0.6-1.4c-4.7-4.7-28.7-22.4-29.7-23.1c-0.8-0.6-2-0.4-2,1.4c0,0.7,1.6,3.2,1.6,10.7" + ' ' +
+                            "C28.6,33.6,31.3,38.2,31.3,38.2z"})
+                        )
+                      )
                     )
                   
                 )
               ), 
 
-              React.createElement("div", {id: "classes", className: "egg_wrap classes_container"}, 
-                React.createElement("div", {className: "living_classroom copy_container"}, 
-                  React.createElement("h2", {className: "marker in_forest"}, "In the Forest"), 
-                  React.createElement("p", null, "Book your next field trip with Fontenelle Forest! Our experienced educators will provide an engaging, hands-on program for your group. Each program includes an indoor and outdoor portion. To register for a school program for the 2011/2012 school year, please contact the FF Education Department at (402) 731-3140. For directions to the nature centers, click here."), 
-                  React.createElement("p", {className: "small_text"}, React.createElement("strong", null, "Once you have booked a field trip"), ", be sure to take advantage of the activities provided below. These activities will greatly enhance your students' field trip experience - and they're a lot of fun!")
-                ), 
-                React.createElement("div", {className: "living_classroom copy_container"}, 
-                  React.createElement("h2", {className: "marker on_go"}, "Nature On-The-Go"), 
-                  React.createElement("p", null, "Nature-On-the-Go traveling programs introduce hands-on natural science programs to your students. During each program, your students will explore a \u0003variety of topics. These are great to supplement your school-day lessons or as an after-school program."), 
-                  React.createElement("p", {className: "small_text"}, React.createElement("strong", null, "To schedule a program"), ", call our Manager of Programming and Outreach at 402-731-3140 x1026"), 
-                  React.createElement("p", {className: "small_text"}, "All programs are aligned with Nebraska State Science Standards."), 
-                  React.createElement("p", {className: "small_text"}, "Each program is 45–60 minutes long. Maximum 30 students per On-the-Go program. For groups larger than 30, multiple programs must be scheduled.")
-                ), 
-                React.createElement("div", {className: "image_container"}, 
-                  React.createElement("img", {src: "/img/education/flowers.png"})
+              React.createElement("div", {id: "classes", className: "egg_wrap"}, 
+                React.createElement("div", {id: "classes", className: "main_wrapper classes_container"}, 
+                  React.createElement("div", {className: "living_classroom copy_container"}, 
+                    React.createElement("h2", {className: "marker in_forest"}, "In the Forest"), 
+                    React.createElement("p", null, "Book your next field trip with Fontenelle Forest! Our experienced educators will provide an engaging, hands-on program for your group. Each program includes an indoor and outdoor portion. To register for a school program for the 2011/2012 school year, please contact the FF Education Department at (402) 731-3140. For directions to the nature centers, click here."), 
+                    React.createElement("p", {className: "small_text"}, React.createElement("strong", null, "Once you have booked a field trip"), ", be sure to take advantage of the activities provided below. These activities will greatly enhance your students' field trip experience - and they're a lot of fun!")
+                  ), 
+                  React.createElement("div", {className: "living_classroom copy_container"}, 
+                    React.createElement("h2", {className: "marker on_go"}, "Nature On-The-Go"), 
+                    React.createElement("p", null, "Nature-On-the-Go traveling programs introduce hands-on natural science programs to your students. During each program, your students will explore a \u0003variety of topics. These are great to supplement your school-day lessons or as an after-school program."), 
+                    React.createElement("p", {className: "small_text"}, React.createElement("strong", null, "To schedule a program"), ", call our Manager of Programming and Outreach at 402-731-3140 x1026"), 
+                    React.createElement("p", {className: "small_text"}, "All programs are aligned with Nebraska State Science Standards."), 
+                    React.createElement("p", {className: "small_text"}, "Each program is 45–60 minutes long. Maximum 30 students per On-the-Go program. For groups larger than 30, multiple programs must be scheduled.")
+                  ), 
+                  React.createElement("div", {className: "flower_image"}, 
+                    React.createElement("img", {src: "/img/education/flowers.png"})
+                  )
                 )
               ), 
 
@@ -2377,7 +2502,19 @@ var Main = React.createClass({displayName: "Main",
             React.createElement("div", {className: "content_container"}, 
               React.createElement("div", {className: "video_overlay"}), 
               React.createElement("div", {className: "content_wrapper"}, 
-                React.createElement("img", {src: "/img/education.png"})
+                React.createElement("img", {className: "old_hero_image", src: "/img/education.png"}), 
+                React.createElement("div", {className: "hero_content"}, 
+                  React.createElement("h1", {className: "hero_header"}, "CALL OF THE WILD BECKONS"), 
+                  React.createElement("h3", {className: "hero_subheader marker"}, "Teachers, administrator and scout leaders"), 
+                  React.createElement("div", {className: "hero_textured_color"}, 
+                    React.createElement("p", null, "We invite you to explore opportunities for your school group, including curriculum tied to state science standards. Fontenelle's educational programs take many forms - from field trips, classes, and camps in the forest to hands-on, nature-on-the-go presentations at schools, to community art projects.")
+                  ), 
+                  React.createElement("div", {className: "hero_icon_wrap"}, 
+                    React.createElement("span", {className: "line left_line"}), 
+                    React.createElement("img", {className:  arrow_class ? "hero_icon up" : "hero_icon", src: "/img/education/icon_education.svg", onClick: self.topScroll}), 
+                    React.createElement("span", {className: "line right_line"})
+                  )
+                )
               )
             )
           )
@@ -2396,7 +2533,20 @@ var Main = React.createClass({displayName: "Main",
             React.createElement("div", {className: "content_container"}, 
               React.createElement("div", {className: "video_overlay"}), 
               React.createElement("div", {className: "content_wrapper"}, 
-                React.createElement("img", {src: "/img/education.png"})
+                React.createElement("img", {className: "old_hero_image", src: "/img/education.png"}), 
+                React.createElement("div", {className: "hero_content"}, 
+                  React.createElement("h1", {className: "hero_header"}, "CALL OF THE WILD BECKONS"), 
+                  React.createElement("h3", {className: "hero_subheader marker"}, "Teachers, administrator and scout leaders"), 
+                  React.createElement("div", {className: "hero_textured_color"}, 
+                    React.createElement("p", null, "We invite you to explore opportunities for your school group, including curriculum tied to state science standards. Fontenelle's educational programs take many forms - from field trips, classes, and camps in the forest to hands-on, nature-on-the-go presentations at schools, to community art projects.")
+                  ), 
+                  React.createElement("div", {className: "hero_icon_wrap"}, 
+                    React.createElement("span", {className: "line left_line"}), 
+                    React.createElement("img", {className:  arrow_class ? "hero_icon up" : "hero_icon", src: "/img/education/icon_education.svg"}), 
+                    React.createElement("span", {className: "line right_line"})
+                  )
+                )
+
               )
             )
           )
@@ -2547,7 +2697,8 @@ module.exports = React.createClass({displayName: "exports",
       weather: {},
       wildlife_excerpt: "",
       plantlife_excerpt: "",
-      week: ''
+      week: '',
+      this_week: ''
     };
   },
 
@@ -2676,7 +2827,7 @@ module.exports = React.createClass({displayName: "exports",
           });
 
 
-          self.setState({ events: sorted_events, week: this_week });
+          self.setState({ events: sorted_events, week: this_week, this_week: this_week });
 
         } else {
           console.log('Oh no! error ' + res.text);
@@ -2850,6 +3001,12 @@ module.exports = React.createClass({displayName: "exports",
       }
     });
 
+    if(self.state.week == self.state.this_week) {
+      var week_text = "This Week: ";
+    } else {
+      var week_text = "Week of: "
+    }
+
     return (
       React.createElement("div", null, 
         React.createElement("div", {className: "egg_wrap nature_notes_header"}, 
@@ -2924,7 +3081,7 @@ module.exports = React.createClass({displayName: "exports",
                   	)
                   )
                 ), 
-                "This Week: ", React.createElement("span", {className: "actual_week"}, moment(self.state.week, 'DDMMYYYY').startOf('week').format('MMMM D'), " - ", moment(self.state.week, 'DDMMYYYY').endOf('week').format('MMMM D'), " "), 
+                week_text, React.createElement("span", {className: "actual_week"}, moment(self.state.week, 'DDMMYYYY').startOf('week').format('MMMM D'), " - ", moment(self.state.week, 'DDMMYYYY').endOf('week').format('MMMM D'), " "), 
                 React.createElement("span", {className: "next_week", onClick: self.nextWeek}, 
                   React.createElement("svg", {className: "arrow_circle blue right_arrow", x: "0px", y: "0px", viewBox: "0 0 52 52", enableBackground: "new 0 0 52 52"}, 
                     React.createElement("path", {className: "circle", strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"}), 
@@ -2989,8 +3146,20 @@ function shuffleArray(array) {
     return array;
 }
 
+var SetIntervalMixin = {
+  componentWillMount: function() {
+    this.intervals = [];
+  },
+  setInterval: function() {
+    this.intervals.push(setInterval.apply(null, arguments));
+  },
+  componentWillUnmount: function() {
+    this.intervals.forEach(clearInterval);
+  }
+};
+
 var Main = React.createClass({displayName: "Main",
-  mixins: [ Router.State, Navigation ],
+  mixins: [ Router.State, Navigation, SetIntervalMixin ],
   getInitialState: function() {
     return {
       duration: 750,
@@ -3000,6 +3169,7 @@ var Main = React.createClass({displayName: "Main",
       hover: '',
       area: '',
       left: 0,
+      right: null,
       pre_count: 0,
       load_images: [
         "/img/loop_one.jpg",
@@ -3032,10 +3202,10 @@ var Main = React.createClass({displayName: "Main",
       tmp_image.src = load_images[image];
     }
 
-    setInterval(function() { self.setState({arrow_class: !self.state.arrow_class}); }, 500);
-
+    self.setInterval(function() { self.setState({arrow_class: !self.state.arrow_class}); }, 500);
 
   },
+
 
   componentDidUpdate: function (prevProps, prevState) {
     var self  = this;
@@ -3071,16 +3241,28 @@ var Main = React.createClass({displayName: "Main",
   },
 
   handleResize: function(e) {
-
-    this.setState({
-      windowWidth: window.innerWidth,
-      left: 0,
-      acornLeft: 0,
-    });
+    var self = this;
+    if(self.state.right == 0){
+      self.setState({
+        windowWidth: window.innerWidth,
+        right: 0,
+        acornRight: 0,
+      });
+    } else {
+      self.setState({
+        windowWidth: window.innerWidth,
+        left: 0,
+        acornLeft: 0,
+      });
+    }
   },
 
   hoverClass: function(index){
     this.setState({hover: index});
+  },
+
+  hoverLeave: function(){
+    this.setState({hover: ''});
   },
 
   reset: function(){
@@ -3262,17 +3444,22 @@ var Main = React.createClass({displayName: "Main",
     var window_width = self.state.windowWidth;
     var left = self.state.left;
 
-    if (window_width <= (gallery_width - left)) {
+    if (window_width < (gallery_width - (left+ 450))) {
       self.setState({left: self.state.left + 450});
+    } else {
+      self.setState({right: 0});
     }
   },
 
   galleryLeft: function(){
     var self = this;
     var left = self.state.left;
+    var gallery_width = Math.ceil(self.state.photogallery.length/2) * 450;
+
+    var window_width = self.state.windowWidth;
 
     if (left > 0) {
-      self.setState({left: self.state.left + -450});
+      self.setState({left: self.state.left + -450, right: null});
     }
   },
 
@@ -3296,6 +3483,10 @@ var Main = React.createClass({displayName: "Main",
     if (acornLeft > 0) {
       self.setState({acornLeft: acornLeft + -450});
     }
+  },
+
+  topScroll: function(){
+    this.scrollThing('page');
   },
 
   mapHoverEnter: function(index){
@@ -3374,10 +3565,18 @@ var Main = React.createClass({displayName: "Main",
         )
       });
 
-      var photogalleryStyles = {
-        width: Math.ceil(photogallery.length/2) * 450 +"px",
-        marginLeft: "-" + self.state.left + "px"
-      };
+      if (self.state.right == 0 ){
+        var photogalleryStyles = {
+          width: Math.ceil(photogallery.length/2) * 450 +"px",
+          right: "0px",
+
+        };
+      } else {
+        var photogalleryStyles = {
+          width: Math.ceil(photogallery.length/2) * 450 +"px",
+          left: "-" + self.state.left + "px"
+        };
+      }
 
       var acorngalleryStyles = {
         width: Math.ceil(acorngallery.length/2) * 450 +"px",
@@ -3441,7 +3640,7 @@ var Main = React.createClass({displayName: "Main",
              React.createElement("div", {className: "page_container", id: "page", style: loadStyle}, 
               React.createElement("div", {className: "egg_wrap"}, 
                 React.createElement("div", {className: "quiet_wild_container main_wrapper"}, 
-                  React.createElement("div", {className: "quiet_wild image_container"}, 
+                  React.createElement("div", {className: "quiet_wild"}, 
                     React.createElement("img", {src: "/img/forest/bird2.png"})
                   ), 
                   React.createElement("div", {className: "quiet_wild copy_container"}, 
@@ -3452,7 +3651,7 @@ var Main = React.createClass({displayName: "Main",
                 )
               ), 
 
-              React.createElement("div", {className: "tearjerker_video", style: videoOne_style}, 
+              React.createElement("div", {className: "tearjerker_video cf", style: videoOne_style}, 
                 React.createElement("div", {className: "tearjerker video_overlay"}), 
                 React.createElement("div", {className: "tearjerker_wrapper"}, 
 
@@ -3465,7 +3664,16 @@ var Main = React.createClass({displayName: "Main",
                     React.createElement("div", {className: "centered_content"}, 
                       React.createElement("h2", {className: "marker"}, "A Room All to Myself"), 
                       React.createElement("p", null, "Push pause on the texting and clicking, just for a moment, and come out to the forest. Move your feet, breathe in the fresh air, explore. And watch what happens."), 
-                      React.createElement("img", {className: "video_play", onClick: self.toggleVideoOne, src: "/img/icon_play-video.svg"})
+
+                      React.createElement("svg", {onClick: self.toggleVideoOne, className: "video_play play_button forest", x: "0px", y: "0px", viewBox: "0 0 76 76"}, 
+                      	React.createElement("g", null, 
+                          React.createElement("circle", {className: "circle", cx: "38", cy: "38", r: "36.5"}), 
+                          React.createElement("path", {className: "triangle", d: "M31.3,38.2c0,0-2.8,4.4-2.8,12.4c0,7.5-1.6,10-1.6,10.7c0,1.2,0.8,2,2,1.4S53.2,45,58.6,39.6" + ' ' +
+                      			"c0,0,0.6-0.6,0.6-1.4V38c0-0.6-0.2-1.1-0.6-1.4c-4.7-4.7-28.7-22.4-29.7-23.1c-0.8-0.6-2-0.4-2,1.4c0,0.7,1.6,3.2,1.6,10.7" + ' ' +
+                      			"C28.6,33.6,31.3,38.2,31.3,38.2z"})
+                      	)
+                      )
+
                     )
                   
 
@@ -3473,16 +3681,36 @@ var Main = React.createClass({displayName: "Main",
               ), 
 
               React.createElement("div", {id: "fauna", className: "photogallery_header"}, 
-                React.createElement("div", {className: "main_wrapper"}, 
+                React.createElement("div", {className: "main_wrapper centered_content"}, 
                   React.createElement("h3", {className: "marker"}, "Fauna and Flora"), 
                   React.createElement("p", null, "A National Natural Landmark and a National Historic District, as designated by the United State Department of Interior, Fontenelle is home to over 600 unique species of plants and animals. ")
                 )
               ), 
 
               React.createElement("div", {className: "photogallery_wrapper"}, 
+                 (self.state.left == 0 ) ? null :
+                  React.createElement("svg", {onClick: self.galleryLeft, className: "arrow_circle orange left_arrow left gallery_button", x: "0px", y: "0px", viewBox: "0 0 52 52", enableBackground: "new 0 0 52 52"}, 
+                    React.createElement("path", {className: "circle", strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"}), 
+                    React.createElement("g", {className: "arrow"}, 
+                      React.createElement("path", {strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M22.6,25.9c0,0,1,1.6,1,4.4c0,2.6,0.6,3.5,0.6,3.8c0,0.4-0.3,0.7-0.7,0.5s-8.6-6.2-10.5-8.1" + ' ' +
+                        "c0,0-0.2-0.2-0.2-0.5v-0.1c0-0.2,0.1-0.4,0.2-0.5c1.7-1.7,10.1-7.9,10.5-8.1c0.3-0.2,0.7-0.1,0.7,0.5c0,0.3-0.6,1.1-0.6,3.8" + ' ' +
+                        "C23.6,24.3,22.6,25.9,22.6,25.9z"}), 
+                      React.createElement("line", {strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", x1: "24.2", y1: "25.9", x2: "39.3", y2: "25.9"})
+                    )
+                  ), 
+                
+                 (self.state.right == 0 ) ? null :
+                  React.createElement("svg", {onClick: self.galleryRight, className: "arrow_circle orange right_arrow right gallery_button", x: "0px", y: "0px", viewBox: "0 0 52 52", enableBackground: "new 0 0 52 52"}, 
+                    React.createElement("path", {className: "circle", strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"}), 
+                    React.createElement("g", {className: "arrow"}, 
+                      React.createElement("path", {strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M29.4,25.9c0,0-1,1.6-1,4.4c0,2.6-0.6,3.5-0.6,3.8c0,0.4,0.3,0.7,0.7,0.5s8.6-6.2,10.5-8.1" + ' ' +
+                      "c0,0,0.2-0.2,0.2-0.5v-0.1c0-0.2-0.1-0.4-0.2-0.5c-1.7-1.7-10.1-7.9-10.5-8.1c-0.3-0.2-0.7-0.1-0.7,0.5c0,0.3,0.6,1.1,0.6,3.8" + ' ' +
+                      "C28.4,24.3,29.4,25.9,29.4,25.9z"}), 
+                      React.createElement("line", {strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", x1: "27.8", y1: "25.9", x2: "12.7", y2: "25.9"})
+                    )
+                  ), 
+                
                 React.createElement("div", {className: "photogallery", style: photogalleryStyles}, 
-                  React.createElement("span", {className: "left gallery_button", onClick: self.galleryLeft}, React.createElement("img", {src: "/img/icon_scroll-left.svg"})), 
-                  React.createElement("span", {className: "right gallery_button", onClick: self.galleryRight}, React.createElement("img", {src: "/img/icon_scroll-right.svg"})), 
                   photogallery
                 )
               ), 
@@ -3492,6 +3720,17 @@ var Main = React.createClass({displayName: "Main",
                    drawer.length ?
                     React.createElement("div", {className: "drawer", style: drawer_styles}, 
                       React.createElement("div", {className: "orange_overlay"}), 
+
+                      React.createElement("svg", {onClick: self.reset, className: "arrow_circle orange left_arrow left reset_button", x: "0px", y: "0px", viewBox: "0 0 52 52", enableBackground: "new 0 0 52 52"}, 
+                        React.createElement("path", {className: "circle", strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"}), 
+                        React.createElement("g", {className: "arrow"}, 
+                          React.createElement("path", {strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M22.6,25.9c0,0,1,1.6,1,4.4c0,2.6,0.6,3.5,0.6,3.8c0,0.4-0.3,0.7-0.7,0.5s-8.6-6.2-10.5-8.1" + ' ' +
+                            "c0,0-0.2-0.2-0.2-0.5v-0.1c0-0.2,0.1-0.4,0.2-0.5c1.7-1.7,10.1-7.9,10.5-8.1c0.3-0.2,0.7-0.1,0.7,0.5c0,0.3-0.6,1.1-0.6,3.8" + ' ' +
+                            "C23.6,24.3,22.6,25.9,22.6,25.9z"}), 
+                          React.createElement("line", {strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", x1: "24.2", y1: "25.9", x2: "39.3", y2: "25.9"})
+                        )
+                      ), 
+
                       React.createElement("div", {className: "drawer_overview"}, 
                         React.createElement("h3", {className: "marker"}, drawer_overview.title), 
                         React.createElement("p", null, drawer_overview.description)
@@ -4418,14 +4657,14 @@ var Main = React.createClass({displayName: "Main",
                       )
                     ), 
                   
-                  React.createElement("span", {className: "marker reset_button", onClick: self.reset}), 
+
                   React.createElement("div", {className: "nav_area"}, 
                     React.createElement("div", {className: "nav_menu"}, 
-                      React.createElement("p", {className:  self.state.area == 'natureCenter' ? "map_button active" : "map_button", onClick: self.natureCenter, onMouseEnter: self.hoverClass.bind(self,"natureCenter"), onMouseLeave: self.hoverLeave}, "Visitor Center Area"), 
-                      React.createElement("p", {className:  self.state.area == 'northernFloodplains' ? "map_button active" : "map_button", onClick: self.northernFloodplains, onMouseEnter: self.hoverClass.bind(self,'northernFloodplains'), onMouseLeave: self.hoverLeave}, "Northern Floodplains "), 
-                      React.createElement("p", {className:  self.state.area == 'northernUplands' ? "map_button active" : "map_button", onClick: self.northernUplands, onMouseEnter: self.hoverClass.bind(self,'northernUplands'), onMouseLeave: self.hoverLeave}, "Northern Uplands"), 
-                      React.createElement("p", {className:  self.state.area == 'southernUplands' ? "map_button active" : "map_button", onClick: self.southernUplands, onMouseEnter: self.hoverClass.bind(self,'southernUplands'), onMouseLeave: self.hoverLeave}, "Southern Uplands"), 
-                      React.createElement("p", {className:  self.state.area == 'greatMarsh' ? "map_button active" : "map_button", onClick: self.greatMarsh, onMouseEnter: self.hoverClass.bind(self,'greatMarsh'), onMouseLeave: self.hoverLeave}, "Southern Floodplain")
+                      React.createElement("p", {className:  self.state.area == 'natureCenter' ? "map_button natureCenter active " : "map_button natureCenter", onClick: self.natureCenter, onMouseEnter: self.hoverClass.bind(self,"natureCenter"), onMouseLeave: self.hoverLeave}, "Visitor Center Area"), 
+                      React.createElement("p", {className:  self.state.area == 'northernFloodplains' ? "map_button northernFloodplains active" : "map_button northernFloodplains", onClick: self.northernFloodplains, onMouseEnter: self.hoverClass.bind(self,'northernFloodplains'), onMouseLeave: self.hoverLeave}, "Northern Floodplains "), 
+                      React.createElement("p", {className:  self.state.area == 'northernUplands' ? "map_button northernUplands active" : "map_button northernUplands", onClick: self.northernUplands, onMouseEnter: self.hoverClass.bind(self,'northernUplands'), onMouseLeave: self.hoverLeave}, "Northern Uplands"), 
+                      React.createElement("p", {className:  self.state.area == 'southernUplands' ? "map_button southernUplands active" : "map_button southernUplands", onClick: self.southernUplands, onMouseEnter: self.hoverClass.bind(self,'southernUplands'), onMouseLeave: self.hoverLeave}, "Southern Uplands"), 
+                      React.createElement("p", {className:  self.state.area == 'greatMarsh' ? "map_button greatMarsh active" : "map_button greatMarsh", onClick: self.greatMarsh, onMouseEnter: self.hoverClass.bind(self,'greatMarsh'), onMouseLeave: self.hoverLeave}, "Southern Floodplain")
                     )
                   )
 
@@ -4457,10 +4696,19 @@ var Main = React.createClass({displayName: "Main",
                       React.createElement("div", {className: "embed-container"}, React.createElement("iframe", {src: "https://www.youtube.com/embed/LEkB-HvzAuw?autoplay=1", frameBorder: "0", allowFullScreen: true}))
                     )
                   :
-                    React.createElement("div", {className: "centered_content"}, 
-                      React.createElement("h2", {className: "marker"}, "for your favorite little explorers"), 
+                    React.createElement("div", {className: "centered_content explorers"}, 
+                      React.createElement("h2", {className: "marker"}, "for your favorite ", React.createElement("br", null), " little explorers"), 
                       React.createElement("p", null, "A place where boisterous enthusiasm, outdoor physical activity, and creative play reign supreme."), 
-                      React.createElement("img", {className: "video_play", onClick: self.toggleVideoTwo, src: "/img/icon_play-video.svg"})
+
+                      React.createElement("svg", {onClick: self.toggleVideoTwo, className: "video_play play_button forest", x: "0px", y: "0px", viewBox: "0 0 76 76"}, 
+                        React.createElement("g", null, 
+                          React.createElement("circle", {className: "circle", cx: "38", cy: "38", r: "36.5"}), 
+                          React.createElement("path", {className: "triangle", d: "M31.3,38.2c0,0-2.8,4.4-2.8,12.4c0,7.5-1.6,10-1.6,10.7c0,1.2,0.8,2,2,1.4S53.2,45,58.6,39.6" + ' ' +
+                            "c0,0,0.6-0.6,0.6-1.4V38c0-0.6-0.2-1.1-0.6-1.4c-4.7-4.7-28.7-22.4-29.7-23.1c-0.8-0.6-2-0.4-2,1.4c0,0.7,1.6,3.2,1.6,10.7" + ' ' +
+                            "C28.6,33.6,31.3,38.2,31.3,38.2z"})
+                        )
+                      )
+
                     )
                   
                 )
@@ -4468,8 +4716,26 @@ var Main = React.createClass({displayName: "Main",
 
               React.createElement("div", {className: "egg_wrap"}, 
                 React.createElement("div", {className: "photogallery_wrapper"}, 
-                  React.createElement("span", {className: "left gallery_button", onClick: self.acornLeft}, React.createElement("img", {src: "/img/icon_scroll-left.svg"})), 
-                  React.createElement("span", {className: "right gallery_button", onClick: self.acornRight}, React.createElement("img", {src: "/img/icon_scroll-right.svg"})), 
+                  React.createElement("svg", {onClick: self.acornLeft, className: "arrow_circle orange left_arrow left gallery_button", x: "0px", y: "0px", viewBox: "0 0 52 52", enableBackground: "new 0 0 52 52"}, 
+                    React.createElement("path", {className: "circle", strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"}), 
+                    React.createElement("g", {className: "arrow"}, 
+                      React.createElement("path", {strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M22.6,25.9c0,0,1,1.6,1,4.4c0,2.6,0.6,3.5,0.6,3.8c0,0.4-0.3,0.7-0.7,0.5s-8.6-6.2-10.5-8.1" + ' ' +
+                        "c0,0-0.2-0.2-0.2-0.5v-0.1c0-0.2,0.1-0.4,0.2-0.5c1.7-1.7,10.1-7.9,10.5-8.1c0.3-0.2,0.7-0.1,0.7,0.5c0,0.3-0.6,1.1-0.6,3.8" + ' ' +
+                        "C23.6,24.3,22.6,25.9,22.6,25.9z"}), 
+                      React.createElement("line", {strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", x1: "24.2", y1: "25.9", x2: "39.3", y2: "25.9"})
+                    )
+                  ), 
+
+                  React.createElement("svg", {onClick: self.acornRight, className: "arrow_circle orange right_arrow right gallery_button", x: "0px", y: "0px", viewBox: "0 0 52 52", enableBackground: "new 0 0 52 52"}, 
+                    React.createElement("path", {className: "circle", strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"}), 
+                    React.createElement("g", {className: "arrow"}, 
+                      React.createElement("path", {strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M29.4,25.9c0,0-1,1.6-1,4.4c0,2.6-0.6,3.5-0.6,3.8c0,0.4,0.3,0.7,0.7,0.5s8.6-6.2,10.5-8.1" + ' ' +
+                      "c0,0,0.2-0.2,0.2-0.5v-0.1c0-0.2-0.1-0.4-0.2-0.5c-1.7-1.7-10.1-7.9-10.5-8.1c-0.3-0.2-0.7-0.1-0.7,0.5c0,0.3,0.6,1.1,0.6,3.8" + ' ' +
+                      "C28.4,24.3,29.4,25.9,29.4,25.9z"}), 
+                      React.createElement("line", {strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", x1: "27.8", y1: "25.9", x2: "12.7", y2: "25.9"})
+                    )
+                  ), 
+
                   React.createElement("div", {className: "photogallery", style: acorngalleryStyles}, 
                     acorngallery
                   )
@@ -4522,16 +4788,15 @@ var Main = React.createClass({displayName: "Main",
             React.createElement("div", {className: "content_container"}, 
               React.createElement("div", {className: "video_overlay"}), 
               React.createElement("div", {className: "content_wrapper"}, 
-                React.createElement("img", {className: "old_hero_image", src: "/img/forest.png"}), 
                 React.createElement("div", {className: "hero_content"}, 
                   React.createElement("h1", {className: "hero_header"}, "INTO THE WOODS"), 
                   React.createElement("h3", {className: "hero_subheader marker"}, "each visit is its own unique adventure"), 
                   React.createElement("div", {className: "hero_textured_color"}, 
-                    React.createElement("p", null, " A general overview of Fontenelle, including: locations oand hours, an interactive trail map and wildlife photo gallery")
+                    React.createElement("p", null, " A general overview of Fontenelle, including: locations and hours, an interactive trail map and wildlife photo gallery")
                   ), 
                   React.createElement("div", {className: "hero_icon_wrap"}, 
                     React.createElement("span", {className: "line left_line"}), 
-                    React.createElement("img", {className:  arrow_class ? "hero_icon up" : "hero_icon", src: "/img/forest/icon_forest.svg"}), 
+                    React.createElement("img", {className:  arrow_class ? "hero_icon up" : "hero_icon", src: "/img/forest/icon_forest.svg", onClick: self.topScroll}), 
                     React.createElement("span", {className: "line right_line"})
                   )
                 )
@@ -4555,12 +4820,11 @@ var Main = React.createClass({displayName: "Main",
             React.createElement("div", {className: "content_container"}, 
               React.createElement("div", {className: "video_overlay"}), 
               React.createElement("div", {className: "content_wrapper"}, 
-                React.createElement("img", {className: "old_hero_image", src: "/img/forest.png"}), 
                 React.createElement("div", {className: "hero_content"}, 
                   React.createElement("h1", {className: "hero_header"}, "INTO THE WOODS"), 
                   React.createElement("h3", {className: "hero_subheader marker"}, "each visit is its own unique adventure"), 
                   React.createElement("div", {className: "hero_textured_color"}, 
-                    React.createElement("p", null, " A general overview of Fontenelle, including: locations oand hours, an interactive trail map and wildlife photo gallery")
+                    React.createElement("p", null, " A general overview of Fontenelle, including: locations and hours, an interactive trail map and wildlife photo gallery")
                   ), 
                   React.createElement("div", {className: "hero_icon_wrap"}, 
                     React.createElement("span", {className: "line left_line"}), 
@@ -5148,7 +5412,12 @@ module.exports = React.createClass({displayName: "exports",
       React.createElement("div", null, 
         React.createElement("div", {className: "nature_notes_header egg_wrap"}, 
           React.createElement("div", {className: "raptor"}, 
-              React.createElement("h1", {className: "marker"}, "Meet the Birds"), 
+              React.createElement("h1", {className: "marker"}, "Meet the Raptors"), 
+              React.createElement("h3", null, "Scheduling an Educational Raptor Event"), 
+              React.createElement("p", null, "Want to learn about how your school, organization, or club can invite some Fontenelle Forest Raptor Recovery educational birds to visit? Our trained staff and volunteer presenters are experienced in tailoring presentations to a wide variety of audiences and group sizes."), 
+
+              React.createElement("p", null, "To find out more information about educational programs, please fill out the form below or contact Denise Lewis at ", React.createElement("a", {href: "mailto:dlewis@fontenelleforest.org", target: "_blank"}, "dlewis@fontenelleforest.org"), " / ", React.createElement("a", {href: "tel:4027313140x1031", target: "_blank"}, "402-731-3140 x1031"), "."), 
+
               React.createElement("img", {src: "/img/conservation/divider_bottom_grey.png"})
             )
         ), 
@@ -5185,9 +5454,9 @@ var Closing = React.createClass({displayName: "Closing",
       return (
          React.createElement("div", {className: "closing"}, 
              self.state.content ?
-              React.createElement("div", {className: "image_container"}, 
+              React.createElement("div", {className: "image_container closing_open"}, 
                 React.createElement("p", {className: "closings_title"}, self.props.title, 
-                  React.createElement("span", {className: "more_closing", onClick: self.toggleContent}, "×")
+                  React.createElement("span", {className: "more_closing exx", onClick: self.toggleContent}, "×")
                 ), 
                 React.createElement("div", {dangerouslySetInnerHTML: {__html: self.props.content}})
               )
@@ -5513,9 +5782,21 @@ var Router = require('react-router');
 var Navigation = Router.Navigation;
 var Link = Router.Link;
 
+var SetIntervalMixin = {
+  componentWillMount: function() {
+    this.intervals = [];
+  },
+  setInterval: function() {
+    this.intervals.push(setInterval.apply(null, arguments));
+  },
+  componentWillUnmount: function() {
+    this.intervals.forEach(clearInterval);
+  }
+};
+
 var poster_image;
 var Main = React.createClass({displayName: "Main",
-  mixins: [ Router.State, Navigation ],
+  mixins: [ Router.State, Navigation, SetIntervalMixin ],
   getInitialState: function() {
     return {
       pre_count: 0,
@@ -5531,7 +5812,8 @@ var Main = React.createClass({displayName: "Main",
       video: false,
       content: '',
       parent: '',
-      spider: 0 };
+      spider: 0,
+      arrow_class: false };
   },
 
 
@@ -5544,6 +5826,8 @@ var Main = React.createClass({displayName: "Main",
       tmp_image.onload = self.onLoad;
       tmp_image.src = load_images[image];
     }
+
+    self.setInterval(function() { self.setState({arrow_class: !self.state.arrow_class}); }, 500);
   },
 
   componentDidUpdate: function (prevProps, prevState) {
@@ -5588,6 +5872,11 @@ var Main = React.createClass({displayName: "Main",
       controller.scrollTo(0);
     }
   },
+
+  topScroll: function(){
+    this.scrollThing('page');
+  },
+
 
   moveLeft: function(){
     this.props.transition('slide-back');
@@ -5797,6 +6086,9 @@ var Main = React.createClass({displayName: "Main",
     var loadStyle = {
       width: self.state.percent_loaded + "%"
     }
+
+    var arrow_class = self.state.arrow_class;
+
     if (self.state.loaded == true) {
       return (
         React.createElement("div", {className: "page"}, 
@@ -5903,7 +6195,7 @@ var Main = React.createClass({displayName: "Main",
                       React.createElement("h5", {className: "preogram_forest_now"}, "Check ", React.createElement(Link, {to: "forest-now", className: "color"}, "FOREST NOW"), " for updates and registration")
 
                     ), 
-                    React.createElement("div", {className: "for_kids image_container"}, 
+                    React.createElement("div", {className: "for_kids"}, 
                       React.createElement("img", {className: "binoculars", src: "/img/programs/binoculars.png"})
                     )
                   )
@@ -5924,7 +6216,16 @@ var Main = React.createClass({displayName: "Main",
                     React.createElement("div", {className: "centered_content"}, 
                       React.createElement("h2", {className: "marker"}, "A Recycled Forest, Built by Local Kids"), 
                       React.createElement("p", null, "Fontenelle teamed up with local artist Bart Vargas and non-profits Girls, Inc., Completely Kids, and Arts for All for this community art project."), 
-                      React.createElement("img", {className: "video_play", onClick: self.toggleVideo, src: "/img/icon_play-video.svg"})
+
+                      React.createElement("svg", {onClick: self.toggleVideo, className: "video_play play_button programs", x: "0px", y: "0px", viewBox: "0 0 76 76"}, 
+                        React.createElement("g", null, 
+                          React.createElement("circle", {className: "circle", cx: "38", cy: "38", r: "36.5"}), 
+                          React.createElement("path", {className: "triangle", d: "M31.3,38.2c0,0-2.8,4.4-2.8,12.4c0,7.5-1.6,10-1.6,10.7c0,1.2,0.8,2,2,1.4S53.2,45,58.6,39.6" + ' ' +
+                            "c0,0,0.6-0.6,0.6-1.4V38c0-0.6-0.2-1.1-0.6-1.4c-4.7-4.7-28.7-22.4-29.7-23.1c-0.8-0.6-2-0.4-2,1.4c0,0.7,1.6,3.2,1.6,10.7" + ' ' +
+                            "C28.6,33.6,31.3,38.2,31.3,38.2z"})
+                        )
+                      )
+
                     )
                   
                 )
@@ -5945,7 +6246,7 @@ var Main = React.createClass({displayName: "Main",
                       adult
                     ):
                     React.createElement("div", {className: "for_kids_container main_wrapper"}, 
-                      React.createElement("div", {className: "for_kids image_container"}, 
+                      React.createElement("div", {className: "for_kids"}, 
                         React.createElement("img", {onClick: self.spiderClick, className:  spider ? "rotated spider" : "spider", src: "/img/programs/spider.png"})
                       ), 
                       React.createElement("div", {className: "for_kids copy_container", id: "adults"}, 
@@ -6107,7 +6408,20 @@ var Main = React.createClass({displayName: "Main",
               React.createElement("div", {className: "content_container"}, 
                 React.createElement("div", {className: "video_overlay"}), 
                 React.createElement("div", {className: "content_wrapper"}, 
-                  React.createElement("img", {src: "/img/programs.png"})
+                  React.createElement("img", {className: "old_hero_image", src: "/img/programs.png"}), 
+                  React.createElement("div", {className: "hero_content"}, 
+                    React.createElement("h1", {className: "hero_header"}, "WHAT YOU CAN FIND HERE"), 
+                    React.createElement("h3", {className: "hero_subheader marker"}, "Is infinite, and it is yours"), 
+                    React.createElement("div", {className: "hero_textured_color"}, 
+                      React.createElement("p", null, "Camps, clubs, events and other programs for forest explorers of every age - from pre-schoolers to seniors and everyone in between.")
+                    ), 
+                    React.createElement("div", {className: "hero_icon_wrap"}, 
+                      React.createElement("span", {className: "line left_line"}), 
+                      React.createElement("img", {className:  arrow_class ? "hero_icon up" : "hero_icon", src: "/img/programs/icon_programs.svg", onClick: self.topScroll}), 
+                      React.createElement("span", {className: "line right_line"})
+                    )
+                  )
+
                 )
               )
             )
@@ -6127,7 +6441,20 @@ var Main = React.createClass({displayName: "Main",
               React.createElement("div", {className: "content_container"}, 
                 React.createElement("div", {className: "video_overlay"}), 
                 React.createElement("div", {className: "content_wrapper"}, 
-                  React.createElement("img", {src: "/img/programs.png"})
+                  React.createElement("img", {className: "old_hero_image", src: "/img/programs.png"}), 
+                  React.createElement("div", {className: "hero_content"}, 
+                    React.createElement("h1", {className: "hero_header"}, "WHAT YOU CAN FIND HERE"), 
+                    React.createElement("h3", {className: "hero_subheader marker"}, "Is infinite, and it is yours"), 
+                    React.createElement("div", {className: "hero_textured_color"}, 
+                      React.createElement("p", null, "Camps, clubs, events and other programs for forest explorers of every age - from pre-schoolers to seniors and everyone in between.")
+                    ), 
+                    React.createElement("div", {className: "hero_icon_wrap"}, 
+                      React.createElement("span", {className: "line left_line"}), 
+                      React.createElement("img", {className:  arrow_class ? "hero_icon up" : "hero_icon", src: "/img/programs/icon_programs.svg"}), 
+                      React.createElement("span", {className: "line right_line"})
+                    )
+                  )
+
                 )
               )
             )

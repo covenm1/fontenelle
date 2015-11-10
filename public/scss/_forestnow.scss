@@ -59,11 +59,25 @@
 				opacity: 0.8;
 			}
 		}
+		.closings_title {
+			transition: 0.15s ease-out;
+		}
 		p {
-			font-size: 18px;
+			font-size: 16px;
 			margin: 0;
 			padding: 0 15px;
 			font-family: 'roboto_condensedbold';
+		}
+		.closing_open {
+			.closings_title {
+				font-size: 25px;
+			}
+			padding-bottom: 25px;
+		}
+		.exx {
+			font-size: 50px;
+	    line-height: 1;
+	    font-weight: 100;
 		}
 	}
 }
@@ -78,6 +92,7 @@
 	.nature_notes_item {
 		display: flex;
 		flex-direction: row;
+		margin-bottom: 15px;
 		.plantlife_img {
 			height: 150px;
 			flex: 0 0 150px;
@@ -88,6 +103,7 @@
 			flex: 1;
 			.plantlife_title {
 				margin-top: 0;
+				font-size: 20px;
 			}
 			.plantlife_link {
 				color: $conservation_color;
@@ -98,8 +114,9 @@
 
 .plantlife_header {
 	color: $conservation_color;
-	border-bottom: #aaa 5px solid;
+	border-bottom: #aaa 2px solid;
 	font-family: 'roboto_condensedbold';
+	margin-bottom: 25px;
 }
 
 .forest_now_top {

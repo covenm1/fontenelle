@@ -3,11 +3,12 @@
 	overflow: hidden;
 	position: relative;
 	background: $orange;
-	
+	height: 600px;
 	.photogallery {
 		height: 600px;
 		transition: 0.25s ease-out;
-
+		position: absolute;
+		height: 600px;
 		.photo {
 			height: 300px;
 			width: 450px;
@@ -30,6 +31,9 @@
 					vertical-align: middle;
 					color: white;
 					padding: 15px;
+					p {
+						font-size: 15px;
+					}
 				}
 			}
 

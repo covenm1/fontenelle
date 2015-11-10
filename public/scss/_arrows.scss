@@ -66,6 +66,28 @@
 		}
 	}
 
+	&.blue_white {
+		.circle {
+			fill: none;
+			stroke: white;
+		}
+		.arrow {
+			fill: none;
+			stroke: white;
+			transition: .25s ease-out;
+		}
+		&:hover {
+			.circle {
+				fill: white;
+				stroke: white;
+			}
+			.arrow {
+				fill: none;
+				stroke: #1461AE;
+			}
+		}
+	}
+
 	&.red {
 		.circle {
 			fill: none;
@@ -81,6 +103,51 @@
 			.circle {
 				fill: #a01622;
 				stroke: #a01622;
+			}
+			.arrow {
+				fill: none;
+				stroke: white;
+			}
+		}
+	}
+
+	&.green {
+		.circle {
+			fill: none;
+			stroke: #D2D3D3;
+		}
+		.arrow {
+			fill: none;
+			stroke: $education_color;
+			transition: .25s ease-out;
+
+		}
+		&:hover {
+			.circle {
+				fill: $education_color;
+				stroke: $education_color;
+			}
+			.arrow {
+				fill: none;
+				stroke: white;
+			}
+		}
+	}
+	&.orange {
+		.circle {
+			fill: white;
+			stroke: white;
+		}
+		.arrow {
+			fill: none;
+			stroke: $forest_color;
+			transition: .25s ease-out;
+
+		}
+		&:hover {
+			.circle {
+				fill: $forest_color;
+				stroke: $forest_color;
 			}
 			.arrow {
 				fill: none;
@@ -128,5 +195,49 @@
 			}
 		}
 	}
+}
 
+.play_button {
+	width: 60px;
+	enable-background:new 0 0 76 76;
+	.triangle, .circle {
+		fill:none;
+		stroke:#FFFFFF;
+		stroke-width:3;
+		stroke-miterlimit:10;
+	}
+	&.forest {
+		&:hover {
+			.triangle {
+				transition: 0.15s ease-out;
+				stroke: $forest_color;
+			}
+			.circle {
+				fill: white;
+			}
+		}
+	}
+	&.education {
+		&:hover {
+			.triangle {
+				transition: 0.15s ease-out;
+				stroke: $education_color;
+			}
+			.circle {
+				fill: white;
+			}
+		}
+	}
+
+	&.programs {
+		&:hover {
+			.triangle {
+				transition: 0.15s ease-out;
+				stroke: $programs_color;
+			}
+			.circle {
+				fill: white;
+			}
+		}
+	}
 }

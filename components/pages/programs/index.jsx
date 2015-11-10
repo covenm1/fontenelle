@@ -8,9 +8,21 @@ var Router = require('react-router');
 var Navigation = Router.Navigation;
 var Link = Router.Link;
 
+var SetIntervalMixin = {
+  componentWillMount: function() {
+    this.intervals = [];
+  },
+  setInterval: function() {
+    this.intervals.push(setInterval.apply(null, arguments));
+  },
+  componentWillUnmount: function() {
+    this.intervals.forEach(clearInterval);
+  }
+};
+
 var poster_image;
 var Main = React.createClass({
-  mixins: [ Router.State, Navigation ],
+  mixins: [ Router.State, Navigation, SetIntervalMixin ],
   getInitialState: function() {
     return {
       pre_count: 0,
@@ -26,7 +38,8 @@ var Main = React.createClass({
       video: false,
       content: '',
       parent: '',
-      spider: 0 };
+      spider: 0,
+      arrow_class: false };
   },
 
 
@@ -39,6 +52,8 @@ var Main = React.createClass({
       tmp_image.onload = self.onLoad;
       tmp_image.src = load_images[image];
     }
+
+    self.setInterval(function() { self.setState({arrow_class: !self.state.arrow_class}); }, 500);
   },
 
   componentDidUpdate: function (prevProps, prevState) {
@@ -83,6 +98,11 @@ var Main = React.createClass({
       controller.scrollTo(0);
     }
   },
+
+  topScroll: function(){
+    this.scrollThing('page');
+  },
+
 
   moveLeft: function(){
     this.props.transition('slide-back');
@@ -292,6 +312,9 @@ var Main = React.createClass({
     var loadStyle = {
       width: self.state.percent_loaded + "%"
     }
+
+    var arrow_class = self.state.arrow_class;
+
     if (self.state.loaded == true) {
       return (
         <div className="page">
@@ -398,7 +421,7 @@ var Main = React.createClass({
                       <h5 className="preogram_forest_now">Check <Link to="forest-now" className="color">FOREST NOW</Link> for updates and registration</h5>
 
                     </div>
-                    <div className="for_kids image_container">
+                    <div className="for_kids">
                       <img className="binoculars" src="/img/programs/binoculars.png" />
                     </div>
                   </div>
@@ -419,7 +442,16 @@ var Main = React.createClass({
                     <div className="centered_content">
                       <h2 className="marker">A Recycled Forest, Built by Local Kids</h2>
                       <p>Fontenelle teamed up with local artist Bart Vargas and non-profits Girls, Inc., Completely Kids, and Arts for All for this community art project.</p>
-                      <img className="video_play" onClick={self.toggleVideo} src="/img/icon_play-video.svg" />
+
+                      <svg onClick={self.toggleVideo} className="video_play play_button programs" x="0px" y="0px" viewBox="0 0 76 76" >
+                        <g>
+                          <circle className="circle" cx="38" cy="38" r="36.5"/>
+                          <path className="triangle" d="M31.3,38.2c0,0-2.8,4.4-2.8,12.4c0,7.5-1.6,10-1.6,10.7c0,1.2,0.8,2,2,1.4S53.2,45,58.6,39.6
+                            c0,0,0.6-0.6,0.6-1.4V38c0-0.6-0.2-1.1-0.6-1.4c-4.7-4.7-28.7-22.4-29.7-23.1c-0.8-0.6-2-0.4-2,1.4c0,0.7,1.6,3.2,1.6,10.7
+                            C28.6,33.6,31.3,38.2,31.3,38.2z"/>
+                        </g>
+                      </svg>
+
                     </div>
                   }
                 </div>
@@ -440,7 +472,7 @@ var Main = React.createClass({
                       {adult}
                     </div>:
                     <div className="for_kids_container main_wrapper">
-                      <div className="for_kids image_container">
+                      <div className="for_kids">
                         <img onClick={self.spiderClick} className={ spider ? "rotated spider" : "spider" } src="/img/programs/spider.png" />
                       </div>
                       <div className="for_kids copy_container" id="adults">
@@ -602,7 +634,20 @@ var Main = React.createClass({
               <div className="content_container">
                 <div className="video_overlay"></div>
                 <div className="content_wrapper">
-                  <img src="/img/programs.png" />
+                  <img className="old_hero_image" src="/img/programs.png" />
+                  <div className="hero_content">
+                    <h1 className="hero_header">WHAT YOU CAN FIND HERE</h1>
+                    <h3 className="hero_subheader marker">Is infinite, and it is yours</h3>
+                    <div className="hero_textured_color" >
+                      <p>Camps, clubs, events and other programs for forest explorers of every age - from pre-schoolers to seniors and everyone in between.</p>
+                    </div>
+                    <div className="hero_icon_wrap">
+                      <span className="line left_line"></span>
+                      <img className={ arrow_class ? "hero_icon up" : "hero_icon" } src="/img/programs/icon_programs.svg" onClick={self.topScroll} />
+                      <span className="line right_line"></span>
+                    </div>
+                  </div>
+
                 </div>
               </div>
             </div>
@@ -622,7 +667,20 @@ var Main = React.createClass({
               <div className="content_container">
                 <div className="video_overlay"></div>
                 <div className="content_wrapper">
-                  <img src="/img/programs.png" />
+                  <img className="old_hero_image" src="/img/programs.png" />
+                  <div className="hero_content">
+                    <h1 className="hero_header">WHAT YOU CAN FIND HERE</h1>
+                    <h3 className="hero_subheader marker">Is infinite, and it is yours</h3>
+                    <div className="hero_textured_color" >
+                      <p>Camps, clubs, events and other programs for forest explorers of every age - from pre-schoolers to seniors and everyone in between.</p>
+                    </div>
+                    <div className="hero_icon_wrap">
+                      <span className="line left_line"></span>
+                      <img className={ arrow_class ? "hero_icon up" : "hero_icon" } src="/img/programs/icon_programs.svg" />
+                      <span className="line right_line"></span>
+                    </div>
+                  </div>
+
                 </div>
               </div>
             </div>

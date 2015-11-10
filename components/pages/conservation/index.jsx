@@ -10,6 +10,19 @@ var Link = Router.Link;
 
 var timeline = require('../../common/timeline.json');
 
+var SetIntervalMixin = {
+  componentWillMount: function() {
+    this.intervals = [];
+  },
+  setInterval: function() {
+    this.intervals.push(setInterval.apply(null, arguments));
+  },
+  componentWillUnmount: function() {
+    this.intervals.forEach(clearInterval);
+  }
+};
+
+
 var HabitatThing = React.createClass({
   render : function(){
     var self = this;
@@ -17,7 +30,6 @@ var HabitatThing = React.createClass({
       <div className="habitat_container main_wrapper">
         <div className="quiet_wild image_container">
           <img src={self.props.image} />
-          { self.props.credit ? <p className="photo_credit">Photo by {self.props.credit}</p> : null }
         </div>
         <div className="quiet_wild copy_container">
           <h2>{self.props.title}</h2>
@@ -38,8 +50,8 @@ var TimelineThing = React.createClass({
         <span className="circle"></span>
         <div className="timeline_container">
           <div className="description">
-            <h4 className="title marker">{self.props.title}</h4>
-            <p>{self.props.description}</p>
+            <h4 className="title">{self.props.title}</h4>
+            <p className="description">{self.props.description}</p>
           </div>
         </div>
       </div>
@@ -50,7 +62,7 @@ var TimelineThing = React.createClass({
 
 var poster_image;
 var Main = React.createClass({
-  mixins: [ Router.State, Navigation ],
+  mixins: [ Router.State, Navigation, SetIntervalMixin ],
   getInitialState: function() {
     return {
       pre_count: 0,
@@ -68,7 +80,8 @@ var Main = React.createClass({
       windowWidth: window.innerWidth,
       controller: {},
       scrollPos: 0,
-      timeline: timeline
+      timeline: timeline,
+      arrow_class: false
     };
   },
 
@@ -87,6 +100,8 @@ var Main = React.createClass({
       tmp_image.onload = self.onLoad;
       tmp_image.src = load_images[image];
     }
+
+    self.setInterval(function() { self.setState({arrow_class: !self.state.arrow_class}); }, 500);
   },
 
   componentWillReceiveProps: function (nextProps) {
@@ -165,8 +180,15 @@ var Main = React.createClass({
     }
   },
 
+  topScroll: function(){
+    this.scrollThing('page');
+  },
+
+
   render: function() {
     var self = this;
+
+    var arrow_class = self.state.arrow_class;
 
     var timeline = self.state.timeline.map(function(object) {
       return <TimelineThing
@@ -206,8 +228,13 @@ var Main = React.createClass({
           <div className="page_wrapper">
             <div className="page_container" id="page"  style={loadStyle}>
               <div className="egg_wrap">
+                <div className="ongoing_story_container main_wrapper birds_container">
+                  <div className="quiet_wild birds_right">
+                    <img src="/img/conservation/birds_left.png" />
+                  </div>
+                </div>
                 <div className="ongoing_story_container main_wrapper">
-                  <div className="quiet_wild image_container">
+                  <div className="quiet_wild streetsign">
                     <img src="/img/conservation/sign.png" />
                   </div>
                   <div className="quiet_wild copy_container">
@@ -217,9 +244,6 @@ var Main = React.createClass({
                     <p>So we do research, and lots of it. We get out there and observe. We utilize the helping hand of hundreds of dedicated volunteers. We don’t disrupt the natural state of things, but we do encourage nature to thrive in every way we can. Conservation at Fontenelle Forest is the sum of our efforts, from pulling weeds to writing reports.</p>
                     <img className="bottom_vine" src="/img/bottom_vine.svg" />
                   </div>
-                  <div className="quiet_wild image_container">
-                    <img src="/img/conservation/birds_left.png" />
-                  </div>
                 </div>
               </div>
 
@@ -227,7 +251,6 @@ var Main = React.createClass({
                 <div className="thousandyears video_overlay"></div>
                 <div id="history" className="tearjerker_wrapper">
                   <div className="centered_content">
-                    <img src="/img/conservation/divider_top_thing.png" />
                     <h2 className="marker">Thousands of Years Plus a Century</h2>
                     <p>Humans have been interacting with the land that is now Fontenelle Forest for hundreds of thousands of years. But, it wasn’t until 1913 that the land was officially protected with the founding of the Fontenelle Nature Association. Though this subsequent centennial is but a sliver of time in the grand scheme of things, it has been marked by dramatic milestones in the area of forest conservation. Learning about the Forest’s history helps us appreciate it even more today and ensures solid stewardship of this land for years to come.</p>
                     <img src="/img/conservation/divider_bottom_thing.png" />
@@ -238,8 +261,26 @@ var Main = React.createClass({
               <div className="egg_wrap timeline_wrapper">
                 <h2 className="time_title marker">Timeline</h2>
 
-                  <span className="left timeline_button" onClick={self.timelineLeft}><img src="/img/conservation/icon_right_blue.svg" /></span>
-                  <span className="right timeline_button" onClick={self.timelineRight}><img src="/img/conservation/icon_right_blue.svg"  /></span>
+                <svg onClick={self.timelineLeft} className="arrow_circle blue_white left_arrow left timeline_button" x="0px" y="0px" viewBox="0 0 52 52" enableBackground="new 0 0 52 52" >
+                  <path className="circle" strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"/>
+                  <g className="arrow" >
+                    <path strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M22.6,25.9c0,0,1,1.6,1,4.4c0,2.6,0.6,3.5,0.6,3.8c0,0.4-0.3,0.7-0.7,0.5s-8.6-6.2-10.5-8.1
+                      c0,0-0.2-0.2-0.2-0.5v-0.1c0-0.2,0.1-0.4,0.2-0.5c1.7-1.7,10.1-7.9,10.5-8.1c0.3-0.2,0.7-0.1,0.7,0.5c0,0.3-0.6,1.1-0.6,3.8
+                      C23.6,24.3,22.6,25.9,22.6,25.9z" />
+                    <line strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' x1="24.2" y1="25.9" x2="39.3" y2="25.9"/>
+                  </g>
+                </svg>
+
+                <svg onClick={self.timelineRight} className="arrow_circle blue_white right_arrow right timeline_button" x="0px" y="0px" viewBox="0 0 52 52" enableBackground="new 0 0 52 52" >
+                  <path className="circle" strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"/>
+                  <g className="arrow" >
+                    <path strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M29.4,25.9c0,0-1,1.6-1,4.4c0,2.6-0.6,3.5-0.6,3.8c0,0.4,0.3,0.7,0.7,0.5s8.6-6.2,10.5-8.1
+                    c0,0,0.2-0.2,0.2-0.5v-0.1c0-0.2-0.1-0.4-0.2-0.5c-1.7-1.7-10.1-7.9-10.5-8.1c-0.3-0.2-0.7-0.1-0.7,0.5c0,0.3,0.6,1.1,0.6,3.8
+                    C28.4,24.3,29.4,25.9,29.4,25.9z"/>
+                    <line strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' x1="27.8" y1="25.9" x2="12.7" y2="25.9"/>
+                  </g>
+                </svg>
+
                 <div className="timeline_wrapper">
                   <div className="timeline" style={timelineStyles} >
                     <span className="the_line" style={thelineStyles}></span>
@@ -250,7 +291,7 @@ var Main = React.createClass({
 
               <div className="egg_wrap">
                 <div className="ongoing_story_container main_wrapper">
-                  <div className="quiet_wild image_container">
+                  <div className="quiet_wild">
                     <img src="/img/conservation/log.png" />
                   </div>
                 </div>
@@ -260,37 +301,36 @@ var Main = React.createClass({
                 <h2 className="habitat_marker marker">If you have the habitat, you have the home.</h2>
                 <div className="habitat_home_container main_wrapper">
                   <div className="quiet_wild copy_container">
-                    <p>Our main tenet of land stewardship at Fontenelle Forest is to facilitate the most balanced environment we can. With ideal living conditions, the animals follow—the invertebrates, insects, amphibians, reptiles, and mammals that make the Forest harmonious and happy.</p>
-                    <p>Still, it’s vital that we let nature do what it wants to do. Our job is more to pay attention and interpret the natural signs that are out there.</p>
+                    <p>Our main tenet of land stewardship at Fontenelle Forest is to facilitate the most balanced environment we can. With ideal living conditions, the animals follow—the invertebrates, insects, amphibians, reptiles, and mammals that make the Forest harmonious and happy. Still, it’s vital that we let nature do what it wants to do. Our job is more to pay attention and interpret the natural signs that are out there.</p>
                   </div>
                 </div>
               </div>
 
               <div className="egg_wrap ">
-                <div className="image_container">
+                <div className="main_wrapper">
 
                   <HabitatThing
-                    image="/img/conservation/natures_helpers.png"
+                    image="/img/conservation/habitat/habitat_restoration.jpg"
                     credit="Josh Preister"
                     title="Habitat Restoration"
                     key="habitat"
                     description="Oak savanna and woodland habitats within Fontenelle Forest face severe decline. Their regeneration has been stunted due to the lack of open space resulting from fire suppression and the encroachment of invasive plants. To ensure the preservation and expansion of this ecological community, FF began an oak woodland restoration. Click to find out how we do it!" />
 
                   <HabitatThing
-                    image="/img/conservation/provenplan.png"
+                    image="/img/conservation/habitat/deer_management.jpg"
                     title="Deer Management"
                     key="deer"
                     description="Since the 1980s, the deer population has exploded, due in part to the lack of larger predators and the abundance of food. To mitigate the issue, Fontenelle embarked on what has been a decades-long process: conducting research, forming and enacting a plan, and constantly evaluating results. Since the official deer hunt program began in 1996, it is arguably the most successful conservation program in the history of the forest. Deer management information can be found here." />
 
                   <HabitatThing
-                    image="/img/conservation/locallysourced.png"
+                    image="/img/conservation/habitat/erosion_control.jpg"
                     credit="Josh Preister"
                     title="Erosion Control"
                     key="erosion"
                     description="Due to years of storm runoff, Coffin Springs Hollow in Fontenelle Forest had eroded into a five-hundred-foot-long gully. Soil repeatedly washed from the area into the nearby stream and was thus threatening the health of our Great Marsh ecosystem. With help from our partners and supporters, Fontenelle Forest successfully completed a series of erosion controls in recent years. Check out our projects!" />
 
                   <HabitatThing
-                    image="/img/conservation/locallysourced.png"
+                    image="/img/conservation/habitat/prescribed_burn.jpg"
                     credit="Alex Wiles"
                     title="Prescribed fire"
                     key="fire"
@@ -303,7 +343,7 @@ var Main = React.createClass({
                     description="We have many beautiful plants in Fontenelle Forest, but some can wreak havoc on our land. In order to restore and maintain our natural habitat, we remove invasive plants. Ornamentals that escape from yards, and plants accidentally brought from other countries can take over when an ecologically community is out of balance. Invasive removal is hard work." />
 
                   <HabitatThing
-                    image="/img/conservation/locallysourced.png"
+                    image="/img/conservation/habitat/natures_helpers.jpg"
                     title="Nature’s Helpers – Volunteers and YOU!"
                     key="nature"
                     description="All of the work we do requires many hours of labor, which is where our land steward volunteers come in. Our dedicated group of people is invaluable in our conservation efforts. We also rely on our neighbors to help keep our forest healthy. What can YOU do?" />
@@ -316,7 +356,6 @@ var Main = React.createClass({
                 <div className="raptor_container main_wrapper">
                   <div className="quiet_wild copy_container">
                     <div className="raptor">
-                      <img src="/img/conservation/divider_top_grey.png" />
                       <h2 className="marker">Raptor Recovery</h2>
                       <p>Birds of prey, such as eagles, falcons, hawks, owls, and vultures, have a vital role in our ecosystem. Fontenelle Forest’s Raptor Recovery is focused on the conservation of these birds through education, research, and the rehabilitation of injured and orphaned raptors.</p>
                       <img src="/img/conservation/divider_bottom_grey.png" />
@@ -326,7 +365,7 @@ var Main = React.createClass({
                     <h2>Rehabilitate</h2>
                     <p>Birds are evaluated immediately upon arrival to our trauma care unit. Trained rehabilitators and veterinarians provide treatment, medication, and surgery if needed. Some patients may take a few days to mend; others might take months or even years.</p>
                   </div>
-                  <div className="quiet_wild image_container">
+                  <div className="quiet_wild the_raptor">
                     <img src="/img/conservation/raptor.png" />
                   </div>
                 </div>
@@ -338,7 +377,17 @@ var Main = React.createClass({
                   <div className="centered_content">
                     <h2 className="marker">Meet the Raptors</h2>
                     <p>See some of the injured birds now rehabbing at Fontenelle</p>
-                    <Link to="/meet-the-raptors" ><img src="/img/conservation/arrow_right.png" /></Link>
+                    <Link to="/meet-the-raptors" >
+                      <svg className="arrow_circle blue_white right_arrow" x="0px" y="0px" viewBox="0 0 52 52" enableBackground="new 0 0 52 52" >
+                        <path className="circle" strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"/>
+                        <g className="arrow" >
+                          <path strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M29.4,25.9c0,0-1,1.6-1,4.4c0,2.6-0.6,3.5-0.6,3.8c0,0.4,0.3,0.7,0.7,0.5s8.6-6.2,10.5-8.1
+                          c0,0,0.2-0.2,0.2-0.5v-0.1c0-0.2-0.1-0.4-0.2-0.5c-1.7-1.7-10.1-7.9-10.5-8.1c-0.3-0.2-0.7-0.1-0.7,0.5c0,0.3,0.6,1.1,0.6,3.8
+                          C28.4,24.3,29.4,25.9,29.4,25.9z"/>
+                          <line strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' x1="27.8" y1="25.9" x2="12.7" y2="25.9"/>
+                        </g>
+                      </svg>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -351,7 +400,7 @@ var Main = React.createClass({
                     <h2>Educate</h2>
                     <p>Even after treatment and months of rehabilitation, a raptor might be unable to fly or hunt due to a variety of factors and cannot be released. Non-releasable birds are channeled into breeding programs, recruited as “foster parents” for young orphans, utilized in research, or join our roster of educational birds for outreach and education programs. Fontenelle Forest Raptor Recovery reaches 20,000 people each year during our live raptor programs.</p>
                   </div>
-                  <div className="quiet_wild image_container">
+                  <div className="quiet_wild">
                     <img src="/img/conservation/birds_right.png" />
                   </div>
                 </div>
@@ -363,7 +412,17 @@ var Main = React.createClass({
                   <div className="centered_content">
                     <h2 className="marker">Living With Urban Wildlife</h2>
                     <p>City life is often filled with wildlife interactions. Find out some ways to make it more harmonious and see how Fontenelle Forest can help you do so.</p>
-                    <Link to="/urban-wildlife"><img src="/img/conservation/arrow_right.png" /></Link>
+                    <Link to="/urban-wildlife">
+                      <svg className="arrow_circle blue_white right_arrow" x="0px" y="0px" viewBox="0 0 52 52" enableBackground="new 0 0 52 52" >
+                        <path className="circle" strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"/>
+                        <g className="arrow" >
+                          <path strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M29.4,25.9c0,0-1,1.6-1,4.4c0,2.6-0.6,3.5-0.6,3.8c0,0.4,0.3,0.7,0.7,0.5s8.6-6.2,10.5-8.1
+                          c0,0,0.2-0.2,0.2-0.5v-0.1c0-0.2-0.1-0.4-0.2-0.5c-1.7-1.7-10.1-7.9-10.5-8.1c-0.3-0.2-0.7-0.1-0.7,0.5c0,0.3,0.6,1.1,0.6,3.8
+                          C28.4,24.3,29.4,25.9,29.4,25.9z"/>
+                          <line strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' x1="27.8" y1="25.9" x2="12.7" y2="25.9"/>
+                        </g>
+                      </svg>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -412,7 +471,20 @@ var Main = React.createClass({
               <div className="content_container">
                 <div className="video_overlay"></div>
                 <div className="content_wrapper">
-                  <img src="/img/conservation.png" />
+                  <img className="old_hero_image" src="/img/conservation.png" />
+                  <div className="hero_content">
+                    <h1 className="hero_header">SEE THE FOREST</h1>
+                    <h3 className="hero_subheader marker">AND THE TREES</h3>
+                    <div className="hero_textured_color" >
+                      <p>We invite you to explore ways you can get involved in our conservation initiatives. As stewards of the land, we are dedicated to the conservation and preservation of our local environment so that future generations can continue to enjoy the forest.</p>
+                    </div>
+                    <div className="hero_icon_wrap">
+                      <span className="line left_line"></span>
+                      <img className={ arrow_class ? "hero_icon up" : "hero_icon" } src="/img/conservation/icon_conservation.svg" onClick={self.topScroll} />
+                      <span className="line right_line"></span>
+                    </div>
+                  </div>
+
                 </div>
               </div>
             </div>
@@ -431,7 +503,20 @@ var Main = React.createClass({
               <div className="content_container">
                 <div className="video_overlay"></div>
                 <div className="content_wrapper">
-                  <img src="/img/conservation.png" />
+                  <img className="old_hero_image" src="/img/conservation.png" />
+                  <div className="hero_content">
+                    <h1 className="hero_header">SEE THE FOREST</h1>
+                    <h3 className="hero_subheader marker">AND THE TREES</h3>
+                    <div className="hero_textured_color" >
+                      <p>We invite you to explore ways you can get involved in our conservation initiatives. As stewards of the land, we are dedicated to the conservation and preservation of our local environment so that future generations can continue to enjoy the forest.</p>
+                    </div>
+                    <div className="hero_icon_wrap">
+                      <span className="line left_line"></span>
+                      <img className={ arrow_class ? "hero_icon up" : "hero_icon" } src="/img/conservation/icon_conservation.svg" />
+                      <span className="line right_line"></span>
+                    </div>
+                  </div>
+
                 </div>
               </div>
             </div>

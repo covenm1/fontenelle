@@ -44,6 +44,7 @@ $page_color: black;
 
 img.bottom_vine {
   width: 100%;
+  margin: 15px 0;
 }
 
 .wrapper {
@@ -472,6 +473,7 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 1;
 }
 
 footer img {
@@ -755,9 +757,10 @@ footer nav a.social_fl {background-image: url(/img/social-fl.png);}
 .backyard {
   text-align: center;
   position: relative;
-  top: 160px;
-  width: 35%;
+  top: 30px;
+  width: 500px;
   margin: 0 auto;
+  max-width: 100%;
 }
 .menu_icon {
 

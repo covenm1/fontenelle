@@ -27,8 +27,20 @@ function shuffleArray(array) {
     return array;
 }
 
+var SetIntervalMixin = {
+  componentWillMount: function() {
+    this.intervals = [];
+  },
+  setInterval: function() {
+    this.intervals.push(setInterval.apply(null, arguments));
+  },
+  componentWillUnmount: function() {
+    this.intervals.forEach(clearInterval);
+  }
+};
+
 var Main = React.createClass({
-  mixins: [ Router.State, Navigation ],
+  mixins: [ Router.State, Navigation, SetIntervalMixin ],
   getInitialState: function() {
     return {
       duration: 750,
@@ -38,6 +50,7 @@ var Main = React.createClass({
       hover: '',
       area: '',
       left: 0,
+      right: null,
       pre_count: 0,
       load_images: [
         "/img/loop_one.jpg",
@@ -70,10 +83,10 @@ var Main = React.createClass({
       tmp_image.src = load_images[image];
     }
 
-    setInterval(function() { self.setState({arrow_class: !self.state.arrow_class}); }, 500);
-
+    self.setInterval(function() { self.setState({arrow_class: !self.state.arrow_class}); }, 500);
 
   },
+
 
   componentDidUpdate: function (prevProps, prevState) {
     var self  = this;
@@ -109,16 +122,28 @@ var Main = React.createClass({
   },
 
   handleResize: function(e) {
-
-    this.setState({
-      windowWidth: window.innerWidth,
-      left: 0,
-      acornLeft: 0,
-    });
+    var self = this;
+    if(self.state.right == 0){
+      self.setState({
+        windowWidth: window.innerWidth,
+        right: 0,
+        acornRight: 0,
+      });
+    } else {
+      self.setState({
+        windowWidth: window.innerWidth,
+        left: 0,
+        acornLeft: 0,
+      });
+    }
   },
 
   hoverClass: function(index){
     this.setState({hover: index});
+  },
+
+  hoverLeave: function(){
+    this.setState({hover: ''});
   },
 
   reset: function(){
@@ -300,17 +325,22 @@ var Main = React.createClass({
     var window_width = self.state.windowWidth;
     var left = self.state.left;
 
-    if (window_width <= (gallery_width - left)) {
+    if (window_width < (gallery_width - (left+ 450))) {
       self.setState({left: self.state.left + 450});
+    } else {
+      self.setState({right: 0});
     }
   },
 
   galleryLeft: function(){
     var self = this;
     var left = self.state.left;
+    var gallery_width = Math.ceil(self.state.photogallery.length/2) * 450;
+
+    var window_width = self.state.windowWidth;
 
     if (left > 0) {
-      self.setState({left: self.state.left + -450});
+      self.setState({left: self.state.left + -450, right: null});
     }
   },
 
@@ -334,6 +364,10 @@ var Main = React.createClass({
     if (acornLeft > 0) {
       self.setState({acornLeft: acornLeft + -450});
     }
+  },
+
+  topScroll: function(){
+    this.scrollThing('page');
   },
 
   mapHoverEnter: function(index){
@@ -412,10 +446,18 @@ var Main = React.createClass({
         )
       });
 
-      var photogalleryStyles = {
-        width: Math.ceil(photogallery.length/2) * 450 +"px",
-        marginLeft: "-" + self.state.left + "px"
-      };
+      if (self.state.right == 0 ){
+        var photogalleryStyles = {
+          width: Math.ceil(photogallery.length/2) * 450 +"px",
+          right: "0px",
+
+        };
+      } else {
+        var photogalleryStyles = {
+          width: Math.ceil(photogallery.length/2) * 450 +"px",
+          left: "-" + self.state.left + "px"
+        };
+      }
 
       var acorngalleryStyles = {
         width: Math.ceil(acorngallery.length/2) * 450 +"px",
@@ -479,7 +521,7 @@ var Main = React.createClass({
              <div className="page_container" id="page" style={loadStyle}>
               <div className="egg_wrap">
                 <div className="quiet_wild_container main_wrapper">
-                  <div className="quiet_wild image_container">
+                  <div className="quiet_wild">
                     <img src="/img/forest/bird2.png" />
                   </div>
                   <div className="quiet_wild copy_container">
@@ -490,7 +532,7 @@ var Main = React.createClass({
                 </div>
               </div>
 
-              <div className="tearjerker_video" style={videoOne_style}>
+              <div className="tearjerker_video cf" style={videoOne_style}>
                 <div className="tearjerker video_overlay"></div>
                 <div className="tearjerker_wrapper">
 
@@ -503,7 +545,16 @@ var Main = React.createClass({
                     <div className="centered_content">
                       <h2 className="marker">A Room All to Myself</h2>
                       <p>Push pause on the texting and clicking, just for a moment, and come out to the forest. Move your feet, breathe in the fresh air, explore. And watch what happens.</p>
-                      <img className="video_play" onClick={self.toggleVideoOne} src="/img/icon_play-video.svg" />
+
+                      <svg onClick={self.toggleVideoOne} className="video_play play_button forest" x="0px" y="0px" viewBox="0 0 76 76" >
+                      	<g>
+                          <circle className="circle" cx="38" cy="38" r="36.5"/>
+                          <path className="triangle" d="M31.3,38.2c0,0-2.8,4.4-2.8,12.4c0,7.5-1.6,10-1.6,10.7c0,1.2,0.8,2,2,1.4S53.2,45,58.6,39.6
+                      			c0,0,0.6-0.6,0.6-1.4V38c0-0.6-0.2-1.1-0.6-1.4c-4.7-4.7-28.7-22.4-29.7-23.1c-0.8-0.6-2-0.4-2,1.4c0,0.7,1.6,3.2,1.6,10.7
+                      			C28.6,33.6,31.3,38.2,31.3,38.2z"/>
+                      	</g>
+                      </svg>
+
                     </div>
                   }
 
@@ -511,16 +562,36 @@ var Main = React.createClass({
               </div>
 
               <div id="fauna" className="photogallery_header">
-                <div className="main_wrapper">
+                <div className="main_wrapper centered_content">
                   <h3 className="marker">Fauna and Flora</h3>
                   <p>A National Natural Landmark and a National Historic District, as designated by the United State Department of Interior, Fontenelle is home to over 600 unique species of plants and animals. </p>
                 </div>
               </div>
 
               <div className="photogallery_wrapper">
+                { (self.state.left == 0 ) ? null :
+                  <svg onClick={self.galleryLeft} className="arrow_circle orange left_arrow left gallery_button" x="0px" y="0px" viewBox="0 0 52 52" enableBackground="new 0 0 52 52" >
+                    <path className="circle" strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"/>
+                    <g className="arrow" >
+                      <path strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M22.6,25.9c0,0,1,1.6,1,4.4c0,2.6,0.6,3.5,0.6,3.8c0,0.4-0.3,0.7-0.7,0.5s-8.6-6.2-10.5-8.1
+                        c0,0-0.2-0.2-0.2-0.5v-0.1c0-0.2,0.1-0.4,0.2-0.5c1.7-1.7,10.1-7.9,10.5-8.1c0.3-0.2,0.7-0.1,0.7,0.5c0,0.3-0.6,1.1-0.6,3.8
+                        C23.6,24.3,22.6,25.9,22.6,25.9z" />
+                      <line strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' x1="24.2" y1="25.9" x2="39.3" y2="25.9"/>
+                    </g>
+                  </svg>
+                }
+                { (self.state.right == 0 ) ? null :
+                  <svg onClick={self.galleryRight} className="arrow_circle orange right_arrow right gallery_button" x="0px" y="0px" viewBox="0 0 52 52" enableBackground="new 0 0 52 52" >
+                    <path className="circle" strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"/>
+                    <g className="arrow" >
+                      <path strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M29.4,25.9c0,0-1,1.6-1,4.4c0,2.6-0.6,3.5-0.6,3.8c0,0.4,0.3,0.7,0.7,0.5s8.6-6.2,10.5-8.1
+                      c0,0,0.2-0.2,0.2-0.5v-0.1c0-0.2-0.1-0.4-0.2-0.5c-1.7-1.7-10.1-7.9-10.5-8.1c-0.3-0.2-0.7-0.1-0.7,0.5c0,0.3,0.6,1.1,0.6,3.8
+                      C28.4,24.3,29.4,25.9,29.4,25.9z"/>
+                      <line strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' x1="27.8" y1="25.9" x2="12.7" y2="25.9"/>
+                    </g>
+                  </svg>
+                }
                 <div className="photogallery" style={photogalleryStyles} >
-                  <span className="left gallery_button" onClick={self.galleryLeft}><img src="/img/icon_scroll-left.svg" /></span>
-                  <span className="right gallery_button" onClick={self.galleryRight}><img src="/img/icon_scroll-right.svg" /></span>
                   {photogallery}
                 </div>
               </div>
@@ -530,6 +601,17 @@ var Main = React.createClass({
                   { drawer.length ?
                     <div className="drawer" style={drawer_styles}>
                       <div className="orange_overlay"></div>
+
+                      <svg onClick={self.reset} className="arrow_circle orange left_arrow left reset_button" x="0px" y="0px" viewBox="0 0 52 52" enableBackground="new 0 0 52 52" >
+                        <path className="circle" strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"/>
+                        <g className="arrow" >
+                          <path strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M22.6,25.9c0,0,1,1.6,1,4.4c0,2.6,0.6,3.5,0.6,3.8c0,0.4-0.3,0.7-0.7,0.5s-8.6-6.2-10.5-8.1
+                            c0,0-0.2-0.2-0.2-0.5v-0.1c0-0.2,0.1-0.4,0.2-0.5c1.7-1.7,10.1-7.9,10.5-8.1c0.3-0.2,0.7-0.1,0.7,0.5c0,0.3-0.6,1.1-0.6,3.8
+                            C23.6,24.3,22.6,25.9,22.6,25.9z" />
+                          <line strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' x1="24.2" y1="25.9" x2="39.3" y2="25.9"/>
+                        </g>
+                      </svg>
+
                       <div className="drawer_overview">
                         <h3 className="marker">{drawer_overview.title}</h3>
                         <p>{drawer_overview.description}</p>
@@ -1456,14 +1538,14 @@ var Main = React.createClass({
                       </div>
                     </div>
                   }
-                  <span className="marker reset_button" onClick={self.reset}></span>
+
                   <div className="nav_area">
                     <div className="nav_menu">
-                      <p className={ self.state.area == 'natureCenter' ? "map_button active" : "map_button" } onClick={self.natureCenter} onMouseEnter={self.hoverClass.bind(self,"natureCenter")} onMouseLeave={self.hoverLeave}>Visitor Center Area</p>
-                      <p className={ self.state.area == 'northernFloodplains' ? "map_button active" : "map_button" } onClick={self.northernFloodplains} onMouseEnter={self.hoverClass.bind(self,'northernFloodplains')} onMouseLeave={self.hoverLeave}>Northern Floodplains </p>
-                      <p className={ self.state.area == 'northernUplands' ? "map_button active" : "map_button" } onClick={self.northernUplands} onMouseEnter={self.hoverClass.bind(self,'northernUplands')} onMouseLeave={self.hoverLeave}>Northern Uplands</p>
-                      <p className={ self.state.area == 'southernUplands' ? "map_button active" : "map_button" } onClick={self.southernUplands} onMouseEnter={self.hoverClass.bind(self,'southernUplands')} onMouseLeave={self.hoverLeave}>Southern Uplands</p>
-                      <p className={ self.state.area == 'greatMarsh' ? "map_button active" : "map_button" } onClick={self.greatMarsh} onMouseEnter={self.hoverClass.bind(self,'greatMarsh')} onMouseLeave={self.hoverLeave}>Southern Floodplain</p>
+                      <p className={ self.state.area == 'natureCenter' ? "map_button natureCenter active " : "map_button natureCenter" } onClick={self.natureCenter} onMouseEnter={self.hoverClass.bind(self,"natureCenter")} onMouseLeave={self.hoverLeave}>Visitor Center Area</p>
+                      <p className={ self.state.area == 'northernFloodplains' ? "map_button northernFloodplains active" : "map_button northernFloodplains" } onClick={self.northernFloodplains} onMouseEnter={self.hoverClass.bind(self,'northernFloodplains')} onMouseLeave={self.hoverLeave}>Northern Floodplains </p>
+                      <p className={ self.state.area == 'northernUplands' ? "map_button northernUplands active" : "map_button northernUplands" } onClick={self.northernUplands} onMouseEnter={self.hoverClass.bind(self,'northernUplands')} onMouseLeave={self.hoverLeave}>Northern Uplands</p>
+                      <p className={ self.state.area == 'southernUplands' ? "map_button southernUplands active" : "map_button southernUplands" } onClick={self.southernUplands} onMouseEnter={self.hoverClass.bind(self,'southernUplands')} onMouseLeave={self.hoverLeave}>Southern Uplands</p>
+                      <p className={ self.state.area == 'greatMarsh' ? "map_button greatMarsh active" : "map_button greatMarsh" } onClick={self.greatMarsh} onMouseEnter={self.hoverClass.bind(self,'greatMarsh')} onMouseLeave={self.hoverLeave}>Southern Floodplain</p>
                     </div>
                   </div>
 
@@ -1495,10 +1577,19 @@ var Main = React.createClass({
                       <div className='embed-container'><iframe src='https://www.youtube.com/embed/LEkB-HvzAuw?autoplay=1' frameBorder='0' allowFullScreen></iframe></div>
                     </div>
                   :
-                    <div className="centered_content">
-                      <h2 className="marker">for your favorite little explorers</h2>
+                    <div className="centered_content explorers">
+                      <h2 className="marker">for your favorite <br /> little explorers</h2>
                       <p>A place where boisterous enthusiasm, outdoor physical activity, and creative play reign supreme.</p>
-                      <img className="video_play" onClick={self.toggleVideoTwo} src="/img/icon_play-video.svg" />
+
+                      <svg onClick={self.toggleVideoTwo} className="video_play play_button forest" x="0px" y="0px" viewBox="0 0 76 76" >
+                        <g>
+                          <circle className="circle" cx="38" cy="38" r="36.5"/>
+                          <path className="triangle" d="M31.3,38.2c0,0-2.8,4.4-2.8,12.4c0,7.5-1.6,10-1.6,10.7c0,1.2,0.8,2,2,1.4S53.2,45,58.6,39.6
+                            c0,0,0.6-0.6,0.6-1.4V38c0-0.6-0.2-1.1-0.6-1.4c-4.7-4.7-28.7-22.4-29.7-23.1c-0.8-0.6-2-0.4-2,1.4c0,0.7,1.6,3.2,1.6,10.7
+                            C28.6,33.6,31.3,38.2,31.3,38.2z"/>
+                        </g>
+                      </svg>
+
                     </div>
                   }
                 </div>
@@ -1506,8 +1597,26 @@ var Main = React.createClass({
 
               <div className="egg_wrap">
                 <div className="photogallery_wrapper">
-                  <span className="left gallery_button" onClick={self.acornLeft}><img src="/img/icon_scroll-left.svg" /></span>
-                  <span className="right gallery_button" onClick={self.acornRight}><img src="/img/icon_scroll-right.svg" /></span>
+                  <svg onClick={self.acornLeft} className="arrow_circle orange left_arrow left gallery_button" x="0px" y="0px" viewBox="0 0 52 52" enableBackground="new 0 0 52 52" >
+                    <path className="circle" strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"/>
+                    <g className="arrow" >
+                      <path strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M22.6,25.9c0,0,1,1.6,1,4.4c0,2.6,0.6,3.5,0.6,3.8c0,0.4-0.3,0.7-0.7,0.5s-8.6-6.2-10.5-8.1
+                        c0,0-0.2-0.2-0.2-0.5v-0.1c0-0.2,0.1-0.4,0.2-0.5c1.7-1.7,10.1-7.9,10.5-8.1c0.3-0.2,0.7-0.1,0.7,0.5c0,0.3-0.6,1.1-0.6,3.8
+                        C23.6,24.3,22.6,25.9,22.6,25.9z" />
+                      <line strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' x1="24.2" y1="25.9" x2="39.3" y2="25.9"/>
+                    </g>
+                  </svg>
+
+                  <svg onClick={self.acornRight} className="arrow_circle orange right_arrow right gallery_button" x="0px" y="0px" viewBox="0 0 52 52" enableBackground="new 0 0 52 52" >
+                    <path className="circle" strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"/>
+                    <g className="arrow" >
+                      <path strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M29.4,25.9c0,0-1,1.6-1,4.4c0,2.6-0.6,3.5-0.6,3.8c0,0.4,0.3,0.7,0.7,0.5s8.6-6.2,10.5-8.1
+                      c0,0,0.2-0.2,0.2-0.5v-0.1c0-0.2-0.1-0.4-0.2-0.5c-1.7-1.7-10.1-7.9-10.5-8.1c-0.3-0.2-0.7-0.1-0.7,0.5c0,0.3,0.6,1.1,0.6,3.8
+                      C28.4,24.3,29.4,25.9,29.4,25.9z"/>
+                      <line strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' x1="27.8" y1="25.9" x2="12.7" y2="25.9"/>
+                    </g>
+                  </svg>
+
                   <div className="photogallery" style={acorngalleryStyles} >
                     {acorngallery}
                   </div>
@@ -1560,16 +1669,15 @@ var Main = React.createClass({
             <div className="content_container">
               <div className="video_overlay"></div>
               <div className="content_wrapper">
-                <img className="old_hero_image" src="/img/forest.png" />
                 <div className="hero_content">
                   <h1 className="hero_header">INTO THE WOODS</h1>
                   <h3 className="hero_subheader marker">each visit is its own unique adventure</h3>
                   <div className="hero_textured_color">
-                    <p> A general overview of Fontenelle, including: locations oand hours, an interactive trail map and wildlife photo gallery</p>
+                    <p> A general overview of Fontenelle, including: locations and hours, an interactive trail map and wildlife photo gallery</p>
                   </div>
                   <div className="hero_icon_wrap">
                     <span className="line left_line"></span>
-                    <img className={ arrow_class ? "hero_icon up" : "hero_icon" } src="/img/forest/icon_forest.svg" />
+                    <img className={ arrow_class ? "hero_icon up" : "hero_icon" } src="/img/forest/icon_forest.svg" onClick={self.topScroll} />
                     <span className="line right_line"></span>
                   </div>
                 </div>
@@ -1593,12 +1701,11 @@ var Main = React.createClass({
             <div className="content_container">
               <div className="video_overlay"></div>
               <div className="content_wrapper">
-                <img className="old_hero_image" src="/img/forest.png" />
                 <div className="hero_content">
                   <h1 className="hero_header">INTO THE WOODS</h1>
                   <h3 className="hero_subheader marker">each visit is its own unique adventure</h3>
                   <div className="hero_textured_color" >
-                    <p> A general overview of Fontenelle, including: locations oand hours, an interactive trail map and wildlife photo gallery</p>
+                    <p> A general overview of Fontenelle, including: locations and hours, an interactive trail map and wildlife photo gallery</p>
                   </div>
                   <div className="hero_icon_wrap">
                     <span className="line left_line"></span>

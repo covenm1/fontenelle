@@ -8,7 +8,7 @@
 .timeline_wrapper {
 	width: 100%;
 	overflow: hidden;
-  padding: 0 0 50px;
+  padding: 0;
 
   .year {
     text-align: center;
@@ -48,8 +48,11 @@
         margin-top: 30px;
 
         .title {
-          text-align: center;
           color: $conservation_color;
+          font-size: 20px;
+        }
+        .description {
+          font-size: 16px;
         }
         &:before {
           content: '';
@@ -73,18 +76,25 @@
 
 .thousandyears, .meetraptors, .urbanwildlife {
   background-color: $conservation_color;
+
+  .video_overlay {
+    background-image: url('../img/conservation/pattern_video-overlay.svg');
+    opacity: 0.6;
+  }
+  h2 {
+    font-size: 30px!important;
+  }
+  img {
+    margin-top: 15px;
+  }
 }
 
-.thousandyears.video_overlay, .meetraptors.video_overlay, .urbanwildlife.video_overlay {
-  background-image: url('../img/conservation/pattern_video-overlay.svg');
-  opacity: 0.8;
-}
 
 .ongoing_story_container {
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding: 50px 0;
+  padding: 0 0 50px;
   .image_container {
     flex: 2;
     display: flex;
@@ -94,12 +104,36 @@
       max-width: 100%;
     }
   }
+  &.birds_container {
+    justify-content: flex-end;
+    justify-content: flex-end;
+    padding-bottom: 0;
+    padding-right: 100px;
+    padding-top: 50px;
+    .birds_right {
+      width: 200px;
+      img {
+        max-width: 100%;
+      }
+    }
+  }
+  .streetsign {
+    flex: 0 0 175px;
+    img {
+      max-width: 100%;
+    }
+  }
   .copy_container {
     flex: 5;
     text-align: left;
+    padding-left: 50px;
+    padding-right: 160px;
     h2 {
       color: $conservation_color;
       font-size: 50px;
+    }
+    p {
+      margin-bottom: 25px;
     }
   }
 }
@@ -109,7 +143,6 @@
 .timeline_button {
   position: absolute;
   width: 50px;
-  transition: 0.15s ease-out;
   z-index: 1;
   cursor: pointer;
   line-height: 0;
@@ -119,27 +152,16 @@
   }
   &.left {
     left: 15px;
-    transform: rotate(180deg);
-  }
-  &:hover {
-    opacity: 0.7;
   }
 }
 
 .habitat_home_container {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
   padding: 50px 0;
-  .image_container {
-    flex: 2;
-    img {
-      max-width: 100%;
-    }
-  }
+
   .copy_container {
-    flex: 4;
-    text-align: center;
+    width: 600px;
+    max-width: 100%;
+    margin: auto;
     h2 {
       color: $conservation_color;
       font-size: 50px;
@@ -196,9 +218,18 @@
       vertical-align: top;
     }
   }
+  .raptor img{
+    display: table;
+    margin: 30px auto 15px;
+  }
+  .the_raptor img {
+    width: 450px;
+    max-width: 100%;
+  }
   .copy_container {
     flex: 3;
     text-align: left;
+    padding-right: 100px;
     h2 {
       color: $conservation_color;
       font-size: 25px;
@@ -210,12 +241,21 @@
       font-family: 'PermanentMarkerPro', Helvetica, Arial, Sans-Serif;
       font-size: 3em;
       padding-top: 0;
-      line-height: 1em;
+      line-height: 1;
     }
   }
   .raptor {
-    text-align: center;
     padding-bottom: 1em;
+    text-align: center;
+    width: 700px;
+    max-width: 100%;
+    margin: auto;
+    a {
+      color: $conservation_color;
+    }
+    p {
+      margin-bottom: 10px;
+    }
   }
 }
 
@@ -257,10 +297,26 @@
 }
 
 .nature_notes_header .raptor {
-	.marker {
+  padding-bottom: 1em;
+  text-align: center;
+  width: 700px;
+  max-width: 100%;
+  margin: auto;
+  a {
+    color: $conservation_color;
+  }
+  p {
+    margin-bottom: 10px;
+  }
+  .marker {
 		margin: 25px auto;
 		color: $conservation_color;
 		font-size: 50px;
 	}
-	text-align: center;
+
+}
+.natural-resources .hero_content {
+    .hero_textured_color {
+      background-image: url(/img/conservation/texture.svg);
+    }
 }
