@@ -263,9 +263,9 @@ var App = React.createClass({
 							<Link to="/programs/groups" className="link section" onClick={self.toggleMenu}>Groups</Link>
 
 							<Link to="/forest-now" className="link" onClick={self.toggleMenu}><h2 className="main">Forest Now</h2></Link>
-							<Link to="/get-involved" className="link" onClick={self.toggleMenu}><h2 className="main">Donate</h2></Link>
-							<Link to="/get-involved" className="link" onClick={self.toggleMenu}><h2 className="main">Membership</h2></Link>
-							<Link to="/get-involved" className="link" onClick={self.toggleMenu}><h2 className="main">Volunteer</h2></Link>
+							<Link to="/get-involved/donate" className="link" onClick={self.toggleMenu}><h2 className="main">Donate</h2></Link>
+							<Link to="/get-involved/membership" className="link" onClick={self.toggleMenu}><h2 className="main">Membership</h2></Link>
+							<Link to="/get-involved/volunteer" className="link" onClick={self.toggleMenu}><h2 className="main">Volunteer</h2></Link>
 							<Link to="/board-of-directors" className="link" onClick={self.toggleMenu}><h2 className="main">Board</h2></Link>
 							<Link to="/hours-and-admissions" className="link" onClick={self.toggleMenu}><h2 className="main">Hours and Admissions</h2></Link>
 							<Link to="/contact" className="link" onClick={self.toggleMenu}><h2 className="main">Contact</h2></Link>
@@ -323,9 +323,9 @@ var App = React.createClass({
 							<Link to="/programs/groups" className="link section" onClick={self.toggleMenu}>Groups</Link>
 
 							<Link to="/forest-now" className="link" onClick={self.toggleMenu}><h2 className="main">Forest Now</h2></Link>
-							<Link to="/get-involved" className="link" onClick={self.toggleMenu}><h2 className="main">Donate</h2></Link>
-							<Link to="/get-involved" className="link" onClick={self.toggleMenu}><h2 className="main">Membership</h2></Link>
-							<Link to="/get-involved" className="link" onClick={self.toggleMenu}><h2 className="main">Volunteer</h2></Link>
+							<Link to="/get-involved/donate" className="link" onClick={self.toggleMenu}><h2 className="main">Donate</h2></Link>
+							<Link to="/get-involved/membership" className="link" onClick={self.toggleMenu}><h2 className="main">Membership</h2></Link>
+							<Link to="/get-involved/volunteer" className="link" onClick={self.toggleMenu}><h2 className="main">Volunteer</h2></Link>
 							<Link to="/board-of-directors" className="link" onClick={self.toggleMenu}><h2 className="main">Board</h2></Link>
 							<Link to="/hours-and-admissions" className="link" onClick={self.toggleMenu}><h2 className="main">Hours and Admissions</h2></Link>
 							<Link to="/contact" className="link" onClick={self.toggleMenu}><h2 className="main">Contact</h2></Link>
@@ -359,7 +359,9 @@ var routes = (
 			<Route path="/education/:scroll" handler={education} addHandlerKey={true} />
 		</Route>
     <Route name="found-raptor" path="/found-raptor" handler={foundraptor} addHandlerKey={true} />
-    <Route name="get-involved" path="/get-involved" handler={getinvolved} addHandlerKey={true} />
+    <Route name="get-involved" path="/get-involved" handler={getinvolved} addHandlerKey={true} ignoreScrollBehavior>
+			<Route path="/get-involved/:scroll" handler={getinvolved} addHandlerKey={true} />
+		</Route>
     <Route name="meet-the-raptors" path="/meet-the-raptors" handler={meettheraptors} addHandlerKey={true} />
     <Route name="hours-and-admissions" path="/hours-and-admissions" handler={hoursandadmissions} addHandlerKey={true} />
     <Route name="board-of-directors" path="/board-of-directors" handler={boardofdirectors} addHandlerKey={true} />

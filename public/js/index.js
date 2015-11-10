@@ -264,9 +264,9 @@ var App = React.createClass({displayName: "App",
 							React.createElement(Link, {to: "/programs/groups", className: "link section", onClick: self.toggleMenu}, "Groups"), 
 
 							React.createElement(Link, {to: "/forest-now", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Forest Now")), 
-							React.createElement(Link, {to: "/get-involved", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Donate")), 
-							React.createElement(Link, {to: "/get-involved", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Membership")), 
-							React.createElement(Link, {to: "/get-involved", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Volunteer")), 
+							React.createElement(Link, {to: "/get-involved/donate", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Donate")), 
+							React.createElement(Link, {to: "/get-involved/membership", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Membership")), 
+							React.createElement(Link, {to: "/get-involved/volunteer", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Volunteer")), 
 							React.createElement(Link, {to: "/board-of-directors", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Board")), 
 							React.createElement(Link, {to: "/hours-and-admissions", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Hours and Admissions")), 
 							React.createElement(Link, {to: "/contact", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Contact"))
@@ -324,9 +324,9 @@ var App = React.createClass({displayName: "App",
 							React.createElement(Link, {to: "/programs/groups", className: "link section", onClick: self.toggleMenu}, "Groups"), 
 
 							React.createElement(Link, {to: "/forest-now", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Forest Now")), 
-							React.createElement(Link, {to: "/get-involved", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Donate")), 
-							React.createElement(Link, {to: "/get-involved", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Membership")), 
-							React.createElement(Link, {to: "/get-involved", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Volunteer")), 
+							React.createElement(Link, {to: "/get-involved/donate", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Donate")), 
+							React.createElement(Link, {to: "/get-involved/membership", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Membership")), 
+							React.createElement(Link, {to: "/get-involved/volunteer", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Volunteer")), 
 							React.createElement(Link, {to: "/board-of-directors", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Board")), 
 							React.createElement(Link, {to: "/hours-and-admissions", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Hours and Admissions")), 
 							React.createElement(Link, {to: "/contact", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Contact"))
@@ -360,7 +360,9 @@ var routes = (
 			React.createElement(Route, {path: "/education/:scroll", handler: education, addHandlerKey: true})
 		), 
     React.createElement(Route, {name: "found-raptor", path: "/found-raptor", handler: foundraptor, addHandlerKey: true}), 
-    React.createElement(Route, {name: "get-involved", path: "/get-involved", handler: getinvolved, addHandlerKey: true}), 
+    React.createElement(Route, {name: "get-involved", path: "/get-involved", handler: getinvolved, addHandlerKey: true, ignoreScrollBehavior: true}, 
+			React.createElement(Route, {path: "/get-involved/:scroll", handler: getinvolved, addHandlerKey: true})
+		), 
     React.createElement(Route, {name: "meet-the-raptors", path: "/meet-the-raptors", handler: meettheraptors, addHandlerKey: true}), 
     React.createElement(Route, {name: "hours-and-admissions", path: "/hours-and-admissions", handler: hoursandadmissions, addHandlerKey: true}), 
     React.createElement(Route, {name: "board-of-directors", path: "/board-of-directors", handler: boardofdirectors, addHandlerKey: true}), 
@@ -4968,7 +4970,31 @@ var Link = Router.Link;
 module.exports = React.createClass({displayName: "exports",
   mixins: [ Router.State, Navigation ],
 
-  componentDidMount: function () { },
+  componentDidMount: function () {
+    var self  = this;
+
+    if (self.getParams().scroll) {
+      self.scrollThing(self.getParams().scroll)
+    }
+  },
+
+  componentDidUpdate: function (prevProps, prevState) {
+    var self  = this;
+
+    if (prevProps.params != self.props.params){
+      self.scrollThing(self.props.params.scroll);
+    }
+  },
+
+  scrollThing: function(thing){
+    var self = this;
+    var controller = self.props.controller
+    if (thing) {
+      controller.scrollTo("#"+thing);
+    } else {
+      controller.scrollTo(0);
+    }
+  },
 
   componentWillReceiveProps: function () {},
 

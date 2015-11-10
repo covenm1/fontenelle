@@ -11,7 +11,31 @@ var Link = Router.Link;
 module.exports = React.createClass({
   mixins: [ Router.State, Navigation ],
 
-  componentDidMount: function () { },
+  componentDidMount: function () {
+    var self  = this;
+
+    if (self.getParams().scroll) {
+      self.scrollThing(self.getParams().scroll)
+    }
+  },
+
+  componentDidUpdate: function (prevProps, prevState) {
+    var self  = this;
+
+    if (prevProps.params != self.props.params){
+      self.scrollThing(self.props.params.scroll);
+    }
+  },
+
+  scrollThing: function(thing){
+    var self = this;
+    var controller = self.props.controller
+    if (thing) {
+      controller.scrollTo("#"+thing);
+    } else {
+      controller.scrollTo(0);
+    }
+  },
 
   componentWillReceiveProps: function () {},
 
