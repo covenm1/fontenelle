@@ -15,6 +15,14 @@
   justify-content: space-between;
 }
 
+.fb_wrapper .centered_content {
+    max-width: 100%;
+    width: 100%;
+    text-align: inherit;
+    color: #6f6f6f;
+    position: relative;
+}
+
 .fb_columns ul {
   padding: 0;
   list-style: none;
