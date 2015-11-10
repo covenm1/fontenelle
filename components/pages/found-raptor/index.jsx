@@ -24,8 +24,8 @@ module.exports =  React.createClass({
           <div className="featured_image"></div>
         </div>
         <div className="egg_wrap fb_container">
-          <div className="fb_wrapper gi_wrapper main_wrapper">
-            <div className="centered_content fb_intro donate">
+          <div className="fb_wrapper main_wrapper">
+            <div className="centered_content fb_intro">
               <h2 className="marker">CONTACT</h2>
               <p>If you find an injured or downed raptor, please call the FFRR Center or one of the numbers listed below. Leave a voicemail if there is no answer, and your call will be returned. You may also contact the nearest Nebraska Games & Parks Conservation Officer, your local Humane Society, or local law enforcement.</p>
               <img className="fb_break" src="/img/conservation/divider_bottom_grey.png" />
@@ -33,8 +33,8 @@ module.exports =  React.createClass({
           </div>
         </div>
         <div className="egg_wrap fb_container">
-          <div className="fb_wrapper gi_wrapper main_wrapper">
-            <div className="centered_content fb_contact donate">
+          <div className="fb_wrapper main_wrapper">
+            <div className="centered_content fb_contact">
               <div className="fb_numbers">
                 <ul>
                   <li>
@@ -70,12 +70,12 @@ module.exports =  React.createClass({
           </div>
         </div>
         <div className="egg_wrap fb_container">
-          <div className="fb_wrapper gi_wrapper main_wrapper">
-            <div className="centered_content fb_guidelines donate">
+          <div className="fb_wrapper main_wrapper">
+            <div className="centered_content fb_guidelines">
               <h2 className="marker">IMPORTANT GUIDELINES</h2>
               <div className="fb_columns">
                 <ul>
-                  <li className="fb_listhead">FIRST RULE OF RAPTOR HANDLING</li>
+                  <li className="fb_listhead c_start">FIRST RULE OF RAPTOR HANDLING</li>
                   <li>Keep yourself safe! If you don't feel comfortable or are not able to capture the bird, please try to cover it with a laundry basket or ventilated cardboard box until a representative from FFRR can arrive.</li>
                   <li>The raptor you are attempting to rescue will NOT understand that you are trying to help it. When you approach, it will likely try to protect itself and may attack you.</li>
                   <li>Approach the bird from behind, if possible.</li>
@@ -90,7 +90,8 @@ module.exports =  React.createClass({
                   <li>Contact Fontenelle Forest's Raptor Recovery or the Nebraska Game and Parks Commission (if not already accomplished).</li>
                   <li>Do not attempt to treat or feed the bird yourself! Many well-meaning attempts have resulted in further injury or the death of a bird</li>
                   <li>All wild birds are protected under Nebraska and federal laws. It is illegal for you to possess or keep a wild bird unless you aretemporarily transporting an injured bird to a permitted rehabilitator.</li>
-                  <li className="fb_listhead">WHEN TO TAKE ACTION/CALLThe bird is obviously injured, a wing is drooping, you see blood, or the bird is lying on the ground, is trapped, or caught in something, e.g. barbed wire or other fence/netting</li>
+                  <li className="fb_listhead">WHEN TO TAKE ACTION/CALL</li>
+                  <li>The bird is obviously injured, a wing is drooping, you see blood, or the bird is lying on the ground, is trapped, or caught in something, e.g. barbed wire or other fence/netting</li>
                   <li>The bird is in obvious danger from a predator or in danger of being captured by one.</li>
                   <li>There are hazards nearby like busy roads or large pools of water.</li>
                   <li>The parents have been killed or seriously injured.</li>
@@ -100,11 +101,6 @@ module.exports =  React.createClass({
                 </ul>
               </div>
             </div>
-          </div>
-        </div>
-        <div className="egg_wrap static">
-          <div className='main_wrapper'> 
-            <img src="/img/found-raptor/page.png" />
           </div>
         </div>
       </div>

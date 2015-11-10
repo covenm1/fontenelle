@@ -264,9 +264,9 @@ var App = React.createClass({displayName: "App",
 							React.createElement(Link, {to: "/programs/groups", className: "link section", onClick: self.toggleMenu}, "Groups"), 
 
 							React.createElement(Link, {to: "/forest-now", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Forest Now")), 
-							React.createElement(Link, {to: "/get-involved", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Donate")), 
-							React.createElement(Link, {to: "/get-involved", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Membership")), 
-							React.createElement(Link, {to: "/get-involved", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Volunteer")), 
+							React.createElement(Link, {to: "/get-involved/donate", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Donate")), 
+							React.createElement(Link, {to: "/get-involved/membership", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Membership")), 
+							React.createElement(Link, {to: "/get-involved/volunteer", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Volunteer")), 
 							React.createElement(Link, {to: "/board-of-directors", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Board")), 
 							React.createElement(Link, {to: "/hours-and-admissions", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Hours and Admissions")), 
 							React.createElement(Link, {to: "/contact", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Contact"))
@@ -324,9 +324,9 @@ var App = React.createClass({displayName: "App",
 							React.createElement(Link, {to: "/programs/groups", className: "link section", onClick: self.toggleMenu}, "Groups"), 
 
 							React.createElement(Link, {to: "/forest-now", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Forest Now")), 
-							React.createElement(Link, {to: "/get-involved", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Donate")), 
-							React.createElement(Link, {to: "/get-involved", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Membership")), 
-							React.createElement(Link, {to: "/get-involved", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Volunteer")), 
+							React.createElement(Link, {to: "/get-involved/donate", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Donate")), 
+							React.createElement(Link, {to: "/get-involved/membership", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Membership")), 
+							React.createElement(Link, {to: "/get-involved/volunteer", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Volunteer")), 
 							React.createElement(Link, {to: "/board-of-directors", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Board")), 
 							React.createElement(Link, {to: "/hours-and-admissions", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Hours and Admissions")), 
 							React.createElement(Link, {to: "/contact", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Contact"))
@@ -360,7 +360,9 @@ var routes = (
 			React.createElement(Route, {path: "/education/:scroll", handler: education, addHandlerKey: true})
 		), 
     React.createElement(Route, {name: "found-raptor", path: "/found-raptor", handler: foundraptor, addHandlerKey: true}), 
-    React.createElement(Route, {name: "get-involved", path: "/get-involved", handler: getinvolved, addHandlerKey: true}), 
+    React.createElement(Route, {name: "get-involved", path: "/get-involved", handler: getinvolved, addHandlerKey: true, ignoreScrollBehavior: true}, 
+			React.createElement(Route, {path: "/get-involved/:scroll", handler: getinvolved, addHandlerKey: true})
+		), 
     React.createElement(Route, {name: "meet-the-raptors", path: "/meet-the-raptors", handler: meettheraptors, addHandlerKey: true}), 
     React.createElement(Route, {name: "hours-and-admissions", path: "/hours-and-admissions", handler: hoursandadmissions, addHandlerKey: true}), 
     React.createElement(Route, {name: "board-of-directors", path: "/board-of-directors", handler: boardofdirectors, addHandlerKey: true}), 
@@ -1386,7 +1388,8 @@ var HabitatThing = React.createClass({displayName: "HabitatThing",
         ), 
         React.createElement("div", {className: "quiet_wild copy_container"}, 
           React.createElement("h2", null, self.props.title), 
-          React.createElement("p", null, self.props.description)
+          React.createElement("p", null, self.props.description), 
+          self.props.link ? React.createElement(Link, {className: "habitat_thing_link", to: self.props.link}, "Read More") : null
         )
       )
     )
@@ -1679,6 +1682,7 @@ var Main = React.createClass({displayName: "Main",
                     image: "/img/conservation/habitat/erosion_control.jpg", 
                     credit: "Josh Preister", 
                     title: "Erosion Control", 
+                    link: "/post/erosion-control", 
                     key: "erosion", 
                     description: "Due to years of storm runoff, Coffin Springs Hollow in Fontenelle Forest had eroded into a five-hundred-foot-long gully. Soil repeatedly washed from the area into the nearby stream and was thus threatening the health of our Great Marsh ecosystem. With help from our partners and supporters, Fontenelle Forest successfully completed a series of erosion controls in recent years. Check out our projects!"}), 
 
@@ -1686,11 +1690,12 @@ var Main = React.createClass({displayName: "Main",
                     image: "/img/conservation/habitat/prescribed_burn.jpg", 
                     credit: "Alex Wiles", 
                     title: "Prescribed fire", 
+                    link: "/post/prescribed-burn", 
                     key: "fire", 
                     description: "While a house on fire in a neighborhood is not a good thing, fire in a prairie or oak woodland IS! Both of these ecological communities are fire dependent and our trained prescribed burn crew reintroduces this often-missing component to the natural systems here at Fontenelle Forest. Read more about our prescribed fire program."}), 
 
                   React.createElement(HabitatThing, {
-                    image: "/img/conservation/locallysourced.png", 
+                    image: "/img/conservation/habitat/invasive_species.jpg", 
                     title: "Invasive species control", 
                     key: "invasive", 
                     description: "We have many beautiful plants in Fontenelle Forest, but some can wreak havoc on our land. In order to restore and maintain our natural habitat, we remove invasive plants. Ornamentals that escape from yards, and plants accidentally brought from other countries can take over when an ecologically community is out of balance. Invasive removal is hard work."}), 
@@ -1698,6 +1703,7 @@ var Main = React.createClass({displayName: "Main",
                   React.createElement(HabitatThing, {
                     image: "/img/conservation/habitat/natures_helpers.jpg", 
                     title: "Nature’s Helpers – Volunteers and YOU!", 
+                    link: "/post/natures-helpers", 
                     key: "nature", 
                     description: "All of the work we do requires many hours of labor, which is where our land steward volunteers come in. Our dedicated group of people is invaluable in our conservation efforts. We also rely on our neighbors to help keep our forest healthy. What can YOU do?"})
 
@@ -2626,6 +2632,15 @@ var Tweet = React.createClass({displayName: "Tweet",
 });
 
 var Event = React.createClass({displayName: "Event",
+  getInitialState: function(){
+    return {
+      open: false
+    }
+  },
+  toggleContent: function(){
+    var self = this;
+    self.setState({open: !self.state.open});
+  },
   render : function(){
     var self = this;
     if (self.props.age_group == "all") {
@@ -2638,12 +2653,27 @@ var Event = React.createClass({displayName: "Event",
       var age = null;
     }
 
-    if (self.props.end_date){
+    var open = self.state.open;
+    var location_map_url = self.props.location_map_url;
+    var location = self.props.location;
+    var content = self.props.content;
+
+    if (self.props.signup_link){
       return (
         React.createElement("div", {className: "event green"}, 
-          React.createElement("h4", {className: "event_title"}, self.props.title, 
+          React.createElement("h4", {className: "event_title", onClick: self.toggleContent}, self.props.title, 
             React.createElement("span", {className: "age"}, age)
           ), 
+           open ?
+            React.createElement("div", {className: "description_wrapper"}, 
+               location_map_url ?
+                React.createElement("a", {className: "event_link", href: location_map_url, target: "_blank"}, React.createElement("p", null, React.createElement("i", {className: "fa fa-map-marker"}), " ", location))
+                : React.createElement("p", null, location), 
+              
+              React.createElement("div", {className: "event_description", dangerouslySetInnerHTML: {__html: content}}), 
+              React.createElement("a", {className: "event_link", href: self.props.signup_link, target: "_blank"}, React.createElement("p", null, "Register for this Event."))
+            )
+          : null, 
           React.createElement("div", {className: "event_bar"}, 
             React.createElement("span", {className: "date"}, moment(self.props.start_date, "YYYYMMDD").format("M/D"), " - ", moment(self.props.end_date, "YYYYMMDD").format("M/D")), 
             React.createElement("span", {className: "days"}, 
@@ -2662,9 +2692,18 @@ var Event = React.createClass({displayName: "Event",
     } else {
       return (
         React.createElement("div", {className: "event blue"}, 
-          React.createElement("h4", {className: "event_title"}, self.props.title, 
+          React.createElement("h4", {className: "event_title", onClick: self.toggleContent}, self.props.title, 
             React.createElement("span", {className: "age"}, age)
           ), 
+           open ?
+            React.createElement("div", {className: "description_wrapper"}, 
+               location_map_url ?
+                React.createElement("a", {className: "event_link", href: location_map_url, target: "_blank"}, React.createElement("p", null, React.createElement("i", {className: "fa fa-map-marker"}), " ", location))
+                : React.createElement("p", null, location), 
+              
+              React.createElement("div", {className: "event_description", dangerouslySetInnerHTML: {__html: content}})
+            )
+          : null, 
           React.createElement("div", {className: "event_bar"}, 
             React.createElement("span", {className: "date"}, moment(self.props.start_date, "YYYYMMDD").format("M/D")), 
             React.createElement("span", {className: "days"}, 
@@ -2954,6 +2993,7 @@ module.exports = React.createClass({displayName: "exports",
       return (
         React.createElement(Event, {
           title: object.title, 
+          content: object.content, 
           start_time: object.meta.start_time, 
           end_time: object.meta.end_time, 
           start_date: object.meta.start_date, 
@@ -2961,6 +3001,8 @@ module.exports = React.createClass({displayName: "exports",
           days: object.meta.days, 
           age_group: object.meta.age_group, 
           signup_link: object.meta.signup_link, 
+          location: object.meta.location, 
+          location_map_url: object.meta.location_map_url, 
           key: Math.random()})
       )
     });
@@ -2969,11 +3011,15 @@ module.exports = React.createClass({displayName: "exports",
       var post_style ={
         backgroundImage: "url("+ object.featured_image.guid +")"
       }
+      if (object.meta){
+        var subheader = object.meta.subheader || "";
+      }
       return (
         React.createElement("div", {className: "post"}, 
           React.createElement("div", {className: "post_image", style: post_style}), 
           React.createElement("div", {className: "post_content"}, 
-            React.createElement("h4", {className: "post_headline"}, object.title), 
+            React.createElement("h4", {className: "post_headline", dangerouslySetInnerHTML: {__html: object.title}}), 
+             subheader ? React.createElement("p", {className: "post_subheader"}, subheader) : null, 
             React.createElement(Link, {className: "post_link", to: "/post/" + object.slug}, "Read more")
           )
         )
@@ -3288,7 +3334,7 @@ var Main = React.createClass({displayName: "Main",
       {
         title: "Habitat Hollow",
         description: "This short, level trail is a great option when you want a short jaunt off the boardwalk. ",
-        image: "/img/map_photos/small/nature-center.jpg"
+        image: "/img/map_photos/small/habitat-hollow.jpg"
       },
       {
         title: "Riverview Boardwalk",
@@ -3312,7 +3358,7 @@ var Main = React.createClass({displayName: "Main",
       {
         title: "Trailheads at the Wetlands Learning Center",
         description: "With 5 trailheads nearby, the Wetlands Learning center is a great spot to park and while you discover a new trail.",
-        image: "/img/map_photos/small/nature-center.jpg"
+        image: "/img/map_photos/small/trailheads.jpg"
       },
       {
         title: "Gifford Memorial Boardwalk",
@@ -3340,7 +3386,7 @@ var Main = React.createClass({displayName: "Main",
       {
         title: "Camp Gifford",
         description: "A young Henry Fonda spent time with other scouts at Camp Gifford. You can still see concrete bunkhouse foundations from Stream Trail.",
-        image: "/img/map_photos/small/nature-center.jpg"
+        image: "/img/map_photos/small/camp_gifford.jpg"
       },
       {
         title: "Stream Trail",
@@ -3368,7 +3414,7 @@ var Main = React.createClass({displayName: "Main",
       {
         title: "Earth Lodges",
         description: "Along the ridges of Oak Trail and Hawthorn Trail you can find depressions that mark 1000 year old sites of Native American earth lodges.",
-        image: "/img/map_photos/small/nature-center.jpg"
+        image: "/img/map_photos/small/earth_lodge.jpg"
       },
       {
         title: "Scenic, ridge-top Oak Trail",
@@ -3578,10 +3624,25 @@ var Main = React.createClass({displayName: "Main",
         };
       }
 
-      var acorngalleryStyles = {
-        width: Math.ceil(acorngallery.length/2) * 450 +"px",
-        marginLeft: "-" + self.state.acornLeft + "px"
-      };
+      var gallery_width = Math.ceil(self.state.acorngallery.length/2) * 450;
+
+      var window_width = self.state.windowWidth;
+      var acornLeft = self.state.acornLeft;
+      if (window_width <= (gallery_width)){
+        var acornClass="acorns medium";
+        var acorngalleryStyles = {
+          width: Math.ceil(acorngallery.length/2) * 450 +"px",
+          marginLeft: "-" + self.state.acornLeft + "px"
+        };
+      } else {
+        var acornClass="acorns wide";
+        var acorngalleryStyles = {
+          width: Math.ceil(acorngallery.length/2) * 450 +"px",
+          marginLeft: "auto",
+          marginRight: "auto",
+          position: 'relative'
+        };
+      }
 
       var map_class = "map_wrapper";
 
@@ -4715,7 +4776,7 @@ var Main = React.createClass({displayName: "Main",
               ), 
 
               React.createElement("div", {className: "egg_wrap"}, 
-                React.createElement("div", {className: "photogallery_wrapper"}, 
+                React.createElement("div", {className: "photogallery_wrapper " + acornClass}, 
                   React.createElement("svg", {onClick: self.acornLeft, className: "arrow_circle orange left_arrow left gallery_button", x: "0px", y: "0px", viewBox: "0 0 52 52", enableBackground: "new 0 0 52 52"}, 
                     React.createElement("path", {className: "circle", strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"}), 
                     React.createElement("g", {className: "arrow"}, 
@@ -4870,8 +4931,8 @@ module.exports =  React.createClass({displayName: "exports",
           React.createElement("div", {className: "featured_image"})
         ), 
         React.createElement("div", {className: "egg_wrap fb_container"}, 
-          React.createElement("div", {className: "fb_wrapper gi_wrapper main_wrapper"}, 
-            React.createElement("div", {className: "centered_content fb_intro donate"}, 
+          React.createElement("div", {className: "fb_wrapper main_wrapper"}, 
+            React.createElement("div", {className: "centered_content fb_intro"}, 
               React.createElement("h2", {className: "marker"}, "CONTACT"), 
               React.createElement("p", null, "If you find an injured or downed raptor, please call the FFRR Center or one of the numbers listed below. Leave a voicemail if there is no answer, and your call will be returned. You may also contact the nearest Nebraska Games & Parks Conservation Officer, your local Humane Society, or local law enforcement."), 
               React.createElement("img", {className: "fb_break", src: "/img/conservation/divider_bottom_grey.png"})
@@ -4879,8 +4940,8 @@ module.exports =  React.createClass({displayName: "exports",
           )
         ), 
         React.createElement("div", {className: "egg_wrap fb_container"}, 
-          React.createElement("div", {className: "fb_wrapper gi_wrapper main_wrapper"}, 
-            React.createElement("div", {className: "centered_content fb_contact donate"}, 
+          React.createElement("div", {className: "fb_wrapper main_wrapper"}, 
+            React.createElement("div", {className: "centered_content fb_contact"}, 
               React.createElement("div", {className: "fb_numbers"}, 
                 React.createElement("ul", null, 
                   React.createElement("li", null, 
@@ -4916,12 +4977,12 @@ module.exports =  React.createClass({displayName: "exports",
           )
         ), 
         React.createElement("div", {className: "egg_wrap fb_container"}, 
-          React.createElement("div", {className: "fb_wrapper gi_wrapper main_wrapper"}, 
-            React.createElement("div", {className: "centered_content fb_guidelines donate"}, 
+          React.createElement("div", {className: "fb_wrapper main_wrapper"}, 
+            React.createElement("div", {className: "centered_content fb_guidelines"}, 
               React.createElement("h2", {className: "marker"}, "IMPORTANT GUIDELINES"), 
               React.createElement("div", {className: "fb_columns"}, 
                 React.createElement("ul", null, 
-                  React.createElement("li", {className: "fb_listhead"}, "FIRST RULE OF RAPTOR HANDLING\u0003"), 
+                  React.createElement("li", {className: "fb_listhead c_start"}, "FIRST RULE OF RAPTOR HANDLING\u0003"), 
                   React.createElement("li", null, "Keep yourself safe! If you don't feel comfortable or are not able to capture the bird, please try to cover it with a laundry basket or ventilated cardboard box until a representative from FFRR can arrive."), 
                   React.createElement("li", null, "The raptor you are attempting to rescue will NOT understand that you are trying to help it. When you approach, it will likely try to protect itself and may attack you."), 
                   React.createElement("li", null, "Approach the bird from behind, if possible."), 
@@ -4936,7 +4997,8 @@ module.exports =  React.createClass({displayName: "exports",
                   React.createElement("li", null, "Contact Fontenelle Forest's Raptor Recovery or the Nebraska Game and Parks Commission (if not already accomplished)."), 
                   React.createElement("li", null, "Do not attempt to treat or feed the bird yourself! Many well-meaning attempts have resulted in further injury or the death of a bird"), 
                   React.createElement("li", null, "All wild birds are protected under Nebraska and federal laws. It is illegal for you to possess or keep a wild bird unless you aretemporarily transporting an injured bird to a permitted rehabilitator."), 
-                  React.createElement("li", {className: "fb_listhead"}, "WHEN TO TAKE ACTION/CALL\u0003The bird is obviously injured, a wing is drooping, you see blood, or the bird is lying on the ground, is trapped, or caught in something, e.g. barbed wire or other fence/netting"), 
+                  React.createElement("li", {className: "fb_listhead"}, "WHEN TO TAKE ACTION/CALL\u0003"), 
+                  React.createElement("li", null, "The bird is obviously injured, a wing is drooping, you see blood, or the bird is lying on the ground, is trapped, or caught in something, e.g. barbed wire or other fence/netting"), 
                   React.createElement("li", null, "The bird is in obvious danger from a predator or in danger of being captured by one."), 
                   React.createElement("li", null, "There are hazards nearby like busy roads or large pools of water."), 
                   React.createElement("li", null, "The parents have been killed or seriously injured."), 
@@ -4946,11 +5008,6 @@ module.exports =  React.createClass({displayName: "exports",
                 )
               )
             )
-          )
-        ), 
-        React.createElement("div", {className: "egg_wrap static"}, 
-          React.createElement("div", {className: "main_wrapper"}, 
-            React.createElement("img", {src: "/img/found-raptor/page.png"})
           )
         )
       )
@@ -4972,7 +5029,31 @@ var Link = Router.Link;
 module.exports = React.createClass({displayName: "exports",
   mixins: [ Router.State, Navigation ],
 
-  componentDidMount: function () { },
+  componentDidMount: function () {
+    var self  = this;
+
+    if (self.getParams().scroll) {
+      self.scrollThing(self.getParams().scroll)
+    }
+  },
+
+  componentDidUpdate: function (prevProps, prevState) {
+    var self  = this;
+
+    if (prevProps.params != self.props.params){
+      self.scrollThing(self.props.params.scroll);
+    }
+  },
+
+  scrollThing: function(thing){
+    var self = this;
+    var controller = self.props.controller
+    if (thing) {
+      controller.scrollTo("#"+thing);
+    } else {
+      controller.scrollTo(0);
+    }
+  },
 
   componentWillReceiveProps: function () {},
 
