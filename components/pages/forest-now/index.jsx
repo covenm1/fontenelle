@@ -90,11 +90,13 @@ var Event = React.createClass({
     var location_map_url = self.props.location_map_url;
     var location = self.props.location;
     var content = self.props.content;
+    var signup = self.props.signup_link;
 
-    if (self.props.signup_link){
+    if (self.props.end_date){
       return (
-        <div className="event green">
-          <h4 className="event_title" onClick={self.toggleContent}>{self.props.title}
+        <div className={ signup ? "event green" : "event blue"} >
+          <h4 className="event_title" onClick={self.toggleContent}>
+            <span className="title">{self.props.title}</span>
             <span className="age">{age}</span>
           </h4>
           { open ?
@@ -104,7 +106,7 @@ var Event = React.createClass({
                 : <p>{location}</p>
               }
               <div className="event_description" dangerouslySetInnerHTML={{__html: content}}></div>
-              <a className="event_link" href={self.props.signup_link} target="_blank"><p>Register for this Event.</p></a>
+              { signup ? <a className="event_link" href={self.props.signup_link} target="_blank"><p>Register for this Event.</p></a> : null}
             </div>
           : null }
           <div className="event_bar">
@@ -124,8 +126,9 @@ var Event = React.createClass({
       )
     } else {
       return (
-        <div className="event blue">
-          <h4 className="event_title" onClick={self.toggleContent}>{self.props.title}
+        <div className={ signup ? "event green" : "event blue"}>
+          <h4 className="event_title" onClick={self.toggleContent}>
+            <span className="title">{self.props.title}</span>
             <span className="age">{age}</span>
           </h4>
           { open ?
@@ -135,6 +138,7 @@ var Event = React.createClass({
                 : <p>{location}</p>
               }
               <div className="event_description" dangerouslySetInnerHTML={{__html: content}}></div>
+              { signup ? <a className="event_link" href={self.props.signup_link} target="_blank"><p>Register for this Event.</p></a> : null}
             </div>
           : null }
           <div className="event_bar">
@@ -573,6 +577,7 @@ module.exports = React.createClass({
                   </svg>
                 </span>
               </h3>
+              <p className="event_legend"><span className="greenbox"></span><span className="registration"> Registration Required</span></p>
               {events}
             </div>
             <div className='now-right'>

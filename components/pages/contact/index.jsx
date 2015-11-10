@@ -140,13 +140,13 @@ module.exports = React.createClass({
             <div className='place'>
               <h2 className="place_title">Hitchcock Wetlands Learning Center</h2>
               <p className="address">103 Camp Gifford Road <br/>Bellevue, NE 68005</p>
-              <p className="place_directions">From I-80 take Hwy 75 North. Merge onto Storz Expressway towards Florence Blvd/Eppley Airfield. Take the Florence Blvd ramp and turn left at the stop sign. Florence Blvd. becomes J. Pershing Drive. Continue through the T intersection at Mormon Bridge onto River Road. From there, you will travel 2.7 miles to White Deer Lane (past NP Dodge and Hummel Park, stay to the right at the fork in road). Turn a slight left onto White Deer Lane and left again onto Edith Marie Ave.</p>
-              <a target="_blank" href="http://maps.google.com/maps?q=103+Camp+Gifford+Road+Bellevue,+NE+68005&hl=en&ll=41.178428,-95.883179&spn=0.024904,0.055661&sll=41.169328,-95.903122&sspn=0.012454,0.027831&z=15" className="map_link">View Map</a>
+              <p className="place_directions">From I-80, take Hwy 75 (Kennedy Freeway) South to Chandler Road. Turn left onto Chandler. Stay on Chandler approx. 1 mile until the road ends at the stop sign at Bellevue Blvd. Turn right onto Bellevue Blvd. Continue for a little over .5 of a mile and turn left onto Childs Road. Continue on Childs Road through the housing development. The road becomes Camp Gifford Road and will change into a gravel surface. Continue 1.5 miles on the gravel surface. The Wetlands Learning Center will be on your right.</p>
+              <a target="_blank" href="https://www.google.com/maps/place/41%C2%B010'29.5%22N+95%C2%B053'25.5%22W/@41.1748546,-95.8913087,18z/data=!3m1!4b1!4m2!3m1!1s0x0:0x0?hl=en" className="map_link">View Map</a>
             </div>
             <div className='place'>
               <h2 className="place_title">Neale Woods</h2>
               <p className="address">14323 Edith Marie Ave. <br/>Omaha, NE 68112</p>
-              <p className="place_directions">From I-80, take Hwy 75 (Kennedy Freeway) south to Chandler Road. Turn left onto Chandler. Stay on Chandler approx. 1 mile until the road ends at the stop sign at Bellevue Blvd. Turn right onto Bellevue Blvd. Continue approximately .5 of a mile to the nature center (on the left).</p>
+              <p className="place_directions">From I-80 take Hwy 75 North. Merge onto Storz Expressway towards Florence Blvd/Eppley Airfield. Take the Florence Blvd ramp and turn left at the stop sign. Florence Blvd. becomes J. Pershing Drive. Continue through the T intersection at Mormon Bridge onto River Road. From there, you will travel 2.7 miles to White Deer Lane (past NP Dodge and Hummel Park, stay to the right at the fork in road). Turn a slight left onto White Deer Lane and left again onto Edith Marie Ave.</p>
               <a target="_blank" href="http://maps.google.com/maps?q=14323+Edith+Marie+Ave.+Omaha,+NE+68112&hl=en&sll=41.178428,-95.883179&sspn=0.024904,0.055661&z=16" className="map_link">View Map</a>
             </div>
           </div>

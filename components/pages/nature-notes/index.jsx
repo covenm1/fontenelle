@@ -1,6 +1,7 @@
 var React = require('react'),
     request = require('superagent'),
-    util = require('util');
+    util = require('util'),
+    moment = require('moment');
 var Router = require('react-router');
 
 var Navigation = Router.Navigation;
@@ -76,8 +77,10 @@ module.exports = React.createClass({
         .end(function(err, res) {
       if (res.ok) {
         var plantlife = res.body;
-
-        self.setState({plantlife: plantlife});
+        var sorted_plantlife = plantlife.sort(function(a, b) {
+          return moment(b.modified) - moment(a.modified) ;
+        });
+        self.setState({plantlife: sorted_plantlife});
 
       } else {
         console.log('Oh no! error ' + res.text);
@@ -95,8 +98,11 @@ module.exports = React.createClass({
         .end(function(err, res) {
       if (res.ok) {
         var wildlife = res.body;
+        var sorted_wildlife = wildlife.sort(function(a, b) {
+          return moment(b.modified) - moment(a.modified) ;
+        });
 
-        self.setState({wildlife: wildlife});
+        self.setState({wildlife: sorted_wildlife});
 
       } else {
         console.log('Oh no! error ' + res.text);

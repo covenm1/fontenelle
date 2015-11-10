@@ -157,13 +157,17 @@
     padding: 50px 0;
     position: relative;
     .centered_content {
-      padding: 120px 0;
+      padding: 120px 0 0;
       &.explorers {
         width: 400px;
+        margin: auto;
+      }
+      &.explorers_bottom {
+        padding: 0 0 120px;
       }
     }
     .video_play {
-      margin: 15px 0;
+      margin: 15px 30px;
     }
   }
 }
@@ -296,5 +300,16 @@
 .photogallery_wrapper.acorns.wide {
   .gallery_button {
     display: none;
+  }
+}
+
+.play_button_wrapper {
+  display: flex;
+  flex-direction: row;
+  .left_leaf, .right_leaf {
+    flex: 1;
+  }
+  .play_button {
+    margin: 15px 30px;
   }
 }
