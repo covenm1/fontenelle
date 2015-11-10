@@ -1,12 +1,6 @@
 
 
-.donate h2, .donate h3 {color: #1261ac;}
-.join h2, .join h3 {color: #a04e23;}
-.volunteer h2, .volunteer h3 {color: #68814b;}
-
-.donate_container, .join_container, .volunteer_container {
-  padding-bottom:50px;
-}
+.fb_wrapper h2, .fb_wrapper h3, li.fb_listhead {color: #1261ac;}
 
 .element_contain {
   display: flex;
@@ -15,58 +9,55 @@
   padding: 0 15px;
 }
 
-.element_spread, .gi_pricing ul li {
+.element_spread {
   display: flex;
   width: 100%;
   justify-content: space-between;
 }
 
-.gi_pricing {
-  padding-top: 20px;
-}
-
-.gi_pricing ul {
+.fb_columns ul {
   padding: 0;
+  list-style: none;
+  width: 50%;
+  margin: 0 15px;
 }
 
-.gi_pricing ul li {
-  border-top: 1px solid #999;
+.fb_columns ul li {
+  border-bottom: 2px solid #999;
   padding: 15px 0;
-  font-size: 25px;
-  font-weight: bold;
-  color: #000;
-}
-
-.gi_pricing ul li:last-child {
-  border-bottom: 1px solid #999;
-}
-
-.gi_pricing ul li span em, .gi_pricing h3 span em {
-  font-style: normal;
-  font-size: 14px;
   font-weight: normal;
-  color: #000;
 }
 
+.fb_columns ul li.fb_listhead {
+  text-transform: uppercase;
+  font-weight: bold;
+  border-bottom: 0px;
+  font-family: 'roboto_condensedbold';
+  font-size: 20px;
+  padding: 40px 0 0;
+}
 
-//Start the Found Raptor here and clean up later
+.fb_columns ul li.fb_listhead.c_start {
+  padding-top: 0;
+}
+
+.fb_columns ul li:last-child {
+  border-bottom: 0px;
+}
 
 .fb_container .fb_wrapper {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    padding: 50px 0;
+    padding: 0 0 50px 0;
     position: relative;
 }
 
 .fb_container .fb_wrapper .centered_content {
     max-width: 100%;
-    width: 500px;
-    text-align: center;
-    color: white;
+    width: 1200px;
     position: relative;
-    bottom: -100px;
     padding: 0;
 }
 
@@ -83,13 +74,37 @@
     padding-top: 45px;
 }
 
-.fb_wrapper .centered_content p {
-    text-align: center;
-}
-
 .fb_break {
     width: 50%;
     padding: 25px 0;
     margin: 0 auto;
     display: flex;
+}
+
+.fb_intro {
+  text-align: center;
+}
+
+.fb_contact, .fb_columns {
+  display: flex;
+  justify-content: space-between;
+}
+
+.fb_numbers {
+  padding-left: 20px;
+  ul, .fb_columns ul {
+    list-style: none;
+    margin-left: 0;
+    li {
+      margin-left: 0;
+      p {
+        text-align: left;
+      }
+    }
+  }
+}
+
+.fb_map {
+  width: 70%;
+  padding-right: 20px;
 }
