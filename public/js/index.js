@@ -1035,15 +1035,11 @@ module.exports=[
     "title": "Director of Operations",
   },
   {
-    "name": "Laura Lenarz Shiffermiller",
-    "email": "lshiffermiller@fontenelleforest.org",
-    "title": "Executive Director",
+    "name": "Tad Leeper",
+    "email": "tleeper@fontenelleforest.org",
+    "title": "Interim Executive Director",
   },
-  {
-    "name": "Brad A. Watkins",
-    "email": "bwatkins@fontenelleforest.org",
-    "title": "Director of Development & Communications",
-  },
+
 ]
 
 },{}],8:[function(require,module,exports){
@@ -1089,11 +1085,6 @@ module.exports=[
     "title": "Restoration Biologist",
   },
   {
-    "name": "Gary Garabrandt",
-    "email": "GGarabrandt@fontenelleforest.org",
-    "title": "Ranger",
-  },
-  {
     "name": "Lora Kaup",
     "email": "lkaup@fontenelleforest.org",
     "title": "Development Associate",
@@ -1127,11 +1118,6 @@ module.exports=[
     "name": "Josh Preister",
     "email": "JPreister@fontenelleforest.org",
     "title": "Chief Ranger at Fontenelle Forest",
-  },
-  {
-    "name": "Alex Shiffermiller",
-    "email": "ashiffermiller@fontenelleforest.org",
-    "title": "Manager of Visitor Services",
   },
   {
     "name": "Barb Shiffermiller",
@@ -1995,7 +1981,16 @@ var StaffMember = React.createClass({displayName: "StaffMember",
           React.createElement("span", {className: "staff_name"}, self.props.name), 
           React.createElement("span", {className: "title"}, " | ", self.props.title)
         ), 
-        React.createElement("p", {className: "email"}, self.props.email, " ", React.createElement("a", {href: "mailto:"+self.props.email}, React.createElement("img", {src: "/img/conservation/icon_right_blue.svg"})))
+        React.createElement("p", {className: "email"}, self.props.email, " ", React.createElement("a", {href: "mailto:"+self.props.email}, 
+          React.createElement("svg", {className: "arrow_circle blue right_arrow", x: "0px", y: "0px", viewBox: "0 0 52 52", enableBackground: "new 0 0 52 52"}, 
+            React.createElement("path", {className: "circle", strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"}), 
+            React.createElement("g", {className: "arrow"}, 
+              React.createElement("path", {strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M29.4,25.9c0,0-1,1.6-1,4.4c0,2.6-0.6,3.5-0.6,3.8c0,0.4,0.3,0.7,0.7,0.5s8.6-6.2,10.5-8.1" + ' ' +
+              "c0,0,0.2-0.2,0.2-0.5v-0.1c0-0.2-0.1-0.4-0.2-0.5c-1.7-1.7-10.1-7.9-10.5-8.1c-0.3-0.2-0.7-0.1-0.7,0.5c0,0.3,0.6,1.1,0.6,3.8" + ' ' +
+              "C28.4,24.3,29.4,25.9,29.4,25.9z"}), 
+              React.createElement("line", {strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", x1: "27.8", y1: "25.9", x2: "12.7", y2: "25.9"})
+            )
+          )))
       )
     )
   }
@@ -2027,7 +2022,6 @@ var StaffList = React.createClass({displayName: "StaffList",
     });
     return (
       React.createElement("div", {className: "staffs"}, 
-        React.createElement("h1", {className: "main_staff_title marker"}, "Staff"), 
         React.createElement("h2", {className: "staff_title"}, "Management"), 
         management, 
         React.createElement("h2", {className: "staff_title"}, "Staff"), 
@@ -2130,56 +2124,112 @@ module.exports = React.createClass({displayName: "exports",
                   React.createElement("span", {className: "staff_name"}, "Media: "), 
                   React.createElement("span", {className: "title"}, "For all media inquiries, please e-mail the Director of Communications")
                 ), 
-                React.createElement("p", {className: "email"}, React.createElement("a", {href: "#"}, React.createElement("img", {src: "/img/conservation/icon_right_blue.svg"})))
+                React.createElement("p", {className: "email"}, React.createElement("a", {href: "#"}, 
+                  React.createElement("svg", {className: "arrow_circle blue right_arrow", x: "0px", y: "0px", viewBox: "0 0 52 52", enableBackground: "new 0 0 52 52"}, 
+                    React.createElement("path", {className: "circle", strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"}), 
+                    React.createElement("g", {className: "arrow"}, 
+                      React.createElement("path", {strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M29.4,25.9c0,0-1,1.6-1,4.4c0,2.6-0.6,3.5-0.6,3.8c0,0.4,0.3,0.7,0.7,0.5s8.6-6.2,10.5-8.1" + ' ' +
+                        "c0,0,0.2-0.2,0.2-0.5v-0.1c0-0.2-0.1-0.4-0.2-0.5c-1.7-1.7-10.1-7.9-10.5-8.1c-0.3-0.2-0.7-0.1-0.7,0.5c0,0.3,0.6,1.1,0.6,3.8" + ' ' +
+                        "C28.4,24.3,29.4,25.9,29.4,25.9z"}), 
+                      React.createElement("line", {strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", x1: "27.8", y1: "25.9", x2: "12.7", y2: "25.9"})
+                    )
+                  )))
               ), 
               React.createElement("div", {className: "staff_member"}, 
                 React.createElement("h2", {className: "name"}, 
                   React.createElement("span", {className: "staff_name"}, "Donate to FF: "), 
                   React.createElement("span", {className: "title"}, "If you have questions about making a donation, please e-mail the Director of Development.")
                 ), 
-                React.createElement("p", {className: "email"}, React.createElement("a", {href: "#"}, React.createElement("img", {src: "/img/conservation/icon_right_blue.svg"})))
+                React.createElement("p", {className: "email"}, React.createElement("a", {href: "#"}, 
+                  React.createElement("svg", {className: "arrow_circle blue right_arrow", x: "0px", y: "0px", viewBox: "0 0 52 52", enableBackground: "new 0 0 52 52"}, 
+                    React.createElement("path", {className: "circle", strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"}), 
+                    React.createElement("g", {className: "arrow"}, 
+                      React.createElement("path", {strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M29.4,25.9c0,0-1,1.6-1,4.4c0,2.6-0.6,3.5-0.6,3.8c0,0.4,0.3,0.7,0.7,0.5s8.6-6.2,10.5-8.1" + ' ' +
+                        "c0,0,0.2-0.2,0.2-0.5v-0.1c0-0.2-0.1-0.4-0.2-0.5c-1.7-1.7-10.1-7.9-10.5-8.1c-0.3-0.2-0.7-0.1-0.7,0.5c0,0.3,0.6,1.1,0.6,3.8" + ' ' +
+                        "C28.4,24.3,29.4,25.9,29.4,25.9z"}), 
+                      React.createElement("line", {strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", x1: "27.8", y1: "25.9", x2: "12.7", y2: "25.9"})
+                    )
+                  )))
               ), 
               React.createElement("div", {className: "staff_member"}, 
                 React.createElement("h2", {className: "name"}, 
                   React.createElement("span", {className: "staff_name"}, "Careers: "), 
                   React.createElement("span", {className: "title"}, "For current open positions")
                 ), 
-                React.createElement("p", {className: "email"}, React.createElement("a", {href: "#"}, React.createElement("img", {src: "/img/conservation/icon_right_blue.svg"})))
+                React.createElement("p", {className: "email"}, React.createElement("a", {href: "#"}, 
+                  React.createElement("svg", {className: "arrow_circle blue right_arrow", x: "0px", y: "0px", viewBox: "0 0 52 52", enableBackground: "new 0 0 52 52"}, 
+                    React.createElement("path", {className: "circle", strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"}), 
+                    React.createElement("g", {className: "arrow"}, 
+                      React.createElement("path", {strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M29.4,25.9c0,0-1,1.6-1,4.4c0,2.6-0.6,3.5-0.6,3.8c0,0.4,0.3,0.7,0.7,0.5s8.6-6.2,10.5-8.1" + ' ' +
+                        "c0,0,0.2-0.2,0.2-0.5v-0.1c0-0.2-0.1-0.4-0.2-0.5c-1.7-1.7-10.1-7.9-10.5-8.1c-0.3-0.2-0.7-0.1-0.7,0.5c0,0.3,0.6,1.1,0.6,3.8" + ' ' +
+                        "C28.4,24.3,29.4,25.9,29.4,25.9z"}), 
+                      React.createElement("line", {strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", x1: "27.8", y1: "25.9", x2: "12.7", y2: "25.9"})
+                    )
+                  )))
               ), 
               React.createElement("div", {className: "staff_member"}, 
                 React.createElement("h2", {className: "name"}, 
                   React.createElement("span", {className: "staff_name"}, "Donation Requests: "), 
                   React.createElement("span", {className: "title"}, "For qualifications and instructions")
                 ), 
-                React.createElement("p", {className: "email"}, React.createElement("a", {href: "#"}, React.createElement("img", {src: "/img/conservation/icon_right_blue.svg"})))
+                React.createElement("p", {className: "email"}, React.createElement("a", {href: "#"}, 
+                  React.createElement("svg", {className: "arrow_circle blue right_arrow", x: "0px", y: "0px", viewBox: "0 0 52 52", enableBackground: "new 0 0 52 52"}, 
+                    React.createElement("path", {className: "circle", strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"}), 
+                    React.createElement("g", {className: "arrow"}, 
+                      React.createElement("path", {strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M29.4,25.9c0,0-1,1.6-1,4.4c0,2.6-0.6,3.5-0.6,3.8c0,0.4,0.3,0.7,0.7,0.5s8.6-6.2,10.5-8.1" + ' ' +
+                        "c0,0,0.2-0.2,0.2-0.5v-0.1c0-0.2-0.1-0.4-0.2-0.5c-1.7-1.7-10.1-7.9-10.5-8.1c-0.3-0.2-0.7-0.1-0.7,0.5c0,0.3,0.6,1.1,0.6,3.8" + ' ' +
+                        "C28.4,24.3,29.4,25.9,29.4,25.9z"}), 
+                      React.createElement("line", {strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", x1: "27.8", y1: "25.9", x2: "12.7", y2: "25.9"})
+                    )
+                  )))
               ), 
               React.createElement("div", {className: "staff_member"}, 
                 React.createElement("h2", {className: "name"}, 
                   React.createElement("span", {className: "staff_name"}, "Memberships: "), 
                   React.createElement("span", {className: "title"}, "To learn more about membership and to join or renew online.")
                 ), 
-                React.createElement("p", {className: "email"}, React.createElement("a", {href: "#"}, React.createElement("img", {src: "/img/conservation/icon_right_blue.svg"})))
+                React.createElement("p", {className: "email"}, React.createElement("a", {href: "#"}, 
+                  React.createElement("svg", {className: "arrow_circle blue right_arrow", x: "0px", y: "0px", viewBox: "0 0 52 52", enableBackground: "new 0 0 52 52"}, 
+                    React.createElement("path", {className: "circle", strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"}), 
+                    React.createElement("g", {className: "arrow"}, 
+                      React.createElement("path", {strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M29.4,25.9c0,0-1,1.6-1,4.4c0,2.6-0.6,3.5-0.6,3.8c0,0.4,0.3,0.7,0.7,0.5s8.6-6.2,10.5-8.1" + ' ' +
+                        "c0,0,0.2-0.2,0.2-0.5v-0.1c0-0.2-0.1-0.4-0.2-0.5c-1.7-1.7-10.1-7.9-10.5-8.1c-0.3-0.2-0.7-0.1-0.7,0.5c0,0.3,0.6,1.1,0.6,3.8" + ' ' +
+                        "C28.4,24.3,29.4,25.9,29.4,25.9z"}), 
+                      React.createElement("line", {strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", x1: "27.8", y1: "25.9", x2: "12.7", y2: "25.9"})
+                    )
+                  )))
               ), 
               React.createElement("div", {className: "staff_member"}, 
                 React.createElement("h2", {className: "name"}, 
                   React.createElement("span", {className: "staff_name"}, "Programs: "), 
                   React.createElement("span", {className: "title"}, "For information about our classes, events, and programs, please see the Calendar of Events.")
                 ), 
-                React.createElement("p", {className: "email"}, React.createElement("a", {href: "#"}, React.createElement("img", {src: "/img/conservation/icon_right_blue.svg"})))
+                React.createElement("p", {className: "email"}, React.createElement("a", {href: "#"}, 
+                  React.createElement("svg", {className: "arrow_circle blue right_arrow", x: "0px", y: "0px", viewBox: "0 0 52 52", enableBackground: "new 0 0 52 52"}, 
+                    React.createElement("path", {className: "circle", strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"}), 
+                    React.createElement("g", {className: "arrow"}, 
+                      React.createElement("path", {strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M29.4,25.9c0,0-1,1.6-1,4.4c0,2.6-0.6,3.5-0.6,3.8c0,0.4,0.3,0.7,0.7,0.5s8.6-6.2,10.5-8.1" + ' ' +
+                        "c0,0,0.2-0.2,0.2-0.5v-0.1c0-0.2-0.1-0.4-0.2-0.5c-1.7-1.7-10.1-7.9-10.5-8.1c-0.3-0.2-0.7-0.1-0.7,0.5c0,0.3,0.6,1.1,0.6,3.8" + ' ' +
+                        "C28.4,24.3,29.4,25.9,29.4,25.9z"}), 
+                      React.createElement("line", {strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", x1: "27.8", y1: "25.9", x2: "12.7", y2: "25.9"})
+                    )
+                  )))
               ), 
               React.createElement("div", {className: "staff_member"}, 
                 React.createElement("h2", {className: "name"}, 
                   React.createElement("span", {className: "staff_name"}, "Volunteer: "), 
                   React.createElement("span", {className: "title"}, "FTo become a volunteer or to learn more about FF's volunteer opportunities")
                 ), 
-                React.createElement("p", {className: "email"}, React.createElement("a", {href: "#"}, React.createElement("img", {src: "/img/conservation/icon_right_blue.svg"})))
-              ), 
-              React.createElement("div", {className: "staff_member"}, 
-                React.createElement("h2", {className: "name"}, 
-                  React.createElement("span", {className: "staff_name"}, "Media: "), 
-                  React.createElement("span", {className: "title"}, "For all media inquiries, please e-mail the Director of Communications")
-                ), 
-                React.createElement("p", {className: "email"}, React.createElement("a", {href: "#"}, React.createElement("img", {src: "/img/conservation/icon_right_blue.svg"})))
+                React.createElement("p", {className: "email"}, React.createElement("a", {href: "#"}, 
+                  React.createElement("svg", {className: "arrow_circle blue right_arrow", x: "0px", y: "0px", viewBox: "0 0 52 52", enableBackground: "new 0 0 52 52"}, 
+                    React.createElement("path", {className: "circle", strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"}), 
+                    React.createElement("g", {className: "arrow"}, 
+                      React.createElement("path", {strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M29.4,25.9c0,0-1,1.6-1,4.4c0,2.6-0.6,3.5-0.6,3.8c0,0.4,0.3,0.7,0.7,0.5s8.6-6.2,10.5-8.1" + ' ' +
+                        "c0,0,0.2-0.2,0.2-0.5v-0.1c0-0.2-0.1-0.4-0.2-0.5c-1.7-1.7-10.1-7.9-10.5-8.1c-0.3-0.2-0.7-0.1-0.7,0.5c0,0.3,0.6,1.1,0.6,3.8" + ' ' +
+                        "C28.4,24.3,29.4,25.9,29.4,25.9z"}), 
+                      React.createElement("line", {strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", x1: "27.8", y1: "25.9", x2: "12.7", y2: "25.9"})
+                    )
+                  )))
               )
           ), 
           React.createElement("div", {className: "main_wrapper"}, 
@@ -2189,21 +2239,19 @@ module.exports = React.createClass({displayName: "exports",
             React.createElement("h2", {className: "staff_title"}, "PART-TIME EDUCATORS"), 
             React.createElement("ul", {className: "name_list"}, 
               React.createElement("li", null, "Kyle Anderson"), 
-              React.createElement("li", null, "Katie Arkfield"), 
               React.createElement("li", null, "Amy Campagna"), 
               React.createElement("li", null, "Julianne Carbonell"), 
-              React.createElement("li", null, "Amanda Dague")
+              React.createElement("li", null, "Amanda Dague"), 
+              React.createElement("li", null, "Kathy Fischer")
             ), 
             React.createElement("ul", {className: "name_list"}, 
-              React.createElement("li", null, "Kathy Fischer"), 
               React.createElement("li", null, "Lisa Formanik"), 
               React.createElement("li", null, "Dianne Guinn"), 
-              React.createElement("li", null, "Janie Helt"), 
               React.createElement("li", null, "Emma Hoffman"), 
-              React.createElement("li", null, "Tisha Johnson")
+              React.createElement("li", null, "Tisha Johnson"), 
+              React.createElement("li", null, "Seth Krone-Keith")
             ), 
             React.createElement("ul", {className: "name_list"}, 
-              React.createElement("li", null, "Seth Krone-Keith"), 
               React.createElement("li", null, "Jean Neneman"), 
               React.createElement("li", null, "Nick Sauvageau"), 
               React.createElement("li", null, "Dorie Stone"), 
@@ -2213,8 +2261,7 @@ module.exports = React.createClass({displayName: "exports",
             React.createElement("h2", {className: "staff_title"}, "VISITOR SERVICES ASSISTANTS\u0003"), 
             React.createElement("span", {className: "name_item"}, "Helen Beebe"), 
             "\u0003", React.createElement("span", {className: "name_item"}, "Brian Mark Conover"), 
-            React.createElement("span", {className: "name_item"}, "Brenna Watkins"), 
-            React.createElement("span", {className: "name_item"}, "Lisa Wiles")
+            React.createElement("span", {className: "name_item"}, "Emma Hoffman")
           )
         )
       )
@@ -2704,6 +2751,31 @@ var Instagram = React.createClass({displayName: "Instagram",
   }
 });
 
+var FeaturedPost = React.createClass({displayName: "FeaturedPost",
+  render: function(){
+    var self = this;
+    var featured_image = self.props.featured_image;
+    var title = self.props.title;
+    var subheader = self.props.subheader;
+    var slug = self.props.slug;
+    if (featured_image){
+      var style = {
+        backgroundImage: "url("+featured_image.guid+")"
+      }
+    }
+    return (
+      React.createElement("div", {className: "post featured", style: style}, 
+        React.createElement("div", {className: "post_content"}, 
+          React.createElement("h4", {className: "post_headline", dangerouslySetInnerHTML: {__html: title}}), 
+           subheader ? React.createElement("p", {className: "post_subheader"}, subheader) : null, 
+          React.createElement(Link, {className: "post_link", to: "/post/" + slug}, "Read more")
+        ), 
+        React.createElement("div", {className: "featured_post_overlay"})
+      )
+    )
+  }
+});
+
 var Tweet = React.createClass({displayName: "Tweet",
   render: function(){
     var self = this;
@@ -2841,6 +2913,8 @@ module.exports = React.createClass({displayName: "exports",
       plantlife: [],
       closings: [],
       posts: [],
+      featured: {},
+      pinned: [],
       events: [],
       twistagrams: [],
       weather: {},
@@ -2858,8 +2932,11 @@ module.exports = React.createClass({displayName: "exports",
     self.loadClosings();
 
     self.loadWeather();
-    self.loadPosts();
     self.loadEvents();
+
+    self.loadPosts();
+    self.loadFeatured();
+    self.loadPinned();
 
     self.loadExcerpts();
     self.loadTwistagrams();
@@ -2944,13 +3021,49 @@ module.exports = React.createClass({displayName: "exports",
     var self = this;
     request
       .get('http://fontenelle.flywheelsites.com/wp-json/posts')
-      .query('type[]=post&filter[posts_per_page]=-1')
+      .query('type[]=post&filter[orderby]=modified&filter[order]=DESC&filter[posts_per_page]=3&filter[category_name]=Uncategorized')
       .set('Cache-Control', 'no-cache,no-store,must-revalidate,max-age=-1,private')
       .end(function(err, res) {
         if (res.ok) {
           var posts = res.body;
           console.log("loadPosts count: " + posts.length);
           self.setState({ posts: posts });
+
+        } else {
+          console.log('Oh no! error ' + res.text);
+        }
+          }.bind(self));
+  },
+
+  loadFeatured: function(){
+    var self = this;
+    request
+      .get('http://fontenelle.flywheelsites.com/wp-json/posts')
+      .query('type[]=post&filter[orderby]=modified&filter[order]=DESC&filter[posts_per_page]=1&filter[category_name]=featured')
+      .set('Cache-Control', 'no-cache,no-store,must-revalidate,max-age=-1,private')
+      .end(function(err, res) {
+        if (res.ok) {
+          var featured = res.body[0];
+
+          self.setState({ featured: featured });
+
+        } else {
+          console.log('Oh no! error ' + res.text);
+        }
+          }.bind(self));
+  },
+
+  loadPinned: function(){
+    var self = this;
+    request
+      .get('http://fontenelle.flywheelsites.com/wp-json/posts')
+      .query('type[]=post&filter[orderby]=modified&filter[order]=DESC&filter[posts_per_page]=1&filter[category_name]=pinned')
+      .set('Cache-Control', 'no-cache,no-store,must-revalidate,max-age=-1,private')
+      .end(function(err, res) {
+        if (res.ok) {
+          var pinned = res.body;
+
+          self.setState({ pinned: pinned });
 
         } else {
           console.log('Oh no! error ' + res.text);
@@ -3136,6 +3249,25 @@ module.exports = React.createClass({displayName: "exports",
       )
     });
 
+    var pinned_post = self.state.pinned.map(function(object){
+      var post_style ={
+        backgroundImage: "url("+ object.featured_image.guid +")"
+      }
+      if (object.meta){
+        var subheader = object.meta.subheader || "";
+      }
+      return (
+        React.createElement("div", {className: "post pinned"}, 
+          React.createElement("div", {className: "post_image", style: post_style}), 
+          React.createElement("div", {className: "post_content"}, 
+            React.createElement("h4", {className: "post_headline", dangerouslySetInnerHTML: {__html: object.title}}), 
+             subheader ? React.createElement("p", {className: "post_subheader"}, subheader) : null, 
+            React.createElement(Link, {className: "post_link", to: "/post/" + object.slug}, "Read more")
+          )
+        )
+      )
+    });
+
     var closings = self.state.closings.map(function(object){
       return React.createElement("p", {className: "closings_title"}, object.title)
     });
@@ -3162,6 +3294,12 @@ module.exports = React.createClass({displayName: "exports",
     } else {
       var week_text = "Week of: "
     }
+
+    var featured = self.state.featured;
+    if (featured.meta){
+      var featured_subheader = featured.meta.subheader || "";
+    }
+
 
     return (
       React.createElement("div", null, 
@@ -3254,6 +3392,14 @@ module.exports = React.createClass({displayName: "exports",
               events
             ), 
             React.createElement("div", {className: "now-right"}, 
+              featured ?
+                React.createElement(FeaturedPost, {
+                  title: featured.title, 
+                  featured_image: featured.featured_image, 
+                  slug: featured.slug, 
+                  subheader: featured_subheader})
+              : null, 
+              pinned_post, 
               posts, 
               React.createElement(Link, {to: "/posts", className: "all_posts_link"}, "VIEW ALL POSTS")
             )
@@ -5994,17 +6140,47 @@ var Router = require('react-router');
 var Navigation = Router.Navigation;
 var Link = Router.Link;
 
+
+var FeaturedPost = React.createClass({displayName: "FeaturedPost",
+  render: function(){
+    var self = this;
+    var featured_image = self.props.featured_image;
+    var title = self.props.title;
+    var subheader = self.props.subheader;
+    var slug = self.props.slug;
+    if (featured_image){
+      var style = {
+        backgroundImage: "url("+featured_image.guid+")"
+      }
+    }
+    return (
+      React.createElement("div", {className: "post featured", style: style}, 
+        React.createElement("div", {className: "post_content"}, 
+          React.createElement("h4", {className: "post_headline", dangerouslySetInnerHTML: {__html: title}}), 
+           subheader ? React.createElement("p", {className: "post_subheader"}, subheader) : null, 
+          React.createElement(Link, {className: "post_link", to: "/post/" + slug}, "Read more")
+        ), 
+        React.createElement("div", {className: "featured_post_overlay"})
+      )
+    )
+  }
+});
+
 module.exports = React.createClass({displayName: "exports",
   mixins: [ Router.State, Navigation ],
   getInitialState: function() {
     return {
-      posts: []
+      posts: [],
+      featured: {},
+      pinned: [],
     };
   },
 
   componentDidMount: function () {
     var self = this;
     self.loadPosts();
+    self.loadFeatured();
+    self.loadPinned();
   },
 
   componentWillReceiveProps: function () { },
@@ -6013,13 +6189,48 @@ module.exports = React.createClass({displayName: "exports",
     var self = this;
     request
       .get('http://fontenelle.flywheelsites.com/wp-json/posts')
-      .query('type[]=post&filter[posts_per_page]=-1')
+      .query('type[]=post&filter[orderby]=modified&filter[order]=DESC&filter[posts_per_page]=-1')
       .set('Cache-Control', 'no-cache,no-store,must-revalidate,max-age=-1,private')
       .end(function(err, res) {
         if (res.ok) {
           var posts = res.body;
           console.log("loadPosts count: " + posts.length);
           self.setState({ posts: posts });
+
+        } else {
+          console.log('Oh no! error ' + res.text);
+        }
+          }.bind(self));
+  },
+  loadFeatured: function(){
+    var self = this;
+    request
+      .get('http://fontenelle.flywheelsites.com/wp-json/posts')
+      .query('type[]=post&filter[orderby]=modified&filter[order]=DESC&filter[posts_per_page]=1&filter[category_name]=featured')
+      .set('Cache-Control', 'no-cache,no-store,must-revalidate,max-age=-1,private')
+      .end(function(err, res) {
+        if (res.ok) {
+          var featured = res.body[0];
+
+          self.setState({ featured: featured });
+
+        } else {
+          console.log('Oh no! error ' + res.text);
+        }
+          }.bind(self));
+  },
+
+  loadPinned: function(){
+    var self = this;
+    request
+      .get('http://fontenelle.flywheelsites.com/wp-json/posts')
+      .query('type[]=post&filter[orderby]=modified&filter[order]=DESC&filter[posts_per_page]=1&filter[category_name]=pinned')
+      .set('Cache-Control', 'no-cache,no-store,must-revalidate,max-age=-1,private')
+      .end(function(err, res) {
+        if (res.ok) {
+          var pinned = res.body;
+
+          self.setState({ pinned: pinned });
 
         } else {
           console.log('Oh no! error ' + res.text);
@@ -6033,17 +6244,44 @@ module.exports = React.createClass({displayName: "exports",
       var post_style ={
         backgroundImage: "url("+ object.featured_image.guid +")"
       }
+      if (object.meta){
+        var subheader = object.meta.subheader || "";
+      }
       return (
         React.createElement("div", {className: "post"}, 
           React.createElement("div", {className: "post_image", style: post_style}), 
           React.createElement("div", {className: "post_content"}, 
-            React.createElement("h4", {className: "post_headline"}, object.title), 
+            React.createElement("h4", {className: "post_headline", dangerouslySetInnerHTML: {__html: object.title}}), 
+             subheader ? React.createElement("p", {className: "post_subheader"}, subheader) : null, 
             React.createElement(Link, {className: "post_link", to: "/post/" + object.slug}, "Read more")
           )
         )
       )
     });
 
+    var featured = self.state.featured;
+    if (featured.meta){
+      var featured_subheader = featured.meta.subheader || "";
+    }
+
+    var pinned_post = self.state.pinned.map(function(object){
+      var post_style ={
+        backgroundImage: "url("+ object.featured_image.guid +")"
+      }
+      if (object.meta){
+        var subheader = object.meta.subheader || "";
+      }
+      return (
+        React.createElement("div", {className: "post pinned"}, 
+          React.createElement("div", {className: "post_image", style: post_style}), 
+          React.createElement("div", {className: "post_content"}, 
+            React.createElement("h4", {className: "post_headline", dangerouslySetInnerHTML: {__html: object.title}}), 
+             subheader ? React.createElement("p", {className: "post_subheader"}, subheader) : null, 
+            React.createElement(Link, {className: "post_link", to: "/post/" + object.slug}, "Read more")
+          )
+        )
+      )
+    });
 
     return (
       React.createElement("div", null, 
@@ -6051,6 +6289,14 @@ module.exports = React.createClass({displayName: "exports",
           React.createElement("div", {className: "main_wrapper"}, 
             React.createElement("h1", {className: "post_title marker"}, "Latest Posts"), 
             React.createElement("div", {className: "post_list"}, 
+              featured ?
+                React.createElement(FeaturedPost, {
+                  title: featured.title, 
+                  featured_image: featured.featured_image, 
+                  slug: featured.slug, 
+                  subheader: featured_subheader})
+              : null, 
+              pinned_post, 
               posts
             )
           )

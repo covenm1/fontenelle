@@ -22,7 +22,16 @@ var StaffMember = React.createClass({
           <span className="staff_name">{self.props.name}</span>
           <span className="title"> | {self.props.title}</span>
         </h2>
-        <p className="email">{self.props.email} <a href={"mailto:"+self.props.email}><img src="/img/conservation/icon_right_blue.svg" /></a></p>
+        <p className="email">{self.props.email} <a href={"mailto:"+self.props.email}>
+          <svg className="arrow_circle blue right_arrow" x="0px" y="0px" viewBox="0 0 52 52" enableBackground="new 0 0 52 52" >
+            <path className="circle" strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"/>
+            <g className="arrow" >
+              <path strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M29.4,25.9c0,0-1,1.6-1,4.4c0,2.6-0.6,3.5-0.6,3.8c0,0.4,0.3,0.7,0.7,0.5s8.6-6.2,10.5-8.1
+              c0,0,0.2-0.2,0.2-0.5v-0.1c0-0.2-0.1-0.4-0.2-0.5c-1.7-1.7-10.1-7.9-10.5-8.1c-0.3-0.2-0.7-0.1-0.7,0.5c0,0.3,0.6,1.1,0.6,3.8
+              C28.4,24.3,29.4,25.9,29.4,25.9z"/>
+              <line strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' x1="27.8" y1="25.9" x2="12.7" y2="25.9"/>
+            </g>
+          </svg></a></p>
       </div>
     )
   }
@@ -54,7 +63,6 @@ var StaffList = React.createClass({
     });
     return (
       <div className="staffs">
-        <h1 className="main_staff_title marker">Staff</h1>
         <h2 className="staff_title">Management</h2>
         { management }
         <h2 className="staff_title">Staff</h2>
@@ -115,7 +123,7 @@ module.exports = React.createClass({
               <span className="phone_label">FAX</span>
               <a href="tel:4027312403" className="phone_button">(402) 731-2403</a>
             </span>
-          </div>
+          </div> 
         </div>
         <div className="egg_wrap tpadded">
           <div className='main_wrapper'>
@@ -157,56 +165,112 @@ module.exports = React.createClass({
                   <span className="staff_name">Media: </span>
                   <span className="title">For all media inquiries, please e-mail the Director of Communications</span>
                 </h2>
-                <p className="email"><a href="#"><img src="/img/conservation/icon_right_blue.svg" /></a></p>
+                <p className="email"><a href="#">
+                  <svg className="arrow_circle blue right_arrow" x="0px" y="0px" viewBox="0 0 52 52" enableBackground="new 0 0 52 52" >
+                    <path className="circle" strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"/>
+                    <g className="arrow" >
+                      <path strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M29.4,25.9c0,0-1,1.6-1,4.4c0,2.6-0.6,3.5-0.6,3.8c0,0.4,0.3,0.7,0.7,0.5s8.6-6.2,10.5-8.1
+                        c0,0,0.2-0.2,0.2-0.5v-0.1c0-0.2-0.1-0.4-0.2-0.5c-1.7-1.7-10.1-7.9-10.5-8.1c-0.3-0.2-0.7-0.1-0.7,0.5c0,0.3,0.6,1.1,0.6,3.8
+                        C28.4,24.3,29.4,25.9,29.4,25.9z"/>
+                      <line strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' x1="27.8" y1="25.9" x2="12.7" y2="25.9"/>
+                    </g>
+                  </svg></a></p>
               </div>
               <div className="staff_member">
                 <h2 className="name">
                   <span className="staff_name">Donate to FF: </span>
                   <span className="title">If you have questions about making a donation, please e-mail the Director of Development.</span>
                 </h2>
-                <p className="email"><a href="#"><img src="/img/conservation/icon_right_blue.svg" /></a></p>
+                <p className="email"><a href="#">
+                  <svg className="arrow_circle blue right_arrow" x="0px" y="0px" viewBox="0 0 52 52" enableBackground="new 0 0 52 52" >
+                    <path className="circle" strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"/>
+                    <g className="arrow" >
+                      <path strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M29.4,25.9c0,0-1,1.6-1,4.4c0,2.6-0.6,3.5-0.6,3.8c0,0.4,0.3,0.7,0.7,0.5s8.6-6.2,10.5-8.1
+                        c0,0,0.2-0.2,0.2-0.5v-0.1c0-0.2-0.1-0.4-0.2-0.5c-1.7-1.7-10.1-7.9-10.5-8.1c-0.3-0.2-0.7-0.1-0.7,0.5c0,0.3,0.6,1.1,0.6,3.8
+                        C28.4,24.3,29.4,25.9,29.4,25.9z"/>
+                      <line strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' x1="27.8" y1="25.9" x2="12.7" y2="25.9"/>
+                    </g>
+                  </svg></a></p>
               </div>
               <div className="staff_member">
                 <h2 className="name">
                   <span className="staff_name">Careers: </span>
                   <span className="title">For current open positions</span>
                 </h2>
-                <p className="email"><a href="#"><img src="/img/conservation/icon_right_blue.svg" /></a></p>
+                <p className="email"><a href="#">
+                  <svg className="arrow_circle blue right_arrow" x="0px" y="0px" viewBox="0 0 52 52" enableBackground="new 0 0 52 52" >
+                    <path className="circle" strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"/>
+                    <g className="arrow" >
+                      <path strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M29.4,25.9c0,0-1,1.6-1,4.4c0,2.6-0.6,3.5-0.6,3.8c0,0.4,0.3,0.7,0.7,0.5s8.6-6.2,10.5-8.1
+                        c0,0,0.2-0.2,0.2-0.5v-0.1c0-0.2-0.1-0.4-0.2-0.5c-1.7-1.7-10.1-7.9-10.5-8.1c-0.3-0.2-0.7-0.1-0.7,0.5c0,0.3,0.6,1.1,0.6,3.8
+                        C28.4,24.3,29.4,25.9,29.4,25.9z"/>
+                      <line strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' x1="27.8" y1="25.9" x2="12.7" y2="25.9"/>
+                    </g>
+                  </svg></a></p>
               </div>
               <div className="staff_member">
                 <h2 className="name">
                   <span className="staff_name">Donation Requests: </span>
                   <span className="title">For qualifications and instructions</span>
                 </h2>
-                <p className="email"><a href="#"><img src="/img/conservation/icon_right_blue.svg" /></a></p>
+                <p className="email"><a href="#">
+                  <svg className="arrow_circle blue right_arrow" x="0px" y="0px" viewBox="0 0 52 52" enableBackground="new 0 0 52 52" >
+                    <path className="circle" strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"/>
+                    <g className="arrow" >
+                      <path strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M29.4,25.9c0,0-1,1.6-1,4.4c0,2.6-0.6,3.5-0.6,3.8c0,0.4,0.3,0.7,0.7,0.5s8.6-6.2,10.5-8.1
+                        c0,0,0.2-0.2,0.2-0.5v-0.1c0-0.2-0.1-0.4-0.2-0.5c-1.7-1.7-10.1-7.9-10.5-8.1c-0.3-0.2-0.7-0.1-0.7,0.5c0,0.3,0.6,1.1,0.6,3.8
+                        C28.4,24.3,29.4,25.9,29.4,25.9z"/>
+                      <line strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' x1="27.8" y1="25.9" x2="12.7" y2="25.9"/>
+                    </g>
+                  </svg></a></p>
               </div>
               <div className="staff_member">
                 <h2 className="name">
                   <span className="staff_name">Memberships: </span>
                   <span className="title">To learn more about membership and to join or renew online.</span>
                 </h2>
-                <p className="email"><a href="#"><img src="/img/conservation/icon_right_blue.svg" /></a></p>
+                <p className="email"><a href="#">
+                  <svg className="arrow_circle blue right_arrow" x="0px" y="0px" viewBox="0 0 52 52" enableBackground="new 0 0 52 52" >
+                    <path className="circle" strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"/>
+                    <g className="arrow" >
+                      <path strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M29.4,25.9c0,0-1,1.6-1,4.4c0,2.6-0.6,3.5-0.6,3.8c0,0.4,0.3,0.7,0.7,0.5s8.6-6.2,10.5-8.1
+                        c0,0,0.2-0.2,0.2-0.5v-0.1c0-0.2-0.1-0.4-0.2-0.5c-1.7-1.7-10.1-7.9-10.5-8.1c-0.3-0.2-0.7-0.1-0.7,0.5c0,0.3,0.6,1.1,0.6,3.8
+                        C28.4,24.3,29.4,25.9,29.4,25.9z"/>
+                      <line strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' x1="27.8" y1="25.9" x2="12.7" y2="25.9"/>
+                    </g>
+                  </svg></a></p>
               </div>
               <div className="staff_member">
                 <h2 className="name">
                   <span className="staff_name">Programs: </span>
                   <span className="title">For information about our classes, events, and programs, please see the Calendar of Events.</span>
                 </h2>
-                <p className="email"><a href="#"><img src="/img/conservation/icon_right_blue.svg" /></a></p>
+                <p className="email"><a href="#">
+                  <svg className="arrow_circle blue right_arrow" x="0px" y="0px" viewBox="0 0 52 52" enableBackground="new 0 0 52 52" >
+                    <path className="circle" strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"/>
+                    <g className="arrow" >
+                      <path strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M29.4,25.9c0,0-1,1.6-1,4.4c0,2.6-0.6,3.5-0.6,3.8c0,0.4,0.3,0.7,0.7,0.5s8.6-6.2,10.5-8.1
+                        c0,0,0.2-0.2,0.2-0.5v-0.1c0-0.2-0.1-0.4-0.2-0.5c-1.7-1.7-10.1-7.9-10.5-8.1c-0.3-0.2-0.7-0.1-0.7,0.5c0,0.3,0.6,1.1,0.6,3.8
+                        C28.4,24.3,29.4,25.9,29.4,25.9z"/>
+                      <line strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' x1="27.8" y1="25.9" x2="12.7" y2="25.9"/>
+                    </g>
+                  </svg></a></p>
               </div>
               <div className="staff_member">
                 <h2 className="name">
                   <span className="staff_name">Volunteer: </span>
                   <span className="title">FTo become a volunteer or to learn more about FF's volunteer opportunities</span>
                 </h2>
-                <p className="email"><a href="#"><img src="/img/conservation/icon_right_blue.svg" /></a></p>
-              </div>
-              <div className="staff_member">
-                <h2 className="name">
-                  <span className="staff_name">Media: </span>
-                  <span className="title">For all media inquiries, please e-mail the Director of Communications</span>
-                </h2>
-                <p className="email"><a href="#"><img src="/img/conservation/icon_right_blue.svg" /></a></p>
+                <p className="email"><a href="#">
+                  <svg className="arrow_circle blue right_arrow" x="0px" y="0px" viewBox="0 0 52 52" enableBackground="new 0 0 52 52" >
+                    <path className="circle" strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"/>
+                    <g className="arrow" >
+                      <path strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M29.4,25.9c0,0-1,1.6-1,4.4c0,2.6-0.6,3.5-0.6,3.8c0,0.4,0.3,0.7,0.7,0.5s8.6-6.2,10.5-8.1
+                        c0,0,0.2-0.2,0.2-0.5v-0.1c0-0.2-0.1-0.4-0.2-0.5c-1.7-1.7-10.1-7.9-10.5-8.1c-0.3-0.2-0.7-0.1-0.7,0.5c0,0.3,0.6,1.1,0.6,3.8
+                        C28.4,24.3,29.4,25.9,29.4,25.9z"/>
+                      <line strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' x1="27.8" y1="25.9" x2="12.7" y2="25.9"/>
+                    </g>
+                  </svg></a></p>
               </div>
           </div>
           <div className='main_wrapper'>
@@ -216,21 +280,19 @@ module.exports = React.createClass({
             <h2 className="staff_title">PART-TIME EDUCATORS</h2>
             <ul className="name_list">
               <li>Kyle Anderson</li>
-              <li>Katie Arkfield</li>
               <li>Amy Campagna</li>
               <li>Julianne Carbonell</li>
               <li>Amanda Dague</li>
+              <li>Kathy Fischer</li>
             </ul>
             <ul className="name_list">
-              <li>Kathy Fischer</li>
               <li>Lisa Formanik</li>
               <li>Dianne Guinn</li>
-              <li>Janie Helt</li>
               <li>Emma Hoffman</li>
               <li>Tisha Johnson</li>
+              <li>Seth Krone-Keith</li>
             </ul>
             <ul className="name_list">
-              <li>Seth Krone-Keith</li>
               <li>Jean Neneman</li>
               <li>Nick Sauvageau</li>
               <li>Dorie Stone</li>
@@ -240,8 +302,7 @@ module.exports = React.createClass({
             <h2 className="staff_title">VISITOR SERVICES ASSISTANTS</h2>
             <span className="name_item">Helen Beebe</span>
             <span className="name_item">Brian Mark Conover</span>
-            <span className="name_item">Brenna Watkins</span>
-            <span className="name_item">Lisa Wiles</span>
+            <span className="name_item">Emma Hoffman</span>
           </div>
         </div>
       </div>
