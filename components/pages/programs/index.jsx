@@ -139,6 +139,7 @@ var Main = React.createClass({
     var content = (
       <div className="main_class">
         <h2>MUD PIES</h2>
+        <img src="/img/programs/mudpies.jpg" width="100%" />
         <p>Looking for a unique setting in which to have fun with your child while learning about the natural world? Mud Pies is a relaxed, drop-in-and-play program that encourages interaction between adult and child. Each week, a natural science topic is explored through station-based activities, free play, and a guided walk. Come discover the joy of sharing nature with your child!</p>
         <p>Mud Pies meets every Monday-Thursday from 9:30-11:30 am at Fontenelle Forest Nature Center. This program is for children ages 5 and younger accompanied by an adult. One adult is required for every two children. This program is free for members or with daily admission.</p>
         <p>Parent groups, day cares, or preschools are accepted on Fridays only by appointment. Contact Lindsay Cooley atlcooley@fontenelleforest.org for more information and available dates.</p>
@@ -162,6 +163,7 @@ var Main = React.createClass({
     var content = (
       <div className="main_class">
         <h2>FAMILY SUNDAYS</h2>
+        <img src="/img/programs/family_sundays.jpg" width="100%" />
         <p>Each Sunday at 1:00 p.m. we invite families to come discover the forest. Whether it’s a hike on a new trail with a guide, a meet-and-greet with a raptor, or learning about bird migration, your family will experience the forest like never before.</p>
         <p>These programs are designed for all ages. Each week offers a new topic. Sample topics have included: “Scavenger Hunt Fun,” “Dipping in the Wetlands,” “Migrating Monarchs,” “White-Tailed Deer,” and many more. Make sure to check out Forest Now for the latest topic.</p>
       </div>
@@ -187,6 +189,7 @@ var Main = React.createClass({
     var content = (
       <div className="main_class">
         <h2>NATURE EXPLORERS</h2>
+        <img src="/img/programs/nature_explorers.jpg" width="100%" />
         <p>This is a child-only learning experience with a new topic each month to learn and explore. Designed for ages 5–11, each program includes snacks, a hike, and a special theme. Past themes have included: “Some like it Wet” featuring the Amphibians of Fontenelle Forest, “April Birds” featuring bird calls and bird feeders, and “Beavers” featuring beaver tracking.</p>
         <p>This interactive and educational program extends the children’s classroom learning into practical, real world learning. Fun and informative led by Fontenelle Forest naturalists, this is one of many unique offerings that only can be found here.</p>
       </div>
@@ -617,8 +620,27 @@ var Main = React.createClass({
 
               </div>
               <div className="egg_wrap">
-                <div className='image_container' id="groups">
-                  <img src="/img/programs/groups.png" />
+                <div className="main_wrapper" id="groups">
+                  <div className="p_groups p_columns">
+                    <div>
+                      <h2 className="marker color">FOR GROUPS</h2>
+                      <p>We get requests frequently from companies, organizations, and clubs looking for a group experience in the forest and have developed the following core programs:</p>
+                      <h3>BIO-INSPIRED LEADERSHIP WORKSHOP</h3>
+                      <p>We're partnering with Verdis Group to offer a new workshop for organizations who are ready to embrace the ever changing dynamic business world. This immersion experience explores lessons from nature to form adaptable, resilient, and prosperous teams and groups. Attendees will experience an immersive program unlike any other; one that combines sustainability, achieving an ecological balance, and biomimicry - the design of materials, structures, and systems that are modeled on biological entities and processes.</p>
+                      <p className="p_info">For more information, including availability and pricing, please contact:
+                      <br/><a target="_blank" href="mailto:skronekeith@fontenelleforest.org">Seth Keith at SKroneKeith@fontenelleforest.org</a>.</p>
+                      <hr/>
+                      <h3>SCOUTS</h3>
+                      <p>With hands-on activities, games, and exploration, scouts will discover nature’s mysteries at Fontenelle Forest, the region’s premier nature center that encompasses forest, prairie, and wetlands along the Missouri River. With year-round programming and activities from guided hikes, live animal demonstrations, natural science exhibits, lectures, classes, and even snowshoe rentals, there’s always a reason to bring your troop. Make plans to have your Scouts join us for an exciting adventure!</p>
+                      <p className="p_info">For information about Boy and Girl Scouts programs, please contact:
+                      <br/><a target="_blank" href="mailto:kfischer@fontenelleforest.org">Kathy Fischer at kfischer@fontenelleforest.org</a>.
+                      <br/>For information about Eagle Scout programs:
+                      <br/><span className="p_num">(402) 731-3140</span></p>
+                    </div>
+                    <div>
+                      <img src="/img/programs/bag.png" />
+                    </div>
+                  </div>
                 </div>
               </div>
 

@@ -120,3 +120,30 @@
     background-image: url(/img/programs/texture.svg);
   }
 }
+
+.p_groups.p_columns {
+  display: flex;
+  justify-content: space-between;
+  div {
+    width: 50%;
+    align-items: center;
+  }
+  div:first-child {
+    padding-right: 25px;
+  }
+  h2 {
+    text-align: left;
+  }
+  h3 {
+    color: $programs_color;
+  }
+  a, span.p_num {
+    color: $programs_color;
+  }
+  p.p_info {
+    color: #000;
+  }
+  p {
+    font-size: 14px;
+  }
+}
