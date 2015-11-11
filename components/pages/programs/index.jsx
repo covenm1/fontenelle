@@ -143,16 +143,16 @@ var Main = React.createClass({
         <p>Looking for a unique setting in which to have fun with your child while learning about the natural world? Mud Pies is a relaxed, drop-in-and-play program that encourages interaction between adult and child. Each week, a natural science topic is explored through station-based activities, free play, and a guided walk. Come discover the joy of sharing nature with your child!</p>
         <p>Mud Pies meets every Monday-Thursday from 9:30-11:30 am at Fontenelle Forest Nature Center. This program is for children ages 5 and younger accompanied by an adult. One adult is required for every two children. This program is free for members or with daily admission.</p>
         <p>Parent groups, day cares, or preschools are accepted on Fridays only by appointment. Contact Lindsay Cooley atlcooley@fontenelleforest.org for more information and available dates.</p>
-        <p>Location:</p>
-        <p>Fontenelle Forest Nature Center</p>
-        <p>Times:</p>
-        <p>Every Monday, Tuesday, Wednesday, and Thursday during the school year (except certain holidays)</p>
-        <p>9:30 - 11:30 a.m.</p>
-        <p>Ages:</p>
-        <p>5 and younger, accompanied by an adult</p>
-        <p>Admission:</p>
-        <p>FF Members: Free</p>
-        <p>Non-members: Free with Daily Admission</p>
+        <p className="main_label">Location:</p>
+        <p className="main_description">Fontenelle Forest Nature Center</p>
+        <p className="main_label">Times:</p>
+        <p className="main_description">Every Monday, Tuesday, Wednesday, and Thursday during the school year (except certain holidays)</p>
+        <p className="main_description">9:30 - 11:30 a.m.</p>
+        <p className="main_label">Ages:</p>
+        <p className="main_description">5 and younger, accompanied by an adult</p>
+        <p className="main_label">Admission:</p>
+        <p className="main_description"><strong>FF Members:</strong> Free</p>
+        <p className="main_description"><strong>Non-members:</strong> Free with Daily Admission</p>
       </div>
     )
 
@@ -371,7 +371,7 @@ var Main = React.createClass({
                       <div className="program_item" onClick={self.natureExplorers}>
                         <h4 className="name">
                           <span className="program_name">Nature Explorers</span>
-                          <span className="program_description">Etiam porta sem malesuada magna mollis euismod.</span>
+                          <span className="program_description">This is a child-only learning experience with a new topic each month to learn and explore.</span>
                         </h4>
                         <span className="program_arrow">
                           <svg className="arrow_circle red right_arrow" x="0px" y="0px" viewBox="0 0 52 52" enableBackground="new 0 0 52 52" >
@@ -390,7 +390,7 @@ var Main = React.createClass({
                       <div className="program_item" onClick={self.campfire}>
                         <h4 className="name">
                           <span className="program_name">Campfire</span>
-                          <span className="program_description">Etiam porta sem malesuada magna mollis euismod.</span>
+                          <span className="program_description">Enjoy an enchanting evening roasting s’mores, listening to stories, and spending quality time with your family.</span>
                         </h4>
                         <span className="program_arrow">
                           <svg className="arrow_circle red right_arrow" x="0px" y="0px" viewBox="0 0 52 52" enableBackground="new 0 0 52 52" >
@@ -409,7 +409,7 @@ var Main = React.createClass({
                       <div className="program_item" onClick={self.familySundays}>
                         <h4 className="name">
                           <span className="program_name">Family Sundays</span>
-                          <span className="program_description">Etiam porta sem malesuada magna mollis euismod.</span>
+                          <span className="program_description">Each Sunday at 1:00 p.m. we invite families to come discover the forest.</span>
                         </h4>
                         <span className="program_arrow">
                           <svg className="arrow_circle red right_arrow" x="0px" y="0px" viewBox="0 0 52 52" enableBackground="new 0 0 52 52" >

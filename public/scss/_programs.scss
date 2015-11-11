@@ -147,3 +147,19 @@
     font-size: 14px;
   }
 }
+
+.main_class {
+  h2 {
+    color: $programs_color;
+    font-family: 'PermanentMarkerPro', Helvetica, Arial, Sans-Serif;
+    font-size: 40px;
+    font-weight: 100;
+  }
+  .main_label {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  .main_description {
+    line-height: 1.5;
+  }
+}
