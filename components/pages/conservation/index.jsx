@@ -241,7 +241,7 @@ var Main = React.createClass({
                   <div className="quiet_wild copy_container">
                     <h2 className="marker">An Ongoing Story</h2>
                     <p>The forest is a complex ecosystem that is constantly evolving. It is part of our mission to both understand its history and to plan and protect its future. What you see when you look out into the dense trees, prairie grasses, and marshy wetlands today is different than what you would have seen 200, 100, or even 50 years ago.</p>
-                    <p>As we interact with the Forest in a multitude of ways, we all have a role to play in this story. We are leaving our footprint on the Forest, and it’s vital that we consider its size and shape. We’ve learned that a purely “hands off” approach doesn’t work as well as you might guess. In the absence of proactive conservation efforts, the plant and animal life at the Forest would eventually fall out of harmony and reach a non-working state.</p>
+                    <p>As we interact with the forest in a multitude of ways, we all have a role to play in this story. We are leaving our footprint on the forest, and it’s vital that we consider its size and shape. We’ve learned that a purely “hands off” approach doesn’t work as well as you might guess. In the absence of proactive conservation efforts, the plant and animal life at the forest would eventually fall out of harmony and reach a non-working state.</p>
                     <p>So we do research, and lots of it. We get out there and observe. We utilize the helping hand of hundreds of dedicated volunteers. We don’t disrupt the natural state of things, but we do encourage nature to thrive in every way we can. Conservation at Fontenelle Forest is the sum of our efforts, from pulling weeds to writing reports.</p>
                     <img className="bottom_vine" src="/img/bottom_vine.svg" />
                   </div>
@@ -253,7 +253,7 @@ var Main = React.createClass({
                 <div id="history" className="tearjerker_wrapper">
                   <div className="centered_content">
                     <h2 className="marker">Thousands of Years Plus a Century</h2>
-                    <p>Humans have been interacting with the land that is now Fontenelle Forest for hundreds of thousands of years. But, it wasn’t until 1913 that the land was officially protected with the founding of the Fontenelle Nature Association. Though this subsequent centennial is but a sliver of time in the grand scheme of things, it has been marked by dramatic milestones in the area of forest conservation. Learning about the Forest’s history helps us appreciate it even more today and ensures solid stewardship of this land for years to come.</p>
+                    <p>Humans have been interacting with the land that is now Fontenelle Forest for many thousands of years. But, it wasn’t until 1913 that the land was officially protected with the founding of the Fontenelle Nature Association. Though this subsequent centennial is but a sliver of time in the grand scheme of things, it has been marked by dramatic milestones in the area of forest conservation. Learning about this history helps us appreciate it even more today and ensures solid stewardship of this land for years to come.</p>
                     <img src="/img/conservation/divider_bottom_thing.png" />
                   </div>
                 </div>
@@ -299,10 +299,10 @@ var Main = React.createClass({
               </div>
 
               <div id="habitat" className="egg_wrap">
-                <h2 className="habitat_marker marker">If you have the habitat, you have the home.</h2>
+                <h2 className="habitat_marker marker">Healthy Habitats Make Happy Homes</h2>
                 <div className="habitat_home_container main_wrapper">
                   <div className="quiet_wild copy_container">
-                    <p>Our main tenet of land stewardship at Fontenelle Forest is to facilitate the most balanced environment we can. With ideal living conditions, the animals follow—the invertebrates, insects, amphibians, reptiles, and mammals that make the Forest harmonious and happy. Still, it’s vital that we let nature do what it wants to do. Our job is more to pay attention and interpret the natural signs that are out there.</p>
+                    <p>If there’s one thing we know, it’s that nature will do what it wants to do. Our job is to pay attention. The approach is simple: focus on maintaining a balanced environment where animals will want to live. With the healthiest trees, the richest soil, the cleanest air possible, the creatures that make the forest harmonious and happy will follow.</p>
                   </div>
                 </div>
               </div>
@@ -315,13 +315,13 @@ var Main = React.createClass({
                     credit="Josh Preister"
                     title="Habitat Restoration"
                     key="habitat"
-                    description="Oak savanna and woodland habitats within Fontenelle Forest face severe decline. Their regeneration has been stunted due to the lack of open space resulting from fire suppression and the encroachment of invasive plants. To ensure the preservation and expansion of this ecological community, FF began an oak woodland restoration. Click to find out how we do it!" />
+                    description="Oak savanna and woodland habitats within Fontenelle Forest face severe decline. Their regeneration has been stunted due to the lack of open space resulting from fire suppression and the encroachment of invasive plants. To ensure the preservation and expansion of this ecological community, we began an oak woodland restoration project." />
 
                   <HabitatThing
                     image="/img/conservation/habitat/deer_management.jpg"
                     title="Deer Management"
                     key="deer"
-                    description="Since the 1980s, the deer population has exploded, due in part to the lack of larger predators and the abundance of food. To mitigate the issue, Fontenelle embarked on what has been a decades-long process: conducting research, forming and enacting a plan, and constantly evaluating results. Since the official deer hunt program began in 1996, it is arguably the most successful conservation program in the history of the forest. Deer management information can be found here." />
+                    description="Since the 1980s, the deer population has exploded, due in part to the lack of larger predators and the abundance of food. To mitigate the issue, we embarked on what has been a decades-long process: conducting research, forming and enacting a plan, and constantly evaluating results. Since the official deer hunt program began in 1996, it has become arguably the most successful conservation program in the history of the forest." />
 
                   <HabitatThing
                     image="/img/conservation/habitat/erosion_control.jpg"
@@ -329,28 +329,28 @@ var Main = React.createClass({
                     title="Erosion Control"
                     link="/post/erosion-control"
                     key="erosion"
-                    description="Due to years of storm runoff, Coffin Springs Hollow in Fontenelle Forest had eroded into a five-hundred-foot-long gully. Soil repeatedly washed from the area into the nearby stream and was thus threatening the health of our Great Marsh ecosystem. With help from our partners and supporters, Fontenelle Forest successfully completed a series of erosion controls in recent years. Check out our projects!" />
+                    description="Due to years of storm runoff, Coffin Springs Hollow had eroded into a five hundred-foot gully. Soil repeatedly washed from the area into the nearby stream and was thus threatening the health of our Great Marsh ecosystem. With help from our partners and supporters, we successfully completed a series of erosion controls in recent years." />
 
                   <HabitatThing
                     image="/img/conservation/habitat/prescribed_burn.jpg"
                     credit="Alex Wiles"
-                    title="Prescribed fire"
+                    title="Prescribed Fire"
                     link="/post/prescribed-burn"
                     key="fire"
-                    description="While a house on fire in a neighborhood is not a good thing, fire in a prairie or oak woodland IS! Both of these ecological communities are fire dependent and our trained prescribed burn crew reintroduces this often-missing component to the natural systems here at Fontenelle Forest. Read more about our prescribed fire program." />
+                    description="While a house on fire in a neighborhood is not a good thing, fire in a prairie or oak woodland certainly is. These ecological communities are fire dependent and our trained prescribed burn crew has been reintroducing this component to the natural systems here. Fires are often missed in this age of modern settlement." />
 
                   <HabitatThing
                     image="/img/conservation/habitat/invasive_species.jpg"
-                    title="Invasive species control"
+                    title="Invasive Species Control"
                     key="invasive"
-                    description="We have many beautiful plants in Fontenelle Forest, but some can wreak havoc on our land. In order to restore and maintain our natural habitat, we remove invasive plants. Ornamentals that escape from yards, and plants accidentally brought from other countries can take over when an ecologically community is out of balance. Invasive removal is hard work." />
+                    description="Fontenelle is home to many beautiful plants, but some can wreak havoc on our land. We remove invasive plants in order to restore and maintain the natural habitat. Ornamentals that escape from yards and plants accidentally brought from other countries can take over when an ecological community is out of balance. Invasive removal is hard work." />
 
                   <HabitatThing
                     image="/img/conservation/habitat/natures_helpers.jpg"
-                    title="Nature’s Helpers – Volunteers and YOU!"
+                    title="Nature’s Helpers – Volunteers and You"
                     link="/post/natures-helpers"
                     key="nature"
-                    description="All of the work we do requires many hours of labor, which is where our land steward volunteers come in. Our dedicated group of people is invaluable in our conservation efforts. We also rely on our neighbors to help keep our forest healthy. What can YOU do?" />
+                    description="All of the work we do requires many hours of labor, which is where our land steward volunteers come in. This dedicated group is invaluable to our conservation efforts, but we also rely on our neighbors to help keep our forest healthy. Find out what you can do to help." />
 
                 </div>
               </div>
@@ -480,7 +480,7 @@ var Main = React.createClass({
                     <h1 className="hero_header">SEE THE FOREST</h1>
                     <h3 className="hero_subheader marker">AND THE TREES</h3>
                     <div className="hero_textured_color" >
-                      <p>We invite you to explore ways you can get involved in our conservation initiatives. As stewards of the land, we are dedicated to the conservation and preservation of our local environment so that future generations can continue to enjoy the forest.</p>
+                      <p>As stewards of the land, we are dedicated to the conservation and preservation of our local environment so that future generations can continue to enjoy the forest.</p>
                     </div>
                     <div className="hero_icon_wrap">
                       <span className="line left_line"></span>
@@ -512,7 +512,7 @@ var Main = React.createClass({
                     <h1 className="hero_header">SEE THE FOREST</h1>
                     <h3 className="hero_subheader marker">AND THE TREES</h3>
                     <div className="hero_textured_color" >
-                      <p>We invite you to explore ways you can get involved in our conservation initiatives. As stewards of the land, we are dedicated to the conservation and preservation of our local environment so that future generations can continue to enjoy the forest.</p>
+                      <p>As stewards of the land, we are dedicated to the conservation and preservation of our local environment so that future generations can continue to enjoy the forest.</p>
                     </div>
                     <div className="hero_icon_wrap">
                       <span className="line left_line"></span>

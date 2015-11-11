@@ -162,7 +162,8 @@ var Main = React.createClass({
     var content = (
       <div className="main_class">
         <h2>FAMILY SUNDAYS</h2>
-        <p>All Ages Discover a new topic every Sunday. This program is offered throughout the year.</p>
+        <p>Each Sunday at 1:00 p.m. we invite families to come discover the forest. Whether it’s a hike on a new trail with a guide, a meet-and-greet with a raptor, or learning about bird migration, your family will experience the forest like never before.</p>
+        <p>These programs are designed for all ages. Each week offers a new topic. Sample topics have included: “Scavenger Hunt Fun,” “Dipping in the Wetlands,” “Migrating Monarchs,” “White-Tailed Deer,” and many more. Make sure to check out Forest Now for the latest topic.</p>
       </div>
     )
 
@@ -173,7 +174,9 @@ var Main = React.createClass({
     var content = (
       <div className="main_class">
         <h2>CAMPFIRE PROGRAMS</h2>
-        <p>All Ages Bring your family out to the forest for a fun campfire program on the first Friday night of every month.</p>
+        <p>Enjoy an enchanting evening roasting s’mores, listening to stories, and spending quality time with your family. Our campfire programs occur the first Friday night of every month. On cold nights enjoy hot cocoa and bring your blanket. Songs will be sung, legends shared, and the forest will surround you at Camp Brewster.</p>
+        <p>Each month features a different theme. Past themes have included: “Stories of the Night Sky,” “A Chill in the Air,” “Who is that?,” “Spring Equinox,” “We’ve Gone Batty!,” “Home on the Range,” “Nature Dads: Parenting at the Forest,” and “America the Beautiful.”</p>
+        <p>Check Forest Now for the latest theme and date.</p>
       </div>
     )
 
@@ -184,7 +187,8 @@ var Main = React.createClass({
     var content = (
       <div className="main_class">
         <h2>NATURE EXPLORERS</h2>
-        <p>Ages 5 - 12 This program explores a different nature theme by season, and the group is divided by age. Offered one Saturday every other month; registration is required. Check the calendar for themes.</p>
+        <p>This is a child-only learning experience with a new topic each month to learn and explore. Designed for ages 5–11, each program includes snacks, a hike, and a special theme. Past themes have included: “Some like it Wet” featuring the Amphibians of Fontenelle Forest, “April Birds” featuring bird calls and bird feeders, and “Beavers” featuring beaver tracking.</p>
+        <p>This interactive and educational program extends the children’s classroom learning into practical, real world learning. Fun and informative led by Fontenelle Forest naturalists, this is one of many unique offerings that only can be found here.</p>
       </div>
     )
 
@@ -340,7 +344,7 @@ var Main = React.createClass({
 
                     <div className="for_kids copy_container" id="kids">
                       <h2 className="marker color">For Kids</h2>
-                      <p>What could be more fun than spending a week in the forest? Fontenelle’s Nature Discovery Day Camps feature fun, hands-on, science-based learning through play taught by our year-round professional educators. Camps are offered in the Summer and Winter. We also offer special camps for grandparents and grandkids to participate in together. Registration is limited and begins January 5th. Proof of age is required. Campers should bring their lunch. Snacks provided.</p>
+                      <p>What could be more fun than spending a week in the forest? Fontenelle’s Nature Discovery Day Camps feature fun, hands-on, science-based learning through play taught by our year-round professional educators. Camps are offered in the summer and winter. We also offer special camps for grandparents and grandkids to participate in together. Registration is limited. Proof of age is required. Campers should bring their lunch. Snacks provided.</p>
 
                       <div className="program_item" onClick={self.mudPies}>
                         <h4 className="name">
@@ -669,7 +673,7 @@ var Main = React.createClass({
                     <h1 className="hero_header">WHAT YOU CAN FIND HERE</h1>
                     <h3 className="hero_subheader marker">Is infinite, and it is yours</h3>
                     <div className="hero_textured_color" >
-                      <p>Camps, clubs, events and other programs for forest explorers of every age - from pre-schoolers to seniors and everyone in between.</p>
+                      <p>Camps, clubs, events and other programs for forest explorers of every age—from preschoolers to seniors and everyone in between.</p>
                     </div>
                     <div className="hero_icon_wrap">
                       <span className="line left_line"></span>
@@ -702,7 +706,7 @@ var Main = React.createClass({
                     <h1 className="hero_header">WHAT YOU CAN FIND HERE</h1>
                     <h3 className="hero_subheader marker">Is infinite, and it is yours</h3>
                     <div className="hero_textured_color" >
-                      <p>Camps, clubs, events and other programs for forest explorers of every age - from pre-schoolers to seniors and everyone in between.</p>
+                      <p>Camps, clubs, events and other programs for forest explorers of every age—from preschoolers to seniors and everyone in between.</p>
                     </div>
                     <div className="hero_icon_wrap">
                       <span className="line left_line"></span>

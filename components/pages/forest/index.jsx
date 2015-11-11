@@ -158,17 +158,17 @@ var Main = React.createClass({
     var drawer = [
       {
         title: "The Nature Center",
-        description: "This 25000 square foot building is the home to classrooms, rotating exhibits, and the Fontenelle Forest main offices. Stop by the front desk to grab a map and check the ranger board for the latest on wildlife activity.",
+        description: "This 25,000 square foot building is home to classrooms, rotating exhibits, and our main offices. Stop by the front desk to grab a map and check the ranger board for the latest on wildlife activity.",
         image: "/img/map_photos/small/nature-center.jpg"
       },
       {
         title: "Acorn Acres",
-        description: "Just outside the Nature Center, this natural playscape offers children a unique place for unstructured play and outdoor learning",
+        description: "Located just outside of the Nature Center, this natural playscape offers children a unique place for unstructured play and outdoor learning.",
         image: "/img/map_photos/small/acorn-acres.jpg"
       },
       {
         title: "Habitat Hollow",
-        description: "This short, level trail is a great option when you want a short jaunt off the boardwalk. ",
+        description: "This short, level trail is a great option when you want a short jaunt off the boardwalk.",
         image: "/img/map_photos/small/habitat-hollow.jpg"
       },
       {
@@ -179,7 +179,7 @@ var Main = React.createClass({
     ];
     var drawer_overview = {
         title: "Overview",
-        description: "With a total of 3.4 miles, this group of trails includes a 1.0 mile boardwalk and various difficulties of trails through the woods. There is also a trail that runs along Childs Hollow through the wetland area to a view of the river. These trails provide several opportunities to see our oak woodland restoration right along the trails.",
+        description: "With a total of 3.4 miles, this group includes a one-mile boardwalk and various difficulties of trails through the woods. There is also a trail that runs along Childs Hollow through the wetland area to a view of the river. These provide several opportunities to see our oak woodland restoration relatively up close.",
     };
 
     self.setState({ drawer: drawer, area: 'natureCenter', drawer_overview: drawer_overview });
@@ -192,12 +192,12 @@ var Main = React.createClass({
     var drawer = [
       {
         title: "Trailheads at the Wetlands Learning Center",
-        description: "With 5 trailheads nearby, the Wetlands Learning center is a great spot to park and while you discover a new trail.",
+        description: "With five trailheads nearby, the Wetlands Learning Center is a great spot to park and while you discover a new trail.",
         image: "/img/map_photos/small/trailheads.jpg"
       },
       {
         title: "Gifford Memorial Boardwalk",
-        description: "This level, barrier free trail takes you on a half mile journey through wetland and cottonwoods to the observation blind.",
+        description: "This level, barrier-free trail takes you on a half mile journey through wetland and cottonwoods to the observation blind.",
         image: "/img/map_photos/small/gifford memorial boardwalk.jpg"
       },
       {
@@ -220,7 +220,7 @@ var Main = React.createClass({
     var drawer = [
       {
         title: "Camp Gifford",
-        description: "A young Henry Fonda spent time with other scouts at Camp Gifford. You can still see concrete bunkhouse foundations from Stream Trail.",
+        description: "A young Henry Fonda spent time with other scouts at Camp Gifford. You can still see concrete bunkhouse foundations from the Stream Trail.",
         image: "/img/map_photos/small/camp_gifford.jpg"
       },
       {
@@ -230,13 +230,13 @@ var Main = React.createClass({
       },
       {
         title: "Cottonwood Trail",
-        description: "A level trail across the floodplain where you can find giant cottonwood trees.",
+        description: "Explore giant cottonwood trees on this level trail that crosses the floodplain.",
         image: "/img/map_photos/small/cottonwood-trail.jpg"
       }
     ];
     var drawer_overview = {
         title: "Overview",
-        description: "Mostly flat, sandy trails wind through the northern part of our floodplain. River views can be found along Missouri Trail. Since this is a wetland, the trails can often be muddy or have some standing water on them.",
+        description: "Mostly flat, sandy trails wind through the northern part of our floodplain, with the Missouri Trail featuring wonderful views of the river. Since this is a wetland, the area can often be muddy or have some standing water.",
     };
 
     self.setState({ drawer: drawer, area: 'northernFloodplains', drawer_overview: drawer_overview });
@@ -248,23 +248,23 @@ var Main = React.createClass({
     var drawer = [
       {
         title: "Earth Lodges",
-        description: "Along the ridges of Oak Trail and Hawthorn Trail you can find depressions that mark 1000 year old sites of Native American earth lodges.",
+        description: "Along the ridges of Oak Trail and Hawthorn Trail you can find depressions that mark 1,000 year-old sites of Native American earth lodges.",
         image: "/img/map_photos/small/earth_lodge.jpg"
       },
       {
         title: "Scenic, ridge-top Oak Trail",
-        description: "A bit over a mile long with plenty of vertical travel, Oak Trail can give you a workout. The trail follows a ridge with scenic views and 250 year old Burr Oak trees.",
+        description: "A bit over one mile long with plenty of vertical travel, Oak Trail can give you a workout. It follows a ridge with scenic views and 250 year-old bur oak trees.",
         image: "/img/map_photos/small/oak-trail.jpg"
       },
       {
         title: "Child’s MIll",
-        description: "In the 1850’s Charles Childs owned a large section of Fontenelle Forest. His and other logging operations left trails throughout the forest, some of which eventually became the trails we hike today.",
+        description: "In the 1850s, Charles Childs owned a large section of Fontenelle Forest. His and other logging operations left trails throughout the forest, some of which eventually became the trails we hike today.",
         image: "/img/map_photos/small/nature-center.jpg"
       }
     ];
     var drawer_overview = {
         title: "Overview",
-        description: "North of Camp Gifford Road, this section containing 2.5 miles of undulating trails through our upland forest is a quiet place to enjoy nature. These trails mostly have moderate slope, with a few steep slopes along the way.",
+        description: "North of Camp Gifford Road, this section containing 2.5 miles of undulating trails through our upland forest is an exceptionally tranquil place to enjoy nature. These mostly have moderate slope, with a few steep slopes along the way.",
     };
 
     self.setState({ drawer: drawer, area: 'northernUplands', drawer_overview: drawer_overview });
@@ -275,23 +275,23 @@ var Main = React.createClass({
 
     var drawer_overview = {
         title: "Overview",
-        description: "Full of Nebraska history and the beginning of Bellevue, these moderate to steep trails take you on an amazing journey. Pick up a History brochure at the front desk for a minimal cost and travel back in time. ",
+        description: "Full of cues from Bellevue, Nebraska’s storied history, these moderate-to-steep trails take you on an amazing journey. Pick up a History brochure at the front desk—and travel back in time.",
     };
 
     var drawer = [
       {
         title: "Mormon Hollow",
-        description: "Follow a deep ravine along traces of a Mormon Pioneer trail blazed in the summer of 1846.",
+        description: "Follow a deep ravine along traces of a Mormon pioneer trail first blazed in the summer of 1846.",
         image: "/img/map_photos/small/mormon-hollow.jpg"
       },
       {
         title: "Springs and streams",
-        description: "Along Morman Hollow’s trail you can find springs and miniature waterfalls.",
+        description: "Find plenty of serene springs and picturesque miniature waterfalls along the Mormon Hollow trail.",
         image: "/img/map_photos/small/springsandstreams.jpg"
       },
       {
         title: "History Trail",
-        description: "Follow a self guided tour of 15 historic locations throughout Fontenelle Forest.",
+        description: "Follow a self-guided tour of fifteen historic locations throughout Fontenelle Forest.",
         image: "/img/map_photos/small/history-trail.jpg"
       }
     ];
@@ -667,7 +667,7 @@ var Main = React.createClass({
                     <div className="map_content">
                       <div className="copy_container">
                         <h2 className="marker color">Trailmap</h2>
-                        <p>For over a century, thousands of families have experienced the quiet wild of Nebraska's Fontenelle Forest and Neale Woods–hiking, playing and exploring our 26 miles of maintained trails and 2,000 acres of upland and lowland forests, native prairies, wetlands, lakes and waterways. Each visit is its own unique adventure, its own story, its own memory to share.</p>
+                        <p>Walking our trails is an experience unlike any other in the Omaha metro area. In a single afternoon, you’ll encounter a range of vastly different ecosystems, from deciduous forest to oak savanna, prairie, and wetlands.</p>
                         <img className="bottom_vine" src="/img/bottom_vine.svg" />
                       </div>
                       <div className="trail_map_container">
@@ -1597,15 +1597,15 @@ var Main = React.createClass({
 
               <div className="egg_wrap bpadded">
                 <div className="image_container">
-                  <h2 className="marker color">Other Properties</h2>
+                  <h2 className="marker color">Other Locations</h2>
                   <div className="prop_container">
                     <div className="property" style={ {backgroundImage: 'url(/img/forest/neale-woods.jpg)'} } >
                       <h3 className="marker">NEALE WOODS</h3>
-                      <p>Neale Woods Nature Center, located 10 minutes north of downtown Omaha, is a 550-acre area that includes more than nine miles of walking trails which wind through forested ravines and tallgrass prairies.</p>
+                      <p>Located ten minutes north of downtown Omaha, Neale Woods Nature Center is a 550-acre area that includes more than nine miles of walking trails which wind through forested ravines and tallgrass prairies.</p>
                     </div>
                     <div className="property" style={ {backgroundImage: 'url(/img/forest/raptor-center.jpg)' }}>
                       <h3 className="marker">Raptor Rehabilitation Center</h3>
-                      <p>Fontenelle Forest Raptor Rehabilitation Center, located near Lincoln, receives hundreds of injured, sick, poisoned or orphaned birds annually. Volunteers provide emergency treatment and stabilize birds for transport to the center. Birds receive medical care while minimizing human contact. For this reason, our rehabilitation center is closed to visitors and we limit scheduled visits as well. Our goal is to work toward release back into the wild for all birds.</p>
+                      <p>A team of volunteers provides emergency treatment for injured and sick birds at the Fontenelle Forest Raptor Rehabilitation Center, located near Lincoln. Because we minimize human contact, the center has limited access to visitors.</p>
                     </div>
                   </div>
                 </div>

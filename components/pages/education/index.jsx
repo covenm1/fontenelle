@@ -114,8 +114,8 @@ var ClassList = React.createClass({
             <p>{ current_class.description }</p>
             { current_class.categories.length ?
               <span className="icons">
-                { current_class.categories.indexOf('forest') > -1 ? <span className="category marker color"><img src="/img/education/icon_outdoor-grey.svg" /> Fontenell Forest</span> : null }
-                { current_class.categories.indexOf('nature') > -1 ? <span className="category marker color"><img src="/img/education/icon_indoor-grey.svg" /> Forest On-The-Go</span> : null }
+                { current_class.categories.indexOf('forest') > -1 ? <span className="category marker color"><img src="/img/education/icon_outdoor-grey.svg" /> Fontenelle Forest</span> : null }
+                { current_class.categories.indexOf('nature') > -1 ? <span className="category marker color"><img src="/img/education/icon_indoor-grey.svg" /> Nature On-The-Go</span> : null }
               </span>
             : null }
             <div className="details">
@@ -125,7 +125,7 @@ var ClassList = React.createClass({
             </div>
             { current_class.prepost.length ?
             <div className="enhance">
-              <p>Enhance your class experience with pre and post class activities.</p>
+              <p>Enhance your class experience with pre- and post-class activities.</p>
               <a href={ current_class.prepost } target="_blank" className="download_pdf">Download PDF</a>
             </div>
             : null }
@@ -265,7 +265,7 @@ var Main = React.createClass({
                 </div>
                 <div className="living_classroom copy_container">
                   <h2 className="marker">A living classroom</h2>
-                  <p>The Forest offers nearly unlimited opportunities for learning. Over 100,000 youth and adults each year take part in environmental education programs through Fontenelle.</p>
+                  <p>The forest offers nearly unlimited opportunities for learning. Over 100,000 youth and adults each year take part in environmental education programs through Fontenelle.</p>
                   <img className="bottom_vine" src="/img/bottom_vine.svg" />
                 </div>
               </div>
@@ -327,15 +327,11 @@ var Main = React.createClass({
                 <div id="classes" className="main_wrapper classes_container">
                   <div className="living_classroom copy_container">
                     <h2 className="marker in_forest">In the Forest</h2>
-                    <p>Book your next field trip with Fontenelle Forest! Our experienced educators will provide an engaging, hands-on program for your group. Each program includes an indoor and outdoor portion. To register for a school program for the 2011/2012 school year, please contact the FF Education Department at (402) 731-3140. For directions to the nature centers, click here.</p>
-                    <p className="small_text"><strong>Once you have booked a field trip</strong>, be sure to take advantage of the activities provided below. These activities will greatly enhance your students' field trip experience - and they're a lot of fun!</p>
+                    <p>Field trips to the forest consistently top students’ lists of favorites. Our experienced educators will provide an engaging, hands-on program for your group during your visit to Fontenelle. Each trip includes an indoor educational portion that complements the outdoor program. To register, please contact our Education Department at (402) 731-3140.</p>
                   </div>
                   <div className="living_classroom copy_container">
                     <h2 className="marker on_go">Nature On-The-Go</h2>
-                    <p>Nature-On-the-Go traveling programs introduce hands-on natural science programs to your students. During each program, your students will explore a variety of topics. These are great to supplement your school-day lessons or as an after-school program.</p>
-                    <p className="small_text"><strong>To schedule a program</strong>, call our Manager of Programming and Outreach at 402-731-3140 x1026</p>
-                    <p className="small_text">All programs are aligned with Nebraska State Science Standards.</p>
-                    <p className="small_text">Each program is 45–60 minutes long. Maximum 30 students per On-the-Go program. For groups larger than 30, multiple programs must be scheduled.</p>
+                    <p>Traveling programs that come to you, Nature On-the-Go brings hands-on, natural science education to your students without having to make a field trip. Each program is 45-60 minutes in length, covers a variety of topics, and meets Nebraska State Science Standards. To schedule, please call our Manager of Programming and Outreach at (402) 731-3140 x1026.</p>
                   </div>
                   <div className="flower_image">
                     <img src="/img/education/flowers.png" />
@@ -398,7 +394,7 @@ var Main = React.createClass({
                   <h1 className="hero_header">CALL OF THE WILD BECKONS</h1>
                   <h3 className="hero_subheader marker">Teachers, administrators and scout leaders</h3>
                   <div className="hero_textured_color" >
-                    <p>We invite you to explore opportunities for your school group, including curriculum tied to state science standards. Fontenelle's educational programs take many forms - from field trips, classes, and camps in the forest to hands-on, nature-on-the-go presentations at schools, to community art projects.</p>
+                    <p>Explore opportunities for your school group, including curriculum tied to state science standards. Fontenelle's educational programs take many forms—from field trips, classes, and camps in the forest to hands-on, nature on-the-go presentations at schools, to community art projects.</p>
                   </div>
                   <div className="hero_icon_wrap">
                     <span className="line left_line"></span>
@@ -429,7 +425,7 @@ var Main = React.createClass({
                   <h1 className="hero_header">CALL OF THE WILD BECKONS</h1>
                   <h3 className="hero_subheader marker">Teachers, administrators and scout leaders</h3>
                   <div className="hero_textured_color" >
-                    <p>We invite you to explore opportunities for your school group, including curriculum tied to state science standards. Fontenelle's educational programs take many forms - from field trips, classes, and camps in the forest to hands-on, nature-on-the-go presentations at schools, to community art projects.</p>
+                    <p>Explore opportunities for your school group, including curriculum tied to state science standards. Fontenelle's educational programs take many forms—from field trips, classes, and camps in the forest to hands-on, nature on-the-go presentations at schools, to community art projects.</p>
                   </div>
                   <div className="hero_icon_wrap">
                     <span className="line left_line"></span>
