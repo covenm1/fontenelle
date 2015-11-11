@@ -92,7 +92,7 @@ module.exports = React.createClass({
             <h2 className="bird_title marker">{object.title}</h2>
             <h4 className="bird_species">{object.meta.species}</h4>
             <h4 className="bird_date">Date added: {object.meta.date_added}</h4>
-            <p className="bird_overview">{object.meta.overview}</p>
+            <p className="bird_overview" dangerouslySetInnerHTML={{__html: object.meta.overview}}></p>
           </div>
         </div>
       )

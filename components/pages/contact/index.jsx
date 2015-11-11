@@ -123,7 +123,7 @@ module.exports = React.createClass({
               <span className="phone_label">FAX</span>
               <a href="tel:4027312403" className="phone_button">(402) 731-2403</a>
             </span>
-          </div> 
+          </div>
         </div>
         <div className="egg_wrap tpadded">
           <div className='main_wrapper'>
@@ -259,7 +259,7 @@ module.exports = React.createClass({
               <div className="staff_member">
                 <h2 className="name">
                   <span className="staff_name">Volunteer: </span>
-                  <span className="title">FTo become a volunteer or to learn more about FF's volunteer opportunities</span>
+                  <span className="title">To become a volunteer or to learn more about FF's volunteer opportunities</span>
                 </h2>
                 <p className="email"><a href="#">
                   <svg className="arrow_circle blue right_arrow" x="0px" y="0px" viewBox="0 0 52 52" enableBackground="new 0 0 52 52" >

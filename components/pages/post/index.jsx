@@ -68,7 +68,7 @@ module.exports = React.createClass({
         <div className="egg_wrap post_container">
           { featured_image ? <div className="featured_image" style={image_style}></div> : null }
           <div className='main_wrapper'>
-            <h1 className="post_title marker">{title}</h1>
+            <h1 className="post_title marker" dangerouslySetInnerHTML={{__html: title}}></h1>
             <div className='post_content' dangerouslySetInnerHTML={{__html: content}}></div>
           </div>
         </div>

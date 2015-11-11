@@ -645,7 +645,7 @@ var Main = React.createClass({
                     <div className="drawer" style={drawer_styles}>
                       <div className="orange_overlay"></div>
 
-                      <svg onClick={self.reset} className="arrow_circle orange left_arrow left reset_button" x="0px" y="0px" viewBox="0 0 52 52" enableBackground="new 0 0 52 52" >
+                      <svg onClick={self.reset} className="arrow_circle orange shadow left_arrow left reset_button" x="0px" y="0px" viewBox="0 0 52 52" enableBackground="new 0 0 52 52" >
                         <path className="circle" strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"/>
                         <g className="arrow" >
                           <path strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M22.6,25.9c0,0,1,1.6,1,4.4c0,2.6,0.6,3.5,0.6,3.8c0,0.4-0.3,0.7-0.7,0.5s-8.6-6.2-10.5-8.1

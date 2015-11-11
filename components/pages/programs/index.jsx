@@ -440,7 +440,7 @@ var Main = React.createClass({
                   { video ?
                     <div className="centered_content wide">
                       <span className="video_close" onClick={self.toggleVideo}>×</span>
-                      <div className='embed-container'><iframe src='https://www.youtube.com/embed/f_rum7pLqZc?autoplay=1' frameBorder='0' allowFullScreen></iframe></div>
+                      <div className='embed-container'><iframe src='https://www.youtube.com/embed/2IhxTqPqNUI?autoplay=1' frameBorder='0' allowFullScreen></iframe></div>
                     </div>
                   :
                     <div className="centered_content">
