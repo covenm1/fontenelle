@@ -31,6 +31,31 @@ var Instagram = React.createClass({
   }
 });
 
+var FeaturedPost = React.createClass({
+  render: function(){
+    var self = this;
+    var featured_image = self.props.featured_image;
+    var title = self.props.title;
+    var subheader = self.props.subheader;
+    var slug = self.props.slug;
+    if (featured_image){
+      var style = {
+        backgroundImage: "url("+featured_image.guid+")"
+      }
+    }
+    return (
+      <div className="post featured" style={style}>
+        <div className="post_content">
+          <h4 className="post_headline" dangerouslySetInnerHTML={{__html: title}}></h4>
+          { subheader ? <p className="post_subheader">{subheader}</p> : null }
+          <Link className="post_link" to={"/post/" + slug}>Read more</Link>
+        </div>
+        <div className="featured_post_overlay"></div>
+      </div>
+    )
+  }
+});
+
 var Tweet = React.createClass({
   render: function(){
     var self = this;
@@ -168,6 +193,8 @@ module.exports = React.createClass({
       plantlife: [],
       closings: [],
       posts: [],
+      featured: {},
+      pinned: [],
       events: [],
       twistagrams: [],
       weather: {},
@@ -185,8 +212,11 @@ module.exports = React.createClass({
     self.loadClosings();
 
     self.loadWeather();
-    self.loadPosts();
     self.loadEvents();
+
+    self.loadPosts();
+    self.loadFeatured();
+    self.loadPinned();
 
     self.loadExcerpts();
     self.loadTwistagrams();
@@ -271,13 +301,49 @@ module.exports = React.createClass({
     var self = this;
     request
       .get('http://fontenelle.flywheelsites.com/wp-json/posts')
-      .query('type[]=post&filter[posts_per_page]=-1')
+      .query('type[]=post&filter[orderby]=modified&filter[order]=DESC&filter[posts_per_page]=3&filter[category_name]=Uncategorized')
       .set('Cache-Control', 'no-cache,no-store,must-revalidate,max-age=-1,private')
       .end(function(err, res) {
         if (res.ok) {
           var posts = res.body;
           console.log("loadPosts count: " + posts.length);
           self.setState({ posts: posts });
+
+        } else {
+          console.log('Oh no! error ' + res.text);
+        }
+          }.bind(self));
+  },
+
+  loadFeatured: function(){
+    var self = this;
+    request
+      .get('http://fontenelle.flywheelsites.com/wp-json/posts')
+      .query('type[]=post&filter[orderby]=modified&filter[order]=DESC&filter[posts_per_page]=1&filter[category_name]=featured')
+      .set('Cache-Control', 'no-cache,no-store,must-revalidate,max-age=-1,private')
+      .end(function(err, res) {
+        if (res.ok) {
+          var featured = res.body[0];
+
+          self.setState({ featured: featured });
+
+        } else {
+          console.log('Oh no! error ' + res.text);
+        }
+          }.bind(self));
+  },
+
+  loadPinned: function(){
+    var self = this;
+    request
+      .get('http://fontenelle.flywheelsites.com/wp-json/posts')
+      .query('type[]=post&filter[orderby]=modified&filter[order]=DESC&filter[posts_per_page]=1&filter[category_name]=pinned')
+      .set('Cache-Control', 'no-cache,no-store,must-revalidate,max-age=-1,private')
+      .end(function(err, res) {
+        if (res.ok) {
+          var pinned = res.body;
+
+          self.setState({ pinned: pinned });
 
         } else {
           console.log('Oh no! error ' + res.text);
@@ -463,6 +529,25 @@ module.exports = React.createClass({
       )
     });
 
+    var pinned_post = self.state.pinned.map(function(object){
+      var post_style ={
+        backgroundImage: "url("+ object.featured_image.guid +")"
+      }
+      if (object.meta){
+        var subheader = object.meta.subheader || "";
+      }
+      return (
+        <div className="post pinned">
+          <div className="post_image" style={post_style}></div>
+          <div className="post_content">
+            <h4 className="post_headline" dangerouslySetInnerHTML={{__html: object.title}}></h4>
+            { subheader ? <p className="post_subheader">{subheader}</p> : null }
+            <Link className="post_link" to={"/post/" + object.slug}>Read more</Link>
+          </div>
+        </div>
+      )
+    });
+
     var closings = self.state.closings.map(function(object){
       return <p className="closings_title">{object.title}</p>
     });
@@ -489,6 +574,12 @@ module.exports = React.createClass({
     } else {
       var week_text = "Week of: "
     }
+
+    var featured = self.state.featured;
+    if (featured.meta){
+      var featured_subheader = featured.meta.subheader || "";
+    }
+
 
     return (
       <div>
@@ -581,6 +672,14 @@ module.exports = React.createClass({
               {events}
             </div>
             <div className='now-right'>
+              {featured ?
+                <FeaturedPost
+                  title={featured.title}
+                  featured_image={featured.featured_image}
+                  slug={featured.slug}
+                  subheader={featured_subheader} />
+              : null}
+              {pinned_post}
               {posts}
               <Link to='/posts' className="all_posts_link">VIEW ALL POSTS</Link>
             </div>
