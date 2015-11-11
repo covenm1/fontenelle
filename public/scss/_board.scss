@@ -1,0 +1,41 @@
+.fb_wrapper .centered_content.bd_intro h2 {
+    font-size: 50px;
+    text-align: center;
+    padding-top: 100px;
+}
+
+.bd_members h3 {color: #1261ac;}
+
+.fb_container .fb_wrapper .centered_content.bd_officers {
+    max-width: 100%;
+    width: 1200px;
+    position: relative;
+    padding: 0 50px 25px;
+    background-color: #1261ac;
+    color: #fff;
+}
+
+.bd_officers h3 {
+  color:#fff;
+  font-size: 25px;
+}
+
+.fb_container .fb_wrapper .centered_content.bd_members {
+    max-width: 100%;
+    width: 1200px;
+    position: relative;
+    padding: 0 50px;
+}
+
+.bd_officers .fb_columns ul, .bd_members .fb_columns ul {
+  padding: 0;
+  list-style: none;
+  width: 50%;
+  margin: 0;
+}
+
+.bd_officers .fb_columns ul li, .bd_members .fb_columns ul li {
+  border: 0;
+  padding: 5px 0;
+  font-weight: normal;
+}
