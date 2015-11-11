@@ -402,7 +402,7 @@ module.exports=[
     "length": "1 hour",
     "standards": "SC2.1.1.a, SC2.1.1.d, SC2.3.2.b",
     "signup": "",
-    "prepost": "http://fontenelleforest.org/images/stories/School_Program_PDFs/Critters_Close-up_and_Critters_on_the_Move_2012.pdf",
+    "prepost": "http://fontenelle.flywheelsites.com/wp-content/uploads/2015/11/Critters_on_the_Move.pdf",
   },
   {
     "name": "Predator-Prey On the Go",
@@ -412,7 +412,7 @@ module.exports=[
     "length": "1 hour",
     "standards": "SC 5.3.1, 5.3.2.a, 5.3.3.b,c, and d, 5.3.4, 8.3.1.e, 8.3.3.b,d, and e, 8.3.4.a, 8.3.4.c",
     "signup": "",
-    "prepost": "",
+    "prepost": "http://fontenelle.flywheelsites.com/wp-content/uploads/2015/11/Predator_Prey.pdf",
   },
   {
     "name": "Mud Pies for Preschools",
@@ -452,7 +452,7 @@ module.exports=[
     "length": "1 hour",
     "standards": "SC2.1.1.a, SC2.3.1.c, SC5.1.1.b",
     "signup": "",
-    "prepost": "http://fontenelleforest.org/images/stories/School_Program_PDFs/Plantastic_and_It_is_a_Plants_Life_OTG_2012.pdf",
+    "prepost": "http://fontenelle.flywheelsites.com/wp-content/uploads/2015/11/It_is_a_Plants_Life_OTG.pdf",
   },
   {
     "name": "Animal Tracking",
@@ -502,7 +502,7 @@ module.exports=[
     "length": "1 hour",
     "standards": "SC2.1.1.a, SC2.1.1.d, SC2.3.4.a",
     "signup": "",
-    "prepost": "http://fontenelleforest.org/images/stories/School_Program_PDFs/2013xNaturally_Sensational.pdf",
+    "prepost": "http://fontenelle.flywheelsites.com/wp-content/uploads/2015/11/Naturally_Sensational.pdf",
 
   },
   {
@@ -513,7 +513,7 @@ module.exports=[
     "length": "1 hour",
     "standards": "SC2.1.1.a, SC2.1.1.d, SC2.4.3.c, SC5.3.3.d",
     "signup": "",
-    "prepost": "http://fontenelleforest.org/images/stories/School_Program_PDFs/2013_Wild_about_Winter_Pre_and_Post_activities_.pdf",
+    "prepost": "http://fontenelle.flywheelsites.com/wp-content/uploads/2015/11/Wild_about_Winter.pdf",
   },
   {
     "name": "Is it Alive?",
@@ -523,7 +523,7 @@ module.exports=[
     "length": "1.5 hours",
     "standards": "SC2.1.1.a, SC2.1.1.d, SC2.3.1.a, SC2.3.2.b, SC5.3.1.a",
     "signup": "",
-    "prepost": "http://fontenelleforest.org/images/stories/School_Program_PDFs/Is_It_Alive_2012.pdf",
+    "prepost": "http://fontenelle.flywheelsites.com/wp-content/uploads/2015/11/Is_It_Alive_2012.pdf",
   },
   {
     "name": "The Secret Life of Plants",
@@ -543,7 +543,7 @@ module.exports=[
     "length": "2 hours",
     "standards": "SC2.1.1.a, SC2.3.1.b, SC2.3.1.d",
     "signup": "",
-    "prepost": "http://fontenelleforest.org/images/stories/School_Program_PDFs/Habitat_Habitat_2012.pdf",
+    "prepost": "http://fontenelle.flywheelsites.com/wp-content/uploads/2015/11/Habitat_Habitat.pdf",
   },
   {
     "name": "Soil Science",
@@ -553,7 +553,7 @@ module.exports=[
     "length": "1.5 hours",
     "standards": "SC2.1.1.a, SC2.1.1.b, SC2.1.1.f, SC2.4.2.a",
     "signup": "",
-    "prepost": "",
+    "prepost": "http://fontenelle.flywheelsites.com/wp-content/uploads/2015/11/Soil-Science.pdf",
   },
   {
     "name": "Renew or Not?",
@@ -563,7 +563,7 @@ module.exports=[
     "length": "2 hours",
     "standards": "SC2.4.2.b, SC5.4.2.c, SC8.4.2.h",
     "signup": "",
-    "prepost": "http://fontenelleforest.org/images/stories/School_Program_PDFs/Renew_or_Not_2012.pdf",
+    "prepost": "http://fontenelle.flywheelsites.com/wp-content/uploads/2015/11/Renew_or_Not.pdf",
   },
   {
     "name": "Webology",
@@ -573,7 +573,7 @@ module.exports=[
     "length": "2 hours",
     "standards": "SC5.3.3.a, SC5.3.3.b, SC8.3.3.a, SC8.3.3.b",
     "signup": "",
-    "prepost": "http://fontenelleforest.org/images/stories/School_Program_PDFs/Renew_or_Not_2012.pdf",
+    "prepost": "http://fontenelle.flywheelsites.com/wp-content/uploads/2015/11/Webology.pdf",
   },
   {
     "name": "Who Goes There?",
@@ -583,7 +583,7 @@ module.exports=[
     "length": "2 hours",
     "standards": "SC5.1.1.a, SC5.1.1.d",
     "signup": "",
-    "prepost": "http://fontenelleforest.org/images/stories/School_Program_PDFs/Who_Goes_There_2012.pdf",
+    "prepost": "http://fontenelle.flywheelsites.com/wp-content/uploads/2015/11/Who_Goes_There.pdf",
   },
   {
     "name": "My, what Sharp Claws You Have!",
@@ -593,7 +593,7 @@ module.exports=[
     "length": "2 hours",
     "standards": "SC5.1.1.d, SC5.3.4.a",
     "signup": "",
-    "prepost": "http://fontenelleforest.org/images/stories/School_Program_PDFs/Sharp_Claws_and_Thorns_and_Teeth_OTG_2012.pdf",
+    "prepost": "http://fontenelle.flywheelsites.com/wp-content/uploads/2015/11/My-What-Sharp_Claws_You_Have.pdf",
   },
   {
     "name": "Predator/Prey",
@@ -613,7 +613,7 @@ module.exports=[
     "length": "2 hours",
     "standards": "SC5.1.3.b, SC5.3.3.d, SC8.3.3.g",
     "signup": "",
-    "prepost": "http://fontenelleforest.org/images/stories/School_Program_PDFs/Take_Only_Memories_2012.pdf",
+    "prepost": "http://fontenelle.flywheelsites.com/wp-content/uploads/2015/11/Take_Only_Memories.pdf",
   },
   {
     "name": "Agents of Change",
@@ -623,7 +623,7 @@ module.exports=[
     "length": "2 hours",
     "standards": "SC5.4.2.b, SC5.4.4.a, SC8.4.2.e, SC12.4.4.a",
     "signup": "",
-    "prepost": "http://fontenelleforest.org/images/stories/School_Program_PDFs/2013__Agents_of_Change_pre-post_activities_v2.pdf",
+    "prepost": "http://fontenelle.flywheelsites.com/wp-content/uploads/2015/11/Agents_of_Change.pdf",
   },
   {
     "name": "Green's the Thing",
@@ -633,7 +633,7 @@ module.exports=[
     "length": "2 hours",
     "standards": "SC5.1.1.d, SC5.3.1.b",
     "signup": "",
-    "prepost": "http://fontenelleforest.org/images/stories/School_Program_PDFs/Green_is_The_Thing_2012.pdf",
+    "prepost": "http://fontenelle.flywheelsites.com/wp-content/uploads/2015/11/Green_is_The_Thing.pdf",
   },
   {
     "name": "Teaching with Talons",
@@ -653,7 +653,7 @@ module.exports=[
     "length": "2 hours",
     "standards": "SC5.3.4.a, SC8.1.1.e, SC8.1.1.g, SC8.3.4.a",
     "signup": "",
-    "prepost": "http://fontenelleforest.org/images/stories/School_Program_PDFs/Birds_of_a_Feather_2012.pdf",
+    "prepost": "http://fontenelle.flywheelsites.com/wp-content/uploads/2015/11/Birds_of_a_Feather_2012.pdf",
   },
   {
     "name": "Owl about Population Dynamics",
@@ -663,7 +663,7 @@ module.exports=[
     "length": "2 hours",
     "standards": "SC8.1.1.d, SC8.1.1.e, SC8.1.1.g, SC8.1.1.j, SC8.3.3.e",
     "signup": "",
-    "prepost": "http://fontenelleforest.org/images/stories/School_Program_PDFs/Owl_About_Populations_2012.pdf",
+    "prepost": "http://fontenelle.flywheelsites.com/wp-content/uploads/2015/11/Owl_About_Populations.pdf",
   },
 ]
 
@@ -2031,13 +2031,13 @@ module.exports = React.createClass({displayName: "exports",
             React.createElement("div", {className: "place"}, 
               React.createElement("h2", {className: "place_title"}, "Hitchcock Wetlands Learning Center"), 
               React.createElement("p", {className: "address"}, "103 Camp Gifford Road ", React.createElement("br", null), "Bellevue, NE 68005"), 
-              React.createElement("p", {className: "place_directions"}, "From I-80 take Hwy 75 North. Merge onto Storz Expressway towards Florence Blvd/Eppley Airfield. Take the Florence Blvd ramp and turn left at the stop sign. Florence Blvd. becomes J. Pershing Drive. Continue through the T intersection at Mormon Bridge onto River Road. From there, you will travel 2.7 miles to White Deer Lane (past NP Dodge and Hummel Park, stay to the right at the fork in road). Turn a slight left onto White Deer Lane and left again onto Edith Marie Ave."), 
-              React.createElement("a", {target: "_blank", href: "http://maps.google.com/maps?q=103+Camp+Gifford+Road+Bellevue,+NE+68005&hl=en&ll=41.178428,-95.883179&spn=0.024904,0.055661&sll=41.169328,-95.903122&sspn=0.012454,0.027831&z=15", className: "map_link"}, "View Map")
+              React.createElement("p", {className: "place_directions"}, "From I-80, take Hwy 75 (Kennedy Freeway) South to Chandler Road. Turn left onto Chandler. Stay on Chandler approx. 1 mile until the road ends at the stop sign at Bellevue Blvd. Turn right onto Bellevue Blvd. Continue for a little over .5 of a mile and turn left onto Childs Road. Continue on Childs Road through the housing development. The road becomes Camp Gifford Road and will change into a gravel surface. Continue 1.5 miles on the gravel surface. The Wetlands Learning Center will be on your right."), 
+              React.createElement("a", {target: "_blank", href: "https://www.google.com/maps/place/41%C2%B010'29.5%22N+95%C2%B053'25.5%22W/@41.1748546,-95.8913087,18z/data=!3m1!4b1!4m2!3m1!1s0x0:0x0?hl=en", className: "map_link"}, "View Map")
             ), 
             React.createElement("div", {className: "place"}, 
               React.createElement("h2", {className: "place_title"}, "Neale Woods"), 
               React.createElement("p", {className: "address"}, "14323 Edith Marie Ave. ", React.createElement("br", null), "Omaha, NE 68112"), 
-              React.createElement("p", {className: "place_directions"}, "From I-80, take Hwy 75 (Kennedy Freeway) south to Chandler Road. Turn left onto Chandler. Stay on Chandler approx. 1 mile until the road ends at the stop sign at Bellevue Blvd. Turn right onto Bellevue Blvd. Continue approximately .5 of a mile to the nature center (on the left)."), 
+              React.createElement("p", {className: "place_directions"}, "From I-80 take Hwy 75 North. Merge onto Storz Expressway towards Florence Blvd/Eppley Airfield. Take the Florence Blvd ramp and turn left at the stop sign. Florence Blvd. becomes J. Pershing Drive. Continue through the T intersection at Mormon Bridge onto River Road. From there, you will travel 2.7 miles to White Deer Lane (past NP Dodge and Hummel Park, stay to the right at the fork in road). Turn a slight left onto White Deer Lane and left again onto Edith Marie Ave."), 
               React.createElement("a", {target: "_blank", href: "http://maps.google.com/maps?q=14323+Edith+Marie+Ave.+Omaha,+NE+68112&hl=en&sll=41.178428,-95.883179&sspn=0.024904,0.055661&z=16", className: "map_link"}, "View Map")
             )
           ), 
@@ -2424,15 +2424,43 @@ var Main = React.createClass({displayName: "Main",
                   :
                     React.createElement("div", {className: "centered_content"}, 
                       React.createElement("h2", {className: "marker"}, "The Walls Became the World All Around"), 
+                        React.createElement("div", {className: "play_button_wrapper"}, 
+                          React.createElement("svg", {className: "left_leaf", x: "0px", y: "0px", viewBox: "0 0 260.993 56.185", "enable-background": "new 0 0 260.993 56.185"}, 
+                            React.createElement("g", null, 
+                              React.createElement("path", {fill: "none", stroke: "#FFFFFF", strokeWidth: "3", strokeMiterLimit: "10", d: "M260.803,21.789c0,0-78.218-9.995-105.16-7.822" + ' ' +
+                                "s-60.945,10.559-78.327,9.689c-17.382-0.869-22.814-0.76-31.287-9.234c0,0-5.377-7.985,0-13.362"}), 
+                              React.createElement("path", {fill: "none", stroke: "#FFFFFF", strokeWidth: "3", strokeMiterLimit: "10", d: "M53.94,23.206c0,0-15.081,8.055-31.798,5.843" + ' ' +
+                                "C9.377,27.36,5.802,21.1,3.118,16.14C19.968,21.712,36.564,5.83,53.94,23.206z"}), 
+                              React.createElement("path", {fill: "none", stroke: "#FFFFFF", strokeWidth: "3", strokeMiterLimit: "10", d: "M83.509,23.874" + ' ' +
+                                "c-30.635,0.978-39.172,2.019-50.516,13.362c0,0-7.199,10.689,0,17.888"}), 
+                              React.createElement("path", {fill: "none", stroke: "#FFFFFF", strokeWidth: "3", strokeMiterLimit: "10", d: "M52.548,23.222c0,0-12.167-3.259-26.942-1.086" + ' ' +
+                                "c-12.962,1.906-20.641-4.563-20.641-4.563"})
+                            )
+                          ), 
 
-                      React.createElement("svg", {onClick: self.toggleVideo, className: "video_play play_button education", x: "0px", y: "0px", viewBox: "0 0 76 76"}, 
-                        React.createElement("g", null, 
-                          React.createElement("circle", {className: "circle", cx: "38", cy: "38", r: "36.5"}), 
-                          React.createElement("path", {className: "triangle", d: "M31.3,38.2c0,0-2.8,4.4-2.8,12.4c0,7.5-1.6,10-1.6,10.7c0,1.2,0.8,2,2,1.4S53.2,45,58.6,39.6" + ' ' +
-                            "c0,0,0.6-0.6,0.6-1.4V38c0-0.6-0.2-1.1-0.6-1.4c-4.7-4.7-28.7-22.4-29.7-23.1c-0.8-0.6-2-0.4-2,1.4c0,0.7,1.6,3.2,1.6,10.7" + ' ' +
-                            "C28.6,33.6,31.3,38.2,31.3,38.2z"})
+
+                          React.createElement("svg", {onClick: self.toggleVideo, className: "video_play play_button education", x: "0px", y: "0px", viewBox: "0 0 76 76"}, 
+                            React.createElement("g", null, 
+                              React.createElement("circle", {className: "circle", cx: "38", cy: "38", r: "36.5"}), 
+                              React.createElement("path", {className: "triangle", d: "M31.3,38.2c0,0-2.8,4.4-2.8,12.4c0,7.5-1.6,10-1.6,10.7c0,1.2,0.8,2,2,1.4S53.2,45,58.6,39.6" + ' ' +
+                                "c0,0,0.6-0.6,0.6-1.4V38c0-0.6-0.2-1.1-0.6-1.4c-4.7-4.7-28.7-22.4-29.7-23.1c-0.8-0.6-2-0.4-2,1.4c0,0.7,1.6,3.2,1.6,10.7" + ' ' +
+                                "C28.6,33.6,31.3,38.2,31.3,38.2z"})
+                            )
+                          ), 
+
+                          React.createElement("svg", {className: "right_leaf", x: "0px", y: "0px", viewBox: "0 0 260.993 56.185", "enable-background": "new 0 0 260.993 56.185"}, 
+                            React.createElement("g", null, 
+                              React.createElement("path", {fill: "none", stroke: "#FFFFFF", strokeWidth: "3", strokeMiterLimit: "10", d: "M0.19,21.789c0,0,78.218-9.995,105.16-7.822" + ' ' +
+                                "s60.945,10.559,78.327,9.689c17.382-0.869,22.814-0.76,31.287-9.234c0,0,5.377-7.985,0-13.362"}), 
+                              React.createElement("path", {fill: "none", stroke: "#FFFFFF", strokeWidth: "3", strokeMiterLimit: "10", d: "M207.053,23.206c0,0,15.081,8.055,31.798,5.843" + ' ' +
+                                "c12.766-1.689,16.34-7.949,19.024-12.909C241.025,21.712,224.429,5.83,207.053,23.206z"}), 
+                              React.createElement("path", {fill: "none", stroke: "#FFFFFF", strokeWidth: "3", strokeMiterLimit: "10", d: "M177.484,23.874" + ' ' +
+                                "c30.635,0.978,39.172,2.019,50.516,13.362c0,0,7.199,10.689,0,17.888"}), 
+                              React.createElement("path", {fill: "none", stroke: "#FFFFFF", strokeWidth: "3", strokeMiterLimit: "10", d: "M208.445,23.222c0,0,12.167-3.259,26.942-1.086" + ' ' +
+                                "c12.962,1.906,20.641-4.563,20.641-4.563"})
+                            )
+                          )
                         )
-                      )
                     )
                   
                 )
@@ -2511,7 +2539,7 @@ var Main = React.createClass({displayName: "Main",
                 React.createElement("img", {className: "old_hero_image", src: "/img/education.png"}), 
                 React.createElement("div", {className: "hero_content"}, 
                   React.createElement("h1", {className: "hero_header"}, "CALL OF THE WILD BECKONS"), 
-                  React.createElement("h3", {className: "hero_subheader marker"}, "Teachers, administrator and scout leaders"), 
+                  React.createElement("h3", {className: "hero_subheader marker"}, "Teachers, administrators and scout leaders"), 
                   React.createElement("div", {className: "hero_textured_color"}, 
                     React.createElement("p", null, "We invite you to explore opportunities for your school group, including curriculum tied to state science standards. Fontenelle's educational programs take many forms - from field trips, classes, and camps in the forest to hands-on, nature-on-the-go presentations at schools, to community art projects.")
                   ), 
@@ -2542,7 +2570,7 @@ var Main = React.createClass({displayName: "Main",
                 React.createElement("img", {className: "old_hero_image", src: "/img/education.png"}), 
                 React.createElement("div", {className: "hero_content"}, 
                   React.createElement("h1", {className: "hero_header"}, "CALL OF THE WILD BECKONS"), 
-                  React.createElement("h3", {className: "hero_subheader marker"}, "Teachers, administrator and scout leaders"), 
+                  React.createElement("h3", {className: "hero_subheader marker"}, "Teachers, administrators and scout leaders"), 
                   React.createElement("div", {className: "hero_textured_color"}, 
                     React.createElement("p", null, "We invite you to explore opportunities for your school group, including curriculum tied to state science standards. Fontenelle's educational programs take many forms - from field trips, classes, and camps in the forest to hands-on, nature-on-the-go presentations at schools, to community art projects.")
                   ), 
@@ -2657,11 +2685,13 @@ var Event = React.createClass({displayName: "Event",
     var location_map_url = self.props.location_map_url;
     var location = self.props.location;
     var content = self.props.content;
+    var signup = self.props.signup_link;
 
-    if (self.props.signup_link){
+    if (self.props.end_date){
       return (
-        React.createElement("div", {className: "event green"}, 
-          React.createElement("h4", {className: "event_title", onClick: self.toggleContent}, self.props.title, 
+        React.createElement("div", {className:  signup ? "event green" : "event blue"}, 
+          React.createElement("h4", {className: "event_title", onClick: self.toggleContent}, 
+            React.createElement("span", {className: "title"}, self.props.title), 
             React.createElement("span", {className: "age"}, age)
           ), 
            open ?
@@ -2671,7 +2701,7 @@ var Event = React.createClass({displayName: "Event",
                 : React.createElement("p", null, location), 
               
               React.createElement("div", {className: "event_description", dangerouslySetInnerHTML: {__html: content}}), 
-              React.createElement("a", {className: "event_link", href: self.props.signup_link, target: "_blank"}, React.createElement("p", null, "Register for this Event."))
+               signup ? React.createElement("a", {className: "event_link", href: self.props.signup_link, target: "_blank"}, React.createElement("p", null, "Register for this Event.")) : null
             )
           : null, 
           React.createElement("div", {className: "event_bar"}, 
@@ -2691,8 +2721,9 @@ var Event = React.createClass({displayName: "Event",
       )
     } else {
       return (
-        React.createElement("div", {className: "event blue"}, 
-          React.createElement("h4", {className: "event_title", onClick: self.toggleContent}, self.props.title, 
+        React.createElement("div", {className:  signup ? "event green" : "event blue"}, 
+          React.createElement("h4", {className: "event_title", onClick: self.toggleContent}, 
+            React.createElement("span", {className: "title"}, self.props.title), 
             React.createElement("span", {className: "age"}, age)
           ), 
            open ?
@@ -2701,7 +2732,8 @@ var Event = React.createClass({displayName: "Event",
                 React.createElement("a", {className: "event_link", href: location_map_url, target: "_blank"}, React.createElement("p", null, React.createElement("i", {className: "fa fa-map-marker"}), " ", location))
                 : React.createElement("p", null, location), 
               
-              React.createElement("div", {className: "event_description", dangerouslySetInnerHTML: {__html: content}})
+              React.createElement("div", {className: "event_description", dangerouslySetInnerHTML: {__html: content}}), 
+               signup ? React.createElement("a", {className: "event_link", href: self.props.signup_link, target: "_blank"}, React.createElement("p", null, "Register for this Event.")) : null
             )
           : null, 
           React.createElement("div", {className: "event_bar"}, 
@@ -3140,6 +3172,7 @@ module.exports = React.createClass({displayName: "exports",
                   )
                 )
               ), 
+              React.createElement("p", {className: "event_legend"}, React.createElement("span", {className: "greenbox"}), React.createElement("span", {className: "registration"}, " Registration Required")), 
               events
             ), 
             React.createElement("div", {className: "now-right"}, 
@@ -3725,14 +3758,42 @@ var Main = React.createClass({displayName: "Main",
                     React.createElement("div", {className: "centered_content"}, 
                       React.createElement("h2", {className: "marker"}, "A Room All to Myself"), 
                       React.createElement("p", null, "Push pause on the texting and clicking, just for a moment, and come out to the forest. Move your feet, breathe in the fresh air, explore. And watch what happens."), 
+                      React.createElement("div", {className: "play_button_wrapper"}, 
+                        React.createElement("svg", {className: "left_leaf", x: "0px", y: "0px", viewBox: "0 0 260.993 56.185", "enable-background": "new 0 0 260.993 56.185"}, 
+                        	React.createElement("g", null, 
+                        		React.createElement("path", {fill: "none", stroke: "#FFFFFF", strokeWidth: "3", strokeMiterLimit: "10", d: "M260.803,21.789c0,0-78.218-9.995-105.16-7.822" + ' ' +
+                        			"s-60.945,10.559-78.327,9.689c-17.382-0.869-22.814-0.76-31.287-9.234c0,0-5.377-7.985,0-13.362"}), 
+                        		React.createElement("path", {fill: "none", stroke: "#FFFFFF", strokeWidth: "3", strokeMiterLimit: "10", d: "M53.94,23.206c0,0-15.081,8.055-31.798,5.843" + ' ' +
+                        			"C9.377,27.36,5.802,21.1,3.118,16.14C19.968,21.712,36.564,5.83,53.94,23.206z"}), 
+                        		React.createElement("path", {fill: "none", stroke: "#FFFFFF", strokeWidth: "3", strokeMiterLimit: "10", d: "M83.509,23.874" + ' ' +
+                        			"c-30.635,0.978-39.172,2.019-50.516,13.362c0,0-7.199,10.689,0,17.888"}), 
+                        		React.createElement("path", {fill: "none", stroke: "#FFFFFF", strokeWidth: "3", strokeMiterLimit: "10", d: "M52.548,23.222c0,0-12.167-3.259-26.942-1.086" + ' ' +
+                        			"c-12.962,1.906-20.641-4.563-20.641-4.563"})
+                        	)
+                        ), 
 
-                      React.createElement("svg", {onClick: self.toggleVideoOne, className: "video_play play_button forest", x: "0px", y: "0px", viewBox: "0 0 76 76"}, 
-                      	React.createElement("g", null, 
-                          React.createElement("circle", {className: "circle", cx: "38", cy: "38", r: "36.5"}), 
-                          React.createElement("path", {className: "triangle", d: "M31.3,38.2c0,0-2.8,4.4-2.8,12.4c0,7.5-1.6,10-1.6,10.7c0,1.2,0.8,2,2,1.4S53.2,45,58.6,39.6" + ' ' +
-                      			"c0,0,0.6-0.6,0.6-1.4V38c0-0.6-0.2-1.1-0.6-1.4c-4.7-4.7-28.7-22.4-29.7-23.1c-0.8-0.6-2-0.4-2,1.4c0,0.7,1.6,3.2,1.6,10.7" + ' ' +
-                      			"C28.6,33.6,31.3,38.2,31.3,38.2z"})
-                      	)
+
+                        React.createElement("svg", {onClick: self.toggleVideoOne, className: "video_play play_button forest", x: "0px", y: "0px", viewBox: "0 0 76 76"}, 
+                        	React.createElement("g", null, 
+                            React.createElement("circle", {className: "circle", cx: "38", cy: "38", r: "36.5"}), 
+                            React.createElement("path", {className: "triangle", d: "M31.3,38.2c0,0-2.8,4.4-2.8,12.4c0,7.5-1.6,10-1.6,10.7c0,1.2,0.8,2,2,1.4S53.2,45,58.6,39.6" + ' ' +
+                        			"c0,0,0.6-0.6,0.6-1.4V38c0-0.6-0.2-1.1-0.6-1.4c-4.7-4.7-28.7-22.4-29.7-23.1c-0.8-0.6-2-0.4-2,1.4c0,0.7,1.6,3.2,1.6,10.7" + ' ' +
+                        			"C28.6,33.6,31.3,38.2,31.3,38.2z"})
+                        	)
+                        ), 
+
+                        React.createElement("svg", {className: "right_leaf", x: "0px", y: "0px", viewBox: "0 0 260.993 56.185", "enable-background": "new 0 0 260.993 56.185"}, 
+                          React.createElement("g", null, 
+                            React.createElement("path", {fill: "none", stroke: "#FFFFFF", strokeWidth: "3", strokeMiterLimit: "10", d: "M0.19,21.789c0,0,78.218-9.995,105.16-7.822" + ' ' +
+                              "s60.945,10.559,78.327,9.689c17.382-0.869,22.814-0.76,31.287-9.234c0,0,5.377-7.985,0-13.362"}), 
+                            React.createElement("path", {fill: "none", stroke: "#FFFFFF", strokeWidth: "3", strokeMiterLimit: "10", d: "M207.053,23.206c0,0,15.081,8.055,31.798,5.843" + ' ' +
+                              "c12.766-1.689,16.34-7.949,19.024-12.909C241.025,21.712,224.429,5.83,207.053,23.206z"}), 
+                            React.createElement("path", {fill: "none", stroke: "#FFFFFF", strokeWidth: "3", strokeMiterLimit: "10", d: "M177.484,23.874" + ' ' +
+                              "c30.635,0.978,39.172,2.019,50.516,13.362c0,0,7.199,10.689,0,17.888"}), 
+                            React.createElement("path", {fill: "none", stroke: "#FFFFFF", strokeWidth: "3", strokeMiterLimit: "10", d: "M208.445,23.222c0,0,12.167-3.259,26.942-1.086" + ' ' +
+                              "c12.962,1.906,20.641-4.563,20.641-4.563"})
+                          )
+                        )
                       )
 
                     )
@@ -4757,19 +4818,50 @@ var Main = React.createClass({displayName: "Main",
                       React.createElement("div", {className: "embed-container"}, React.createElement("iframe", {src: "https://www.youtube.com/embed/LEkB-HvzAuw?autoplay=1", frameBorder: "0", allowFullScreen: true}))
                     )
                   :
-                    React.createElement("div", {className: "centered_content explorers"}, 
-                      React.createElement("h2", {className: "marker"}, "for your favorite ", React.createElement("br", null), " little explorers"), 
-                      React.createElement("p", null, "A place where boisterous enthusiasm, outdoor physical activity, and creative play reign supreme."), 
+                    React.createElement("span", null, 
+                      React.createElement("div", {className: "centered_content explorers"}, 
+                        React.createElement("h2", {className: "marker"}, "for your favorite ", React.createElement("br", null), " little explorers"), 
+                        React.createElement("p", null, "A place where boisterous enthusiasm, outdoor physical activity, and creative play reign supreme.")
+                      ), 
+                      React.createElement("div", {className: "centered_content explorers_bottom"}, 
+                        React.createElement("div", {className: "play_button_wrapper"}, 
+                          React.createElement("svg", {className: "left_leaf", x: "0px", y: "0px", viewBox: "0 0 260.993 56.185", "enable-background": "new 0 0 260.993 56.185"}, 
+                            React.createElement("g", null, 
+                              React.createElement("path", {fill: "none", stroke: "#FFFFFF", strokeWidth: "3", strokeMiterLimit: "10", d: "M260.803,21.789c0,0-78.218-9.995-105.16-7.822" + ' ' +
+                                "s-60.945,10.559-78.327,9.689c-17.382-0.869-22.814-0.76-31.287-9.234c0,0-5.377-7.985,0-13.362"}), 
+                              React.createElement("path", {fill: "none", stroke: "#FFFFFF", strokeWidth: "3", strokeMiterLimit: "10", d: "M53.94,23.206c0,0-15.081,8.055-31.798,5.843" + ' ' +
+                                "C9.377,27.36,5.802,21.1,3.118,16.14C19.968,21.712,36.564,5.83,53.94,23.206z"}), 
+                              React.createElement("path", {fill: "none", stroke: "#FFFFFF", strokeWidth: "3", strokeMiterLimit: "10", d: "M83.509,23.874" + ' ' +
+                                "c-30.635,0.978-39.172,2.019-50.516,13.362c0,0-7.199,10.689,0,17.888"}), 
+                              React.createElement("path", {fill: "none", stroke: "#FFFFFF", strokeWidth: "3", strokeMiterLimit: "10", d: "M52.548,23.222c0,0-12.167-3.259-26.942-1.086" + ' ' +
+                                "c-12.962,1.906-20.641-4.563-20.641-4.563"})
+                            )
+                          ), 
 
-                      React.createElement("svg", {onClick: self.toggleVideoTwo, className: "video_play play_button forest", x: "0px", y: "0px", viewBox: "0 0 76 76"}, 
-                        React.createElement("g", null, 
-                          React.createElement("circle", {className: "circle", cx: "38", cy: "38", r: "36.5"}), 
-                          React.createElement("path", {className: "triangle", d: "M31.3,38.2c0,0-2.8,4.4-2.8,12.4c0,7.5-1.6,10-1.6,10.7c0,1.2,0.8,2,2,1.4S53.2,45,58.6,39.6" + ' ' +
-                            "c0,0,0.6-0.6,0.6-1.4V38c0-0.6-0.2-1.1-0.6-1.4c-4.7-4.7-28.7-22.4-29.7-23.1c-0.8-0.6-2-0.4-2,1.4c0,0.7,1.6,3.2,1.6,10.7" + ' ' +
-                            "C28.6,33.6,31.3,38.2,31.3,38.2z"})
+                          React.createElement("svg", {onClick: self.toggleVideoTwo, className: "video_play play_button forest", x: "0px", y: "0px", viewBox: "0 0 76 76"}, 
+                            React.createElement("g", null, 
+                              React.createElement("circle", {className: "circle", cx: "38", cy: "38", r: "36.5"}), 
+                              React.createElement("path", {className: "triangle", d: "M31.3,38.2c0,0-2.8,4.4-2.8,12.4c0,7.5-1.6,10-1.6,10.7c0,1.2,0.8,2,2,1.4S53.2,45,58.6,39.6" + ' ' +
+                                "c0,0,0.6-0.6,0.6-1.4V38c0-0.6-0.2-1.1-0.6-1.4c-4.7-4.7-28.7-22.4-29.7-23.1c-0.8-0.6-2-0.4-2,1.4c0,0.7,1.6,3.2,1.6,10.7" + ' ' +
+                                "C28.6,33.6,31.3,38.2,31.3,38.2z"})
+                            )
+                          ), 
+
+                          React.createElement("svg", {className: "right_leaf", x: "0px", y: "0px", viewBox: "0 0 260.993 56.185", "enable-background": "new 0 0 260.993 56.185"}, 
+                            React.createElement("g", null, 
+                              React.createElement("path", {fill: "none", stroke: "#FFFFFF", strokeWidth: "3", strokeMiterLimit: "10", d: "M0.19,21.789c0,0,78.218-9.995,105.16-7.822" + ' ' +
+                                "s60.945,10.559,78.327,9.689c17.382-0.869,22.814-0.76,31.287-9.234c0,0,5.377-7.985,0-13.362"}), 
+                              React.createElement("path", {fill: "none", stroke: "#FFFFFF", strokeWidth: "3", strokeMiterLimit: "10", d: "M207.053,23.206c0,0,15.081,8.055,31.798,5.843" + ' ' +
+                                "c12.766-1.689,16.34-7.949,19.024-12.909C241.025,21.712,224.429,5.83,207.053,23.206z"}), 
+                              React.createElement("path", {fill: "none", stroke: "#FFFFFF", strokeWidth: "3", strokeMiterLimit: "10", d: "M177.484,23.874" + ' ' +
+                                "c30.635,0.978,39.172,2.019,50.516,13.362c0,0,7.199,10.689,0,17.888"}), 
+                              React.createElement("path", {fill: "none", stroke: "#FFFFFF", strokeWidth: "3", strokeMiterLimit: "10", d: "M208.445,23.222c0,0,12.167-3.259,26.942-1.086" + ' ' +
+                                "c12.962,1.906,20.641-4.563,20.641-4.563"})
+                            )
+                          )
                         )
-                      )
 
+                      )
                     )
                   
                 )
@@ -5515,7 +5607,8 @@ module.exports = React.createClass({displayName: "exports",
 },{"react":256,"react-router":69,"superagent":259,"util":264}],21:[function(require,module,exports){
 var React = require('react'),
     request = require('superagent'),
-    util = require('util');
+    util = require('util'),
+    moment = require('moment');
 var Router = require('react-router');
 
 var Navigation = Router.Navigation;
@@ -5591,8 +5684,10 @@ module.exports = React.createClass({displayName: "exports",
         .end(function(err, res) {
       if (res.ok) {
         var plantlife = res.body;
-
-        self.setState({plantlife: plantlife});
+        var sorted_plantlife = plantlife.sort(function(a, b) {
+          return moment(b.modified) - moment(a.modified) ;
+        });
+        self.setState({plantlife: sorted_plantlife});
 
       } else {
         console.log('Oh no! error ' + res.text);
@@ -5610,8 +5705,11 @@ module.exports = React.createClass({displayName: "exports",
         .end(function(err, res) {
       if (res.ok) {
         var wildlife = res.body;
+        var sorted_wildlife = wildlife.sort(function(a, b) {
+          return moment(b.modified) - moment(a.modified) ;
+        });
 
-        self.setState({wildlife: wildlife});
+        self.setState({wildlife: sorted_wildlife});
 
       } else {
         console.log('Oh no! error ' + res.text);
@@ -5694,7 +5792,7 @@ module.exports = React.createClass({displayName: "exports",
   }
 });
 
-},{"react":256,"react-router":69,"superagent":259,"util":264}],22:[function(require,module,exports){
+},{"moment":28,"react":256,"react-router":69,"superagent":259,"util":264}],22:[function(require,module,exports){
 var React = require('react'),
     request = require('superagent'),
     moment = require('moment'),
@@ -6298,12 +6396,42 @@ var Main = React.createClass({displayName: "Main",
                       React.createElement("h2", {className: "marker"}, "A Recycled Forest, Built by Local Kids"), 
                       React.createElement("p", null, "Fontenelle teamed up with local artist Bart Vargas and non-profits Girls, Inc., Completely Kids, and Arts for All for this community art project."), 
 
-                      React.createElement("svg", {onClick: self.toggleVideo, className: "video_play play_button programs", x: "0px", y: "0px", viewBox: "0 0 76 76"}, 
-                        React.createElement("g", null, 
-                          React.createElement("circle", {className: "circle", cx: "38", cy: "38", r: "36.5"}), 
-                          React.createElement("path", {className: "triangle", d: "M31.3,38.2c0,0-2.8,4.4-2.8,12.4c0,7.5-1.6,10-1.6,10.7c0,1.2,0.8,2,2,1.4S53.2,45,58.6,39.6" + ' ' +
-                            "c0,0,0.6-0.6,0.6-1.4V38c0-0.6-0.2-1.1-0.6-1.4c-4.7-4.7-28.7-22.4-29.7-23.1c-0.8-0.6-2-0.4-2,1.4c0,0.7,1.6,3.2,1.6,10.7" + ' ' +
-                            "C28.6,33.6,31.3,38.2,31.3,38.2z"})
+
+                      React.createElement("div", {className: "play_button_wrapper"}, 
+                        React.createElement("svg", {className: "left_leaf", x: "0px", y: "0px", viewBox: "0 0 260.993 56.185", "enable-background": "new 0 0 260.993 56.185"}, 
+                          React.createElement("g", null, 
+                            React.createElement("path", {fill: "none", stroke: "#FFFFFF", strokeWidth: "3", strokeMiterLimit: "10", d: "M260.803,21.789c0,0-78.218-9.995-105.16-7.822" + ' ' +
+                              "s-60.945,10.559-78.327,9.689c-17.382-0.869-22.814-0.76-31.287-9.234c0,0-5.377-7.985,0-13.362"}), 
+                            React.createElement("path", {fill: "none", stroke: "#FFFFFF", strokeWidth: "3", strokeMiterLimit: "10", d: "M53.94,23.206c0,0-15.081,8.055-31.798,5.843" + ' ' +
+                              "C9.377,27.36,5.802,21.1,3.118,16.14C19.968,21.712,36.564,5.83,53.94,23.206z"}), 
+                            React.createElement("path", {fill: "none", stroke: "#FFFFFF", strokeWidth: "3", strokeMiterLimit: "10", d: "M83.509,23.874" + ' ' +
+                              "c-30.635,0.978-39.172,2.019-50.516,13.362c0,0-7.199,10.689,0,17.888"}), 
+                            React.createElement("path", {fill: "none", stroke: "#FFFFFF", strokeWidth: "3", strokeMiterLimit: "10", d: "M52.548,23.222c0,0-12.167-3.259-26.942-1.086" + ' ' +
+                              "c-12.962,1.906-20.641-4.563-20.641-4.563"})
+                          )
+                        ), 
+
+
+                        React.createElement("svg", {onClick: self.toggleVideo, className: "video_play play_button programs", x: "0px", y: "0px", viewBox: "0 0 76 76"}, 
+                          React.createElement("g", null, 
+                            React.createElement("circle", {className: "circle", cx: "38", cy: "38", r: "36.5"}), 
+                            React.createElement("path", {className: "triangle", d: "M31.3,38.2c0,0-2.8,4.4-2.8,12.4c0,7.5-1.6,10-1.6,10.7c0,1.2,0.8,2,2,1.4S53.2,45,58.6,39.6" + ' ' +
+                              "c0,0,0.6-0.6,0.6-1.4V38c0-0.6-0.2-1.1-0.6-1.4c-4.7-4.7-28.7-22.4-29.7-23.1c-0.8-0.6-2-0.4-2,1.4c0,0.7,1.6,3.2,1.6,10.7" + ' ' +
+                              "C28.6,33.6,31.3,38.2,31.3,38.2z"})
+                          )
+                        ), 
+
+                        React.createElement("svg", {className: "right_leaf", x: "0px", y: "0px", viewBox: "0 0 260.993 56.185", "enable-background": "new 0 0 260.993 56.185"}, 
+                          React.createElement("g", null, 
+                            React.createElement("path", {fill: "none", stroke: "#FFFFFF", strokeWidth: "3", strokeMiterLimit: "10", d: "M0.19,21.789c0,0,78.218-9.995,105.16-7.822" + ' ' +
+                              "s60.945,10.559,78.327,9.689c17.382-0.869,22.814-0.76,31.287-9.234c0,0,5.377-7.985,0-13.362"}), 
+                            React.createElement("path", {fill: "none", stroke: "#FFFFFF", strokeWidth: "3", strokeMiterLimit: "10", d: "M207.053,23.206c0,0,15.081,8.055,31.798,5.843" + ' ' +
+                              "c12.766-1.689,16.34-7.949,19.024-12.909C241.025,21.712,224.429,5.83,207.053,23.206z"}), 
+                            React.createElement("path", {fill: "none", stroke: "#FFFFFF", strokeWidth: "3", strokeMiterLimit: "10", d: "M177.484,23.874" + ' ' +
+                              "c30.635,0.978,39.172,2.019,50.516,13.362c0,0,7.199,10.689,0,17.888"}), 
+                            React.createElement("path", {fill: "none", stroke: "#FFFFFF", strokeWidth: "3", strokeMiterLimit: "10", d: "M208.445,23.222c0,0,12.167-3.259,26.942-1.086" + ' ' +
+                              "c12.962,1.906,20.641-4.563,20.641-4.563"})
+                          )
                         )
                       )
 

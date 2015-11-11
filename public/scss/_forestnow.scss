@@ -181,13 +181,20 @@
 			font-size: 20px;
 		}
 		.nn_title {
-			padding: 15px 40px;
+			padding: 5px 15px;
+	    border-bottom: 2px white solid;
+	    margin-left: 25px;
+			letter-spacing: 1px;
+		}
+		.excerpt {
+			line-height: 1.4;
+			padding-left: 40px;
 		}
 		.nn_link {
 			border: 2px solid white;
 			border-radius: 5px;
 			padding: 5px 50px;
-			margin: auto;
+			margin: 20px auto;
 			display: table;
 			cursor: pointer;
 			transition: 0.15s ease-out;
@@ -244,9 +251,16 @@
 		text-transform: uppercase;
 		font-size: 20px;
 		cursor: pointer;
+		.title {
+			transition: 0.15s ease-out;
+			&:hover {
+				opacity: 0.8;
+			}
+		}
 		 .age {
 			color: #989797;
 			float: right;
+			opacity: 1;
 			text-transform: none;
 		}
 	}
@@ -323,7 +337,7 @@
 	font-size: 25px;
 	position: relative;
 	line-height: 75px;
-
+	margin-bottom: 0;
 	.actual_week {
 		font-family: 'roboto_condensedbold';
 		color:black;
@@ -470,4 +484,23 @@ a.all_posts_link {
 	color: $conservation_color;
 	text-align: right;
 	display: block;
+}
+
+.event_legend {
+	text-align: center;
+	font-weight: bold;
+	margin-top: -10px;
+	.greenbox {
+		height: 20px;
+    width: 20px;
+    background: #00a098;
+    display: inline-block;
+    vertical-align: middle;
+    border-radius: 3px;
+    margin-right: 5px;
+	}
+	.registration {
+		display: inline-block;
+    vertical-align: middle;
+	}
 }

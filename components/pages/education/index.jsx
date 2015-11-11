@@ -281,15 +281,43 @@ var Main = React.createClass({
                   :
                     <div className="centered_content">
                       <h2 className="marker">The Walls Became the World All Around</h2>
+                        <div className="play_button_wrapper">
+                          <svg className="left_leaf" x="0px" y="0px" viewBox="0 0 260.993 56.185" enable-background="new 0 0 260.993 56.185">
+                            <g>
+                              <path fill="none" stroke="#FFFFFF" strokeWidth="3" strokeMiterLimit="10" d="M260.803,21.789c0,0-78.218-9.995-105.16-7.822
+                                s-60.945,10.559-78.327,9.689c-17.382-0.869-22.814-0.76-31.287-9.234c0,0-5.377-7.985,0-13.362"/>
+                              <path fill="none" stroke="#FFFFFF" strokeWidth="3" strokeMiterLimit="10" d="M53.94,23.206c0,0-15.081,8.055-31.798,5.843
+                                C9.377,27.36,5.802,21.1,3.118,16.14C19.968,21.712,36.564,5.83,53.94,23.206z"/>
+                              <path fill="none" stroke="#FFFFFF" strokeWidth="3" strokeMiterLimit="10" d="M83.509,23.874
+                                c-30.635,0.978-39.172,2.019-50.516,13.362c0,0-7.199,10.689,0,17.888"/>
+                              <path fill="none" stroke="#FFFFFF" strokeWidth="3" strokeMiterLimit="10" d="M52.548,23.222c0,0-12.167-3.259-26.942-1.086
+                                c-12.962,1.906-20.641-4.563-20.641-4.563"/>
+                            </g>
+                          </svg>
 
-                      <svg onClick={self.toggleVideo} className="video_play play_button education" x="0px" y="0px" viewBox="0 0 76 76" >
-                        <g>
-                          <circle className="circle" cx="38" cy="38" r="36.5"/>
-                          <path className="triangle" d="M31.3,38.2c0,0-2.8,4.4-2.8,12.4c0,7.5-1.6,10-1.6,10.7c0,1.2,0.8,2,2,1.4S53.2,45,58.6,39.6
-                            c0,0,0.6-0.6,0.6-1.4V38c0-0.6-0.2-1.1-0.6-1.4c-4.7-4.7-28.7-22.4-29.7-23.1c-0.8-0.6-2-0.4-2,1.4c0,0.7,1.6,3.2,1.6,10.7
-                            C28.6,33.6,31.3,38.2,31.3,38.2z"/>
-                        </g>
-                      </svg>
+
+                          <svg onClick={self.toggleVideo} className="video_play play_button education" x="0px" y="0px" viewBox="0 0 76 76" >
+                            <g>
+                              <circle className="circle" cx="38" cy="38" r="36.5"/>
+                              <path className="triangle" d="M31.3,38.2c0,0-2.8,4.4-2.8,12.4c0,7.5-1.6,10-1.6,10.7c0,1.2,0.8,2,2,1.4S53.2,45,58.6,39.6
+                                c0,0,0.6-0.6,0.6-1.4V38c0-0.6-0.2-1.1-0.6-1.4c-4.7-4.7-28.7-22.4-29.7-23.1c-0.8-0.6-2-0.4-2,1.4c0,0.7,1.6,3.2,1.6,10.7
+                                C28.6,33.6,31.3,38.2,31.3,38.2z"/>
+                            </g>
+                          </svg>
+
+                          <svg className="right_leaf" x="0px" y="0px" viewBox="0 0 260.993 56.185" enable-background="new 0 0 260.993 56.185" >
+                            <g>
+                              <path fill="none" stroke="#FFFFFF" strokeWidth="3" strokeMiterLimit="10" d="M0.19,21.789c0,0,78.218-9.995,105.16-7.822
+                                s60.945,10.559,78.327,9.689c17.382-0.869,22.814-0.76,31.287-9.234c0,0,5.377-7.985,0-13.362"/>
+                              <path fill="none" stroke="#FFFFFF" strokeWidth="3" strokeMiterLimit="10" d="M207.053,23.206c0,0,15.081,8.055,31.798,5.843
+                                c12.766-1.689,16.34-7.949,19.024-12.909C241.025,21.712,224.429,5.83,207.053,23.206z"/>
+                              <path fill="none" stroke="#FFFFFF" strokeWidth="3" strokeMiterLimit="10" d="M177.484,23.874
+                                c30.635,0.978,39.172,2.019,50.516,13.362c0,0,7.199,10.689,0,17.888"/>
+                              <path fill="none" stroke="#FFFFFF" strokeWidth="3" strokeMiterLimit="10" d="M208.445,23.222c0,0,12.167-3.259,26.942-1.086
+                                c12.962,1.906,20.641-4.563,20.641-4.563"/>
+                            </g>
+                          </svg>
+                        </div>
                     </div>
                   }
                 </div>
@@ -368,7 +396,7 @@ var Main = React.createClass({
                 <img className="old_hero_image" src="/img/education.png" />
                 <div className="hero_content">
                   <h1 className="hero_header">CALL OF THE WILD BECKONS</h1>
-                  <h3 className="hero_subheader marker">Teachers, administrator and scout leaders</h3>
+                  <h3 className="hero_subheader marker">Teachers, administrators and scout leaders</h3>
                   <div className="hero_textured_color" >
                     <p>We invite you to explore opportunities for your school group, including curriculum tied to state science standards. Fontenelle's educational programs take many forms - from field trips, classes, and camps in the forest to hands-on, nature-on-the-go presentations at schools, to community art projects.</p>
                   </div>
@@ -399,7 +427,7 @@ var Main = React.createClass({
                 <img className="old_hero_image" src="/img/education.png" />
                 <div className="hero_content">
                   <h1 className="hero_header">CALL OF THE WILD BECKONS</h1>
-                  <h3 className="hero_subheader marker">Teachers, administrator and scout leaders</h3>
+                  <h3 className="hero_subheader marker">Teachers, administrators and scout leaders</h3>
                   <div className="hero_textured_color" >
                     <p>We invite you to explore opportunities for your school group, including curriculum tied to state science standards. Fontenelle's educational programs take many forms - from field trips, classes, and camps in the forest to hands-on, nature-on-the-go presentations at schools, to community art projects.</p>
                   </div>
