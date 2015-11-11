@@ -52,7 +52,7 @@ var App = React.createClass({displayName: "App",
 		var id = this.getParams().id;
 		if (id) { key += id; }
 		return key;
-	},
+	}, 
 
 	getInitialState: function () {
 		return {
@@ -64,13 +64,18 @@ var App = React.createClass({displayName: "App",
 				"/img/loop_one.jpg",
 				"/img/loop_programs.jpg",
 				"/img/loop_education.jpg",
-				"/img/loop_conservation.jpg"
+				"/img/loop_conservation.jpg",
+				"/img/forest/texture.svg",
+				"/img/conservation/texture.svg",
+				"/img/education/texture.svg",
+				"/img/programs/texture.svg"
 			],
 		};
 	},
 
 	componentDidMount: function(){
 		var self = this;
+		!function(A,e,t){function n(A,e){return typeof A===e}function o(){var A,e,t,o,i,a,r;for(var l in w)if(w.hasOwnProperty(l)){if(A=[],e=w[l],e.name&&(A.push(e.name.toLowerCase()),e.options&&e.options.aliases&&e.options.aliases.length))for(t=0;t<e.options.aliases.length;t++)A.push(e.options.aliases[t].toLowerCase());for(o=n(e.fn,"function")?e.fn():e.fn,i=0;i<A.length;i++)a=A[i],r=a.split("."),1===r.length?Modernizr[r[0]]=o:(!Modernizr[r[0]]||Modernizr[r[0]]instanceof Boolean||(Modernizr[r[0]]=new Boolean(Modernizr[r[0]])),Modernizr[r[0]][r[1]]=o),R.push((o?"":"no-")+r.join("-"))}}function i(A){var e=B.className,t=Modernizr._config.classPrefix||"";if(T&&(e=e.baseVal),Modernizr._config.enableJSClass){var n=new RegExp("(^|\\s)"+t+"no-js(\\s|$)");e=e.replace(n,"$1"+t+"js$2")}Modernizr._config.enableClasses&&(e+=" "+t+A.join(" "+t),T?B.className.baseVal=e:B.className=e)}function a(){return"function"!=typeof e.createElement?e.createElement(arguments[0]):T?e.createElementNS.call(e,"http://www.w3.org/2000/svg",arguments[0]):e.createElement.apply(e,arguments)}function r(A,e){if("object"==typeof A)for(var t in A)F(A,t)&&r(t,A[t]);else{A=A.toLowerCase();var n=A.split("."),o=Modernizr[n[0]];if(2==n.length&&(o=o[n[1]]),"undefined"!=typeof o)return Modernizr;e="function"==typeof e?e():e,1==n.length?Modernizr[n[0]]=e:(!Modernizr[n[0]]||Modernizr[n[0]]instanceof Boolean||(Modernizr[n[0]]=new Boolean(Modernizr[n[0]])),Modernizr[n[0]][n[1]]=e),i([(e&&0!=e?"":"no-")+n.join("-")]),Modernizr._trigger(A,e)}return Modernizr}function l(A,e){return!!~(""+A).indexOf(e)}function s(A){return A.replace(/([a-z])-([a-z])/g,function(A,e,t){return e+t.toUpperCase()}).replace(/^-/,"")}function c(A,e){return function(){return A.apply(e,arguments)}}function d(A,e,t){var o;for(var i in A)if(A[i]in e)return t===!1?A[i]:(o=e[A[i]],n(o,"function")?c(o,t||e):o);return!1}function u(A){return A.replace(/([A-Z])/g,function(A,e){return"-"+e.toLowerCase()}).replace(/^ms-/,"-ms-")}function p(){var A=e.body;return A||(A=a(T?"svg":"body"),A.fake=!0),A}function f(A,t,n,o){var i,r,l,s,c="modernizr",d=a("div"),u=p();if(parseInt(n,10))for(;n--;)l=a("div"),l.id=o?o[n]:c+(n+1),d.appendChild(l);return i=a("style"),i.type="text/css",i.id="s"+c,(u.fake?u:d).appendChild(i),u.appendChild(d),i.styleSheet?i.styleSheet.cssText=A:i.appendChild(e.createTextNode(A)),d.id=c,u.fake&&(u.style.background="",u.style.overflow="hidden",s=B.style.overflow,B.style.overflow="hidden",B.appendChild(u)),r=t(d,A),u.fake?(u.parentNode.removeChild(u),B.style.overflow=s,B.offsetHeight):d.parentNode.removeChild(d),!!r}function h(e,n){var o=e.length;if("CSS"in A&&"supports"in A.CSS){for(;o--;)if(A.CSS.supports(u(e[o]),n))return!0;return!1}if("CSSSupportsRule"in A){for(var i=[];o--;)i.push("("+u(e[o])+":"+n+")");return i=i.join(" or "),f("@supports ("+i+") { #modernizr { position: absolute; } }",function(A){return"absolute"==getComputedStyle(A,null).position})}return t}function m(A,e,o,i){function r(){d&&(delete U.style,delete U.modElem)}if(i=n(i,"undefined")?!1:i,!n(o,"undefined")){var c=h(A,o);if(!n(c,"undefined"))return c}for(var d,u,p,f,m,E=["modernizr","tspan"];!U.style;)d=!0,U.modElem=a(E.shift()),U.style=U.modElem.style;for(p=A.length,u=0;p>u;u++)if(f=A[u],m=U.style[f],l(f,"-")&&(f=s(f)),U.style[f]!==t){if(i||n(o,"undefined"))return r(),"pfx"==e?f:!0;try{U.style[f]=o}catch(g){}if(U.style[f]!=m)return r(),"pfx"==e?f:!0}return r(),!1}function E(A,e,t,o,i){var a=A.charAt(0).toUpperCase()+A.slice(1),r=(A+" "+y.join(a+" ")+a).split(" ");return n(e,"string")||n(e,"undefined")?m(r,e,o,i):(r=(A+" "+G.join(a+" ")+a).split(" "),d(r,e,t))}function g(A,e,n){return E(A,t,t,e,n)}var R=[],w=[],v={_version:"3.2.0",_config:{classPrefix:"",enableClasses:!0,enableJSClass:!0,usePrefixes:!0},_q:[],on:function(A,e){var t=this;setTimeout(function(){e(t[A])},0)},addTest:function(A,e,t){w.push({name:A,fn:e,options:t})},addAsyncTest:function(A){w.push({name:null,fn:A})}},Modernizr=function(){};Modernizr.prototype=v,Modernizr=new Modernizr,Modernizr.addTest("ie8compat",!A.addEventListener&&!!e.documentMode&&7===e.documentMode),Modernizr.addTest("svg",!!e.createElementNS&&!!e.createElementNS("http://www.w3.org/2000/svg","svg").createSVGRect);var B=e.documentElement,T="svg"===B.nodeName.toLowerCase();Modernizr.addTest("videoloop","loop"in a("video")),Modernizr.addTest("videopreload","preload"in a("video")),Modernizr.addTest("video",function(){var A=a("video"),e=!1;try{(e=!!A.canPlayType)&&(e=new Boolean(e),e.ogg=A.canPlayType('video/ogg; codecs="theora"').replace(/^no$/,""),e.h264=A.canPlayType('video/mp4; codecs="avc1.42E01E"').replace(/^no$/,""),e.webm=A.canPlayType('video/webm; codecs="vp8, vorbis"').replace(/^no$/,""),e.vp9=A.canPlayType('video/webm; codecs="vp9"').replace(/^no$/,""),e.hls=A.canPlayType('application/x-mpegURL; codecs="avc1.42E01E"').replace(/^no$/,""))}catch(t){}return e});var F;!function(){var A={}.hasOwnProperty;F=n(A,"undefined")||n(A.call,"undefined")?function(A,e){return e in A&&n(A.constructor.prototype[e],"undefined")}:function(e,t){return A.call(e,t)}}(),v._l={},v.on=function(A,e){this._l[A]||(this._l[A]=[]),this._l[A].push(e),Modernizr.hasOwnProperty(A)&&setTimeout(function(){Modernizr._trigger(A,Modernizr[A])},0)},v._trigger=function(A,e){if(this._l[A]){var t=this._l[A];setTimeout(function(){var A,n;for(A=0;A<t.length;A++)(n=t[A])(e)},0),delete this._l[A]}},Modernizr._q.push(function(){v.addTest=r}),Modernizr.addAsyncTest(function(){function A(t){clearTimeout(e),n.removeEventListener("playing",A,!1),r("videoautoplay",t&&"playing"===t.type||0!==n.currentTime),n.parentNode.removeChild(n)}var e,t=300,n=a("video"),o=n.style;if(!(Modernizr.video&&"autoplay"in n))return void r("videoautoplay",!1);o.position="absolute",o.height=0,o.width=0;try{if(Modernizr.video.ogg)n.src="data:video/ogg;base64,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";else{if(!Modernizr.video.h264)return void r("videoautoplay",!1);n.src="data:video/mp4;base64,AAAAHGZ0eXBtcDQyAAAAAG1wNDJpc29tYXZjMQAAAz5tb292AAAAbG12aGQAAAAAzaNacc2jWnEAAV+QAAFfkAABAAABAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAGGlvZHMAAAAAEICAgAcAT////3//AAACQ3RyYWsAAABcdGtoZAAAAAHNo1pxzaNacQAAAAEAAAAAAAFfkAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAEAAAAAAEAAAABAAAAAAAd9tZGlhAAAAIG1kaGQAAAAAzaNacc2jWnEAAV+QAAFfkFXEAAAAAAAhaGRscgAAAAAAAAAAdmlkZQAAAAAAAAAAAAAAAAAAAAGWbWluZgAAABR2bWhkAAAAAQAAAAAAAAAAAAAAJGRpbmYAAAAcZHJlZgAAAAAAAAABAAAADHVybCAAAAABAAABVnN0YmwAAACpc3RzZAAAAAAAAAABAAAAmWF2YzEAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAEAAQAEgAAABIAAAAAAAAAAEOSlZUL0FWQyBDb2RpbmcAAAAAAAAAAAAAAAAAAAAAAAAY//8AAAAxYXZjQwH0AAr/4QAZZ/QACq609NQYBBkAAAMAAQAAAwAKjxImoAEABWjOAa8gAAAAEmNvbHJuY2xjAAYAAQAGAAAAGHN0dHMAAAAAAAAAAQAAAAUAAEZQAAAAKHN0c3oAAAAAAAAAAAAAAAUAAAIqAAAACAAAAAgAAAAIAAAACAAAAChzdHNjAAAAAAAAAAIAAAABAAAABAAAAAEAAAACAAAAAQAAAAEAAAAYc3RjbwAAAAAAAAACAAADYgAABaQAAAAUc3RzcwAAAAAAAAABAAAAAQAAABFzZHRwAAAAAAREREREAAAAb3VkdGEAAABnbWV0YQAAAAAAAAAhaGRscgAAAAAAAAAAbWRpcgAAAAAAAAAAAAAAAAAAAAA6aWxzdAAAADKpdG9vAAAAKmRhdGEAAAABAAAAAEhhbmRCcmFrZSAwLjkuOCAyMDEyMDcxODAwAAACUm1kYXQAAAHkBgX/4NxF6b3m2Ui3lizYINkj7u94MjY0IC0gY29yZSAxMjAgLSBILjI2NC9NUEVHLTQgQVZDIGNvZGVjIC0gQ29weWxlZnQgMjAwMy0yMDExIC0gaHR0cDovL3d3dy52aWRlb2xhbi5vcmcveDI2NC5odG1sIC0gb3B0aW9uczogY2FiYWM9MCByZWY9MSBkZWJsb2NrPTE6MDowIGFuYWx5c2U9MHgxOjAgbWU9ZXNhIHN1Ym1lPTkgcHN5PTAgbWl4ZWRfcmVmPTAgbWVfcmFuZ2U9NCBjaHJvbWFfbWU9MSB0cmVsbGlzPTAgOHg4ZGN0PTAgY3FtPTAgZGVhZHpvbmU9MjEsMTEgZmFzdF9wc2tpcD0wIGNocm9tYV9xcF9vZmZzZXQ9MCB0aHJlYWRzPTYgc2xpY2VkX3RocmVhZHM9MCBucj0wIGRlY2ltYXRlPTEgaW50ZXJsYWNlZD0wIGJsdXJheV9jb21wYXQ9MCBjb25zdHJhaW5lZF9pbnRyYT0wIGJmcmFtZXM9MCB3ZWlnaHRwPTAga2V5aW50PTUwIGtleWludF9taW49NSBzY2VuZWN1dD00MCBpbnRyYV9yZWZyZXNoPTAgcmM9Y3FwIG1idHJlZT0wIHFwPTAAgAAAAD5liISscR8A+E4ACAACFoAAITAAAgsAAPgYCoKgoC+L4vi+KAvi+L4YfAEAACMzgABF9AAEUGUgABDJiXnf4AAAAARBmiKUAAAABEGaQpQAAAAEQZpilAAAAARBmoKU"}}catch(i){return void r("videoautoplay",!1)}n.setAttribute("autoplay",""),n.style.cssText="display:none",B.appendChild(n),setTimeout(function(){n.addEventListener("playing",A,!1),e=setTimeout(A,t)},0)});var C="Moz O ms Webkit",y=v._config.usePrefixes?C.split(" "):[];v._cssomPrefixes=y;var G=v._config.usePrefixes?C.toLowerCase().split(" "):[];v._domPrefixes=G;var Q={elem:a("modernizr")};Modernizr._q.push(function(){delete Q.elem});var U={style:Q.elem.style};Modernizr._q.unshift(function(){delete U.style}),v.testAllProps=E,v.testAllProps=g,Modernizr.addTest("flexboxtweener",g("flexAlign","end",!0)),Modernizr.addTest("flexwrap",g("flexWrap","wrap",!0)),o(),i(R),delete v.addTest,delete v.addAsyncTest;for(var V=0;V<Modernizr._q.length;V++)Modernizr._q[V]();A.Modernizr=Modernizr}(window,document);
 
 		var controller = new ScrollMagic.Controller();
 		controller.scrollTo(function(target) {
@@ -825,11 +830,10 @@ module.exports = React.createClass({displayName: "exports",
       React.createElement("footer", null, 
         React.createElement("div", {className: "footer_top copy_container"}, 
           React.createElement("nav", null, 
-              React.createElement("a", {className: "social_fb", target: "_blank", href: ""}, "Facebook"), 
-              React.createElement("a", {className: "social_tw", target: "_blank", href: ""}, "Twitter"), 
-              React.createElement("a", {className: "social_ig", target: "_blank", href: ""}, "Instagram"), 
-              React.createElement("a", {className: "social_yt", target: "_blank", href: ""}, "YouTube"), 
-              React.createElement("a", {className: "social_fl", target: "_blank", href: ""}, "Flickr")
+              React.createElement("a", {className: "social_fb", target: "_blank", href: "https://www.facebook.com/fontenelleforest/"}, "Facebook"), 
+              React.createElement("a", {className: "social_tw", target: "_blank", href: "https://twitter.com/fontenelle4est/"}, "Twitter"), 
+              React.createElement("a", {className: "social_ig", target: "_blank", href: "https://www.instagram.com/fontenelleforest/"}, "Instagram"), 
+              React.createElement("a", {className: "social_yt", target: "_blank", href: "https://www.youtube.com/user/FontenelleForest"}, "YouTube")
           ), 
           React.createElement("div", {className: "newsletter"}, 
             "Sign up for our newsletter ", React.createElement("a", {target: "_blank", href: "http://visitor.r20.constantcontact.com/d.jsp?llr=imwa5ckab&p=oi&m=1110347635080&sit=ysqei7ahb&f=025c8173-5ba1-4aed-92a6-a9f9aebb2d65"}, "SUBSCRIBE")
@@ -1401,12 +1405,10 @@ module.exports = React.createClass({displayName: "exports",
                   React.createElement("li", null, "Neal C. Hansen")
                 ), 
                 React.createElement("ul", null, 
-                  React.createElement("li", null, "Rhonda A. and Howard L. Hawks"), 
                   React.createElement("li", null, "Gerry and Bruce Lauritzen"), 
                   React.createElement("li", null, "Marilyn Mammel")
                 ), 
                 React.createElement("ul", null, 
-                  React.createElement("li", null, "Nancy and Mike McCarthy"), 
                   React.createElement("li", null, "Ann Pape"), 
                   React.createElement("li", null, "Walter Scott, Jr."), 
                   React.createElement("li", null, "Ann and Ken Stinson")
@@ -1664,7 +1666,7 @@ var Main = React.createClass({displayName: "Main",
                   React.createElement("div", {className: "quiet_wild copy_container"}, 
                     React.createElement("h2", {className: "marker"}, "An Ongoing Story"), 
                     React.createElement("p", null, "The forest is a complex ecosystem that is constantly evolving. It is part of our mission to both understand its history and to plan and protect its future. What you see when you look out into the dense trees, prairie grasses, and marshy wetlands today is different than what you would have seen 200, 100, or even 50 years ago."), 
-                    React.createElement("p", null, "As we interact with the Forest in a multitude of ways, we all have a role to play in this story. We are leaving our footprint on the Forest, and it’s vital that we consider its size and shape. We’ve learned that a purely “hands off” approach doesn’t work as well as you might guess. In the absence of proactive conservation efforts, the plant and animal life at the Forest would eventually fall out of harmony and reach a non-working state."), 
+                    React.createElement("p", null, "As we interact with the forest in a multitude of ways, we all have a role to play in this story. We are leaving our footprint on the forest, and it’s vital that we consider its size and shape. We’ve learned that a purely “hands off” approach doesn’t work as well as you might guess. In the absence of proactive conservation efforts, the plant and animal life at the forest would eventually fall out of harmony and reach a non-working state."), 
                     React.createElement("p", null, "So we do research, and lots of it. We get out there and observe. We utilize the helping hand of hundreds of dedicated volunteers. We don’t disrupt the natural state of things, but we do encourage nature to thrive in every way we can. Conservation at Fontenelle Forest is the sum of our efforts, from pulling weeds to writing reports."), 
                     React.createElement("img", {className: "bottom_vine", src: "/img/bottom_vine.svg"})
                   )
@@ -1676,7 +1678,7 @@ var Main = React.createClass({displayName: "Main",
                 React.createElement("div", {id: "history", className: "tearjerker_wrapper"}, 
                   React.createElement("div", {className: "centered_content"}, 
                     React.createElement("h2", {className: "marker"}, "Thousands of Years Plus a Century"), 
-                    React.createElement("p", null, "Humans have been interacting with the land that is now Fontenelle Forest for hundreds of thousands of years. But, it wasn’t until 1913 that the land was officially protected with the founding of the Fontenelle Nature Association. Though this subsequent centennial is but a sliver of time in the grand scheme of things, it has been marked by dramatic milestones in the area of forest conservation. Learning about the Forest’s history helps us appreciate it even more today and ensures solid stewardship of this land for years to come."), 
+                    React.createElement("p", null, "Humans have been interacting with the land that is now Fontenelle Forest for many thousands of years. But, it wasn’t until 1913 that the land was officially protected with the founding of the Fontenelle Nature Association. Though this subsequent centennial is but a sliver of time in the grand scheme of things, it has been marked by dramatic milestones in the area of forest conservation. Learning about this history helps us appreciate it even more today and ensures solid stewardship of this land for years to come."), 
                     React.createElement("img", {src: "/img/conservation/divider_bottom_thing.png"})
                   )
                 )
@@ -1722,10 +1724,10 @@ var Main = React.createClass({displayName: "Main",
               ), 
 
               React.createElement("div", {id: "habitat", className: "egg_wrap"}, 
-                React.createElement("h2", {className: "habitat_marker marker"}, "If you have the habitat, you have the home."), 
+                React.createElement("h2", {className: "habitat_marker marker"}, "Healthy Habitats Make Happy Homes"), 
                 React.createElement("div", {className: "habitat_home_container main_wrapper"}, 
                   React.createElement("div", {className: "quiet_wild copy_container"}, 
-                    React.createElement("p", null, "Our main tenet of land stewardship at Fontenelle Forest is to facilitate the most balanced environment we can. With ideal living conditions, the animals follow—the invertebrates, insects, amphibians, reptiles, and mammals that make the Forest harmonious and happy. Still, it’s vital that we let nature do what it wants to do. Our job is more to pay attention and interpret the natural signs that are out there.")
+                    React.createElement("p", null, "If there’s one thing we know, it’s that nature will do what it wants to do. Our job is to pay attention. The approach is simple: focus on maintaining a balanced environment where animals will want to live. With the healthiest trees, the richest soil, the cleanest air possible, the creatures that make the forest harmonious and happy will follow.")
                   )
                 )
               ), 
@@ -1738,13 +1740,13 @@ var Main = React.createClass({displayName: "Main",
                     credit: "Josh Preister", 
                     title: "Habitat Restoration", 
                     key: "habitat", 
-                    description: "Oak savanna and woodland habitats within Fontenelle Forest face severe decline. Their regeneration has been stunted due to the lack of open space resulting from fire suppression and the encroachment of invasive plants. To ensure the preservation and expansion of this ecological community, FF began an oak woodland restoration. Click to find out how we do it!"}), 
+                    description: "Oak savanna and woodland habitats within Fontenelle Forest face severe decline. Their regeneration has been stunted due to the lack of open space resulting from fire suppression and the encroachment of invasive plants. To ensure the preservation and expansion of this ecological community, we began an oak woodland restoration project."}), 
 
                   React.createElement(HabitatThing, {
                     image: "/img/conservation/habitat/deer_management.jpg", 
                     title: "Deer Management", 
                     key: "deer", 
-                    description: "Since the 1980s, the deer population has exploded, due in part to the lack of larger predators and the abundance of food. To mitigate the issue, Fontenelle embarked on what has been a decades-long process: conducting research, forming and enacting a plan, and constantly evaluating results. Since the official deer hunt program began in 1996, it is arguably the most successful conservation program in the history of the forest. Deer management information can be found here."}), 
+                    description: "Since the 1980s, the deer population has exploded, due in part to the lack of larger predators and the abundance of food. To mitigate the issue, we embarked on what has been a decades-long process: conducting research, forming and enacting a plan, and constantly evaluating results. Since the official deer hunt program began in 1996, it has become arguably the most successful conservation program in the history of the forest."}), 
 
                   React.createElement(HabitatThing, {
                     image: "/img/conservation/habitat/erosion_control.jpg", 
@@ -1752,28 +1754,28 @@ var Main = React.createClass({displayName: "Main",
                     title: "Erosion Control", 
                     link: "/post/erosion-control", 
                     key: "erosion", 
-                    description: "Due to years of storm runoff, Coffin Springs Hollow in Fontenelle Forest had eroded into a five-hundred-foot-long gully. Soil repeatedly washed from the area into the nearby stream and was thus threatening the health of our Great Marsh ecosystem. With help from our partners and supporters, Fontenelle Forest successfully completed a series of erosion controls in recent years. Check out our projects!"}), 
+                    description: "Due to years of storm runoff, Coffin Springs Hollow had eroded into a five hundred-foot gully. Soil repeatedly washed from the area into the nearby stream and was thus threatening the health of our Great Marsh ecosystem. With help from our partners and supporters, we successfully completed a series of erosion controls in recent years."}), 
 
                   React.createElement(HabitatThing, {
                     image: "/img/conservation/habitat/prescribed_burn.jpg", 
                     credit: "Alex Wiles", 
-                    title: "Prescribed fire", 
+                    title: "Prescribed Fire", 
                     link: "/post/prescribed-burn", 
                     key: "fire", 
-                    description: "While a house on fire in a neighborhood is not a good thing, fire in a prairie or oak woodland IS! Both of these ecological communities are fire dependent and our trained prescribed burn crew reintroduces this often-missing component to the natural systems here at Fontenelle Forest. Read more about our prescribed fire program."}), 
+                    description: "While a house on fire in a neighborhood is not a good thing, fire in a prairie or oak woodland certainly is. These ecological communities are fire dependent and our trained prescribed burn crew has been reintroducing this component to the natural systems here. Fires are often missed in this age of modern settlement."}), 
 
                   React.createElement(HabitatThing, {
                     image: "/img/conservation/habitat/invasive_species.jpg", 
-                    title: "Invasive species control", 
+                    title: "Invasive Species Control", 
                     key: "invasive", 
-                    description: "We have many beautiful plants in Fontenelle Forest, but some can wreak havoc on our land. In order to restore and maintain our natural habitat, we remove invasive plants. Ornamentals that escape from yards, and plants accidentally brought from other countries can take over when an ecologically community is out of balance. Invasive removal is hard work."}), 
+                    description: "Fontenelle is home to many beautiful plants, but some can wreak havoc on our land. We remove invasive plants in order to restore and maintain the natural habitat. Ornamentals that escape from yards and plants accidentally brought from other countries can take over when an ecological community is out of balance. Invasive removal is hard work."}), 
 
                   React.createElement(HabitatThing, {
                     image: "/img/conservation/habitat/natures_helpers.jpg", 
-                    title: "Nature’s Helpers – Volunteers and YOU!", 
+                    title: "Nature’s Helpers – Volunteers and You", 
                     link: "/post/natures-helpers", 
                     key: "nature", 
-                    description: "All of the work we do requires many hours of labor, which is where our land steward volunteers come in. Our dedicated group of people is invaluable in our conservation efforts. We also rely on our neighbors to help keep our forest healthy. What can YOU do?"})
+                    description: "All of the work we do requires many hours of labor, which is where our land steward volunteers come in. This dedicated group is invaluable to our conservation efforts, but we also rely on our neighbors to help keep our forest healthy. Find out what you can do to help."})
 
                 )
               ), 
@@ -1805,7 +1807,7 @@ var Main = React.createClass({displayName: "Main",
                     React.createElement("h2", {className: "marker"}, "Meet the Raptors"), 
                     React.createElement("p", null, "See some of the injured birds now rehabbing at Fontenelle"), 
                     React.createElement(Link, {to: "/meet-the-raptors"}, 
-                      React.createElement("svg", {className: "arrow_circle blue_white right_arrow", x: "0px", y: "0px", viewBox: "0 0 52 52", enableBackground: "new 0 0 52 52"}, 
+                      React.createElement("svg", {className: "arrow_circle blue_white shadow right_arrow", x: "0px", y: "0px", viewBox: "0 0 52 52", enableBackground: "new 0 0 52 52"}, 
                         React.createElement("path", {className: "circle", strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"}), 
                         React.createElement("g", {className: "arrow"}, 
                           React.createElement("path", {strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M29.4,25.9c0,0-1,1.6-1,4.4c0,2.6-0.6,3.5-0.6,3.8c0,0.4,0.3,0.7,0.7,0.5s8.6-6.2,10.5-8.1" + ' ' +
@@ -1840,7 +1842,7 @@ var Main = React.createClass({displayName: "Main",
                     React.createElement("h2", {className: "marker"}, "Living With Urban Wildlife"), 
                     React.createElement("p", null, "City life is often filled with wildlife interactions. Find out some ways to make it more harmonious and see how Fontenelle Forest can help you do so."), 
                     React.createElement(Link, {to: "/urban-wildlife"}, 
-                      React.createElement("svg", {className: "arrow_circle blue_white right_arrow", x: "0px", y: "0px", viewBox: "0 0 52 52", enableBackground: "new 0 0 52 52"}, 
+                      React.createElement("svg", {className: "arrow_circle blue_white shadow right_arrow", x: "0px", y: "0px", viewBox: "0 0 52 52", enableBackground: "new 0 0 52 52"}, 
                         React.createElement("path", {className: "circle", strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"}), 
                         React.createElement("g", {className: "arrow"}, 
                           React.createElement("path", {strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M29.4,25.9c0,0-1,1.6-1,4.4c0,2.6-0.6,3.5-0.6,3.8c0,0.4,0.3,0.7,0.7,0.5s8.6-6.2,10.5-8.1" + ' ' +
@@ -1903,7 +1905,7 @@ var Main = React.createClass({displayName: "Main",
                     React.createElement("h1", {className: "hero_header"}, "SEE THE FOREST"), 
                     React.createElement("h3", {className: "hero_subheader marker"}, "AND THE TREES"), 
                     React.createElement("div", {className: "hero_textured_color"}, 
-                      React.createElement("p", null, "We invite you to explore ways you can get involved in our conservation initiatives. As stewards of the land, we are dedicated to the conservation and preservation of our local environment so that future generations can continue to enjoy the forest.")
+                      React.createElement("p", null, "As stewards of the land, we are dedicated to the conservation and preservation of our local environment so that future generations can continue to enjoy the forest.")
                     ), 
                     React.createElement("div", {className: "hero_icon_wrap"}, 
                       React.createElement("span", {className: "line left_line"}), 
@@ -1935,7 +1937,7 @@ var Main = React.createClass({displayName: "Main",
                     React.createElement("h1", {className: "hero_header"}, "SEE THE FOREST"), 
                     React.createElement("h3", {className: "hero_subheader marker"}, "AND THE TREES"), 
                     React.createElement("div", {className: "hero_textured_color"}, 
-                      React.createElement("p", null, "We invite you to explore ways you can get involved in our conservation initiatives. As stewards of the land, we are dedicated to the conservation and preservation of our local environment so that future generations can continue to enjoy the forest.")
+                      React.createElement("p", null, "As stewards of the land, we are dedicated to the conservation and preservation of our local environment so that future generations can continue to enjoy the forest.")
                     ), 
                     React.createElement("div", {className: "hero_icon_wrap"}, 
                       React.createElement("span", {className: "line left_line"}), 
@@ -2124,7 +2126,7 @@ module.exports = React.createClass({displayName: "exports",
                   React.createElement("span", {className: "staff_name"}, "Media: "), 
                   React.createElement("span", {className: "title"}, "For all media inquiries, please e-mail the Director of Communications")
                 ), 
-                React.createElement("p", {className: "email"}, React.createElement("a", {href: "#"}, 
+                React.createElement("p", {className: "email"}, "jvavak@fontenelleforest.org", React.createElement("a", {href: "mailto:jvavak@fontenelleforest.org"}, 
                   React.createElement("svg", {className: "arrow_circle blue right_arrow", x: "0px", y: "0px", viewBox: "0 0 52 52", enableBackground: "new 0 0 52 52"}, 
                     React.createElement("path", {className: "circle", strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"}), 
                     React.createElement("g", {className: "arrow"}, 
@@ -2140,7 +2142,7 @@ module.exports = React.createClass({displayName: "exports",
                   React.createElement("span", {className: "staff_name"}, "Donate to FF: "), 
                   React.createElement("span", {className: "title"}, "If you have questions about making a donation, please e-mail the Director of Development.")
                 ), 
-                React.createElement("p", {className: "email"}, React.createElement("a", {href: "#"}, 
+                React.createElement("p", {className: "email"}, "jvavak@fontenelleforest.org", React.createElement("a", {href: "mailto:jvavak@fontenelleforest.org"}, 
                   React.createElement("svg", {className: "arrow_circle blue right_arrow", x: "0px", y: "0px", viewBox: "0 0 52 52", enableBackground: "new 0 0 52 52"}, 
                     React.createElement("path", {className: "circle", strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"}), 
                     React.createElement("g", {className: "arrow"}, 
@@ -2156,7 +2158,7 @@ module.exports = React.createClass({displayName: "exports",
                   React.createElement("span", {className: "staff_name"}, "Careers: "), 
                   React.createElement("span", {className: "title"}, "For current open positions")
                 ), 
-                React.createElement("p", {className: "email"}, React.createElement("a", {href: "#"}, 
+                React.createElement("p", {className: "email"}, "info@fontenelleforest.org", React.createElement("a", {href: "mailto:info@fontenelleforest.org"}, 
                   React.createElement("svg", {className: "arrow_circle blue right_arrow", x: "0px", y: "0px", viewBox: "0 0 52 52", enableBackground: "new 0 0 52 52"}, 
                     React.createElement("path", {className: "circle", strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"}), 
                     React.createElement("g", {className: "arrow"}, 
@@ -2172,7 +2174,7 @@ module.exports = React.createClass({displayName: "exports",
                   React.createElement("span", {className: "staff_name"}, "Donation Requests: "), 
                   React.createElement("span", {className: "title"}, "For qualifications and instructions")
                 ), 
-                React.createElement("p", {className: "email"}, React.createElement("a", {href: "#"}, 
+                React.createElement("p", {className: "email"}, React.createElement(Link, {to: "/get-involved/donate"}, 
                   React.createElement("svg", {className: "arrow_circle blue right_arrow", x: "0px", y: "0px", viewBox: "0 0 52 52", enableBackground: "new 0 0 52 52"}, 
                     React.createElement("path", {className: "circle", strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"}), 
                     React.createElement("g", {className: "arrow"}, 
@@ -2188,7 +2190,7 @@ module.exports = React.createClass({displayName: "exports",
                   React.createElement("span", {className: "staff_name"}, "Memberships: "), 
                   React.createElement("span", {className: "title"}, "To learn more about membership and to join or renew online.")
                 ), 
-                React.createElement("p", {className: "email"}, React.createElement("a", {href: "#"}, 
+                React.createElement("p", {className: "email"}, React.createElement(Link, {to: "/get-involved/membership"}, 
                   React.createElement("svg", {className: "arrow_circle blue right_arrow", x: "0px", y: "0px", viewBox: "0 0 52 52", enableBackground: "new 0 0 52 52"}, 
                     React.createElement("path", {className: "circle", strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"}), 
                     React.createElement("g", {className: "arrow"}, 
@@ -2204,7 +2206,7 @@ module.exports = React.createClass({displayName: "exports",
                   React.createElement("span", {className: "staff_name"}, "Programs: "), 
                   React.createElement("span", {className: "title"}, "For information about our classes, events, and programs, please see the Calendar of Events.")
                 ), 
-                React.createElement("p", {className: "email"}, React.createElement("a", {href: "#"}, 
+                React.createElement("p", {className: "email"}, React.createElement(Link, {to: "/programs"}, 
                   React.createElement("svg", {className: "arrow_circle blue right_arrow", x: "0px", y: "0px", viewBox: "0 0 52 52", enableBackground: "new 0 0 52 52"}, 
                     React.createElement("path", {className: "circle", strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"}), 
                     React.createElement("g", {className: "arrow"}, 
@@ -2218,9 +2220,9 @@ module.exports = React.createClass({displayName: "exports",
               React.createElement("div", {className: "staff_member"}, 
                 React.createElement("h2", {className: "name"}, 
                   React.createElement("span", {className: "staff_name"}, "Volunteer: "), 
-                  React.createElement("span", {className: "title"}, "FTo become a volunteer or to learn more about FF's volunteer opportunities")
+                  React.createElement("span", {className: "title"}, "To become a volunteer or to learn more about FF's volunteer opportunities")
                 ), 
-                React.createElement("p", {className: "email"}, React.createElement("a", {href: "#"}, 
+                React.createElement("p", {className: "email"}, React.createElement(Link, {to: "/get-involved/volunteer"}, 
                   React.createElement("svg", {className: "arrow_circle blue right_arrow", x: "0px", y: "0px", viewBox: "0 0 52 52", enableBackground: "new 0 0 52 52"}, 
                     React.createElement("path", {className: "circle", strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"}), 
                     React.createElement("g", {className: "arrow"}, 
@@ -2386,8 +2388,8 @@ var ClassList = React.createClass({displayName: "ClassList",
             React.createElement("p", null,  current_class.description), 
              current_class.categories.length ?
               React.createElement("span", {className: "icons"}, 
-                 current_class.categories.indexOf('forest') > -1 ? React.createElement("span", {className: "category marker color"}, React.createElement("img", {src: "/img/education/icon_outdoor-grey.svg"}), " Fontenell Forest") : null, 
-                 current_class.categories.indexOf('nature') > -1 ? React.createElement("span", {className: "category marker color"}, React.createElement("img", {src: "/img/education/icon_indoor-grey.svg"}), " Forest On-The-Go") : null
+                 current_class.categories.indexOf('forest') > -1 ? React.createElement("span", {className: "category marker color"}, React.createElement("img", {src: "/img/education/icon_outdoor-grey.svg"}), " Fontenelle Forest") : null, 
+                 current_class.categories.indexOf('nature') > -1 ? React.createElement("span", {className: "category marker color"}, React.createElement("img", {src: "/img/education/icon_indoor-grey.svg"}), " Nature On-The-Go") : null
               )
             : null, 
             React.createElement("div", {className: "details"}, 
@@ -2397,7 +2399,7 @@ var ClassList = React.createClass({displayName: "ClassList",
             ), 
              current_class.prepost.length ?
             React.createElement("div", {className: "enhance"}, 
-              React.createElement("p", null, "Enhance your class experience with pre and post class activities."), 
+              React.createElement("p", null, "Enhance your class experience with pre- and post-class activities."), 
               React.createElement("a", {href:  current_class.prepost, target: "_blank", className: "download_pdf"}, "Download PDF")
             )
             : null, 
@@ -2537,7 +2539,7 @@ var Main = React.createClass({displayName: "Main",
                 ), 
                 React.createElement("div", {className: "living_classroom copy_container"}, 
                   React.createElement("h2", {className: "marker"}, "A living classroom"), 
-                  React.createElement("p", null, "The Forest offers nearly unlimited opportunities for learning. Over 100,000 youth and adults each year take part in environmental education programs through Fontenelle."), 
+                  React.createElement("p", null, "The forest offers nearly unlimited opportunities for learning. Over 100,000 youth and adults each year take part in environmental education programs through Fontenelle."), 
                   React.createElement("img", {className: "bottom_vine", src: "/img/bottom_vine.svg"})
                 )
               ), 
@@ -2599,15 +2601,11 @@ var Main = React.createClass({displayName: "Main",
                 React.createElement("div", {id: "classes", className: "main_wrapper classes_container"}, 
                   React.createElement("div", {className: "living_classroom copy_container"}, 
                     React.createElement("h2", {className: "marker in_forest"}, "In the Forest"), 
-                    React.createElement("p", null, "Book your next field trip with Fontenelle Forest! Our experienced educators will provide an engaging, hands-on program for your group. Each program includes an indoor and outdoor portion. To register for a school program for the 2011/2012 school year, please contact the FF Education Department at (402) 731-3140. For directions to the nature centers, click here."), 
-                    React.createElement("p", {className: "small_text"}, React.createElement("strong", null, "Once you have booked a field trip"), ", be sure to take advantage of the activities provided below. These activities will greatly enhance your students' field trip experience - and they're a lot of fun!")
+                    React.createElement("p", null, "Field trips to the forest consistently top students’ lists of favorites. Our experienced educators will provide an engaging, hands-on program for your group during your visit to Fontenelle. Each trip includes an indoor educational portion that complements the outdoor program. To register, please contact our Education Department at (402) 731-3140.")
                   ), 
                   React.createElement("div", {className: "living_classroom copy_container"}, 
                     React.createElement("h2", {className: "marker on_go"}, "Nature On-The-Go"), 
-                    React.createElement("p", null, "Nature-On-the-Go traveling programs introduce hands-on natural science programs to your students. During each program, your students will explore a \u0003variety of topics. These are great to supplement your school-day lessons or as an after-school program."), 
-                    React.createElement("p", {className: "small_text"}, React.createElement("strong", null, "To schedule a program"), ", call our Manager of Programming and Outreach at 402-731-3140 x1026"), 
-                    React.createElement("p", {className: "small_text"}, "All programs are aligned with Nebraska State Science Standards."), 
-                    React.createElement("p", {className: "small_text"}, "Each program is 45–60 minutes long. Maximum 30 students per On-the-Go program. For groups larger than 30, multiple programs must be scheduled.")
+                    React.createElement("p", null, "Traveling programs that come to you, Nature On-the-Go brings hands-on, natural science education to your students without having to make a field trip. Each program is 45-60 minutes in length, covers a variety of topics, and meets Nebraska State Science Standards. To schedule, please call our Manager of Programming and Outreach at (402) 731-3140 x1026.")
                   ), 
                   React.createElement("div", {className: "flower_image"}, 
                     React.createElement("img", {src: "/img/education/flowers.png"})
@@ -2670,7 +2668,7 @@ var Main = React.createClass({displayName: "Main",
                   React.createElement("h1", {className: "hero_header"}, "CALL OF THE WILD BECKONS"), 
                   React.createElement("h3", {className: "hero_subheader marker"}, "Teachers, administrators and scout leaders"), 
                   React.createElement("div", {className: "hero_textured_color"}, 
-                    React.createElement("p", null, "We invite you to explore opportunities for your school group, including curriculum tied to state science standards. Fontenelle's educational programs take many forms - from field trips, classes, and camps in the forest to hands-on, nature-on-the-go presentations at schools, to community art projects.")
+                    React.createElement("p", null, "Explore opportunities for your school group, including curriculum tied to state science standards. Fontenelle's educational programs take many forms—from field trips, classes, and camps in the forest to hands-on, nature on-the-go presentations at schools, to community art projects.")
                   ), 
                   React.createElement("div", {className: "hero_icon_wrap"}, 
                     React.createElement("span", {className: "line left_line"}), 
@@ -2701,7 +2699,7 @@ var Main = React.createClass({displayName: "Main",
                   React.createElement("h1", {className: "hero_header"}, "CALL OF THE WILD BECKONS"), 
                   React.createElement("h3", {className: "hero_subheader marker"}, "Teachers, administrators and scout leaders"), 
                   React.createElement("div", {className: "hero_textured_color"}, 
-                    React.createElement("p", null, "We invite you to explore opportunities for your school group, including curriculum tied to state science standards. Fontenelle's educational programs take many forms - from field trips, classes, and camps in the forest to hands-on, nature-on-the-go presentations at schools, to community art projects.")
+                    React.createElement("p", null, "Explore opportunities for your school group, including curriculum tied to state science standards. Fontenelle's educational programs take many forms—from field trips, classes, and camps in the forest to hands-on, nature on-the-go presentations at schools, to community art projects.")
                   ), 
                   React.createElement("div", {className: "hero_icon_wrap"}, 
                     React.createElement("span", {className: "line left_line"}), 
@@ -2845,7 +2843,7 @@ var Event = React.createClass({displayName: "Event",
       return (
         React.createElement("div", {className:  signup ? "event green" : "event blue"}, 
           React.createElement("h4", {className: "event_title", onClick: self.toggleContent}, 
-            React.createElement("span", {className: "title"}, self.props.title), 
+            React.createElement("span", {className: "title", dangerouslySetInnerHTML: {__html: self.props.title}}), 
             React.createElement("span", {className: "age"}, age)
           ), 
            open ?
@@ -2877,7 +2875,7 @@ var Event = React.createClass({displayName: "Event",
       return (
         React.createElement("div", {className:  signup ? "event green" : "event blue"}, 
           React.createElement("h4", {className: "event_title", onClick: self.toggleContent}, 
-            React.createElement("span", {className: "title"}, self.props.title), 
+            React.createElement("span", {className: "title", dangerouslySetInnerHTML: {__html: self.props.title}}), 
             React.createElement("span", {className: "age"}, age)
           ), 
            open ?
@@ -3089,7 +3087,15 @@ module.exports = React.createClass({displayName: "exports",
           var events = res.body;
 
           var sorted_events = events.sort(function(a, b) {
-            return parseInt(a.meta.start_date) - parseInt(b.meta.start_date) ;
+            var start_date =  parseInt(a.meta.start_date) - parseInt(b.meta.start_date) ;
+
+            if(start_date) return start_date;
+
+            // If there is a tie, sort by year
+
+            var start_time = moment(a.meta.start_time, "H:m A") - moment(b.meta.start_time, "H:m A");
+
+            return start_time;
           });
 
 
@@ -3114,7 +3120,15 @@ module.exports = React.createClass({displayName: "exports",
           var events = res.body;
 
           var sorted_events = events.sort(function(a, b) {
-            return parseInt(a.meta.start_date) - parseInt(b.meta.start_date) ;
+            var start_date =  parseInt(a.meta.start_date) - parseInt(b.meta.start_date) ;
+
+            if(start_date) return start_date;
+
+            // If there is a tie, sort by year
+
+            var start_time = moment(a.meta.start_time, "H:m A") - moment(b.meta.start_time, "H:m A");
+
+            return start_time;
           });
 
           console.log('nextWeek: ' + events.length);
@@ -3141,7 +3155,15 @@ module.exports = React.createClass({displayName: "exports",
           console.log('prevWeek: ' + events.length);
 
           var sorted_events = events.sort(function(a, b) {
-            return parseInt(a.meta.start_date) - parseInt(b.meta.start_date) ;
+            var start_date =  parseInt(a.meta.start_date) - parseInt(b.meta.start_date) ;
+
+            if(start_date) return start_date;
+
+            // If there is a tie, sort by year
+
+            var start_time = moment(a.meta.start_time, "H:m A") - moment(b.meta.start_time, "H:m A");
+
+            return start_time;
           });
 
 
@@ -3199,7 +3221,7 @@ module.exports = React.createClass({displayName: "exports",
     if (self.state.weather.currently) {
       temp = self.state.weather.currently.temperature;
       icon = self.state.weather.currently.icon;
-      currently = self.state.weather.currently.precipProbability;
+      currently = self.state.weather.hourly.data[0].precipProbability * 100;
       hourly = self.state.weather.hourly.summary;
     }
     var wildlife = self.state.wildlife.map(function(object){
@@ -3360,7 +3382,7 @@ module.exports = React.createClass({displayName: "exports",
             React.createElement("div", {className: "now-links image_container"}, 
               React.createElement("a", {href: "/hours-and-admissions"}, "Hours and Admissions"), 
               React.createElement("span", null, "Trail Maps: ", React.createElement("a", {target: "_blank", href: "http://fontenelleforest.org/images/stories/Trails/ffnc_trailmap_dec09.pdf"}, "Fontenelle"), "|", React.createElement("a", {target: "_blank", href: "http://fontenelleforest.org/images/stories/Trails/neale_woods_map_printable.pdf"}, "Neale Woods")), 
-              React.createElement("a", {href: "#"}, "Guidelines"), 
+              React.createElement("a", {target: "_blank", href: "http://fontenelleforest.org/images/stories/Trails/ffnc_trailmap_dec09.pdf"}, "Guidelines"), 
               React.createElement("a", {href: "/contact"}, "Contact")
             )
           ), 
@@ -3411,7 +3433,7 @@ module.exports = React.createClass({displayName: "exports",
 
           React.createElement("div", {className: "now-blue social_blue"}, 
             React.createElement("div", {className: "now-links image_container marker"}, 
-              "@fontenelleforest / #4estnow / #fontenelleforest"
+                React.createElement("a", {href: "https://twitter.com/fontenelle4est", target: "_blank"}, "@fontenelle4est"), " / ", React.createElement("a", {href: "https://www.instagram.com/fontenelleforest/", target: "_blank"}, "@fontenelleforest"), " / ", React.createElement("a", {href: "https://twitter.com/search?q=%234estnow", target: "_blank"}, "#4estnow"), " / ", React.createElement("a", {href: "https://www.instagram.com/explore/tags/fontenelleforest/", target: "_blank"}, "#fontenelleforest")
             )
           ), 
           React.createElement("div", {className: "social_wrapper"}, 
@@ -3584,17 +3606,17 @@ var Main = React.createClass({displayName: "Main",
     var drawer = [
       {
         title: "The Nature Center",
-        description: "This 25000 square foot building is the home to classrooms, rotating exhibits, and the Fontenelle Forest main offices. Stop by the front desk to grab a map and check the ranger board for the latest on wildlife activity.",
+        description: "This 25,000 square foot building is home to classrooms, rotating exhibits, and our main offices. Stop by the front desk to grab a map and check the ranger board for the latest on wildlife activity.",
         image: "/img/map_photos/small/nature-center.jpg"
       },
       {
         title: "Acorn Acres",
-        description: "Just outside the Nature Center, this natural playscape offers children a unique place for unstructured play and outdoor learning",
+        description: "Located just outside of the Nature Center, this natural playscape offers children a unique place for unstructured play and outdoor learning.",
         image: "/img/map_photos/small/acorn-acres.jpg"
       },
       {
         title: "Habitat Hollow",
-        description: "This short, level trail is a great option when you want a short jaunt off the boardwalk. ",
+        description: "This short, level trail is a great option when you want a short jaunt off the boardwalk.",
         image: "/img/map_photos/small/habitat-hollow.jpg"
       },
       {
@@ -3605,7 +3627,7 @@ var Main = React.createClass({displayName: "Main",
     ];
     var drawer_overview = {
         title: "Overview",
-        description: "With a total of 3.4 miles, this group of trails includes a 1.0 mile boardwalk and various difficulties of trails through the woods. There is also a trail that runs along Childs Hollow through the wetland area to a view of the river. These trails provide several opportunities to see our oak woodland restoration right along the trails.",
+        description: "With a total of 3.4 miles, this group includes a one-mile boardwalk and various difficulties of trails through the woods. There is also a trail that runs along Childs Hollow through the wetland area to a view of the river. These provide several opportunities to see our oak woodland restoration relatively up close.",
     };
 
     self.setState({ drawer: drawer, area: 'natureCenter', drawer_overview: drawer_overview });
@@ -3618,12 +3640,12 @@ var Main = React.createClass({displayName: "Main",
     var drawer = [
       {
         title: "Trailheads at the Wetlands Learning Center",
-        description: "With 5 trailheads nearby, the Wetlands Learning center is a great spot to park and while you discover a new trail.",
+        description: "With five trailheads nearby, the Wetlands Learning Center is a great spot to park and while you discover a new trail.",
         image: "/img/map_photos/small/trailheads.jpg"
       },
       {
         title: "Gifford Memorial Boardwalk",
-        description: "This level, barrier free trail takes you on a half mile journey through wetland and cottonwoods to the observation blind.",
+        description: "This level, barrier-free trail takes you on a half mile journey through wetland and cottonwoods to the observation blind.",
         image: "/img/map_photos/small/gifford memorial boardwalk.jpg"
       },
       {
@@ -3646,7 +3668,7 @@ var Main = React.createClass({displayName: "Main",
     var drawer = [
       {
         title: "Camp Gifford",
-        description: "A young Henry Fonda spent time with other scouts at Camp Gifford. You can still see concrete bunkhouse foundations from Stream Trail.",
+        description: "A young Henry Fonda spent time with other scouts at Camp Gifford. You can still see concrete bunkhouse foundations from the Stream Trail.",
         image: "/img/map_photos/small/camp_gifford.jpg"
       },
       {
@@ -3656,13 +3678,13 @@ var Main = React.createClass({displayName: "Main",
       },
       {
         title: "Cottonwood Trail",
-        description: "A level trail across the floodplain where you can find giant cottonwood trees.",
+        description: "Explore giant cottonwood trees on this level trail that crosses the floodplain.",
         image: "/img/map_photos/small/cottonwood-trail.jpg"
       }
     ];
     var drawer_overview = {
         title: "Overview",
-        description: "Mostly flat, sandy trails wind through the northern part of our floodplain. River views can be found along Missouri Trail. Since this is a wetland, the trails can often be muddy or have some standing water on them.",
+        description: "Mostly flat, sandy trails wind through the northern part of our floodplain, with the Missouri Trail featuring wonderful views of the river. Since this is a wetland, the area can often be muddy or have some standing water.",
     };
 
     self.setState({ drawer: drawer, area: 'northernFloodplains', drawer_overview: drawer_overview });
@@ -3674,23 +3696,23 @@ var Main = React.createClass({displayName: "Main",
     var drawer = [
       {
         title: "Earth Lodges",
-        description: "Along the ridges of Oak Trail and Hawthorn Trail you can find depressions that mark 1000 year old sites of Native American earth lodges.",
+        description: "Along the ridges of Oak Trail and Hawthorn Trail you can find depressions that mark 1,000 year-old sites of Native American earth lodges.",
         image: "/img/map_photos/small/earth_lodge.jpg"
       },
       {
         title: "Scenic, ridge-top Oak Trail",
-        description: "A bit over a mile long with plenty of vertical travel, Oak Trail can give you a workout. The trail follows a ridge with scenic views and 250 year old Burr Oak trees.",
+        description: "A bit over one mile long with plenty of vertical travel, Oak Trail can give you a workout. It follows a ridge with scenic views and 250 year-old bur oak trees.",
         image: "/img/map_photos/small/oak-trail.jpg"
       },
       {
         title: "Child’s MIll",
-        description: "In the 1850’s Charles Childs owned a large section of Fontenelle Forest. His and other logging operations left trails throughout the forest, some of which eventually became the trails we hike today.",
+        description: "In the 1850s, Charles Childs owned a large section of Fontenelle Forest. His and other logging operations left trails throughout the forest, some of which eventually became the trails we hike today.",
         image: "/img/map_photos/small/nature-center.jpg"
       }
     ];
     var drawer_overview = {
         title: "Overview",
-        description: "North of Camp Gifford Road, this section containing 2.5 miles of undulating trails through our upland forest is a quiet place to enjoy nature. These trails mostly have moderate slope, with a few steep slopes along the way.",
+        description: "North of Camp Gifford Road, this section containing 2.5 miles of undulating trails through our upland forest is an exceptionally tranquil place to enjoy nature. These mostly have moderate slope, with a few steep slopes along the way.",
     };
 
     self.setState({ drawer: drawer, area: 'northernUplands', drawer_overview: drawer_overview });
@@ -3701,23 +3723,23 @@ var Main = React.createClass({displayName: "Main",
 
     var drawer_overview = {
         title: "Overview",
-        description: "Full of Nebraska history and the beginning of Bellevue, these moderate to steep trails take you on an amazing journey. Pick up a History brochure at the front desk for a minimal cost and travel back in time. ",
+        description: "Full of cues from Bellevue, Nebraska’s storied history, these moderate-to-steep trails take you on an amazing journey. Pick up a History brochure at the front desk—and travel back in time.",
     };
 
     var drawer = [
       {
         title: "Mormon Hollow",
-        description: "Follow a deep ravine along traces of a Mormon Pioneer trail blazed in the summer of 1846.",
+        description: "Follow a deep ravine along traces of a Mormon pioneer trail first blazed in the summer of 1846.",
         image: "/img/map_photos/small/mormon-hollow.jpg"
       },
       {
         title: "Springs and streams",
-        description: "Along Morman Hollow’s trail you can find springs and miniature waterfalls.",
+        description: "Find plenty of serene springs and picturesque miniature waterfalls along the Mormon Hollow trail.",
         image: "/img/map_photos/small/springsandstreams.jpg"
       },
       {
         title: "History Trail",
-        description: "Follow a self guided tour of 15 historic locations throughout Fontenelle Forest.",
+        description: "Follow a self-guided tour of fifteen historic locations throughout Fontenelle Forest.",
         image: "/img/map_photos/small/history-trail.jpg"
       }
     ];
@@ -4071,7 +4093,7 @@ var Main = React.createClass({displayName: "Main",
                     React.createElement("div", {className: "drawer", style: drawer_styles}, 
                       React.createElement("div", {className: "orange_overlay"}), 
 
-                      React.createElement("svg", {onClick: self.reset, className: "arrow_circle orange left_arrow left reset_button", x: "0px", y: "0px", viewBox: "0 0 52 52", enableBackground: "new 0 0 52 52"}, 
+                      React.createElement("svg", {onClick: self.reset, className: "arrow_circle orange shadow left_arrow left reset_button", x: "0px", y: "0px", viewBox: "0 0 52 52", enableBackground: "new 0 0 52 52"}, 
                         React.createElement("path", {className: "circle", strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"}), 
                         React.createElement("g", {className: "arrow"}, 
                           React.createElement("path", {strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M22.6,25.9c0,0,1,1.6,1,4.4c0,2.6,0.6,3.5,0.6,3.8c0,0.4-0.3,0.7-0.7,0.5s-8.6-6.2-10.5-8.1" + ' ' +
@@ -4093,7 +4115,7 @@ var Main = React.createClass({displayName: "Main",
                     React.createElement("div", {className: "map_content"}, 
                       React.createElement("div", {className: "copy_container"}, 
                         React.createElement("h2", {className: "marker color"}, "Trailmap"), 
-                        React.createElement("p", null, "For over a century, thousands of families have experienced the quiet wild of Nebraska's Fontenelle Forest and Neale Woods–hiking, playing and exploring our 26 miles of maintained trails and 2,000 acres of upland and lowland \u0003forests, native prairies, wetlands, lakes and waterways. Each visit is its own unique adventure, its own story, its own memory to share."), 
+                        React.createElement("p", null, "Walking our trails is an experience unlike any other in the Omaha metro area. In a single afternoon, you’ll encounter a range of vastly different ecosystems, from deciduous forest to oak savanna, prairie, and wetlands."), 
                         React.createElement("img", {className: "bottom_vine", src: "/img/bottom_vine.svg"})
                       ), 
                       React.createElement("div", {className: "trail_map_container"}, 
@@ -5023,15 +5045,15 @@ var Main = React.createClass({displayName: "Main",
 
               React.createElement("div", {className: "egg_wrap bpadded"}, 
                 React.createElement("div", {className: "image_container"}, 
-                  React.createElement("h2", {className: "marker color"}, "Other Properties"), 
+                  React.createElement("h2", {className: "marker color"}, "Other Locations"), 
                   React.createElement("div", {className: "prop_container"}, 
                     React.createElement("div", {className: "property", style:  {backgroundImage: 'url(/img/forest/neale-woods.jpg)'} }, 
                       React.createElement("h3", {className: "marker"}, "NEALE WOODS"), 
-                      React.createElement("p", null, "Neale Woods Nature Center, located 10 minutes north of downtown Omaha, is a 550-acre area that includes more than nine miles of walking trails which wind through forested ravines and tallgrass prairies.")
+                      React.createElement("p", null, "Located ten minutes north of downtown Omaha, Neale Woods Nature Center is a 550-acre area that includes more than nine miles of walking trails which wind through forested ravines and tallgrass prairies.")
                     ), 
                     React.createElement("div", {className: "property", style:  {backgroundImage: 'url(/img/forest/raptor-center.jpg)'}}, 
                       React.createElement("h3", {className: "marker"}, "Raptor Rehabilitation Center"), 
-                      React.createElement("p", null, "Fontenelle Forest Raptor Rehabilitation Center, located near Lincoln, receives hundreds of injured, sick, poisoned or orphaned birds annually. Volunteers provide emergency treatment and stabilize birds for transport to the center. Birds receive medical care while minimizing human contact. For this reason, our rehabilitation center is closed to visitors and we limit scheduled visits as well. Our goal is to work toward release back into the wild for all birds.")
+                      React.createElement("p", null, "A team of volunteers provides emergency treatment for injured and sick birds at the Fontenelle Forest Raptor Rehabilitation Center, located near Lincoln. Because we minimize human contact, the center has limited access to visitors.")
                     )
                   )
                 )
@@ -5248,13 +5270,17 @@ module.exports =  React.createClass({displayName: "exports",
     return (
       React.createElement("div", null, 
         React.createElement("div", {className: "egg_wrap fb_container"}, 
-          React.createElement("div", {className: "featured_image"})
+          React.createElement("div", {className: "featured_image"}, 
+            React.createElement("h1", null, "WHAT TO DO IF YOU FIND ", React.createElement("br", null), "AN INJURED RAPTOR"), 
+            React.createElement("h4", {className: "marker"}, "eagle, hawk, falcon, owl, vulture"), 
+            React.createElement("div", {className: "image_overlay"})
+          )
         ), 
         React.createElement("div", {className: "egg_wrap fb_container"}, 
           React.createElement("div", {className: "fb_wrapper main_wrapper"}, 
             React.createElement("div", {className: "centered_content fb_intro"}, 
               React.createElement("h2", {className: "marker"}, "CONTACT"), 
-              React.createElement("p", null, "If you find an injured or downed raptor, please call the FFRR Center or one of the numbers listed below. Leave a voicemail if there is no answer, and your call will be returned. You may also contact the nearest Nebraska Games & Parks Conservation Officer, your local Humane Society, or local law enforcement."), 
+              React.createElement("p", null, "If you find an injured or downed raptor, please call the FFRR Center or one of the numbers listed below. Leave a voicemail if there is no answer, and your call will be returned. You may also contact the nearest Nebraska Games & Parks Conservation Officer, your local Humane Society, or local law enforcement. ", React.createElement(Link, {to: "/urban-wildlife"}, "Found an animal other than a raptor?")), 
               React.createElement("img", {className: "fb_break", src: "/img/conservation/divider_bottom_grey.png"})
             )
           )
@@ -5352,9 +5378,11 @@ module.exports = React.createClass({displayName: "exports",
   componentDidMount: function () {
     var self  = this;
 
-    if (self.getParams().scroll) {
-      self.scrollThing(self.getParams().scroll)
-    }
+    setTimeout(function() {
+      if (self.getParams().scroll) {
+        self.scrollThing(self.getParams().scroll)
+      }
+    }, 350);
   },
 
   componentDidUpdate: function (prevProps, prevState) {
@@ -5397,7 +5425,7 @@ module.exports = React.createClass({displayName: "exports",
               React.createElement("p", null, "It is because of our many generous donors that we are able to offer such a breadth and depth of conservation initiatives, educational activities, and other programs in the forest. Your tax-deductible gifts will go toward ongoing stewardship of over 2,000 acres of natural land and programs that benefit over 80,000 visitors each year."), 
               React.createElement("img", {className: "gi_break", src: "/img/conservation/divider_bottom_grey.png"}), 
               React.createElement("div", {className: "element_contain"}, 
-                React.createElement("a", {className: "gi_button marker", href: ""}, "Donate")
+                React.createElement("a", {className: "gi_button marker", href: "https://8913.blackbaudhosting.com/8913/Operating-Individual", target: "_blank"}, "Donate")
               )
             )
           )
@@ -5418,8 +5446,8 @@ module.exports = React.createClass({displayName: "exports",
               React.createElement("p", null, "Become a Fontenelle Forest member today and over 2,000 acres of land will become your backyard to explore as often as you like. Your whole family will enjoy weekly programming, special events, educational classes, and unique encounters that bring a new adventure with every visit."), 
               React.createElement("img", {className: "gi_break", src: "/img/conservation/divider_bottom_grey.png"}), 
               React.createElement("div", {className: "element_contain"}, 
-                React.createElement("a", {className: "gi_button marker", href: ""}, "Join or Renew Membership"), 
-                React.createElement("a", {className: "gi_button marker", href: ""}, "Purchase Giftcard")
+                React.createElement("a", {className: "gi_button marker", href: "https://8913.blackbaudhosting.com/8913/Membership", target: "_blank"}, "Join or Renew Membership"), 
+                React.createElement("a", {className: "gi_button marker", href: "https://8913.blackbaudhosting.com/8913/Membership", target: "_blank"}, "Purchase Giftcard")
               )
             ), 
             React.createElement("div", {className: "centered_content join"}, 
@@ -5464,10 +5492,6 @@ module.exports = React.createClass({displayName: "exports",
                   React.createElement("li", null, React.createElement("span", null, "Distinguished Patron", React.createElement("br", null), React.createElement("em", null, "ADDITIONAL BENEFITS: 20 guest passes, 30% gift shop discount")), React.createElement("span", null, "$1,000-2,499")), 
                   React.createElement("li", null, React.createElement("span", null, "Benefactor", React.createElement("br", null), React.createElement("em", null, "ADDITIONAL BENEFITS: 20 guest passes, 30% gift shop discount")), React.createElement("span", null, "$2,500+"))
                 )
-              ), 
-              React.createElement("div", {className: "element_contain"}, 
-                React.createElement("a", {className: "gi_button marker", href: ""}, "Join or Renew Membership"), 
-                React.createElement("a", {className: "gi_button marker", href: ""}, "Purchase Giftcard")
               )
             )
           )
@@ -5500,8 +5524,8 @@ module.exports = React.createClass({displayName: "exports",
               ), 
               React.createElement("hr", null), 
               React.createElement("div", {className: "element_contain"}, 
-                React.createElement("a", {className: "gi_button marker", href: ""}, "Volunteer Form"), 
-                React.createElement("a", {className: "gi_button marker", href: ""}, "Volunteer Waiver")
+                React.createElement("a", {className: "gi_button marker", href: "http://fontenelle.flywheelsites.com/wp-content/uploads/2015/11/volunteerapplication.pdf", target: "_blank"}, "Volunteer Form"), 
+                React.createElement("a", {className: "gi_button marker", href: "http://fontenelle.flywheelsites.com/wp-content/uploads/2015/11/Volunteer_Waiver_and_Release_and_Photo_Release.pdf", target: "_blank"}, "Volunteer Waiver")
               )
             )
           )
@@ -5835,7 +5859,7 @@ module.exports = React.createClass({displayName: "exports",
             React.createElement("h2", {className: "bird_title marker"}, object.title), 
             React.createElement("h4", {className: "bird_species"}, object.meta.species), 
             React.createElement("h4", {className: "bird_date"}, "Date added: ", object.meta.date_added), 
-            React.createElement("p", {className: "bird_overview"}, object.meta.overview)
+            React.createElement("p", {className: "bird_overview", dangerouslySetInnerHTML: {__html: object.meta.overview}})
           )
         )
       )
@@ -6123,7 +6147,7 @@ module.exports = React.createClass({displayName: "exports",
         React.createElement("div", {className: "egg_wrap post_container"}, 
            featured_image ? React.createElement("div", {className: "featured_image", style: image_style}) : null, 
           React.createElement("div", {className: "main_wrapper"}, 
-            React.createElement("h1", {className: "post_title marker"}, title), 
+            React.createElement("h1", {className: "post_title marker", dangerouslySetInnerHTML: {__html: title}}), 
             React.createElement("div", {className: "post_content", dangerouslySetInnerHTML: {__html: content}})
           )
         )
@@ -6452,6 +6476,7 @@ var Main = React.createClass({displayName: "Main",
     var content = (
       React.createElement("div", {className: "main_class"}, 
         React.createElement("h2", null, "MUD PIES"), 
+        React.createElement("img", {src: "/img/programs/mudpies.jpg", width: "100%"}), 
         React.createElement("p", null, "Looking for a unique setting in which to have fun with your child while learning about the natural world? Mud Pies is a relaxed, drop-in-and-play program that encourages interaction between adult and child. Each week, a natural science topic is explored through station-based activities, free play, and a guided walk. Come discover the joy of sharing nature with your child!"), 
         React.createElement("p", null, "Mud Pies meets every Monday-Thursday from 9:30-11:30 am at Fontenelle Forest Nature Center. This program is for children ages 5 and younger accompanied by an adult. One adult is required for every two children. This program is free for members or with daily admission."), 
         React.createElement("p", null, "Parent groups, day cares, or preschools are accepted on Fridays only by appointment. Contact Lindsay Cooley atlcooley@fontenelleforest.org for more information and available dates."), 
@@ -6475,7 +6500,9 @@ var Main = React.createClass({displayName: "Main",
     var content = (
       React.createElement("div", {className: "main_class"}, 
         React.createElement("h2", null, "FAMILY SUNDAYS"), 
-        React.createElement("p", null, "All Ages Discover a new topic every Sunday. This program is offered throughout the year.")
+        React.createElement("img", {src: "/img/programs/family_sundays.jpg", width: "100%"}), 
+        React.createElement("p", null, "Each Sunday at 1:00 p.m. we invite families to come discover the forest. Whether it’s a hike on a new trail with a guide, a meet-and-greet with a raptor, or learning about bird migration, your family will experience the forest like never before."), 
+        React.createElement("p", null, "These programs are designed for all ages. Each week offers a new topic. Sample topics have included: “Scavenger Hunt Fun,” “Dipping in the Wetlands,” “Migrating Monarchs,” “White-Tailed Deer,” and many more. Make sure to check out Forest Now for the latest topic.")
       )
     )
 
@@ -6486,7 +6513,9 @@ var Main = React.createClass({displayName: "Main",
     var content = (
       React.createElement("div", {className: "main_class"}, 
         React.createElement("h2", null, "CAMPFIRE PROGRAMS"), 
-        React.createElement("p", null, "All Ages Bring your family out to the forest for a fun campfire program on the first Friday night of every month.")
+        React.createElement("p", null, "Enjoy an enchanting evening roasting s’mores, listening to stories, and spending quality time with your family. Our campfire programs occur the first Friday night of every month. On cold nights enjoy hot cocoa and bring your blanket. Songs will be sung, legends shared, and the forest will surround you at Camp Brewster."), 
+        React.createElement("p", null, "Each month features a different theme. Past themes have included: “Stories of the Night Sky,” “A Chill in the Air,” “Who is that?,” “Spring Equinox,” “We’ve Gone Batty!,” “Home on the Range,” “Nature Dads: Parenting at the Forest,” and “America the Beautiful.”"), 
+        React.createElement("p", null, "Check Forest Now for the latest theme and date.")
       )
     )
 
@@ -6497,7 +6526,9 @@ var Main = React.createClass({displayName: "Main",
     var content = (
       React.createElement("div", {className: "main_class"}, 
         React.createElement("h2", null, "NATURE EXPLORERS"), 
-        React.createElement("p", null, "Ages 5 - 12 This program explores a different nature theme by season, and the group is divided by age. Offered one Saturday every other month; registration is required. Check the calendar for themes.")
+        React.createElement("img", {src: "/img/programs/nature_explorers.jpg", width: "100%"}), 
+        React.createElement("p", null, "This is a child-only learning experience with a new topic each month to learn and explore. Designed for ages 5–11, each program includes snacks, a hike, and a special theme. Past themes have included: “Some like it Wet” featuring the Amphibians of Fontenelle Forest, “April Birds” featuring bird calls and bird feeders, and “Beavers” featuring beaver tracking."), 
+        React.createElement("p", null, "This interactive and educational program extends the children’s classroom learning into practical, real world learning. Fun and informative led by Fontenelle Forest naturalists, this is one of many unique offerings that only can be found here.")
       )
     )
 
@@ -6653,7 +6684,7 @@ var Main = React.createClass({displayName: "Main",
 
                     React.createElement("div", {className: "for_kids copy_container", id: "kids"}, 
                       React.createElement("h2", {className: "marker color"}, "For Kids"), 
-                      React.createElement("p", null, "What could be more fun than spending a week in the forest? Fontenelle’s Nature \u0003Discovery Day Camps feature fun, hands-on, science-based learning through play taught by our year-round professional educators. Camps are offered in the Summer and Winter. We also offer special camps for grandparents and grandkids to participate in together. Registration is limited and begins January 5th. Proof of age is required. Campers should bring their lunch. Snacks provided."), 
+                      React.createElement("p", null, "What could be more fun than spending a week in the forest? Fontenelle’s Nature Discovery Day Camps feature fun, hands-on, science-based learning through play taught by our year-round professional educators. Camps are offered in the summer and winter. We also offer special camps for grandparents and grandkids to participate in together. Registration is limited. Proof of age is required. Campers should bring their lunch. Snacks provided."), 
 
                       React.createElement("div", {className: "program_item", onClick: self.mudPies}, 
                         React.createElement("h4", {className: "name"}, 
@@ -6749,7 +6780,7 @@ var Main = React.createClass({displayName: "Main",
                    video ?
                     React.createElement("div", {className: "centered_content wide"}, 
                       React.createElement("span", {className: "video_close", onClick: self.toggleVideo}, "×"), 
-                      React.createElement("div", {className: "embed-container"}, React.createElement("iframe", {src: "https://www.youtube.com/embed/f_rum7pLqZc?autoplay=1", frameBorder: "0", allowFullScreen: true}))
+                      React.createElement("div", {className: "embed-container"}, React.createElement("iframe", {src: "https://www.youtube.com/embed/2IhxTqPqNUI?autoplay=1", frameBorder: "0", allowFullScreen: true}))
                     )
                   :
                     React.createElement("div", {className: "centered_content"}, 
@@ -6926,8 +6957,27 @@ var Main = React.createClass({displayName: "Main",
 
               ), 
               React.createElement("div", {className: "egg_wrap"}, 
-                React.createElement("div", {className: "image_container", id: "groups"}, 
-                  React.createElement("img", {src: "/img/programs/groups.png"})
+                React.createElement("div", {className: "main_wrapper", id: "groups"}, 
+                  React.createElement("div", {className: "p_groups p_columns"}, 
+                    React.createElement("div", null, 
+                      React.createElement("h2", {className: "marker color"}, "FOR GROUPS"), 
+                      React.createElement("p", null, "We get requests frequently from companies, organizations, and clubs looking for a group experience in the forest and have developed the following core programs:"), 
+                      React.createElement("h3", null, "BIO-INSPIRED LEADERSHIP WORKSHOP"), 
+                      React.createElement("p", null, "We're partnering with Verdis Group to offer a new workshop for organizations who are ready to embrace the ever changing dynamic business world. This immersion experience explores lessons from nature to form adaptable, resilient, and prosperous teams and groups. Attendees will experience an immersive program unlike any other; one that combines sustainability, achieving an ecological balance, and biomimicry - the design of materials, structures, and systems that are modeled on biological entities and processes."), "\u0003\u0003", 
+                      React.createElement("p", {className: "p_info"}, "For more information, including availability and pricing, please contact:", 
+                      React.createElement("br", null), "\u0003", React.createElement("a", {target: "_blank", href: "mailto:skronekeith@fontenelleforest.org"}, "Seth Keith at SKroneKeith@fontenelleforest.org"), "."), 
+                      React.createElement("hr", null), 
+                      React.createElement("h3", null, "SCOUTS"), 
+                      React.createElement("p", null, "With hands-on activities, games, and exploration, scouts will discover nature’s mysteries at Fontenelle Forest, the region’s premier nature center that encompasses forest, prairie, and wetlands along the Missouri River. With year-round programming and activities from guided hikes, live animal demonstrations, natural science exhibits, lectures, classes, and even snowshoe rentals, there’s always a reason to bring your troop. Make plans to have your Scouts join us for an exciting adventure!"), "\u0003\u0003", 
+                      React.createElement("p", {className: "p_info"}, "For information about Boy and Girl Scouts programs, please contact:", 
+                      React.createElement("br", null), "\u0003", React.createElement("a", {target: "_blank", href: "mailto:kfischer@fontenelleforest.org"}, "Kathy Fischer at kfischer@fontenelleforest.org"), ".", 
+                      React.createElement("br", null), "For information about Eagle Scout programs:", 
+                      React.createElement("br", null), "\u0003", React.createElement("span", {className: "p_num"}, "(402) 731-3140"))
+                    ), 
+                    React.createElement("div", null, 
+                      React.createElement("img", {src: "/img/programs/bag.png"})
+                    )
+                  )
                 )
               ), 
 
@@ -6982,7 +7032,7 @@ var Main = React.createClass({displayName: "Main",
                     React.createElement("h1", {className: "hero_header"}, "WHAT YOU CAN FIND HERE"), 
                     React.createElement("h3", {className: "hero_subheader marker"}, "Is infinite, and it is yours"), 
                     React.createElement("div", {className: "hero_textured_color"}, 
-                      React.createElement("p", null, "Camps, clubs, events and other programs for forest explorers of every age - from pre-schoolers to seniors and everyone in between.")
+                      React.createElement("p", null, "Camps, clubs, events and other programs for forest explorers of every age—from preschoolers to seniors and everyone in between.")
                     ), 
                     React.createElement("div", {className: "hero_icon_wrap"}, 
                       React.createElement("span", {className: "line left_line"}), 
@@ -7015,7 +7065,7 @@ var Main = React.createClass({displayName: "Main",
                     React.createElement("h1", {className: "hero_header"}, "WHAT YOU CAN FIND HERE"), 
                     React.createElement("h3", {className: "hero_subheader marker"}, "Is infinite, and it is yours"), 
                     React.createElement("div", {className: "hero_textured_color"}, 
-                      React.createElement("p", null, "Camps, clubs, events and other programs for forest explorers of every age - from pre-schoolers to seniors and everyone in between.")
+                      React.createElement("p", null, "Camps, clubs, events and other programs for forest explorers of every age—from preschoolers to seniors and everyone in between.")
                     ), 
                     React.createElement("div", {className: "hero_icon_wrap"}, 
                       React.createElement("span", {className: "line left_line"}), 
@@ -7111,12 +7161,12 @@ module.exports = React.createClass({displayName: "exports",
         React.createElement("div", {className: "nature_notes_header egg_wrap"}, 
           React.createElement("div", {className: "raptor"}, 
               React.createElement("h1", {className: "marker"}, "Urban Wildlife"), 
-              React.createElement("p", null, "Contact Nebraska Wildlife Rehabilitation for injured wildlife at (402) 234-2473, or the humane society at (402) 444-7800 and they will get the injured animal to the appropriate organization."), 
+              React.createElement("p", null, "Contact Nebraska Wildlife Rehabilitation for injured wildlife at ", React.createElement("a", {href: "tel:4022342473"}, "(402) 234-2473"), ", or the humane society at ", React.createElement("a", {href: "tel:4024447800"}, "(402) 444-7800"), " and they will get the injured animal to the appropriate organization."), 
               React.createElement("img", {src: "/img/conservation/divider_bottom_grey.png"})
             )
         ), 
         React.createElement("div", {className: "egg_wrap"}, 
-          React.createElement("div", {className: "image_container"}, 
+          React.createElement("div", {className: "main_wrapper"}, 
             React.createElement(UrbanThing, {
               image: "/img/urban-wildlife/deer.jpg", 
               title: "Deer – Leave fawns alone.", 
