@@ -1747,7 +1747,7 @@ var Main = React.createClass({
                   <h1 className="hero_header">INTO THE WOODS</h1>
                   <h3 className="hero_subheader marker">each visit is its own unique adventure</h3>
                   <div className="hero_textured_color">
-                    <p> A general overview of Fontenelle, including: locations and hours, an interactive trail map and wildlife photo gallery</p>
+                    <p>To explore, discover, look, and listen: the tools to create your own path in the forest, including an interactive trail map and wildlife photo gallery.</p>
                   </div>
                   <div className="hero_icon_wrap">
                     <span className="line left_line"></span>
@@ -1779,7 +1779,7 @@ var Main = React.createClass({
                   <h1 className="hero_header">INTO THE WOODS</h1>
                   <h3 className="hero_subheader marker">each visit is its own unique adventure</h3>
                   <div className="hero_textured_color" >
-                    <p> A general overview of Fontenelle, including: locations and hours, an interactive trail map and wildlife photo gallery</p>
+                    <p>To explore, discover, look, and listen: the tools to create your own path in the forest, including an interactive trail map and wildlife photo gallery.</p>
                   </div>
                   <div className="hero_icon_wrap">
                     <span className="line left_line"></span>

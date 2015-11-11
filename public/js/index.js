@@ -5195,7 +5195,7 @@ var Main = React.createClass({displayName: "Main",
                   React.createElement("h1", {className: "hero_header"}, "INTO THE WOODS"), 
                   React.createElement("h3", {className: "hero_subheader marker"}, "each visit is its own unique adventure"), 
                   React.createElement("div", {className: "hero_textured_color"}, 
-                    React.createElement("p", null, " A general overview of Fontenelle, including: locations and hours, an interactive trail map and wildlife photo gallery")
+                    React.createElement("p", null, "To explore, discover, look, and listen: the tools to create your own path in the forest, including an interactive trail map and wildlife photo gallery.")
                   ), 
                   React.createElement("div", {className: "hero_icon_wrap"}, 
                     React.createElement("span", {className: "line left_line"}), 
@@ -5227,7 +5227,7 @@ var Main = React.createClass({displayName: "Main",
                   React.createElement("h1", {className: "hero_header"}, "INTO THE WOODS"), 
                   React.createElement("h3", {className: "hero_subheader marker"}, "each visit is its own unique adventure"), 
                   React.createElement("div", {className: "hero_textured_color"}, 
-                    React.createElement("p", null, " A general overview of Fontenelle, including: locations and hours, an interactive trail map and wildlife photo gallery")
+                    React.createElement("p", null, "To explore, discover, look, and listen: the tools to create your own path in the forest, including an interactive trail map and wildlife photo gallery.")
                   ), 
                   React.createElement("div", {className: "hero_icon_wrap"}, 
                     React.createElement("span", {className: "line left_line"}), 
