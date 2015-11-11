@@ -711,7 +711,7 @@ module.exports = React.createClass({
 
           <div className='now-blue social_blue'>
             <div className='now-links image_container marker'>
-              @fontenelleforest / #4estnow / #fontenelleforest
+                <a href="https://twitter.com/fontenelle4est" target="_blank">@fontenelle4est</a> / <a href="https://www.instagram.com/fontenelleforest/" target="_blank">@fontenelleforest</a> / <a href="https://twitter.com/search?q=%234estnow" target="_blank">#4estnow</a> / <a href="https://www.instagram.com/explore/tags/fontenelleforest/" target="_blank">#fontenelleforest</a>
             </div>
           </div>
           <div className='social_wrapper'>

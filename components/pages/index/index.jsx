@@ -51,7 +51,7 @@ var App = React.createClass({
 		var id = this.getParams().id;
 		if (id) { key += id; }
 		return key;
-	},
+	}, 
 
 	getInitialState: function () {
 		return {

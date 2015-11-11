@@ -21,13 +21,17 @@ module.exports =  React.createClass({
     return (
       <div>
         <div className="egg_wrap fb_container">
-          <div className="featured_image"></div>
+          <div className="featured_image">
+            <h1>WHAT TO DO IF YOU FIND <br />AN INJURED RAPTOR</h1>
+            <h4 className="marker" >eagle, hawk, falcon, owl, vulture</h4>
+            <div className="image_overlay" ></div>
+          </div>
         </div>
         <div className="egg_wrap fb_container">
           <div className="fb_wrapper main_wrapper">
             <div className="centered_content fb_intro">
               <h2 className="marker">CONTACT</h2>
-              <p>If you find an injured or downed raptor, please call the FFRR Center or one of the numbers listed below. Leave a voicemail if there is no answer, and your call will be returned. You may also contact the nearest Nebraska Games & Parks Conservation Officer, your local Humane Society, or local law enforcement.</p>
+              <p>If you find an injured or downed raptor, please call the FFRR Center or one of the numbers listed below. Leave a voicemail if there is no answer, and your call will be returned. You may also contact the nearest Nebraska Games & Parks Conservation Officer, your local Humane Society, or local law enforcement. <Link to="/urban-wildlife">Found an animal other than a raptor?</Link></p>
               <img className="fb_break" src="/img/conservation/divider_bottom_grey.png" />
             </div>
           </div>

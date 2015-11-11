@@ -14,9 +14,11 @@ module.exports = React.createClass({
   componentDidMount: function () {
     var self  = this;
 
-    if (self.getParams().scroll) {
-      self.scrollThing(self.getParams().scroll)
-    }
+    setTimeout(function() {
+      if (self.getParams().scroll) {
+        self.scrollThing(self.getParams().scroll)
+      }
+    }, 350);
   },
 
   componentDidUpdate: function (prevProps, prevState) {
@@ -141,7 +143,7 @@ module.exports = React.createClass({
         </div>
         <div className="egg_wrap volunteer_container">
           <div className="gi_wrapper main_wrapper">
-            <div className="centered_content volunteer"> 
+            <div className="centered_content volunteer">
               <h2 className="marker">VOLUNTEER</h2>
               <p>Our dedicated volunteers are vital to our ongoing educational programs, land stewardship, special events, administration, and many other areas. When you give your time, you are strengthening our ability to preserve historically and ecologically significant land while educating the public about our natural world. We welcome volunteers of all backgrounds and experience levels.</p>
               <img className="gi_break" src="/img/conservation/divider_bottom_grey.png" />

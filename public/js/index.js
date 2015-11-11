@@ -52,7 +52,7 @@ var App = React.createClass({displayName: "App",
 		var id = this.getParams().id;
 		if (id) { key += id; }
 		return key;
-	},
+	}, 
 
 	getInitialState: function () {
 		return {
@@ -2126,7 +2126,7 @@ module.exports = React.createClass({displayName: "exports",
                   React.createElement("span", {className: "staff_name"}, "Media: "), 
                   React.createElement("span", {className: "title"}, "For all media inquiries, please e-mail the Director of Communications")
                 ), 
-                React.createElement("p", {className: "email"}, React.createElement("a", {href: "#"}, 
+                React.createElement("p", {className: "email"}, "jvavak@fontenelleforest.org", React.createElement("a", {href: "mailto:jvavak@fontenelleforest.org"}, 
                   React.createElement("svg", {className: "arrow_circle blue right_arrow", x: "0px", y: "0px", viewBox: "0 0 52 52", enableBackground: "new 0 0 52 52"}, 
                     React.createElement("path", {className: "circle", strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"}), 
                     React.createElement("g", {className: "arrow"}, 
@@ -2142,7 +2142,7 @@ module.exports = React.createClass({displayName: "exports",
                   React.createElement("span", {className: "staff_name"}, "Donate to FF: "), 
                   React.createElement("span", {className: "title"}, "If you have questions about making a donation, please e-mail the Director of Development.")
                 ), 
-                React.createElement("p", {className: "email"}, React.createElement("a", {href: "#"}, 
+                React.createElement("p", {className: "email"}, "jvavak@fontenelleforest.org", React.createElement("a", {href: "mailto:jvavak@fontenelleforest.org"}, 
                   React.createElement("svg", {className: "arrow_circle blue right_arrow", x: "0px", y: "0px", viewBox: "0 0 52 52", enableBackground: "new 0 0 52 52"}, 
                     React.createElement("path", {className: "circle", strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"}), 
                     React.createElement("g", {className: "arrow"}, 
@@ -2158,7 +2158,7 @@ module.exports = React.createClass({displayName: "exports",
                   React.createElement("span", {className: "staff_name"}, "Careers: "), 
                   React.createElement("span", {className: "title"}, "For current open positions")
                 ), 
-                React.createElement("p", {className: "email"}, React.createElement("a", {href: "#"}, 
+                React.createElement("p", {className: "email"}, "info@fontenelleforest.org", React.createElement("a", {href: "mailto:info@fontenelleforest.org"}, 
                   React.createElement("svg", {className: "arrow_circle blue right_arrow", x: "0px", y: "0px", viewBox: "0 0 52 52", enableBackground: "new 0 0 52 52"}, 
                     React.createElement("path", {className: "circle", strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"}), 
                     React.createElement("g", {className: "arrow"}, 
@@ -2174,7 +2174,7 @@ module.exports = React.createClass({displayName: "exports",
                   React.createElement("span", {className: "staff_name"}, "Donation Requests: "), 
                   React.createElement("span", {className: "title"}, "For qualifications and instructions")
                 ), 
-                React.createElement("p", {className: "email"}, React.createElement("a", {href: "#"}, 
+                React.createElement("p", {className: "email"}, React.createElement(Link, {to: "/get-involved/donate"}, 
                   React.createElement("svg", {className: "arrow_circle blue right_arrow", x: "0px", y: "0px", viewBox: "0 0 52 52", enableBackground: "new 0 0 52 52"}, 
                     React.createElement("path", {className: "circle", strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"}), 
                     React.createElement("g", {className: "arrow"}, 
@@ -2190,7 +2190,7 @@ module.exports = React.createClass({displayName: "exports",
                   React.createElement("span", {className: "staff_name"}, "Memberships: "), 
                   React.createElement("span", {className: "title"}, "To learn more about membership and to join or renew online.")
                 ), 
-                React.createElement("p", {className: "email"}, React.createElement("a", {href: "#"}, 
+                React.createElement("p", {className: "email"}, React.createElement(Link, {to: "/get-involved/membership"}, 
                   React.createElement("svg", {className: "arrow_circle blue right_arrow", x: "0px", y: "0px", viewBox: "0 0 52 52", enableBackground: "new 0 0 52 52"}, 
                     React.createElement("path", {className: "circle", strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"}), 
                     React.createElement("g", {className: "arrow"}, 
@@ -2206,7 +2206,7 @@ module.exports = React.createClass({displayName: "exports",
                   React.createElement("span", {className: "staff_name"}, "Programs: "), 
                   React.createElement("span", {className: "title"}, "For information about our classes, events, and programs, please see the Calendar of Events.")
                 ), 
-                React.createElement("p", {className: "email"}, React.createElement("a", {href: "#"}, 
+                React.createElement("p", {className: "email"}, React.createElement(Link, {to: "/programs"}, 
                   React.createElement("svg", {className: "arrow_circle blue right_arrow", x: "0px", y: "0px", viewBox: "0 0 52 52", enableBackground: "new 0 0 52 52"}, 
                     React.createElement("path", {className: "circle", strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"}), 
                     React.createElement("g", {className: "arrow"}, 
@@ -2222,7 +2222,7 @@ module.exports = React.createClass({displayName: "exports",
                   React.createElement("span", {className: "staff_name"}, "Volunteer: "), 
                   React.createElement("span", {className: "title"}, "To become a volunteer or to learn more about FF's volunteer opportunities")
                 ), 
-                React.createElement("p", {className: "email"}, React.createElement("a", {href: "#"}, 
+                React.createElement("p", {className: "email"}, React.createElement(Link, {to: "/get-involved/volunteer"}, 
                   React.createElement("svg", {className: "arrow_circle blue right_arrow", x: "0px", y: "0px", viewBox: "0 0 52 52", enableBackground: "new 0 0 52 52"}, 
                     React.createElement("path", {className: "circle", strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"}), 
                     React.createElement("g", {className: "arrow"}, 
@@ -3433,7 +3433,7 @@ module.exports = React.createClass({displayName: "exports",
 
           React.createElement("div", {className: "now-blue social_blue"}, 
             React.createElement("div", {className: "now-links image_container marker"}, 
-              "@fontenelleforest / #4estnow / #fontenelleforest"
+                React.createElement("a", {href: "https://twitter.com/fontenelle4est", target: "_blank"}, "@fontenelle4est"), " / ", React.createElement("a", {href: "https://www.instagram.com/fontenelleforest/", target: "_blank"}, "@fontenelleforest"), " / ", React.createElement("a", {href: "https://twitter.com/search?q=%234estnow", target: "_blank"}, "#4estnow"), " / ", React.createElement("a", {href: "https://www.instagram.com/explore/tags/fontenelleforest/", target: "_blank"}, "#fontenelleforest")
             )
           ), 
           React.createElement("div", {className: "social_wrapper"}, 
@@ -5270,13 +5270,17 @@ module.exports =  React.createClass({displayName: "exports",
     return (
       React.createElement("div", null, 
         React.createElement("div", {className: "egg_wrap fb_container"}, 
-          React.createElement("div", {className: "featured_image"})
+          React.createElement("div", {className: "featured_image"}, 
+            React.createElement("h1", null, "WHAT TO DO IF YOU FIND ", React.createElement("br", null), "AN INJURED RAPTOR"), 
+            React.createElement("h4", {className: "marker"}, "eagle, hawk, falcon, owl, vulture"), 
+            React.createElement("div", {className: "image_overlay"})
+          )
         ), 
         React.createElement("div", {className: "egg_wrap fb_container"}, 
           React.createElement("div", {className: "fb_wrapper main_wrapper"}, 
             React.createElement("div", {className: "centered_content fb_intro"}, 
               React.createElement("h2", {className: "marker"}, "CONTACT"), 
-              React.createElement("p", null, "If you find an injured or downed raptor, please call the FFRR Center or one of the numbers listed below. Leave a voicemail if there is no answer, and your call will be returned. You may also contact the nearest Nebraska Games & Parks Conservation Officer, your local Humane Society, or local law enforcement."), 
+              React.createElement("p", null, "If you find an injured or downed raptor, please call the FFRR Center or one of the numbers listed below. Leave a voicemail if there is no answer, and your call will be returned. You may also contact the nearest Nebraska Games & Parks Conservation Officer, your local Humane Society, or local law enforcement. ", React.createElement(Link, {to: "/urban-wildlife"}, "Found an animal other than a raptor?")), 
               React.createElement("img", {className: "fb_break", src: "/img/conservation/divider_bottom_grey.png"})
             )
           )
@@ -5374,9 +5378,11 @@ module.exports = React.createClass({displayName: "exports",
   componentDidMount: function () {
     var self  = this;
 
-    if (self.getParams().scroll) {
-      self.scrollThing(self.getParams().scroll)
-    }
+    setTimeout(function() {
+      if (self.getParams().scroll) {
+        self.scrollThing(self.getParams().scroll)
+      }
+    }, 350);
   },
 
   componentDidUpdate: function (prevProps, prevState) {
@@ -7155,12 +7161,12 @@ module.exports = React.createClass({displayName: "exports",
         React.createElement("div", {className: "nature_notes_header egg_wrap"}, 
           React.createElement("div", {className: "raptor"}, 
               React.createElement("h1", {className: "marker"}, "Urban Wildlife"), 
-              React.createElement("p", null, "Contact Nebraska Wildlife Rehabilitation for injured wildlife at (402) 234-2473, or the humane society at (402) 444-7800 and they will get the injured animal to the appropriate organization."), 
+              React.createElement("p", null, "Contact Nebraska Wildlife Rehabilitation for injured wildlife at ", React.createElement("a", {href: "tel:4022342473"}, "(402) 234-2473"), ", or the humane society at ", React.createElement("a", {href: "tel:4024447800"}, "(402) 444-7800"), " and they will get the injured animal to the appropriate organization."), 
               React.createElement("img", {src: "/img/conservation/divider_bottom_grey.png"})
             )
         ), 
         React.createElement("div", {className: "egg_wrap"}, 
-          React.createElement("div", {className: "image_container"}, 
+          React.createElement("div", {className: "main_wrapper"}, 
             React.createElement(UrbanThing, {
               image: "/img/urban-wildlife/deer.jpg", 
               title: "Deer – Leave fawns alone.", 
