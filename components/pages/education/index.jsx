@@ -354,7 +354,7 @@ var Main = React.createClass({
                   <img src="/img/education/skyline_green.jpg" />
                 </div>
               </div>
-              <div className="egg_wrap">
+              <div className="egg_wrap cf">
                 <div className="main_wrapper bottom_nav">
                   <span className="prev_page" onClick={self.moveLeft}>
                     <svg className="arrow_circle black left_arrow" x="0px" y="0px" viewBox="0 0 52 52" enableBackground="new 0 0 52 52" >

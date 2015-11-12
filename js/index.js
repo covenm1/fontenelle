@@ -43,6 +43,21 @@ var slide_count = 0;
 var hotkey = require('react-hotkey');
 hotkey.activate();
 
+function msieversion() {
+
+		var ua = window.navigator.userAgent;
+
+		var msie = ua.indexOf("MSIE ");
+
+
+		if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./))      // If Internet Explorer, return version number
+				return true
+		else
+				return false;
+
+
+}
+
 var App = React.createClass({displayName: "App",
 	mixins: [Router.State, Router.Navigation, hotkey.Mixin('handleKeyDown')],
 
@@ -52,7 +67,7 @@ var App = React.createClass({displayName: "App",
 		var id = this.getParams().id;
 		if (id) { key += id; }
 		return key;
-	}, 
+	},
 
 	getInitialState: function () {
 		return {
@@ -70,6 +85,7 @@ var App = React.createClass({displayName: "App",
 				"/img/education/texture.svg",
 				"/img/programs/texture.svg"
 			],
+			ie: false
 		};
 	},
 
@@ -103,6 +119,10 @@ var App = React.createClass({displayName: "App",
       tmp_image.onload = self.onLoad;
       tmp_image.src = load_images[image];
     }
+
+		var ie = msieversion();
+		console.log("ie: "+ie);
+		self.setState({ie: ie});
 	},
 
 	onLoad: function() {
@@ -217,6 +237,14 @@ var App = React.createClass({displayName: "App",
 		var transition = self.state.currentTransition;
 		var menu = self.state.menu;
 
+		var ie = self.state.ie;
+
+		if (ie == true) {
+			var ie_class = " ie";
+		} else {
+			var ie_class = "";
+		}
+
 		if (menu) {
 			var menu_class = " menu_open";
 		} else {
@@ -234,7 +262,7 @@ var App = React.createClass({displayName: "App",
 			var controller = self.state.controller;
 			document.documentElement.classList.remove('loading');
 			return (
-			  React.createElement("div", {className: "fontenelle " + name + menu_class + header_up}, 
+			  React.createElement("div", {className: "fontenelle " + name + menu_class + header_up + ie_class}, 
 			    React.createElement("header", {className: "header"}, 
 			        React.createElement(Link, {to: "/", className: "logo"}, React.createElement("img", {src: "/img/logo.png", alt: ""})), 
 			        React.createElement("span", {className: "global_menu"}, 
@@ -294,7 +322,7 @@ var App = React.createClass({displayName: "App",
 		} else {
 			document.documentElement.classList.add('loading');
 			return (
-				React.createElement("div", {className: "fontenelle loading header_up " + name + menu_class}, 
+				React.createElement("div", {className: "fontenelle loading header_up " + name + menu_class + ie_class}, 
 					React.createElement("header", {className: "header"}, 
 							React.createElement(Link, {to: "/", className: "logo"}, React.createElement("img", {src: "/img/logo.png", alt: ""})), 
 							React.createElement("span", {className: "global_menu"}, 
@@ -1866,7 +1894,7 @@ var Main = React.createClass({displayName: "Main",
                 )
               ), 
 
-              React.createElement("div", {className: "egg_wrap"}, 
+              React.createElement("div", {className: "egg_wrap cf"}, 
                 React.createElement("div", {className: "main_wrapper bottom_nav"}, 
                   React.createElement("span", {className: "prev_page", onClick: self.moveLeft}, 
                     React.createElement("svg", {className: "arrow_circle black left_arrow", x: "0px", y: "0px", viewBox: "0 0 52 52", enableBackground: "new 0 0 52 52"}, 
@@ -2628,7 +2656,7 @@ var Main = React.createClass({displayName: "Main",
                   React.createElement("img", {src: "/img/education/skyline_green.jpg"})
                 )
               ), 
-              React.createElement("div", {className: "egg_wrap"}, 
+              React.createElement("div", {className: "egg_wrap cf"}, 
                 React.createElement("div", {className: "main_wrapper bottom_nav"}, 
                   React.createElement("span", {className: "prev_page", onClick: self.moveLeft}, 
                     React.createElement("svg", {className: "arrow_circle black left_arrow", x: "0px", y: "0px", viewBox: "0 0 52 52", enableBackground: "new 0 0 52 52"}, 
@@ -5155,7 +5183,7 @@ var Main = React.createClass({displayName: "Main",
                 )
               ), 
 
-              React.createElement("div", {className: "egg_wrap"}, 
+              React.createElement("div", {className: "egg_wrap cf"}, 
                 React.createElement("div", {className: "main_wrapper bottom_nav"}, 
                   React.createElement("span", {className: "prev_page", onClick: self.moveLeft}, 
                     React.createElement("svg", {className: "arrow_circle black left_arrow", x: "0px", y: "0px", viewBox: "0 0 52 52", enableBackground: "new 0 0 52 52"}, 
@@ -6480,16 +6508,16 @@ var Main = React.createClass({displayName: "Main",
         React.createElement("p", null, "Looking for a unique setting in which to have fun with your child while learning about the natural world? Mud Pies is a relaxed, drop-in-and-play program that encourages interaction between adult and child. Each week, a natural science topic is explored through station-based activities, free play, and a guided walk. Come discover the joy of sharing nature with your child!"), 
         React.createElement("p", null, "Mud Pies meets every Monday-Thursday from 9:30-11:30 am at Fontenelle Forest Nature Center. This program is for children ages 5 and younger accompanied by an adult. One adult is required for every two children. This program is free for members or with daily admission."), 
         React.createElement("p", null, "Parent groups, day cares, or preschools are accepted on Fridays only by appointment. Contact Lindsay Cooley atlcooley@fontenelleforest.org for more information and available dates."), 
-        React.createElement("p", null, "Location:"), 
-        React.createElement("p", null, "Fontenelle Forest Nature Center"), 
-        React.createElement("p", null, "Times:"), 
-        React.createElement("p", null, "Every Monday, Tuesday, Wednesday, and Thursday during the school year (except certain holidays)"), 
-        React.createElement("p", null, "9:30 - 11:30 a.m."), 
-        React.createElement("p", null, "Ages:"), 
-        React.createElement("p", null, "5 and younger, accompanied by an adult"), 
-        React.createElement("p", null, "Admission:"), 
-        React.createElement("p", null, "FF Members: Free"), 
-        React.createElement("p", null, "Non-members: Free with Daily Admission")
+        React.createElement("p", {className: "main_label"}, "Location:"), 
+        React.createElement("p", {className: "main_description"}, "Fontenelle Forest Nature Center"), 
+        React.createElement("p", {className: "main_label"}, "Times:"), 
+        React.createElement("p", {className: "main_description"}, "Every Monday, Tuesday, Wednesday, and Thursday during the school year (except certain holidays)"), 
+        React.createElement("p", {className: "main_description"}, "9:30 - 11:30 a.m."), 
+        React.createElement("p", {className: "main_label"}, "Ages:"), 
+        React.createElement("p", {className: "main_description"}, "5 and younger, accompanied by an adult"), 
+        React.createElement("p", {className: "main_label"}, "Admission:"), 
+        React.createElement("p", {className: "main_description"}, React.createElement("strong", null, "FF Members:"), " Free"), 
+        React.createElement("p", {className: "main_description"}, React.createElement("strong", null, "Non-members:"), " Free with Daily Admission")
       )
     )
 
@@ -6708,7 +6736,7 @@ var Main = React.createClass({displayName: "Main",
                       React.createElement("div", {className: "program_item", onClick: self.natureExplorers}, 
                         React.createElement("h4", {className: "name"}, 
                           React.createElement("span", {className: "program_name"}, "Nature Explorers"), 
-                          React.createElement("span", {className: "program_description"}, "Etiam porta sem malesuada magna mollis euismod.")
+                          React.createElement("span", {className: "program_description"}, "This is a child-only learning experience with a new topic each month to learn and explore.")
                         ), 
                         React.createElement("span", {className: "program_arrow"}, 
                           React.createElement("svg", {className: "arrow_circle red right_arrow", x: "0px", y: "0px", viewBox: "0 0 52 52", enableBackground: "new 0 0 52 52"}, 
@@ -6727,7 +6755,7 @@ var Main = React.createClass({displayName: "Main",
                       React.createElement("div", {className: "program_item", onClick: self.campfire}, 
                         React.createElement("h4", {className: "name"}, 
                           React.createElement("span", {className: "program_name"}, "Campfire"), 
-                          React.createElement("span", {className: "program_description"}, "Etiam porta sem malesuada magna mollis euismod.")
+                          React.createElement("span", {className: "program_description"}, "Enjoy an enchanting evening roasting s’mores, listening to stories, and spending quality time with your family.")
                         ), 
                         React.createElement("span", {className: "program_arrow"}, 
                           React.createElement("svg", {className: "arrow_circle red right_arrow", x: "0px", y: "0px", viewBox: "0 0 52 52", enableBackground: "new 0 0 52 52"}, 
@@ -6746,7 +6774,7 @@ var Main = React.createClass({displayName: "Main",
                       React.createElement("div", {className: "program_item", onClick: self.familySundays}, 
                         React.createElement("h4", {className: "name"}, 
                           React.createElement("span", {className: "program_name"}, "Family Sundays"), 
-                          React.createElement("span", {className: "program_description"}, "Etiam porta sem malesuada magna mollis euismod.")
+                          React.createElement("span", {className: "program_description"}, "Each Sunday at 1:00 p.m. we invite families to come discover the forest.")
                         ), 
                         React.createElement("span", {className: "program_arrow"}, 
                           React.createElement("svg", {className: "arrow_circle red right_arrow", x: "0px", y: "0px", viewBox: "0 0 52 52", enableBackground: "new 0 0 52 52"}, 

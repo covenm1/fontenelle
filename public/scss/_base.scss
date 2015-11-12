@@ -310,7 +310,7 @@ header {
       display: inline-block;
       position: fixed;
       top: 50%;
-      z-index: 1;
+      z-index: 3;
       color: white;
       margin-top: -25px;
 
@@ -474,7 +474,7 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1;
+  z-index: 3;
 }
 
 footer img {

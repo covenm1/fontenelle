@@ -28,3 +28,29 @@ $grey: #808080;
 @import "posts";
 
 @import "media";
+
+.ie {
+  &.forest {
+    .video_overlay {
+      background: #351212 !important;
+    }
+  }
+  &.education {
+    .video_overlay {
+      background: #59AA6C !important;
+    }
+  }
+  &.programs {
+    .video_overlay {
+      background: #8F1825 !important;
+    }
+  }
+  &.natural-resources {
+    .video_overlay {
+      background: #2F7ABE !important;
+    }
+  }
+  .video_overlay {
+    background: black !important;
+  }
+}

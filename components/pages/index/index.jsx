@@ -42,6 +42,21 @@ var slide_count = 0;
 var hotkey = require('react-hotkey');
 hotkey.activate();
 
+function msieversion() {
+
+		var ua = window.navigator.userAgent;
+
+		var msie = ua.indexOf("MSIE ");
+
+
+		if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./))      // If Internet Explorer, return version number
+				return true
+		else
+				return false;
+
+
+}
+
 var App = React.createClass({
 	mixins: [Router.State, Router.Navigation, hotkey.Mixin('handleKeyDown')],
 
@@ -51,7 +66,7 @@ var App = React.createClass({
 		var id = this.getParams().id;
 		if (id) { key += id; }
 		return key;
-	}, 
+	},
 
 	getInitialState: function () {
 		return {
@@ -69,6 +84,7 @@ var App = React.createClass({
 				"/img/education/texture.svg",
 				"/img/programs/texture.svg"
 			],
+			ie: false
 		};
 	},
 
@@ -102,6 +118,10 @@ var App = React.createClass({
       tmp_image.onload = self.onLoad;
       tmp_image.src = load_images[image];
     }
+
+		var ie = msieversion();
+		console.log("ie: "+ie);
+		self.setState({ie: ie});
 	},
 
 	onLoad: function() {
@@ -216,6 +236,14 @@ var App = React.createClass({
 		var transition = self.state.currentTransition;
 		var menu = self.state.menu;
 
+		var ie = self.state.ie;
+
+		if (ie == true) {
+			var ie_class = " ie";
+		} else {
+			var ie_class = "";
+		}
+
 		if (menu) {
 			var menu_class = " menu_open";
 		} else {
@@ -233,7 +261,7 @@ var App = React.createClass({
 			var controller = self.state.controller;
 			document.documentElement.classList.remove('loading');
 			return (
-			  <div className={"fontenelle " + name + menu_class + header_up} >
+			  <div className={"fontenelle " + name + menu_class + header_up + ie_class} >
 			    <header className="header">
 			        <Link to="/" className="logo"><img src="/img/logo.png" alt="" /></Link>
 			        <span className="global_menu">
@@ -293,7 +321,7 @@ var App = React.createClass({
 		} else {
 			document.documentElement.classList.add('loading');
 			return (
-				<div className={"fontenelle loading header_up " + name + menu_class} >
+				<div className={"fontenelle loading header_up " + name + menu_class + ie_class} >
 					<header className="header">
 							<Link to="/" className="logo"><img src="/img/logo.png" alt="" /></Link>
 							<span className="global_menu">
