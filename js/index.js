@@ -430,8 +430,11 @@ var routes = (
 // }
 function analytics(state, options) {
 	console.log('analytics: '+state.path);
-	ga('create', 'UA-29023725-1', 'auto');
-	ga('send', 'pageview');
+	var create = ga('create', 'UA-29023725-1', 'auto');
+	var send = ga('send', 'pageview');
+
+	console.log('create: '+create);
+	console.log('send: '+send);
 }
 
 var router = Router.create({
@@ -869,25 +872,26 @@ module.exports=[
 ]
 
 },{}],4:[function(require,module,exports){
-(function (process){
 var React = require('react');
+var ga = require('react-google-analytics');
+var GAInitiailizer = ga.Initializer;
 
 module.exports = React.createClass({displayName: "exports",
   componentDidMount:function(){
-    if (process.env.NODE_ENV == 'production') {
-      this.analytics();
-    }
+    // if (process.env.NODE_ENV == 'production') {
+    //   this.analytics();
+    // }
   },
   analytics: function(){
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-29023725-1']);
-    _gaq.push(['_trackPageview']);
-
-    (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
+    // var _gaq = _gaq || [];
+    // _gaq.push(['_setAccount', 'UA-29023725-1']);
+    // _gaq.push(['_trackPageview']);
+    //
+    // (function() {
+    //   var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    //   ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    //   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    // })();
   },
   render: function() {
     return (
@@ -917,8 +921,7 @@ module.exports = React.createClass({displayName: "exports",
   }
 });
 
-}).call(this,require('_process'))
-},{"_process":27,"react":257}],5:[function(require,module,exports){
+},{"react":257,"react-google-analytics":29}],5:[function(require,module,exports){
 module.exports=[
   {
     "image": "/img/littleexplorers/acorn-acres.jpg",

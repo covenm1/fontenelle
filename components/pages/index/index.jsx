@@ -429,8 +429,11 @@ var routes = (
 // }
 function analytics(state, options) {
 	console.log('analytics: '+state.path);
-	ga('create', 'UA-29023725-1', 'auto');
-	ga('send', 'pageview');
+	var create = ga('create', 'UA-29023725-1', 'auto');
+	var send = ga('send', 'pageview');
+
+	console.log('create: '+create);
+	console.log('send: '+send);
 }
 
 var router = Router.create({

@@ -1,21 +1,23 @@
 var React = require('react');
+var ga = require('react-google-analytics');
+var GAInitiailizer = ga.Initializer;
 
 module.exports = React.createClass({
   componentDidMount:function(){
-    if (process.env.NODE_ENV == 'production') {
-      this.analytics();
-    }
+    // if (process.env.NODE_ENV == 'production') {
+    //   this.analytics();
+    // }
   },
   analytics: function(){
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-29023725-1']);
-    _gaq.push(['_trackPageview']);
-
-    (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
+    // var _gaq = _gaq || [];
+    // _gaq.push(['_setAccount', 'UA-29023725-1']);
+    // _gaq.push(['_trackPageview']);
+    //
+    // (function() {
+    //   var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    //   ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    //   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    // })();
   },
   render: function() {
     return (
