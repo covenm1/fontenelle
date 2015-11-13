@@ -38,7 +38,6 @@
     "react-google-analytics": "^0.2.0",
     "react-hotkey": "^0.3.0",
     "react-inlinesvg": "^0.4.2",
-    "react-preload": "^0.2.2",
     "react-router": "^0.13.3",
     "redis": "^0.12.1",
     "scrollmagic": "^2.0.5",
@@ -54,6 +53,8 @@
     "vinyl-source-stream": "~1.0.0"
   },
   "devDependencies": {
+    "babel-preset-es2015": "^6.1.18",
+    "babel-preset-react": "^6.1.18",
     "browserify": "^8.1.0",
     "chai": "^1.10.0",
     "gulp": "^3.8.10",
