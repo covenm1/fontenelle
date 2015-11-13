@@ -83,12 +83,17 @@
 	}
 }
 .nature_notes {
+	width: 100%;
+	position: relative;
 	display: flex;
-	flex-direction: row;
+	flex-direction: row;	
 	.plantlife, .wildlife {
-		flex: 1;
+
 		margin-right: 5%;
-    margin-bottom: 5%;
+		margin-bottom: 5%;
+		position: relative;
+		width: 45%;
+		min-width: 320px;
 	}
 	.nature_notes_item {
 		display: flex;
