@@ -46,9 +46,7 @@ hotkey.activate();
 function msieversion() {
 
 		var ua = window.navigator.userAgent;
-
 		var msie = ua.indexOf("MSIE ");
-
 
 		if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./))      // If Internet Explorer, return version number
 				return true
@@ -3326,7 +3324,7 @@ module.exports = React.createClass({displayName: "exports",
       return React.createElement("p", {className: "closings_title"}, object.title)
     });
     var top_image = {
-      backgroundImage: "url(/img/weather/rain.jpg)"
+      backgroundImage: "url(/img/weather/beautiful-day.jpg)"
     }
     var nature_notes_image = {
       backgroundImage: "url(/img/forest-now/nature_notes_bkgd.jpg)"
@@ -3362,7 +3360,7 @@ module.exports = React.createClass({displayName: "exports",
               React.createElement("div", {className: "fn_top_left", style: top_image}, 
                 React.createElement("div", {className: "fn_wrap"}, 
                   React.createElement("div", {className: "halfcontainer left"}, 
-                    React.createElement("h3", {className: "main_title"}, "Come Splash Around"), 
+                    React.createElement("h3", {className: "main_title"}, "It's a Beautiful Day"), 
                     React.createElement("h3", {className: "marker sub_title"}, "in our backyard")
                   )
                 ), 
