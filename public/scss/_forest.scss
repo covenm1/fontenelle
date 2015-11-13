@@ -308,6 +308,7 @@
 .play_button_wrapper {
   display: flex;
   flex-direction: row;
+  align-items: center;
   .left_leaf, .right_leaf {
     flex: 1;
   }

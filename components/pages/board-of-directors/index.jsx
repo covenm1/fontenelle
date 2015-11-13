@@ -91,12 +91,10 @@ module.exports = React.createClass({
                   <li>Neal C. Hansen</li>
                 </ul>
                 <ul>
-                  <li>Rhonda A. and Howard L. Hawks</li>
                   <li>Gerry and Bruce Lauritzen</li>
                   <li>Marilyn Mammel</li>
                 </ul>
                 <ul>
-                  <li>Nancy and Mike McCarthy</li>
                   <li>Ann Pape</li>
                   <li>Walter Scott, Jr.</li>
                   <li>Ann and Ken Stinson</li>

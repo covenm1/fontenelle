@@ -14,9 +14,11 @@ module.exports = React.createClass({
   componentDidMount: function () {
     var self  = this;
 
-    if (self.getParams().scroll) {
-      self.scrollThing(self.getParams().scroll)
-    }
+    setTimeout(function() {
+      if (self.getParams().scroll) {
+        self.scrollThing(self.getParams().scroll)
+      }
+    }, 350);
   },
 
   componentDidUpdate: function (prevProps, prevState) {
@@ -59,7 +61,7 @@ module.exports = React.createClass({
               <p>It is because of our many generous donors that we are able to offer such a breadth and depth of conservation initiatives, educational activities, and other programs in the forest. Your tax-deductible gifts will go toward ongoing stewardship of over 2,000 acres of natural land and programs that benefit over 80,000 visitors each year.</p>
               <img className="gi_break" src="/img/conservation/divider_bottom_grey.png" />
               <div className="element_contain">
-                <a className="gi_button marker" href="">Donate</a>
+                <a className="gi_button marker" href="https://8913.blackbaudhosting.com/8913/Operating-Individual" target="_blank">Donate</a>
               </div>
             </div>
           </div>
@@ -80,8 +82,8 @@ module.exports = React.createClass({
               <p>Become a Fontenelle Forest member today and over 2,000 acres of land will become your backyard to explore as often as you like. Your whole family will enjoy weekly programming, special events, educational classes, and unique encounters that bring a new adventure with every visit.</p>
               <img className="gi_break" src="/img/conservation/divider_bottom_grey.png" />
               <div className="element_contain">
-                <a className="gi_button marker" href="">Join or Renew Membership</a>
-                <a className="gi_button marker" href="">Purchase Giftcard</a>
+                <a className="gi_button marker" href="https://8913.blackbaudhosting.com/8913/Membership" target="_blank">Join or Renew Membership</a>
+                <a className="gi_button marker" href="https://8913.blackbaudhosting.com/8913/Membership" target="_blank">Purchase Giftcard</a>
               </div>
             </div>
             <div className="centered_content join">
@@ -127,10 +129,6 @@ module.exports = React.createClass({
                   <li><span>Benefactor<br/><em>ADDITIONAL BENEFITS: 20 guest passes, 30% gift shop discount</em></span><span>$2,500+</span></li>
                 </ul>
               </div>
-              <div className="element_contain">
-                <a className="gi_button marker" href="">Join or Renew Membership</a>
-                <a className="gi_button marker" href="">Purchase Giftcard</a>
-              </div>
             </div>
           </div>
         </div>
@@ -162,8 +160,8 @@ module.exports = React.createClass({
               </ul>
               <hr />
               <div className="element_contain">
-                <a className="gi_button marker" href="">Volunteer Form</a>
-                <a className="gi_button marker" href="">Volunteer Waiver</a>
+                <a className="gi_button marker" href="http://fontenelle.flywheelsites.com/wp-content/uploads/2015/11/volunteerapplication.pdf" target="_blank">Volunteer Form</a>
+                <a className="gi_button marker" href="http://fontenelle.flywheelsites.com/wp-content/uploads/2015/11/Volunteer_Waiver_and_Release_and_Photo_Release.pdf" target="_blank">Volunteer Waiver</a>
               </div>
             </div>
           </div>

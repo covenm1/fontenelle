@@ -123,7 +123,7 @@ module.exports = React.createClass({
               <span className="phone_label">FAX</span>
               <a href="tel:4027312403" className="phone_button">(402) 731-2403</a>
             </span>
-          </div> 
+          </div>
         </div>
         <div className="egg_wrap tpadded">
           <div className='main_wrapper'>
@@ -165,7 +165,7 @@ module.exports = React.createClass({
                   <span className="staff_name">Media: </span>
                   <span className="title">For all media inquiries, please e-mail the Director of Communications</span>
                 </h2>
-                <p className="email"><a href="#">
+                <p className="email">jvavak@fontenelleforest.org<a href="mailto:jvavak@fontenelleforest.org">
                   <svg className="arrow_circle blue right_arrow" x="0px" y="0px" viewBox="0 0 52 52" enableBackground="new 0 0 52 52" >
                     <path className="circle" strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"/>
                     <g className="arrow" >
@@ -181,7 +181,7 @@ module.exports = React.createClass({
                   <span className="staff_name">Donate to FF: </span>
                   <span className="title">If you have questions about making a donation, please e-mail the Director of Development.</span>
                 </h2>
-                <p className="email"><a href="#">
+                <p className="email">jvavak@fontenelleforest.org<a href="mailto:jvavak@fontenelleforest.org">
                   <svg className="arrow_circle blue right_arrow" x="0px" y="0px" viewBox="0 0 52 52" enableBackground="new 0 0 52 52" >
                     <path className="circle" strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"/>
                     <g className="arrow" >
@@ -197,7 +197,7 @@ module.exports = React.createClass({
                   <span className="staff_name">Careers: </span>
                   <span className="title">For current open positions</span>
                 </h2>
-                <p className="email"><a href="#">
+                <p className="email">info@fontenelleforest.org<a href="mailto:info@fontenelleforest.org">
                   <svg className="arrow_circle blue right_arrow" x="0px" y="0px" viewBox="0 0 52 52" enableBackground="new 0 0 52 52" >
                     <path className="circle" strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"/>
                     <g className="arrow" >
@@ -213,7 +213,7 @@ module.exports = React.createClass({
                   <span className="staff_name">Donation Requests: </span>
                   <span className="title">For qualifications and instructions</span>
                 </h2>
-                <p className="email"><a href="#">
+                <p className="email"><Link to="/get-involved/donate">
                   <svg className="arrow_circle blue right_arrow" x="0px" y="0px" viewBox="0 0 52 52" enableBackground="new 0 0 52 52" >
                     <path className="circle" strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"/>
                     <g className="arrow" >
@@ -222,14 +222,14 @@ module.exports = React.createClass({
                         C28.4,24.3,29.4,25.9,29.4,25.9z"/>
                       <line strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' x1="27.8" y1="25.9" x2="12.7" y2="25.9"/>
                     </g>
-                  </svg></a></p>
+                  </svg></Link></p>
               </div>
               <div className="staff_member">
                 <h2 className="name">
                   <span className="staff_name">Memberships: </span>
                   <span className="title">To learn more about membership and to join or renew online.</span>
                 </h2>
-                <p className="email"><a href="#">
+                <p className="email"><Link to="/get-involved/membership">
                   <svg className="arrow_circle blue right_arrow" x="0px" y="0px" viewBox="0 0 52 52" enableBackground="new 0 0 52 52" >
                     <path className="circle" strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"/>
                     <g className="arrow" >
@@ -238,14 +238,14 @@ module.exports = React.createClass({
                         C28.4,24.3,29.4,25.9,29.4,25.9z"/>
                       <line strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' x1="27.8" y1="25.9" x2="12.7" y2="25.9"/>
                     </g>
-                  </svg></a></p>
+                  </svg></Link></p>
               </div>
               <div className="staff_member">
                 <h2 className="name">
                   <span className="staff_name">Programs: </span>
                   <span className="title">For information about our classes, events, and programs, please see the Calendar of Events.</span>
                 </h2>
-                <p className="email"><a href="#">
+                <p className="email"><Link to="/programs">
                   <svg className="arrow_circle blue right_arrow" x="0px" y="0px" viewBox="0 0 52 52" enableBackground="new 0 0 52 52" >
                     <path className="circle" strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"/>
                     <g className="arrow" >
@@ -254,14 +254,14 @@ module.exports = React.createClass({
                         C28.4,24.3,29.4,25.9,29.4,25.9z"/>
                       <line strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' x1="27.8" y1="25.9" x2="12.7" y2="25.9"/>
                     </g>
-                  </svg></a></p>
+                  </svg></Link></p>
               </div>
               <div className="staff_member">
                 <h2 className="name">
                   <span className="staff_name">Volunteer: </span>
-                  <span className="title">FTo become a volunteer or to learn more about FF's volunteer opportunities</span>
+                  <span className="title">To become a volunteer or to learn more about FF's volunteer opportunities</span>
                 </h2>
-                <p className="email"><a href="#">
+                <p className="email"><Link to="/get-involved/volunteer">
                   <svg className="arrow_circle blue right_arrow" x="0px" y="0px" viewBox="0 0 52 52" enableBackground="new 0 0 52 52" >
                     <path className="circle" strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"/>
                     <g className="arrow" >
@@ -270,7 +270,7 @@ module.exports = React.createClass({
                         C28.4,24.3,29.4,25.9,29.4,25.9z"/>
                       <line strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' x1="27.8" y1="25.9" x2="12.7" y2="25.9"/>
                     </g>
-                  </svg></a></p>
+                  </svg></Link></p>
               </div>
           </div>
           <div className='main_wrapper'>

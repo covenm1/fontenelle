@@ -35,12 +35,12 @@ module.exports = React.createClass({
         <div className="nature_notes_header egg_wrap">
           <div className="raptor">
               <h1 className="marker">Urban Wildlife</h1>
-              <p>Contact Nebraska Wildlife Rehabilitation for injured wildlife at (402) 234-2473, or the humane society at (402) 444-7800 and they will get the injured animal to the appropriate organization.</p>
+              <p>Contact Nebraska Wildlife Rehabilitation for injured wildlife at <a href="tel:4022342473">(402) 234-2473</a>, or the humane society at <a href="tel:4024447800">(402) 444-7800</a> and they will get the injured animal to the appropriate organization.</p>
               <img src="/img/conservation/divider_bottom_grey.png" />
             </div>
         </div>
         <div className="egg_wrap">
-          <div className="image_container">
+          <div className="main_wrapper">
             <UrbanThing
               image="/img/urban-wildlife/deer.jpg"
               title="Deer – Leave fawns alone."

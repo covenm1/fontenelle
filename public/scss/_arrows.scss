@@ -30,7 +30,8 @@
 .arrow_circle {
 	width: 50px;
 	cursor: pointer;
-
+	border-radius: 50%;
+	transition: 0.15s ease-out;
 	.circle {
 		fill: none;
 		stroke: #D2D3D3;
@@ -50,6 +51,12 @@
 		.arrow {
 			fill: none;
 			stroke: white;
+		}
+	}
+
+	&.shadow {
+		&:hover {
+			box-shadow: 0 19px 60px rgba(0, 0, 0, 0.30), 0 15px 20px rgba(0, 0, 0, 0.22);
 		}
 	}
 
@@ -208,12 +215,18 @@
 
 .play_button {
 	width: 60px;
+	height: 60px;
 	enable-background:new 0 0 76 76;
+	border-radius: 50%;
+	transition: 0.15s ease-out;
 	.triangle, .circle {
 		fill:none;
 		stroke:#FFFFFF;
 		stroke-width:3;
 		stroke-miterlimit:10;
+	}
+	&:hover {
+		box-shadow: 0 19px 60px rgba(0, 0, 0, 0.30), 0 15px 20px rgba(0, 0, 0, 0.22);
 	}
 	&.forest {
 		&:hover {

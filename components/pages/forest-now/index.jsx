@@ -121,7 +121,7 @@ var Event = React.createClass({
       return (
         <div className={ signup ? "event green" : "event blue"} >
           <h4 className="event_title" onClick={self.toggleContent}>
-            <span className="title">{self.props.title}</span>
+            <span className="title" dangerouslySetInnerHTML={{__html: self.props.title}}></span>
             <span className="age">{age}</span>
           </h4>
           { open ?
@@ -153,7 +153,7 @@ var Event = React.createClass({
       return (
         <div className={ signup ? "event green" : "event blue"}>
           <h4 className="event_title" onClick={self.toggleContent}>
-            <span className="title">{self.props.title}</span>
+            <span className="title" dangerouslySetInnerHTML={{__html: self.props.title}}></span>
             <span className="age">{age}</span>
           </h4>
           { open ?
@@ -365,7 +365,15 @@ module.exports = React.createClass({
           var events = res.body;
 
           var sorted_events = events.sort(function(a, b) {
-            return parseInt(a.meta.start_date) - parseInt(b.meta.start_date) ;
+            var start_date =  parseInt(a.meta.start_date) - parseInt(b.meta.start_date) ;
+
+            if(start_date) return start_date;
+
+            // If there is a tie, sort by year
+
+            var start_time = moment(a.meta.start_time, "H:m A") - moment(b.meta.start_time, "H:m A");
+
+            return start_time;
           });
 
 
@@ -390,7 +398,15 @@ module.exports = React.createClass({
           var events = res.body;
 
           var sorted_events = events.sort(function(a, b) {
-            return parseInt(a.meta.start_date) - parseInt(b.meta.start_date) ;
+            var start_date =  parseInt(a.meta.start_date) - parseInt(b.meta.start_date) ;
+
+            if(start_date) return start_date;
+
+            // If there is a tie, sort by year
+
+            var start_time = moment(a.meta.start_time, "H:m A") - moment(b.meta.start_time, "H:m A");
+
+            return start_time;
           });
 
           console.log('nextWeek: ' + events.length);
@@ -417,7 +433,15 @@ module.exports = React.createClass({
           console.log('prevWeek: ' + events.length);
 
           var sorted_events = events.sort(function(a, b) {
-            return parseInt(a.meta.start_date) - parseInt(b.meta.start_date) ;
+            var start_date =  parseInt(a.meta.start_date) - parseInt(b.meta.start_date) ;
+
+            if(start_date) return start_date;
+
+            // If there is a tie, sort by year
+
+            var start_time = moment(a.meta.start_time, "H:m A") - moment(b.meta.start_time, "H:m A");
+
+            return start_time;
           });
 
 
@@ -475,7 +499,7 @@ module.exports = React.createClass({
     if (self.state.weather.currently) {
       temp = self.state.weather.currently.temperature;
       icon = self.state.weather.currently.icon;
-      currently = self.state.weather.currently.precipProbability;
+      currently = self.state.weather.hourly.data[0].precipProbability * 100;
       hourly = self.state.weather.hourly.summary;
     }
     var wildlife = self.state.wildlife.map(function(object){
@@ -636,7 +660,7 @@ module.exports = React.createClass({
             <div className='now-links image_container'>
               <a href="/hours-and-admissions">Hours and Admissions</a>
               <span>Trail Maps: <a target="_blank" href="http://fontenelleforest.org/images/stories/Trails/ffnc_trailmap_dec09.pdf">Fontenelle</a>|<a target="_blank" href="http://fontenelleforest.org/images/stories/Trails/neale_woods_map_printable.pdf">Neale Woods</a></span>
-              <a href="#">Guidelines</a>
+              <a target="_blank" href="http://fontenelleforest.org/images/stories/Trails/ffnc_trailmap_dec09.pdf">Guidelines</a>
               <a href="/contact">Contact</a>
             </div>
           </div>
@@ -687,7 +711,7 @@ module.exports = React.createClass({
 
           <div className='now-blue social_blue'>
             <div className='now-links image_container marker'>
-              @fontenelleforest / #4estnow / #fontenelleforest
+                <a href="https://twitter.com/fontenelle4est" target="_blank">@fontenelle4est</a> / <a href="https://www.instagram.com/fontenelleforest/" target="_blank">@fontenelleforest</a> / <a href="https://twitter.com/search?q=%234estnow" target="_blank">#4estnow</a> / <a href="https://www.instagram.com/explore/tags/fontenelleforest/" target="_blank">#fontenelleforest</a>
             </div>
           </div>
           <div className='social_wrapper'>
