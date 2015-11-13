@@ -39,11 +39,9 @@ var Footer = require('../../common/footer.jsx');
 var slide_names = [ 'forest', 'natural-resources', 'education', 'programs'];
 var slide_count = 0;
 
-// var ga = require('react-google-analytics');
-// var GAInitiailizer = ga.Initializer;
 
-// var GoogleAnalytics = require('../../common/ga.jsx');
-
+var ua = require('universal-analytics');
+var visitor = ua('UA-29023725-1');
 var hotkey = require('react-hotkey');
 hotkey.activate();
 
@@ -126,7 +124,7 @@ var App = React.createClass({
 		console.log("ie: "+ie);
 		self.setState({ie: ie});
 
-		initGoogleAnalytics("UA-29023725-1");
+		// initGoogleAnalytics("UA-29023725-1");
 
 	},
 
@@ -440,36 +438,38 @@ var routes = (
 // 	console.log('send: '+send);
 // }
 
-function initGoogleAnalytics(id) {
-  if (window.ga) {
-    return;
-  }
+// function initGoogleAnalytics(id) {
+//   if (window.ga) {
+//     return;
+//   }
+//
+//   if (!id) {
+//     throw new Error('Google analytics ID is undefined');
+//   }
+//
+//   window.ga = window.ga || function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date; // eslint-disable-line
+//
+//   (function loadScript() {
+//     var gads = document.createElement('script');
+//     gads.async = true;
+//     gads.type = 'text/javascript';
+//     gads.src = '//www.google-analytics.com/analytics.js';
+//
+//     var head = document.getElementsByTagName('head')[0];
+//     head.appendChild(gads);
+//   })();
+// 	window.ga('create', id, 'auto');
+// }
 
-  if (!id) {
-    throw new Error('Google analytics ID is undefined');
-  }
+function analytics(state) {
+	// if (ga) {
+	// 	console.log("state.path: "+state.path);
+	// 	ga('send', 'pageview',  state.path);
+	// 	window.ga('send', 'pageview',  state.path);
+	// 		// window.ga.apply(window.ga, 'send', 'pageview', { state.path, state.path });
+	// }
 
-  window.ga = window.ga || function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date; // eslint-disable-line
-
-  (function loadScript() {
-    var gads = document.createElement('script');
-    gads.async = true;
-    gads.type = 'text/javascript';
-    gads.src = '//www.google-analytics.com/analytics.js';
-
-    var head = document.getElementsByTagName('head')[0];
-    head.appendChild(gads);
-  })();
-	window.ga('create', id, 'auto');
-}
-
-function analytics(state, this_window) {
-	if (ga) {
-		console.log("state.path: "+state.path);
-		ga('send', 'pageview',  state.path);
-		window.ga('send', 'pageview',  state.path);
-			// window.ga.apply(window.ga, 'send', 'pageview', { state.path, state.path });
-	}
+	visitor.pageview(state.path).send()
 }
 
 

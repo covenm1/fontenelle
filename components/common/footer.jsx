@@ -1,6 +1,5 @@
 var React = require('react');
-var ga = require('react-google-analytics');
-var GAInitiailizer = ga.Initializer;
+
 
 module.exports = React.createClass({
   componentDidMount:function(){
