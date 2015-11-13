@@ -552,7 +552,7 @@ module.exports = React.createClass({
       return <p className="closings_title">{object.title}</p>
     });
     var top_image = {
-      backgroundImage: "url(/img/weather/rain.jpg)"
+      backgroundImage: "url(/img/weather/beautiful-day.jpg)"
     }
     var nature_notes_image = {
       backgroundImage: "url(/img/forest-now/nature_notes_bkgd.jpg)"
@@ -588,7 +588,7 @@ module.exports = React.createClass({
               <div className="fn_top_left" style={top_image}>
                 <div className="fn_wrap">
                   <div className="halfcontainer left">
-                    <h3 className="main_title">Come Splash Around</h3>
+                    <h3 className="main_title">It's a Beautiful Day</h3>
                     <h3 className="marker sub_title">in our backyard</h3>
                   </div>
                 </div>
