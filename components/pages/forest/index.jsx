@@ -531,7 +531,7 @@ var Main = React.createClass({
       }
 
       return (
-        <div className="page">
+        <div className="page forest_page">
           <div className="page_wrapper">
              <div className="page_container" id="page" style={loadStyle}>
               <div className="egg_wrap">
@@ -1762,7 +1762,7 @@ var Main = React.createClass({
       )
     } else {
       return (
-        <div className="page preloading">
+        <div className="page forest_page preloading">
           <div className="page_wrapper">
             <div className="page_container" id="page" style={loadStyle}>
             </div>

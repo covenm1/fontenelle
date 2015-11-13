@@ -256,7 +256,7 @@ var Main = React.createClass({
     var arrow_class = self.state.arrow_class;
     if (self.state.loaded == true) {
       return (
-        <div className="page">
+        <div className="page education_page">
           <div className="page_wrapper">
             <div className="page_container" id="page" style={loadStyle}>
               <div className="egg_wrap living_classroom_container">
@@ -409,7 +409,7 @@ var Main = React.createClass({
       )
     } else {
       return (
-        <div className="page preloading">
+        <div className="page education_page preloading">
           <div className="page_wrapper">
             <div className="page_container" id="page" style={loadStyle}></div>
           </div>

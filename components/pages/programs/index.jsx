@@ -324,7 +324,7 @@ var Main = React.createClass({
 
     if (self.state.loaded == true) {
       return (
-        <div className="page">
+        <div className="page programs_page">
           <div className="page_wrapper">
             <div className="page_container" id="page"  style={loadStyle}>
               <div className="egg_wrap">
@@ -713,7 +713,7 @@ var Main = React.createClass({
       )
     } else {
       return (
-        <div className="page preloading">
+        <div className="page programs_page preloading">
           <div className="page_wrapper">
             <div className="page_container" id="page"  style={loadStyle}></div>
             <div className='video-container'>

@@ -206,35 +206,6 @@
   }
 }
 
-.forest {
-  .color {
-    color: $forest_color;
-    font-size: 50px;
-    text-align: center;
-  }
-  .content_container {
-    .video_overlay {
-      background-image: url('/img/forest/pattern_video-overlay.svg');
-      opacity: 0.45;
-    }
-  }
-}
-.drawer_overview {
-  position: absolute;
-  left: 100px;
-  color: white;
-  top: 100px;
-  width: 100%;
-  padding-right: 900px;
-  h3 {
-    font-size: 50px;
-    margin-bottom: 10px;
-  }
-}
-
-.old_hero_image {
-  display: none !important;
-}
 .hero_content {
   display: table;
   margin: auto;
@@ -293,11 +264,41 @@
     background-size: cover;
   }
 }
-.forest .hero_content {
-    .hero_textured_color {
-      background-image: url(/img/forest/texture.svg);
+
+
+.forest_page {
+  .color {
+    color: $forest_color;
+    font-size: 50px;
+    text-align: center;
+  }
+  .content_container {
+    .video_overlay {
+      background-image: url('/img/forest/pattern_video-overlay.svg');
+      opacity: 0.45;
     }
+  }
+  .hero_textured_color {
+    background-image: url(/img/forest/texture.svg);
+  }
 }
+.drawer_overview {
+  position: absolute;
+  left: 100px;
+  color: white;
+  top: 100px;
+  width: 100%;
+  padding-right: 900px;
+  h3 {
+    font-size: 50px;
+    margin-bottom: 10px;
+  }
+}
+
+.old_hero_image {
+  display: none !important;
+}
+
 
 .photogallery_wrapper.acorns.wide {
   .gallery_button {

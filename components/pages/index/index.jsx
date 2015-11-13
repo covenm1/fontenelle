@@ -39,6 +39,9 @@ var Footer = require('../../common/footer.jsx');
 var slide_names = [ 'forest', 'natural-resources', 'education', 'programs'];
 var slide_count = 0;
 
+var ga = require('react-google-analytics');
+var GAInitiailizer = ga.Initializer;
+
 var hotkey = require('react-hotkey');
 hotkey.activate();
 
@@ -314,6 +317,7 @@ var App = React.createClass({
 			    	<RouteHandler key={name} transition={self.setTransition} controller={controller}/>
 			    </TransitionGroup>
 					<Footer />
+					<GAInitiailizer />
 			  </div>
 			)
 		} else {
@@ -369,6 +373,7 @@ var App = React.createClass({
 						</div>
 					</div>
 					<Footer />
+					<GAInitiailizer />
 				</div>
 			)
 		}
@@ -413,11 +418,27 @@ var routes = (
 //   React.render(<Handler/>, document.body);
 // });
 
+// var ga = require('./ga');
+
+// function analytics(state, options) {
+//   if (!options) {
+//     options = {};
+//   }
+//   options.page = state.path;
+//   ga('send', 'pageview', options);
+// }
+function analytics(state, options) {
+	console.log('analytics: '+state.path);
+	ga('create', 'UA-29023725-1', 'auto');
+	ga('send', 'pageview');
+}
+
 var router = Router.create({
   routes: routes,
   location: Router.HistoryLocation
 });
 
-router.run(function (Handler) {
+router.run(function (Handler, state) {
   React.render(<Handler/>, document.body);
+	analytics(state);
 });

@@ -137,13 +137,13 @@ var Event = React.createClass({
           <div className="event_bar">
             <span className="date">{moment(self.props.start_date, "YYYYMMDD").format("M/D")} - {moment(self.props.end_date, "YYYYMMDD").format("M/D")}</span>
             <span className="days">
-              <span className={ ( self.props.days.indexOf('sun') > -1) ? "day active" : "day" }>s</span>
               <span className={ ( self.props.days.indexOf('mon') > -1) ? "day active" : "day" }>m</span>
               <span className={ ( self.props.days.indexOf('tues') > -1) ? "day active" : "day" }>t</span>
               <span className={ ( self.props.days.indexOf('wed') > -1) ? "day active" : "day" }>w</span>
               <span className={ ( self.props.days.indexOf('thurs') > -1) ? "day active" : "day" }>t</span>
               <span className={ ( self.props.days.indexOf('fri') > -1) ? "day active" : "day" }>f</span>
               <span className={ ( self.props.days.indexOf('sat') > -1) ? "day active" : "day" }>s</span>
+              <span className={ ( self.props.days.indexOf('sun') > -1) ? "day active" : "day" }>s</span>
             </span>
             <span className="time">{self.props.start_time}-{self.props.end_time}</span>
           </div>
@@ -169,13 +169,13 @@ var Event = React.createClass({
           <div className="event_bar">
             <span className="date">{moment(self.props.start_date, "YYYYMMDD").format("M/D")}</span>
             <span className="days">
-              <span className={ ( self.props.days.indexOf('sun') > -1) ? "day active" : "day" }>s</span>
               <span className={ ( self.props.days.indexOf('mon') > -1) ? "day active" : "day" }>m</span>
               <span className={ ( self.props.days.indexOf('tues') > -1) ? "day active" : "day" }>t</span>
               <span className={ ( self.props.days.indexOf('wed') > -1) ? "day active" : "day" }>w</span>
               <span className={ ( self.props.days.indexOf('thurs') > -1) ? "day active" : "day" }>t</span>
               <span className={ ( self.props.days.indexOf('fri') > -1) ? "day active" : "day" }>f</span>
               <span className={ ( self.props.days.indexOf('sat') > -1) ? "day active" : "day" }>s</span>
+              <span className={ ( self.props.days.indexOf('sun') > -1) ? "day active" : "day" }>s</span>
             </span>
             <span className="time">{self.props.start_time}-{self.props.end_time}</span>
           </div>
@@ -608,8 +608,8 @@ module.exports = React.createClass({
     return (
       <div>
         <div className="egg_wrap nature_notes_header">
-          <div className="forest_now_top">
-              <div className="fn_top_left" style={top_image}>
+          <div className="forest_now_top" style={top_image}>
+              <div className="fn_top_left" >
                 <div className="fn_wrap">
                   <div className="halfcontainer left">
                     <h3 className="main_title">It's a Beautiful Day</h3>
@@ -632,7 +632,7 @@ module.exports = React.createClass({
                   }
                 </div>
               </div>
-              <div className="fn_top_right" style={nature_notes_image}>
+              <div className="fn_top_right">
                 <div className="nn_wrap">
                   { (self.state.closings.length > 0) ?
                     <Link to="nature-notes">
@@ -679,7 +679,7 @@ module.exports = React.createClass({
                   	</g>
                   </svg>
                 </span>
-                {week_text}<span className="actual_week">{moment(self.state.week, 'DDMMYYYY').startOf('week').format('MMMM D')} - {moment(self.state.week, 'DDMMYYYY').endOf('week').format('MMMM D')} </span>
+                {week_text}<span className="actual_week">{moment(self.state.week, 'DDMMYYYY').startOf('week').add(1, "day").format('MMMM D')} - {moment(self.state.week, 'DDMMYYYY').endOf('week').add(1, "day").format('MMMM D')} </span>
                 <span className="next_week" onClick={self.nextWeek}>
                   <svg className="arrow_circle blue right_arrow" x="0px" y="0px" viewBox="0 0 52 52" enableBackground="new 0 0 52 52" >
                     <path className="circle" strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"/>
