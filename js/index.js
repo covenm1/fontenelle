@@ -81,10 +81,10 @@ var App = React.createClass({displayName: "App",
 				"/img/loop_programs.jpg",
 				"/img/loop_education.jpg",
 				"/img/loop_conservation.jpg",
-				"/img/forest/texture.svg",
-				"/img/conservation/texture.svg",
-				"/img/education/texture.svg",
-				"/img/programs/texture.svg"
+				"/img/forest/forest_texture.svg",
+				"/img/conservation/conservation_texture.svg",
+				"/img/education/education_texture.svg",
+				"/img/programs/programs_texture.svg"
 			],
 			ie: false
 		};
@@ -110,7 +110,7 @@ var App = React.createClass({displayName: "App",
 	              duration: '97%',
 								offset: -60
 	          })
-	          .setClassToggle("header.header", "scrolled")
+	          .setClassToggle(".fontenelle", "scrolled")
 	          .addTo(controller);
 		self.setState({controller: controller});
 
@@ -266,7 +266,7 @@ var App = React.createClass({displayName: "App",
 			var controller = self.state.controller;
 			document.documentElement.classList.remove('loading');
 			return (
-			  React.createElement("div", {className: "fontenelle " + name + menu_class + header_up + ie_class}, 
+			  React.createElement("div", {className: "fontenelle scrolled " + name + menu_class + header_up + ie_class}, 
 			    React.createElement("header", {className: "header"}, 
 			        React.createElement(Link, {to: "/", className: "logo"}, React.createElement("img", {src: "/img/logo.png", alt: ""})), 
 			        React.createElement("span", {className: "global_menu"}, 
@@ -326,7 +326,7 @@ var App = React.createClass({displayName: "App",
 		} else {
 			document.documentElement.classList.add('loading');
 			return (
-				React.createElement("div", {className: "fontenelle loading header_up " + name + menu_class + ie_class}, 
+				React.createElement("div", {className: "fontenelle scrolled loading header_up " + name + menu_class + ie_class}, 
 					React.createElement("header", {className: "header"}, 
 							React.createElement(Link, {to: "/", className: "logo"}, React.createElement("img", {src: "/img/logo.png", alt: ""})), 
 							React.createElement("span", {className: "global_menu"}, 
@@ -3453,7 +3453,7 @@ module.exports = React.createClass({displayName: "exports",
                   :
                     React.createElement("div", {className: "halfcontainer left"}, 
                       React.createElement("p", {className: "date"}, moment().format('MMMM Do, YYYY')), 
-                      React.createElement("p", {className: "weather_loader"}, React.createElement("i", {className: "fa fa-spinner fa-spin"}), " brb, grabbing the forecast.")
+                      React.createElement("p", {className: "weather_loader"}, React.createElement("i", {className: "fa fa-spinner fa-spin"}))
                     )
                   
                 )
@@ -3485,7 +3485,7 @@ module.exports = React.createClass({displayName: "exports",
           React.createElement("div", {className: "now-blue"}, 
             React.createElement("div", {className: "now-links image_container"}, 
               React.createElement("a", {href: "/hours-and-admissions"}, "Hours and Admissions"), 
-              React.createElement("span", null, "Trail Maps: ", React.createElement("a", {target: "_blank", href: "http://fontenelleforest.org/images/stories/Trails/ffnc_trailmap_dec09.pdf"}, "Fontenelle"), "|", React.createElement("a", {target: "_blank", href: "http://fontenelleforest.org/images/stories/Trails/neale_woods_map_printable.pdf"}, "Neale Woods")), 
+              React.createElement("span", {className: "trailmaps"}, "Trail Maps: ", React.createElement("a", {target: "_blank", href: "http://fontenelleforest.org/images/stories/Trails/ffnc_trailmap_dec09.pdf"}, "Fontenelle"), "|", React.createElement("a", {target: "_blank", href: "http://fontenelleforest.org/images/stories/Trails/neale_woods_map_printable.pdf"}, "Neale Woods")), 
               React.createElement("a", {target: "_blank", href: "http://fontenelleforest.org/images/stories/Trails/ffnc_trailmap_dec09.pdf"}, "Guidelines"), 
               React.createElement("a", {href: "/contact"}, "Contact")
             )
@@ -3701,7 +3701,7 @@ var Main = React.createClass({displayName: "Main",
   reset: function(){
     var self = this;
     self.setState({ drawer: [], area: '' });
-
+    self.scrollThing("map_wrap");
   },
 
   natureCenter: function(){
@@ -3735,6 +3735,7 @@ var Main = React.createClass({displayName: "Main",
     };
 
     self.setState({ drawer: drawer, area: 'natureCenter', drawer_overview: drawer_overview });
+    self.scrollThing("map_wrap");
   },
 
 
@@ -3764,6 +3765,7 @@ var Main = React.createClass({displayName: "Main",
     };
 
     self.setState({ drawer: drawer, area: 'greatMarsh', drawer_overview: drawer_overview });
+    self.scrollThing("map_wrap");
   },
 
   northernFloodplains: function(){
@@ -3792,6 +3794,7 @@ var Main = React.createClass({displayName: "Main",
     };
 
     self.setState({ drawer: drawer, area: 'northernFloodplains', drawer_overview: drawer_overview });
+    self.scrollThing("map_wrap");
   },
 
   northernUplands: function(){
@@ -3820,6 +3823,7 @@ var Main = React.createClass({displayName: "Main",
     };
 
     self.setState({ drawer: drawer, area: 'northernUplands', drawer_overview: drawer_overview });
+    self.scrollThing("map_wrap");
   },
 
   southernUplands: function(){
@@ -3849,6 +3853,7 @@ var Main = React.createClass({displayName: "Main",
     ];
 
     self.setState({ drawer: drawer, area: 'southernUplands', drawer_overview: drawer_overview });
+    self.scrollThing("map_wrap");
   },
 
   moveLeft: function(){
@@ -4192,7 +4197,7 @@ var Main = React.createClass({displayName: "Main",
               ), 
 
               React.createElement("div", {className: "egg_wrap padded", id: "trails"}, 
-                React.createElement("div", {className: map_class }, 
+                React.createElement("div", {className: map_class, id: "map_wrap"}, 
                    drawer.length ?
                     React.createElement("div", {className: "drawer", style: drawer_styles}, 
                       React.createElement("div", {className: "orange_overlay"}), 
@@ -4218,7 +4223,7 @@ var Main = React.createClass({displayName: "Main",
                   :
                     React.createElement("div", {className: "map_content"}, 
                       React.createElement("div", {className: "copy_container"}, 
-                        React.createElement("h2", {className: "marker color"}, "Trailmap"), 
+                        React.createElement("h2", {className: "marker color"}, "Trails"), 
                         React.createElement("p", null, "Walking our trails is an experience unlike any other in the Omaha metro area. In a single afternoon, you’ll encounter a range of vastly different ecosystems, from deciduous forest to oak savanna, prairie, and wetlands."), 
                         React.createElement("img", {className: "bottom_vine", src: "/img/bottom_vine.svg"})
                       ), 
@@ -6449,6 +6454,10 @@ var Router = require('react-router');
 var Navigation = Router.Navigation;
 var Link = Router.Link;
 
+var ScrollMagic = require('scrollmagic');
+var TweenMax = require('../../../public/js/tweenmax.js');
+require('../../../public/js/scrollTo.js');
+
 var SetIntervalMixin = {
   componentWillMount: function() {
     this.intervals = [];
@@ -6597,7 +6606,8 @@ var Main = React.createClass({displayName: "Main",
       )
     )
 
-    this.setState({content: content})
+    this.setState({content: content});
+    this.scrollThing("kids");
   },
 
   familySundays: function(){
@@ -6610,7 +6620,8 @@ var Main = React.createClass({displayName: "Main",
       )
     )
 
-    this.setState({content: content})
+    this.setState({content: content});
+    this.scrollThing("kids");
   },
 
   campfire: function(){
@@ -6623,7 +6634,8 @@ var Main = React.createClass({displayName: "Main",
       )
     )
 
-    this.setState({content: content})
+    this.setState({content: content});
+    this.scrollThing("kids");
   },
 
   natureExplorers: function(){
@@ -6636,7 +6648,8 @@ var Main = React.createClass({displayName: "Main",
       )
     )
 
-    this.setState({content: content})
+    this.setState({content: content});
+    this.scrollThing("kids");
   },
 
   birdClub: function(){
@@ -6658,7 +6671,8 @@ var Main = React.createClass({displayName: "Main",
       )
     )
 
-    this.setState({adult: content})
+    this.setState({adult: content});
+    this.scrollThing("adults");
   },
 
   insectClub: function(){
@@ -6679,7 +6693,8 @@ var Main = React.createClass({displayName: "Main",
       )
     )
 
-    this.setState({adult: content})
+    this.setState({adult: content});
+    this.scrollThing("adults");
   },
 
   photoClub: function(){
@@ -6700,7 +6715,8 @@ var Main = React.createClass({displayName: "Main",
       )
     )
 
-    this.setState({adult: content})
+    this.setState({adult: content});
+    this.scrollThing("adults");
   },
 
   frogwatch: function(){
@@ -6724,7 +6740,8 @@ var Main = React.createClass({displayName: "Main",
      )
     )
 
-    this.setState({adult: content})
+    this.setState({adult: content});
+    this.scrollThing("adults");
   },
 
   seniors: function(){
@@ -6736,7 +6753,8 @@ var Main = React.createClass({displayName: "Main",
       )
     )
 
-    this.setState({adult: content})
+    this.setState({adult: content});
+    this.scrollThing("adults");
   },
 
   spiderClick: function() {
@@ -6768,7 +6786,7 @@ var Main = React.createClass({displayName: "Main",
         React.createElement("div", {className: "page programs_page"}, 
           React.createElement("div", {className: "page_wrapper"}, 
             React.createElement("div", {className: "page_container", id: "page", style: loadStyle}, 
-              React.createElement("div", {className: "egg_wrap"}, 
+              React.createElement("div", {className: "egg_wrap", id: "kids"}, 
 
                  content ?
                   React.createElement("div", {className: "current_class main_wrapper"}, 
@@ -6786,7 +6804,7 @@ var Main = React.createClass({displayName: "Main",
                   ):
                   React.createElement("div", {className: "for_kids_container main_wrapper"}, 
 
-                    React.createElement("div", {className: "for_kids copy_container", id: "kids"}, 
+                    React.createElement("div", {className: "for_kids copy_container"}, 
                       React.createElement("h2", {className: "marker color"}, "For Kids"), 
                       React.createElement("p", null, "What could be more fun than spending a week in the forest? Fontenelle’s Nature Discovery Day Camps feature fun, hands-on, science-based learning through play taught by our year-round professional educators. Camps are offered in the summer and winter. We also offer special camps for grandparents and grandkids to participate in together. Registration is limited. Proof of age is required. Campers should bring their lunch. Snacks provided."), 
 
@@ -6935,7 +6953,7 @@ var Main = React.createClass({displayName: "Main",
                 )
               ), 
 
-              React.createElement("div", {className: "egg_wrap"}, 
+              React.createElement("div", {className: "egg_wrap", id: "adults"}, 
                    adult ?
                     React.createElement("div", {className: "current_class main_wrapper"}, 
                       React.createElement("svg", {onClick: self.closeAdult, className: "arrow_circle red left_arrow reset_class", x: "0px", y: "0px", viewBox: "0 0 52 52", enableBackground: "new 0 0 52 52"}, 
@@ -6953,7 +6971,7 @@ var Main = React.createClass({displayName: "Main",
                       React.createElement("div", {className: "for_kids"}, 
                         React.createElement("img", {onClick: self.spiderClick, className:  spider ? "rotated spider" : "spider", src: "/img/programs/spider.png"})
                       ), 
-                      React.createElement("div", {className: "for_kids copy_container", id: "adults"}, 
+                      React.createElement("div", {className: "for_kids copy_container"}, 
                         React.createElement("h2", {className: "marker color"}, "For Adults"), 
                         React.createElement("p", null, "A few of our most popular activities at the forest are birding, looking for insects, and shooting nature photography. We have clubs for each one, and more: "), 
 
@@ -7192,7 +7210,7 @@ var Main = React.createClass({displayName: "Main",
 
 module.exports = Main;
 
-},{"react":500,"react-inlinesvg":271,"react-router":310,"superagent":503,"util":609,"velocity-animate/velocity":610}],25:[function(require,module,exports){
+},{"../../../public/js/scrollTo.js":611,"../../../public/js/tweenmax.js":612,"react":500,"react-inlinesvg":271,"react-router":310,"scrollmagic":501,"superagent":503,"util":609,"velocity-animate/velocity":610}],25:[function(require,module,exports){
 var React = require('react'),
     request = require('superagent'),
     util = require('util');

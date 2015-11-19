@@ -1,0 +1,26 @@
+.education_page {
+
+  .hero_content .hero_header {
+    font-size: 30px;
+  }
+  .hero_textured_color p {
+    font-size: 12px;
+  }
+}
+
+.classes_container {
+  display: block;
+  .copy_container {
+    width: 100%;
+    float: none;
+    p {
+      padding: 0 15px;
+    }
+  }
+  .flower_image img {
+    display: table;
+    width: 150px;
+    margin: auto;
+    height: auto;
+  }
+}

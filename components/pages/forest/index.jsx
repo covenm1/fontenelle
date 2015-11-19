@@ -149,7 +149,7 @@ var Main = React.createClass({
   reset: function(){
     var self = this;
     self.setState({ drawer: [], area: '' });
-
+    self.scrollThing("map_wrap");
   },
 
   natureCenter: function(){
@@ -183,6 +183,7 @@ var Main = React.createClass({
     };
 
     self.setState({ drawer: drawer, area: 'natureCenter', drawer_overview: drawer_overview });
+    self.scrollThing("map_wrap");
   },
 
 
@@ -212,6 +213,7 @@ var Main = React.createClass({
     };
 
     self.setState({ drawer: drawer, area: 'greatMarsh', drawer_overview: drawer_overview });
+    self.scrollThing("map_wrap");
   },
 
   northernFloodplains: function(){
@@ -240,6 +242,7 @@ var Main = React.createClass({
     };
 
     self.setState({ drawer: drawer, area: 'northernFloodplains', drawer_overview: drawer_overview });
+    self.scrollThing("map_wrap");
   },
 
   northernUplands: function(){
@@ -268,6 +271,7 @@ var Main = React.createClass({
     };
 
     self.setState({ drawer: drawer, area: 'northernUplands', drawer_overview: drawer_overview });
+    self.scrollThing("map_wrap");
   },
 
   southernUplands: function(){
@@ -297,6 +301,7 @@ var Main = React.createClass({
     ];
 
     self.setState({ drawer: drawer, area: 'southernUplands', drawer_overview: drawer_overview });
+    self.scrollThing("map_wrap");
   },
 
   moveLeft: function(){
@@ -640,7 +645,7 @@ var Main = React.createClass({
               </div>
 
               <div className="egg_wrap padded" id="trails">
-                <div className={ map_class }>
+                <div className={ map_class } id="map_wrap">
                   { drawer.length ?
                     <div className="drawer" style={drawer_styles}>
                       <div className="orange_overlay"></div>
@@ -666,7 +671,7 @@ var Main = React.createClass({
                   :
                     <div className="map_content">
                       <div className="copy_container">
-                        <h2 className="marker color">Trailmap</h2>
+                        <h2 className="marker color">Trails</h2>
                         <p>Walking our trails is an experience unlike any other in the Omaha metro area. In a single afternoon, you’ll encounter a range of vastly different ecosystems, from deciduous forest to oak savanna, prairie, and wetlands.</p>
                         <img className="bottom_vine" src="/img/bottom_vine.svg" />
                       </div>

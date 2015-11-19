@@ -80,10 +80,10 @@ var App = React.createClass({
 				"/img/loop_programs.jpg",
 				"/img/loop_education.jpg",
 				"/img/loop_conservation.jpg",
-				"/img/forest/texture.svg",
-				"/img/conservation/texture.svg",
-				"/img/education/texture.svg",
-				"/img/programs/texture.svg"
+				"/img/forest/forest_texture.svg",
+				"/img/conservation/conservation_texture.svg",
+				"/img/education/education_texture.svg",
+				"/img/programs/programs_texture.svg"
 			],
 			ie: false
 		};
@@ -109,7 +109,7 @@ var App = React.createClass({
 	              duration: '97%',
 								offset: -60
 	          })
-	          .setClassToggle("header.header", "scrolled")
+	          .setClassToggle(".fontenelle", "scrolled")
 	          .addTo(controller);
 		self.setState({controller: controller});
 
@@ -265,7 +265,7 @@ var App = React.createClass({
 			var controller = self.state.controller;
 			document.documentElement.classList.remove('loading');
 			return (
-			  <div className={"fontenelle " + name + menu_class + header_up + ie_class} >
+			  <div className={"fontenelle scrolled " + name + menu_class + header_up + ie_class} >
 			    <header className="header">
 			        <Link to="/" className="logo"><img src="/img/logo.png" alt="" /></Link>
 			        <span className="global_menu">
@@ -325,7 +325,7 @@ var App = React.createClass({
 		} else {
 			document.documentElement.classList.add('loading');
 			return (
-				<div className={"fontenelle loading header_up " + name + menu_class + ie_class} >
+				<div className={"fontenelle scrolled loading header_up " + name + menu_class + ie_class} >
 					<header className="header">
 							<Link to="/" className="logo"><img src="/img/logo.png" alt="" /></Link>
 							<span className="global_menu">

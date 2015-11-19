@@ -1,0 +1,99 @@
+.quiet_wild_container {
+  display: block;
+  padding: 15px;
+  .quiet_wild {
+    h2.marker {
+      font-size: 30px;
+    }
+    img {
+      display: table;
+      width: 150px;
+      margin: auto;
+      &.bottom_vine {
+        width: 100%;
+      }
+    }
+  }
+}
+
+h2.marker {
+  font-size: 30px;
+}
+
+.tearjerker_video .tearjerker_wrapper {
+  display: block;
+  padding: 15px;
+}
+
+.photogallery_header {
+  background-image: none;
+  h3 {
+    font-size: 30px;
+    margin-top: 0
+  }
+}
+
+.prop_container {
+  display: block;
+  .property {
+    display: block;
+    h3 {
+      font-size: 30px;
+    }
+  }
+}
+
+.map_wrapper {
+  .map_content {
+    padding: 15px;
+  }
+  .trail_map_container {
+    display: none;
+  }
+  .nav_menu {
+    display: block;
+  }
+  .nav_area {
+    .map_button:first-child {
+      margin-left:2px;
+    }
+    .map_button:last-child {
+      margin-right:2px;
+    }
+    .map_button {
+      padding: 0 20px;
+      line-height: 1.5;
+      height: auto;
+      margin: 5px 2px
+    }
+  }
+  &.open {
+    .drawer_overview {
+      position: relative;
+      padding: 15px;
+      top: auto;
+      left: auto;
+    }
+    .reset_button {
+      z-index: 1;
+    }
+    .drawer {
+      display: block;
+      padding: 15px;
+      .drawer_item {
+        position:relative;
+        display: table;
+        .drawer_image {
+          height: 100%;
+          width: 30%;
+        }
+        .drawer_content {
+          width: 70%;
+          h3 {
+            margin-top: 5px;
+          }
+        }
+      }
+    }
+  }
+}

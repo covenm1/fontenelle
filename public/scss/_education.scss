@@ -66,6 +66,7 @@
   .main_class {
     width: 750px;
     margin: auto;
+    max-width: 100%;
   }
   .icons {
     text-align: center;
@@ -290,7 +291,7 @@
       font-size: 60px;
     }
     .hero_textured_color {
-      background-image: url(/img/education/texture.svg);
+      background-image: url(/img/education/education_texture.svg);
     }
   }
 }

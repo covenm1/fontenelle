@@ -1,0 +1,79 @@
+.forest_now_top {
+  display: block;
+  .main_title, .sub_title {
+    font-size: 30px;
+  }
+  .main_title {
+    margin-top: 0;
+  }
+  .halfcontainer {
+    padding: 30px;
+  }
+  .closings_bar {
+      .halfcontainer {
+        padding: 0 30px;
+      }
+  }
+}
+
+.now-blue {
+  height: auto;
+  .now-links {
+    padding: 0 15px;
+    line-height: 2;
+    span.trailmaps {
+      display: block;
+    }
+  }
+}
+
+
+.post {
+  .post_image {
+    width: 30%;
+  }
+  &.pinned {
+    .post_image {
+      width: 40%;
+    }
+  }
+}
+
+.now-left, .now-right {
+  width: 100%;
+  float: none;
+}
+
+.now-left {
+  padding-bottom: 30px;
+}
+
+.event {
+  margin: 0;
+  .event_title .age {
+    float: none;
+    display: block;
+  }
+  .event_bar {
+    .days {
+      .day {
+        display: inline-block
+      }
+    }
+  }
+}
+
+.week_title {
+  line-height: 1.5;
+  padding-top: 75px;
+  .prev_week {
+    position:  absolute;
+    top: 0;
+    left: 0;
+  }
+  .next_week {
+    position:  absolute;
+    top: 0;
+    right: 0;
+  }
+}

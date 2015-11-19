@@ -65,9 +65,8 @@ img.bottom_vine {
 }
 
 .page_wrapper {
-  // position: absolute;
-  // height: 100%;
-  // width: 100%;
+  // position: relative;
+  // z-index: 111;
 }
 
 
@@ -182,13 +181,13 @@ header {
     line-height: 60px;
 
 
-    &.scrolled {
+    .scrolled & {
       background: transparent;
       color: white;
-      .header_up & {
-        background: rgba(0,0,0,0.8);
-        color: white;
-      }
+    }
+    .header_up & {
+      background: rgba(0,0,0,0.8);
+      color: white;
     }
 
 
@@ -288,16 +287,19 @@ header {
 }
 
 #video-background {
-  position: absolute;
-  bottom: 50%;
-  right: 50%;
-  transform: translateX(50%) translateY(50%);
-  min-width: 100%;
-  min-height: 100%;
-  width: auto;
-  height: auto;
-  /*z-index: -1000; */
-  overflow: hidden
+  .scrolled & {
+    position: absolute;
+    bottom: 50%;
+    right: 50%;
+    transform: translateX(50%) translateY(50%);
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    overflow: hidden;
+    display:block;
+  }
+  display: none;
 }
 
 .slide_controls {

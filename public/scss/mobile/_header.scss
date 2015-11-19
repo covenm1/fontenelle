@@ -7,7 +7,7 @@ header.header {
   display: none;
 }
 video#video-background {
-  display:none;
+  display:none !important;
 }
 
 .hero_content {
@@ -28,6 +28,21 @@ video#video-background {
 .video-container {
   .forest & {
     background-image: url(/img/loop_one.jpg);
+    background-position: center;
+    background-size: cover;
+  }
+  .natural-resources & {
+    background-image: url(/img/loop_conservation.jpg);
+    background-position: center;
+    background-size: cover;
+  }
+  .programs & {
+    background-image: url(/img/loop_programs.jpg);
+    background-position: center;
+    background-size: cover;
+  }
+  .education & {
+    background-image: url(/img/loop_education.jpg);
     background-position: center;
     background-size: cover;
   }

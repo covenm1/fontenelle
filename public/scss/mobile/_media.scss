@@ -1,3 +1,33 @@
 @media screen and (max-width: 480px) {
   @import "header";
+  @import "forest";
+  @import "natural_resources";
+  @import "education";
+  @import "programs";
+  @import "forest_now";
+
+  .bottom_nav {
+    height: auto;
+    .prev_page, .next_page {
+      display: block;
+      float: none;
+      padding: 0 15px;
+    }
+    .prev_page .arrow_circle.black.left_arrow {
+      margin-left: 0;
+    }
+  }
+  .slide_controls .slider_button {
+    top: 100px;
+    width: 20px
+  }
+
+  .menu_open .sidebar {
+    width: 400px;
+    max-width: 100%;
+  }
+  footer {
+    z-index: 100;
+  }
+
 }

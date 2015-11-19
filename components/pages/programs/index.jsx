@@ -8,6 +8,10 @@ var Router = require('react-router');
 var Navigation = Router.Navigation;
 var Link = Router.Link;
 
+var ScrollMagic = require('scrollmagic');
+var TweenMax = require('../../../public/js/tweenmax.js');
+require('../../../public/js/scrollTo.js');
+
 var SetIntervalMixin = {
   componentWillMount: function() {
     this.intervals = [];
@@ -156,7 +160,8 @@ var Main = React.createClass({
       </div>
     )
 
-    this.setState({content: content})
+    this.setState({content: content});
+    this.scrollThing("kids");
   },
 
   familySundays: function(){
@@ -169,7 +174,8 @@ var Main = React.createClass({
       </div>
     )
 
-    this.setState({content: content})
+    this.setState({content: content});
+    this.scrollThing("kids");
   },
 
   campfire: function(){
@@ -182,7 +188,8 @@ var Main = React.createClass({
       </div>
     )
 
-    this.setState({content: content})
+    this.setState({content: content});
+    this.scrollThing("kids");
   },
 
   natureExplorers: function(){
@@ -195,7 +202,8 @@ var Main = React.createClass({
       </div>
     )
 
-    this.setState({content: content})
+    this.setState({content: content});
+    this.scrollThing("kids");
   },
 
   birdClub: function(){
@@ -217,7 +225,8 @@ var Main = React.createClass({
       </div>
     )
 
-    this.setState({adult: content})
+    this.setState({adult: content});
+    this.scrollThing("adults");
   },
 
   insectClub: function(){
@@ -238,7 +247,8 @@ var Main = React.createClass({
       </div>
     )
 
-    this.setState({adult: content})
+    this.setState({adult: content});
+    this.scrollThing("adults");
   },
 
   photoClub: function(){
@@ -259,7 +269,8 @@ var Main = React.createClass({
       </div>
     )
 
-    this.setState({adult: content})
+    this.setState({adult: content});
+    this.scrollThing("adults");
   },
 
   frogwatch: function(){
@@ -283,7 +294,8 @@ var Main = React.createClass({
      </div>
     )
 
-    this.setState({adult: content})
+    this.setState({adult: content});
+    this.scrollThing("adults");
   },
 
   seniors: function(){
@@ -295,7 +307,8 @@ var Main = React.createClass({
       </div>
     )
 
-    this.setState({adult: content})
+    this.setState({adult: content});
+    this.scrollThing("adults");
   },
 
   spiderClick: function() {
@@ -327,7 +340,7 @@ var Main = React.createClass({
         <div className="page programs_page">
           <div className="page_wrapper">
             <div className="page_container" id="page"  style={loadStyle}>
-              <div className="egg_wrap">
+              <div className="egg_wrap" id="kids">
 
                 { content ?
                   <div className="current_class main_wrapper">
@@ -345,7 +358,7 @@ var Main = React.createClass({
                   </div>:
                   <div className="for_kids_container main_wrapper">
 
-                    <div className="for_kids copy_container" id="kids">
+                    <div className="for_kids copy_container">
                       <h2 className="marker color">For Kids</h2>
                       <p>What could be more fun than spending a week in the forest? Fontenelle’s Nature Discovery Day Camps feature fun, hands-on, science-based learning through play taught by our year-round professional educators. Camps are offered in the summer and winter. We also offer special camps for grandparents and grandkids to participate in together. Registration is limited. Proof of age is required. Campers should bring their lunch. Snacks provided.</p>
 
@@ -494,7 +507,7 @@ var Main = React.createClass({
                 </div>
               </div>
 
-              <div className="egg_wrap">
+              <div className="egg_wrap" id="adults">
                   { adult ?
                     <div className="current_class main_wrapper">
                       <svg onClick={self.closeAdult} className="arrow_circle red left_arrow reset_class" x="0px" y="0px" viewBox="0 0 52 52" enableBackground="new 0 0 52 52" >
@@ -512,7 +525,7 @@ var Main = React.createClass({
                       <div className="for_kids">
                         <img onClick={self.spiderClick} className={ spider ? "rotated spider" : "spider" } src="/img/programs/spider.png" />
                       </div>
-                      <div className="for_kids copy_container" id="adults">
+                      <div className="for_kids copy_container">
                         <h2 className="marker color">For Adults</h2>
                         <p>A few of our most popular activities at the forest are birding, looking for insects, and shooting nature photography. We have clubs for each one, and more: </p>
 
