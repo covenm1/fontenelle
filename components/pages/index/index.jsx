@@ -303,6 +303,7 @@ var App = React.createClass({
 							<Link to="/get-involved/donate" className="link" onClick={self.toggleMenu}><h2 className="main">Donate</h2></Link>
 							<Link to="/get-involved/membership" className="link" onClick={self.toggleMenu}><h2 className="main">Membership</h2></Link>
 							<Link to="/get-involved/volunteer" className="link" onClick={self.toggleMenu}><h2 className="main">Volunteer</h2></Link>
+							<Link to="/found-raptor" className="link" onClick={self.toggleMenu}><h2 className="main">Found Raptor</h2></Link>
 							<Link to="/board-of-directors" className="link" onClick={self.toggleMenu}><h2 className="main">Board</h2></Link>
 							<Link to="/hours-and-admissions" className="link" onClick={self.toggleMenu}><h2 className="main">Hours and Admissions</h2></Link>
 							<Link to="/contact" className="link" onClick={self.toggleMenu}><h2 className="main">Contact</h2></Link>
@@ -363,6 +364,8 @@ var App = React.createClass({
 							<Link to="/get-involved/donate" className="link" onClick={self.toggleMenu}><h2 className="main">Donate</h2></Link>
 							<Link to="/get-involved/membership" className="link" onClick={self.toggleMenu}><h2 className="main">Membership</h2></Link>
 							<Link to="/get-involved/volunteer" className="link" onClick={self.toggleMenu}><h2 className="main">Volunteer</h2></Link>
+							<Link to="/found-raptor" className="link" onClick={self.toggleMenu}><h2 className="main">Found Raptor</h2></Link>
+							
 							<Link to="/board-of-directors" className="link" onClick={self.toggleMenu}><h2 className="main">Board</h2></Link>
 							<Link to="/hours-and-admissions" className="link" onClick={self.toggleMenu}><h2 className="main">Hours and Admissions</h2></Link>
 							<Link to="/contact" className="link" onClick={self.toggleMenu}><h2 className="main">Contact</h2></Link>

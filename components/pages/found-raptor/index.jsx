@@ -20,7 +20,7 @@ module.exports =  React.createClass({
 
     return (
       <div>
-        <div className="egg_wrap fb_container">
+        <div className="egg_wrap fb_container fb_top">
           <div className="featured_image">
             <h1>WHAT TO DO IF YOU FIND <br />AN INJURED RAPTOR</h1>
             <h4 className="marker" >eagle, hawk, falcon, owl, vulture</h4>

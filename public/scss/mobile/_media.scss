@@ -5,20 +5,18 @@
   @import "education";
   @import "programs";
   @import "forest_now";
+  @import "found_raptor";
 
   .bottom_nav {
-    height: auto;
     .prev_page, .next_page {
-      display: block;
-      float: none;
-      padding: 0 15px;
-    }
-    .prev_page .arrow_circle.black.left_arrow {
-      margin-left: 0;
+      span {
+        display: none;
+      }
     }
   }
   .slide_controls .slider_button {
-    top: 100px;
+    bottom: 100px;
+    top: auto;
     width: 20px
   }
 

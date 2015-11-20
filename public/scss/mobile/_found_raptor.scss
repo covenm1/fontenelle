@@ -1,0 +1,94 @@
+.fb_container {
+
+  padding: 0 15px;
+  &.fb_top {
+    padding: 0;
+  }
+  h1 {
+    font-size: 45px;
+  }
+  .featured_image {
+    height: auto;
+    padding:100px 15px 50px
+  }
+}
+
+.fb_contact {
+  flex-direction: column;
+  .fb_numbers {
+    order: 2;
+    padding: 0;
+  }
+  .fb_map {
+    padding: 0;
+    width: 200px;
+    margin: auto;
+    order: 1;
+  }
+}
+
+.fb_columns {
+  flex-direction: column;
+  ul {
+    width: 100%;
+    margin: 0
+  }
+}
+
+.ha_columns {
+  flex-direction: column;
+  div {
+    width: 100%;
+    margin: 0;
+  }
+}
+
+
+span.phone_wrapper {
+  display: block;
+  padding: 15px 0
+}
+
+.static {
+  padding: 75px 30px 30px;
+}
+
+.tpadded {
+  padding: 50px 15px 0;
+}
+
+.staff_member {
+  .email span {
+    display: none;
+  }
+}
+
+.name_list, .name_item {
+  padding: 0 15px;
+}
+
+.element_contain {
+  flex-direction: column;
+}
+a.gi_button {
+  margin: 5px 0;
+}
+a.gi_button:first-child {
+  margin-right: 0;
+}
+
+.bird {
+  width: 100%;
+  .bird_copy {
+    padding: 0 15px;
+  }
+  .bird_img {
+    margin-right: 0;
+    margin: 15px;
+  }
+}
+
+.nature_notes_header .raptor {
+  padding: 0 15px;
+  text-align: left;
+}
