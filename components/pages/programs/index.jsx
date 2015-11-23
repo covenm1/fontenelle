@@ -695,32 +695,30 @@ var Main = React.createClass({
                 </div>
               </div>
             </div>
-
-            <div className='video-container'>
-              <video id="video-background" className="video-wrap" poster="/img/loop_programs.jpg" autoPlay muted="muted" loop>
-                <source src="/videos/loop_programs.mp4" type="video/mp4" />
-              </video>
-              <div className="content_container">
-                <div className="video_overlay"></div>
-                <div className="content_wrapper">
-                  <img className="old_hero_image" src="/img/programs.png" />
-                  <div className="hero_content">
-                    <h1 className="hero_header">WHAT YOU CAN FIND HERE</h1>
-                    <h3 className="hero_subheader marker">Is infinite, and it is yours</h3>
-                    <div className="hero_textured_color" >
-                      <p>Camps, clubs, events and other programs for forest explorers of every age—from preschoolers to seniors and everyone in between.</p>
-                    </div>
-                    <div className="hero_icon_wrap">
-                      <span className="line left_line"></span>
-                      <img className={ arrow_class ? "hero_icon up" : "hero_icon" } src="/img/programs/icon_programs.svg" onClick={self.topScroll} />
-                      <span className="line right_line"></span>
-                    </div>
+          </div>
+          <div className='video-container'>
+            <video id="video-background" className="video-wrap" poster="/img/loop_programs.jpg" autoPlay muted="muted" loop>
+              <source src="/videos/loop_programs.mp4" type="video/mp4" />
+            </video>
+            <div className="content_container">
+              <div className="video_overlay"></div>
+              <div className="content_wrapper">
+                <img className="old_hero_image" src="/img/programs.png" />
+                <div className="hero_content">
+                  <h1 className="hero_header">WHAT YOU CAN FIND HERE</h1>
+                  <h3 className="hero_subheader marker">Is infinite, and it is yours</h3>
+                  <div className="hero_textured_color" >
+                    <p>Camps, clubs, events and other programs for forest explorers of every age—from preschoolers to seniors and everyone in between.</p>
                   </div>
-
+                  <div className="hero_icon_wrap">
+                    <span className="line left_line"></span>
+                    <img className={ arrow_class ? "hero_icon up" : "hero_icon" } src="/img/programs/icon_programs.svg" onClick={self.topScroll} />
+                    <span className="line right_line"></span>
+                  </div>
                 </div>
+
               </div>
             </div>
-
           </div>
         </div>
       )
@@ -729,32 +727,32 @@ var Main = React.createClass({
         <div className="page programs_page preloading">
           <div className="page_wrapper">
             <div className="page_container" id="page"  style={loadStyle}></div>
-            <div className='video-container'>
-              <video id="video-background" className="video-wrap" poster="/img/loop_programs.jpg" autoPlay muted="muted" loop>
-                <source src="/videos/loop_programs.mp4" type="video/mp4" />
-              </video>
-              <div className="content_container">
-                <div className="video_overlay"></div>
-                <div className="content_wrapper">
-                  <img className="old_hero_image" src="/img/programs.png" />
-                  <div className="hero_content">
-                    <h1 className="hero_header">WHAT YOU CAN FIND HERE</h1>
-                    <h3 className="hero_subheader marker">Is infinite, and it is yours</h3>
-                    <div className="hero_textured_color" >
-                      <p>Camps, clubs, events and other programs for forest explorers of every age—from preschoolers to seniors and everyone in between.</p>
-                    </div>
-                    <div className="hero_icon_wrap">
-                      <span className="line left_line"></span>
-                      <img className={ arrow_class ? "hero_icon up" : "hero_icon" } src="/img/programs/icon_programs.svg" />
-                      <span className="line right_line"></span>
-                    </div>
+          </div>
+          <div className='video-container'>
+            <video id="video-background" className="video-wrap" poster="/img/loop_programs.jpg" autoPlay muted="muted" loop>
+              <source src="/videos/loop_programs.mp4" type="video/mp4" />
+            </video>
+            <div className="content_container">
+              <div className="video_overlay"></div>
+              <div className="content_wrapper">
+                <img className="old_hero_image" src="/img/programs.png" />
+                <div className="hero_content">
+                  <h1 className="hero_header">WHAT YOU CAN FIND HERE</h1>
+                  <h3 className="hero_subheader marker">Is infinite, and it is yours</h3>
+                  <div className="hero_textured_color" >
+                    <p>Camps, clubs, events and other programs for forest explorers of every age—from preschoolers to seniors and everyone in between.</p>
                   </div>
-
+                  <div className="hero_icon_wrap">
+                    <span className="line left_line"></span>
+                    <img className={ arrow_class ? "hero_icon up" : "hero_icon" } src="/img/programs/icon_programs.svg" />
+                    <span className="line right_line"></span>
+                  </div>
                 </div>
+
               </div>
             </div>
-
           </div>
+
         </div>
 
       )

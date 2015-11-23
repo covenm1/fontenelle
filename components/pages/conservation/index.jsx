@@ -468,28 +468,28 @@ var Main = React.createClass({
                 </div>
               </div>
             </div>
-            <div className='video-container'>
-              <video id="video-background" className="video-wrap" poster="/img/loop_conservation.jpg" autoPlay muted="muted" loop>
-                <source src="/videos/loop_conservation.mp4" type="video/mp4" />
-              </video>
-              <div className="content_container">
-                <div className="video_overlay"></div>
-                <div className="content_wrapper">
-                  <img className="old_hero_image" src="/img/conservation.png" />
-                  <div className="hero_content">
-                    <h1 className="hero_header">SEE THE FOREST</h1>
-                    <h3 className="hero_subheader marker">AND THE TREES</h3>
-                    <div className="hero_textured_color" >
-                      <p>As stewards of the land, we are dedicated to the conservation and preservation of our local environment so that future generations can continue to enjoy the forest.</p>
-                    </div>
-                    <div className="hero_icon_wrap">
-                      <span className="line left_line"></span>
-                      <img className={ arrow_class ? "hero_icon up" : "hero_icon" } src="/img/conservation/icon_conservation.svg" onClick={self.topScroll} />
-                      <span className="line right_line"></span>
-                    </div>
+          </div>
+          <div className='video-container'>
+            <video id="video-background" className="video-wrap" poster="/img/loop_conservation.jpg" autoPlay muted="muted" loop>
+              <source src="/videos/loop_conservation.mp4" type="video/mp4" />
+            </video>
+            <div className="content_container">
+              <div className="video_overlay"></div>
+              <div className="content_wrapper">
+                <img className="old_hero_image" src="/img/conservation.png" />
+                <div className="hero_content">
+                  <h1 className="hero_header">SEE THE FOREST</h1>
+                  <h3 className="hero_subheader marker">AND THE TREES</h3>
+                  <div className="hero_textured_color" >
+                    <p>As stewards of the land, we are dedicated to the conservation and preservation of our local environment so that future generations can continue to enjoy the forest.</p>
                   </div>
-
+                  <div className="hero_icon_wrap">
+                    <span className="line left_line"></span>
+                    <img className={ arrow_class ? "hero_icon up" : "hero_icon" } src="/img/conservation/icon_conservation.svg" onClick={self.topScroll} />
+                    <span className="line right_line"></span>
+                  </div>
                 </div>
+
               </div>
             </div>
           </div>
@@ -500,28 +500,28 @@ var Main = React.createClass({
         <div className="page conservation_page preloading">
           <div className="page_wrapper">
             <div className="page_container" id="page"  style={loadStyle}></div>
-            <div className='video-container'>
-              <video id="video-background" className="video-wrap" poster="/img/loop_conservation.jpg" autoPlay muted="muted" loop>
-                <source src="/videos/loop_conservation.mp4" type="video/mp4" />
-              </video>
-              <div className="content_container">
-                <div className="video_overlay"></div>
-                <div className="content_wrapper">
-                  <img className="old_hero_image" src="/img/conservation.png" />
-                  <div className="hero_content">
-                    <h1 className="hero_header">SEE THE FOREST</h1>
-                    <h3 className="hero_subheader marker">AND THE TREES</h3>
-                    <div className="hero_textured_color" >
-                      <p>As stewards of the land, we are dedicated to the conservation and preservation of our local environment so that future generations can continue to enjoy the forest.</p>
-                    </div>
-                    <div className="hero_icon_wrap">
-                      <span className="line left_line"></span>
-                      <img className={ arrow_class ? "hero_icon up" : "hero_icon" } src="/img/conservation/icon_conservation.svg" />
-                      <span className="line right_line"></span>
-                    </div>
+          </div>
+          <div className='video-container'>
+            <video id="video-background" className="video-wrap" poster="/img/loop_conservation.jpg" autoPlay muted="muted" loop>
+              <source src="/videos/loop_conservation.mp4" type="video/mp4" />
+            </video>
+            <div className="content_container">
+              <div className="video_overlay"></div>
+              <div className="content_wrapper">
+                <img className="old_hero_image" src="/img/conservation.png" />
+                <div className="hero_content">
+                  <h1 className="hero_header">SEE THE FOREST</h1>
+                  <h3 className="hero_subheader marker">AND THE TREES</h3>
+                  <div className="hero_textured_color" >
+                    <p>As stewards of the land, we are dedicated to the conservation and preservation of our local environment so that future generations can continue to enjoy the forest.</p>
                   </div>
-
+                  <div className="hero_icon_wrap">
+                    <span className="line left_line"></span>
+                    <img className={ arrow_class ? "hero_icon up" : "hero_icon" } src="/img/conservation/icon_conservation.svg" />
+                    <span className="line right_line"></span>
+                  </div>
                 </div>
+
               </div>
             </div>
           </div>

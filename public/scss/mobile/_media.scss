@@ -14,10 +14,19 @@
       }
     }
   }
-  .slide_controls .slider_button {
-    bottom: 100px;
-    top: auto;
-    width: 20px
+  .slide_controls {
+    display: none;
+    .slider_button {
+      bottom: 100px;
+      top: auto;
+      width: 20px
+    }
+  }
+
+  .hero_content {
+    .hero_icon,.hero_icon:hover  {
+      width: 75px;
+    }
   }
 
   .menu_open .sidebar {
@@ -27,5 +36,33 @@
   footer {
     z-index: 100;
   }
+
+  .main_content .page {
+    margin-top: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  .page_wrapper {
+    order: 2;
+  }
+  .video-container {
+    height: auto;
+    order: 1;
+    position: relative;
+    .content_container {
+      height: auto;
+      width: auto;
+      padding: 100px 0 50px;
+    }
+
+  }
+  .newsletter {
+    a {
+      display: block;
+      margin: 10px 0;
+    }
+  }
+
+
 
 }
