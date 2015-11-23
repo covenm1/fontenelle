@@ -34,10 +34,13 @@
     max-width: 100%;
   }
   footer {
-    z-index: 100;
+    padding: 15px 0;
   }
 
   .main_content .page {
+    &.preloading {
+      margin-top: 0 !important;
+    }
     margin-top: 0;
     display: flex;
     flex-direction: column;
@@ -52,7 +55,7 @@
     .content_container {
       height: auto;
       width: auto;
-      padding: 100px 0 50px;
+      padding: 75px 0;
     }
 
   }
@@ -62,7 +65,25 @@
       margin: 10px 0;
     }
   }
+  .play_button_wrapper .left_leaf, .play_button_wrapper .right_leaf {
+      max-height: 60px;
+  }
 
-
+  .classes_container {
+    padding: 50px 15px 0 15px;
+    .copy_container h2 {
+      height: auto;
+    }
+  }
+  .living_classroom_container {
+    padding: 50px 15px;
+    text-align: left;
+    .copy_container {
+      text-align: left;
+    }
+  }
+  .classes_container .copy_container .in_forest, .classes_container .copy_container .on_go {
+    background-size: 40px;
+  }
 
 }
