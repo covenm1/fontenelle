@@ -27,6 +27,24 @@ $grey: #808080;
 @import "loading";
 @import "posts";
 
+.job {
+  border-bottom: white 1px solid;
+  padding-bottom: 15px;
+  .job_headline {
+    color: black;
+  }
+  p {
+    margin: 0;
+    line-height: 1.5;
+  }
+  a {
+    color: $conservation_color;
+  }
+  .job_label {
+    color: black;
+  }
+}
+
 @import "mobile/media";
 
 .ie {

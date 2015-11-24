@@ -30,7 +30,8 @@ var forest = require('../forest/index.jsx'),
 		savetheoaks = require('../save-the-oaks/index.jsx'),
 		contact = require('../contact/index.jsx'),
 		posts = require('../posts/index.jsx'),
-		post = require('../post/index.jsx');
+		post = require('../post/index.jsx'),
+		careers = require('../careers/index.jsx');
 
 
 var Loading = require('../../common/loading_arrows.jsx');
@@ -382,7 +383,7 @@ var App = React.createClass({
 			)
 		}
 	}
-});
+}); 
 
 var routes = (
   <Route handler={App}>
@@ -412,6 +413,7 @@ var routes = (
 		<Route path="/post/:name" handler={post} addHandlerKey={true} />
 		<Route path="/posts" handler={posts} addHandlerKey={true} />
 		<Route path="/urban-wildlife" handler={urbanwildlife} addHandlerKey={true} />
+		<Route path="/careers" handler={careers} addHandlerKey={true} />
 
   </Route>
 

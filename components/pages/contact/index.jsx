@@ -197,7 +197,7 @@ module.exports = React.createClass({
                   <span className="staff_name">Careers: </span>
                   <span className="title">For current open positions</span>
                 </h2>
-                <p className="email">info@fontenelleforest.org<a href="mailto:info@fontenelleforest.org">
+                <p className="email"><Link to="/careers">
                   <svg className="arrow_circle blue right_arrow" x="0px" y="0px" viewBox="0 0 52 52" enableBackground="new 0 0 52 52" >
                     <path className="circle" strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"/>
                     <g className="arrow" >
@@ -206,7 +206,7 @@ module.exports = React.createClass({
                         C28.4,24.3,29.4,25.9,29.4,25.9z"/>
                       <line strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' x1="27.8" y1="25.9" x2="12.7" y2="25.9"/>
                     </g>
-                  </svg></a></p>
+                  </svg></Link></p>
               </div>
               <div className="staff_member">
                 <h2 className="name">
