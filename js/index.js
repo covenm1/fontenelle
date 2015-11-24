@@ -913,26 +913,11 @@ module.exports=[
 ]
 
 },{}],4:[function(require,module,exports){
-var React = require('react');
-
+var React   = require('react'),
+    Router  = require('react-router'),
+    Link    = Router.Link;
 
 module.exports = React.createClass({displayName: "exports",
-  componentDidMount:function(){
-    // if (process.env.NODE_ENV == 'production') {
-    //   this.analytics();
-    // }
-  },
-  analytics: function(){
-    // var _gaq = _gaq || [];
-    // _gaq.push(['_setAccount', 'UA-29023725-1']);
-    // _gaq.push(['_trackPageview']);
-    //
-    // (function() {
-    //   var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    //   ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    //   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    // })();
-  },
   render: function() {
     return (
       React.createElement("footer", null, 
@@ -953,7 +938,8 @@ module.exports = React.createClass({displayName: "exports",
             React.createElement("li", null, "1111 Bellevue Blvd. N. Bellevue, NE 68005"), 
             React.createElement("li", null, "Phone (402) 731-3140"), 
             React.createElement("li", null, "Fax (402) 731-2403"), 
-            React.createElement("li", null, React.createElement("a", {target: "_blank", href: "mailto:info@fontenelleforest.org"}, "info@fontenelleforest.org"))
+            React.createElement("li", null, React.createElement("a", {target: "_blank", href: "mailto:info@fontenelleforest.org"}, "info@fontenelleforest.org")), 
+            React.createElement("li", null, React.createElement(Link, {to: "/careers"}, "Careers"))
           )
         )
       )
@@ -961,7 +947,7 @@ module.exports = React.createClass({displayName: "exports",
   }
 });
 
-},{"react":501}],5:[function(require,module,exports){
+},{"react":501,"react-router":311}],5:[function(require,module,exports){
 module.exports=[
   {
     "image": "/img/littleexplorers/acorn-acres.jpg",
@@ -1618,7 +1604,7 @@ module.exports = React.createClass({displayName: "exports",
           React.createElement("div", {className: "main_wrapper"}, 
             React.createElement("h1", {className: "post_title marker"}, "Job Opportunities"), 
             React.createElement("p", null, "Interested in joining our team? Fontenelle Forest is one of Nebraska’s oldest conservation organizations and seeks to provide a place where people can experience the quiet wild of nature. Every member of our staff plays a vital role in the success of our organization. "), 
-             jobs ?
+             jobs.length ?
               React.createElement("div", {className: "post_list"}, 
                 jobs
               )
@@ -3682,7 +3668,7 @@ function shuffleArray(array) {
         array[j] = temp;
     }
     return array;
-}
+} 
 
 var SetIntervalMixin = {
   componentWillMount: function() {

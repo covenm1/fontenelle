@@ -25,7 +25,7 @@ function shuffleArray(array) {
         array[j] = temp;
     }
     return array;
-}
+} 
 
 var SetIntervalMixin = {
   componentWillMount: function() {

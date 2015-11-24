@@ -1,23 +1,8 @@
-var React = require('react');
-
+var React   = require('react'),
+    Router  = require('react-router'),
+    Link    = Router.Link;
 
 module.exports = React.createClass({
-  componentDidMount:function(){
-    // if (process.env.NODE_ENV == 'production') {
-    //   this.analytics();
-    // }
-  },
-  analytics: function(){
-    // var _gaq = _gaq || [];
-    // _gaq.push(['_setAccount', 'UA-29023725-1']);
-    // _gaq.push(['_trackPageview']);
-    //
-    // (function() {
-    //   var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    //   ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    //   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    // })();
-  },
   render: function() {
     return (
       <footer>
@@ -39,6 +24,7 @@ module.exports = React.createClass({
             <li>Phone (402) 731-3140</li>
             <li>Fax (402) 731-2403</li>
             <li><a target="_blank" href="mailto:info@fontenelleforest.org">info@fontenelleforest.org</a></li>
+            <li><Link to="/careers">Careers</Link></li>
           </ul>
         </div>
       </footer>
