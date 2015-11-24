@@ -24,7 +24,7 @@ var Job = React.createClass({
         <h2 className="job_headline" dangerouslySetInnerHTML={{__html: title}}></h2>
         { description ? <div className="job_description " dangerouslySetInnerHTML={{__html: description}}></div> : null }
         { descriptionUrl ? <a className="job_description_url" href={descriptionUrl} target="_blank"><p>Learn More About the Postition</p></a> : null }
-        { contact ? <p className="job_contact"><span className="job_label">Please contact: </span><a href={contact}>{contact}</a></p> : null }
+        { contact ? <p className="job_contact"><span className="job_label">Please contact: </span><a href={"mailto:"+contact}>{contact}</a></p> : null }
         { formatted_deadline ? <p className="job_formatted_deadline"><span className="job_label">Application Deadline: </span>{formatted_deadline}</p> : null }
       </div>
     )

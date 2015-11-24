@@ -1543,7 +1543,7 @@ var Job = React.createClass({displayName: "Job",
         React.createElement("h2", {className: "job_headline", dangerouslySetInnerHTML: {__html: title}}), 
          description ? React.createElement("div", {className: "job_description ", dangerouslySetInnerHTML: {__html: description}}) : null, 
          descriptionUrl ? React.createElement("a", {className: "job_description_url", href: descriptionUrl, target: "_blank"}, React.createElement("p", null, "Learn More About the Postition")) : null, 
-         contact ? React.createElement("p", {className: "job_contact"}, React.createElement("span", {className: "job_label"}, "Please contact: "), React.createElement("a", {href: contact}, contact)) : null, 
+         contact ? React.createElement("p", {className: "job_contact"}, React.createElement("span", {className: "job_label"}, "Please contact: "), React.createElement("a", {href: "mailto:"+contact}, contact)) : null, 
          formatted_deadline ? React.createElement("p", {className: "job_formatted_deadline"}, React.createElement("span", {className: "job_label"}, "Application Deadline: "), formatted_deadline) : null
       )
     )
