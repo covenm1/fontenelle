@@ -175,7 +175,7 @@ module.exports = React.createClass({
                       <line strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' x1="27.8" y1="25.9" x2="12.7" y2="25.9"/>
                     </g>
                   </svg></a></p>
-              </div>
+              </div> 
               <div className="staff_member">
                 <h2 className="name">
                   <span className="staff_name">Donate to FF: </span>

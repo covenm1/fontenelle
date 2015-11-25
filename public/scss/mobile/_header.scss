@@ -2,6 +2,15 @@ header.header {
   background: black;
   background: rgba(0,0,0,.8);
   color: #fff;
+  display: block;
+  .logo {
+    display: inline-block;
+    float: left;
+  }
+  .menu_icon {
+    display: inline-block;
+    float: right;
+  }
 }
 .global_menu {
   display: none;

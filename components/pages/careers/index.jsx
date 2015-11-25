@@ -85,7 +85,7 @@ module.exports = React.createClass({
           <div className='main_wrapper'>
             <h1 className="post_title marker">Job Opportunities</h1>
             <p>Interested in joining our team? Fontenelle Forest is one of Nebraska’s oldest conservation organizations and seeks to provide a place where people can experience the quiet wild of nature. Every member of our staff plays a vital role in the success of our organization. </p>
-            { jobs ?
+            { jobs.length ?
               <div className='post_list'>
                 {jobs}
               </div>

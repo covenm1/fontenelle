@@ -1,4 +1,4 @@
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 800px) {
   @import "header";
   @import "forest";
   @import "natural_resources";
@@ -54,7 +54,7 @@
     position: relative;
     .content_container {
       height: auto;
-      width: auto;
+      width: 100%;
       padding: 75px 0;
     }
 
@@ -86,4 +86,13 @@
     background-size: 40px;
   }
 
+}
+
+@media screen and (max-width: 600px) {
+  .nature_notes{
+    display: block;
+    .plantlife, .wildlife {
+      width: 100%;
+    }
+  }
 }
