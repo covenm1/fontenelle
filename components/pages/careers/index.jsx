@@ -16,7 +16,7 @@ var Job = React.createClass({
     var description = self.props.description;
     var contact = self.props.contact;
     var deadline = self.props.deadline;
-    var formatted_deadline = moment(deadline).format('MMMM Do, YYYY');
+    var formatted_deadline = moment(deadline, "YYYYMMDD").format('MMMM Do, YYYY');
     var descriptionUrl = self.props.descriptionUrl;
 
     return (
@@ -74,7 +74,7 @@ module.exports = React.createClass({
           description={object.content}
           descriptionUrl={object.meta.job_description.url}
           contact={object.meta.contact}
-          deadline={object.meta.deadline}
+          deadline={object.meta.deadline_for_applications}
           />
       )
     });
