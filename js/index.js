@@ -15,7 +15,7 @@ var Route = Router.Route,
   	NotFoundRoute = Router.NotFoundRoute,
   	RouteHandler = Router.RouteHandler,
   	Link = Router.Link;
-
+  
 var forest = require('../forest/index.jsx'),
 		naturalresources = require('../conservation/index.jsx'),
 		programs = require('../programs/index.jsx'),
@@ -321,8 +321,7 @@ var App = React.createClass({displayName: "App",
 
 		    	React.createElement(TransitionGroup, {transitionName: transition, className: "main_content", id: "main_content", component: "div"}, 
 			    	React.createElement(RouteHandler, {key: name, transition: self.setTransition, controller: controller})
-			    ), 
-					React.createElement(Footer, null)
+			    )
 			  )
 			)
 		} else {
@@ -384,7 +383,7 @@ var App = React.createClass({displayName: "App",
 			)
 		}
 	}
-}); 
+});
 
 var routes = (
   React.createElement(Route, {handler: App}, 
@@ -421,59 +420,7 @@ var routes = (
 );
 
 
-// Router.run(routes, Router.HistoryLocation, function (Handler) {
-//   React.render(<Handler/>, document.body);
-// });
-
-// var ga = require('./ga');
-
-// function analytics(state, options) {
-//   if (!options) {
-//     options = {};
-//   }
-//   options.page = state.path;
-//   ga('send', 'pageview', options);
-// }
-// function analytics(state, options) {
-// 	console.log('analytics: '+state.path);
-// 	var create = ga('create', 'UA-29023725-1', 'auto');
-// 	var send = ga('send', 'pageview');
-//
-// 	console.log('create: '+create);
-// 	console.log('send: '+send);
-// }
-
-// function initGoogleAnalytics(id) {
-//   if (window.ga) {
-//     return;
-//   }
-//
-//   if (!id) {
-//     throw new Error('Google analytics ID is undefined');
-//   }
-//
-//   window.ga = window.ga || function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date; // eslint-disable-line
-//
-//   (function loadScript() {
-//     var gads = document.createElement('script');
-//     gads.async = true;
-//     gads.type = 'text/javascript';
-//     gads.src = '//www.google-analytics.com/analytics.js';
-//
-//     var head = document.getElementsByTagName('head')[0];
-//     head.appendChild(gads);
-//   })();
-// 	window.ga('create', id, 'auto');
-// }
-
 function analytics(state) {
-	// if (ga) {
-	// 	console.log("state.path: "+state.path);
-	// 	ga('send', 'pageview',  state.path);
-	// 	window.ga('send', 'pageview',  state.path);
-	// 		// window.ga.apply(window.ga, 'send', 'pageview', { state.path, state.path });
-	// }
-
 	visitor.pageview(state.path).send()
 }
 
@@ -1415,6 +1362,7 @@ var Router = require('react-router');
 
 var Navigation = Router.Navigation;
 var Link = Router.Link;
+var Footer = require('../../common/footer.jsx');
 
 module.exports = React.createClass({displayName: "exports",
   mixins: [ Router.State, Navigation ],
@@ -1510,13 +1458,14 @@ module.exports = React.createClass({displayName: "exports",
               )
             )
           )
-        )
+        ), 
+        React.createElement(Footer, null)
       )
     )
   }
 });
 
-},{"react":578,"react-inlinesvg":349,"react-router":388,"superagent":618,"util":640,"velocity-animate/velocity":641}],11:[function(require,module,exports){
+},{"../../common/footer.jsx":4,"react":578,"react-inlinesvg":349,"react-router":388,"superagent":618,"util":640,"velocity-animate/velocity":641}],11:[function(require,module,exports){
 var React = require('react'),
     request = require('superagent'),
     moment = require('moment'),
@@ -1527,6 +1476,7 @@ var Router = require('react-router');
 var Navigation = Router.Navigation;
 var Link = Router.Link;
 
+var Footer = require('../../common/footer.jsx');
 
 var Job = React.createClass({displayName: "Job",
   render: function(){
@@ -1611,13 +1561,14 @@ module.exports = React.createClass({displayName: "exports",
               : React.createElement("p", null, "Thank you for your interest in employment opportunities at Fontenelle Forest. We do not currently have any open positions available.")
             
           )
-        )
+        ), 
+        React.createElement(Footer, null)
       )
     )
   }
 });
 
-},{"moment":338,"react":578,"react-router":388,"superagent":618,"util":640,"velocity-animate/velocity":641}],12:[function(require,module,exports){
+},{"../../common/footer.jsx":4,"moment":338,"react":578,"react-router":388,"superagent":618,"util":640,"velocity-animate/velocity":641}],12:[function(require,module,exports){
 var React = require('react'),
     request = require('superagent'),
     util = require('util');
@@ -1629,6 +1580,8 @@ var Navigation = Router.Navigation;
 var Link = Router.Link;
 
 var timeline = require('../../common/timeline.json');
+
+var Footer = require('../../common/footer.jsx');
 
 var SetIntervalMixin = {
   componentWillMount: function() {
@@ -2087,7 +2040,8 @@ var Main = React.createClass({displayName: "Main",
                   )
                 )
               )
-            )
+            ), 
+            React.createElement(Footer, null)
           ), 
           React.createElement("div", {className: "video-container"}, 
             React.createElement("video", {id: "video-background", className: "video-wrap", poster: "/img/loop_conservation.jpg", autoPlay: true, muted: "muted", loop: true}, 
@@ -2153,7 +2107,7 @@ var Main = React.createClass({displayName: "Main",
 
 module.exports = Main;
 
-},{"../../common/timeline.json":9,"react":578,"react-inlinesvg":349,"react-router":388,"superagent":618,"util":640,"velocity-animate/velocity":641}],13:[function(require,module,exports){
+},{"../../common/footer.jsx":4,"../../common/timeline.json":9,"react":578,"react-inlinesvg":349,"react-router":388,"superagent":618,"util":640,"velocity-animate/velocity":641}],13:[function(require,module,exports){
 var React = require('react'),
     request = require('superagent'),
     util = require('util');
@@ -2168,6 +2122,8 @@ var ScrollMagic = require('scrollmagic');
 
 var management = require('../../common/management.json');
 var staff = require('../../common/staff.json');
+
+var Footer = require('../../common/footer.jsx');
 
 var StaffMember = React.createClass({displayName: "StaffMember",
   render: function() {
@@ -2460,13 +2416,14 @@ module.exports = React.createClass({displayName: "exports",
             "\u0003", React.createElement("span", {className: "name_item"}, "Brian Mark Conover"), 
             React.createElement("span", {className: "name_item"}, "Emma Hoffman")
           )
-        )
+        ), 
+        React.createElement(Footer, null)
       )
     )
   }
 });
 
-},{"../../common/management.json":7,"../../common/staff.json":8,"react":578,"react-inlinesvg":349,"react-router":388,"scrollmagic":595,"superagent":618,"util":640,"velocity-animate/velocity":641}],14:[function(require,module,exports){
+},{"../../common/footer.jsx":4,"../../common/management.json":7,"../../common/staff.json":8,"react":578,"react-inlinesvg":349,"react-router":388,"scrollmagic":595,"superagent":618,"util":640,"velocity-animate/velocity":641}],14:[function(require,module,exports){
 var React = require('react'),
     request = require('superagent'),
     util = require('util');
@@ -2482,6 +2439,8 @@ var TweenMax = require('../../../public/js/tweenmax.js');
 require('../../../public/js/scrollTo.js');
 
 var classes_data = require('../../common/classes.json');
+
+var Footer = require('../../common/footer.jsx');
 
 var SetIntervalMixin = {
   componentWillMount: function() {
@@ -2849,7 +2808,8 @@ var Main = React.createClass({displayName: "Main",
                   )
                 )
               )
-            )
+            ), 
+            React.createElement(Footer, null)
           ), 
           React.createElement("div", {className: "video-container"}, 
             React.createElement("video", {id: "video-background", className: "video-wrap", poster: "/img/loop_education.jpg", autoPlay: true, muted: "muted", loop: true}, 
@@ -2914,7 +2874,7 @@ var Main = React.createClass({displayName: "Main",
 
 module.exports = Main;
 
-},{"../../../public/js/scrollTo.js":644,"../../../public/js/tweenmax.js":645,"../../common/classes.json":2,"react":578,"react-inlinesvg":349,"react-router":388,"scrollmagic":595,"superagent":618,"util":640,"velocity-animate/velocity":641}],15:[function(require,module,exports){
+},{"../../../public/js/scrollTo.js":644,"../../../public/js/tweenmax.js":645,"../../common/classes.json":2,"../../common/footer.jsx":4,"react":578,"react-inlinesvg":349,"react-router":388,"scrollmagic":595,"superagent":618,"util":640,"velocity-animate/velocity":641}],15:[function(require,module,exports){
 var React = require('react'),
     request = require('superagent'),
     moment = require('moment'),
@@ -2927,6 +2887,8 @@ var jsonp = require('superagent-jsonp');
 
 var Navigation = Router.Navigation;
 var Link = Router.Link;
+
+var Footer = require('../../common/footer.jsx');
 
 var Instagram = React.createClass({displayName: "Instagram",
   render: function(){
@@ -3634,13 +3596,14 @@ module.exports = React.createClass({displayName: "exports",
           React.createElement("div", {className: "social_wrapper"}, 
             twistagrams
           )
-        )
+        ), 
+        React.createElement(Footer, null)
       )
     )
   }
 });
 
-},{"moment":338,"react":578,"react-inlinesvg":349,"react-router":388,"superagent":618,"superagent-jsonp":617,"util":640,"velocity-animate/velocity":641}],16:[function(require,module,exports){
+},{"../../common/footer.jsx":4,"moment":338,"react":578,"react-inlinesvg":349,"react-router":388,"superagent":618,"superagent-jsonp":617,"util":640,"velocity-animate/velocity":641}],16:[function(require,module,exports){
 var React = require('react'),
     request = require('superagent'),
     util = require('util'),
@@ -3668,7 +3631,9 @@ function shuffleArray(array) {
         array[j] = temp;
     }
     return array;
-} 
+}
+
+var Footer = require('../../common/footer.jsx');
 
 var SetIntervalMixin = {
   componentWillMount: function() {
@@ -5380,8 +5345,8 @@ var Main = React.createClass({displayName: "Main",
                     )
                   )
                 )
-              )
-
+              ), 
+             React.createElement(Footer, null)
             )
           ), 
           React.createElement("div", {className: "video-container"}, 
@@ -5446,7 +5411,7 @@ var Main = React.createClass({displayName: "Main",
 
 module.exports = Main;
 
-},{"../../common/fall.json":3,"../../common/littleexplorers.json":5,"react":578,"react-inlinesvg":349,"react-router":388,"scrollmagic":595,"superagent":618,"util":640,"velocity-animate/velocity":641}],17:[function(require,module,exports){
+},{"../../common/fall.json":3,"../../common/footer.jsx":4,"../../common/littleexplorers.json":5,"react":578,"react-inlinesvg":349,"react-router":388,"scrollmagic":595,"superagent":618,"util":640,"velocity-animate/velocity":641}],17:[function(require,module,exports){
 var React = require('react'),
     request = require('superagent'),
     util = require('util');
@@ -5456,6 +5421,8 @@ var Router = require('react-router');
 
 var Navigation = Router.Navigation;
 var Link = Router.Link;
+
+var Footer = require('../../common/footer.jsx');
 
 module.exports =  React.createClass({displayName: "exports",
   mixins: [ Router.State, Navigation ],
@@ -5555,13 +5522,14 @@ module.exports =  React.createClass({displayName: "exports",
               )
             )
           )
-        )
+        ), 
+        React.createElement(Footer, null)
       )
     )
   }
 });
 
-},{"react":578,"react-inlinesvg":349,"react-router":388,"superagent":618,"util":640,"velocity-animate/velocity":641}],18:[function(require,module,exports){
+},{"../../common/footer.jsx":4,"react":578,"react-inlinesvg":349,"react-router":388,"superagent":618,"util":640,"velocity-animate/velocity":641}],18:[function(require,module,exports){
 var React = require('react'),
     request = require('superagent'),
     util = require('util');
@@ -5571,6 +5539,8 @@ var Router = require('react-router');
 
 var Navigation = Router.Navigation;
 var Link = Router.Link;
+
+var Footer = require('../../common/footer.jsx');
 
 module.exports = React.createClass({displayName: "exports",
   mixins: [ Router.State, Navigation ],
@@ -5647,7 +5617,7 @@ module.exports = React.createClass({displayName: "exports",
               React.createElement("img", {className: "gi_break", src: "/img/conservation/divider_bottom_grey.png"}), 
               React.createElement("div", {className: "element_contain"}, 
                 React.createElement("a", {className: "gi_button marker", href: "https://8913.blackbaudhosting.com/8913/Membership", target: "_blank"}, "Join or Renew Membership"), 
-                React.createElement("a", {className: "gi_button marker", href: "https://8913.blackbaudhosting.com/8913/Membership", target: "_blank"}, "Purchase Giftcard")
+                React.createElement("a", {className: "gi_button marker", href: "https://8913.blackbaudhosting.com/8913/Membership", target: "_blank"}, "Purchase Gift Membership")
               )
             ), 
             React.createElement("div", {className: "centered_content join"}, 
@@ -5729,13 +5699,14 @@ module.exports = React.createClass({displayName: "exports",
               )
             )
           )
-        )
+        ), 
+        React.createElement(Footer, null)
       )
     )
   }
 });
 
-},{"react":578,"react-inlinesvg":349,"react-router":388,"superagent":618,"util":640,"velocity-animate/velocity":641}],19:[function(require,module,exports){
+},{"../../common/footer.jsx":4,"react":578,"react-inlinesvg":349,"react-router":388,"superagent":618,"util":640,"velocity-animate/velocity":641}],19:[function(require,module,exports){
 var React = require('react'),
     request = require('superagent'),
     util = require('util');
@@ -5745,6 +5716,8 @@ var Router = require('react-router');
 
 var Navigation = Router.Navigation;
 var Link = Router.Link;
+
+var Footer = require('../../common/footer.jsx');
 
 module.exports = React.createClass({displayName: "exports",
   mixins: [ Router.State, Navigation ],
@@ -5792,13 +5765,14 @@ module.exports = React.createClass({displayName: "exports",
                 )
               )
             )
-          )
+          ), 
+          React.createElement(Footer, null)
         )
     )
   }
 });
 
-},{"react":578,"react-inlinesvg":349,"react-router":388,"superagent":618,"util":640,"velocity-animate/velocity":641}],20:[function(require,module,exports){
+},{"../../common/footer.jsx":4,"react":578,"react-inlinesvg":349,"react-router":388,"superagent":618,"util":640,"velocity-animate/velocity":641}],20:[function(require,module,exports){
 /**
  * Adapted from https://github.com/Khan/react-components/blob/master/js/timeout-transition-group.jsx
  */
@@ -5973,6 +5947,8 @@ var Router = require('react-router');
 var Navigation = Router.Navigation;
 var Link = Router.Link;
 
+var Footer = require('../../common/footer.jsx');
+
 var Closing = React.createClass({displayName: "Closing",
   getInitialState: function(){
     return { content: false };
@@ -6082,13 +6058,14 @@ module.exports = React.createClass({displayName: "exports",
           React.createElement("div", {className: "image_container birds"}, 
             birds
           )
-        )
+        ), 
+        React.createElement(Footer, null)
       )
     )
   }
 });
 
-},{"react":578,"react-router":388,"superagent":618,"util":640}],22:[function(require,module,exports){
+},{"../../common/footer.jsx":4,"react":578,"react-router":388,"superagent":618,"util":640}],22:[function(require,module,exports){
 var React = require('react'),
     request = require('superagent'),
     util = require('util'),
@@ -6097,6 +6074,8 @@ var Router = require('react-router');
 
 var Navigation = Router.Navigation;
 var Link = Router.Link;
+
+var Footer = require('../../common/footer.jsx');
 
 var Closing = React.createClass({displayName: "Closing",
   getInitialState: function(){
@@ -6270,13 +6249,14 @@ module.exports = React.createClass({displayName: "exports",
               )
             )
           )
-        )
+        ), 
+        React.createElement(Footer, null)
       )
     )
   }
 });
 
-},{"moment":338,"react":578,"react-router":388,"superagent":618,"util":640}],23:[function(require,module,exports){
+},{"../../common/footer.jsx":4,"moment":338,"react":578,"react-router":388,"superagent":618,"util":640}],23:[function(require,module,exports){
 var React = require('react'),
     request = require('superagent'),
     moment = require('moment'),
@@ -6287,6 +6267,8 @@ var Router = require('react-router');
 
 var Navigation = Router.Navigation;
 var Link = Router.Link;
+
+var Footer = require('../../common/footer.jsx');
 
 module.exports = React.createClass({displayName: "exports",
   mixins: [ Router.State, Navigation ],
@@ -6350,13 +6332,14 @@ module.exports = React.createClass({displayName: "exports",
             React.createElement("h1", {className: "post_title marker", dangerouslySetInnerHTML: {__html: title}}), 
             React.createElement("div", {className: "post_content", dangerouslySetInnerHTML: {__html: content}})
           )
-        )
+        ), 
+        React.createElement(Footer, null)
       )
     )
   }
 });
 
-},{"moment":338,"react":578,"react-inlinesvg":349,"react-router":388,"superagent":618,"util":640,"velocity-animate/velocity":641}],24:[function(require,module,exports){
+},{"../../common/footer.jsx":4,"moment":338,"react":578,"react-inlinesvg":349,"react-router":388,"superagent":618,"util":640,"velocity-animate/velocity":641}],24:[function(require,module,exports){
 var React = require('react'),
     request = require('superagent'),
     moment = require('moment'),
@@ -6368,6 +6351,7 @@ var Router = require('react-router');
 var Navigation = Router.Navigation;
 var Link = Router.Link;
 
+var Footer = require('../../common/footer.jsx');
 
 var FeaturedPost = React.createClass({displayName: "FeaturedPost",
   render: function(){
@@ -6528,13 +6512,14 @@ module.exports = React.createClass({displayName: "exports",
               posts
             )
           )
-        )
+        ), 
+        React.createElement(Footer, null)
       )
     )
   }
 });
 
-},{"moment":338,"react":578,"react-inlinesvg":349,"react-router":388,"superagent":618,"util":640,"velocity-animate/velocity":641}],25:[function(require,module,exports){
+},{"../../common/footer.jsx":4,"moment":338,"react":578,"react-inlinesvg":349,"react-router":388,"superagent":618,"util":640,"velocity-animate/velocity":641}],25:[function(require,module,exports){
 var React = require('react'),
     request = require('superagent'),
     util = require('util');
@@ -6548,6 +6533,8 @@ var Link = Router.Link;
 var ScrollMagic = require('scrollmagic');
 var TweenMax = require('../../../public/js/tweenmax.js');
 require('../../../public/js/scrollTo.js');
+
+var Footer = require('../../common/footer.jsx');
 
 var SetIntervalMixin = {
   componentWillMount: function() {
@@ -7231,7 +7218,8 @@ var Main = React.createClass({displayName: "Main",
                   )
                 )
               )
-            )
+            ), 
+            React.createElement(Footer, null)
           ), 
           React.createElement("div", {className: "video-container"}, 
             React.createElement("video", {id: "video-background", className: "video-wrap", poster: "/img/loop_programs.jpg", autoPlay: true, muted: "muted", loop: true}, 
@@ -7299,7 +7287,7 @@ var Main = React.createClass({displayName: "Main",
 
 module.exports = Main;
 
-},{"../../../public/js/scrollTo.js":644,"../../../public/js/tweenmax.js":645,"react":578,"react-inlinesvg":349,"react-router":388,"scrollmagic":595,"superagent":618,"util":640,"velocity-animate/velocity":641}],26:[function(require,module,exports){
+},{"../../../public/js/scrollTo.js":644,"../../../public/js/tweenmax.js":645,"../../common/footer.jsx":4,"react":578,"react-inlinesvg":349,"react-router":388,"scrollmagic":595,"superagent":618,"util":640,"velocity-animate/velocity":641}],26:[function(require,module,exports){
 var React = require('react'),
     request = require('superagent'),
     util = require('util');
@@ -7342,6 +7330,8 @@ var Router = require('react-router');
 
 var Navigation = Router.Navigation;
 var Link = Router.Link;
+
+var Footer = require('../../common/footer.jsx');
 
 var UrbanThing = React.createClass({displayName: "UrbanThing",
   render : function(){
@@ -7415,13 +7405,14 @@ module.exports = React.createClass({displayName: "exports",
               description: "Raccoons and squirrels frequently move their young around and sometimes drop them when spooked. In addition, adolescent raccoons and squirrels are prone to wandering and sometimes get lost. Usually the mother will backtrack and retrieve her young when she thinks it is safe. It is best to not interfere. Leave the young outside overnight as this is when the mother is most likely to return. Often she will approach and leave several times before retrieving the young. This is her way of testing to make sure that the coast is clear."})
 
           )
-        )
+        ), 
+        React.createElement(Footer, null)
       )
     )
   }
 });
 
-},{"react":578,"react-router":388,"superagent":618,"util":640}],28:[function(require,module,exports){
+},{"../../common/footer.jsx":4,"react":578,"react-router":388,"superagent":618,"util":640}],28:[function(require,module,exports){
 // Copyright 2011 Mark Cavage <mcavage@gmail.com> All rights reserved.
 
 

@@ -8,6 +8,8 @@ var Router = require('react-router');
 var Navigation = Router.Navigation;
 var Link = Router.Link;
 
+var Footer = require('../../common/footer.jsx');
+
 module.exports = React.createClass({
   mixins: [ Router.State, Navigation ],
 
@@ -83,7 +85,7 @@ module.exports = React.createClass({
               <img className="gi_break" src="/img/conservation/divider_bottom_grey.png" />
               <div className="element_contain">
                 <a className="gi_button marker" href="https://8913.blackbaudhosting.com/8913/Membership" target="_blank">Join or Renew Membership</a>
-                <a className="gi_button marker" href="https://8913.blackbaudhosting.com/8913/Membership" target="_blank">Purchase Giftcard</a>
+                <a className="gi_button marker" href="https://8913.blackbaudhosting.com/8913/Membership" target="_blank">Purchase Gift Membership</a>
               </div>
             </div>
             <div className="centered_content join">
@@ -166,6 +168,7 @@ module.exports = React.createClass({
             </div>
           </div>
         </div>
+        <Footer />
       </div>
     )
   }

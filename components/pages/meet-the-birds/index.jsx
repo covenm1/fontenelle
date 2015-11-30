@@ -6,6 +6,8 @@ var Router = require('react-router');
 var Navigation = Router.Navigation;
 var Link = Router.Link;
 
+var Footer = require('../../common/footer.jsx');
+
 var Closing = React.createClass({
   getInitialState: function(){
     return { content: false };
@@ -116,6 +118,7 @@ module.exports = React.createClass({
             {birds}
           </div>
         </div>
+        <Footer />
       </div>
     )
   }

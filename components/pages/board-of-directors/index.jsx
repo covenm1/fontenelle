@@ -7,6 +7,7 @@ var Router = require('react-router');
 
 var Navigation = Router.Navigation;
 var Link = Router.Link;
+var Footer = require('../../common/footer.jsx');
 
 module.exports = React.createClass({
   mixins: [ Router.State, Navigation ],
@@ -103,6 +104,7 @@ module.exports = React.createClass({
             </div>
           </div>
         </div>
+        <Footer />
       </div>
     )
   }

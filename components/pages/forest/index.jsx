@@ -25,7 +25,9 @@ function shuffleArray(array) {
         array[j] = temp;
     }
     return array;
-} 
+}
+
+var Footer = require('../../common/footer.jsx');
 
 var SetIntervalMixin = {
   componentWillMount: function() {
@@ -1738,7 +1740,7 @@ var Main = React.createClass({
                   </span>
                 </div>
               </div>
-
+             <Footer />
             </div>
           </div>
           <div className='video-container'>
