@@ -8,6 +8,8 @@ var Router = require('react-router');
 var Navigation = Router.Navigation;
 var Link = Router.Link;
 
+var Footer = require('../../common/footer.jsx');
+
 module.exports = React.createClass({
   mixins: [ Router.State, Navigation ],
 
@@ -61,7 +63,7 @@ module.exports = React.createClass({
               <p>It is because of our many generous donors that we are able to offer such a breadth and depth of conservation initiatives, educational activities, and other programs in the forest. Your tax-deductible gifts will go toward ongoing stewardship of over 2,000 acres of natural land and programs that benefit over 80,000 visitors each year.</p>
               <img className="gi_break" src="/img/conservation/divider_bottom_grey.png" />
               <div className="element_contain">
-                <a className="gi_button marker" href="https://8913.blackbaudhosting.com/8913/Operating-Individual" target="_blank">Donate</a>
+                <a className="gi_button marker" href="https://8913.blackbaudhosting.com/8913/Annual-Appeal" target="_blank">Donate</a>
               </div>
             </div>
           </div>
@@ -104,7 +106,7 @@ module.exports = React.createClass({
                   <li>Members-only events and other programming</li>
                   <li>10% discount at The Gift Shop at Fontenelle Forest</li>
                   <li>Subscription to Fontenelle Forest's newsletter "The Leaflet"</li>
-                  <li>Free or discounted admission to over 180 nature centers nationwide through ANCA</li>
+                  <li>Free or discounted admission to over 180 nature centers nationwide through <a href="http://natctr.org/professional-services/reciprocal-program.html" target="_blank">ANCA</a></li>
                   <li>Every time you visit, two of your guests can receive 1/2 priced admission</li>
                   <li>Discounts on Winter and Summer Camps</li>
                   <li>Access to trails before and after hours</li>
@@ -166,6 +168,7 @@ module.exports = React.createClass({
             </div>
           </div>
         </div>
+        <Footer />
       </div>
     )
   }

@@ -11,6 +11,8 @@ var jsonp = require('superagent-jsonp');
 var Navigation = Router.Navigation;
 var Link = Router.Link;
 
+var Footer = require('../../common/footer.jsx');
+
 var Instagram = React.createClass({
   render: function(){
     var self = this;
@@ -718,6 +720,7 @@ module.exports = React.createClass({
             {twistagrams}
           </div>
         </div>
+        <Footer />
       </div>
     )
   }

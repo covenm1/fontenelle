@@ -85,6 +85,13 @@
   .classes_container .copy_container .in_forest, .classes_container .copy_container .on_go {
     background-size: 40px;
   }
+  html, body, .fontenelle, .main_content {
+    position: static;
+  }
+  .page.velocity-animating {
+    position: absolute;
+    height: auto;
+  }
 
 }
 

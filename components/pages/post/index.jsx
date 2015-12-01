@@ -9,6 +9,8 @@ var Router = require('react-router');
 var Navigation = Router.Navigation;
 var Link = Router.Link;
 
+var Footer = require('../../common/footer.jsx');
+
 module.exports = React.createClass({
   mixins: [ Router.State, Navigation ],
   getInitialState: function() {
@@ -72,6 +74,7 @@ module.exports = React.createClass({
             <div className='post_content' dangerouslySetInnerHTML={{__html: content}}></div>
           </div>
         </div>
+        <Footer />
       </div>
     )
   }

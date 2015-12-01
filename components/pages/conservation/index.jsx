@@ -10,6 +10,8 @@ var Link = Router.Link;
 
 var timeline = require('../../common/timeline.json');
 
+var Footer = require('../../common/footer.jsx');
+
 var SetIntervalMixin = {
   componentWillMount: function() {
     this.intervals = [];
@@ -468,6 +470,7 @@ var Main = React.createClass({
                 </div>
               </div>
             </div>
+            <Footer />
           </div>
           <div className='video-container'>
             <video id="video-background" className="video-wrap" poster="/img/loop_conservation.jpg" autoPlay muted="muted" loop>

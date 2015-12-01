@@ -6,45 +6,7 @@ var Router = require('react-router');
 var Navigation = Router.Navigation;
 var Link = Router.Link;
 
-var Closing = React.createClass({
-  getInitialState: function(){
-    return { content: false };
-  },
-  toggleContent: function(){
-    var self = this;
-    self.setState({content: !self.state.content})
-  },
-  render: function() {
-    var self = this;
-    if (self.props.content) {
-      return (
-         <div className="closing">
-            { self.state.content ?
-              <div className='image_container'>
-                <p className="closings_title">{self.props.title}
-                  <span className="more_closing" onClick={self.toggleContent}>×</span>
-                </p>
-                <div dangerouslySetInnerHTML={{__html: self.props.content}}></div>
-              </div>
-            :
-              <div className='image_container'>
-                <p className="closings_title">{self.props.title}
-                  <span className="more_closing" onClick={self.toggleContent}>More Info</span>
-                </p>
-              </div>
-            }
-          </div>
-        )
-    } else {
-      return (
-         <div className="closing">
-            <div className='image_container'>
-              <p className="closings_title">{self.props.title}</p>
-            </div>
-          </div>
-        )}
-    }
-});
+var Footer = require('../../common/footer.jsx');
 
 module.exports = React.createClass({
   mixins: [ Router.State, Navigation ],
@@ -116,6 +78,7 @@ module.exports = React.createClass({
             {birds}
           </div>
         </div>
+        <Footer />
       </div>
     )
   }

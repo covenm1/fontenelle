@@ -27,7 +27,6 @@ var forest = require('../forest/index.jsx'),
 		hoursandadmissions = require('../hours-and-admissions/index.jsx'),
 		forestnow = require('../forest-now/index.jsx'),
 		naturenotes = require('../nature-notes/index.jsx'),
-		savetheoaks = require('../save-the-oaks/index.jsx'),
 		contact = require('../contact/index.jsx'),
 		posts = require('../posts/index.jsx'),
 		post = require('../post/index.jsx'),
@@ -321,7 +320,6 @@ var App = React.createClass({
 		    	<TransitionGroup transitionName={transition} className="main_content" id="main_content" component="div">
 			    	<RouteHandler key={name} transition={self.setTransition} controller={controller}/>
 			    </TransitionGroup>
-					<Footer />
 			  </div>
 			)
 		} else {
@@ -383,7 +381,7 @@ var App = React.createClass({
 			)
 		}
 	}
-}); 
+});
 
 var routes = (
   <Route handler={App}>
@@ -408,7 +406,6 @@ var routes = (
     <Route name="board-of-directors" path="/board-of-directors" handler={boardofdirectors} addHandlerKey={true} />
     <Route name="forest-now" path="/forest-now" handler={forestnow} addHandlerKey={true} />
 		<Route name="nature-notes" path="/forest-now/nature-notes" handler={naturenotes} addHandlerKey={true} />
-    <Route name="save-the-oaks" path="/save-the-oaks" handler={savetheoaks} addHandlerKey={true} />
 		<Route name="contact" path="/contact" handler={contact} addHandlerKey={true} />
 		<Route path="/post/:name" handler={post} addHandlerKey={true} />
 		<Route path="/posts" handler={posts} addHandlerKey={true} />

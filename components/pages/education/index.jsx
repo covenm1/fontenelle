@@ -14,6 +14,8 @@ require('../../../public/js/scrollTo.js');
 
 var classes_data = require('../../common/classes.json');
 
+var Footer = require('../../common/footer.jsx');
+
 var SetIntervalMixin = {
   componentWillMount: function() {
     this.intervals = [];
@@ -381,6 +383,7 @@ var Main = React.createClass({
                 </div>
               </div>
             </div>
+            <Footer />
           </div>
           <div className='video-container'>
             <video id="video-background" className="video-wrap" poster="/img/loop_education.jpg" autoPlay muted="muted" loop>

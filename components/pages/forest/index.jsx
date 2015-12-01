@@ -13,6 +13,9 @@ var load_image = [];
 
 var photogallery = require('../../common/fall.json');
 var acorngallery = require('../../common/littleexplorers.json');
+
+var Footer = require('../../common/footer.jsx');
+
 /**
  * Randomize array element order in-place.
  * Using Fisher-Yates shuffle algorithm.
@@ -25,7 +28,7 @@ function shuffleArray(array) {
         array[j] = temp;
     }
     return array;
-} 
+}
 
 var SetIntervalMixin = {
   componentWillMount: function() {
@@ -1738,7 +1741,7 @@ var Main = React.createClass({
                   </span>
                 </div>
               </div>
-
+              <Footer />
             </div>
           </div>
           <div className='video-container'>

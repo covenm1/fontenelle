@@ -8,6 +8,7 @@ var Router = require('react-router');
 var Navigation = Router.Navigation;
 var Link = Router.Link;
 
+var Footer = require('../../common/footer.jsx');
 
 var Job = React.createClass({
   render: function(){
@@ -93,6 +94,7 @@ module.exports = React.createClass({
             }
           </div>
         </div>
+        <Footer />
       </div>
     )
   }

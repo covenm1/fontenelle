@@ -12,6 +12,8 @@ var ScrollMagic = require('scrollmagic');
 var TweenMax = require('../../../public/js/tweenmax.js');
 require('../../../public/js/scrollTo.js');
 
+var Footer = require('../../common/footer.jsx');
+
 var SetIntervalMixin = {
   componentWillMount: function() {
     this.intervals = [];
@@ -695,6 +697,7 @@ var Main = React.createClass({
                 </div>
               </div>
             </div>
+            <Footer />
           </div>
           <div className='video-container'>
             <video id="video-background" className="video-wrap" poster="/img/loop_programs.jpg" autoPlay muted="muted" loop>

@@ -6,6 +6,8 @@ var Router = require('react-router');
 var Navigation = Router.Navigation;
 var Link = Router.Link;
 
+var Footer = require('../../common/footer.jsx');
+
 var UrbanThing = React.createClass({
   render : function(){
     var self = this;
@@ -79,6 +81,7 @@ module.exports = React.createClass({
 
           </div>
         </div>
+        <Footer />
       </div>
     )
   }
