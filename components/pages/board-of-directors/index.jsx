@@ -7,7 +7,6 @@ var Router = require('react-router');
 
 var Navigation = Router.Navigation;
 var Link = Router.Link;
-
 var Footer = require('../../common/footer.jsx');
 
 module.exports = React.createClass({

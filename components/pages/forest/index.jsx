@@ -1741,7 +1741,7 @@ var Main = React.createClass({
                   </span>
                 </div>
               </div>
-              <Footer />
+             <Footer />
             </div>
           </div>
           <div className='video-container'>

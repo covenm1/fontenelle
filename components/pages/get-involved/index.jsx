@@ -85,7 +85,7 @@ module.exports = React.createClass({
               <img className="gi_break" src="/img/conservation/divider_bottom_grey.png" />
               <div className="element_contain">
                 <a className="gi_button marker" href="https://8913.blackbaudhosting.com/8913/Membership" target="_blank">Join or Renew Membership</a>
-                <a className="gi_button marker" href="https://8913.blackbaudhosting.com/8913/Membership" target="_blank">Purchase Giftcard</a>
+                <a className="gi_button marker" href="https://8913.blackbaudhosting.com/8913/Membership" target="_blank">Purchase Gift Membership</a>
               </div>
             </div>
             <div className="centered_content join">

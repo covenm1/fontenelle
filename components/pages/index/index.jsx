@@ -14,7 +14,7 @@ var Route = Router.Route,
   	NotFoundRoute = Router.NotFoundRoute,
   	RouteHandler = Router.RouteHandler,
   	Link = Router.Link;
-
+  
 var forest = require('../forest/index.jsx'),
 		naturalresources = require('../conservation/index.jsx'),
 		programs = require('../programs/index.jsx'),
@@ -417,59 +417,7 @@ var routes = (
 );
 
 
-// Router.run(routes, Router.HistoryLocation, function (Handler) {
-//   React.render(<Handler/>, document.body);
-// });
-
-// var ga = require('./ga');
-
-// function analytics(state, options) {
-//   if (!options) {
-//     options = {};
-//   }
-//   options.page = state.path;
-//   ga('send', 'pageview', options);
-// }
-// function analytics(state, options) {
-// 	console.log('analytics: '+state.path);
-// 	var create = ga('create', 'UA-29023725-1', 'auto');
-// 	var send = ga('send', 'pageview');
-//
-// 	console.log('create: '+create);
-// 	console.log('send: '+send);
-// }
-
-// function initGoogleAnalytics(id) {
-//   if (window.ga) {
-//     return;
-//   }
-//
-//   if (!id) {
-//     throw new Error('Google analytics ID is undefined');
-//   }
-//
-//   window.ga = window.ga || function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date; // eslint-disable-line
-//
-//   (function loadScript() {
-//     var gads = document.createElement('script');
-//     gads.async = true;
-//     gads.type = 'text/javascript';
-//     gads.src = '//www.google-analytics.com/analytics.js';
-//
-//     var head = document.getElementsByTagName('head')[0];
-//     head.appendChild(gads);
-//   })();
-// 	window.ga('create', id, 'auto');
-// }
-
 function analytics(state) {
-	// if (ga) {
-	// 	console.log("state.path: "+state.path);
-	// 	ga('send', 'pageview',  state.path);
-	// 	window.ga('send', 'pageview',  state.path);
-	// 		// window.ga.apply(window.ga, 'send', 'pageview', { state.path, state.path });
-	// }
-
 	visitor.pageview(state.path).send()
 }
 

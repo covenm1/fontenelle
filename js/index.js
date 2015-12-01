@@ -15,7 +15,7 @@ var Route = Router.Route,
   	NotFoundRoute = Router.NotFoundRoute,
   	RouteHandler = Router.RouteHandler,
   	Link = Router.Link;
-
+  
 var forest = require('../forest/index.jsx'),
 		naturalresources = require('../conservation/index.jsx'),
 		programs = require('../programs/index.jsx'),
@@ -418,59 +418,7 @@ var routes = (
 );
 
 
-// Router.run(routes, Router.HistoryLocation, function (Handler) {
-//   React.render(<Handler/>, document.body);
-// });
-
-// var ga = require('./ga');
-
-// function analytics(state, options) {
-//   if (!options) {
-//     options = {};
-//   }
-//   options.page = state.path;
-//   ga('send', 'pageview', options);
-// }
-// function analytics(state, options) {
-// 	console.log('analytics: '+state.path);
-// 	var create = ga('create', 'UA-29023725-1', 'auto');
-// 	var send = ga('send', 'pageview');
-//
-// 	console.log('create: '+create);
-// 	console.log('send: '+send);
-// }
-
-// function initGoogleAnalytics(id) {
-//   if (window.ga) {
-//     return;
-//   }
-//
-//   if (!id) {
-//     throw new Error('Google analytics ID is undefined');
-//   }
-//
-//   window.ga = window.ga || function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date; // eslint-disable-line
-//
-//   (function loadScript() {
-//     var gads = document.createElement('script');
-//     gads.async = true;
-//     gads.type = 'text/javascript';
-//     gads.src = '//www.google-analytics.com/analytics.js';
-//
-//     var head = document.getElementsByTagName('head')[0];
-//     head.appendChild(gads);
-//   })();
-// 	window.ga('create', id, 'auto');
-// }
-
 function analytics(state) {
-	// if (ga) {
-	// 	console.log("state.path: "+state.path);
-	// 	ga('send', 'pageview',  state.path);
-	// 	window.ga('send', 'pageview',  state.path);
-	// 		// window.ga.apply(window.ga, 'send', 'pageview', { state.path, state.path });
-	// }
-
 	visitor.pageview(state.path).send()
 }
 
@@ -1412,7 +1360,6 @@ var Router = require('react-router');
 
 var Navigation = Router.Navigation;
 var Link = Router.Link;
-
 var Footer = require('../../common/footer.jsx');
 
 module.exports = React.createClass({displayName: "exports",
@@ -1536,15 +1483,15 @@ var Job = React.createClass({displayName: "Job",
     var description = self.props.description;
     var contact = self.props.contact;
     var deadline = self.props.deadline;
-    var formatted_deadline = moment(deadline).format('MMMM Do, YYYY');
+    var formatted_deadline = moment(deadline, "YYYYMMDD").format('MMMM Do, YYYY');
     var descriptionUrl = self.props.descriptionUrl;
 
     return (
       React.createElement("div", {className: "job"}, 
         React.createElement("h2", {className: "job_headline", dangerouslySetInnerHTML: {__html: title}}), 
          description ? React.createElement("div", {className: "job_description ", dangerouslySetInnerHTML: {__html: description}}) : null, 
-         descriptionUrl ? React.createElement("a", {className: "job_description_url", href: descriptionUrl, target: "_blank"}, React.createElement("p", null, "Learn More About the Postition")) : null, 
-         contact ? React.createElement("p", {className: "job_contact"}, React.createElement("span", {className: "job_label"}, "Please contact: "), React.createElement("a", {href: "mailto:"+contact}, contact)) : null, 
+         descriptionUrl ? React.createElement("a", {className: "job_description_url", href: descriptionUrl, target: "_blank"}, React.createElement("p", null, "Learn More About the Position")) : null, 
+         contact ? React.createElement("p", {className: "job_contact"}, React.createElement("span", {className: "job_label"}, "Please contact: "), React.createElement("a", {href: contact}, contact)) : null, 
          formatted_deadline ? React.createElement("p", {className: "job_formatted_deadline"}, React.createElement("span", {className: "job_label"}, "Application Deadline: "), formatted_deadline) : null
       )
     )
@@ -1594,7 +1541,7 @@ module.exports = React.createClass({displayName: "exports",
           description: object.content, 
           descriptionUrl: object.meta.job_description.url, 
           contact: object.meta.contact, 
-          deadline: object.meta.deadline}
+          deadline: object.meta.deadline_for_applications}
           )
       )
     });
@@ -5398,7 +5345,7 @@ var Main = React.createClass({displayName: "Main",
                   )
                 )
               ), 
-              React.createElement(Footer, null)
+             React.createElement(Footer, null)
             )
           ), 
           React.createElement("div", {className: "video-container"}, 
@@ -5669,7 +5616,7 @@ module.exports = React.createClass({displayName: "exports",
               React.createElement("img", {className: "gi_break", src: "/img/conservation/divider_bottom_grey.png"}), 
               React.createElement("div", {className: "element_contain"}, 
                 React.createElement("a", {className: "gi_button marker", href: "https://8913.blackbaudhosting.com/8913/Membership", target: "_blank"}, "Join or Renew Membership"), 
-                React.createElement("a", {className: "gi_button marker", href: "https://8913.blackbaudhosting.com/8913/Membership", target: "_blank"}, "Purchase Giftcard")
+                React.createElement("a", {className: "gi_button marker", href: "https://8913.blackbaudhosting.com/8913/Membership", target: "_blank"}, "Purchase Gift Membership")
               )
             ), 
             React.createElement("div", {className: "centered_content join"}, 
