@@ -143,6 +143,7 @@ module.exports = React.createClass({
             </div>
           </div>
         </div>
+
         <div className="egg_wrap volunteer_container">
           <div className="gi_wrapper main_wrapper">
             <div className="centered_content volunteer">
@@ -168,6 +169,77 @@ module.exports = React.createClass({
             </div>
           </div>
         </div>
+
+        <div className="gi_video guild_video">
+          <div id="guild" className="guild video_overlay"></div>
+          <div className="gi_wrapper">
+          </div>
+        </div>
+        <div className="egg_wrap guild_container">
+          <div className="gi_wrapper main_wrapper">
+            <div className="centered_content guild">
+              <h2 className="marker">The  Guild</h2>
+              <p>The Fontenelle Forest Guild is a volunteer group dedicated to preserving Fontenelle Forest's properties and promoting its educational initiatives. Established in 1969, the Guild plays a vital role in advancing and supporting  the Forest’s mission.</p>
+              <img className="gi_break" src="/img/conservation/divider_bottom_grey.png" />
+            </div>
+            <div className="centered_content guild">
+              <h3>Guild Board Executive Committee & Event Chairs 2016</h3>
+              <hr />
+              <div className="element_contain">
+                <div className="gi_half">
+                  <h4>EXECUTIVE COMMITTEE</h4>
+                  <ul>
+                    <li>President – Alexis Boulos</li>
+                    <li>President Elect – Adrienne Petsick</li>
+                    <li>Vice President Education – Gina Feely</li>
+                    <li>Vice President Social – Kristi Davis</li>
+                    <li>Vice President Technology – Amy Henderson</li>
+                    <li>Corresponding Secretary – Cindy Vaccaro</li>
+                    <li>Recording Secretary – Kelly Jeffreys</li>
+                    <li>Treasurer – Debbie Stalnaker</li>
+                    <li>Advisor/Nominating – Christine Schulte</li>
+                  </ul>
+                </div>
+
+                <div className="gi_half">
+                  <h4>GUILD BOARD MEMBERS</h4>
+                  <ul>
+                    <li>Dana Boyle</li>
+                    <li>Sarah Caswell</li>
+                    <li>Traci Copple</li>
+                    <li>Jessica Covi</li>
+                    <li>Kati Cramer</li>
+                    <li>Jenny Doyle</li>
+                    <li>Jessica Feinstein</li>
+                    <li>Andrea Gutta</li>
+                    <li>Kareen Hickman</li>
+                    <li>Sarah Hinsley</li>
+                    <li>Bret Jaros</li>
+                    <li>Julie Kuntze</li>
+                    <li>Gina McDevitt</li>
+                    <li>Sarah Newman</li>
+                    <li>Meghan Oakes</li>
+                    <li>Holly Pendley</li>
+                    <li>Kristen Papenfuss</li>
+                    <li>Brittni Redding</li>
+                    <li>Jen Rogers</li>
+                    <li>Megan Ringenberg</li>
+                    <li>Katie Sewell</li>
+                    <li>Libby Stiles</li>
+                  </ul>
+                </div>
+              </div>
+
+              <hr />
+
+              <div className="element_contain">
+                <a className="gi_button marker" href="https://8913.blackbaudhosting.com/8913/Guild-Membership" target="_blank">Join the Guild</a>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
         <Footer />
       </div>
     )

@@ -621,7 +621,7 @@ var Main = React.createClass({
 
               <div className="photogallery_wrapper">
                 { (self.state.left == 0 ) ? null :
-                  <svg onClick={self.galleryLeft} className="arrow_circle orange left_arrow left gallery_button" x="0px" y="0px" viewBox="0 0 52 52" enableBackground="new 0 0 52 52" >
+                  <svg onClick={self.galleryLeft} className="arrow_circle orange shadow left_arrow left gallery_button" x="0px" y="0px" viewBox="0 0 52 52" enableBackground="new 0 0 52 52" >
                     <path className="circle" strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"/>
                     <g className="arrow" >
                       <path strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M22.6,25.9c0,0,1,1.6,1,4.4c0,2.6,0.6,3.5,0.6,3.8c0,0.4-0.3,0.7-0.7,0.5s-8.6-6.2-10.5-8.1
@@ -632,7 +632,7 @@ var Main = React.createClass({
                   </svg>
                 }
                 { (self.state.right == 0 ) ? null :
-                  <svg onClick={self.galleryRight} className="arrow_circle orange right_arrow right gallery_button" x="0px" y="0px" viewBox="0 0 52 52" enableBackground="new 0 0 52 52" >
+                  <svg onClick={self.galleryRight} className="arrow_circle orange shadow right_arrow right gallery_button" x="0px" y="0px" viewBox="0 0 52 52" enableBackground="new 0 0 52 52" >
                     <path className="circle" strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"/>
                     <g className="arrow" >
                       <path strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M29.4,25.9c0,0-1,1.6-1,4.4c0,2.6-0.6,3.5-0.6,3.8c0,0.4,0.3,0.7,0.7,0.5s8.6-6.2,10.5-8.1
@@ -653,7 +653,7 @@ var Main = React.createClass({
                     <div className="drawer" style={drawer_styles}>
                       <div className="orange_overlay"></div>
 
-                      <svg onClick={self.reset} className="arrow_circle orange shadow left_arrow left reset_button" x="0px" y="0px" viewBox="0 0 52 52" enableBackground="new 0 0 52 52" >
+                      <svg onClick={self.reset} className="arrow_circle orange shadow shadow left_arrow left reset_button" x="0px" y="0px" viewBox="0 0 52 52" enableBackground="new 0 0 52 52" >
                         <path className="circle" strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"/>
                         <g className="arrow" >
                           <path strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M22.6,25.9c0,0,1,1.6,1,4.4c0,2.6,0.6,3.5,0.6,3.8c0,0.4-0.3,0.7-0.7,0.5s-8.6-6.2-10.5-8.1
@@ -1679,7 +1679,7 @@ var Main = React.createClass({
 
               <div className="egg_wrap">
                 <div className={"photogallery_wrapper " + acornClass} >
-                  <svg onClick={self.acornLeft} className="arrow_circle orange left_arrow left gallery_button" x="0px" y="0px" viewBox="0 0 52 52" enableBackground="new 0 0 52 52" >
+                  <svg onClick={self.acornLeft} className="arrow_circle orange shadow left_arrow left gallery_button" x="0px" y="0px" viewBox="0 0 52 52" enableBackground="new 0 0 52 52" >
                     <path className="circle" strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"/>
                     <g className="arrow" >
                       <path strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M22.6,25.9c0,0,1,1.6,1,4.4c0,2.6,0.6,3.5,0.6,3.8c0,0.4-0.3,0.7-0.7,0.5s-8.6-6.2-10.5-8.1
@@ -1689,7 +1689,7 @@ var Main = React.createClass({
                     </g>
                   </svg>
 
-                  <svg onClick={self.acornRight} className="arrow_circle orange right_arrow right gallery_button" x="0px" y="0px" viewBox="0 0 52 52" enableBackground="new 0 0 52 52" >
+                  <svg onClick={self.acornRight} className="arrow_circle orange shadow right_arrow right gallery_button" x="0px" y="0px" viewBox="0 0 52 52" enableBackground="new 0 0 52 52" >
                     <path className="circle" strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"/>
                     <g className="arrow" >
                       <path strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M29.4,25.9c0,0-1,1.6-1,4.4c0,2.6-0.6,3.5-0.6,3.8c0,0.4,0.3,0.7,0.7,0.5s8.6-6.2,10.5-8.1
@@ -1763,6 +1763,7 @@ var Main = React.createClass({
                     <span className="line right_line"></span>
                   </div>
                 </div>
+                <h2 className="hero_page_title">FOREST</h2>
               </div>
             </div>
           </div>
@@ -1795,6 +1796,7 @@ var Main = React.createClass({
                     <span className="line right_line"></span>
                   </div>
                 </div>
+                <h2 className="hero_page_title">FOREST</h2>
               </div>
             </div>
           </div>

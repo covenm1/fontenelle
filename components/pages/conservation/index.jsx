@@ -294,7 +294,7 @@ var Main = React.createClass({
 
               <div className="egg_wrap">
                 <div className="ongoing_story_container main_wrapper">
-                  <div className="quiet_wild">
+                  <div className="quiet_wild log_image">
                     <img src="/img/conservation/log.png" />
                   </div>
                 </div>
@@ -492,7 +492,7 @@ var Main = React.createClass({
                     <span className="line right_line"></span>
                   </div>
                 </div>
-
+                <h2 className="hero_page_title">NATURAL RESOURCES</h2>
               </div>
             </div>
           </div>
@@ -524,7 +524,7 @@ var Main = React.createClass({
                     <span className="line right_line"></span>
                   </div>
                 </div>
-
+                <h2 className="hero_page_title">NATURAL RESOURCES</h2>
               </div>
             </div>
           </div>

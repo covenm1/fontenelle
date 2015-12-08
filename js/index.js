@@ -15,7 +15,7 @@ var Route = Router.Route,
   	NotFoundRoute = Router.NotFoundRoute,
   	RouteHandler = Router.RouteHandler,
   	Link = Router.Link;
-  
+
 var forest = require('../forest/index.jsx'),
 		naturalresources = require('../conservation/index.jsx'),
 		programs = require('../programs/index.jsx'),
@@ -304,7 +304,9 @@ var App = React.createClass({displayName: "App",
 							React.createElement(Link, {to: "/get-involved/donate", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Donate")), 
 							React.createElement(Link, {to: "/get-involved/membership", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Membership")), 
 							React.createElement(Link, {to: "/get-involved/volunteer", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Volunteer")), 
+							React.createElement(Link, {to: "/get-involved/guild", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Guild")), 
 							React.createElement(Link, {to: "/found-raptor", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Found Raptor")), 
+
 							React.createElement(Link, {to: "/board-of-directors", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Board")), 
 							React.createElement(Link, {to: "/hours-and-admissions", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Hours and Admissions")), 
 							React.createElement(Link, {to: "/contact", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Contact"))
@@ -364,6 +366,7 @@ var App = React.createClass({displayName: "App",
 							React.createElement(Link, {to: "/get-involved/donate", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Donate")), 
 							React.createElement(Link, {to: "/get-involved/membership", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Membership")), 
 							React.createElement(Link, {to: "/get-involved/volunteer", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Volunteer")), 
+							React.createElement(Link, {to: "/get-involved/guild", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Guild")), 
 							React.createElement(Link, {to: "/found-raptor", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Found Raptor")), 
 
 							React.createElement(Link, {to: "/board-of-directors", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Board")), 
@@ -867,14 +870,14 @@ module.exports = React.createClass({displayName: "exports",
     return (
       React.createElement("footer", null, 
         React.createElement("div", {className: "footer_top copy_container"}, 
-          React.createElement("nav", null, 
-              React.createElement("a", {className: "social_fb", target: "_blank", href: "https://www.facebook.com/fontenelleforest/"}, "Facebook"), 
-              React.createElement("a", {className: "social_tw", target: "_blank", href: "https://twitter.com/fontenelle4est/"}, "Twitter"), 
-              React.createElement("a", {className: "social_ig", target: "_blank", href: "https://www.instagram.com/fontenelleforest/"}, "Instagram"), 
-              React.createElement("a", {className: "social_yt", target: "_blank", href: "https://www.youtube.com/user/FontenelleForest"}, "YouTube")
+          React.createElement("nav", {className: "new_nav"}, 
+              React.createElement("a", {className: "new_social fb", target: "_blank", href: "https://www.facebook.com/fontenelleforest/"}, React.createElement("i", {className: "fa fa-facebook"})), 
+              React.createElement("a", {className: "new_social tw", target: "_blank", href: "https://twitter.com/fontenelle4est/"}, React.createElement("i", {className: "fa fa-twitter"})), 
+              React.createElement("a", {className: "new_social ig", target: "_blank", href: "https://www.instagram.com/fontenelleforest/"}, React.createElement("i", {className: "fa fa-instagram"})), 
+              React.createElement("a", {className: "new_social yt", target: "_blank", href: "https://www.youtube.com/user/FontenelleForest"}, React.createElement("i", {className: "fa fa-youtube"}))
           ), 
           React.createElement("div", {className: "newsletter"}, 
-            "Sign up for our newsletter ", React.createElement("a", {target: "_blank", href: "http://visitor.r20.constantcontact.com/d.jsp?llr=imwa5ckab&p=oi&m=1110347635080&sit=ysqei7ahb&f=025c8173-5ba1-4aed-92a6-a9f9aebb2d65"}, "SUBSCRIBE")
+            "Sign up for our newsletter ", React.createElement("a", {className: "subscribe", target: "_blank", href: "http://visitor.r20.constantcontact.com/d.jsp?llr=imwa5ckab&p=oi&m=1110347635080&sit=ysqei7ahb&f=025c8173-5ba1-4aed-92a6-a9f9aebb2d65"}, "SUBSCRIBE")
           )
         ), 
         React.createElement("div", {className: "contactinfo footer_bottom copy_container"}, 
@@ -1863,7 +1866,7 @@ var Main = React.createClass({displayName: "Main",
 
               React.createElement("div", {className: "egg_wrap"}, 
                 React.createElement("div", {className: "ongoing_story_container main_wrapper"}, 
-                  React.createElement("div", {className: "quiet_wild"}, 
+                  React.createElement("div", {className: "quiet_wild log_image"}, 
                     React.createElement("img", {src: "/img/conservation/log.png"})
                   )
                 )
@@ -2060,8 +2063,8 @@ var Main = React.createClass({displayName: "Main",
                     React.createElement("img", {className:  arrow_class ? "hero_icon up" : "hero_icon", src: "/img/conservation/icon_conservation.svg", onClick: self.topScroll}), 
                     React.createElement("span", {className: "line right_line"})
                   )
-                )
-
+                ), 
+                React.createElement("h2", {className: "hero_page_title"}, "NATURAL RESOURCES")
               )
             )
           )
@@ -2092,8 +2095,8 @@ var Main = React.createClass({displayName: "Main",
                     React.createElement("img", {className:  arrow_class ? "hero_icon up" : "hero_icon", src: "/img/conservation/icon_conservation.svg"}), 
                     React.createElement("span", {className: "line right_line"})
                   )
-                )
-
+                ), 
+                React.createElement("h2", {className: "hero_page_title"}, "NATURAL RESOURCES")
               )
             )
           )
@@ -2828,7 +2831,8 @@ var Main = React.createClass({displayName: "Main",
                     React.createElement("img", {className:  arrow_class ? "hero_icon up" : "hero_icon", src: "/img/education/icon_education.svg", onClick: self.topScroll}), 
                     React.createElement("span", {className: "line right_line"})
                   )
-                )
+                ), 
+                React.createElement("h2", {className: "hero_page_title"}, "EDUCATION")
               )
             )
           )
@@ -2859,8 +2863,8 @@ var Main = React.createClass({displayName: "Main",
                     React.createElement("img", {className:  arrow_class ? "hero_icon up" : "hero_icon", src: "/img/education/icon_education.svg"}), 
                     React.createElement("span", {className: "line right_line"})
                   )
-                )
-
+                ), 
+                React.createElement("h2", {className: "hero_page_title"}, "EDUCATION")
               )
             )
           )
@@ -4225,7 +4229,7 @@ var Main = React.createClass({displayName: "Main",
 
               React.createElement("div", {className: "photogallery_wrapper"}, 
                  (self.state.left == 0 ) ? null :
-                  React.createElement("svg", {onClick: self.galleryLeft, className: "arrow_circle orange left_arrow left gallery_button", x: "0px", y: "0px", viewBox: "0 0 52 52", enableBackground: "new 0 0 52 52"}, 
+                  React.createElement("svg", {onClick: self.galleryLeft, className: "arrow_circle orange shadow left_arrow left gallery_button", x: "0px", y: "0px", viewBox: "0 0 52 52", enableBackground: "new 0 0 52 52"}, 
                     React.createElement("path", {className: "circle", strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"}), 
                     React.createElement("g", {className: "arrow"}, 
                       React.createElement("path", {strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M22.6,25.9c0,0,1,1.6,1,4.4c0,2.6,0.6,3.5,0.6,3.8c0,0.4-0.3,0.7-0.7,0.5s-8.6-6.2-10.5-8.1" + ' ' +
@@ -4236,7 +4240,7 @@ var Main = React.createClass({displayName: "Main",
                   ), 
                 
                  (self.state.right == 0 ) ? null :
-                  React.createElement("svg", {onClick: self.galleryRight, className: "arrow_circle orange right_arrow right gallery_button", x: "0px", y: "0px", viewBox: "0 0 52 52", enableBackground: "new 0 0 52 52"}, 
+                  React.createElement("svg", {onClick: self.galleryRight, className: "arrow_circle orange shadow right_arrow right gallery_button", x: "0px", y: "0px", viewBox: "0 0 52 52", enableBackground: "new 0 0 52 52"}, 
                     React.createElement("path", {className: "circle", strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"}), 
                     React.createElement("g", {className: "arrow"}, 
                       React.createElement("path", {strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M29.4,25.9c0,0-1,1.6-1,4.4c0,2.6-0.6,3.5-0.6,3.8c0,0.4,0.3,0.7,0.7,0.5s8.6-6.2,10.5-8.1" + ' ' +
@@ -4257,7 +4261,7 @@ var Main = React.createClass({displayName: "Main",
                     React.createElement("div", {className: "drawer", style: drawer_styles}, 
                       React.createElement("div", {className: "orange_overlay"}), 
 
-                      React.createElement("svg", {onClick: self.reset, className: "arrow_circle orange shadow left_arrow left reset_button", x: "0px", y: "0px", viewBox: "0 0 52 52", enableBackground: "new 0 0 52 52"}, 
+                      React.createElement("svg", {onClick: self.reset, className: "arrow_circle orange shadow shadow left_arrow left reset_button", x: "0px", y: "0px", viewBox: "0 0 52 52", enableBackground: "new 0 0 52 52"}, 
                         React.createElement("path", {className: "circle", strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"}), 
                         React.createElement("g", {className: "arrow"}, 
                           React.createElement("path", {strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M22.6,25.9c0,0,1,1.6,1,4.4c0,2.6,0.6,3.5,0.6,3.8c0,0.4-0.3,0.7-0.7,0.5s-8.6-6.2-10.5-8.1" + ' ' +
@@ -5283,7 +5287,7 @@ var Main = React.createClass({displayName: "Main",
 
               React.createElement("div", {className: "egg_wrap"}, 
                 React.createElement("div", {className: "photogallery_wrapper " + acornClass}, 
-                  React.createElement("svg", {onClick: self.acornLeft, className: "arrow_circle orange left_arrow left gallery_button", x: "0px", y: "0px", viewBox: "0 0 52 52", enableBackground: "new 0 0 52 52"}, 
+                  React.createElement("svg", {onClick: self.acornLeft, className: "arrow_circle orange shadow left_arrow left gallery_button", x: "0px", y: "0px", viewBox: "0 0 52 52", enableBackground: "new 0 0 52 52"}, 
                     React.createElement("path", {className: "circle", strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"}), 
                     React.createElement("g", {className: "arrow"}, 
                       React.createElement("path", {strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M22.6,25.9c0,0,1,1.6,1,4.4c0,2.6,0.6,3.5,0.6,3.8c0,0.4-0.3,0.7-0.7,0.5s-8.6-6.2-10.5-8.1" + ' ' +
@@ -5293,7 +5297,7 @@ var Main = React.createClass({displayName: "Main",
                     )
                   ), 
 
-                  React.createElement("svg", {onClick: self.acornRight, className: "arrow_circle orange right_arrow right gallery_button", x: "0px", y: "0px", viewBox: "0 0 52 52", enableBackground: "new 0 0 52 52"}, 
+                  React.createElement("svg", {onClick: self.acornRight, className: "arrow_circle orange shadow right_arrow right gallery_button", x: "0px", y: "0px", viewBox: "0 0 52 52", enableBackground: "new 0 0 52 52"}, 
                     React.createElement("path", {className: "circle", strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"}), 
                     React.createElement("g", {className: "arrow"}, 
                       React.createElement("path", {strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M29.4,25.9c0,0-1,1.6-1,4.4c0,2.6-0.6,3.5-0.6,3.8c0,0.4,0.3,0.7,0.7,0.5s8.6-6.2,10.5-8.1" + ' ' +
@@ -5366,7 +5370,8 @@ var Main = React.createClass({displayName: "Main",
                     React.createElement("img", {className:  arrow_class ? "hero_icon up" : "hero_icon", src: "/img/forest/icon_forest.svg", onClick: self.topScroll}), 
                     React.createElement("span", {className: "line right_line"})
                   )
-                )
+                ), 
+                React.createElement("h2", {className: "hero_page_title"}, "FOREST")
               )
             )
           )
@@ -5398,7 +5403,8 @@ var Main = React.createClass({displayName: "Main",
                     React.createElement("img", {className:  arrow_class ? "hero_icon up" : "hero_icon", src: "/img/forest/icon_forest.svg"}), 
                     React.createElement("span", {className: "line right_line"})
                   )
-                )
+                ), 
+                React.createElement("h2", {className: "hero_page_title"}, "FOREST")
               )
             )
           )
@@ -5674,6 +5680,7 @@ module.exports = React.createClass({displayName: "exports",
             )
           )
         ), 
+
         React.createElement("div", {className: "egg_wrap volunteer_container"}, 
           React.createElement("div", {className: "gi_wrapper main_wrapper"}, 
             React.createElement("div", {className: "centered_content volunteer"}, 
@@ -5699,6 +5706,77 @@ module.exports = React.createClass({displayName: "exports",
             )
           )
         ), 
+
+        React.createElement("div", {className: "gi_video guild_video"}, 
+          React.createElement("div", {id: "guild", className: "guild video_overlay"}), 
+          React.createElement("div", {className: "gi_wrapper"}
+          )
+        ), 
+        React.createElement("div", {className: "egg_wrap guild_container"}, 
+          React.createElement("div", {className: "gi_wrapper main_wrapper"}, 
+            React.createElement("div", {className: "centered_content guild"}, 
+              React.createElement("h2", {className: "marker"}, "The  Guild"), 
+              React.createElement("p", null, "The Fontenelle Forest Guild is a volunteer group dedicated to preserving Fontenelle Forest's properties and promoting its educational initiatives. Established in 1969, the Guild plays a vital role in advancing and supporting  the Forest’s mission."), 
+              React.createElement("img", {className: "gi_break", src: "/img/conservation/divider_bottom_grey.png"})
+            ), 
+            React.createElement("div", {className: "centered_content guild"}, 
+              React.createElement("h3", null, "Guild Board Executive Committee & Event Chairs 2016"), 
+              React.createElement("hr", null), 
+              React.createElement("div", {className: "element_contain"}, 
+                React.createElement("div", {className: "gi_half"}, 
+                  React.createElement("h4", null, "EXECUTIVE COMMITTEE"), 
+                  React.createElement("ul", null, 
+                    React.createElement("li", null, "President – Alexis Boulos"), 
+                    React.createElement("li", null, "President Elect – Adrienne Petsick"), 
+                    React.createElement("li", null, "Vice President Education – Gina Feely"), 
+                    React.createElement("li", null, "Vice President Social – Kristi Davis"), 
+                    React.createElement("li", null, "Vice President Technology – Amy Henderson"), 
+                    React.createElement("li", null, "Corresponding Secretary – Cindy Vaccaro"), 
+                    React.createElement("li", null, "Recording Secretary – Kelly Jeffreys"), 
+                    React.createElement("li", null, "Treasurer – Debbie Stalnaker"), 
+                    React.createElement("li", null, "Advisor/Nominating – Christine Schulte")
+                  )
+                ), 
+
+                React.createElement("div", {className: "gi_half"}, 
+                  React.createElement("h4", null, "GUILD BOARD MEMBERS"), 
+                  React.createElement("ul", null, 
+                    React.createElement("li", null, "Dana Boyle"), 
+                    React.createElement("li", null, "Sarah Caswell"), 
+                    React.createElement("li", null, "Traci Copple"), 
+                    React.createElement("li", null, "Jessica Covi"), 
+                    React.createElement("li", null, "Kati Cramer"), 
+                    React.createElement("li", null, "Jenny Doyle"), 
+                    React.createElement("li", null, "Jessica Feinstein"), 
+                    React.createElement("li", null, "Andrea Gutta"), 
+                    React.createElement("li", null, "Kareen Hickman"), 
+                    React.createElement("li", null, "Sarah Hinsley"), 
+                    React.createElement("li", null, "Bret Jaros"), 
+                    React.createElement("li", null, "Julie Kuntze"), 
+                    React.createElement("li", null, "Gina McDevitt"), 
+                    React.createElement("li", null, "Sarah Newman"), 
+                    React.createElement("li", null, "Meghan Oakes"), 
+                    React.createElement("li", null, "Holly Pendley"), 
+                    React.createElement("li", null, "Kristen Papenfuss"), 
+                    React.createElement("li", null, "Brittni Redding"), 
+                    React.createElement("li", null, "Jen Rogers"), 
+                    React.createElement("li", null, "Megan Ringenberg"), 
+                    React.createElement("li", null, "Katie Sewell"), 
+                    React.createElement("li", null, "Libby Stiles")
+                  )
+                )
+              ), 
+
+              React.createElement("hr", null), 
+
+              React.createElement("div", {className: "element_contain"}, 
+                React.createElement("a", {className: "gi_button marker", href: "https://8913.blackbaudhosting.com/8913/Guild-Membership", target: "_blank"}, "Join the Guild")
+              )
+
+            )
+          )
+        ), 
+
         React.createElement(Footer, null)
       )
     )
@@ -5729,38 +5807,40 @@ module.exports = React.createClass({displayName: "exports",
     var self = this;
 
     return (
-        React.createElement("div", {className: "egg_wrap static"}, 
-          React.createElement("div", {className: "fb_wrapper main_wrapper"}, 
-            React.createElement("div", {className: "centered_content bd_members"}, 
-              React.createElement("div", {className: "ha_columns"}, 
-                React.createElement("div", null, 
-                  React.createElement("h3", null, "HOURS"), 
-                  React.createElement("p", null, React.createElement("b", null, "Open daily, year-round from 8 a.m. - 5 p.m.")), 
-                  React.createElement("p", null, "Trails open dawn to dusk for FF members (with a Keyless Access FOB*) and visitors entering before nature center closes."), 
-                  React.createElement("p", null, "*Keyless Access Fobs are issued by request during business hours at Visitor Services and require a refundable $10 deposit."), 
-                  React.createElement("p", null, "All facilities are closed on Thanksgiving Day, Christmas Day and New Year's Day. FF Closure Policy for Inclement Weather: All of FF properties are closed when Omaha Public Schools cancels classes.")
-                ), 
-                React.createElement("div", null, 
-                  React.createElement("h3", null, "ADMISSION"), 
-                  React.createElement("p", null, React.createElement("b", null, "Free for FF Members - Become a member today!"), 
-                    React.createElement("br", null), "$7 per adult", 
-                    React.createElement("br", null), "$6 per senior (62+)", 
-                    React.createElement("br", null), "$5 per child/student (2-17)", 
-                    React.createElement("br", null), "Free for children under age 2"
+        React.createElement("div", null, 
+          React.createElement("div", {className: "egg_wrap static"}, 
+            React.createElement("div", {className: "fb_wrapper main_wrapper"}, 
+              React.createElement("div", {className: "centered_content bd_members"}, 
+                React.createElement("div", {className: "ha_columns"}, 
+                  React.createElement("div", null, 
+                    React.createElement("h3", null, "HOURS"), 
+                    React.createElement("p", null, React.createElement("b", null, "Open daily, year-round from 8 a.m. - 5 p.m.")), 
+                    React.createElement("p", null, "Trails open dawn to dusk for FF members (with a Keyless Access FOB*) and visitors entering before nature center closes."), 
+                    React.createElement("p", null, "*Keyless Access Fobs are issued by request during business hours at Visitor Services and require a refundable $10 deposit."), 
+                    React.createElement("p", null, "All facilities are closed on Thanksgiving Day, Christmas Day and New Year's Day. FF Closure Policy for Inclement Weather: All of FF properties are closed when Omaha Public Schools cancels classes.")
                   ), 
-                  React.createElement("p", null, "New! Purchase admission online. Click here"), 
-                  React.createElement("p", null, "Parking is free and available on a first-come, first-served basis. Please pay your admission and pick up a trail map at the Visitor Services Desk."), 
-                  React.createElement("p", null, "Fontenelle Forest's properties are tobacco-free.")
-                ), 
-                React.createElement("div", null, 
-                  React.createElement("h3", null, "GROUP RATES"), 
-                  React.createElement("p", null, "Fontenelle Forest is a great place to spend an entire day with a group of people of any age! We can host groups of any size. Reservations are not required; however, if your group needs any special accomodations, please call prior to your arrival."), 
-                  React.createElement("p", null, "Group Rate Policy", 
-                    React.createElement("br", null), "Groups with a minimum of 12 people can receive $1 off the regular admission price when:", 
-                    React.createElement("br", null), "- Payment is made at the time of arrival", 
-                    React.createElement("br", null), "- One payment is made for the entire group", 
-                    React.createElement("br", null), "Please keep in mind that people arriving later than the group will be charged full admission."), 
-                  React.createElement("p", null, "For questions about bringing your group to Fontenelle Forest, please contact Visitor Services at (402) 731-3140.")
+                  React.createElement("div", null, 
+                    React.createElement("h3", null, "ADMISSION"), 
+                    React.createElement("p", null, React.createElement("b", null, "Free for FF Members - Become a member today!"), 
+                      React.createElement("br", null), "$7 per adult", 
+                      React.createElement("br", null), "$6 per senior (62+)", 
+                      React.createElement("br", null), "$5 per child/student (2-17)", 
+                      React.createElement("br", null), "Free for children under age 2"
+                    ), 
+                    React.createElement("p", null, "New! Purchase admission online. Click here"), 
+                    React.createElement("p", null, "Parking is free and available on a first-come, first-served basis. Please pay your admission and pick up a trail map at the Visitor Services Desk."), 
+                    React.createElement("p", null, "Fontenelle Forest's properties are tobacco-free.")
+                  ), 
+                  React.createElement("div", null, 
+                    React.createElement("h3", null, "GROUP RATES"), 
+                    React.createElement("p", null, "Fontenelle Forest is a great place to spend an entire day with a group of people of any age! We can host groups of any size. Reservations are not required; however, if your group needs any special accomodations, please call prior to your arrival."), 
+                    React.createElement("p", null, "Group Rate Policy", 
+                      React.createElement("br", null), "Groups with a minimum of 12 people can receive $1 off the regular admission price when:", 
+                      React.createElement("br", null), "- Payment is made at the time of arrival", 
+                      React.createElement("br", null), "- One payment is made for the entire group", 
+                      React.createElement("br", null), "Please keep in mind that people arriving later than the group will be charged full admission."), 
+                    React.createElement("p", null, "For questions about bringing your group to Fontenelle Forest, please contact Visitor Services at (402) 731-3140.")
+                  )
                 )
               )
             )
@@ -6003,6 +6083,17 @@ module.exports = React.createClass({displayName: "exports",
     return (
       React.createElement("div", null, 
         React.createElement("div", {className: "nature_notes_header egg_wrap"}, 
+          React.createElement(Link, {to: "/natural-resources", className: "back_to_nr"}, 
+            React.createElement("svg", {className: "arrow_circle blue left_arrow left", x: "0px", y: "0px", viewBox: "0 0 52 52", enableBackground: "new 0 0 52 52"}, 
+              React.createElement("path", {className: "circle", strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"}), 
+              React.createElement("g", {className: "arrow"}, 
+                React.createElement("path", {strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M22.6,25.9c0,0,1,1.6,1,4.4c0,2.6,0.6,3.5,0.6,3.8c0,0.4-0.3,0.7-0.7,0.5s-8.6-6.2-10.5-8.1" + ' ' +
+                  "c0,0-0.2-0.2-0.2-0.5v-0.1c0-0.2,0.1-0.4,0.2-0.5c1.7-1.7,10.1-7.9,10.5-8.1c0.3-0.2,0.7-0.1,0.7,0.5c0,0.3-0.6,1.1-0.6,3.8" + ' ' +
+                  "C23.6,24.3,22.6,25.9,22.6,25.9z"}), 
+                React.createElement("line", {strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", x1: "24.2", y1: "25.9", x2: "39.3", y2: "25.9"})
+              )
+            )
+          ), 
           React.createElement("div", {className: "raptor"}, 
               React.createElement("h1", {className: "marker"}, "Meet the Raptors"), 
               React.createElement("h3", null, "Scheduling an Educational Raptor Event"), 
@@ -7199,8 +7290,8 @@ var Main = React.createClass({displayName: "Main",
                     React.createElement("img", {className:  arrow_class ? "hero_icon up" : "hero_icon", src: "/img/programs/icon_programs.svg", onClick: self.topScroll}), 
                     React.createElement("span", {className: "line right_line"})
                   )
-                )
-
+                ), 
+                React.createElement("h2", {className: "hero_page_title"}, "PROGRAMS")
               )
             )
           )
@@ -7231,8 +7322,8 @@ var Main = React.createClass({displayName: "Main",
                     React.createElement("img", {className:  arrow_class ? "hero_icon up" : "hero_icon", src: "/img/programs/icon_programs.svg"}), 
                     React.createElement("span", {className: "line right_line"})
                   )
-                )
-
+                ), 
+                React.createElement("h2", {className: "hero_page_title"}, "PROGRAMS")
               )
             )
           )
@@ -7284,6 +7375,17 @@ module.exports = React.createClass({displayName: "exports",
     return (
       React.createElement("div", null, 
         React.createElement("div", {className: "nature_notes_header egg_wrap"}, 
+          React.createElement(Link, {to: "/natural-resources", className: "back_to_nr"}, 
+            React.createElement("svg", {className: "arrow_circle blue left_arrow left", x: "0px", y: "0px", viewBox: "0 0 52 52", enableBackground: "new 0 0 52 52"}, 
+              React.createElement("path", {className: "circle", strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"}), 
+              React.createElement("g", {className: "arrow"}, 
+                React.createElement("path", {strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", d: "M22.6,25.9c0,0,1,1.6,1,4.4c0,2.6,0.6,3.5,0.6,3.8c0,0.4-0.3,0.7-0.7,0.5s-8.6-6.2-10.5-8.1" + ' ' +
+                  "c0,0-0.2-0.2-0.2-0.5v-0.1c0-0.2,0.1-0.4,0.2-0.5c1.7-1.7,10.1-7.9,10.5-8.1c0.3-0.2,0.7-0.1,0.7,0.5c0,0.3-0.6,1.1-0.6,3.8" + ' ' +
+                  "C23.6,24.3,22.6,25.9,22.6,25.9z"}), 
+                React.createElement("line", {strokeWidth: "2", strokeLinecap: "round", strokeMiterlimit: "10", x1: "24.2", y1: "25.9", x2: "39.3", y2: "25.9"})
+              )
+            )
+          ), 
           React.createElement("div", {className: "raptor"}, 
               React.createElement("h1", {className: "marker"}, "Urban Wildlife"), 
               React.createElement("p", null, "Contact Nebraska Wildlife Rehabilitation for injured wildlife at ", React.createElement("a", {href: "tel:4022342473"}, "(402) 234-2473"), ", or the humane society at ", React.createElement("a", {href: "tel:4024447800"}, "(402) 444-7800"), " and they will get the injured animal to the appropriate organization."), 

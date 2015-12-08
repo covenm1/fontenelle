@@ -3,14 +3,23 @@
     opacity: 0.9;
 }
 
-.join.video_overlay {
-    background-image: url('../img/forest/pattern_video-overlay.svg');
-    opacity: 0.9;
-}
-
-.volunteer.video_overlay {
+.video_overlay {
+  &.volunteer {
     background-image: url('../img/education/pattern_video-overlay.svg');
     opacity: 0.9;
+  }
+  &.join {
+    background-image: url('../img/forest/pattern_video-overlay.svg');
+    opacity: 0.9;
+  }
+  &.donate {
+    background-image: url('../img/conservation/pattern_video-overlay.svg');
+    opacity: 0.9;
+  }
+  &.guild {
+    background-image: url('../img/programs/pattern_video-overlay.svg');
+    opacity: 0.9;
+  }
 }
 
 .arrow_gi {
@@ -67,9 +76,21 @@
     display: flex;
 }
 
-.donate h2, .donate h3 {color: #1261ac;}
-.join h2, .join h3 {color: #a04e23;}
-.volunteer h2, .volunteer h3 {color: #68814b;}
+h2, h3, h4 {
+  .donate & {
+    color: $conservation_color;
+  }
+  .join & {
+    color: $forest_color;
+  }
+  .volunteer & {
+    color: $education_color;
+  }
+  .guild & {
+    color: $programs_color;
+  }
+}
+
 
 a.gi_button {
   border: 3px solid;
@@ -86,37 +107,51 @@ a.gi_button:first-child {
 }
 
 .donate a.gi_button {
-  color: #1261ac;
+  color: $conservation_color;
 }
 
 .donate a.gi_button:hover {
-  background-color: #1261ac;
-  border-color: #1261ac;
+  background-color: $conservation_color;
+  border-color: $conservation_color;
   color: #fff;
 }
 
 .join a.gi_button {
-  color: #a04e23;
+  color: $forest_color;
 }
 
 .join a.gi_button:hover {
-  background-color: #a04e23;
-  border-color: #a04e23;
+  background-color: $forest_color;
+  border-color: $forest_color;
   color: #fff;
 }
 
 .volunteer a.gi_button {
-  color: #68814b;
+  color: $education_color;
 }
 
 .volunteer a.gi_button:hover {
-  background-color: #68814b;
-  border-color: #68814b;
+  background-color: $education_color;
+  border-color: $education_color;
   color: #fff;
 }
 
-.donate_container, .join_container, .volunteer_container {
+.guild a.gi_button {
+  color: $programs_color;
+}
+
+.guild a.gi_button:hover {
+  background-color: $programs_color;
+  border-color: $programs_color;
+  color: #fff;
+}
+
+.donate_container, .join_container, .volunteer_container, .guild_container {
   padding-bottom:50px;
+}
+
+.guild_video {
+  min-height: 200px;
 }
 
 .element_contain {
@@ -124,6 +159,9 @@ a.gi_button:first-child {
   width: 100%;
   justify-content: center;
   padding: 0 15px;
+  .gi_half {
+    flex: 1;
+  }
 }
 
 .element_spread, .gi_pricing ul li {

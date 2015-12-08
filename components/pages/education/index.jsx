@@ -405,6 +405,7 @@ var Main = React.createClass({
                     <span className="line right_line"></span>
                   </div>
                 </div>
+                <h2 className="hero_page_title">EDUCATION</h2>
               </div>
             </div>
           </div>
@@ -436,7 +437,7 @@ var Main = React.createClass({
                     <span className="line right_line"></span>
                   </div>
                 </div>
-
+                <h2 className="hero_page_title">EDUCATION</h2>
               </div>
             </div>
           </div>
