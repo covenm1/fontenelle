@@ -1715,13 +1715,18 @@ var Main = React.createClass({displayName: "Main",
   },
 
   moveLeft: function(){
-    this.props.transition('slide-back');
-    this.transitionTo('forest');
+    var self = this;
+    self.props.transition('slide-back');
+    self.transitionTo('forest');
+    setTimeout(function() { self.props.transition('default'); }, 300);
   },
 
+
   moveRight: function(){
-    this.props.transition('slide-forward');
-    this.transitionTo('education');
+    var self = this;
+    self.props.transition('slide-forward');
+    self.transitionTo('education');
+    setTimeout(function() { self.props.transition('default'); }, 300);
   },
 
   scrollThing: function(thing){
@@ -2653,14 +2658,18 @@ var Main = React.createClass({displayName: "Main",
   },
 
   moveLeft: function(){
-    this.props.transition('slide-back');
-    this.transitionTo('natural-resources');
+    var self = this;
+    self.props.transition('slide-back');
+    self.transitionTo('natural-resources');
+    setTimeout(function() { self.props.transition('default'); }, 300);
   },
 
 
   moveRight: function(){
-    this.props.transition('slide-forward');
-    this.transitionTo('programs');
+    var self = this;
+    self.props.transition('slide-forward');
+    self.transitionTo('programs');
+    setTimeout(function() { self.props.transition('default'); }, 300);
   },
 
   toggleVideo: function(){
@@ -3916,14 +3925,18 @@ var Main = React.createClass({displayName: "Main",
   },
 
   moveLeft: function(){
-    this.props.transition('slide-back');
-    this.transitionTo('programs');
+    var self = this;
+    self.props.transition('slide-back');
+    self.transitionTo('programs');
+    setTimeout(function() { self.props.transition('default'); }, 300);
   },
 
 
   moveRight: function(){
-    this.props.transition('slide-forward');
-    this.transitionTo('natural-resources');
+    var self = this;
+    self.props.transition('slide-forward');
+    self.transitionTo('natural-resources');
+    setTimeout(function() { self.props.transition('default'); }, 300);
   },
 
   toggleVideoOne: function(){
@@ -6681,17 +6694,19 @@ var Main = React.createClass({displayName: "Main",
     this.scrollThing('page');
   },
 
-
   moveLeft: function(){
-    this.props.transition('slide-back');
-    this.transitionTo('education');
+    var self = this;
+    self.props.transition('slide-back');
+    self.transitionTo('education');
+    setTimeout(function() { self.props.transition('default'); }, 300);
   },
-
 
   moveRight: function(){
-    this.props.transition('slide-forward');
-    this.transitionTo('forest');
-  },
+    var self = this;
+    self.props.transition('slide-forward');
+    self.transitionTo('forest');
+    setTimeout(function() { self.props.transition('default'); }, 300);
+  },  
 
   toggleClass: function(){
     if (this.state.classImage == "/img/programs/programs-1.jpg") {

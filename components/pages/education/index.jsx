@@ -226,14 +226,18 @@ var Main = React.createClass({
   },
 
   moveLeft: function(){
-    this.props.transition('slide-back');
-    this.transitionTo('natural-resources');
+    var self = this;
+    self.props.transition('slide-back');
+    self.transitionTo('natural-resources');
+    setTimeout(function() { self.props.transition('default'); }, 300);
   },
 
 
   moveRight: function(){
-    this.props.transition('slide-forward');
-    this.transitionTo('programs');
+    var self = this;
+    self.props.transition('slide-forward');
+    self.transitionTo('programs');
+    setTimeout(function() { self.props.transition('default'); }, 300);
   },
 
   toggleVideo: function(){

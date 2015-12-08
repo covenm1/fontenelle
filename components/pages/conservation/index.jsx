@@ -143,13 +143,18 @@ var Main = React.createClass({
   },
 
   moveLeft: function(){
-    this.props.transition('slide-back');
-    this.transitionTo('forest');
+    var self = this;
+    self.props.transition('slide-back');
+    self.transitionTo('forest');
+    setTimeout(function() { self.props.transition('default'); }, 300);
   },
 
+
   moveRight: function(){
-    this.props.transition('slide-forward');
-    this.transitionTo('education');
+    var self = this;
+    self.props.transition('slide-forward');
+    self.transitionTo('education');
+    setTimeout(function() { self.props.transition('default'); }, 300);
   },
 
   scrollThing: function(thing){

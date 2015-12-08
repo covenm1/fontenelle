@@ -109,17 +109,19 @@ var Main = React.createClass({
     this.scrollThing('page');
   },
 
-
   moveLeft: function(){
-    this.props.transition('slide-back');
-    this.transitionTo('education');
+    var self = this;
+    self.props.transition('slide-back');
+    self.transitionTo('education');
+    setTimeout(function() { self.props.transition('default'); }, 300);
   },
-
 
   moveRight: function(){
-    this.props.transition('slide-forward');
-    this.transitionTo('forest');
-  },
+    var self = this;
+    self.props.transition('slide-forward');
+    self.transitionTo('forest');
+    setTimeout(function() { self.props.transition('default'); }, 300);
+  },  
 
   toggleClass: function(){
     if (this.state.classImage == "/img/programs/programs-1.jpg") {
