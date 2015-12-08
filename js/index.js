@@ -274,7 +274,7 @@ var App = React.createClass({displayName: "App",
 			            React.createElement(Link, {to: "/forest-now", className: "link"}, "Forest Now"), 
 									React.createElement(Link, {to: "/get-involved", className: "link"}, "Get Involved")
 			        ), 
-							React.createElement("span", {className: "menu_icon", onClick: self.toggleMenu}, React.createElement("img", {src: "/img/hamburger.png", className: "hamburger"}), " ", React.createElement("span", {className: "menu_label"}, "Menu"))
+							React.createElement("span", {className: "menu_icon", onClick: self.toggleMenu}, React.createElement("span", {className: "hamburger_icon"}), " ", React.createElement("span", {className: "menu_label"}, "Menu"))
 			    ), 
 					React.createElement("div", {className: "sidebar"}, 
 						React.createElement("span", {className: "close_menu_button", onClick: self.toggleMenu}, "×"), 
@@ -336,7 +336,7 @@ var App = React.createClass({displayName: "App",
 									React.createElement(Link, {to: "/forest-now", className: "link"}, "Forest Now"), 
 									React.createElement(Link, {to: "/get-involved", className: "link"}, "Get Involved")
 							), 
-							React.createElement("span", {className: "menu_icon", onClick: self.toggleMenu}, React.createElement("img", {src: "/img/hamburger.png", className: "hamburger"}), " ", React.createElement("span", {className: "menu_label"}, "Menu"))
+							React.createElement("span", {className: "menu_icon", onClick: self.toggleMenu}, React.createElement("span", {className: "hamburger_icon"}), " ", React.createElement("span", {className: "menu_label"}, "Menu"))
 					), 
 					React.createElement("div", {className: "sidebar"}, 
 						React.createElement("span", {className: "close_menu_button", onClick: self.toggleMenu}, "×"), 

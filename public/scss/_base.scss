@@ -791,6 +791,42 @@ img {
   display: block;
 }
 
+
+.hamburger_icon {
+  position: relative;
+  padding-left: 25px;
+
+  &:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 7px;
+    width: 20px;
+    height: 2px;
+    background: white;
+    box-shadow:
+      0 5px 0 0 white,
+      0 10px 0 0 white;
+    transition-timing-function: cubic-bezier(0.67, 0.6, 0.75, 2);
+    transition-duration: .15s;
+  }
+}
+.menu_icon{
+  opacity: 0.8;
+  transition: 0.15s ease-out;
+  &:hover {
+    opacity: 1;
+    .hamburger_icon {
+      &:before {
+        top: 4px;
+        box-shadow:
+          0 8px 0 0 white,
+          0 16px 0 0 white;
+      }
+    }
+  }
+}
+
 *::selection {
   background: black;
   color: white;
