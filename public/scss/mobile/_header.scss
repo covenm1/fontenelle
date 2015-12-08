@@ -10,6 +10,9 @@ header.header {
   .menu_icon {
     display: inline-block;
     float: right;
+    .menu_label {
+      display: none;
+    }
   }
 }
 .global_menu {
