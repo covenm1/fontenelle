@@ -45,7 +45,7 @@
 }
 
 .for_kids_container {
-  padding: 50px 0;
+  padding: 50px 15px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -69,6 +69,7 @@
 .spider {
   transition: 0.15s ease-out;
   width: 350px;
+  padding: 15px;
   max-width: 100%;
   &.rotated {
     transform: rotateY(180deg) rotate(-125deg);
@@ -79,6 +80,13 @@
   width: 337px!important;
   max-width: 100%!important;
   margin: auto;
+  padding: 15px;
+}
+
+.bag {
+  width: 500px!important;
+  max-width: 100%!important;
+  padding: 15px;
 }
 
 
@@ -122,6 +130,7 @@
 }
 
 .p_groups.p_columns {
+  padding: 0 15px;
   display: flex;
   justify-content: space-between;
   div {

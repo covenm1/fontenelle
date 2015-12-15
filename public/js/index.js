@@ -6706,7 +6706,7 @@ var Main = React.createClass({displayName: "Main",
     self.props.transition('slide-forward');
     self.transitionTo('forest');
     setTimeout(function() { self.props.transition('default'); }, 300);
-  },  
+  },
 
   toggleClass: function(){
     if (this.state.classImage == "/img/programs/programs-1.jpg") {
@@ -7112,7 +7112,7 @@ var Main = React.createClass({displayName: "Main",
                     ):
                     React.createElement("div", {className: "for_kids_container main_wrapper"}, 
                       React.createElement("div", {className: "for_kids"}, 
-                        React.createElement("img", {onClick: self.spiderClick, className:  spider ? "rotated spider" : "spider", src: "/img/programs/spider.png"})
+                        React.createElement("img", {className: "spider", src: "/img/programs/spider.png"})
                       ), 
                       React.createElement("div", {className: "for_kids copy_container"}, 
                         React.createElement("h2", {className: "marker color"}, "For Adults"), 
@@ -7240,7 +7240,7 @@ var Main = React.createClass({displayName: "Main",
                       React.createElement("br", null), "\u0003", React.createElement("span", {className: "p_num"}, "(402) 731-3140"))
                     ), 
                     React.createElement("div", null, 
-                      React.createElement("img", {src: "/img/programs/bag.png"})
+                      React.createElement("img", {className: "bag", src: "/img/programs/bag.png"})
                     )
                   )
                 )

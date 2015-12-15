@@ -121,7 +121,7 @@ var Main = React.createClass({
     self.props.transition('slide-forward');
     self.transitionTo('forest');
     setTimeout(function() { self.props.transition('default'); }, 300);
-  },  
+  },
 
   toggleClass: function(){
     if (this.state.classImage == "/img/programs/programs-1.jpg") {
@@ -527,7 +527,7 @@ var Main = React.createClass({
                     </div>:
                     <div className="for_kids_container main_wrapper">
                       <div className="for_kids">
-                        <img onClick={self.spiderClick} className={ spider ? "rotated spider" : "spider" } src="/img/programs/spider.png" />
+                        <img className="spider" src="/img/programs/spider.png" />
                       </div>
                       <div className="for_kids copy_container">
                         <h2 className="marker color">For Adults</h2>
@@ -655,7 +655,7 @@ var Main = React.createClass({
                       <br/><span className="p_num">(402) 731-3140</span></p>
                     </div>
                     <div>
-                      <img src="/img/programs/bag.png" />
+                      <img className="bag" src="/img/programs/bag.png" />
                     </div>
                   </div>
                 </div>
