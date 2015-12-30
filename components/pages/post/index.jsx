@@ -45,7 +45,8 @@ module.exports = React.createClass({
           self.setState({
             title: post[0].title,
             featured_image: post[0].featured_image,
-            content: post[0].content
+            content: post[0].content,
+            date: post[0].date
           });
 
         } else {
@@ -58,6 +59,7 @@ module.exports = React.createClass({
     var self = this;
     var title = self.state.title;
     var content = self.state.content;
+    var date = moment(self.state.date).format("dddd, MMMM Do YYYY");
     var featured_image = self.state.featured_image;
     if (featured_image){
       var image_style = {
@@ -67,10 +69,16 @@ module.exports = React.createClass({
 
     return (
       <div>
-        <div className="egg_wrap post_container">
-          { featured_image ? <div className="featured_image" style={image_style}></div> : null }
+        <div className="egg_wrap fb_container fb_top post_container">
+          { featured_image ?
+          <div className="featured_image" style={image_style}>
+            <h1 className="marker" dangerouslySetInnerHTML={{__html: title}}></h1>
+            <div className="image_overlay" ></div>
+          </div> : null }
+        </div>
+        <div className="egg_wrap post_wrapper">
           <div className='main_wrapper'>
-            <h1 className="post_title marker" dangerouslySetInnerHTML={{__html: title}}></h1>
+            <p className="date">{date}</p>
             <div className='post_content' dangerouslySetInnerHTML={{__html: content}}></div>
           </div>
         </div>
