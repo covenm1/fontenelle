@@ -6367,7 +6367,8 @@ module.exports = React.createClass({displayName: "exports",
           self.setState({
             title: post[0].title,
             featured_image: post[0].featured_image,
-            content: post[0].content
+            content: post[0].content,
+            date: post[0].date
           });
 
         } else {
@@ -6380,6 +6381,7 @@ module.exports = React.createClass({displayName: "exports",
     var self = this;
     var title = self.state.title;
     var content = self.state.content;
+    var date = moment(self.state.date).format("dddd, MMMM Do YYYY");
     var featured_image = self.state.featured_image;
     if (featured_image){
       var image_style = {
@@ -6389,10 +6391,16 @@ module.exports = React.createClass({displayName: "exports",
 
     return (
       React.createElement("div", null, 
-        React.createElement("div", {className: "egg_wrap post_container"}, 
-           featured_image ? React.createElement("div", {className: "featured_image", style: image_style}) : null, 
+        React.createElement("div", {className: "egg_wrap fb_container fb_top post_container"}, 
+           featured_image ?
+          React.createElement("div", {className: "featured_image", style: image_style}, 
+            React.createElement("h1", {className: "marker", dangerouslySetInnerHTML: {__html: title}}), 
+            React.createElement("div", {className: "image_overlay"})
+          ) : null
+        ), 
+        React.createElement("div", {className: "egg_wrap post_wrapper"}, 
           React.createElement("div", {className: "main_wrapper"}, 
-            React.createElement("h1", {className: "post_title marker", dangerouslySetInnerHTML: {__html: title}}), 
+            React.createElement("p", {className: "date"}, date), 
             React.createElement("div", {className: "post_content", dangerouslySetInnerHTML: {__html: content}})
           )
         ), 
