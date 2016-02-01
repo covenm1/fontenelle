@@ -71,16 +71,15 @@ gulp.task('build-styles', function() {
           .pipe(gulp.dest('./public/css'));
 });
 
-gulp.task('lint', function() {
-    return gulp.src('js/*.js')
-        .pipe(jshint())
-        .pipe(jshint.reporter('default'));
-});
+// gulp.task('lint', function() {
+//     return gulp.src('js/*.js')
+//         .pipe(jshint())
+//         .pipe(jshint.reporter('default'));
+// });
 
 
 gulp.task('server', function () {
   nodemon({ script: 'app.js', ext: 'html', ignore: ['ignored.js'] })
-    .on('change', ['lint'])
     .on('restart', function () {
       console.log('restarted!')
     })
