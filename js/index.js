@@ -5613,7 +5613,7 @@ module.exports = React.createClass({displayName: "exports",
               React.createElement("p", null, "It is because of our many generous donors that we are able to offer such a breadth and depth of conservation initiatives, educational activities, and other programs in the forest. Your tax-deductible gifts will go toward ongoing stewardship of over 2,000 acres of natural land and programs that benefit over 80,000 visitors each year."), 
               React.createElement("img", {className: "gi_break", src: "/img/conservation/divider_bottom_grey.png"}), 
               React.createElement("div", {className: "element_contain"}, 
-                React.createElement("a", {className: "gi_button marker", href: "https://8913.blackbaudhosting.com/8913/Annual-Appeal", target: "_blank"}, "Donate")
+                React.createElement("a", {className: "gi_button marker", href: "https://8913.blackbaudhosting.com/8913/Operating-Individual", target: "_blank"}, "Donate")
               )
             )
           )
@@ -5666,9 +5666,9 @@ module.exports = React.createClass({displayName: "exports",
               React.createElement("div", {className: "gi_pricing"}, 
                 React.createElement("h3", {className: "element_spread"}, React.createElement("span", null, "MEMBERSHIP"), React.createElement("span", null, "PRICE")), 
                 React.createElement("ul", null, 
-                  React.createElement("li", null, React.createElement("span", null, "Individual", React.createElement("br", null), React.createElement("em", null, "One Adult")), React.createElement("span", null, "$35")), 
-                  React.createElement("li", null, React.createElement("span", null, "Two Individuals", React.createElement("br", null), React.createElement("em", null, "Two adults living in the same household")), React.createElement("span", null, "$45")), 
-                  React.createElement("li", null, React.createElement("span", null, "Household", React.createElement("br", null), React.createElement("em", null, "Two adults, children, or grandchildren (under age 18)")), React.createElement("span", null, "$55"))
+                  React.createElement("li", null, React.createElement("span", null, "Individual", React.createElement("br", null), React.createElement("em", null, "One Adult")), React.createElement("span", null, "$45")), 
+                  React.createElement("li", null, React.createElement("span", null, "Two Individuals", React.createElement("br", null), React.createElement("em", null, "Two adults living in the same household")), React.createElement("span", null, "$55")), 
+                  React.createElement("li", null, React.createElement("span", null, "Household", React.createElement("br", null), React.createElement("em", null, "Two adults, children, or grandchildren (under age 18)")), React.createElement("span", null, "$65"))
                 )
               ), 
               React.createElement("div", {className: "gi_pricing"}, 
