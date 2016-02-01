@@ -10,6 +10,11 @@
     "title": "Chief Ranger at Neale Woods",
   },
   {
+    "name": "Madison Brandon",
+    "email": "mbrandon@fontenelleforest.org",
+    "title": "Raptor Care Specialist",
+  },
+  {
     "name": "Lindsay Cooley",
     "email": "lcooley@fontenelleforest.org",
     "title": "Naturalist",
@@ -35,14 +40,14 @@
     "title": "Manager of Raptor Rehabilitation",
   },
   {
+    "name": "Lisa Formanik",
+    "email": "lformanik@fontenelleforest.org",
+    "title": "Educator / Volunteer Coordinator",
+  },
+  {
     "name": "Michelle Foss",
     "email": "mfoss@fontenelleforest.org",
     "title": "Restoration Biologist",
-  },
-  {
-    "name": "Lora Kaup",
-    "email": "lkaup@fontenelleforest.org",
-    "title": "Development Associate",
   },
   {
     "name": "Catherine Kuper",
@@ -63,6 +68,11 @@
     "name": "Matt Miller",
     "email": "mmiller@fontenelleforest.org",
     "title": "Restoration Biologist",
+  },
+  {
+    "name": "Barb Naughtin",
+    "email": "bnaughtin@fontenelleforest.org",
+    "title": "Development Associate",
   },
   {
     "name": "Grace Noecker",

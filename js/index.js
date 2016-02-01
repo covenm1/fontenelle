@@ -1113,6 +1113,11 @@ module.exports=[
     "title": "Chief Ranger at Neale Woods",
   },
   {
+    "name": "Madison Brandon",
+    "email": "mbrandon@fontenelleforest.org",
+    "title": "Raptor Care Specialist",
+  },
+  {
     "name": "Lindsay Cooley",
     "email": "lcooley@fontenelleforest.org",
     "title": "Naturalist",
@@ -1138,14 +1143,14 @@ module.exports=[
     "title": "Manager of Raptor Rehabilitation",
   },
   {
+    "name": "Lisa Formanik",
+    "email": "lformanik@fontenelleforest.org",
+    "title": "Educator / Volunteer Coordinator",
+  },
+  {
     "name": "Michelle Foss",
     "email": "mfoss@fontenelleforest.org",
     "title": "Restoration Biologist",
-  },
-  {
-    "name": "Lora Kaup",
-    "email": "lkaup@fontenelleforest.org",
-    "title": "Development Associate",
   },
   {
     "name": "Catherine Kuper",
@@ -1166,6 +1171,11 @@ module.exports=[
     "name": "Matt Miller",
     "email": "mmiller@fontenelleforest.org",
     "title": "Restoration Biologist",
+  },
+  {
+    "name": "Barb Naughtin",
+    "email": "bnaughtin@fontenelleforest.org",
+    "title": "Development Associate",
   },
   {
     "name": "Grace Noecker",
@@ -1402,12 +1412,12 @@ module.exports = React.createClass({displayName: "exports",
               React.createElement("h3", null, "OFFICERS"), 
               React.createElement("div", {className: "fb_columns"}, 
                 React.createElement("ul", null, 
-                  React.createElement("li", null, "Paul J. Halbur | President"), 
-                  React.createElement("li", null, "Levi Scheppers | Treasurer")
+                  React.createElement("li", null, "Angela L. Burmeister | President"), 
+                  React.createElement("li", null, "Levi Scheppers | Treasurer/Chair Finance")
                 ), 
                 React.createElement("ul", null, 
-                  React.createElement("li", null, "Angela L. Burmeister | President-Elect"), 
-                  React.createElement("li", null, "Jim Hawkins | Advisor")
+                  React.createElement("li", null, "Ann Christiansen | President-Elect"), 
+                  React.createElement("li", null, "Paul Halbur | Past-President")
                 ), 
                 React.createElement("ul", null, 
                   React.createElement("li", null, "Jon T. Hansen | Secretary")
@@ -1423,27 +1433,28 @@ module.exports = React.createClass({displayName: "exports",
               React.createElement("div", {className: "fb_columns"}, 
                 React.createElement("ul", null, 
                   React.createElement("li", null, "Angela Athy"), 
-                  React.createElement("li", null, "Catherine M. Barmettler"), 
-                  React.createElement("li", null, "Ann Christiansen"), 
+                  React.createElement("li", null, "Alexis Boulos"), 
                   React.createElement("li", null, "Toba Cohen-Dunning"), 
                   React.createElement("li", null, "Catherine Demes Maydew"), 
-                  React.createElement("li", null, "Todd Rivers")
+                  React.createElement("li", null, "Ryan Gibson"), 
+                  React.createElement("li", null, "Mace Hack")
                 ), 
                 React.createElement("ul", null, 
-                  React.createElement("li", null, "David M. Dvorak"), 
-                  React.createElement("li", null, "Lorraine A. Egger"), 
                   React.createElement("li", null, "Mike Hamilton"), 
                   React.createElement("li", null, "Howard J. Kaslow"), 
+                  React.createElement("li", null, "Hans Klein-Hewett"), 
                   React.createElement("li", null, "Gerry Lauritzen"), 
-                  React.createElement("li", null, "Robert D. Rose")
+                  React.createElement("li", null, "Julie Liakos"), 
+                  React.createElement("li", null, "Kelly Mann")
                 ), 
                 React.createElement("ul", null, 
-                  React.createElement("li", null, "Julie Liakos"), 
-                  React.createElement("li", null, "Kelly Mann"), 
                   React.createElement("li", null, "Susan Nemer-Haddix"), 
                   React.createElement("li", null, "Athena Ramos"), 
+                  React.createElement("li", null, "Jim Ristow"), 
+                  React.createElement("li", null, "Todd Rivers"), 
                   React.createElement("li", null, "Julee Sauer"), 
-                  React.createElement("li", null, "Christine Schulte")
+                  React.createElement("li", null, "Barbara Stratman"), 
+                  React.createElement("li", null, "Maria Vazquez")
                 )
               )
             )
@@ -2425,8 +2436,7 @@ module.exports = React.createClass({displayName: "exports",
             React.createElement("ul", {className: "name_list"}, 
               React.createElement("li", null, "Jean Neneman"), 
               React.createElement("li", null, "Nick Sauvageau"), 
-              React.createElement("li", null, "Dorie Stone"), 
-              React.createElement("li", null, "Chelsea Taxman"), 
+              React.createElement("li", null, "Tina Tweedy"), 
               React.createElement("li", null, "Tracy Van Zee")
             ), 
             React.createElement("h2", {className: "staff_title"}, "VISITOR SERVICES ASSISTANTS\u0003"), 

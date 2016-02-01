@@ -34,12 +34,12 @@ module.exports = React.createClass({
               <h3>OFFICERS</h3>
               <div className="fb_columns">
                 <ul>
-                  <li>Paul J. Halbur | President</li>
-                  <li>Levi Scheppers | Treasurer</li>
+                  <li>Angela L. Burmeister | President</li>
+                  <li>Levi Scheppers | Treasurer/Chair Finance</li>
                 </ul>
                 <ul>
-                  <li>Angela L. Burmeister | President-Elect</li>
-                  <li>Jim Hawkins | Advisor</li>
+                  <li>Ann Christiansen | President-Elect</li>
+                  <li>Paul Halbur | Past-President</li>
                 </ul>
                 <ul>
                   <li>Jon T. Hansen | Secretary</li>
@@ -55,27 +55,28 @@ module.exports = React.createClass({
               <div className="fb_columns">
                 <ul>
                   <li>Angela Athy</li>
-                  <li>Catherine M. Barmettler</li>
-                  <li>Ann Christiansen</li>
+                  <li>Alexis Boulos</li>
                   <li>Toba Cohen-Dunning</li>
                   <li>Catherine Demes Maydew</li>
-                  <li>Todd Rivers</li>
+                  <li>Ryan Gibson</li>
+                  <li>Mace Hack</li>
                 </ul>
                 <ul>
-                  <li>David M. Dvorak</li>
-                  <li>Lorraine A. Egger</li>
                   <li>Mike Hamilton</li>
                   <li>Howard J. Kaslow</li>
+                  <li>Hans Klein-Hewett</li>
                   <li>Gerry Lauritzen</li>
-                  <li>Robert D. Rose</li>
-                </ul>
-                <ul>
                   <li>Julie Liakos</li>
                   <li>Kelly Mann</li>
+                </ul>
+                <ul>
                   <li>Susan Nemer-Haddix</li>
                   <li>Athena Ramos</li>
+                  <li>Jim Ristow</li>
+                  <li>Todd Rivers</li>
                   <li>Julee Sauer</li>
-                  <li>Christine Schulte</li>
+                  <li>Barbara Stratman</li>
+                  <li>Maria Vazquez</li>
                 </ul>
               </div>
             </div>
