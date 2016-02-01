@@ -79,6 +79,29 @@ module.exports = function(app) {
 		});
 	});
 
+  app.get('/camps', function(req, res) {
+    res.redirect('/post/2016-nature-discovery-day-camps');
+	});
+
+  app.get('/volunteer', function(req, res) {
+    res.redirect('https://8913.blackbaudhosting.com/8913/tickets?tab=2&txobjid=f500c15a-5010-454b-8321-d865ca9a3542');
+  });
+
+  app.get('/renew', function(req, res) {
+    res.redirect('/get-involved/membership');
+	});
+
+  app.get('/membership', function(req, res) {
+    res.redirect('/get-involved/membership');
+	});
+
+  app.get('/guild', function(req, res) {
+    res.redirect('/get-involved/guild');
+	});
+
+  app.get('/leaflet', function(req, res) {
+    res.redirect('/post/from-the-leaflet-january-february-2016');
+	});
 
 	app.get('*', function(req, res) {
 	 	res.render('index');

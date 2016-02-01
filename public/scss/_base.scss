@@ -169,7 +169,6 @@ header {
     top: 0;
     left: 0;
     z-index: 99999;
-    background: rgba(0,0,0,0.8);
     color: white;
     padding: 0 30px;
     width: 100%;
@@ -179,8 +178,8 @@ header {
     flex-direction: row;
     flex-flow: space-between;
     line-height: 60px;
-
-
+    background: rgba(0,0,0,0.8);
+    
     .scrolled & {
       background: transparent;
       color: white;
@@ -836,6 +835,7 @@ footer {
   .hamburger,.menu_label {
     display: inline-block;
     vertical-align: middle;
+    padding-left: 10px;
   }
 }
 

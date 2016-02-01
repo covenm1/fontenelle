@@ -85,6 +85,7 @@ var App = React.createClass({
 				"/img/education/education_texture.svg",
 				"/img/programs/programs_texture.svg"
 			],
+			scrolled: false,
 			ie: false
 		};
 	},
@@ -104,12 +105,14 @@ var App = React.createClass({
 			});
 
 		});
+
+
 	  var top = new ScrollMagic.Scene({
 								triggerHook: 0,
 	              duration: '97%',
 								offset: -60
 	          })
-	          .setClassToggle(".fontenelle", "scrolled")
+	          .on("enter leave", self.toggleScrolled)
 	          .addTo(controller);
 		self.setState({controller: controller});
 
@@ -121,11 +124,14 @@ var App = React.createClass({
     }
 
 		var ie = msieversion();
-		console.log("ie: "+ie);
 		self.setState({ie: ie});
 
 		// initGoogleAnalytics("UA-29023725-1");
 
+	},
+
+	toggleScrolled: function(){
+		this.setState({scrolled: !this.state.scrolled});
 	},
 
 	onLoad: function() {
@@ -239,6 +245,7 @@ var App = React.createClass({
 
 		var transition = self.state.currentTransition;
 		var menu = self.state.menu;
+		var scrolled = self.state.scrolled;
 
 		var ie = self.state.ie;
 
@@ -254,6 +261,12 @@ var App = React.createClass({
 			var menu_class = "";
 		}
 
+		if (scrolled) {
+			var scrolled_class = " scrolled";
+		} else {
+			var scrolled_class = "";
+		}
+
 		var main_pages = slide_names.indexOf(name) > -1;
 
 		if (main_pages){
@@ -265,8 +278,8 @@ var App = React.createClass({
 			var controller = self.state.controller;
 			document.documentElement.classList.remove('loading');
 			return (
-			  <div className={"fontenelle scrolled " + name + menu_class + header_up + ie_class} >
-			    <header className="header">
+			  <div className={"fontenelle " + name + scrolled_class + menu_class + header_up + ie_class} >
+			    <header className="header" key="header">
 			        <Link to="/" className="logo"><img src="/img/logo.png" alt="" /></Link>
 			        <span className="global_menu">
 			            <Link to="/found-raptor" className="link">Found Raptor</Link>
@@ -327,8 +340,8 @@ var App = React.createClass({
 		} else {
 			document.documentElement.classList.add('loading');
 			return (
-				<div className={"fontenelle scrolled loading header_up " + name + menu_class + ie_class} >
-					<header className="header">
+				<div className={"fontenelle loading header_up " + name + scrolled_class + menu_class + ie_class} >
+					<header className="header" key="header">
 							<Link to="/" className="logo"><img src="/img/logo.png" alt="" /></Link>
 							<span className="global_menu">
 									<Link to="/found-raptor" className="link">Found Raptor</Link>
@@ -414,7 +427,6 @@ var routes = (
 		<Route path="/posts" handler={posts} addHandlerKey={true} />
 		<Route path="/urban-wildlife" handler={urbanwildlife} addHandlerKey={true} />
 		<Route path="/careers" handler={careers} addHandlerKey={true} />
-
   </Route>
 
 );

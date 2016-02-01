@@ -86,6 +86,7 @@ var App = React.createClass({displayName: "App",
 				"/img/education/education_texture.svg",
 				"/img/programs/programs_texture.svg"
 			],
+			scrolled: false,
 			ie: false
 		};
 	},
@@ -105,12 +106,14 @@ var App = React.createClass({displayName: "App",
 			});
 
 		});
+
+
 	  var top = new ScrollMagic.Scene({
 								triggerHook: 0,
 	              duration: '97%',
 								offset: -60
 	          })
-	          .setClassToggle(".fontenelle", "scrolled")
+	          .on("enter leave", self.toggleScrolled)
 	          .addTo(controller);
 		self.setState({controller: controller});
 
@@ -122,11 +125,14 @@ var App = React.createClass({displayName: "App",
     }
 
 		var ie = msieversion();
-		console.log("ie: "+ie);
 		self.setState({ie: ie});
 
 		// initGoogleAnalytics("UA-29023725-1");
 
+	},
+
+	toggleScrolled: function(){
+		this.setState({scrolled: !this.state.scrolled});
 	},
 
 	onLoad: function() {
@@ -240,6 +246,7 @@ var App = React.createClass({displayName: "App",
 
 		var transition = self.state.currentTransition;
 		var menu = self.state.menu;
+		var scrolled = self.state.scrolled;
 
 		var ie = self.state.ie;
 
@@ -255,6 +262,12 @@ var App = React.createClass({displayName: "App",
 			var menu_class = "";
 		}
 
+		if (scrolled) {
+			var scrolled_class = " scrolled";
+		} else {
+			var scrolled_class = "";
+		}
+
 		var main_pages = slide_names.indexOf(name) > -1;
 
 		if (main_pages){
@@ -266,8 +279,8 @@ var App = React.createClass({displayName: "App",
 			var controller = self.state.controller;
 			document.documentElement.classList.remove('loading');
 			return (
-			  React.createElement("div", {className: "fontenelle scrolled " + name + menu_class + header_up + ie_class}, 
-			    React.createElement("header", {className: "header"}, 
+			  React.createElement("div", {className: "fontenelle " + name + scrolled_class + menu_class + header_up + ie_class}, 
+			    React.createElement("header", {className: "header", key: "header"}, 
 			        React.createElement(Link, {to: "/", className: "logo"}, React.createElement("img", {src: "/img/logo.png", alt: ""})), 
 			        React.createElement("span", {className: "global_menu"}, 
 			            React.createElement(Link, {to: "/found-raptor", className: "link"}, "Found Raptor"), 
@@ -328,8 +341,8 @@ var App = React.createClass({displayName: "App",
 		} else {
 			document.documentElement.classList.add('loading');
 			return (
-				React.createElement("div", {className: "fontenelle scrolled loading header_up " + name + menu_class + ie_class}, 
-					React.createElement("header", {className: "header"}, 
+				React.createElement("div", {className: "fontenelle loading header_up " + name + scrolled_class + menu_class + ie_class}, 
+					React.createElement("header", {className: "header", key: "header"}, 
 							React.createElement(Link, {to: "/", className: "logo"}, React.createElement("img", {src: "/img/logo.png", alt: ""})), 
 							React.createElement("span", {className: "global_menu"}, 
 									React.createElement(Link, {to: "/found-raptor", className: "link"}, "Found Raptor"), 
@@ -415,7 +428,6 @@ var routes = (
 		React.createElement(Route, {path: "/posts", handler: posts, addHandlerKey: true}), 
 		React.createElement(Route, {path: "/urban-wildlife", handler: urbanwildlife, addHandlerKey: true}), 
 		React.createElement(Route, {path: "/careers", handler: careers, addHandlerKey: true})
-
   )
 
 );
@@ -4043,12 +4055,12 @@ var Main = React.createClass({displayName: "Main",
 
       var drawer_overview = self.state.drawer_overview;
 
-      var photogallery = self.state.photogallery.map(function(object) {
+      var photogallery = self.state.photogallery.map(function(object, index) {
         var photoStyles = {
           backgroundImage: 'url('+object.image + ')',
         }
         return (
-          React.createElement("div", {className: "photo", style: photoStyles}, 
+          React.createElement("div", {key: index, className: "photo", style: photoStyles}, 
             React.createElement("div", {className: "description_container"}, 
               React.createElement("div", {className: "description"}, 
                 React.createElement("h4", {className: "name"}, React.createElement("a", {href: object.link, target: "_blank"}, object.name)), 
@@ -4059,12 +4071,12 @@ var Main = React.createClass({displayName: "Main",
         )
       });
 
-      var acorngallery = self.state.acorngallery.map(function(object) {
+      var acorngallery = self.state.acorngallery.map(function(object, index) {
         var photoStyles = {
           backgroundImage: 'url('+object.image + ')',
         }
         return (
-          React.createElement("div", {className: "photo", style: photoStyles}, 
+          React.createElement("div", {key: index, className: "photo", style: photoStyles}, 
             React.createElement("div", {className: "description_container"}, 
               React.createElement("div", {className: "description"}, 
                 React.createElement("h4", {className: "name"}, object.name), 

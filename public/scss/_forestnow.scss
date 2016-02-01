@@ -86,7 +86,7 @@
 	width: 100%;
 	position: relative;
 	display: flex;
-	flex-direction: row;	
+	flex-direction: row;
 	.plantlife, .wildlife {
 
 		margin-right: 5%;
@@ -476,6 +476,9 @@
 		border-top: white 2px solid;
 		border-bottom: white 2px solid;
 		flex: 1;
+		p {
+			margin-bottom: 20px;
+		}
 	}
 	.post_headline {
 		font-family: 'roboto_condensedbold';
@@ -532,6 +535,12 @@
 			text-align: right;
 			display: block;
 		}
+	}
+}
+
+.post_content {
+	p {
+		margin-bottom: 20px;
 	}
 }
 

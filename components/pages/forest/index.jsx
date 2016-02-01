@@ -426,12 +426,12 @@ var Main = React.createClass({
 
       var drawer_overview = self.state.drawer_overview;
 
-      var photogallery = self.state.photogallery.map(function(object) {
+      var photogallery = self.state.photogallery.map(function(object, index) {
         var photoStyles = {
           backgroundImage: 'url('+object.image + ')',
         }
         return (
-          <div className="photo" style={photoStyles} >
+          <div key={index} className="photo" style={photoStyles} >
             <div className="description_container">
               <div className="description">
                 <h4 className="name"><a href={object.link} target="_blank">{object.name}</a></h4>
@@ -442,12 +442,12 @@ var Main = React.createClass({
         )
       });
 
-      var acorngallery = self.state.acorngallery.map(function(object) {
+      var acorngallery = self.state.acorngallery.map(function(object, index) {
         var photoStyles = {
           backgroundImage: 'url('+object.image + ')',
         }
         return (
-          <div className="photo" style={photoStyles} >
+          <div key={index} className="photo" style={photoStyles} >
             <div className="description_container">
               <div className="description">
                 <h4 className="name">{object.name}</h4>
