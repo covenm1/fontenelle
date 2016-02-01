@@ -287,10 +287,11 @@ var App = React.createClass({displayName: "App",
 			            React.createElement(Link, {to: "/forest-now", className: "link"}, "Forest Now"), 
 									React.createElement(Link, {to: "/get-involved", className: "link"}, "Get Involved")
 			        ), 
-							React.createElement("span", {className: "menu_icon", onClick: self.toggleMenu}, React.createElement("span", {className: "hamburger_icon"}), " ", React.createElement("span", {className: "menu_label"}, "Menu"))
+							React.createElement("span", {className: "menu_icon", onClick: self.toggleMenu}, React.createElement("span", {className: "hamburger_icon"}), " ", React.createElement("span", {className: "menu_label"}, "Menu")), 
+							React.createElement("div", {className: "background"})
 			    ), 
 					React.createElement("div", {className: "sidebar"}, 
-						React.createElement("span", {className: "close_menu_button", onClick: self.toggleMenu}, "×"), 
+						React.createElement("span", {className: "close_menu_button", onClick: self.toggleMenu}, React.createElement("span", {className: "top_close"}), React.createElement("span", {className: "bottom_close"})), 
 						React.createElement("div", {className: "sidebar_links"}, 
 							React.createElement(Link, {to: "/", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "forest main"}, "Forest")), 
 
@@ -349,10 +350,11 @@ var App = React.createClass({displayName: "App",
 									React.createElement(Link, {to: "/forest-now", className: "link"}, "Forest Now"), 
 									React.createElement(Link, {to: "/get-involved", className: "link"}, "Get Involved")
 							), 
-							React.createElement("span", {className: "menu_icon", onClick: self.toggleMenu}, React.createElement("span", {className: "hamburger_icon"}), " ", React.createElement("span", {className: "menu_label"}, "Menu"))
+							React.createElement("span", {className: "menu_icon", onClick: self.toggleMenu}, React.createElement("span", {className: "hamburger_icon"}), " ", React.createElement("span", {className: "menu_label"}, "Menu")), 
+							React.createElement("div", {className: "background"})
 					), 
 					React.createElement("div", {className: "sidebar"}, 
-						React.createElement("span", {className: "close_menu_button", onClick: self.toggleMenu}, "×"), 
+						React.createElement("span", {className: "close_menu_button", onClick: self.toggleMenu}, React.createElement("span", {className: "top_close"}), React.createElement("span", {className: "bottom_close"})), 
 						React.createElement("div", {className: "sidebar_links"}, 
 							React.createElement(Link, {to: "/", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "forest main"}, "Forest")), 
 

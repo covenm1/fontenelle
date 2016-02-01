@@ -178,15 +178,27 @@ header {
     flex-direction: row;
     flex-flow: space-between;
     line-height: 60px;
-    background: rgba(0,0,0,0.8);
-    
+    .background {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      top: 0;
+      left: 0;
+      transform: translateY(0px);
+      background: rgba(0, 0, 0, 0.8);
+      transition: 0.25s ease-out;
+      z-index: -1;
+    }
     .scrolled & {
-      background: transparent;
-      color: white;
+      .background {
+        transform: translateY(-70px);
+      }
     }
     .header_up & {
-      background: rgba(0,0,0,0.8);
-      color: white;
+      .background {
+        transform: translateY(0px);
+        background: rgba(0,0,0,0.8);
+      }
     }
 
 
@@ -697,9 +709,56 @@ footer {
   cursor: pointer;
   transition: 0.3s ease-in-out;
   font-weight: 100;
+  .top_close, .bottom_close {
+    height: 2px;
+    width: 25px;
+    background: white;
+    position: absolute;
+    left: 0;
+    top: 25px;
+    transition: 0.15s ease-out;
+  }
+  .top_close {
+    transform: rotate(45deg);
+    &:before {
+      content: "";
+      height: 2px;
+      width: 10px;
+      background: white;
+      position: absolute;
+      right: 0;
+      transition: 0.15s ease-out;
+      transform: rotate(0deg);
+    }
+  }
+  .bottom_close {
+    transform: rotate(-45deg);
+    &:before {
+      content: "";
+      height: 2px;
+      width: 10px;
+      background: white;
+      position: absolute;
+      right: 0;
+      transition: 0.15s ease-out;
+      transform: rotate(0deg);
+    }
+  }
 
   &:hover {
     color: rgba(255, 255, 255, 0.4);
+    .top_close {
+      transform: rotate(0deg);
+      &:before {
+        transform: translateY(-4px) rotate(45deg);
+      }
+    }
+    .bottom_close {
+      transform: rotate(0deg);
+      &:before {
+        transform: translateY(4px) rotate(-45deg);
+      }
+    }
   }
 }
 .menu_open {
@@ -713,7 +772,7 @@ footer {
   transition: 0.15s ease-out;
   color: white;
   height: 100%;
-  overflow: scroll;
+  overflow: overlay;
   .sidebar_links {
     margin-top: 60px;
     padding: 0 25px 50px;

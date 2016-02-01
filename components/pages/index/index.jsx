@@ -287,9 +287,10 @@ var App = React.createClass({
 									<Link to="/get-involved" className="link">Get Involved</Link>
 			        </span>
 							<span className="menu_icon" onClick={self.toggleMenu}><span className="hamburger_icon"></span> <span className="menu_label">Menu</span></span>
+							<div className="background"></div>
 			    </header>
 					<div className="sidebar">
-						<span className="close_menu_button" onClick={self.toggleMenu}>×</span>
+						<span className="close_menu_button" onClick={self.toggleMenu}><span className="top_close"></span><span className="bottom_close"></span></span>
 						<div className="sidebar_links">
 							<Link to="/" className="link" onClick={self.toggleMenu}><h2 className="forest main">Forest</h2></Link>
 
@@ -349,9 +350,10 @@ var App = React.createClass({
 									<Link to="/get-involved" className="link">Get Involved</Link>
 							</span>
 							<span className="menu_icon" onClick={self.toggleMenu}><span className="hamburger_icon"></span> <span className="menu_label">Menu</span></span>
+							<div className="background"></div>
 					</header>
 					<div className="sidebar">
-						<span className="close_menu_button" onClick={self.toggleMenu}>×</span>
+						<span className="close_menu_button" onClick={self.toggleMenu}><span className="top_close"></span><span className="bottom_close"></span></span>
 						<div className="sidebar_links">
 							<Link to="/" className="link" onClick={self.toggleMenu}><h2 className="forest main">Forest</h2></Link>
 
