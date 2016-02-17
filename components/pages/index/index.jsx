@@ -338,7 +338,7 @@ var App = React.createClass({
 			  </div>
 			)
 		} else {
-			document.documentElement.classList.add('loading');
+			if(!ie) { document.documentElement.classList.add('loading'); }
 			return (
 				<div className={"fontenelle loading header_up " + name + scrolled_class + menu_class + ie_class} >
 					<header className="header" key="header">
@@ -435,7 +435,7 @@ var routes = (
 
 
 function analytics(state) {
-	visitor.pageview(state.path).send()
+	visitor.pageview(state.path).send();
 }
 
 
