@@ -27,6 +27,7 @@ gulp.task('build-reacts', function(){
 
     return browserify('./components/pages/index/index.jsx')
         .transform(reactify)
+        .transform(polyify({ browsers: 'IE >= 8' }))
         .bundle()
         .pipe(source('index.js'))
         .pipe(gulp.dest(destFolder));
@@ -36,12 +37,11 @@ gulp.task('build-reacts', function(){
 gulp.task('build-reacts-production', function(){
 
     return browserify('./components/pages/index/index.jsx')
-        .transform(reactify, {stripTypes: true, es6: true})
-        .transform(polyify({ browsers: 'IE >= 9' }))
+        .transform(reactify)
+        .transform(polyify({ browsers: 'IE >= 8' }))
         .bundle()
         .pipe(source('index.js'))
         .pipe(gulp.dest(destFolder))
-        .pipe(streamify(uglify()))
         .pipe(rename('index.min.js'))
         .pipe(gulp.dest(destFolder));
 });

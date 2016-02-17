@@ -107799,10 +107799,10 @@ will produce an inaccurate conversion value. The same issue exists with the cx/c
 (function (global){
 /*!
  * VERSION: 1.7.4
- * DATE: 2014-07-17
- * UPDATES AND DOCS AT: http://www.greensock.com
- *
- * @license Copyright (c) 2008-2015, GreenSock. All rights reserved.
+ * DATE: 2014-07,651:[function(require,module,exports){
+arguments[4][27][0].apply(exports,arguments)
+},{"dup":27}]},{},[20]);
+ghts reserved.
  * This work is subject to the terms at http://greensock.com/standard-license or for
  * Club GreenSock members, the software agreement that was issued with your membership.
  * 
@@ -107812,6 +107812,54 @@ var _gsScope="undefined"!=typeof module&&module.exports&&"undefined"!=typeof glo
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{}],651:[function(require,module,exports){
 (function (global){
+if (!Array.prototype.indexOf) {
+// Array.prototype.indexOf
+Array.prototype.indexOf = function indexOf(searchElement) {
+	for (var array = this, index = 0, length = array.length; index < length; ++index) {
+		if (array[index] === searchElement) {
+			return index;
+		}
+	}
+
+	return -1;
+};
+
+}
+if (!Array.prototype.filter) {
+// Array.prototype.filter
+Array.prototype.filter = function filter(callback, scope) {
+	for (var array = this, arrayB = [], index = 0, length = array.length, element; index < length; ++index) {
+		element = array[index];
+
+		if (callback.call(scope || window, element, index, array)) {
+			arrayB.push(element);
+		}
+	}
+
+	return arrayB;
+};
+
+}
+if (!Array.prototype.map) {
+// Array.prototype.map
+Array.prototype.map = function map(callback, scope) {
+	for (var array = this, arrayB = [], index = 0, length = array.length, element; index < length; ++index) {
+		element = array[index];
+
+		arrayB.push(callback.call(scope || window, array[index], index, array));
+	}
+
+	return arrayB;
+};
+
+}
+if (typeof Date !== "undefined" && !Date.now) {
+// Date.now
+Date.now = function now() {
+	return new Date().getTime();
+};
+
+}
 /*!
  * VERSION: 1.15.1
  * DATE: 2015-01-20
