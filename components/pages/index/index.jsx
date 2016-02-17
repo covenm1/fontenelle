@@ -116,8 +116,8 @@ var App = React.createClass({
 		self.setState({controller: controller});
 
 		var load_images = self.state.load_images;
-    for (image in load_images) {
-      tmp_image = new Image();
+    for (var image in load_images) {
+      var tmp_image = new Image();
       tmp_image.onload = self.onLoad;
       tmp_image.src = load_images[image];
     }
@@ -338,7 +338,7 @@ var App = React.createClass({
 			  </div>
 			)
 		} else {
-			document.documentElement.classList.add('loading'); 
+			document.documentElement.classList.add('loading');
 			return (
 				<div className={"fontenelle loading header_up " + name + scrolled_class + menu_class + ie_class} >
 					<header className="header" key="header">

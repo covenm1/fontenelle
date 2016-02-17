@@ -23,11 +23,12 @@ var jshint = require('gulp-jshint'),
     streamify = require('gulp-streamify'),
     polyify    = require('polyify').configure;
 
+var babelify = require("babelify");
+
 gulp.task('build-reacts', function(){
 
     return browserify('./components/pages/index/index.jsx')
-        .transform(reactify)
-        .transform(polyify({ browsers: 'IE >= 8' }))
+        .transform(babelify, {presets: ["es2015", "react"]})
         .bundle()
         .pipe(source('index.js'))
         .pipe(gulp.dest(destFolder));
@@ -37,12 +38,13 @@ gulp.task('build-reacts', function(){
 gulp.task('build-reacts-production', function(){
 
     return browserify('./components/pages/index/index.jsx')
-        .transform(reactify)
-        .transform(polyify({ browsers: 'IE >= 8' }))
+        .transform(babelify, {presets: ["es2015", "react"]})
         .bundle()
         .pipe(source('index.js'))
         .pipe(gulp.dest(destFolder))
         .pipe(rename('index.min.js'))
+        .pipe(buffer())
+				.pipe(uglify())
         .pipe(gulp.dest(destFolder));
 });
 

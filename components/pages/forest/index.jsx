@@ -80,8 +80,8 @@ var Main = React.createClass({
     window.addEventListener('resize', self.handleResize);
 
     var load_images = self.state.load_images;
-    for (image in load_images) {
-      tmp_image = new Image();
+    for (var image in load_images) {
+      var tmp_image = new Image();
       tmp_image.onload = self.onLoad;
       tmp_image.src = load_images[image];
     }
