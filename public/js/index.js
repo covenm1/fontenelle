@@ -5524,7 +5524,7 @@ var transitions = {
 			}
 		}
 	},
-	default: {
+	'default': {
 		duration: 250,
 		enter: {
 			opacity: [ 1, 0 ],
@@ -5943,7 +5943,7 @@ var App = React.createClass({displayName: "App",
 			  )
 			)
 		} else {
-			if(!ie) { document.documentElement.classList.add('loading'); }
+			document.documentElement.classList.add('loading'); 
 			return (
 				React.createElement("div", {className: "fontenelle loading header_up " + name + scrolled_class + menu_class + ie_class}, 
 					React.createElement("header", {className: "header", key: "header"}, 

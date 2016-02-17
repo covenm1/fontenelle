@@ -338,7 +338,7 @@ var App = React.createClass({
 			  </div>
 			)
 		} else {
-			if(!ie) { document.documentElement.classList.add('loading'); }
+			document.documentElement.classList.add('loading'); 
 			return (
 				<div className={"fontenelle loading header_up " + name + scrolled_class + menu_class + ie_class} >
 					<header className="header" key="header">

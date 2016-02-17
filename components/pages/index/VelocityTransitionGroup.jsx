@@ -85,7 +85,7 @@ var transitions = {
 			}
 		}
 	},
-	default: {
+	'default': {
 		duration: 250,
 		enter: {
 			opacity: [ 1, 0 ],
