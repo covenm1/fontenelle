@@ -504,12 +504,12 @@ module.exports = React.createClass({
       currently = self.state.weather.hourly.data[0].precipProbability * 100;
       hourly = self.state.weather.hourly.summary;
     }
-    var wildlife = self.state.wildlife.map(function(object){
-      return <h4 className="wildlife_title">{object.title}</h4>
+    var wildlife = self.state.wildlife.map(function(object, index){
+      return <h4 className="wildlife_title" key={index}>{object.title}</h4>
     });
-    var plantlife = self.state.plantlife.map(function(object){
+    var plantlife = self.state.plantlife.map(function(object, index){
       return (
-        <div className="nature_notes_item">
+        <div className="nature_notes_item" key={index}>
           <img src={object.featured_image.attachment_meta.sizes.thumbnail.url} />
           <h4 className="plantlife_title">{object.title}</h4>
           <div dangerouslySetInnerHTML={{__html: object.content}}></div>
@@ -518,7 +518,7 @@ module.exports = React.createClass({
       )
     });
 
-    var events = self.state.events.map(function(object){
+    var events = self.state.events.map(function(object, index){
       return (
         <Event
           title={object.title}
@@ -532,11 +532,11 @@ module.exports = React.createClass({
           signup_link={object.meta.signup_link}
           location={object.meta.location}
           location_map_url={object.meta.location_map_url}
-          key={Math.random()} />
+          key={index} />
       )
     });
 
-    var posts = self.state.posts.map(function(object){
+    var posts = self.state.posts.map(function(object, index){
       var post_style ={
         backgroundImage: "url("+ object.featured_image.guid +")"
       }
@@ -544,7 +544,7 @@ module.exports = React.createClass({
         var subheader = object.meta.subheader || "";
       }
       return (
-        <div className="post">
+        <div className="post" key={index}>
           <div className="post_image" style={post_style}></div>
           <div className="post_content">
             <h4 className="post_headline" dangerouslySetInnerHTML={{__html: object.title}}></h4>
@@ -555,7 +555,7 @@ module.exports = React.createClass({
       )
     });
 
-    var pinned_post = self.state.pinned.map(function(object){
+    var pinned_post = self.state.pinned.map(function(object, index){
       var post_style ={
         backgroundImage: "url("+ object.featured_image.guid +")"
       }
@@ -563,7 +563,7 @@ module.exports = React.createClass({
         var subheader = object.meta.subheader || "";
       }
       return (
-        <div className="post pinned">
+        <div className="post pinned" key={index}>
           <div className="post_image" style={post_style}></div>
           <div className="post_content">
             <h4 className="post_headline" dangerouslySetInnerHTML={{__html: object.title}}></h4>
@@ -574,8 +574,8 @@ module.exports = React.createClass({
       )
     });
 
-    var closings = self.state.closings.map(function(object){
-      return <p className="closings_title">{object.title}</p>
+    var closings = self.state.closings.map(function(object, index){
+      return <p className="closings_title" key={index}>{object.title}</p>
     });
     var top_image = {
       backgroundImage: "url(/img/weather/beautiful-day.jpg)"
@@ -587,11 +587,11 @@ module.exports = React.createClass({
     var wild_excerpt = self.state.wildlife_excerpt;
     var plant_excerpt = self.state.plantlife_excerpt;
 
-    var twistagrams = self.state.twistagrams.map(function(object){
+    var twistagrams = self.state.twistagrams.map(function(object, index){
       if (object.type == "instagram") {
-        return <Instagram content={object.content} time={object.time} />
+        return <Instagram content={object.content} time={object.time} key={index}/>
       } else if (object.type == "tweet") {
-        return <Tweet content={object.content} time={object.time} />
+        return <Tweet content={object.content} time={object.time} key={index}/>
       }
     });
 
