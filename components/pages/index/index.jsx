@@ -1,3 +1,5 @@
+require("babel-polyfill");
+require("../../common/js-babel6-polyfill.js");
 var React = require('react');
 var Router = require('react-router');
 // var TransitionGroup = require('./timeoutTransitionGroup.jsx');
