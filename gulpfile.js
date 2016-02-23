@@ -20,7 +20,8 @@ var jshint = require('gulp-jshint'),
     srcFolder = './components/pages/',
     destFolder = './public/js/',
     minifyCSS = require('gulp-minify-css'),
-    streamify = require('gulp-streamify');
+    streamify = require('gulp-streamify'),
+    polyify    = require('polyify').configure;
 
 gulp.task('build-reacts', function(){
 
@@ -36,9 +37,10 @@ gulp.task('build-reacts-production', function(){
 
     return browserify('./components/pages/index/index.jsx')
         .transform(reactify, {stripTypes: true, es6: true})
+        .transform(polyify({ browsers: 'IE >= 9' }))
         .bundle()
         .pipe(source('index.js'))
-        .pipe(gulp.dest('js/'))
+        .pipe(gulp.dest(destFolder))
         .pipe(streamify(uglify()))
         .pipe(rename('index.min.js'))
         .pipe(gulp.dest(destFolder));
