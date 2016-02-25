@@ -238,6 +238,8 @@ module.exports = React.createClass({
           var weather = res.body;
           self.setState({weather: weather});
 
+          console.log("icon: " + weather.currently.icon);
+
         } else {
           console.log('Oh no! error ' + res);
         }
@@ -577,9 +579,44 @@ module.exports = React.createClass({
     var closings = self.state.closings.map(function(object, index){
       return <p className="closings_title" key={index}>{object.title}</p>
     });
-    var top_image = {
-      backgroundImage: "url(/img/weather/beautiful-day.jpg)"
+
+    var iconPossibilities = [ "clear-day", "clear-night", "rain", "snow", "sleet", "wind", "fog", "cloudy", "partly-cloudy-day", "partly-cloudy-night"];
+
+    var fogPossibilities = [ "fog", "cloudy"];
+    var snowPossibilities = [ "snow", "sleet"];
+    var rainPossibilities = [ "rain" ];
+    var clearNightPossibilities = [ "clear-night", "partly-cloudy-night" ];
+    var clearDayPossibilities = [ "clear-day", "partly-cloudy-day", "wind" ];
+
+    if ( fogPossibilities.indexOf(icon) > -1) {
+
+      var top_image = { backgroundImage: "url(/img/weather/fog.jpg)" }
+
+    } else if ( snowPossibilities.indexOf(icon) > -1) {
+
+      var top_image = { backgroundImage: "url(/img/weather/snow.jpg)" }
+
+    } else if ( snowPossibilities.indexOf(icon) > -1) {
+
+      var top_image = { backgroundImage: "url(/img/weather/rain.jpg)" }
+
+    } else if ( clearNightPossibilities.indexOf(icon) > -1) {
+
+      var top_image = { backgroundImage: "url(/img/weather/clear_skies_night.jpg)" }
+
+    } else if ( clearDayPossibilities.indexOf(icon) > -1) {
+
+      var top_image = { backgroundImage: "url(/img/weather/clear_skies_day.jpg)" }
+
+    } else {
+
+      var top_image = { backgroundImage: "url(/img/weather/beautiful-day.jpg)" }
+
     }
+
+
+
+
     var nature_notes_image = {
       backgroundImage: "url(/img/forest-now/nature_notes_bkgd.jpg)"
     }

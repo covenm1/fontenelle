@@ -2698,6 +2698,8 @@ module.exports = React.createClass({displayName: "exports",
           var weather = res.body;
           self.setState({weather: weather});
 
+          console.log("icon: " + weather.currently.icon);
+
         } else {
           console.log('Oh no! error ' + res);
         }
@@ -3037,9 +3039,44 @@ module.exports = React.createClass({displayName: "exports",
     var closings = self.state.closings.map(function(object, index){
       return React.createElement("p", {className: "closings_title", key: index}, object.title)
     });
-    var top_image = {
-      backgroundImage: "url(/img/weather/beautiful-day.jpg)"
+
+    var iconPossibilities = [ "clear-day", "clear-night", "rain", "snow", "sleet", "wind", "fog", "cloudy", "partly-cloudy-day", "partly-cloudy-night"];
+
+    var fogPossibilities = [ "fog", "cloudy"];
+    var snowPossibilities = [ "snow", "sleet"];
+    var rainPossibilities = [ "rain" ];
+    var clearNightPossibilities = [ "clear-night", "partly-cloudy-night" ];
+    var clearDayPossibilities = [ "clear-day", "partly-cloudy-day", "wind" ];
+
+    if ( fogPossibilities.indexOf(icon) > -1) {
+
+      var top_image = { backgroundImage: "url(/img/weather/fog.jpg)" }
+
+    } else if ( snowPossibilities.indexOf(icon) > -1) {
+
+      var top_image = { backgroundImage: "url(/img/weather/snow.jpg)" }
+
+    } else if ( snowPossibilities.indexOf(icon) > -1) {
+
+      var top_image = { backgroundImage: "url(/img/weather/rain.jpg)" }
+
+    } else if ( clearNightPossibilities.indexOf(icon) > -1) {
+
+      var top_image = { backgroundImage: "url(/img/weather/clear_skies_night.jpg)" }
+
+    } else if ( clearDayPossibilities.indexOf(icon) > -1) {
+
+      var top_image = { backgroundImage: "url(/img/weather/clear_skies_day.jpg)" }
+
+    } else {
+
+      var top_image = { backgroundImage: "url(/img/weather/beautiful-day.jpg)" }
+
     }
+
+
+
+
     var nature_notes_image = {
       backgroundImage: "url(/img/forest-now/nature_notes_bkgd.jpg)"
     }
@@ -5918,15 +5955,18 @@ var App = React.createClass({displayName: "App",
 							React.createElement(Link, {to: "/programs/groups", className: "link section", onClick: self.toggleMenu}, "Groups"), 
 
 							React.createElement(Link, {to: "/forest-now", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Forest Now")), 
-							React.createElement(Link, {to: "/get-involved/donate", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Donate")), 
-							React.createElement(Link, {to: "/get-involved/membership", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Membership")), 
-							React.createElement(Link, {to: "/get-involved/volunteer", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Volunteer")), 
-							React.createElement(Link, {to: "/get-involved/guild", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Guild")), 
 							React.createElement(Link, {to: "/found-raptor", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Found Raptor")), 
 
-							React.createElement(Link, {to: "/board-of-directors", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Board")), 
-							React.createElement(Link, {to: "/hours-and-admissions", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Hours and Admissions")), 
-							React.createElement(Link, {to: "/contact", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Contact"))
+							React.createElement(Link, {to: "/get-involved", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Get Involved")), 
+							React.createElement(Link, {to: "/get-involved/donate", className: "link section", onClick: self.toggleMenu}, "Donate"), 
+							React.createElement(Link, {to: "/get-involved/membership", className: "link section", onClick: self.toggleMenu}, "Membership"), 
+							React.createElement(Link, {to: "/get-involved/volunteer", className: "link section", onClick: self.toggleMenu}, "Volunteer"), 
+							React.createElement(Link, {to: "/get-involved/guild", className: "link section", onClick: self.toggleMenu}, "Guild"), 
+
+							React.createElement(Link, {to: "/contact", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Contact")), 
+							React.createElement(Link, {to: "/board-of-directors", className: "link section", onClick: self.toggleMenu}, "Board"), 
+							React.createElement(Link, {to: "/hours-and-admissions", className: "link section", onClick: self.toggleMenu}, "Hours and Admissions")
+
 						)
 					), 
 					 main_pages ?
@@ -5981,15 +6021,18 @@ var App = React.createClass({displayName: "App",
 							React.createElement(Link, {to: "/programs/groups", className: "link section", onClick: self.toggleMenu}, "Groups"), 
 
 							React.createElement(Link, {to: "/forest-now", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Forest Now")), 
-							React.createElement(Link, {to: "/get-involved/donate", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Donate")), 
-							React.createElement(Link, {to: "/get-involved/membership", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Membership")), 
-							React.createElement(Link, {to: "/get-involved/volunteer", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Volunteer")), 
-							React.createElement(Link, {to: "/get-involved/guild", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Guild")), 
 							React.createElement(Link, {to: "/found-raptor", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Found Raptor")), 
 
-							React.createElement(Link, {to: "/board-of-directors", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Board")), 
-							React.createElement(Link, {to: "/hours-and-admissions", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Hours and Admissions")), 
-							React.createElement(Link, {to: "/contact", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Contact"))
+							React.createElement(Link, {to: "/get-involved", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Get Involved")), 
+							React.createElement(Link, {to: "/get-involved/donate", className: "link section", onClick: self.toggleMenu}, "Donate"), 
+							React.createElement(Link, {to: "/get-involved/membership", className: "link section", onClick: self.toggleMenu}, "Membership"), 
+							React.createElement(Link, {to: "/get-involved/volunteer", className: "link section", onClick: self.toggleMenu}, "Volunteer"), 
+							React.createElement(Link, {to: "/get-involved/guild", className: "link section", onClick: self.toggleMenu}, "Guild"), 
+
+							React.createElement(Link, {to: "/contact", className: "link", onClick: self.toggleMenu}, React.createElement("h2", {className: "main"}, "Contact")), 
+							React.createElement(Link, {to: "/board-of-directors", className: "link section", onClick: self.toggleMenu}, "Board"), 
+							React.createElement(Link, {to: "/hours-and-admissions", className: "link section", onClick: self.toggleMenu}, "Hours and Admissions")
+
 						)
 					), 
 					React.createElement("div", {className: "main_content", id: "main_content"}, 

@@ -313,15 +313,18 @@ var App = React.createClass({
 							<Link to="/programs/groups" className="link section" onClick={self.toggleMenu}>Groups</Link>
 
 							<Link to="/forest-now" className="link" onClick={self.toggleMenu}><h2 className="main">Forest Now</h2></Link>
-							<Link to="/get-involved/donate" className="link" onClick={self.toggleMenu}><h2 className="main">Donate</h2></Link>
-							<Link to="/get-involved/membership" className="link" onClick={self.toggleMenu}><h2 className="main">Membership</h2></Link>
-							<Link to="/get-involved/volunteer" className="link" onClick={self.toggleMenu}><h2 className="main">Volunteer</h2></Link>
-							<Link to="/get-involved/guild" className="link" onClick={self.toggleMenu}><h2 className="main">Guild</h2></Link>
 							<Link to="/found-raptor" className="link" onClick={self.toggleMenu}><h2 className="main">Found Raptor</h2></Link>
 
-							<Link to="/board-of-directors" className="link" onClick={self.toggleMenu}><h2 className="main">Board</h2></Link>
-							<Link to="/hours-and-admissions" className="link" onClick={self.toggleMenu}><h2 className="main">Hours and Admissions</h2></Link>
+							<Link to="/get-involved" className="link" onClick={self.toggleMenu}><h2 className="main">Get Involved</h2></Link>
+							<Link to="/get-involved/donate" className="link section" onClick={self.toggleMenu}>Donate</Link>
+							<Link to="/get-involved/membership" className="link section" onClick={self.toggleMenu}>Membership</Link>
+							<Link to="/get-involved/volunteer" className="link section" onClick={self.toggleMenu}>Volunteer</Link>
+							<Link to="/get-involved/guild" className="link section" onClick={self.toggleMenu}>Guild</Link>
+
 							<Link to="/contact" className="link" onClick={self.toggleMenu}><h2 className="main">Contact</h2></Link>
+							<Link to="/board-of-directors" className="link section" onClick={self.toggleMenu}>Board</Link>
+							<Link to="/hours-and-admissions" className="link section" onClick={self.toggleMenu}>Hours and Admissions</Link>
+
 						</div>
 					</div>
 					{ main_pages ?
@@ -376,15 +379,18 @@ var App = React.createClass({
 							<Link to="/programs/groups" className="link section" onClick={self.toggleMenu}>Groups</Link>
 
 							<Link to="/forest-now" className="link" onClick={self.toggleMenu}><h2 className="main">Forest Now</h2></Link>
-							<Link to="/get-involved/donate" className="link" onClick={self.toggleMenu}><h2 className="main">Donate</h2></Link>
-							<Link to="/get-involved/membership" className="link" onClick={self.toggleMenu}><h2 className="main">Membership</h2></Link>
-							<Link to="/get-involved/volunteer" className="link" onClick={self.toggleMenu}><h2 className="main">Volunteer</h2></Link>
-							<Link to="/get-involved/guild" className="link" onClick={self.toggleMenu}><h2 className="main">Guild</h2></Link>
 							<Link to="/found-raptor" className="link" onClick={self.toggleMenu}><h2 className="main">Found Raptor</h2></Link>
 
-							<Link to="/board-of-directors" className="link" onClick={self.toggleMenu}><h2 className="main">Board</h2></Link>
-							<Link to="/hours-and-admissions" className="link" onClick={self.toggleMenu}><h2 className="main">Hours and Admissions</h2></Link>
+							<Link to="/get-involved" className="link" onClick={self.toggleMenu}><h2 className="main">Get Involved</h2></Link>
+							<Link to="/get-involved/donate" className="link section" onClick={self.toggleMenu}>Donate</Link>
+							<Link to="/get-involved/membership" className="link section" onClick={self.toggleMenu}>Membership</Link>
+							<Link to="/get-involved/volunteer" className="link section" onClick={self.toggleMenu}>Volunteer</Link>
+							<Link to="/get-involved/guild" className="link section" onClick={self.toggleMenu}>Guild</Link>
+
 							<Link to="/contact" className="link" onClick={self.toggleMenu}><h2 className="main">Contact</h2></Link>
+							<Link to="/board-of-directors" className="link section" onClick={self.toggleMenu}>Board</Link>
+							<Link to="/hours-and-admissions" className="link section" onClick={self.toggleMenu}>Hours and Admissions</Link>
+
 						</div>
 					</div>
 					<div className="main_content" id="main_content">
