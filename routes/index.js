@@ -103,6 +103,10 @@ module.exports = function(app) {
     res.redirect('/post/from-the-leaflet-january-february-2016');
 	});
 
+  app.get('/feather', function(req, res) {
+    res.redirect('https://8913.blackbaudhosting.com/8913/Feather-Our-Nest-2016');
+	});
+
 	app.get('*', function(req, res) {
 	 	res.render('index');
 	});

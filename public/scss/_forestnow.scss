@@ -12,7 +12,6 @@
 
 .now-blue {
 	background-color: $conservation_color;
-	height: 60px;
 }
 
 .now-links {
@@ -126,13 +125,13 @@
 }
 
 .forest_now_top {
-	min-height: 600px;
+	height: 600px;
 	color: white;
 	display: flex;
 	flex-direction: row;
 	font-family: 'roboto_condensedbold';
 	background-size: cover;
-	background-position: bottom;
+	background-position: center;
 	p {
 		line-height: 1;
 	}
@@ -238,8 +237,8 @@
 		}
 	}
 	.halfcontainer {
-		width: 720px;
-		max-width: 100%;
+		width: 100%;
+		max-width: 720px;
 		padding: 0 30px;
 	}
 	.blue_wrapper {
