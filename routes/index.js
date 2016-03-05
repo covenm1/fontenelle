@@ -104,7 +104,7 @@ module.exports = function(app) {
 	});
 
   app.get('/feather', function(req, res) {
-    res.redirect('https://8913.blackbaudhosting.com/8913/Feather-Our-Nest-2016');
+    res.redirect('/post/from-the-leaflet');
 	});
 
 	app.get('*', function(req, res) {
