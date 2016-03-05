@@ -104,7 +104,7 @@ module.exports = function(app) {
 	});
 
   app.get('/feather', function(req, res) {
-    res.redirect('/post/from-the-leaflet');
+    res.redirect('/post/feather-our-nest');
 	});
 
 	app.get('*', function(req, res) {
