@@ -698,7 +698,7 @@ module.exports = React.createClass({
           <div className='now-blue'>
             <div className='now-links image_container'>
               <a href="/hours-and-admissions">Hours and Admissions</a>
-              <span className="trailmaps">Trail Maps: <a target="_blank" href="http://fontenelleforest.org/images/stories/Trails/ffnc_trailmap_dec09.pdf">Fontenelle</a>|<a target="_blank" href="http://fontenelleforest.org/images/stories/Trails/neale_woods_map_printable.pdf">Neale Woods</a></span>
+              <span className="trailmaps">Trail Maps: <a target="_blank" href="http://fontenelle.flywheelsites.com/wp-content/uploads/2016/03/FFTrailMap.pdf">Fontenelle</a>|<a target="_blank" href="http://fontenelle.flywheelsites.com/wp-content/uploads/2016/03/NWTrailMap.pdf">Neale Woods</a></span>
               <a target="_blank" href="http://fontenelleforest.org/images/stories/Trails/ffnc_trailmap_dec09.pdf">Guidelines</a>
               <a href="/contact">Contact</a>
             </div>
