@@ -83,7 +83,7 @@ var Main = React.createClass({
       setTimeout(function() { self.setState({loaded: true}); }, 150);
       setTimeout(function() {
         if (self.getParams().scroll) {
-          self.scrollThing(self.getParams().scroll)
+          self.scrollThing(self.getParams().scroll);
         }
       }, 350);
 
@@ -319,7 +319,6 @@ var Main = React.createClass({
     this.setState({spider: !this.state.spider});
   },
 
-
   render: function() {
     var self = this;
     var classImage = self.state.classImage;
@@ -364,7 +363,7 @@ var Main = React.createClass({
 
                     <div className="for_kids copy_container">
                       <h2 className="marker color">For Kids</h2>
-                      <p>What could be more fun than spending a week in the forest? Fontenelle’s Nature Discovery Day Camps feature fun, hands-on, science-based learning through play taught by our year-round professional educators. Camps are offered in the summer and winter. We also offer special camps for grandparents and grandkids to participate in together. Registration is limited. Proof of age is required. Campers should bring their lunch. Snacks provided.</p>
+                      <p>Every trip to Fontenelle Forest is its own story, its own unique opportunity for exploration and discovery. For kids, it can mean unstructured, creative play in Acorn Acorns, the Nature Center, or along the many trails throughout the forest. It can also mean camps and other fun group activities. Make the forest experience your own. </p>
 
                       <div className="program_item" onClick={self.mudPies}>
                         <h4 className="name">
@@ -443,6 +442,11 @@ var Main = React.createClass({
                       </div>
 
                       <h5 className="preogram_forest_now">Check <Link to="forest-now" className="color">FOREST NOW</Link> for updates and registration</h5>
+
+                      <h2 className="marker color" id="camps" onClick={ self.camps }>Camps</h2>
+                      <p>What could be more fun than spending a week in the forest? Fontenelle’s Nature Discovery Day Camps feature fun, hands-on, science-based learning through play taught by our year-round professional educators. Camps are offered in the summer and winter. We also offer special camps for grandparents and grandkids to participate in together. Registration is limited. Proof of age is required. Campers should bring their lunch. Snacks provided.</p>
+
+                      <h5 className="preogram_forest_now">For more information on 2016 camps,  <Link to="/post/2016-nature-discovery-day-camps" className="color">click here.</Link></h5>
 
                     </div>
                     <div className="for_kids">

@@ -311,6 +311,7 @@ var App = React.createClass({
 							<Link to="/programs" className="link" onClick={self.toggleMenu}><h2 className="programs main">Programs</h2></Link>
 
 							<Link to="/programs/kids" className="link section" onClick={self.toggleMenu}>Kids</Link>
+							<Link to="/programs/camps" className="link section" onClick={self.toggleMenu}>Camps</Link>
 							<Link to="/programs/adults" className="link section" onClick={self.toggleMenu}>Adults</Link>
 							<Link to="/programs/groups" className="link section" onClick={self.toggleMenu}>Groups</Link>
 
@@ -377,6 +378,7 @@ var App = React.createClass({
 							<Link to="/programs" className="link" onClick={self.toggleMenu}><h2 className="programs main">Programs</h2></Link>
 
 							<Link to="/programs/kids" className="link section" onClick={self.toggleMenu}>Kids</Link>
+							<Link to="/programs/camps" className="link section" onClick={self.toggleMenu}>Camps</Link>
 							<Link to="/programs/adults" className="link section" onClick={self.toggleMenu}>Adults</Link>
 							<Link to="/programs/groups" className="link section" onClick={self.toggleMenu}>Groups</Link>
 
