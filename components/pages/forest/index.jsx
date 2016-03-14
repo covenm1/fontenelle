@@ -496,6 +496,7 @@ var Main = React.createClass({
       if (self.state.drawer.length) {
         map_class = map_class + " open";
       }
+      var drawer_styles;
 
       if (self.state.area.length) {
         map_class = map_class + " " + self.state.area;
