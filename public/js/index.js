@@ -5950,6 +5950,34 @@ module.exports = React.createClass({
                 'Join the Guild'
               )
             )
+          ),
+          React.createElement(
+            'div',
+            { className: 'centered_content guild' },
+            React.createElement(
+              'h2',
+              { className: 'marker' },
+              'Feather Our Nest'
+            ),
+            React.createElement(
+              'p',
+              null,
+              'Every year, Feather Our Nest bolsters our commitment to inspiring current and future generations to care for the natural world. Presented by the Fontenelle Forest Guild, the event solidifies funding for the following year’s educational programs, which can be a real difference maker. As it stands now, over 40,000 children explore the wonders of the forest here each year, experiences that would otherwise not likely have been possible.'
+            )
+          ),
+          React.createElement(
+            'div',
+            { className: 'element_contain guild' },
+            React.createElement(
+              Link,
+              { className: 'gi_button marker', to: '/post/feather-our-nest' },
+              'Read about this year’s Feather Our Nest'
+            )
+          ),
+          React.createElement(
+            'div',
+            { className: 'centered_content guild' },
+            React.createElement('img', { className: 'gi_break', src: '/img/conservation/divider_bottom_grey.png' })
           )
         )
       ),
@@ -8641,12 +8669,11 @@ var Main = React.createClass({
                   ),
                   React.createElement(
                     'h5',
-                    { className: 'preogram_forest_now' },
-                    'For more information on 2016 camps,  ',
+                    null,
                     React.createElement(
                       Link,
-                      { to: '/post/2016-nature-discovery-day-camps', className: 'color' },
-                      'click here.'
+                      { to: '/post/2016-nature-discovery-day-camps', className: 'gi_button marker' },
+                      'click here for more information'
                     )
                   )
                 ),

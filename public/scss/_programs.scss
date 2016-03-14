@@ -37,6 +37,16 @@
   .video_overlay {
     background-image: url('/img/programs/pattern_video-overlay.svg');
   }
+
+  .gi_button {
+    color: $programs_color;
+    border-color: $programs_color;
+    transition: 0.15s ease-out;
+    &:hover {
+      background: $programs_color;
+      color: white;
+    }
+  }
 }
 
 .video_play {
