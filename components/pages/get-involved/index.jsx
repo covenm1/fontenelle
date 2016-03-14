@@ -237,7 +237,7 @@ module.exports = React.createClass({
               </div>
 
             </div>
-            <div className="centered_content guild">
+            <div className="centered_content guild" id="feather">
               <h2 className="marker">Feather Our Nest</h2>
               <p>Every year, Feather Our Nest bolsters our commitment to inspiring current and future generations to care for the natural world. Presented by the Fontenelle Forest Guild, the event solidifies funding for the following year’s educational programs, which can be a real difference maker. As it stands now, over 40,000 children explore the wonders of the forest here each year, experiences that would otherwise not likely have been possible.</p>
             </div>

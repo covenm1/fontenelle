@@ -323,6 +323,7 @@ var App = React.createClass({
 							<Link to="/get-involved/membership" className="link section" onClick={self.toggleMenu}>Membership</Link>
 							<Link to="/get-involved/volunteer" className="link section" onClick={self.toggleMenu}>Volunteer</Link>
 							<Link to="/get-involved/guild" className="link section" onClick={self.toggleMenu}>Guild</Link>
+							<Link to="/get-involved/feather" className="link section" onClick={self.toggleMenu}>Feather Our Nest</Link>
 
 							<Link to="/contact" className="link" onClick={self.toggleMenu}><h2 className="main">Contact</h2></Link>
 							<Link to="/board-of-directors" className="link section" onClick={self.toggleMenu}>Board</Link>
@@ -390,7 +391,8 @@ var App = React.createClass({
 							<Link to="/get-involved/membership" className="link section" onClick={self.toggleMenu}>Membership</Link>
 							<Link to="/get-involved/volunteer" className="link section" onClick={self.toggleMenu}>Volunteer</Link>
 							<Link to="/get-involved/guild" className="link section" onClick={self.toggleMenu}>Guild</Link>
-
+							<Link to="/get-involved/feather" className="link section" onClick={self.toggleMenu}>Feather Our Nest</Link>
+							
 							<Link to="/contact" className="link" onClick={self.toggleMenu}><h2 className="main">Contact</h2></Link>
 							<Link to="/board-of-directors" className="link section" onClick={self.toggleMenu}>Board</Link>
 							<Link to="/hours-and-admissions" className="link section" onClick={self.toggleMenu}>Hours and Admissions</Link>

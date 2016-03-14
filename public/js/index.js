@@ -5953,7 +5953,7 @@ module.exports = React.createClass({
           ),
           React.createElement(
             'div',
-            { className: 'centered_content guild' },
+            { className: 'centered_content guild', id: 'feather' },
             React.createElement(
               'h2',
               { className: 'marker' },
@@ -6773,6 +6773,11 @@ var App = React.createClass({
 						),
 						React.createElement(
 							Link,
+							{ to: "/get-involved/feather", className: "link section", onClick: self.toggleMenu },
+							"Feather Our Nest"
+						),
+						React.createElement(
+							Link,
 							{ to: "/contact", className: "link", onClick: self.toggleMenu },
 							React.createElement(
 								"h2",
@@ -7007,6 +7012,11 @@ var App = React.createClass({
 							Link,
 							{ to: "/get-involved/guild", className: "link section", onClick: self.toggleMenu },
 							"Guild"
+						),
+						React.createElement(
+							Link,
+							{ to: "/get-involved/feather", className: "link section", onClick: self.toggleMenu },
+							"Feather Our Nest"
 						),
 						React.createElement(
 							Link,
