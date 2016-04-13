@@ -33,7 +33,7 @@ module.exports =  React.createClass({
           <div className="fb_wrapper main_wrapper">
             <div className="centered_content fb_intro">
               <h2 className="marker">CONTACT</h2>
-              <p>If you find an injured or downed raptor, please call the FFRR Center or one of the numbers listed below. Leave a voicemail if there is no answer, and your call will be returned. You may also contact the nearest Nebraska Games & Parks Conservation Officer, your local Humane Society, or local law enforcement. <Link to="/urban-wildlife">Found an animal other than a raptor?</Link></p>
+              <p>If you find an injured or downed raptor, please call call our toll free rescue hotline <a className="hotline-number" href="tel:8668887261">(866) 888-7261</a> Select the region of Nebraska where the raptor is located. Please leave a voicemail if the call is not answered and we will respond as quickly as possible. You may also contact the nearest Nebraska Games & Parks Conservation Officer, your local Humane Society, or local law enforcement. <Link to="/urban-wildlife">Found an animal other than a raptor?</Link></p>
               <img className="fb_break" src="/img/conservation/divider_bottom_grey.png" />
             </div>
           </div>
@@ -41,40 +41,15 @@ module.exports =  React.createClass({
         <div className="egg_wrap fb_container">
           <div className="fb_wrapper main_wrapper">
             <div className="centered_content fb_contact">
-              <div className="fb_numbers">
-                <ul>
-                  <li>
-                    <h3>FFRR Center</h3>
-                    <p>Betsy: 402-994-2009</p>
-                  </li>
-                  <li>
-                    <h3>A - Omaha Area</h3>
-                    <p>Denise: 402-994-2009</p>
-                    <p>Warren: 402-990-9779</p>
-                  </li>
-                  <li>
-                    <h3>B - North East Nebraska</h3>
-                    <p>Natalie: 402-863-2261</p>
-                  </li>
-                  <li>
-                    <h3>C - South East Nebraska</h3>
-                    <p>Janet: 402-525-8682</p>
-                    <p>Elaine: 402-488-7586</p>
-                    <p>Carri: 402-483-4303</p>
-                  </li>
-                  <li>
-                    <h3>D - Central/Western Nebraska</h3>
-                    <p>Vickie: 308-750-3816</p>
-                    <p>Blake: 308-383-1875</p>
-                  </li>
-                </ul>
-              </div>
               <div className="fb_map">
                 <img src="/img/found-raptor/foundbird_map.svg" />
               </div>
             </div>
+            <div className="centered_content fb_intro">
+              <a className="hotline-number main" href="tel:8668887261">Toll-free Hotline: (866) 888-7261</a>
+            </div>
           </div>
-        </div>
+        </div> 
         <div className="egg_wrap fb_container">
           <div className="fb_wrapper main_wrapper">
             <div className="centered_content fb_guidelines">

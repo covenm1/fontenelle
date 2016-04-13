@@ -21,7 +21,7 @@
   }
   .fb_map {
     padding: 0;
-    width: 200px;
+    width: 100%;
     margin: auto;
     order: 1;
   }
@@ -32,6 +32,18 @@
   ul {
     width: 100%;
     margin: 0
+  }
+}
+
+.hotline-number, .fb_intro a.hotline-number, .fb_intro a.hotline-number:visited {
+  display: block;
+  width: 100%;
+  text-align: center;
+  background: #1261ac;
+  color: white;
+  &.main {
+    margin: 15px auto;
+    padding: 10px 15px;
   }
 }
 

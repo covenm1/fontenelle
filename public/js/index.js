@@ -4897,7 +4897,13 @@ module.exports = React.createClass({
             React.createElement(
               'p',
               null,
-              'If you find an injured or downed raptor, please call the FFRR Center or one of the numbers listed below. Leave a voicemail if there is no answer, and your call will be returned. You may also contact the nearest Nebraska Games & Parks Conservation Officer, your local Humane Society, or local law enforcement. ',
+              'If you find an injured or downed raptor, please call call our toll free rescue hotline ',
+              React.createElement(
+                'a',
+                { className: 'hotline-number', href: 'tel:8668887261' },
+                '(866) 888-7261'
+              ),
+              ' Select the region of Nebraska where the raptor is located. Please leave a voicemail if the call is not answered and we will respond as quickly as possible. You may also contact the nearest Nebraska Games & Parks Conservation Officer, your local Humane Society, or local law enforcement. ',
               React.createElement(
                 Link,
                 { to: '/urban-wildlife' },
@@ -4919,106 +4925,17 @@ module.exports = React.createClass({
             { className: 'centered_content fb_contact' },
             React.createElement(
               'div',
-              { className: 'fb_numbers' },
-              React.createElement(
-                'ul',
-                null,
-                React.createElement(
-                  'li',
-                  null,
-                  React.createElement(
-                    'h3',
-                    null,
-                    'FFRR Center'
-                  ),
-                  React.createElement(
-                    'p',
-                    null,
-                    'Betsy: 402-994-2009'
-                  )
-                ),
-                React.createElement(
-                  'li',
-                  null,
-                  React.createElement(
-                    'h3',
-                    null,
-                    'A - Omaha Area'
-                  ),
-                  React.createElement(
-                    'p',
-                    null,
-                    'Denise: 402-994-2009'
-                  ),
-                  React.createElement(
-                    'p',
-                    null,
-                    'Warren: 402-990-9779'
-                  )
-                ),
-                React.createElement(
-                  'li',
-                  null,
-                  React.createElement(
-                    'h3',
-                    null,
-                    'B - North East Nebraska'
-                  ),
-                  React.createElement(
-                    'p',
-                    null,
-                    'Natalie: 402-863-2261'
-                  )
-                ),
-                React.createElement(
-                  'li',
-                  null,
-                  React.createElement(
-                    'h3',
-                    null,
-                    'C - South East Nebraska'
-                  ),
-                  React.createElement(
-                    'p',
-                    null,
-                    'Janet: 402-525-8682'
-                  ),
-                  React.createElement(
-                    'p',
-                    null,
-                    'Elaine: 402-488-7586'
-                  ),
-                  React.createElement(
-                    'p',
-                    null,
-                    'Carri: 402-483-4303'
-                  )
-                ),
-                React.createElement(
-                  'li',
-                  null,
-                  React.createElement(
-                    'h3',
-                    null,
-                    'D - Central/Western Nebraska'
-                  ),
-                  React.createElement(
-                    'p',
-                    null,
-                    'Vickie: 308-750-3816'
-                  ),
-                  React.createElement(
-                    'p',
-                    null,
-                    'Blake: 308-383-1875'
-                  )
-                )
-              )
-            ),
-            React.createElement(
-              'div',
               { className: 'fb_map' },
               React.createElement('img', { src: '/img/found-raptor/foundbird_map.svg' })
+            )
+          ),
+          React.createElement(
+            'div',
+            { className: 'centered_content fb_intro' },
+            React.createElement(
+              'a',
+              { className: 'hotline-number main', href: 'tel:8668887261' },
+              'Toll-free Hotline: (866) 888-7261'
             )
           )
         )
