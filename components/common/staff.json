@@ -90,6 +90,11 @@
     "title": "Manager of Customer Service",
   },
   {
+    "name": "Valerie Slocum",
+    "email": "vslocum@fontenelleforest.org",
+    "title": "Animal Care Specialist",
+  },
+  {
     "name": "Joanie Soverns",
     "email": "jsoverns@fontenelleforest.org",
     "title": "Manager of Donor Relations and Membership",
@@ -108,21 +113,6 @@
     "name": "Jane Watson",
     "email": "jwatson@fontenelleforest.org",
     "title": "Finance Associate",
-  },
-  {
-    "name": "Ronnie Wells",
-    "email": "rwells@fontenelleforest.org",
-    "title": "Manager of Events & Exhibits",
-  },
-  {
-    "name": "Alex Wiles",
-    "email": "awiles@fontenelleforest.org",
-    "title": "Animal Care Specialist",
-  },
-  {
-    "name": "Deborah Woracek",
-    "email": "DWoracek@fontenelleforest.org",
-    "title": "Naturalist, Manager of Summer Day Camps",
   },
   {
     "name": "Marykate Wray",

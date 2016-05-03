@@ -46,7 +46,7 @@ var StaffList = React.createClass({
 
 
   render: function() {
-    var self = this; 
+    var self = this;
 
     var management = self.state.management.map(function(object) {
 
@@ -298,6 +298,7 @@ module.exports = React.createClass({
               <li>Jean Neneman</li>
               <li>Nick Sauvageau</li>
               <li>Tina Tweedy</li>
+              <li>Alex Wiles</li>
               <li>Tracy Van Zee</li>
             </ul>
             <h2 className="staff_title">VISITOR SERVICES ASSISTANTS</h2>
