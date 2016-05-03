@@ -1,5 +1,10 @@
 [
   {
+    "name": "Tad Leeper",
+    "email": "tleeper@fontenelleforest.org",
+    "title": "Interim Executive Director",
+  },
+  {
     "name": "Elizabeth Chalen",
     "email": "echalen@fontenelleforest.org",
     "title": "Director of Education",
@@ -15,9 +20,8 @@
     "title": "Director of Operations",
   },
   {
-    "name": "Tad Leeper",
-    "email": "tleeper@fontenelleforest.org",
-    "title": "Interim Executive Director",
+    "name": "Janet Stander",
+    "email": "janet@fontenelleforest.org",
+    "title": "Director of Raptor Recovery",
   },
-
 ]

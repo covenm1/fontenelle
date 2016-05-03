@@ -46,7 +46,7 @@ var StaffList = React.createClass({
 
 
   render: function() {
-    var self = this;
+    var self = this; 
 
     var management = self.state.management.map(function(object) {
 

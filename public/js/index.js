@@ -727,6 +727,11 @@ module.exports = React.createClass({
 },{"react":792}],7:[function(require,module,exports){
 module.exports=[
   {
+    "name": "Tad Leeper",
+    "email": "tleeper@fontenelleforest.org",
+    "title": "Interim Executive Director",
+  },
+  {
     "name": "Elizabeth Chalen",
     "email": "echalen@fontenelleforest.org",
     "title": "Director of Education",
@@ -742,11 +747,10 @@ module.exports=[
     "title": "Director of Operations",
   },
   {
-    "name": "Tad Leeper",
-    "email": "tleeper@fontenelleforest.org",
-    "title": "Interim Executive Director",
+    "name": "Janet Stander",
+    "email": "janet@fontenelleforest.org",
+    "title": "Director of Raptor Recovery",
   },
-
 ]
 
 },{}],8:[function(require,module,exports){
@@ -845,11 +849,6 @@ module.exports=[
     "name": "Joanie Soverns",
     "email": "jsoverns@fontenelleforest.org",
     "title": "Manager of Donor Relations and Membership",
-  },
-  {
-    "name": "Janet Stander",
-    "email": "janet@fontenelleforest.org",
-    "title": "Assistant Manager of Raptor Rehabilitation",
   },
   {
     "name": "Jamie Vann",
