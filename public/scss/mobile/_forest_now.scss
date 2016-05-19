@@ -78,3 +78,9 @@
     right: 0;
   }
 }
+
+.forest_now_top  {
+  .fn_top_top, .fn_top_bottom {
+    flex-direction: column;
+  }
+}

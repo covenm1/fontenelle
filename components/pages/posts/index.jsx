@@ -20,7 +20,7 @@ var FeaturedPost = React.createClass({
     var slug = self.props.slug;
     if (featured_image){
       var style = {
-        backgroundImage: "url("+featured_image.guid+")"
+        backgroundImage: "url("+featured_image.attachment_meta.sizes.large.url+")"
       }
     }
     return (
@@ -112,7 +112,7 @@ module.exports = React.createClass({
     var self = this;
     var posts = self.state.posts.map(function(object){
       var post_style ={
-        backgroundImage: "url("+ object.featured_image.guid +")"
+        backgroundImage: "url("+ object.featured_image.attachment_meta.sizes.medium.url +")"
       }
       if (object.meta){
         var subheader = object.meta.subheader || "";
@@ -136,7 +136,7 @@ module.exports = React.createClass({
 
     var pinned_post = self.state.pinned.map(function(object){
       var post_style ={
-        backgroundImage: "url("+ object.featured_image.guid +")"
+        backgroundImage: "url("+ object.featured_image.attachment_meta.sizes.medium_large.url +")"
       }
       if (object.meta){
         var subheader = object.meta.subheader || "";

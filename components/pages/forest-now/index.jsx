@@ -13,6 +13,18 @@ var Link = Router.Link;
 
 var Footer = require('../../common/footer.jsx');
 
+var SetIntervalMixin = {
+  componentWillMount: function() {
+    this.intervals = [];
+  },
+  setInterval: function() {
+    this.intervals.push(setInterval.apply(null, arguments));
+  },
+  componentWillUnmount: function() {
+    this.intervals.forEach(clearInterval);
+  }
+};
+
 var Instagram = React.createClass({
   render: function(){
     var self = this;
@@ -42,7 +54,7 @@ var FeaturedPost = React.createClass({
     var slug = self.props.slug;
     if (featured_image){
       var style = {
-        backgroundImage: "url("+featured_image.guid+")"
+        backgroundImage: "url("+featured_image.attachment_meta.sizes.medium_large.url+")"
       }
     }
     return (
@@ -188,7 +200,7 @@ var Event = React.createClass({
 });
 
 module.exports = React.createClass({
-  mixins: [ Router.State, Navigation ],
+  mixins: [ Router.State, Navigation, SetIntervalMixin ],
   getInitialState: function() {
     return {
       wildlife: [],
@@ -222,6 +234,8 @@ module.exports = React.createClass({
 
     self.loadExcerpts();
     self.loadTwistagrams();
+
+    self.setInterval(function() { self.setState({arrow_class: !self.state.arrow_class}); }, 500);
 
   },
 
@@ -540,7 +554,7 @@ module.exports = React.createClass({
 
     var posts = self.state.posts.map(function(object, index){
       var post_style ={
-        backgroundImage: "url("+ object.featured_image.guid +")"
+        backgroundImage: "url("+ object.featured_image.attachment_meta.sizes.medium.url +")"
       }
       if (object.meta){
         var subheader = object.meta.subheader || "";
@@ -559,7 +573,7 @@ module.exports = React.createClass({
 
     var pinned_post = self.state.pinned.map(function(object, index){
       var post_style ={
-        backgroundImage: "url("+ object.featured_image.guid +")"
+        backgroundImage: "url("+ object.featured_image.attachment_meta.sizes.medium_large.url +")"
       }
       if (object.meta){
         var subheader = object.meta.subheader || "";
@@ -614,9 +628,6 @@ module.exports = React.createClass({
 
     }
 
-
-
-
     var nature_notes_image = {
       backgroundImage: "url(/img/forest-now/nature_notes_bkgd.jpg)"
     }
@@ -643,25 +654,93 @@ module.exports = React.createClass({
       var featured_subheader = featured.meta.subheader || "";
     }
 
+    // style={top_image}
+
+    var arrow_class = self.state.arrow_class;
 
     return (
       <div>
         <div className="egg_wrap nature_notes_header">
-          <div className="forest_now_top" style={top_image}>
-              <div className="fn_top_left" >
-                <div className="fn_wrap">
-                  <div className="halfcontainer left">
-                    <h3 className="main_title">It's a Beautiful Day</h3>
-                    <h3 className="marker sub_title">in our backyard</h3>
+          <div className="forest_now_top">
+            <div className="fn_top_top">
+              {featured.meta ?
+                <div className="fn_top_left" >
+                  <FeaturedPost
+                    title={featured.title}
+                    featured_image={featured.featured_image}
+                    slug={featured.slug}
+                    subheader={featured_subheader} />
+                </div>
+              : null}
+                <div className="fn_top_right">
+                  <div className="nn_wrap" >
+                    { (self.state.closings.length > 0) ?
+                      <Link to="nature-notes">
+                        <div className="closings_bar">
+                          <div>
+                            {self.state.closings.length} Alert{(self.state.closings.length > 1) ? "s" : null}
+                          </div>
+                        </div>
+                      </Link>
+                    : null }
+                    <div className="nn_wrapper">
+                      <div>
+                        <h2 className="marker nn_main_title">nature notes</h2>
+                        <h3 className="nn_title">PLANTLIFE</h3>
+                        <p className="excerpt">{plant_excerpt}</p>
+                        <h3 className="nn_title">WILDLIFE</h3>
+                        <p className="excerpt">{wild_excerpt}</p>
+                        <div className="nn_links">
+                          <Link to="nature-notes" className="marker nn_link">see all</Link>
+                          <a href="http://www.fnanaturesearch.org/" target="_blank" className="marker nn_link">Nature Search</a>
+                        </div>
+                      </div>
+                      <div className="nature_notes_overlay"></div>
+                    </div>
                   </div>
                 </div>
-                <div className="fn_wrap blue_wrapper">
+              </div>
+              <div className="fn_top_bottom">
+                <div className="fn_top_left" >
+                  <h3 className="explore">Explore the Forest</h3>
+                  <div className="explore-grid">
+                    <Link to="forest" className="explore-link forest-square" style={{backgroundImage: "url(/img/loop_one.jpg)"}}>
+                      <div className="explore-wrapper">
+                        <img className={ arrow_class ? "hero_icon up" : "hero_icon" } src="/img/forest/icon_forest.svg" />
+                        forest
+                      </div>
+                      <div className="explore-overlay"></div>
+                    </Link>
+                    <Link to="education" className="explore-link education-square" style={{backgroundImage: "url(/img/loop_education.jpg)"}}>
+                      <div className="explore-wrapper">
+                        <img className={ arrow_class ? "hero_icon up" : "hero_icon" } src="/img/education/icon_education.svg" />
+                        education
+                      </div>
+                      <div className="explore-overlay"></div>
+                    </Link>
+                    <Link to="programs" className="explore-link programs-square" style={{backgroundImage: "url(/img/loop_programs.jpg)"}}>
+                      <div className="explore-wrapper">
+                        <img className={ arrow_class ? "hero_icon up" : "hero_icon" } src="/img/programs/icon_programs.svg" />
+                        programs
+                      </div>
+                      <div className="explore-overlay"></div>
+                    </Link>
+                    <Link to="natural-resources" className="explore-link conservation-square" style={{backgroundImage: "url(/img/loop_conservation.jpg)"}}>
+                      <div className="explore-wrapper">
+                        <img className={ arrow_class ? "hero_icon up" : "hero_icon" } src="/img/conservation/icon_conservation.svg" />
+                        natural resources
+                      </div>
+                      <div className="explore-overlay"></div>
+                    </Link>
+                  </div>
+                </div>
+                <div className="fn_top_right fn_wrap blue_wrapper">
                   {self.state.weather.currently ?
                     <div className="halfcontainer left">
                       <p className="date">{moment().format('MMMM Do, YYYY')}</p>
                       <p className="temp">{Math.ceil(temp)}°</p>
                       <p className="desc">{hourly}</p>
-                      <p className="desc">{currently}% Chance of rain</p>
+                      <p className="desc">{Math.floor(currently)}% Chance of rain</p>
                     </div>
                   :
                     <div className="halfcontainer left">
@@ -671,29 +750,6 @@ module.exports = React.createClass({
                   }
                 </div>
               </div>
-              <div className="fn_top_right">
-                <div className="nn_wrap">
-                  { (self.state.closings.length > 0) ?
-                    <Link to="nature-notes">
-                      <div className="closings_bar">
-                        <div className="halfcontainer right">
-                          {self.state.closings.length} Alert{(self.state.closings.length > 1) ? "s" : null}
-                        </div>
-                      </div>
-                    </Link>
-                  : null }
-                  <div className="halfcontainer right">
-                    <h2 className="marker nn_main_title">nature notes</h2>
-                    <h3 className="nn_title">PLANTLIFE</h3>
-                    <p className="excerpt">{plant_excerpt}</p>
-                    <h3 className="nn_title">WILDLIFE</h3>
-                    <p className="excerpt">{wild_excerpt}</p>
-                    <Link to="nature-notes" className="marker nn_link">see all</Link>
-                  </div>
-                </div>
-                <div className="nature_notes_overlay"></div>
-              </div>
-
           </div>
           <div className='now-blue'>
             <div className='now-links image_container'>
@@ -705,46 +761,47 @@ module.exports = React.createClass({
           </div>
 
           <div className='image_container'>
-            <div className='now-left'>
-              <h3 className="week_title marker">
-                <span className="prev_week" onClick={self.prevWeek}>
-                  <svg className="arrow_circle blue left_arrow" x="0px" y="0px" viewBox="0 0 52 52" enableBackground="new 0 0 52 52" >
-                  	<path className="circle" strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"/>
-                  	<g className="arrow" >
-                  		<path strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M22.6,25.9c0,0,1,1.6,1,4.4c0,2.6,0.6,3.5,0.6,3.8c0,0.4-0.3,0.7-0.7,0.5s-8.6-6.2-10.5-8.1
-                  			c0,0-0.2-0.2-0.2-0.5v-0.1c0-0.2,0.1-0.4,0.2-0.5c1.7-1.7,10.1-7.9,10.5-8.1c0.3-0.2,0.7-0.1,0.7,0.5c0,0.3-0.6,1.1-0.6,3.8
-                  			C23.6,24.3,22.6,25.9,22.6,25.9z" />
-                  		<line strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' x1="24.2" y1="25.9" x2="39.3" y2="25.9"/>
-                  	</g>
-                  </svg>
-                </span>
-                {week_text}<span className="actual_week">{moment(self.state.week, 'DDMMYYYY').startOf('week').add(1, "day").format('MMMM D')} - {moment(self.state.week, 'DDMMYYYY').endOf('week').add(1, "day").format('MMMM D')} </span>
-                <span className="next_week" onClick={self.nextWeek}>
-                  <svg className="arrow_circle blue right_arrow" x="0px" y="0px" viewBox="0 0 52 52" enableBackground="new 0 0 52 52" >
-                    <path className="circle" strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"/>
-                    <g className="arrow" >
-                      <path strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M29.4,25.9c0,0-1,1.6-1,4.4c0,2.6-0.6,3.5-0.6,3.8c0,0.4,0.3,0.7,0.7,0.5s8.6-6.2,10.5-8.1
-                      c0,0,0.2-0.2,0.2-0.5v-0.1c0-0.2-0.1-0.4-0.2-0.5c-1.7-1.7-10.1-7.9-10.5-8.1c-0.3-0.2-0.7-0.1-0.7,0.5c0,0.3,0.6,1.1,0.6,3.8
-                      C28.4,24.3,29.4,25.9,29.4,25.9z"/>
-                      <line strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' x1="27.8" y1="25.9" x2="12.7" y2="25.9"/>
-                    </g>
-                  </svg>
-                </span>
-              </h3>
-              <p className="event_legend"><span className="greenbox"></span><span className="registration"> Registration Required</span></p>
-              {events}
-            </div>
+            { events.length ?
+              <div className='now-left'>
+                <h3 className="week_title marker">
+                  <span className="prev_week" onClick={self.prevWeek}>
+                    <svg className="arrow_circle blue left_arrow" x="0px" y="0px" viewBox="0 0 52 52" enableBackground="new 0 0 52 52" >
+                    	<path className="circle" strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"/>
+                    	<g className="arrow" >
+                    		<path strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M22.6,25.9c0,0,1,1.6,1,4.4c0,2.6,0.6,3.5,0.6,3.8c0,0.4-0.3,0.7-0.7,0.5s-8.6-6.2-10.5-8.1
+                    			c0,0-0.2-0.2-0.2-0.5v-0.1c0-0.2,0.1-0.4,0.2-0.5c1.7-1.7,10.1-7.9,10.5-8.1c0.3-0.2,0.7-0.1,0.7,0.5c0,0.3-0.6,1.1-0.6,3.8
+                    			C23.6,24.3,22.6,25.9,22.6,25.9z" />
+                    		<line strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' x1="24.2" y1="25.9" x2="39.3" y2="25.9"/>
+                    	</g>
+                    </svg>
+                  </span>
+                  {week_text}<span className="actual_week">{moment(self.state.week, 'DDMMYYYY').startOf('week').add(1, "day").format('MMMM D')} - {moment(self.state.week, 'DDMMYYYY').endOf('week').add(1, "day").format('MMMM D')} </span>
+                  <span className="next_week" onClick={self.nextWeek}>
+                    <svg className="arrow_circle blue right_arrow" x="0px" y="0px" viewBox="0 0 52 52" enableBackground="new 0 0 52 52" >
+                      <path className="circle" strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"/>
+                      <g className="arrow" >
+                        <path strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M29.4,25.9c0,0-1,1.6-1,4.4c0,2.6-0.6,3.5-0.6,3.8c0,0.4,0.3,0.7,0.7,0.5s8.6-6.2,10.5-8.1
+                        c0,0,0.2-0.2,0.2-0.5v-0.1c0-0.2-0.1-0.4-0.2-0.5c-1.7-1.7-10.1-7.9-10.5-8.1c-0.3-0.2-0.7-0.1-0.7,0.5c0,0.3,0.6,1.1,0.6,3.8
+                        C28.4,24.3,29.4,25.9,29.4,25.9z"/>
+                        <line strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' x1="27.8" y1="25.9" x2="12.7" y2="25.9"/>
+                      </g>
+                    </svg>
+                  </span>
+                </h3>
+                <p className="event_legend"><span className="greenbox"></span><span className="registration"> Registration Required</span></p>
+                {events}
+              </div>
+              : null
+            }
             <div className='now-right'>
-              {featured ?
-                <FeaturedPost
-                  title={featured.title}
-                  featured_image={featured.featured_image}
-                  slug={featured.slug}
-                  subheader={featured_subheader} />
-              : null}
               {pinned_post}
-              {posts}
-              <Link to='/posts' className="all_posts_link">VIEW ALL POSTS</Link>
+              { posts.length ?
+                  <span>
+                    {posts}
+                    <Link to='/posts' className="all_posts_link">VIEW ALL POSTS</Link>
+                  </span>
+                : null
+              }
             </div>
           </div>
 

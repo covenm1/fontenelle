@@ -284,7 +284,7 @@ var App = React.createClass({
 			        <Link to="/" className="logo"><img src="/img/logo.png" alt="" /></Link>
 			        <span className="global_menu">
 			            <Link to="/found-raptor" className="link">Found Raptor</Link>
-			            <Link to="/forest-now" className="link">Forest Now</Link>
+			            <Link to="/forest" className="link">Explore the Forest</Link>
 									<Link to="/get-involved" className="link">Get Involved</Link>
 			        </span>
 							<span className="menu_icon" onClick={self.toggleMenu}><span className="hamburger_icon"></span> <span className="menu_label">Menu</span></span>
@@ -293,7 +293,7 @@ var App = React.createClass({
 					<div className="sidebar">
 						<span className="close_menu_button" onClick={self.toggleMenu}><span className="top_close"></span><span className="bottom_close"></span></span>
 						<div className="sidebar_links">
-							<Link to="/" className="link" onClick={self.toggleMenu}><h2 className="forest main">Forest</h2></Link>
+							<Link to="/forest" className="link" onClick={self.toggleMenu}><h2 className="forest main">Forest</h2></Link>
 
 							<Link to="/forest/trails" className="link section" onClick={self.toggleMenu}>Trails</Link>
 							<Link to="/forest/fauna" className="link section" onClick={self.toggleMenu}>Fauna &amp; Flora</Link>
@@ -315,7 +315,7 @@ var App = React.createClass({
 							<Link to="/programs/adults" className="link section" onClick={self.toggleMenu}>Adults</Link>
 							<Link to="/programs/groups" className="link section" onClick={self.toggleMenu}>Groups</Link>
 
-							<Link to="/forest-now" className="link" onClick={self.toggleMenu}><h2 className="main">Forest Now</h2></Link>
+							<Link to="/" className="link" onClick={self.toggleMenu}><h2 className="main">Forest Now</h2></Link>
 							<Link to="/found-raptor" className="link" onClick={self.toggleMenu}><h2 className="main">Found Raptor</h2></Link>
 
 							<Link to="/get-involved" className="link" onClick={self.toggleMenu}><h2 className="main">Get Involved</h2></Link>
@@ -352,7 +352,7 @@ var App = React.createClass({
 							<Link to="/" className="logo"><img src="/img/logo.png" alt="" /></Link>
 							<span className="global_menu">
 									<Link to="/found-raptor" className="link">Found Raptor</Link>
-									<Link to="/forest-now" className="link">Forest Now</Link>
+									<Link to="/forest" className="link">Explore the Forest</Link>
 									<Link to="/get-involved" className="link">Get Involved</Link>
 							</span>
 							<span className="menu_icon" onClick={self.toggleMenu}><span className="hamburger_icon"></span> <span className="menu_label">Menu</span></span>
@@ -361,7 +361,7 @@ var App = React.createClass({
 					<div className="sidebar">
 						<span className="close_menu_button" onClick={self.toggleMenu}><span className="top_close"></span><span className="bottom_close"></span></span>
 						<div className="sidebar_links">
-							<Link to="/" className="link" onClick={self.toggleMenu}><h2 className="forest main">Forest</h2></Link>
+							<Link to="/forest/" className="link" onClick={self.toggleMenu}><h2 className="forest main">Forest</h2></Link>
 
 							<Link to="/forest/trails" className="link section" onClick={self.toggleMenu}>Trails</Link>
 							<Link to="/forest/fauna" className="link section" onClick={self.toggleMenu}>Fauna &amp; Flora</Link>
@@ -383,7 +383,7 @@ var App = React.createClass({
 							<Link to="/programs/adults" className="link section" onClick={self.toggleMenu}>Adults</Link>
 							<Link to="/programs/groups" className="link section" onClick={self.toggleMenu}>Groups</Link>
 
-							<Link to="/forest-now" className="link" onClick={self.toggleMenu}><h2 className="main">Forest Now</h2></Link>
+							<Link to="/" className="link" onClick={self.toggleMenu}><h2 className="main">Forest Now</h2></Link>
 							<Link to="/found-raptor" className="link" onClick={self.toggleMenu}><h2 className="main">Found Raptor</h2></Link>
 
 							<Link to="/get-involved" className="link" onClick={self.toggleMenu}><h2 className="main">Get Involved</h2></Link>
@@ -392,7 +392,7 @@ var App = React.createClass({
 							<Link to="/get-involved/volunteer" className="link section" onClick={self.toggleMenu}>Volunteer</Link>
 							<Link to="/get-involved/guild" className="link section" onClick={self.toggleMenu}>Guild</Link>
 							<Link to="/get-involved/feather" className="link section" onClick={self.toggleMenu}>Feather Our Nest</Link>
-							
+
 							<Link to="/contact" className="link" onClick={self.toggleMenu}><h2 className="main">Contact</h2></Link>
 							<Link to="/board-of-directors" className="link section" onClick={self.toggleMenu}>Board</Link>
 							<Link to="/hours-and-admissions" className="link section" onClick={self.toggleMenu}>Hours and Admissions</Link>
@@ -414,7 +414,10 @@ var App = React.createClass({
 
 var routes = (
   <Route handler={App}>
-    <Route name="forest" path="/" handler={forest} addHandlerKey={true} ignoreScrollBehavior>
+
+		<Route name="forest-now" path="/" handler={forestnow} addHandlerKey={true} />
+
+    <Route name="forest" path="/forest" handler={forest} addHandlerKey={true} ignoreScrollBehavior>
 			<Route path="/forest/:scroll" handler={forest} addHandlerKey={true}/>
 		</Route>
     <Route name="natural-resources" path="/natural-resources" handler={naturalresources} addHandlerKey={true} ignoreScrollBehavior>
@@ -433,14 +436,14 @@ var routes = (
     <Route name="meet-the-raptors" path="/meet-the-raptors" handler={meettheraptors} addHandlerKey={true} />
     <Route name="hours-and-admissions" path="/hours-and-admissions" handler={hoursandadmissions} addHandlerKey={true} />
     <Route name="board-of-directors" path="/board-of-directors" handler={boardofdirectors} addHandlerKey={true} />
-    <Route name="forest-now" path="/forest-now" handler={forestnow} addHandlerKey={true} />
+
 		<Route name="nature-notes" path="/forest-now/nature-notes" handler={naturenotes} addHandlerKey={true} />
 		<Route name="contact" path="/contact" handler={contact} addHandlerKey={true} />
 		<Route path="/post/:name" handler={post} addHandlerKey={true} />
 		<Route path="/posts" handler={posts} addHandlerKey={true} />
 		<Route path="/urban-wildlife" handler={urbanwildlife} addHandlerKey={true} />
 		<Route path="/careers" handler={careers} addHandlerKey={true} />
-		<NotFoundRoute handler={forest} />
+		<NotFoundRoute handler={forestnow} />
   </Route>
 
 );

@@ -3739,6 +3739,28 @@ var Link = Router.Link;
 
 var Footer = require('../../common/footer.jsx');
 
+var SetIntervalMixin = {
+  componentWillMount: function componentWillMount() {
+    this.intervals = [];
+  },
+  setInterval: function (_setInterval) {
+    function setInterval() {
+      return _setInterval.apply(this, arguments);
+    }
+
+    setInterval.toString = function () {
+      return _setInterval.toString();
+    };
+
+    return setInterval;
+  }(function () {
+    this.intervals.push(setInterval.apply(null, arguments));
+  }),
+  componentWillUnmount: function componentWillUnmount() {
+    this.intervals.forEach(clearInterval);
+  }
+};
+
 var Instagram = React.createClass({
   displayName: 'Instagram',
 
@@ -3786,7 +3808,7 @@ var FeaturedPost = React.createClass({
     var slug = self.props.slug;
     if (featured_image) {
       var style = {
-        backgroundImage: "url(" + featured_image.guid + ")"
+        backgroundImage: "url(" + featured_image.attachment_meta.sizes.medium_large.url + ")"
       };
     }
     return React.createElement(
@@ -4108,7 +4130,7 @@ var Event = React.createClass({
 module.exports = React.createClass({
   displayName: 'exports',
 
-  mixins: [Router.State, Navigation],
+  mixins: [Router.State, Navigation, SetIntervalMixin],
   getInitialState: function getInitialState() {
     return {
       wildlife: [],
@@ -4142,6 +4164,10 @@ module.exports = React.createClass({
 
     self.loadExcerpts();
     self.loadTwistagrams();
+
+    self.setInterval(function () {
+      self.setState({ arrow_class: !self.state.arrow_class });
+    }, 500);
   },
 
   componentWillReceiveProps: function componentWillReceiveProps() {},
@@ -4407,7 +4433,7 @@ module.exports = React.createClass({
 
     var posts = self.state.posts.map(function (object, index) {
       var post_style = {
-        backgroundImage: "url(" + object.featured_image.guid + ")"
+        backgroundImage: "url(" + object.featured_image.attachment_meta.sizes.medium.url + ")"
       };
       if (object.meta) {
         var subheader = object.meta.subheader || "";
@@ -4436,7 +4462,7 @@ module.exports = React.createClass({
 
     var pinned_post = self.state.pinned.map(function (object, index) {
       var post_style = {
-        backgroundImage: "url(" + object.featured_image.guid + ")"
+        backgroundImage: "url(" + object.featured_image.attachment_meta.sizes.medium_large.url + ")"
       };
       if (object.meta) {
         var subheader = object.meta.subheader || "";
@@ -4525,6 +4551,10 @@ module.exports = React.createClass({
       var featured_subheader = featured.meta.subheader || "";
     }
 
+    // style={top_image}
+
+    var arrow_class = self.state.arrow_class;
+
     return React.createElement(
       'div',
       null,
@@ -4533,31 +4563,154 @@ module.exports = React.createClass({
         { className: 'egg_wrap nature_notes_header' },
         React.createElement(
           'div',
-          { className: 'forest_now_top', style: top_image },
+          { className: 'forest_now_top' },
           React.createElement(
             'div',
-            { className: 'fn_top_left' },
+            { className: 'fn_top_top' },
+            featured.meta ? React.createElement(
+              'div',
+              { className: 'fn_top_left' },
+              React.createElement(FeaturedPost, {
+                title: featured.title,
+                featured_image: featured.featured_image,
+                slug: featured.slug,
+                subheader: featured_subheader })
+            ) : null,
             React.createElement(
               'div',
-              { className: 'fn_wrap' },
+              { className: 'fn_top_right' },
               React.createElement(
                 'div',
-                { className: 'halfcontainer left' },
+                { className: 'nn_wrap' },
+                self.state.closings.length > 0 ? React.createElement(
+                  Link,
+                  { to: 'nature-notes' },
+                  React.createElement(
+                    'div',
+                    { className: 'closings_bar' },
+                    React.createElement(
+                      'div',
+                      null,
+                      self.state.closings.length,
+                      ' Alert',
+                      self.state.closings.length > 1 ? "s" : null
+                    )
+                  )
+                ) : null,
                 React.createElement(
-                  'h3',
-                  { className: 'main_title' },
-                  'It\'s a Beautiful Day'
+                  'div',
+                  { className: 'nn_wrapper' },
+                  React.createElement(
+                    'div',
+                    null,
+                    React.createElement(
+                      'h2',
+                      { className: 'marker nn_main_title' },
+                      'nature notes'
+                    ),
+                    React.createElement(
+                      'h3',
+                      { className: 'nn_title' },
+                      'PLANTLIFE'
+                    ),
+                    React.createElement(
+                      'p',
+                      { className: 'excerpt' },
+                      plant_excerpt
+                    ),
+                    React.createElement(
+                      'h3',
+                      { className: 'nn_title' },
+                      'WILDLIFE'
+                    ),
+                    React.createElement(
+                      'p',
+                      { className: 'excerpt' },
+                      wild_excerpt
+                    ),
+                    React.createElement(
+                      'div',
+                      { className: 'nn_links' },
+                      React.createElement(
+                        Link,
+                        { to: 'nature-notes', className: 'marker nn_link' },
+                        'see all'
+                      ),
+                      React.createElement(
+                        'a',
+                        { href: 'http://www.fnanaturesearch.org/', target: '_blank', className: 'marker nn_link' },
+                        'Nature Search'
+                      )
+                    )
+                  ),
+                  React.createElement('div', { className: 'nature_notes_overlay' })
+                )
+              )
+            )
+          ),
+          React.createElement(
+            'div',
+            { className: 'fn_top_bottom' },
+            React.createElement(
+              'div',
+              { className: 'fn_top_left' },
+              React.createElement(
+                'h3',
+                { className: 'explore' },
+                'Explore the Forest'
+              ),
+              React.createElement(
+                'div',
+                { className: 'explore-grid' },
+                React.createElement(
+                  Link,
+                  { to: 'forest', className: 'explore-link forest-square', style: { backgroundImage: "url(/img/loop_one.jpg)" } },
+                  React.createElement(
+                    'div',
+                    { className: 'explore-wrapper' },
+                    React.createElement('img', { className: arrow_class ? "hero_icon up" : "hero_icon", src: '/img/forest/icon_forest.svg' }),
+                    'forest'
+                  ),
+                  React.createElement('div', { className: 'explore-overlay' })
                 ),
                 React.createElement(
-                  'h3',
-                  { className: 'marker sub_title' },
-                  'in our backyard'
+                  Link,
+                  { to: 'education', className: 'explore-link education-square', style: { backgroundImage: "url(/img/loop_education.jpg)" } },
+                  React.createElement(
+                    'div',
+                    { className: 'explore-wrapper' },
+                    React.createElement('img', { className: arrow_class ? "hero_icon up" : "hero_icon", src: '/img/education/icon_education.svg' }),
+                    'education'
+                  ),
+                  React.createElement('div', { className: 'explore-overlay' })
+                ),
+                React.createElement(
+                  Link,
+                  { to: 'programs', className: 'explore-link programs-square', style: { backgroundImage: "url(/img/loop_programs.jpg)" } },
+                  React.createElement(
+                    'div',
+                    { className: 'explore-wrapper' },
+                    React.createElement('img', { className: arrow_class ? "hero_icon up" : "hero_icon", src: '/img/programs/icon_programs.svg' }),
+                    'programs'
+                  ),
+                  React.createElement('div', { className: 'explore-overlay' })
+                ),
+                React.createElement(
+                  Link,
+                  { to: 'natural-resources', className: 'explore-link conservation-square', style: { backgroundImage: "url(/img/loop_conservation.jpg)" } },
+                  React.createElement(
+                    'div',
+                    { className: 'explore-wrapper' },
+                    React.createElement('img', { className: arrow_class ? "hero_icon up" : "hero_icon", src: '/img/conservation/icon_conservation.svg' }),
+                    'natural resources'
+                  ),
+                  React.createElement('div', { className: 'explore-overlay' })
                 )
               )
             ),
             React.createElement(
               'div',
-              { className: 'fn_wrap blue_wrapper' },
+              { className: 'fn_top_right fn_wrap blue_wrapper' },
               self.state.weather.currently ? React.createElement(
                 'div',
                 { className: 'halfcontainer left' },
@@ -4580,7 +4733,7 @@ module.exports = React.createClass({
                 React.createElement(
                   'p',
                   { className: 'desc' },
-                  currently,
+                  Math.floor(currently),
                   '% Chance of rain'
                 )
               ) : React.createElement(
@@ -4598,64 +4751,6 @@ module.exports = React.createClass({
                 )
               )
             )
-          ),
-          React.createElement(
-            'div',
-            { className: 'fn_top_right' },
-            React.createElement(
-              'div',
-              { className: 'nn_wrap' },
-              self.state.closings.length > 0 ? React.createElement(
-                Link,
-                { to: 'nature-notes' },
-                React.createElement(
-                  'div',
-                  { className: 'closings_bar' },
-                  React.createElement(
-                    'div',
-                    { className: 'halfcontainer right' },
-                    self.state.closings.length,
-                    ' Alert',
-                    self.state.closings.length > 1 ? "s" : null
-                  )
-                )
-              ) : null,
-              React.createElement(
-                'div',
-                { className: 'halfcontainer right' },
-                React.createElement(
-                  'h2',
-                  { className: 'marker nn_main_title' },
-                  'nature notes'
-                ),
-                React.createElement(
-                  'h3',
-                  { className: 'nn_title' },
-                  'PLANTLIFE'
-                ),
-                React.createElement(
-                  'p',
-                  { className: 'excerpt' },
-                  plant_excerpt
-                ),
-                React.createElement(
-                  'h3',
-                  { className: 'nn_title' },
-                  'WILDLIFE'
-                ),
-                React.createElement(
-                  'p',
-                  { className: 'excerpt' },
-                  wild_excerpt
-                ),
-                React.createElement(
-                  Link,
-                  { to: 'nature-notes', className: 'marker nn_link' },
-                  'see all'
-                )
-              )
-            ),
-            React.createElement('div', { className: 'nature_notes_overlay' })
           )
         ),
         React.createElement(
@@ -4700,7 +4795,7 @@ module.exports = React.createClass({
         React.createElement(
           'div',
           { className: 'image_container' },
-          React.createElement(
+          events.length ? React.createElement(
             'div',
             { className: 'now-left' },
             React.createElement(
@@ -4757,22 +4852,21 @@ module.exports = React.createClass({
               )
             ),
             events
-          ),
+          ) : null,
           React.createElement(
             'div',
             { className: 'now-right' },
-            featured ? React.createElement(FeaturedPost, {
-              title: featured.title,
-              featured_image: featured.featured_image,
-              slug: featured.slug,
-              subheader: featured_subheader }) : null,
             pinned_post,
-            posts,
-            React.createElement(
-              Link,
-              { to: '/posts', className: 'all_posts_link' },
-              'VIEW ALL POSTS'
-            )
+            posts.length ? React.createElement(
+              'span',
+              null,
+              posts,
+              React.createElement(
+                Link,
+                { to: '/posts', className: 'all_posts_link' },
+                'VIEW ALL POSTS'
+              )
+            ) : null
           )
         ),
         React.createElement(
@@ -6510,8 +6604,8 @@ var App = React.createClass({
 						),
 						React.createElement(
 							Link,
-							{ to: "/forest-now", className: "link" },
-							"Forest Now"
+							{ to: "/forest", className: "link" },
+							"Explore the Forest"
 						),
 						React.createElement(
 							Link,
@@ -6546,7 +6640,7 @@ var App = React.createClass({
 						{ className: "sidebar_links" },
 						React.createElement(
 							Link,
-							{ to: "/", className: "link", onClick: self.toggleMenu },
+							{ to: "/forest", className: "link", onClick: self.toggleMenu },
 							React.createElement(
 								"h2",
 								{ className: "forest main" },
@@ -6637,7 +6731,7 @@ var App = React.createClass({
 						),
 						React.createElement(
 							Link,
-							{ to: "/forest-now", className: "link", onClick: self.toggleMenu },
+							{ to: "/", className: "link", onClick: self.toggleMenu },
 							React.createElement(
 								"h2",
 								{ className: "main" },
@@ -6752,8 +6846,8 @@ var App = React.createClass({
 						),
 						React.createElement(
 							Link,
-							{ to: "/forest-now", className: "link" },
-							"Forest Now"
+							{ to: "/forest", className: "link" },
+							"Explore the Forest"
 						),
 						React.createElement(
 							Link,
@@ -6788,7 +6882,7 @@ var App = React.createClass({
 						{ className: "sidebar_links" },
 						React.createElement(
 							Link,
-							{ to: "/", className: "link", onClick: self.toggleMenu },
+							{ to: "/forest/", className: "link", onClick: self.toggleMenu },
 							React.createElement(
 								"h2",
 								{ className: "forest main" },
@@ -6879,7 +6973,7 @@ var App = React.createClass({
 						),
 						React.createElement(
 							Link,
-							{ to: "/forest-now", className: "link", onClick: self.toggleMenu },
+							{ to: "/", className: "link", onClick: self.toggleMenu },
 							React.createElement(
 								"h2",
 								{ className: "main" },
@@ -6972,9 +7066,10 @@ var App = React.createClass({
 var routes = React.createElement(
 	Route,
 	{ handler: App },
+	React.createElement(Route, { name: "forest-now", path: "/", handler: forestnow, addHandlerKey: true }),
 	React.createElement(
 		Route,
-		{ name: "forest", path: "/", handler: forest, addHandlerKey: true, ignoreScrollBehavior: true },
+		{ name: "forest", path: "/forest", handler: forest, addHandlerKey: true, ignoreScrollBehavior: true },
 		React.createElement(Route, { path: "/forest/:scroll", handler: forest, addHandlerKey: true })
 	),
 	React.createElement(
@@ -7001,14 +7096,13 @@ var routes = React.createElement(
 	React.createElement(Route, { name: "meet-the-raptors", path: "/meet-the-raptors", handler: meettheraptors, addHandlerKey: true }),
 	React.createElement(Route, { name: "hours-and-admissions", path: "/hours-and-admissions", handler: hoursandadmissions, addHandlerKey: true }),
 	React.createElement(Route, { name: "board-of-directors", path: "/board-of-directors", handler: boardofdirectors, addHandlerKey: true }),
-	React.createElement(Route, { name: "forest-now", path: "/forest-now", handler: forestnow, addHandlerKey: true }),
 	React.createElement(Route, { name: "nature-notes", path: "/forest-now/nature-notes", handler: naturenotes, addHandlerKey: true }),
 	React.createElement(Route, { name: "contact", path: "/contact", handler: contact, addHandlerKey: true }),
 	React.createElement(Route, { path: "/post/:name", handler: post, addHandlerKey: true }),
 	React.createElement(Route, { path: "/posts", handler: posts, addHandlerKey: true }),
 	React.createElement(Route, { path: "/urban-wildlife", handler: urbanwildlife, addHandlerKey: true }),
 	React.createElement(Route, { path: "/careers", handler: careers, addHandlerKey: true }),
-	React.createElement(NotFoundRoute, { handler: forest })
+	React.createElement(NotFoundRoute, { handler: forestnow })
 );
 
 function analytics(state) {
@@ -7551,7 +7645,7 @@ var FeaturedPost = React.createClass({
     var slug = self.props.slug;
     if (featured_image) {
       var style = {
-        backgroundImage: "url(" + featured_image.guid + ")"
+        backgroundImage: "url(" + featured_image.attachment_meta.sizes.large.url + ")"
       };
     }
     return React.createElement(
@@ -7640,7 +7734,7 @@ module.exports = React.createClass({
     var self = this;
     var posts = self.state.posts.map(function (object) {
       var post_style = {
-        backgroundImage: "url(" + object.featured_image.guid + ")"
+        backgroundImage: "url(" + object.featured_image.attachment_meta.sizes.medium.url + ")"
       };
       if (object.meta) {
         var subheader = object.meta.subheader || "";
@@ -7674,7 +7768,7 @@ module.exports = React.createClass({
 
     var pinned_post = self.state.pinned.map(function (object) {
       var post_style = {
-        backgroundImage: "url(" + object.featured_image.guid + ")"
+        backgroundImage: "url(" + object.featured_image.attachment_meta.sizes.medium_large.url + ")"
       };
       if (object.meta) {
         var subheader = object.meta.subheader || "";
