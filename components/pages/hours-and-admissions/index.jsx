@@ -28,7 +28,7 @@ module.exports = React.createClass({
                 <div className="ha_columns">
                   <div>
                     <h3>HOURS</h3>
-                    <p><b>Open daily, year-round from 8 a.m. - 5 p.m.</b></p>
+                    <p><b>Memorial Day through Labor Day, 8 AM-7 PM Monday-Friday, 8 AM-5 PM Weekends</b></p>
                     <p>Trails open dawn to dusk for FF members (with a Keyless Access FOB*) and visitors entering before nature center closes.</p>
                     <p>*Keyless Access Fobs are issued by request during business hours at Visitor Services and require a refundable $10 deposit.</p>
                     <p>All facilities are closed on Thanksgiving Day, Christmas Day and New Year's Day. FF Closure Policy for Inclement Weather: All of FF properties are closed when Omaha Public Schools cancels classes.</p>
@@ -36,9 +36,9 @@ module.exports = React.createClass({
                   <div>
                     <h3>ADMISSION</h3>
                     <p><b>Free for FF Members - Become a member today!</b>
-                      <br/>$7 per adult
-                      <br/>$6 per senior (62+)
-                      <br/>$5 per child/student (2-17)
+                      <br/>$9.50 per adult
+                      <br/>$8.50 per senior (62+)
+                      <br/>$7.50 per child/student (2-17)
                       <br/>Free for children under age 2
                     </p>
                     <p>New! Purchase admission online. Click here</p>
