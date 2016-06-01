@@ -58,25 +58,27 @@ module.exports = function(app) {
 
 			if (!error) {
 				Instagram.user_media_recent('299247338',  function(error, instagrams, pagination, remaining, limit) {
-
-					var formattedInstagrams = instagrams.map(function(obj){
-						var created_time = moment.unix(obj.created_time);
-						 var rObj = {
-							 type: "instagram",
-							 time: created_time,
-							 content: obj
-						 };
-						 return rObj;
-					});
-					var twistagrams = formattedTweets.concat(formattedInstagrams);
-					var formattedTwistagrams = twistagrams.sort(function(a,b){
-					  return new Date(b.time) - new Date(a.time);
-					});
-
-					res.json(formattedTwistagrams);
+          if (instagrams){
+            var formattedInstagrams = instagrams.map(function(obj){
+              var created_time = moment.unix(obj.created_time);
+               var rObj = {
+                 type: "instagram",
+                 time: created_time,
+                 content: obj
+               };
+               return rObj;
+            });
+            var twistagrams = formattedTweets.concat(formattedInstagrams);
+            var formattedTwistagrams = twistagrams.sort(function(a,b){
+              return new Date(b.time) - new Date(a.time);
+            });
+            res.json(formattedTwistagrams);
+          } else {
+            res.json(formattedTweets);
+          }
 				});
 			} else {
-        res.json(formattedTwistagrams);
+        res.json(formattedTweets);
       }
 		});
 	});
