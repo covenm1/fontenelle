@@ -75,7 +75,9 @@ module.exports = function(app) {
 
 					res.json(formattedTwistagrams);
 				});
-			}
+			} else {
+        res.json(formattedTwistagrams);
+      }
 		});
 	});
 
