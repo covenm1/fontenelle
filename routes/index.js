@@ -79,9 +79,13 @@ module.exports = function(app) {
 		});
 	});
 
+  app.get('/butterfly', function(req, res) {
+    res.redirect('https://form.jotform.com/61646139578164');
+	});
+
   app.get('/camps', function(req, res) {
     res.redirect('/post/2016-nature-discovery-day-camps');
-	});
+  });
 
   app.get('/volunteer', function(req, res) {
     res.redirect('https://8913.blackbaudhosting.com/8913/tickets?tab=2&txobjid=f500c15a-5010-454b-8321-d865ca9a3542');
