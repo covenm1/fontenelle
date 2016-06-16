@@ -42,7 +42,7 @@ module.exports = function(app) {
 		});
 	});
 
-	/*app.get('/twistagrams', function(req, res) {
+	app.get('/twistagrams', function(req, res) {
 		var params = {screen_name: 'fontenelle4est'};
 		client.get('statuses/user_timeline', params, function(error, tweets, response){
 
@@ -58,26 +58,30 @@ module.exports = function(app) {
 
 			if (!error) {
 				Instagram.user_media_recent('299247338',  function(error, instagrams, pagination, remaining, limit) {
-
-					var formattedInstagrams = instagrams.map(function(obj){
-						var created_time = moment.unix(obj.created_time);
-						 var rObj = {
-							 type: "instagram",
-							 time: created_time,
-							 content: obj
-						 };
-						 return rObj;
-					});
-					var twistagrams = formattedTweets.concat(formattedInstagrams);
-					var formattedTwistagrams = twistagrams.sort(function(a,b){
-					  return new Date(b.time) - new Date(a.time);
-					});
-
-					res.json(formattedTwistagrams);
+          if (instagrams){
+            var formattedInstagrams = instagrams.map(function(obj){
+              var created_time = moment.unix(obj.created_time);
+               var rObj = {
+                 type: "instagram",
+                 time: created_time,
+                 content: obj
+               };
+               return rObj;
+            });
+            var twistagrams = formattedTweets.concat(formattedInstagrams);
+            var formattedTwistagrams = twistagrams.sort(function(a,b){
+              return new Date(b.time) - new Date(a.time);
+            });
+            res.json(formattedTwistagrams);
+          } else {
+            res.json(formattedTweets);
+          }
 				});
-			}
+			} else {
+        res.json(formattedTweets);
+      }
 		});
-	}); */
+	});
 
   app.get('/butterfly', function(req, res) {
     res.redirect('https://form.jotform.com/61646139578164');

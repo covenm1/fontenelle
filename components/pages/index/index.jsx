@@ -32,7 +32,8 @@ var forest = require('../forest/index.jsx'),
 		contact = require('../contact/index.jsx'),
 		posts = require('../posts/index.jsx'),
 		post = require('../post/index.jsx'),
-		careers = require('../careers/index.jsx');
+		careers = require('../careers/index.jsx'),
+		privacy = require('../privacy/index.jsx');
 
 
 var Loading = require('../../common/loading_arrows.jsx');
@@ -443,6 +444,7 @@ var routes = (
 		<Route path="/posts" handler={posts} addHandlerKey={true} />
 		<Route path="/urban-wildlife" handler={urbanwildlife} addHandlerKey={true} />
 		<Route path="/careers" handler={careers} addHandlerKey={true} />
+		<Route path="/privacy" handler={privacy} addHandlerKey={true} />
 		<NotFoundRoute handler={forestnow} />
   </Route>
 
