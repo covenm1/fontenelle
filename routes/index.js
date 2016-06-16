@@ -42,7 +42,7 @@ module.exports = function(app) {
 		});
 	});
 
-	app.get('/twistagrams', function(req, res) {
+	/*app.get('/twistagrams', function(req, res) {
 		var params = {screen_name: 'fontenelle4est'};
 		client.get('statuses/user_timeline', params, function(error, tweets, response){
 
@@ -77,7 +77,7 @@ module.exports = function(app) {
 				});
 			}
 		});
-	});
+	});*/
 
   app.get('/butterfly', function(req, res) {
     res.redirect('https://form.jotform.com/61646139578164');
