@@ -77,7 +77,7 @@ module.exports = function(app) {
 				});
 			}
 		});
-	});*/
+	}); */
 
   app.get('/butterfly', function(req, res) {
     res.redirect('https://form.jotform.com/61646139578164');
