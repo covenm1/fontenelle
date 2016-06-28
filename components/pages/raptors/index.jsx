@@ -170,7 +170,7 @@ module.exports = React.createClass({
                   </div>
                 </div>
                 <div className="recoveries">
-                  <img src="/img/raptors/eastern-screech.jpg" />
+                  <img src="/img/raptors/peregrine.jpg" />
                   <div>
                     <h2>Charlotte</h2>
                     <p><b>Peregrine Falcon</b></p>
@@ -178,7 +178,7 @@ module.exports = React.createClass({
                   </div>
                 </div>
                 <div className="recoveries">
-                  <img src="/img/raptors/peregrine.jpg" />
+                  <img src="/img/raptors/eastern-screech.jpg" />
                   <div>
                     <h2>Chinook</h2>
                     <p><b>Eastern Screech-Owl</b></p>

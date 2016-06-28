@@ -87,6 +87,10 @@ module.exports = function(app) {
     res.redirect('https://form.jotform.com/61646139578164');
 	});
 
+  app.get('/patron', function(req, res) {
+    res.redirect('https://8913.blackbaudhosting.com/8913/Raptor-Woodland-Refuge-Patron-Donor-Party');
+	});
+
   app.get('/camps', function(req, res) {
     res.redirect('/post/2016-nature-discovery-day-camps');
   });
