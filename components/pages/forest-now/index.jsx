@@ -554,7 +554,7 @@ module.exports = React.createClass({
 
     var posts = self.state.posts.map(function(object, index){
       var post_style ={
-        backgroundImage: "url("+ object.featured_image.attachment_meta.sizes.medium.url +")"
+        backgroundImage: "url("+object.featured_image.attachment_meta.sizes.medium.url+")"
       }
       if (object.meta){
         var subheader = object.meta.subheader || "";
@@ -573,7 +573,7 @@ module.exports = React.createClass({
 
     var pinned_post = self.state.pinned.map(function(object, index){
       var post_style ={
-        backgroundImage: "url("+ object.featured_image.attachment_meta.sizes.medium_large.url +")"
+        backgroundImage: "url("+object.featured_image.attachment_meta.sizes.medium_large.url+")"
       }
       if (object.meta){
         var subheader = object.meta.subheader || "";

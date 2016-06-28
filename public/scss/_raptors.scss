@@ -1,0 +1,146 @@
+.quiet_wild ul {
+  li {
+    background-color: white;
+    padding: 10px;
+    margin: 3px 0;
+  }
+}
+
+.raptor_container .copy_container {
+    -webkit-box-flex: 3;
+    -webkit-flex: 3;
+    -ms-flex: 3;
+    flex: 3;
+    text-align: left;
+}
+
+.raptor_container .copy_container .recoveries img {
+    -webkit-box-flex: 3;
+    -webkit-flex: 3;
+    -ms-flex: 3;
+    flex: 3;
+    text-align: left;
+    padding-right: 100px;
+    width: 500px;
+    float: left;
+    margin-bottom: 50px;
+}
+
+.recoveries {
+  clear:both;
+}
+
+.refuge_header {
+    background: #6db0c2;
+    background-image: none;
+    background-position: left, right;
+    background-size: contain, contain;
+    background-repeat: no-repeat;
+    color: white;
+    padding: 25px 0;
+    text-align: center;
+}
+
+.raptorrefuge .copy_container h2, .raptorrefuge .copy_container h3 {
+  color: #6db0c2;
+}
+
+.raptorrefuge .copy_container b {
+  color: #000000;
+}
+
+.raptormap_container.main_wrapper {
+    padding-top: 20px;
+}
+
+.raptormap_container .quiet_wild.copy_container {
+    width: 25%;
+    float: left;
+}
+
+.raptormap {
+    width: 70%;
+    float: right;
+}
+
+.meetraptors .video_overlay {
+  opacity: 0.7;
+  background-color: #6db0c2;
+}
+
+.littlebirds {
+  width:40%;
+}
+
+.raptormaplist ul {
+  list-style: none;
+}
+
+.raptormaplist ul li {
+  padding: 10px 10px 10px 0;
+}
+
+.raptormaplist ul li b {
+  background-color: #6db0c2;
+  padding: 10px;
+  color:#fff;
+  margin-right: 10px;
+}
+
+.groupa .raptorfact {
+    display: table-cell;
+    width: 33%;
+    padding: 0;
+    padding-top:0;
+    h2 {
+      padding:15px 30px 0;
+    }
+    p {
+      padding: 0 30px;
+    }
+}
+
+.groupb .raptorfact {
+    display: table-cell;
+    width: 33%;
+    padding: 0;
+    padding-top: 30px;
+    margin-top: 30px;
+    h2 {
+      background-color: #6db0c2;
+      color: #fff;
+      font-family: 'PermanentMarkerPro', Helvetica, Arial, Sans-Serif;
+      text-align: center;
+      font-size: 15px;
+      padding: 15px;
+    }
+    p {
+      padding: 0 30px;
+    }
+}
+
+.refuge_header h3{
+  font-size: 45px;
+}
+
+.raptorrefuge .copy_container h2.rehabilitationtitle {
+  text-align: center;
+  font-size: 25px;
+  font-family: 'PermanentMarkerPro', Helvetica, Arial, Sans-Serif;
+  background-color: #6db0c2;
+  padding:25px;
+  clear: both;
+  color:#fff;
+  margin:0;
+}
+
+.raptorrefuge .copy_container h2.recoveriestitle {
+  text-align: center;
+  font-size: 45px;
+  font-family: 'PermanentMarkerPro', Helvetica, Arial, Sans-Serif;
+  padding-bottom: 40px;
+}
+
+.raptorrefuge .copy_container {
+  padding-right: 0;
+}

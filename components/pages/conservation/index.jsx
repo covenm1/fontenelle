@@ -363,59 +363,7 @@ var Main = React.createClass({
               </div>
 
 
-              <div id="raptor" className="egg_wrap">
-                <div className="raptor_container main_wrapper">
-                  <div className="quiet_wild copy_container">
-                    <div className="raptor">
-                      <h2 className="marker">Raptor Recovery</h2>
-                      <p>Birds of prey, such as eagles, falcons, hawks, owls, and vultures, have a vital role in our ecosystem. Fontenelle Forest’s Raptor Recovery is focused on the conservation of these birds through education, research, and the rehabilitation of injured and orphaned raptors.</p>
-                      <img src="/img/conservation/divider_bottom_grey.png" />
-                    </div>
-                    <h2>Rescue</h2>
-                    <p>We see between 450–500 birds of prey in need of immediate assistance every year. These birds come to us from an area spanning every corner of Nebraska and parts of western Iowa. What’s highly important here is that at this stage we are not alone in our efforts. We depend on individuals—a dedicated network of volunteers across the entire state—to receive phone calls at all hours of the day and night, and then drive countless miles, first to the injured bird and then back to our trauma care unit. We also work with other organizations across the state to facilitate the program, and we rely on concerned citizens to report the injured raptors. If you have found a bird in need of assistance, please visit this page for more information on what to do next.</p>
-                    <h2>Rehabilitate</h2>
-                    <p>Birds are evaluated immediately upon arrival to our trauma care unit. Trained rehabilitators and veterinarians provide treatment, medication, and surgery if needed. Some patients may take a few days to mend; others might take months or even years.</p>
-                  </div>
-                  <div className="quiet_wild the_raptor">
-                    <img src="/img/conservation/raptor.png" />
-                  </div>
-                </div>
-              </div>
-
-              <div className="tearjerker_video meetraptors" style={videoTwo_style}>
-                <div className="meetraptors video_overlay"></div>
-                <div className="tearjerker_wrapper">
-                  <div className="centered_content">
-                    <h2 className="marker">Meet the Raptors</h2>
-                    <p>See some of the injured birds now rehabbing at Fontenelle</p>
-                    <Link to="/meet-the-raptors" >
-                      <svg className="arrow_circle blue_white shadow right_arrow" x="0px" y="0px" viewBox="0 0 52 52" enableBackground="new 0 0 52 52" >
-                        <path className="circle" strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"/>
-                        <g className="arrow" >
-                          <path strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M29.4,25.9c0,0-1,1.6-1,4.4c0,2.6-0.6,3.5-0.6,3.8c0,0.4,0.3,0.7,0.7,0.5s8.6-6.2,10.5-8.1
-                          c0,0,0.2-0.2,0.2-0.5v-0.1c0-0.2-0.1-0.4-0.2-0.5c-1.7-1.7-10.1-7.9-10.5-8.1c-0.3-0.2-0.7-0.1-0.7,0.5c0,0.3,0.6,1.1,0.6,3.8
-                          C28.4,24.3,29.4,25.9,29.4,25.9z"/>
-                          <line strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' x1="27.8" y1="25.9" x2="12.7" y2="25.9"/>
-                        </g>
-                      </svg>
-                    </Link>
-                  </div>
-                </div>
-              </div>
-
-              <div className="egg_wrap">
-                <div className="raptor_container main_wrapper">
-                  <div className="quiet_wild copy_container">
-                    <h2>Release</h2>
-                    <p>A bird is considered healthy again when it is in ideal feather condition, demonstrates keen flight abilities, and can recognize and catch food. It is then banded and released back to the wild near where it was found. Need to find out what each of these means. Tell more of a story about that moment when they are able to be let back into the wild and what that means to us.</p>
-                    <h2>Educate</h2>
-                    <p>Even after treatment and months of rehabilitation, a raptor might be unable to fly or hunt due to a variety of factors and cannot be released. Non-releasable birds are channeled into breeding programs, recruited as “foster parents” for young orphans, utilized in research, or join our roster of educational birds for outreach and education programs. Fontenelle Forest Raptor Recovery reaches 20,000 people each year during our live raptor programs.</p>
-                  </div>
-                  <div className="quiet_wild">
-                    <img src="/img/conservation/birds_right.png" />
-                  </div>
-                </div>
-              </div>
+            
 
               <div className="tearjerker_video urbanwildlife" style={videoThree_style}>
                 <div className="urbanwildlife video_overlay"></div>
