@@ -6610,20 +6610,20 @@ var App = React.createClass({
 						),
 						React.createElement(
 							Link,
-							{ to: "/found-raptor", className: "link", onClick: self.toggleMenu },
-							React.createElement(
-								"h2",
-								{ className: "main" },
-								"Found Raptor"
-							)
-						),
-						React.createElement(
-							Link,
 							{ to: "/raptors", className: "link", onClick: self.toggleMenu },
 							React.createElement(
 								"h2",
 								{ className: "main" },
 								"Raptors"
+							)
+						),
+						React.createElement(
+							Link,
+							{ to: "/found-raptor", className: "link", onClick: self.toggleMenu },
+							React.createElement(
+								"h2",
+								{ className: "main" },
+								"Found Raptor"
 							)
 						),
 						React.createElement(
@@ -6856,20 +6856,20 @@ var App = React.createClass({
 						),
 						React.createElement(
 							Link,
-							{ to: "/found-raptor", className: "link", onClick: self.toggleMenu },
-							React.createElement(
-								"h2",
-								{ className: "main" },
-								"Found Raptor"
-							)
-						),
-						React.createElement(
-							Link,
 							{ to: "/raptors", className: "link", onClick: self.toggleMenu },
 							React.createElement(
 								"h2",
 								{ className: "main" },
 								"Raptors"
+							)
+						),
+						React.createElement(
+							Link,
+							{ to: "/found-raptor", className: "link", onClick: self.toggleMenu },
+							React.createElement(
+								"h2",
+								{ className: "main" },
+								"Found Raptor"
 							)
 						),
 						React.createElement(
@@ -9597,7 +9597,7 @@ module.exports = React.createClass({
             React.createElement(
               'p',
               null,
-              'A bird is considered healthy again when it\'s in ideal feather condition, demonstrates keen flight abilities, and can recognize and catch food. It is then banded and released back to the wild near where it was found. Need to find out what each of these means. Tell more of a story about that moment when they are able to be let back into the wild and what that means to us.'
+              'A bird is considered healthy again when it is in ideal feather condition, demonstrates keen flight abilities, and can recognize and catch food. It is then banded and released back to the wild near where it was found. Need to find out what each of these means. Tell more of a story about that moment when they are able to be let back into the wild and what that means to us.'
             ),
             React.createElement(
               'h2',
@@ -9933,7 +9933,7 @@ module.exports = React.createClass({
             React.createElement(
               'div',
               { className: 'recoveries' },
-              React.createElement('img', { src: '/img/raptors/eastern-screech.jpg' }),
+              React.createElement('img', { src: '/img/raptors/peregrine.jpg' }),
               React.createElement(
                 'div',
                 null,
@@ -9961,7 +9961,7 @@ module.exports = React.createClass({
             React.createElement(
               'div',
               { className: 'recoveries' },
-              React.createElement('img', { src: '/img/raptors/peregrine.jpg' }),
+              React.createElement('img', { src: '/img/raptors/eastern-screech.jpg' }),
               React.createElement(
                 'div',
                 null,
