@@ -6225,7 +6225,7 @@ var forest = require('../forest/index.jsx'),
     post = require('../post/index.jsx'),
     careers = require('../careers/index.jsx'),
     privacy = require('../privacy/index.jsx'),
-    raptors = require('../raptors/index.jsx');
+    raptorrecovery = require('../raptors/index.jsx');
 
 var Loading = require('../../common/loading_arrows.jsx');
 var Footer = require('../../common/footer.jsx');
@@ -6601,20 +6601,20 @@ var App = React.createClass({
 						),
 						React.createElement(
 							Link,
+							{ to: "/raptor-recovery", className: "link", onClick: self.toggleMenu },
+							React.createElement(
+								"h2",
+								{ className: "raptors main" },
+								"Raptor Recovery"
+							)
+						),
+						React.createElement(
+							Link,
 							{ to: "/", className: "link", onClick: self.toggleMenu },
 							React.createElement(
 								"h2",
 								{ className: "main" },
 								"Forest Now"
-							)
-						),
-						React.createElement(
-							Link,
-							{ to: "/raptors", className: "link", onClick: self.toggleMenu },
-							React.createElement(
-								"h2",
-								{ className: "main" },
-								"Raptors"
 							)
 						),
 						React.createElement(
@@ -6847,6 +6847,15 @@ var App = React.createClass({
 						),
 						React.createElement(
 							Link,
+							{ to: "/raptor-recovery", className: "link", onClick: self.toggleMenu },
+							React.createElement(
+								"h2",
+								{ className: "main" },
+								"Raptor Recovery"
+							)
+						),
+						React.createElement(
+							Link,
 							{ to: "/", className: "link", onClick: self.toggleMenu },
 							React.createElement(
 								"h2",
@@ -6856,19 +6865,10 @@ var App = React.createClass({
 						),
 						React.createElement(
 							Link,
-							{ to: "/raptors", className: "link", onClick: self.toggleMenu },
-							React.createElement(
-								"h2",
-								{ className: "main" },
-								"Raptors"
-							)
-						),
-						React.createElement(
-							Link,
 							{ to: "/found-raptor", className: "link", onClick: self.toggleMenu },
 							React.createElement(
 								"h2",
-								{ className: "main" },
+								{ className: "raptors main" },
 								"Found Raptor"
 							)
 						),
@@ -6971,7 +6971,8 @@ var routes = React.createElement(
 		React.createElement(Route, { path: "/education/:scroll", handler: education, addHandlerKey: true })
 	),
 	React.createElement(Route, { name: "found-raptor", path: "/found-raptor", handler: foundraptor, addHandlerKey: true }),
-	React.createElement(Route, { name: "raptors", path: "/raptors", handler: raptors, addHandlerKey: true }),
+	React.createElement(Route, { name: "raptor-recovery", path: "/raptor-recovery", handler: raptorrecovery, addHandlerKey: true }),
+	React.createElement(Route, { path: "/raptor-recovery/:scroll", handler: raptorrecovery, addHandlerKey: true }),
 	React.createElement(
 		Route,
 		{ name: "get-involved", path: "/get-involved", handler: getinvolved, addHandlerKey: true, ignoreScrollBehavior: true },
@@ -9619,7 +9620,7 @@ module.exports = React.createClass({
       ),
       React.createElement(
         'div',
-        { id: 'fauna', className: 'refuge_header' },
+        { id: 'raptor-woodland-refuge', className: 'refuge_header' },
         React.createElement(
           'div',
           { className: 'main_wrapper centered_content' },
@@ -9630,8 +9631,14 @@ module.exports = React.createClass({
           ),
           React.createElement(
             'p',
-            null,
+            { className: 'textleft' },
             'Thirty feet above the forest ﬂoor is where we are. This canopy-level exhibit is designed according to the natural habitat of the rescued birds housed within these mews. These are not ordinary enclosures; these are homes. These owls, hawks, falcons and other species are birds of prey that can no longer survive in the wild. But they can provide us with their experiences, so we can know more about this important part of nature. Each visit is its own unique adventure, its own story, its own memory to share.'
+          ),
+          React.createElement(
+            'p',
+            { className: 'textleft' },
+            React.createElement('br', null),
+            'Raptor Woodland Refuge is located at the Fontenelle Forest Nature Center. The Refuge opens on July 16, 2016 and will be open daily from 10 a.m. until 5 p.m. year round.'
           )
         )
       ),
@@ -9788,7 +9795,7 @@ module.exports = React.createClass({
             React.createElement(
               'h2',
               { className: 'rehabilitationtitle' },
-              'The Raptor Rehabilitaion Cycle'
+              'The Raptor Rehabilitation Cycle'
             ),
             React.createElement(
               'div',

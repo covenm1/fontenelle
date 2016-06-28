@@ -797,6 +797,9 @@ footer {
         &.education {
           border-bottom: 2px solid $education_color;
         }
+        &.raptors {
+          border-bottom: 2px solid $raptors_color;
+        }
       }
     }
     a {

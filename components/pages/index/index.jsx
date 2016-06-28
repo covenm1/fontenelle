@@ -34,7 +34,7 @@ var forest = require('../forest/index.jsx'),
 		post = require('../post/index.jsx'),
 		careers = require('../careers/index.jsx'),
 		privacy = require('../privacy/index.jsx'),
-		raptors = require('../raptors/index.jsx');
+		raptorrecovery = require('../raptors/index.jsx');
 
 
 
@@ -317,8 +317,9 @@ var App = React.createClass({
 							<Link to="/programs/adults" className="link section" onClick={self.toggleMenu}>Adults</Link>
 							<Link to="/programs/groups" className="link section" onClick={self.toggleMenu}>Groups</Link>
 
+							<Link to="/raptor-recovery" className="link" onClick={self.toggleMenu}><h2 className="raptors main">Raptor Recovery</h2></Link>
+
 							<Link to="/" className="link" onClick={self.toggleMenu}><h2 className="main">Forest Now</h2></Link>
-							<Link to="/raptors" className="link" onClick={self.toggleMenu}><h2 className="main">Raptors</h2></Link>
 							<Link to="/found-raptor" className="link" onClick={self.toggleMenu}><h2 className="main">Found Raptor</h2></Link>
 
 							<Link to="/get-involved" className="link" onClick={self.toggleMenu}><h2 className="main">Get Involved</h2></Link>
@@ -385,9 +386,10 @@ var App = React.createClass({
 							<Link to="/programs/adults" className="link section" onClick={self.toggleMenu}>Adults</Link>
 							<Link to="/programs/groups" className="link section" onClick={self.toggleMenu}>Groups</Link>
 
+							<Link to="/raptor-recovery" className="link" onClick={self.toggleMenu}><h2 className="main">Raptor Recovery</h2></Link>
+
 							<Link to="/" className="link" onClick={self.toggleMenu}><h2 className="main">Forest Now</h2></Link>
-							<Link to="/raptors" className="link" onClick={self.toggleMenu}><h2 className="main">Raptors</h2></Link>
-							<Link to="/found-raptor" className="link" onClick={self.toggleMenu}><h2 className="main">Found Raptor</h2></Link>
+							<Link to="/found-raptor" className="link" onClick={self.toggleMenu}><h2 className="raptors main">Found Raptor</h2></Link>
 
 							<Link to="/get-involved" className="link" onClick={self.toggleMenu}><h2 className="main">Get Involved</h2></Link>
 							<Link to="/get-involved/donate" className="link section" onClick={self.toggleMenu}>Donate</Link>
@@ -433,7 +435,9 @@ var routes = (
 			<Route path="/education/:scroll" handler={education} addHandlerKey={true} />
 		</Route>
     <Route name="found-raptor" path="/found-raptor" handler={foundraptor} addHandlerKey={true} />
-		<Route name="raptors" path="/raptors" handler={raptors} addHandlerKey={true} />
+
+		<Route name="raptor-recovery" path="/raptor-recovery" handler={raptorrecovery} addHandlerKey={true} />
+			<Route path="/raptor-recovery/:scroll" handler={raptorrecovery} addHandlerKey={true} />
     <Route name="get-involved" path="/get-involved" handler={getinvolved} addHandlerKey={true} ignoreScrollBehavior>
 			<Route path="/get-involved/:scroll" handler={getinvolved} addHandlerKey={true} />
 		</Route>

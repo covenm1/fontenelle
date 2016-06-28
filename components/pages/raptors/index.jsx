@@ -87,10 +87,11 @@ module.exports = React.createClass({
             </div>
           </div>
 
-          <div id="fauna" className="refuge_header">
+          <div id="raptor-woodland-refuge" className="refuge_header">
             <div className="main_wrapper centered_content">
               <h3 className="marker">Raptor Woodland Refuge</h3>
-              <p>Thirty feet above the forest ﬂoor is where we are. This canopy-level exhibit is designed according to the natural habitat of the rescued birds housed within these mews. These are not ordinary enclosures; these are homes. These owls, hawks, falcons and other species are birds of prey that can no longer survive in the wild. But they can provide us with their experiences, so we can know more about this important part of nature. Each visit is its own unique adventure, its own story, its own memory to share.</p>
+              <p className="textleft">Thirty feet above the forest ﬂoor is where we are. This canopy-level exhibit is designed according to the natural habitat of the rescued birds housed within these mews. These are not ordinary enclosures; these are homes. These owls, hawks, falcons and other species are birds of prey that can no longer survive in the wild. But they can provide us with their experiences, so we can know more about this important part of nature. Each visit is its own unique adventure, its own story, its own memory to share.</p>
+              <p className="textleft"><br/>Raptor Woodland Refuge is located at the Fontenelle Forest Nature Center. The Refuge opens on July 16, 2016 and will be open daily from 10 a.m. until 5 p.m. year round.</p>
             </div>
           </div>
 
@@ -121,7 +122,7 @@ module.exports = React.createClass({
           <div className="egg_wrap">
             <div className="raptor_container raptorrefuge main_wrapper">
               <div className="quiet_wild copy_container">
-                <h2 className="rehabilitationtitle">The Raptor Rehabilitaion Cycle</h2>
+                <h2 className="rehabilitationtitle">The Raptor Rehabilitation Cycle</h2>
                 <div className="groupa">
                   <div className="raptorfact">
                   <img src="/img/raptors/bird_found.jpg" />
