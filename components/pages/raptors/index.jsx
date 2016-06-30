@@ -57,7 +57,7 @@ module.exports = React.createClass({
             <div className="tearjerker_wrapper">
               <div className="centered_content">
                 <h2 className="marker">Meet the Raptors</h2>
-                <p>See some of the injured birds now rehabbing at Fontenelle</p>
+                <p>See some of the amazing educational raptors of Fontenelle Forest.</p>
                 <Link to="/meet-the-raptors" >
                   <svg className="arrow_circle blue_white shadow right_arrow" x="0px" y="0px" viewBox="0 0 52 52" enableBackground="new 0 0 52 52" >
                     <path className="circle" strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"/>
