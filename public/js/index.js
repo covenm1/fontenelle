@@ -727,9 +727,9 @@ module.exports = React.createClass({
 },{"react":794}],7:[function(require,module,exports){
 module.exports=[
   {
-    "name": "Tad Leeper",
-    "email": "tleeper@fontenelleforest.org",
-    "title": "Interim Executive Director",
+    "name": "Merica Whitehall",
+    "email": "mwhitehall@fontenelleforest.org",
+    "title": "Executive Director",
   },
   {
     "name": "Elizabeth Chalen",
