@@ -41,7 +41,7 @@ module.exports = React.createClass({
                       <br/>$7.50 per child/student (2-17)
                       <br/>Free for children under age 2
                     </p>
-                    <p>New! Purchase admission online. Click here</p>
+                    <p>Purchase admission online. <a href="https://8913.blackbaudhosting.com/8913/tickets?tab=3&txobjid=1b87ef14-b89d-4a5c-803f-79124cc2bcd8" target="_blank">Click here</a></p>
                     <p>Parking is free and available on a first-come, first-served basis. Please pay your admission and pick up a trail map at the Visitor Services Desk.</p>
                     <p>Fontenelle Forest's properties are tobacco-free.</p>
                   </div>

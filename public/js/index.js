@@ -5271,7 +5271,7 @@ module.exports = React.createClass({
                   'Free or discounted admission to over 180 nature centers nationwide through ',
                   React.createElement(
                     'a',
-                    { href: 'http://natctr.org/professional-services/reciprocal-program.html', target: '_blank' },
+                    { className: 'notwhite', href: 'http://natctr.org/professional-services/reciprocal-program.html', target: '_blank' },
                     'ANCA'
                   )
                 ),
@@ -5302,7 +5302,13 @@ module.exports = React.createClass({
                 React.createElement(
                   'span',
                   null,
-                  'MEMBERSHIP'
+                  'MEMBERSHIP',
+                  React.createElement('br', null),
+                  React.createElement(
+                    'em',
+                    null,
+                    'Fully tax deductible'
+                  )
                 ),
                 React.createElement(
                   'span',
@@ -5364,7 +5370,7 @@ module.exports = React.createClass({
                     React.createElement(
                       'em',
                       null,
-                      'Two adults, children, or grandchildren (under age 18)'
+                      'Two adults living in the same household, children, or grandchildren (under age 18)'
                     )
                   ),
                   React.createElement(
@@ -5492,7 +5498,7 @@ module.exports = React.createClass({
                     React.createElement(
                       'em',
                       null,
-                      'ADDITIONAL BENEFITS: 20 guest passes, 30% gift shop discount'
+                      'ADDITIONAL BENEFITS: 20 guest passes, 35% gift shop discount'
                     )
                   ),
                   React.createElement(
@@ -5967,7 +5973,12 @@ module.exports = React.createClass({
                 React.createElement(
                   'p',
                   null,
-                  'New! Purchase admission online. Click here'
+                  'Purchase admission online. ',
+                  React.createElement(
+                    'a',
+                    { href: 'https://8913.blackbaudhosting.com/8913/tickets?tab=3&txobjid=1b87ef14-b89d-4a5c-803f-79124cc2bcd8', target: '_blank' },
+                    'Click here'
+                  )
                 ),
                 React.createElement(
                   'p',

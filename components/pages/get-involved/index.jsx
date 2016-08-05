@@ -106,7 +106,7 @@ module.exports = React.createClass({
                   <li>Members-only events and other programming</li>
                   <li>10% discount at The Gift Shop at Fontenelle Forest</li>
                   <li>Subscription to Fontenelle Forest's newsletter "The Leaflet"</li>
-                  <li>Free or discounted admission to over 180 nature centers nationwide through <a href="http://natctr.org/professional-services/reciprocal-program.html" target="_blank">ANCA</a></li>
+                  <li>Free or discounted admission to over 180 nature centers nationwide through <a className="notwhite" href="http://natctr.org/professional-services/reciprocal-program.html" target="_blank">ANCA</a></li>
                   <li>Every time you visit, two of your guests can receive 1/2 priced admission</li>
                   <li>Discounts on Winter and Summer Camps</li>
                   <li>Access to trails before and after hours</li>
@@ -114,11 +114,11 @@ module.exports = React.createClass({
               </div>
               <hr />
               <div className="gi_pricing">
-                <h3 className="element_spread"><span>MEMBERSHIP</span><span>PRICE</span></h3>
+                <h3 className="element_spread"><span>MEMBERSHIP<br/><em>Fully tax deductible</em></span><span>PRICE</span></h3>
                 <ul>
                   <li><span>Individual<br/><em>One Adult</em></span><span>$45</span></li>
                   <li><span>Two Individuals<br/><em>Two adults living in the same household</em></span><span>$55</span></li>
-                  <li><span>Household<br/><em>Two adults, children, or grandchildren (under age 18)</em></span><span>$65</span></li>
+                  <li><span>Household<br/><em>Two adults living in the same household, children, or grandchildren (under age 18)</em></span><span>$65</span></li>
                 </ul>
               </div>
               <div className="gi_pricing">
@@ -128,7 +128,7 @@ module.exports = React.createClass({
                   <li><span>Supporting Patron<br/><em>ADDITIONAL BENEFITS: 10 guest passes, 20% gift shop discount</em></span><span>$250-499</span></li>
                   <li><span>Sustaining Patron<br/><em>ADDITIONAL BENEFITS: 10 guest passes, 25% gift shop discount</em></span><span>$500-999</span></li>
                   <li><span>Distinguished Patron<br/><em>ADDITIONAL BENEFITS: 20 guest passes, 30% gift shop discount</em></span><span>$1,000-2,499</span></li>
-                  <li><span>Benefactor<br/><em>ADDITIONAL BENEFITS: 20 guest passes, 30% gift shop discount</em></span><span>$2,500+</span></li>
+                  <li><span>Benefactor<br/><em>ADDITIONAL BENEFITS: 20 guest passes, 35% gift shop discount</em></span><span>$2,500+</span></li>
                 </ul>
               </div>
             </div>
