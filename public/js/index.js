@@ -811,11 +811,6 @@ module.exports=[
     "title": "Restoration Biologist",
   },
   {
-    "name": "Catherine Kuper",
-    "email": "CKuper@fontenelleforest.org",
-    "title": "Educator",
-  },
-  {
     "name": "Denise Lewis",
     "email": "dlewis@fontenelleforest.org",
     "title": "Raptor Volunteer Coordinator",
@@ -2609,12 +2604,12 @@ module.exports = React.createClass({
               React.createElement(
                 'span',
                 { className: 'staff_name' },
-                'Donate to FF: '
+                'Donate to FF : '
               ),
               React.createElement(
                 'span',
                 { className: 'title' },
-                'For questions about making a donation, please e-mail the Director of Development'
+                'For questions about making a donation'
               )
             ),
             React.createElement(
@@ -2795,7 +2790,7 @@ module.exports = React.createClass({
               React.createElement(
                 'span',
                 { className: 'staff_name' },
-                'Volunteer: '
+                'Volunteer : '
               ),
               React.createElement(
                 'span',
@@ -2930,35 +2925,39 @@ module.exports = React.createClass({
             'VISITOR SERVICES ASSISTANTS\u0003'
           ),
           React.createElement(
-            'span',
-            { className: 'name_item' },
-            'Helen Beebe'
-          ),
-          '\u0003',
-          React.createElement(
-            'span',
-            { className: 'name_item' },
-            'Brian Mark Conover'
-          ),
-          React.createElement(
-            'span',
-            { className: 'name_item' },
-            'Brianna Craven'
-          ),
-          React.createElement(
-            'span',
-            { className: 'name_item' },
-            'Adam Erickson'
-          ),
-          React.createElement(
-            'span',
-            { className: 'name_item' },
-            'Chelsy Kremin'
-          ),
-          React.createElement(
-            'span',
-            { className: 'name_item' },
-            'Nick Sauvageau'
+            'ul',
+            { className: 'name_list' },
+            React.createElement(
+              'li',
+              null,
+              'Helen Beebe'
+            ),
+            '\u0003',
+            React.createElement(
+              'li',
+              null,
+              'Brian Mark Conover'
+            ),
+            React.createElement(
+              'li',
+              null,
+              'Brianna Craven'
+            ),
+            React.createElement(
+              'li',
+              null,
+              'Adam Erickson'
+            ),
+            React.createElement(
+              'li',
+              null,
+              'Chelsy Kremin'
+            ),
+            React.createElement(
+              'li',
+              null,
+              'Nick Sauvageau'
+            )
           )
         )
       ),

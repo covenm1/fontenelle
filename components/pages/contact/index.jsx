@@ -189,8 +189,8 @@ module.exports = React.createClass({
               </div>
               <div className="staff_member">
                 <h2 className="name">
-                  <span className="staff_name">Donate to FF: </span>
-                  <span className="title">For questions about making a donation, please e-mail the Director of Development</span>
+                  <span className="staff_name">Donate to FF : </span>
+                  <span className="title">For questions about making a donation</span>
                 </h2>
                 <p className="email">bnaughtin@fontenelleforest.org<a href="mailto:bnaughtin@fontenelleforest.org">
                   <svg className="arrow_circle blue right_arrow" x="0px" y="0px" viewBox="0 0 52 52" enableBackground="new 0 0 52 52" >
@@ -269,7 +269,7 @@ module.exports = React.createClass({
               </div>
               <div className="staff_member">
                 <h2 className="name">
-                  <span className="staff_name">Volunteer: </span>
+                  <span className="staff_name">Volunteer : </span>
                   <span className="title">To become a volunteer or to learn more about FF's volunteer opportunities</span>
                 </h2>
                 <p className="email"><Link to="/get-involved/volunteer">
@@ -311,12 +311,14 @@ module.exports = React.createClass({
               <li>Deborah Woracek</li>
             </ul>
             <h2 className="staff_title">VISITOR SERVICES ASSISTANTS</h2>
-            <span className="name_item">Helen Beebe</span>
-            <span className="name_item">Brian Mark Conover</span>
-            <span className="name_item">Brianna Craven</span>
-            <span className="name_item">Adam Erickson</span>
-            <span className="name_item">Chelsy Kremin</span>
-            <span className="name_item">Nick Sauvageau</span>
+              <ul className="name_list">
+                <li>Helen Beebe</li>
+                <li>Brian Mark Conover</li>
+                <li>Brianna Craven</li>
+                <li>Adam Erickson</li>
+                <li>Chelsy Kremin</li>
+                <li>Nick Sauvageau</li>
+              </ul>
           </div>
         </div>
         <Footer />
