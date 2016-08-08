@@ -159,13 +159,22 @@ module.exports = React.createClass({
               <p className="place_directions">From I-80 take Hwy 75 North. Merge onto Storz Expressway towards Florence Blvd/Eppley Airfield. Take the Florence Blvd ramp and turn left at the stop sign. Florence Blvd. becomes J. Pershing Drive. Continue through the T intersection at Mormon Bridge onto River Road. From there, you will travel 2.7 miles to White Deer Lane (past NP Dodge and Hummel Park, stay to the right at the fork in road). Turn a slight left onto White Deer Lane and left again onto Edith Marie Ave.</p>
               <a target="_blank" href="http://maps.google.com/maps?q=14323+Edith+Marie+Ave.+Omaha,+NE+68112&hl=en&sll=41.178428,-95.883179&sspn=0.024904,0.055661&z=16" className="map_link">View Map</a>
             </div>
+            <div className='place'>
+              <h2 className="place_title">Camp Wakonda</h2>
+                <p className="address">402 Forest Dr. <br/>Bellevue, NE 68005</p>
+              <p className="place_directions">Camp Wa-kon-da is in Bellevue, Nebraska and covers 40 acres of wooded bluffs, adjacent to Fontenelle Forest. The camp has 6 Adirondack style shelters. There are conveniently located latrines, with water, in addition to frost-free spigots that are running year-round. Our centerpiece, the Paxton Program Building, has a furnace, fireplace, kitchen, restroom and shower.</p>
+                <p className="place_directions">Wa-kon-da is the home of the Logan Fontenelle Trail, one of the BSA's historic trails. The Mid-America Council has an agreement with Fontenelle Forest that allows our campers access to 10 miles of trails, included in your camp reservation fee.</p>
+                <p className="place_directions">Wa-kon-da is home to Cub Scout day camps, Fun with Son camping, Troop and Pack outings and hosts many out-of-council units.</p>
+                <p className="place_directions">Wa-kon-da is available year-round and is a convenient place to stay while taking in the local attractions.</p>
+              <a target="_blank" href="https://www.google.com/maps/place/402+Forest+Dr,+Bellevue,+NE+68005/data=!4m2!3m1!1s0x879388789523a845:0x7cc79048e9c2348?sa=X&ved=0ahUKEwjhsuiUg7LOAhXEZCYKHS8_BfQQ8gEIHTAA" className="map_link">View Map</a>
+            </div>
           </div>
           <div className='main_wrapper'>
             <h2 className="staff_title">General Contact</h2>
               <div className="staff_member">
                 <h2 className="name">
                   <span className="staff_name">Media: </span>
-                  <span className="title">For all media inquiries, please e-mail the Director of Communications</span>
+                  <span className="title">For all media inquiries</span>
                 </h2>
                 <p className="email">jvavak@fontenelleforest.org<a href="mailto:jvavak@fontenelleforest.org">
                   <svg className="arrow_circle blue right_arrow" x="0px" y="0px" viewBox="0 0 52 52" enableBackground="new 0 0 52 52" >
@@ -181,9 +190,9 @@ module.exports = React.createClass({
               <div className="staff_member">
                 <h2 className="name">
                   <span className="staff_name">Donate to FF: </span>
-                  <span className="title">If you have questions about making a donation, please e-mail the Director of Development.</span>
+                  <span className="title">For questions about making a donation, please e-mail the Director of Development</span>
                 </h2>
-                <p className="email">jvavak@fontenelleforest.org<a href="mailto:jvavak@fontenelleforest.org">
+                <p className="email">bnaughtin@fontenelleforest.org<a href="mailto:bnaughtin@fontenelleforest.org">
                   <svg className="arrow_circle blue right_arrow" x="0px" y="0px" viewBox="0 0 52 52" enableBackground="new 0 0 52 52" >
                     <path className="circle" strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"/>
                     <g className="arrow" >
@@ -285,26 +294,29 @@ module.exports = React.createClass({
               <li>Amy Campagna</li>
               <li>Julianne Carbonell</li>
               <li>Amanda Dague</li>
-              <li>Kathy Fischer</li>
+              <li>Lisa Formanik</li>
             </ul>
             <ul className="name_list">
-              <li>Lisa Formanik</li>
               <li>Dianne Guinn</li>
               <li>Emma Hoffman</li>
               <li>Tisha Johnson</li>
-              <li>Seth Krone-Keith</li>
+              <li>Ken Koubsky</li>
+              <li>Jean Neneman</li>
             </ul>
             <ul className="name_list">
-              <li>Jean Neneman</li>
               <li>Nick Sauvageau</li>
+              <li>Heidi Seals</li>
               <li>Tina Tweedy</li>
               <li>Alex Wiles</li>
-              <li>Tracy Van Zee</li>
+              <li>Deborah Woracek</li>
             </ul>
             <h2 className="staff_title">VISITOR SERVICES ASSISTANTS</h2>
             <span className="name_item">Helen Beebe</span>
             <span className="name_item">Brian Mark Conover</span>
-            <span className="name_item">Emma Hoffman</span>
+            <span className="name_item">Brianna Craven</span>
+            <span className="name_item">Adam Erickson</span>
+            <span className="name_item">Chelsy Kremin</span>
+            <span className="name_item">Nick Sauvageau</span>
           </div>
         </div>
         <Footer />

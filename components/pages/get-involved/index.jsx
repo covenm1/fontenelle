@@ -119,6 +119,7 @@ module.exports = React.createClass({
                   <li><span>Individual<br/><em>One Adult</em></span><span>$45</span></li>
                   <li><span>Two Individuals<br/><em>Two adults living in the same household</em></span><span>$55</span></li>
                   <li><span>Household<br/><em>Two adults living in the same household, children, or grandchildren (under age 18)</em></span><span>$65</span></li>
+                  <li><span>Plus-One<br/><em>Upgrade any membership with ‘Plus One’ to bring a guest for free every time you visit the Forest</em></span><span>$25</span></li>
                 </ul>
               </div>
               <div className="gi_pricing">

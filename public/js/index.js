@@ -781,19 +781,24 @@ module.exports=[
     "title": "Education Assistant",
   },
   {
-    "name": "Keith Fehrenbacher",
-    "email": "kfehrenbacher@fontenelleforest.org",
-    "title": "Facilities Superintendent",
-  },
-  {
     "name": "Gene Ericson",
     "email": "gericson@fontenelleforest.org",
     "title": "Manager of Facilities",
   },
   {
+    "name": "Adam Erickson",
+    "email": "aerickson@fontenelleforest.org",
+    "title": "Facilities Intendent",
+  },
+  {
     "name": "Betsy Finch",
     "email": "BFinch@fontenelleforest.org",
     "title": "Manager of Raptor Rehabilitation",
+  },
+  {
+    "name": "Kathy Fischer",
+    "email": "kfischer@fontenelleforest.org",
+    "title": "Naturalist",
   },
   {
     "name": "Lisa Formanik",
@@ -813,7 +818,7 @@ module.exports=[
   {
     "name": "Denise Lewis",
     "email": "dlewis@fontenelleforest.org",
-    "title": "Educator/Raptor Recovery",
+    "title": "Raptor Volunteer Coordinator",
   },
   {
     "name": "Michelle McElligott",
@@ -831,8 +836,8 @@ module.exports=[
     "title": "Development Associate",
   },
   {
-    "name": "Grace Noecker",
-    "email": "gnoecker@fontenelleforest.org",
+    "name": "Grace Gaard",
+    "email": "ggaard@fontenelleforest.org",
     "title": "Naturalist",
   },
   {
@@ -848,12 +853,17 @@ module.exports=[
   {
     "name": "Valerie Slocum",
     "email": "vslocum@fontenelleforest.org",
-    "title": "Animal Care Specialist",
+    "title": "Animal Care Coordinator",
   },
   {
     "name": "Joanie Soverns",
     "email": "jsoverns@fontenelleforest.org",
     "title": "Manager of Donor Relations and Membership",
+  },
+  {
+    "name": "Tracy Van Zee",
+    "email": "tvanzee@fontenelleforest.org",
+    "title": "Senior Programs Coordinator",
   },
   {
     "name": "Jamie Vann",
@@ -2501,6 +2511,47 @@ module.exports = React.createClass({
               { target: '_blank', href: 'http://maps.google.com/maps?q=14323+Edith+Marie+Ave.+Omaha,+NE+68112&hl=en&sll=41.178428,-95.883179&sspn=0.024904,0.055661&z=16', className: 'map_link' },
               'View Map'
             )
+          ),
+          React.createElement(
+            'div',
+            { className: 'place' },
+            React.createElement(
+              'h2',
+              { className: 'place_title' },
+              'Camp Wakonda'
+            ),
+            React.createElement(
+              'p',
+              { className: 'address' },
+              '402 Forest Dr. ',
+              React.createElement('br', null),
+              'Bellevue, NE 68005'
+            ),
+            React.createElement(
+              'p',
+              { className: 'place_directions' },
+              'Camp Wa-kon-da is in Bellevue, Nebraska and covers 40 acres of wooded bluffs, adjacent to Fontenelle Forest. The camp has 6 Adirondack style shelters. There are conveniently located latrines, with water, in addition to frost-free spigots that are running year-round. Our centerpiece, the Paxton Program Building, has a furnace, fireplace, kitchen, restroom and shower.'
+            ),
+            React.createElement(
+              'p',
+              { className: 'place_directions' },
+              'Wa-kon-da is the home of the Logan Fontenelle Trail, one of the BSA\'s historic trails. The Mid-America Council has an agreement with Fontenelle Forest that allows our campers access to 10 miles of trails, included in your camp reservation fee.'
+            ),
+            React.createElement(
+              'p',
+              { className: 'place_directions' },
+              'Wa-kon-da is home to Cub Scout day camps, Fun with Son camping, Troop and Pack outings and hosts many out-of-council units.'
+            ),
+            React.createElement(
+              'p',
+              { className: 'place_directions' },
+              'Wa-kon-da is available year-round and is a convenient place to stay while taking in the local attractions.'
+            ),
+            React.createElement(
+              'a',
+              { target: '_blank', href: 'https://www.google.com/maps/place/402+Forest+Dr,+Bellevue,+NE+68005/data=!4m2!3m1!1s0x879388789523a845:0x7cc79048e9c2348?sa=X&ved=0ahUKEwjhsuiUg7LOAhXEZCYKHS8_BfQQ8gEIHTAA', className: 'map_link' },
+              'View Map'
+            )
           )
         ),
         React.createElement(
@@ -2525,7 +2576,7 @@ module.exports = React.createClass({
               React.createElement(
                 'span',
                 { className: 'title' },
-                'For all media inquiries, please e-mail the Director of Communications'
+                'For all media inquiries'
               )
             ),
             React.createElement(
@@ -2563,16 +2614,16 @@ module.exports = React.createClass({
               React.createElement(
                 'span',
                 { className: 'title' },
-                'If you have questions about making a donation, please e-mail the Director of Development.'
+                'For questions about making a donation, please e-mail the Director of Development'
               )
             ),
             React.createElement(
               'p',
               { className: 'email' },
-              'jvavak@fontenelleforest.org',
+              'bnaughtin@fontenelleforest.org',
               React.createElement(
                 'a',
-                { href: 'mailto:jvavak@fontenelleforest.org' },
+                { href: 'mailto:bnaughtin@fontenelleforest.org' },
                 React.createElement(
                   'svg',
                   { className: 'arrow_circle blue right_arrow', x: '0px', y: '0px', viewBox: '0 0 52 52', enableBackground: 'new 0 0 52 52' },
@@ -2812,17 +2863,12 @@ module.exports = React.createClass({
             React.createElement(
               'li',
               null,
-              'Kathy Fischer'
+              'Lisa Formanik'
             )
           ),
           React.createElement(
             'ul',
             { className: 'name_list' },
-            React.createElement(
-              'li',
-              null,
-              'Lisa Formanik'
-            ),
             React.createElement(
               'li',
               null,
@@ -2841,7 +2887,12 @@ module.exports = React.createClass({
             React.createElement(
               'li',
               null,
-              'Seth Krone-Keith'
+              'Ken Koubsky'
+            ),
+            React.createElement(
+              'li',
+              null,
+              'Jean Neneman'
             )
           ),
           React.createElement(
@@ -2850,12 +2901,12 @@ module.exports = React.createClass({
             React.createElement(
               'li',
               null,
-              'Jean Neneman'
+              'Nick Sauvageau'
             ),
             React.createElement(
               'li',
               null,
-              'Nick Sauvageau'
+              'Heidi Seals'
             ),
             React.createElement(
               'li',
@@ -2870,7 +2921,7 @@ module.exports = React.createClass({
             React.createElement(
               'li',
               null,
-              'Tracy Van Zee'
+              'Deborah Woracek'
             )
           ),
           React.createElement(
@@ -2892,7 +2943,22 @@ module.exports = React.createClass({
           React.createElement(
             'span',
             { className: 'name_item' },
-            'Emma Hoffman'
+            'Brianna Craven'
+          ),
+          React.createElement(
+            'span',
+            { className: 'name_item' },
+            'Adam Erickson'
+          ),
+          React.createElement(
+            'span',
+            { className: 'name_item' },
+            'Chelsy Kremin'
+          ),
+          React.createElement(
+            'span',
+            { className: 'name_item' },
+            'Nick Sauvageau'
           )
         )
       ),
@@ -5377,6 +5443,26 @@ module.exports = React.createClass({
                     'span',
                     null,
                     '$65'
+                  )
+                ),
+                React.createElement(
+                  'li',
+                  null,
+                  React.createElement(
+                    'span',
+                    null,
+                    'Plus-One',
+                    React.createElement('br', null),
+                    React.createElement(
+                      'em',
+                      null,
+                      'Upgrade any membership with ‘Plus One’ to bring a guest for free every time you visit the Forest'
+                    )
+                  ),
+                  React.createElement(
+                    'span',
+                    null,
+                    '$25'
                   )
                 )
               )

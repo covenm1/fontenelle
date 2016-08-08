@@ -25,19 +25,24 @@
     "title": "Education Assistant",
   },
   {
-    "name": "Keith Fehrenbacher",
-    "email": "kfehrenbacher@fontenelleforest.org",
-    "title": "Facilities Superintendent",
-  },
-  {
     "name": "Gene Ericson",
     "email": "gericson@fontenelleforest.org",
     "title": "Manager of Facilities",
   },
   {
+    "name": "Adam Erickson",
+    "email": "aerickson@fontenelleforest.org",
+    "title": "Facilities Intendent",
+  },
+  {
     "name": "Betsy Finch",
     "email": "BFinch@fontenelleforest.org",
     "title": "Manager of Raptor Rehabilitation",
+  },
+  {
+    "name": "Kathy Fischer",
+    "email": "kfischer@fontenelleforest.org",
+    "title": "Naturalist",
   },
   {
     "name": "Lisa Formanik",
@@ -57,7 +62,7 @@
   {
     "name": "Denise Lewis",
     "email": "dlewis@fontenelleforest.org",
-    "title": "Educator/Raptor Recovery",
+    "title": "Raptor Volunteer Coordinator",
   },
   {
     "name": "Michelle McElligott",
@@ -75,8 +80,8 @@
     "title": "Development Associate",
   },
   {
-    "name": "Grace Noecker",
-    "email": "gnoecker@fontenelleforest.org",
+    "name": "Grace Gaard",
+    "email": "ggaard@fontenelleforest.org",
     "title": "Naturalist",
   },
   {
@@ -92,12 +97,17 @@
   {
     "name": "Valerie Slocum",
     "email": "vslocum@fontenelleforest.org",
-    "title": "Animal Care Specialist",
+    "title": "Animal Care Coordinator",
   },
   {
     "name": "Joanie Soverns",
     "email": "jsoverns@fontenelleforest.org",
     "title": "Manager of Donor Relations and Membership",
+  },
+  {
+    "name": "Tracy Van Zee",
+    "email": "tvanzee@fontenelleforest.org",
+    "title": "Senior Programs Coordinator",
   },
   {
     "name": "Jamie Vann",
