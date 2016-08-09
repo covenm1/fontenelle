@@ -2525,22 +2525,7 @@ module.exports = React.createClass({
             React.createElement(
               'p',
               { className: 'place_directions' },
-              'Camp Wa-kon-da is in Bellevue, Nebraska and covers 40 acres of wooded bluffs, adjacent to Fontenelle Forest. The camp has 6 Adirondack style shelters. There are conveniently located latrines, with water, in addition to frost-free spigots that are running year-round. Our centerpiece, the Paxton Program Building, has a furnace, fireplace, kitchen, restroom and shower.'
-            ),
-            React.createElement(
-              'p',
-              { className: 'place_directions' },
-              'Wa-kon-da is the home of the Logan Fontenelle Trail, one of the BSA\'s historic trails. The Mid-America Council has an agreement with Fontenelle Forest that allows our campers access to 10 miles of trails, included in your camp reservation fee.'
-            ),
-            React.createElement(
-              'p',
-              { className: 'place_directions' },
-              'Wa-kon-da is home to Cub Scout day camps, Fun with Son camping, Troop and Pack outings and hosts many out-of-council units.'
-            ),
-            React.createElement(
-              'p',
-              { className: 'place_directions' },
-              'Wa-kon-da is available year-round and is a convenient place to stay while taking in the local attractions.'
+              'From I-80, take Hwy 75 (Kennedy Freeway) South to Chandler Road. Turn left onto Chandler. Stay on Chandler for a little over .5 of mile. Turn right onto Fort Crook Road. Stay on Fort Crook Road for approx. 1 mile. Turn slightly left onto Galvin Road. Continue on Galvin Road for roughly .5 of a mile. Turn left onto Gregg Road. Stay on Gregg Road for a little over .5 of a mile. Turn right onto Bellevue Blvd. Continue for a little over .5 of a mile and turn left onto Forest Drive. Camp Wakonda will be on your left.'
             ),
             React.createElement(
               'a',

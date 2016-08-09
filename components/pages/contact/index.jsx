@@ -162,10 +162,7 @@ module.exports = React.createClass({
             <div className='place'>
               <h2 className="place_title">Camp Wakonda</h2>
                 <p className="address">402 Forest Dr. <br/>Bellevue, NE 68005</p>
-              <p className="place_directions">Camp Wa-kon-da is in Bellevue, Nebraska and covers 40 acres of wooded bluffs, adjacent to Fontenelle Forest. The camp has 6 Adirondack style shelters. There are conveniently located latrines, with water, in addition to frost-free spigots that are running year-round. Our centerpiece, the Paxton Program Building, has a furnace, fireplace, kitchen, restroom and shower.</p>
-                <p className="place_directions">Wa-kon-da is the home of the Logan Fontenelle Trail, one of the BSA's historic trails. The Mid-America Council has an agreement with Fontenelle Forest that allows our campers access to 10 miles of trails, included in your camp reservation fee.</p>
-                <p className="place_directions">Wa-kon-da is home to Cub Scout day camps, Fun with Son camping, Troop and Pack outings and hosts many out-of-council units.</p>
-                <p className="place_directions">Wa-kon-da is available year-round and is a convenient place to stay while taking in the local attractions.</p>
+              <p className="place_directions">From I-80, take Hwy 75 (Kennedy Freeway) South to Chandler Road. Turn left onto Chandler. Stay on Chandler for a little over .5 of mile. Turn right onto Fort Crook Road. Stay on Fort Crook Road for approx. 1 mile. Turn slightly left onto Galvin Road. Continue on Galvin Road for roughly .5 of a mile. Turn left onto Gregg Road. Stay on Gregg Road for a little over .5 of a mile. Turn right onto Bellevue Blvd. Continue for a little over .5 of a mile and turn left onto Forest Drive. Camp Wakonda will be on your left.</p>
               <a target="_blank" href="https://www.google.com/maps/place/402+Forest+Dr,+Bellevue,+NE+68005/data=!4m2!3m1!1s0x879388789523a845:0x7cc79048e9c2348?sa=X&ved=0ahUKEwjhsuiUg7LOAhXEZCYKHS8_BfQQ8gEIHTAA" className="map_link">View Map</a>
             </div>
           </div>
