@@ -58,4 +58,40 @@
 	a, a:visited {
 		color: $conservation_color;
 	}
+	img, figure {
+		max-width: 100%;
+		&.aligncenter {
+			display: table;
+			margin: auto;
+		}
+		&.alignleft {
+			float: left;
+			margin: 0 25px 0 0;
+		}
+		&.alignright {
+			float:right;
+			margin: 0 0 0 25px;
+		}
+		figcaption {
+			background: #ddd;
+			line-height: 2;
+			margin-top: -5px;
+			text-align: center;
+		}
+	}
+	p {
+		margin: 30px 0;
+	}
+	p.date {
+		margin-top: 0;
+	}
+	h2 {
+    clear: both;
+    padding: 25px 0 0;
+	}
+}
+
+div.postclear {
+	clear: both;
+	height: 40px;
 }

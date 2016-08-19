@@ -80,6 +80,7 @@ module.exports = React.createClass({
           <div className='main_wrapper'>
             <p className="date">{date}</p>
             <div className='post_content' dangerouslySetInnerHTML={{__html: content}}></div>
+            <div className="postclear"></div>
           </div>
         </div>
         <Footer />

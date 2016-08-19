@@ -7577,7 +7577,8 @@ module.exports = React.createClass({
             { className: 'date' },
             date
           ),
-          React.createElement('div', { className: 'post_content', dangerouslySetInnerHTML: { __html: content } })
+          React.createElement('div', { className: 'post_content', dangerouslySetInnerHTML: { __html: content } }),
+          React.createElement('div', { className: 'postclear' })
         )
       ),
       React.createElement(Footer, null)
