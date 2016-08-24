@@ -80,6 +80,11 @@
     "title": "Naturalist",
   },
   {
+  "name": "Jess McCallie",
+  "email": "jmccallie@fontenelleforest.org",
+  "title": "Finance Associate",
+},
+  {
     "name": "Josh Preister",
     "email": "JPreister@fontenelleforest.org",
     "title": "Chief Ranger at Fontenelle Forest",
@@ -113,11 +118,6 @@
     "name": "Joe Vavak",
     "email": "jvavak@fontenelleforest.org",
     "title": "Communications Associate",
-  },
-  {
-    "name": "Jane Watson",
-    "email": "jwatson@fontenelleforest.org",
-    "title": "Finance Associate",
   },
   {
     "name": "Marykate Wray",
