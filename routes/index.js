@@ -87,6 +87,10 @@ module.exports = function(app) {
     res.redirect('https://8913.blackbaudhosting.com/8913/tickets?tab=2&txobjid=f6ac33e2-4077-4654-ae26-83407e9bc092');
 	});
 
+  app.get('/exploremore', function(req, res) {
+    res.redirect('https://8913.blackbaudhosting.com/8913/tickets?tab=2&txobjid=f6ac33e2-4077-4654-ae26-83407e9bc092');
+	});
+
   app.get('/gifford', function(req, res) {
     res.redirect('https://8913.blackbaudhosting.com/8913/The-Journals-of-Emmy-Gifford-Premier-Opening');
 	});
