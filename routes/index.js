@@ -83,8 +83,8 @@ module.exports = function(app) {
 		});
 	});
 
-  app.get('/exploremore', function(req, res) {
-    res.redirect('https://8913.blackbaudhosting.com/8913/tickets?tab=2&txobjid=f6ac33e2-4077-4654-ae26-83407e9bc092');
+  app.get('/fireside', function(req, res) {
+    res.redirect('https://8913.blackbaudhosting.com/8913/Fireside-Forest-and-Friends');
 	});
 
   app.get('/exploremore', function(req, res) {
