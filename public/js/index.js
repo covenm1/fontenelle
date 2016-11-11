@@ -6517,8 +6517,8 @@ var App = React.createClass({
 						),
 						React.createElement(
 							Link,
-							{ to: "https://8913.blackbaudhosting.com/8913/Annual-Appeal", className: "link" },
-							"Donate"
+							{ to: "/get-involved", className: "link" },
+							"Get Involved"
 						)
 					),
 					React.createElement(
