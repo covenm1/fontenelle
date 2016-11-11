@@ -83,6 +83,10 @@ module.exports = function(app) {
 		});
 	});
 
+  app.get('/donate', function(req, res) {
+    res.redirect('https://8913.blackbaudhosting.com/8913/Annual-Appeal');
+	});
+
   app.get('/fireside', function(req, res) {
     res.redirect('https://8913.blackbaudhosting.com/8913/Fireside-Forest-and-Friends');
 	});

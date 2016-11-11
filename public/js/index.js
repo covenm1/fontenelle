@@ -737,6 +737,11 @@ module.exports=[
     "title": "Director of Education",
   },
   {
+    "name": "Janis Enenbach",
+    "email": "jenenbach@fontenelleforest.org",
+    "title": "Interim Development Director",
+  },
+  {
     "name": "Jeanine Lackey",
     "email": "JLackey@fontenelleforest.org",
     "title": "Director of Research & Stewardship",
@@ -786,9 +791,9 @@ module.exports=[
     "title": "Manager of Facilities",
   },
   {
-    "name": "Adam Erickson",
-    "email": "aerickson@fontenelleforest.org",
-    "title": "Facilities Intendent",
+    "name": "Douglas Montgomery",
+    "email": "dmontgomery@fontenelleforest.org",
+    "title": "Animal Care and Maintenance Technician ",
   },
   {
     "name": "Betsy Finch",
@@ -2664,43 +2669,6 @@ module.exports = React.createClass({
               React.createElement(
                 'span',
                 { className: 'staff_name' },
-                'Donation Requests: '
-              ),
-              React.createElement(
-                'span',
-                { className: 'title' },
-                'For qualifications and instructions'
-              )
-            ),
-            React.createElement(
-              'p',
-              { className: 'email' },
-              React.createElement(
-                Link,
-                { to: '/get-involved/donate' },
-                React.createElement(
-                  'svg',
-                  { className: 'arrow_circle blue right_arrow', x: '0px', y: '0px', viewBox: '0 0 52 52', enableBackground: 'new 0 0 52 52' },
-                  React.createElement('path', { className: 'circle', strokeWidth: '2', strokeLinecap: 'round', strokeMiterlimit: '10', d: 'M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z' }),
-                  React.createElement(
-                    'g',
-                    { className: 'arrow' },
-                    React.createElement('path', { strokeWidth: '2', strokeLinecap: 'round', strokeMiterlimit: '10', d: 'M29.4,25.9c0,0-1,1.6-1,4.4c0,2.6-0.6,3.5-0.6,3.8c0,0.4,0.3,0.7,0.7,0.5s8.6-6.2,10.5-8.1 c0,0,0.2-0.2,0.2-0.5v-0.1c0-0.2-0.1-0.4-0.2-0.5c-1.7-1.7-10.1-7.9-10.5-8.1c-0.3-0.2-0.7-0.1-0.7,0.5c0,0.3,0.6,1.1,0.6,3.8 C28.4,24.3,29.4,25.9,29.4,25.9z' }),
-                    React.createElement('line', { strokeWidth: '2', strokeLinecap: 'round', strokeMiterlimit: '10', x1: '27.8', y1: '25.9', x2: '12.7', y2: '25.9' })
-                  )
-                )
-              )
-            )
-          ),
-          React.createElement(
-            'div',
-            { className: 'staff_member' },
-            React.createElement(
-              'h2',
-              { className: 'name' },
-              React.createElement(
-                'span',
-                { className: 'staff_name' },
                 'Memberships: '
               ),
               React.createElement(
@@ -2857,11 +2825,6 @@ module.exports = React.createClass({
             React.createElement(
               'li',
               null,
-              'Emma Hoffman'
-            ),
-            React.createElement(
-              'li',
-              null,
               'Tisha Johnson'
             ),
             React.createElement(
@@ -2891,11 +2854,6 @@ module.exports = React.createClass({
             React.createElement(
               'li',
               null,
-              'Tina Tweedy'
-            ),
-            React.createElement(
-              'li',
-              null,
               'Alex Wiles'
             ),
             React.createElement(
@@ -2915,23 +2873,12 @@ module.exports = React.createClass({
             React.createElement(
               'li',
               null,
-              'Helen Beebe'
-            ),
-            '\u0003',
-            React.createElement(
-              'li',
-              null,
-              'Brian Mark Conover'
+              'Ramia Bashara'
             ),
             React.createElement(
               'li',
               null,
               'Brianna Craven'
-            ),
-            React.createElement(
-              'li',
-              null,
-              'Adam Erickson'
             ),
             React.createElement(
               'li',
@@ -2942,6 +2889,11 @@ module.exports = React.createClass({
               'li',
               null,
               'Nick Sauvageau'
+            ),
+            React.createElement(
+              'li',
+              null,
+              'Kori Shea'
             )
           )
         )
@@ -6565,8 +6517,8 @@ var App = React.createClass({
 						),
 						React.createElement(
 							Link,
-							{ to: "/get-involved", className: "link" },
-							"Get Involved"
+							{ to: "https://8913.blackbaudhosting.com/8913/Annual-Appeal", className: "link" },
+							"Donate"
 						)
 					),
 					React.createElement(

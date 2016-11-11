@@ -218,22 +218,6 @@ module.exports = React.createClass({
               </div>
               <div className="staff_member">
                 <h2 className="name">
-                  <span className="staff_name">Donation Requests: </span>
-                  <span className="title">For qualifications and instructions</span>
-                </h2>
-                <p className="email"><Link to="/get-involved/donate">
-                  <svg className="arrow_circle blue right_arrow" x="0px" y="0px" viewBox="0 0 52 52" enableBackground="new 0 0 52 52" >
-                    <path className="circle" strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"/>
-                    <g className="arrow" >
-                      <path strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M29.4,25.9c0,0-1,1.6-1,4.4c0,2.6-0.6,3.5-0.6,3.8c0,0.4,0.3,0.7,0.7,0.5s8.6-6.2,10.5-8.1
-                        c0,0,0.2-0.2,0.2-0.5v-0.1c0-0.2-0.1-0.4-0.2-0.5c-1.7-1.7-10.1-7.9-10.5-8.1c-0.3-0.2-0.7-0.1-0.7,0.5c0,0.3,0.6,1.1,0.6,3.8
-                        C28.4,24.3,29.4,25.9,29.4,25.9z"/>
-                      <line strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' x1="27.8" y1="25.9" x2="12.7" y2="25.9"/>
-                    </g>
-                  </svg></Link></p>
-              </div>
-              <div className="staff_member">
-                <h2 className="name">
                   <span className="staff_name">Memberships: </span>
                   <span className="title">To learn more about membership and to join or renew online.</span>
                 </h2>
@@ -295,7 +279,6 @@ module.exports = React.createClass({
             </ul>
             <ul className="name_list">
               <li>Dianne Guinn</li>
-              <li>Emma Hoffman</li>
               <li>Tisha Johnson</li>
               <li>Ken Koubsky</li>
               <li>Jean Neneman</li>
@@ -303,18 +286,16 @@ module.exports = React.createClass({
             <ul className="name_list">
               <li>Nick Sauvageau</li>
               <li>Heidi Seals</li>
-              <li>Tina Tweedy</li>
               <li>Alex Wiles</li>
               <li>Deborah Woracek</li>
             </ul>
             <h2 className="staff_title">VISITOR SERVICES ASSISTANTS</h2>
               <ul className="name_list">
-                <li>Helen Beebe</li>
-                <li>Brian Mark Conover</li>
+                <li>Ramia Bashara</li>
                 <li>Brianna Craven</li>
-                <li>Adam Erickson</li>
                 <li>Chelsy Kremin</li>
                 <li>Nick Sauvageau</li>
+                <li>Kori Shea</li>
               </ul>
           </div>
         </div>
