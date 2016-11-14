@@ -6518,7 +6518,7 @@ var App = React.createClass({
 						React.createElement(
 							"a",
 							{ target: "_blank", href: "https://8913.blackbaudhosting.com/8913/Annual-Appeal", className: "link" },
-							"Donate"
+							"Donate Now"
 						)
 					),
 					React.createElement(
@@ -6764,7 +6764,7 @@ var App = React.createClass({
 						React.createElement(
 							"a",
 							{ target: "_blank", href: "https://8913.blackbaudhosting.com/8913/Annual-Appeal", className: "link" },
-							"Donate"
+							"Donate Now"
 						)
 					),
 					React.createElement(

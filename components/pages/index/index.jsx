@@ -288,7 +288,7 @@ var App = React.createClass({
 			        <span className="global_menu">
 			            <Link to="/found-raptor" className="link">Found Raptor</Link>
 			            <Link to="/forest" className="link">Explore the Forest</Link>
-									<a target="_blank" href="https://8913.blackbaudhosting.com/8913/Annual-Appeal" className="link">Donate</a>
+									<a target="_blank" href="https://8913.blackbaudhosting.com/8913/Annual-Appeal" className="link">Donate Now</a>
 			        </span>
 							<span className="menu_icon" onClick={self.toggleMenu}><span className="hamburger_icon"></span> <span className="menu_label">Menu</span></span>
 							<div className="background"></div>
@@ -357,7 +357,7 @@ var App = React.createClass({
 							<span className="global_menu">
 									<Link to="/found-raptor" className="link">Found Raptor</Link>
 									<Link to="/forest" className="link">Explore the Forest</Link>
-									<a target="_blank" href="https://8913.blackbaudhosting.com/8913/Annual-Appeal" className="link">Donate</a>
+									<a target="_blank" href="https://8913.blackbaudhosting.com/8913/Annual-Appeal" className="link">Donate Now</a>
 							</span>
 							<span className="menu_icon" onClick={self.toggleMenu}><span className="hamburger_icon"></span> <span className="menu_label">Menu</span></span>
 							<div className="background"></div>
