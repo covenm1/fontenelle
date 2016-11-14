@@ -791,11 +791,6 @@ module.exports=[
     "title": "Manager of Facilities",
   },
   {
-    "name": "Douglas Montgomery",
-    "email": "dmontgomery@fontenelleforest.org",
-    "title": "Animal Care and Maintenance Technician ",
-  },
-  {
     "name": "Betsy Finch",
     "email": "BFinch@fontenelleforest.org",
     "title": "Manager of Raptor Rehabilitation",
@@ -816,9 +811,19 @@ module.exports=[
     "title": "Restoration Biologist",
   },
   {
+    "name": "Grace Gaard",
+    "email": "ggaard@fontenelleforest.org",
+    "title": "Naturalist",
+  },
+  {
     "name": "Denise Lewis",
     "email": "dlewis@fontenelleforest.org",
     "title": "Raptor Volunteer Coordinator",
+  },
+  {
+  "name": "Jess McCallie",
+  "email": "jmccallie@fontenelleforest.org",
+  "title": "Finance Associate",
   },
   {
     "name": "Michelle McElligott",
@@ -831,20 +836,15 @@ module.exports=[
     "title": "Restoration Biologist",
   },
   {
+    "name": "Douglas Montgomery",
+    "email": "dmontgomery@fontenelleforest.org",
+    "title": "Animal Care and Maintenance Technician ",
+  },
+  {
     "name": "Barb Naughtin",
     "email": "bnaughtin@fontenelleforest.org",
     "title": "Development Associate",
   },
-  {
-    "name": "Grace Gaard",
-    "email": "ggaard@fontenelleforest.org",
-    "title": "Naturalist",
-  },
-  {
-  "name": "Jess McCallie",
-  "email": "jmccallie@fontenelleforest.org",
-  "title": "Finance Associate",
-},
   {
     "name": "Josh Preister",
     "email": "JPreister@fontenelleforest.org",
@@ -4645,7 +4645,7 @@ module.exports = React.createClass({
               'Trail Maps: ',
               React.createElement(
                 'a',
-                { target: '_blank', href: 'http://fontenelle.flywheelsites.com/wp-content/uploads/2016/03/FFTrailMap.pdf' },
+                { target: '_blank', href: 'http://fontenelle.flywheelsites.com/wp-content/uploads/2016/11/FF-TrailMap-1016.pdf' },
                 'Fontenelle'
               ),
               '|',
@@ -6516,9 +6516,9 @@ var App = React.createClass({
 							"Explore the Forest"
 						),
 						React.createElement(
-							Link,
-							{ to: "/get-involved", className: "link" },
-							"Get Involved"
+							"a",
+							{ target: "_blank", href: "https://8913.blackbaudhosting.com/8913/Annual-Appeal", className: "link" },
+							"Donate"
 						)
 					),
 					React.createElement(
@@ -6762,9 +6762,9 @@ var App = React.createClass({
 							"Explore the Forest"
 						),
 						React.createElement(
-							Link,
-							{ to: "/get-involved", className: "link" },
-							"Get Involved"
+							"a",
+							{ target: "_blank", href: "https://8913.blackbaudhosting.com/8913/Annual-Appeal", className: "link" },
+							"Donate"
 						)
 					),
 					React.createElement(

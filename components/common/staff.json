@@ -30,11 +30,6 @@
     "title": "Manager of Facilities",
   },
   {
-    "name": "Douglas Montgomery",
-    "email": "dmontgomery@fontenelleforest.org",
-    "title": "Animal Care and Maintenance Technician ",
-  },
-  {
     "name": "Betsy Finch",
     "email": "BFinch@fontenelleforest.org",
     "title": "Manager of Raptor Rehabilitation",
@@ -55,9 +50,19 @@
     "title": "Restoration Biologist",
   },
   {
+    "name": "Grace Gaard",
+    "email": "ggaard@fontenelleforest.org",
+    "title": "Naturalist",
+  },
+  {
     "name": "Denise Lewis",
     "email": "dlewis@fontenelleforest.org",
     "title": "Raptor Volunteer Coordinator",
+  },
+  {
+  "name": "Jess McCallie",
+  "email": "jmccallie@fontenelleforest.org",
+  "title": "Finance Associate",
   },
   {
     "name": "Michelle McElligott",
@@ -70,20 +75,15 @@
     "title": "Restoration Biologist",
   },
   {
+    "name": "Douglas Montgomery",
+    "email": "dmontgomery@fontenelleforest.org",
+    "title": "Animal Care and Maintenance Technician ",
+  },
+  {
     "name": "Barb Naughtin",
     "email": "bnaughtin@fontenelleforest.org",
     "title": "Development Associate",
   },
-  {
-    "name": "Grace Gaard",
-    "email": "ggaard@fontenelleforest.org",
-    "title": "Naturalist",
-  },
-  {
-  "name": "Jess McCallie",
-  "email": "jmccallie@fontenelleforest.org",
-  "title": "Finance Associate",
-},
   {
     "name": "Josh Preister",
     "email": "JPreister@fontenelleforest.org",
