@@ -5137,7 +5137,7 @@ module.exports = React.createClass({
               { className: 'element_contain' },
               React.createElement(
                 'a',
-                { className: 'gi_button marker', href: 'https://8913.blackbaudhosting.com/8913/Operating-Individual', target: '_blank' },
+                { className: 'gi_button marker', href: 'https://8913.blackbaudhosting.com/8913/Annual-Appeal', target: '_blank' },
                 'Donate'
               )
             )
@@ -5964,7 +5964,12 @@ module.exports = React.createClass({
                 React.createElement(
                   'p',
                   null,
-                  'All facilities are closed on Thanksgiving Day, Christmas Day and New Year\'s Day. FF Closure Policy for Inclement Weather: All of FF properties are closed when Omaha Public Schools cancels classes.'
+                  'All facilities and trails will be closed for the holidays from December 22 , 2016 until January 2, 2017.'
+                ),
+                React.createElement(
+                  'p',
+                  null,
+                  'FF Closure Policy for Inclement Weather: All of FF properties are closed when Omaha Public Schools cancels classes.'
                 )
               ),
               React.createElement(
@@ -9632,7 +9637,7 @@ module.exports = React.createClass({
             React.createElement(
               'p',
               null,
-              'A bird is considered healthy again when it is in ideal feather condition, demonstrates keen flight abilities, and can recognize and catch food. It is then banded and released back to the wild near where it was found. Need to find out what each of these means. Tell more of a story about that moment when they are able to be let back into the wild and what that means to us.'
+              'A bird is considered healthy again when it is in ideal feather condition, demonstrates keen flight abilities, and can recognize and catch food. It is then banded and released back to the wild near where it was found.'
             ),
             React.createElement(
               'h2',
