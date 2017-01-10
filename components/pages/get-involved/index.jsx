@@ -63,7 +63,7 @@ module.exports = React.createClass({
               <p>It is because of our many generous donors that we are able to offer such a breadth and depth of conservation initiatives, educational activities, and other programs in the forest. Your tax-deductible gifts will go toward ongoing stewardship of over 2,000 acres of natural land and programs that benefit over 80,000 visitors each year.</p>
               <img className="gi_break" src="/img/conservation/divider_bottom_grey.png" />
               <div className="element_contain">
-                <a className="gi_button marker" href="https://8913.blackbaudhosting.com/8913/Annual-Appeal" target="_blank">Donate</a>
+                <a className="gi_button marker" href="https://8913.blackbaudhosting.com/8913/Operating-Individual" target="_blank">Donate</a>
               </div>
             </div>
           </div>
@@ -190,43 +190,42 @@ module.exports = React.createClass({
                 <div className="gi_half">
                   <h4>EXECUTIVE COMMITTEE</h4>
                   <ul>
-                    <li>President – Alexis Boulos</li>
-                    <li>President Elect – Adrienne Petsick</li>
-                    <li>Vice President Education – Gina Feely</li>
-                    <li>Vice President Social – Kristi Davis</li>
-                    <li>Vice President Technology – Amy Henderson</li>
-                    <li>Corresponding Secretary – Cindy Vaccaro</li>
-                    <li>Recording Secretary – Kelly Jeffreys</li>
+                    <li>President – Adrienne Petsick</li>
+                    <li>President Elect – Brittni Redding</li>
+                    <li>Vice President Education – Kareen Hickman</li>
+                    <li>Vice President Social – Kelly Jeffreys</li>
+                    <li>Vice President Technology – Cindy Vaccaro</li>
+                    <li>Technology Vice Chair – Jen Rogers</li>
+                    <li>Corresponding Secretary – Sarah Hinsley</li>
+                    <li>Recording Secretary – Traci Copple</li>
                     <li>Treasurer – Debbie Stalnaker</li>
-                    <li>Advisor/Nominating – Christine Schulte</li>
+                    <li>Advisor/Nominating – Alexis Boulos</li>
                   </ul>
                 </div>
 
                 <div className="gi_half">
                   <h4>GUILD BOARD MEMBERS</h4>
                   <ul>
+                    <li>Tara Arnold</li>
                     <li>Dana Boyle</li>
                     <li>Sarah Caswell</li>
-                    <li>Traci Copple</li>
-                    <li>Jessica Covi</li>
                     <li>Kati Cramer</li>
                     <li>Jenny Doyle</li>
-                    <li>Jessica Feinstein</li>
-                    <li>Andrea Gutta</li>
-                    <li>Kareen Hickman</li>
-                    <li>Sarah Hinsley</li>
+                    <li>Megan Gilligan</li>
+                    <li>Catherine Harrington</li>
+                    <li>Kelli Hawkins</li>
                     <li>Bret Jaros</li>
+                    <li>Megan King</li>
+                    <li>Cassie Kohl</li>
                     <li>Julie Kuntze</li>
                     <li>Gina McDevitt</li>
                     <li>Sarah Newman</li>
                     <li>Meghan Oakes</li>
-                    <li>Holly Pendley</li>
                     <li>Kristen Papenfuss</li>
-                    <li>Brittni Redding</li>
-                    <li>Jen Rogers</li>
                     <li>Megan Ringenberg</li>
-                    <li>Katie Sewell</li>
-                    <li>Libby Stiles</li>
+                    <li>Anne Rogers</li>
+                    <li>Carrie Strovers</li>
+                    <li>Mary Jane Tritsch</li>
                   </ul>
                 </div>
               </div>

@@ -34,15 +34,15 @@ module.exports = React.createClass({
               <h3>OFFICERS</h3>
               <div className="fb_columns">
                 <ul>
-                  <li>Angela L. Burmeister | President</li>
-                  <li>Levi Scheppers | Treasurer/Chair Finance</li>
+                  <li>Ann Christiansen | President</li>
+                  <li>Kelly Mann | Treasurer</li>
                 </ul>
                 <ul>
-                  <li>Ann Christiansen | President-Elect</li>
-                  <li>Paul Halbur | Past-President</li>
+                  <li>Jon Hansen | President-Elect</li>
+                  <li>Sue Nemer Haddix | Secretary</li>
                 </ul>
                 <ul>
-                  <li>Jon T. Hansen | Secretary</li>
+                  <li>Angela Burmeister | Advisor</li>
                 </ul>
               </div>
             </div>
@@ -55,26 +55,26 @@ module.exports = React.createClass({
               <div className="fb_columns">
                 <ul>
                   <li>Angela Athy</li>
-                  <li>Alexis Boulos</li>
-                  <li>Toba Cohen-Dunning</li>
                   <li>Catherine Demes Maydew</li>
                   <li>Ryan Gibson</li>
+                  <li>Wendy Goldberg</li>
                   <li>Mace Hack</li>
-                </ul>
-                <ul>
-                  <li>Mike Hamilton</li>
-                  <li>Howard J. Kaslow</li>
                   <li>Hans Klein-Hewett</li>
-                  <li>Gerry Lauritzen</li>
-                  <li>Julie Liakos</li>
-                  <li>Kelly Mann</li>
                 </ul>
                 <ul>
-                  <li>Susan Nemer-Haddix</li>
+                  <li>Nickie Konen</li>
+                  <li>Gerry Lauritzen</li>
+                  <li>Tad Leeper</li>
+                  <li>Cynthia Lesinski</li>
+                  <li>Julie Liakos</li>
+                  <li>Adrienne Petsick</li>
+                </ul>
+                <ul>
+                  <li>Don Preister</li>
                   <li>Athena Ramos</li>
                   <li>Jim Ristow</li>
                   <li>Todd Rivers</li>
-                  <li>Julee Sauer</li>
+                  <li>Levi Scheppers</li>
                   <li>Barbara Stratman</li>
                   <li>Maria Vazquez</li>
                 </ul>
@@ -90,7 +90,6 @@ module.exports = React.createClass({
                 <ul>
                   <li>Mogens Bay</li>
                   <li>George F. Haddix</li>
-                  <li>Neal C. Hansen</li>
                 </ul>
                 <ul>
                   <li>Gerry and Bruce Lauritzen</li>

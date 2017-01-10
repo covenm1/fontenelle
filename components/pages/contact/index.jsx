@@ -292,10 +292,10 @@ module.exports = React.createClass({
             <h2 className="staff_title">VISITOR SERVICES ASSISTANTS</h2>
               <ul className="name_list">
                 <li>Ramia Bashara</li>
-                <li>Brianna Craven</li>
                 <li>Chelsy Kremin</li>
                 <li>Nick Sauvageau</li>
                 <li>Kori Shea</li>
+                <li>Kenneth White</li>
               </ul>
           </div>
         </div>

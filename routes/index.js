@@ -84,7 +84,7 @@ module.exports = function(app) {
 	});
 
   app.get('/donate', function(req, res) {
-    res.redirect('https://8913.blackbaudhosting.com/8913/Annual-Appeal');
+    res.redirect('https://8913.blackbaudhosting.com/8913/Operating-Individual');
 	});
 
   app.get('/fireside', function(req, res) {
@@ -108,7 +108,7 @@ module.exports = function(app) {
 	});
 
   app.get('/camps', function(req, res) {
-    res.redirect('/post/2016-nature-discovery-day-camps');
+    res.redirect('http://www.fontenelleforest.org/post/summer-day-camps');
   });
 
   app.get('/volunteer', function(req, res) {

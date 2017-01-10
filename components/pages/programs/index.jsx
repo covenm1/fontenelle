@@ -158,9 +158,11 @@ var Main = React.createClass({
         <p className="main_description">9:30 - 11:30 a.m.</p>
         <p className="main_label">Ages:</p>
         <p className="main_description">5 and younger, accompanied by an adult</p>
-        <p className="main_label">Admission:</p>
-        <p className="main_description"><strong>FF Members:</strong> Free</p>
-        <p className="main_description"><strong>Non-members:</strong> Free with Daily Admission</p>
+        <p className="main_label">Cost:</p>
+        
+        <p className="main_description"><strong>FF Members:</strong> $3 per child</p>
+        <p className="main_description"><strong>Non-members:</strong> $5 per child plus daily admission</p>
+        <p className="main_description">An annual Mud Pies pass is available. <a class="color" href="https://8913.blackbaudhosting.com/8913/Mudpies-Pass" target="_blank">Click here to purchase</a>.</p>
       </div>
     )
 
@@ -446,7 +448,7 @@ var Main = React.createClass({
                       <h2 className="marker color" id="camps" onClick={ self.camps }>Camps</h2>
                       <p>What could be more fun than spending a week in the forest? Fontenelle’s Nature Discovery Day Camps feature fun, hands-on, science-based learning through play taught by our year-round professional educators. Camps are offered in the summer and winter. We also offer special camps for grandparents and grandkids to participate in together. Registration is limited. Proof of age is required. Campers should bring their lunch. Snacks provided.</p>
 
-                      <h5><Link to="/post/2016-nature-discovery-day-camps" className="gi_button marker">click here for more information</Link></h5>
+                      <h5><Link to="/post/summer-day-camps" className="gi_button marker">click here for more information</Link></h5>
                     </div>
                     <div className="for_kids">
                       <img className="binoculars" src="/img/programs/binoculars.png" />
@@ -647,8 +649,7 @@ var Main = React.createClass({
                       <p>We get requests frequently from companies, organizations, and clubs looking for a group experience in the forest and have developed the following core programs:</p>
                       <h3>BIO-INSPIRED LEADERSHIP WORKSHOP</h3>
                       <p>We're partnering with Verdis Group to offer a new workshop for organizations who are ready to embrace the ever changing dynamic business world. This immersion experience explores lessons from nature to form adaptable, resilient, and prosperous teams and groups. Attendees will experience an immersive program unlike any other; one that combines sustainability, achieving an ecological balance, and biomimicry - the design of materials, structures, and systems that are modeled on biological entities and processes.</p>
-                      <p className="p_info">For more information, including availability and pricing, please contact:
-                      <br/><a target="_blank" href="mailto:skronekeith@fontenelleforest.org">Seth Keith at SKroneKeith@fontenelleforest.org</a>.</p>
+                      <p className="p_info">For more information, contact us at <a target="_blank" href="mailto:info@fontenelleforest.org">info@fontenelleforest.org</a>.</p>
                       <hr/>
                       <h3>SCOUTS</h3>
                       <p>With hands-on activities, games, and exploration, scouts will discover nature’s mysteries at Fontenelle Forest, the region’s premier nature center that encompasses forest, prairie, and wetlands along the Missouri River. With year-round programming and activities from guided hikes, live animal demonstrations, natural science exhibits, lectures, classes, and even snowshoe rentals, there’s always a reason to bring your troop. Make plans to have your Scouts join us for an exciting adventure!</p>

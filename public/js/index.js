@@ -861,11 +861,6 @@ module.exports=[
     "title": "Animal Care Coordinator",
   },
   {
-    "name": "Joanie Soverns",
-    "email": "jsoverns@fontenelleforest.org",
-    "title": "Manager of Donor Relations and Membership",
-  },
-  {
     "name": "Tracy Van Zee",
     "email": "tvanzee@fontenelleforest.org",
     "title": "Senior Programs Coordinator",
@@ -1092,12 +1087,12 @@ module.exports = React.createClass({
                 React.createElement(
                   'li',
                   null,
-                  'Angela L. Burmeister | President'
+                  'Ann Christiansen | President'
                 ),
                 React.createElement(
                   'li',
                   null,
-                  'Levi Scheppers | Treasurer/Chair Finance'
+                  'Kelly Mann | Treasurer'
                 )
               ),
               React.createElement(
@@ -1106,12 +1101,12 @@ module.exports = React.createClass({
                 React.createElement(
                   'li',
                   null,
-                  'Ann Christiansen | President-Elect'
+                  'Jon Hansen | President-Elect'
                 ),
                 React.createElement(
                   'li',
                   null,
-                  'Paul Halbur | Past-President'
+                  'Sue Nemer Haddix | Secretary'
                 )
               ),
               React.createElement(
@@ -1120,7 +1115,7 @@ module.exports = React.createClass({
                 React.createElement(
                   'li',
                   null,
-                  'Jon T. Hansen | Secretary'
+                  'Angela Burmeister | Advisor'
                 )
               )
             )
@@ -1155,16 +1150,6 @@ module.exports = React.createClass({
                 React.createElement(
                   'li',
                   null,
-                  'Alexis Boulos'
-                ),
-                React.createElement(
-                  'li',
-                  null,
-                  'Toba Cohen-Dunning'
-                ),
-                React.createElement(
-                  'li',
-                  null,
                   'Catherine Demes Maydew'
                 ),
                 React.createElement(
@@ -1175,7 +1160,17 @@ module.exports = React.createClass({
                 React.createElement(
                   'li',
                   null,
+                  'Wendy Goldberg'
+                ),
+                React.createElement(
+                  'li',
+                  null,
                   'Mace Hack'
+                ),
+                React.createElement(
+                  'li',
+                  null,
+                  'Hans Klein-Hewett'
                 )
               ),
               React.createElement(
@@ -1184,17 +1179,7 @@ module.exports = React.createClass({
                 React.createElement(
                   'li',
                   null,
-                  'Mike Hamilton'
-                ),
-                React.createElement(
-                  'li',
-                  null,
-                  'Howard J. Kaslow'
-                ),
-                React.createElement(
-                  'li',
-                  null,
-                  'Hans Klein-Hewett'
+                  'Nickie Konen'
                 ),
                 React.createElement(
                   'li',
@@ -1204,12 +1189,22 @@ module.exports = React.createClass({
                 React.createElement(
                   'li',
                   null,
+                  'Tad Leeper'
+                ),
+                React.createElement(
+                  'li',
+                  null,
+                  'Cynthia Lesinski'
+                ),
+                React.createElement(
+                  'li',
+                  null,
                   'Julie Liakos'
                 ),
                 React.createElement(
                   'li',
                   null,
-                  'Kelly Mann'
+                  'Adrienne Petsick'
                 )
               ),
               React.createElement(
@@ -1218,7 +1213,7 @@ module.exports = React.createClass({
                 React.createElement(
                   'li',
                   null,
-                  'Susan Nemer-Haddix'
+                  'Don Preister'
                 ),
                 React.createElement(
                   'li',
@@ -1238,7 +1233,7 @@ module.exports = React.createClass({
                 React.createElement(
                   'li',
                   null,
-                  'Julee Sauer'
+                  'Levi Scheppers'
                 ),
                 React.createElement(
                   'li',
@@ -1284,11 +1279,6 @@ module.exports = React.createClass({
                   'li',
                   null,
                   'George F. Haddix'
-                ),
-                React.createElement(
-                  'li',
-                  null,
-                  'Neal C. Hansen'
                 )
               ),
               React.createElement(
@@ -2878,11 +2868,6 @@ module.exports = React.createClass({
             React.createElement(
               'li',
               null,
-              'Brianna Craven'
-            ),
-            React.createElement(
-              'li',
-              null,
               'Chelsy Kremin'
             ),
             React.createElement(
@@ -2894,6 +2879,11 @@ module.exports = React.createClass({
               'li',
               null,
               'Kori Shea'
+            ),
+            React.createElement(
+              'li',
+              null,
+              'Kenneth White'
             )
           )
         )
@@ -5137,7 +5127,7 @@ module.exports = React.createClass({
               { className: 'element_contain' },
               React.createElement(
                 'a',
-                { className: 'gi_button marker', href: 'https://8913.blackbaudhosting.com/8913/Annual-Appeal', target: '_blank' },
+                { className: 'gi_button marker', href: 'https://8913.blackbaudhosting.com/8913/Operating-Individual', target: '_blank' },
                 'Donate'
               )
             )
@@ -5678,37 +5668,42 @@ module.exports = React.createClass({
                   React.createElement(
                     'li',
                     null,
-                    'President – Alexis Boulos'
+                    'President – Adrienne Petsick'
                   ),
                   React.createElement(
                     'li',
                     null,
-                    'President Elect – Adrienne Petsick'
+                    'President Elect – Brittni Redding'
                   ),
                   React.createElement(
                     'li',
                     null,
-                    'Vice President Education – Gina Feely'
+                    'Vice President Education – Kareen Hickman'
                   ),
                   React.createElement(
                     'li',
                     null,
-                    'Vice President Social – Kristi Davis'
+                    'Vice President Social – Kelly Jeffreys'
                   ),
                   React.createElement(
                     'li',
                     null,
-                    'Vice President Technology – Amy Henderson'
+                    'Vice President Technology – Cindy Vaccaro'
                   ),
                   React.createElement(
                     'li',
                     null,
-                    'Corresponding Secretary – Cindy Vaccaro'
+                    'Technology Vice Chair – Jen Rogers'
                   ),
                   React.createElement(
                     'li',
                     null,
-                    'Recording Secretary – Kelly Jeffreys'
+                    'Corresponding Secretary – Sarah Hinsley'
+                  ),
+                  React.createElement(
+                    'li',
+                    null,
+                    'Recording Secretary – Traci Copple'
                   ),
                   React.createElement(
                     'li',
@@ -5718,7 +5713,7 @@ module.exports = React.createClass({
                   React.createElement(
                     'li',
                     null,
-                    'Advisor/Nominating – Christine Schulte'
+                    'Advisor/Nominating – Alexis Boulos'
                   )
                 )
               ),
@@ -5736,22 +5731,17 @@ module.exports = React.createClass({
                   React.createElement(
                     'li',
                     null,
+                    'Tara Arnold'
+                  ),
+                  React.createElement(
+                    'li',
+                    null,
                     'Dana Boyle'
                   ),
                   React.createElement(
                     'li',
                     null,
                     'Sarah Caswell'
-                  ),
-                  React.createElement(
-                    'li',
-                    null,
-                    'Traci Copple'
-                  ),
-                  React.createElement(
-                    'li',
-                    null,
-                    'Jessica Covi'
                   ),
                   React.createElement(
                     'li',
@@ -5766,27 +5756,32 @@ module.exports = React.createClass({
                   React.createElement(
                     'li',
                     null,
-                    'Jessica Feinstein'
+                    'Megan Gilligan'
                   ),
                   React.createElement(
                     'li',
                     null,
-                    'Andrea Gutta'
+                    'Catherine Harrington'
                   ),
                   React.createElement(
                     'li',
                     null,
-                    'Kareen Hickman'
-                  ),
-                  React.createElement(
-                    'li',
-                    null,
-                    'Sarah Hinsley'
+                    'Kelli Hawkins'
                   ),
                   React.createElement(
                     'li',
                     null,
                     'Bret Jaros'
+                  ),
+                  React.createElement(
+                    'li',
+                    null,
+                    'Megan King'
+                  ),
+                  React.createElement(
+                    'li',
+                    null,
+                    'Cassie Kohl'
                   ),
                   React.createElement(
                     'li',
@@ -5811,22 +5806,7 @@ module.exports = React.createClass({
                   React.createElement(
                     'li',
                     null,
-                    'Holly Pendley'
-                  ),
-                  React.createElement(
-                    'li',
-                    null,
                     'Kristen Papenfuss'
-                  ),
-                  React.createElement(
-                    'li',
-                    null,
-                    'Brittni Redding'
-                  ),
-                  React.createElement(
-                    'li',
-                    null,
-                    'Jen Rogers'
                   ),
                   React.createElement(
                     'li',
@@ -5836,12 +5816,17 @@ module.exports = React.createClass({
                   React.createElement(
                     'li',
                     null,
-                    'Katie Sewell'
+                    'Anne Rogers'
                   ),
                   React.createElement(
                     'li',
                     null,
-                    'Libby Stiles'
+                    'Carrie Strovers'
+                  ),
+                  React.createElement(
+                    'li',
+                    null,
+                    'Mary Jane Tritsch'
                   )
                 )
               )
@@ -5960,11 +5945,6 @@ module.exports = React.createClass({
                   'p',
                   null,
                   '*Keyless Access Fobs are issued by request during business hours at Visitor Services and require a refundable $10 deposit.'
-                ),
-                React.createElement(
-                  'p',
-                  null,
-                  'All facilities and trails will be closed for the holidays from December 22 , 2016 until January 2, 2017.'
                 ),
                 React.createElement(
                   'p',
@@ -6522,7 +6502,7 @@ var App = React.createClass({
 						),
 						React.createElement(
 							"a",
-							{ target: "_blank", href: "https://8913.blackbaudhosting.com/8913/Annual-Appeal", className: "link" },
+							{ target: "_blank", href: "https://8913.blackbaudhosting.com/8913/Operating-Individual", className: "link" },
 							"Donate Now"
 						)
 					),
@@ -6768,7 +6748,7 @@ var App = React.createClass({
 						),
 						React.createElement(
 							"a",
-							{ target: "_blank", href: "https://8913.blackbaudhosting.com/8913/Annual-Appeal", className: "link" },
+							{ target: "_blank", href: "https://8913.blackbaudhosting.com/8913/Operating-Individual", className: "link" },
 							"Donate Now"
 						)
 					),
@@ -8239,7 +8219,7 @@ var Main = React.createClass({
       React.createElement(
         'p',
         { className: 'main_label' },
-        'Admission:'
+        'Cost:'
       ),
       React.createElement(
         'p',
@@ -8249,7 +8229,7 @@ var Main = React.createClass({
           null,
           'FF Members:'
         ),
-        ' Free'
+        ' $3 per child'
       ),
       React.createElement(
         'p',
@@ -8259,7 +8239,18 @@ var Main = React.createClass({
           null,
           'Non-members:'
         ),
-        ' Free with Daily Admission'
+        ' $5 per child plus daily admission'
+      ),
+      React.createElement(
+        'p',
+        { className: 'main_description' },
+        'An annual Mud Pies pass is available. ',
+        React.createElement(
+          'a',
+          { 'class': 'color', href: 'https://8913.blackbaudhosting.com/8913/Mudpies-Pass', target: '_blank' },
+          'Click here to purchase'
+        ),
+        '.'
       )
     );
 
@@ -8878,7 +8869,7 @@ var Main = React.createClass({
                     null,
                     React.createElement(
                       Link,
-                      { to: '/post/2016-nature-discovery-day-camps', className: 'gi_button marker' },
+                      { to: '/post/summer-day-camps', className: 'gi_button marker' },
                       'click here for more information'
                     )
                   )
@@ -9243,13 +9234,11 @@ var Main = React.createClass({
                     React.createElement(
                       'p',
                       { className: 'p_info' },
-                      'For more information, including availability and pricing, please contact:',
-                      React.createElement('br', null),
-                      '\u0003',
+                      'For more information, contact us at ',
                       React.createElement(
                         'a',
-                        { target: '_blank', href: 'mailto:skronekeith@fontenelleforest.org' },
-                        'Seth Keith at SKroneKeith@fontenelleforest.org'
+                        { target: '_blank', href: 'mailto:info@fontenelleforest.org' },
+                        'info@fontenelleforest.org'
                       ),
                       '.'
                     ),
@@ -9677,7 +9666,7 @@ module.exports = React.createClass({
             'p',
             { className: 'textleft' },
             React.createElement('br', null),
-            'Raptor Woodland Refuge is located at the Fontenelle Forest Nature Center. The Refuge opens on July 16, 2016 and will be open daily from 10 a.m. until 5 p.m. year round.'
+            'Raptor Woodland Refuge is located at the Fontenelle Forest Nature Center. Raptor Woodland Refuge is open 8 a.m. until 5 p.m. daily at the Fontenelle Forest Nature Center.'
           )
         )
       ),

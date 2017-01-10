@@ -31,8 +31,7 @@ module.exports = React.createClass({
                     <p><b>8 AM – 5 PM every day. Raptor Woodland Refuge is open from 10 AM – 5 PM every day.</b></p>
                     <p>Trails open dawn to dusk for FF members (with a Keyless Access FOB*) and visitors entering before nature center closes.</p>
                     <p>*Keyless Access Fobs are issued by request during business hours at Visitor Services and require a refundable $10 deposit.</p>
-                    <p>All facilities and trails will be closed for the holidays from December 22 , 2016 until January 2, 2017.</p>
-                      <p>FF Closure Policy for Inclement Weather: All of FF properties are closed when Omaha Public Schools cancels classes.</p>
+                    <p>FF Closure Policy for Inclement Weather: All of FF properties are closed when Omaha Public Schools cancels classes.</p>
                   </div>
                   <div>
                     <h3>ADMISSION</h3>
