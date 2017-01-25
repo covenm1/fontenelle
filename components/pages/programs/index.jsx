@@ -149,7 +149,7 @@ var Main = React.createClass({
         <h2>MUD PIES</h2>
         <img src="/img/programs/mudpies.jpg" width="100%" />
         <p>Looking for a unique setting in which to have fun with your child while learning about the natural world? Mud Pies is a relaxed, drop-in-and-play program that encourages interaction between adult and child. Each week, a natural science topic is explored through station-based activities, free play, and a guided walk. Come discover the joy of sharing nature with your child!</p>
-        <p>Mud Pies meets every Monday-Thursday from 9:30-11:30 am at Fontenelle Forest Nature Center. This program is for children ages 5 and younger accompanied by an adult. One adult is required for every two children. This program is free for members or with daily admission.</p>
+        <p>Mud Pies meets every Monday-Thursday from 9:30-11:30 am at Fontenelle Forest Nature Center. This program is for children ages 5 and younger accompanied by an adult. One adult is required for every two children.</p>
         <p>Parent groups, day cares, or preschools are accepted on Fridays only by appointment. Contact Lindsay Cooley atlcooley@fontenelleforest.org for more information and available dates.</p>
         <p className="main_label">Location:</p>
         <p className="main_description">Fontenelle Forest Nature Center</p>
