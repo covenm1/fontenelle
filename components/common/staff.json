@@ -12,7 +12,7 @@
   {
     "name": "Madison Brandon",
     "email": "mbrandon@fontenelleforest.org",
-    "title": "Raptor Care Specialist",
+    "title": "Animal Care Technician",
   },
   {
     "name": "Lindsay Cooley",
@@ -20,14 +20,14 @@
     "title": "Naturalist",
   },
   {
+    "name": "Patricia Cottrell",
+    "email": "pcottrell@fontenelleforest.org",
+    "title": "Grant Writer",
+  },
+  {
     "name": "Linda Dennis",
     "email": "LDennis@fontenelleforest.org",
     "title": "Education Assistant",
-  },
-  {
-    "name": "Gene Ericson",
-    "email": "gericson@fontenelleforest.org",
-    "title": "Manager of Facilities",
   },
   {
     "name": "Betsy Finch",
@@ -42,7 +42,7 @@
   {
     "name": "Lisa Formanik",
     "email": "lformanik@fontenelleforest.org",
-    "title": "Educator / Volunteer Coordinator",
+    "title": "Naturalist",
   },
   {
     "name": "Michelle Foss",
@@ -53,6 +53,11 @@
     "name": "Grace Gaard",
     "email": "ggaard@fontenelleforest.org",
     "title": "Naturalist",
+  },
+  {
+    "name": "Katie Kallsen",
+    "email": "kkallsen@fontenelleforest.org",
+    "title": "Animal Care Specialist",
   },
   {
     "name": "Denise Lewis",
@@ -77,7 +82,12 @@
   {
     "name": "Douglas Montgomery",
     "email": "dmontgomery@fontenelleforest.org",
-    "title": "Animal Care and Maintenance Technician ",
+    "title": "Animal Care and Maintenance Technician",
+  },
+  {
+    "name": "Molly Mullen",
+    "email": "mmullen@fontenelleforest.org",
+    "title": "Manager of Marketing and Events",
   },
   {
     "name": "Barb Naughtin",
@@ -92,12 +102,17 @@
   {
     "name": "Barb Shiffermiller",
     "email": "bshiffermiller@fontenelleforest.org",
-    "title": "Manager of Customer Service",
+    "title": "Visitor Services Specialist",
   },
   {
     "name": "Valerie Slocum",
     "email": "vslocum@fontenelleforest.org",
-    "title": "Animal Care Coordinator",
+    "title": "Raptor Care Specialist",
+  },
+  {
+    "name": "Bettia Turner",
+    "email": "bturner@fontenelleforest.org",
+    "title": "Manager of Membership and Donor Relations",
   },
   {
     "name": "Tracy Van Zee",

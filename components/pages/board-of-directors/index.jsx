@@ -89,6 +89,7 @@ module.exports = React.createClass({
               <div className="fb_columns">
                 <ul>
                   <li>Mogens Bay</li>
+                  <li>Charles Gifford</li>
                   <li>George F. Haddix</li>
                 </ul>
                 <ul>

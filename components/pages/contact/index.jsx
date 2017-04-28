@@ -189,7 +189,7 @@ module.exports = React.createClass({
                   <span className="staff_name">Donate to FF : </span>
                   <span className="title">For questions about making a donation</span>
                 </h2>
-                <p className="email">bnaughtin@fontenelleforest.org<a href="mailto:bnaughtin@fontenelleforest.org">
+                <p className="email">donations@fontenelleforest.org<a href="mailto:donations@fontenelleforest.org">
                   <svg className="arrow_circle blue right_arrow" x="0px" y="0px" viewBox="0 0 52 52" enableBackground="new 0 0 52 52" >
                     <path className="circle" strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"/>
                     <g className="arrow" >
@@ -271,31 +271,31 @@ module.exports = React.createClass({
           <div className='main_wrapper'>
             <h2 className="staff_title">PART-TIME EDUCATORS</h2>
             <ul className="name_list">
-              <li>Kyle Anderson</li>
               <li>Amy Campagna</li>
               <li>Julianne Carbonell</li>
+              <li>Alysa Choquette</li>
               <li>Amanda Dague</li>
-              <li>Lisa Formanik</li>
-            </ul>
-            <ul className="name_list">
               <li>Dianne Guinn</li>
-              <li>Tisha Johnson</li>
-              <li>Ken Koubsky</li>
-              <li>Jean Neneman</li>
             </ul>
             <ul className="name_list">
+              <li>Tisha Johnson</li>
+              <li>Jean Neneman</li>
               <li>Nick Sauvageau</li>
               <li>Heidi Seals</li>
+            </ul>
+            <ul className="name_list">
+              <li>Jessie Sevener</li>
+              <li>Trish Wakefield</li>
               <li>Alex Wiles</li>
               <li>Deborah Woracek</li>
             </ul>
-            <h2 className="staff_title">VISITOR SERVICES ASSISTANTS</h2>
+            <h2 className="staff_title_end">VISITOR SERVICES ASSISTANTS</h2>
               <ul className="name_list">
-                <li>Ramia Bashara</li>
+                <li>Adam Ericson</li>
+                <li>Miriam Holder</li>
                 <li>Chelsy Kremin</li>
                 <li>Nick Sauvageau</li>
                 <li>Kori Shea</li>
-                <li>Kenneth White</li>
               </ul>
           </div>
         </div>

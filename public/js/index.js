@@ -737,19 +737,24 @@ module.exports=[
     "title": "Director of Education",
   },
   {
-    "name": "Janis Enenbach",
-    "email": "jenenbach@fontenelleforest.org",
-    "title": "Interim Development Director",
+    "name": "Gene Ericson",
+    "email": "gericson@fontenelleforest.org",
+    "title": "Director of Operations",
+  },
+  {
+    "name": "Gary Fischer",
+    "email": "gfischer@fontenelleforest.org",
+    "title": "Director of Development and Marketing",
+  },
+  {
+    "name": "Betty Fullerton",
+    "email": "bfullerton@fontenelleforest.org",
+    "title": "Interim Director of Finance",
   },
   {
     "name": "Jeanine Lackey",
     "email": "JLackey@fontenelleforest.org",
     "title": "Director of Research & Stewardship",
-  },
-  {
-    "name": "Rick Schmid",
-    "email": "rschmid@fontenelleforest.org",
-    "title": "Director of Operations",
   },
   {
     "name": "Janet Stander",
@@ -773,7 +778,7 @@ module.exports=[
   {
     "name": "Madison Brandon",
     "email": "mbrandon@fontenelleforest.org",
-    "title": "Raptor Care Specialist",
+    "title": "Animal Care Technician",
   },
   {
     "name": "Lindsay Cooley",
@@ -781,14 +786,14 @@ module.exports=[
     "title": "Naturalist",
   },
   {
+    "name": "Patricia Cottrell",
+    "email": "pcottrell@fontenelleforest.org",
+    "title": "Grant Writer",
+  },
+  {
     "name": "Linda Dennis",
     "email": "LDennis@fontenelleforest.org",
     "title": "Education Assistant",
-  },
-  {
-    "name": "Gene Ericson",
-    "email": "gericson@fontenelleforest.org",
-    "title": "Manager of Facilities",
   },
   {
     "name": "Betsy Finch",
@@ -803,7 +808,7 @@ module.exports=[
   {
     "name": "Lisa Formanik",
     "email": "lformanik@fontenelleforest.org",
-    "title": "Educator / Volunteer Coordinator",
+    "title": "Naturalist",
   },
   {
     "name": "Michelle Foss",
@@ -814,6 +819,11 @@ module.exports=[
     "name": "Grace Gaard",
     "email": "ggaard@fontenelleforest.org",
     "title": "Naturalist",
+  },
+  {
+    "name": "Katie Kallsen",
+    "email": "kkallsen@fontenelleforest.org",
+    "title": "Animal Care Specialist",
   },
   {
     "name": "Denise Lewis",
@@ -838,7 +848,12 @@ module.exports=[
   {
     "name": "Douglas Montgomery",
     "email": "dmontgomery@fontenelleforest.org",
-    "title": "Animal Care and Maintenance Technician ",
+    "title": "Animal Care and Maintenance Technician",
+  },
+  {
+    "name": "Molly Mullen",
+    "email": "mmullen@fontenelleforest.org",
+    "title": "Manager of Marketing and Events",
   },
   {
     "name": "Barb Naughtin",
@@ -853,12 +868,17 @@ module.exports=[
   {
     "name": "Barb Shiffermiller",
     "email": "bshiffermiller@fontenelleforest.org",
-    "title": "Manager of Customer Service",
+    "title": "Visitor Services Specialist",
   },
   {
     "name": "Valerie Slocum",
     "email": "vslocum@fontenelleforest.org",
-    "title": "Animal Care Coordinator",
+    "title": "Raptor Care Specialist",
+  },
+  {
+    "name": "Bettia Turner",
+    "email": "bturner@fontenelleforest.org",
+    "title": "Manager of Membership and Donor Relations",
   },
   {
     "name": "Tracy Van Zee",
@@ -1274,6 +1294,11 @@ module.exports = React.createClass({
                   'li',
                   null,
                   'Mogens Bay'
+                ),
+                React.createElement(
+                  'li',
+                  null,
+                  'Charles Gifford'
                 ),
                 React.createElement(
                   'li',
@@ -2595,10 +2620,10 @@ module.exports = React.createClass({
             React.createElement(
               'p',
               { className: 'email' },
-              'bnaughtin@fontenelleforest.org',
+              'donations@fontenelleforest.org',
               React.createElement(
                 'a',
-                { href: 'mailto:bnaughtin@fontenelleforest.org' },
+                { href: 'mailto:donations@fontenelleforest.org' },
                 React.createElement(
                   'svg',
                   { className: 'arrow_circle blue right_arrow', x: '0px', y: '0px', viewBox: '0 0 52 52', enableBackground: 'new 0 0 52 52' },
@@ -2781,11 +2806,6 @@ module.exports = React.createClass({
             React.createElement(
               'li',
               null,
-              'Kyle Anderson'
-            ),
-            React.createElement(
-              'li',
-              null,
               'Amy Campagna'
             ),
             React.createElement(
@@ -2796,22 +2816,22 @@ module.exports = React.createClass({
             React.createElement(
               'li',
               null,
+              'Alysa Choquette'
+            ),
+            React.createElement(
+              'li',
+              null,
               'Amanda Dague'
             ),
             React.createElement(
               'li',
               null,
-              'Lisa Formanik'
+              'Dianne Guinn'
             )
           ),
           React.createElement(
             'ul',
             { className: 'name_list' },
-            React.createElement(
-              'li',
-              null,
-              'Dianne Guinn'
-            ),
             React.createElement(
               'li',
               null,
@@ -2820,17 +2840,8 @@ module.exports = React.createClass({
             React.createElement(
               'li',
               null,
-              'Ken Koubsky'
-            ),
-            React.createElement(
-              'li',
-              null,
               'Jean Neneman'
-            )
-          ),
-          React.createElement(
-            'ul',
-            { className: 'name_list' },
+            ),
             React.createElement(
               'li',
               null,
@@ -2840,6 +2851,20 @@ module.exports = React.createClass({
               'li',
               null,
               'Heidi Seals'
+            )
+          ),
+          React.createElement(
+            'ul',
+            { className: 'name_list' },
+            React.createElement(
+              'li',
+              null,
+              'Jessie Sevener'
+            ),
+            React.createElement(
+              'li',
+              null,
+              'Trish Wakefield'
             ),
             React.createElement(
               'li',
@@ -2854,7 +2879,7 @@ module.exports = React.createClass({
           ),
           React.createElement(
             'h2',
-            { className: 'staff_title' },
+            { className: 'staff_title_end' },
             'VISITOR SERVICES ASSISTANTS\u0003'
           ),
           React.createElement(
@@ -2863,7 +2888,12 @@ module.exports = React.createClass({
             React.createElement(
               'li',
               null,
-              'Ramia Bashara'
+              'Adam Ericson'
+            ),
+            React.createElement(
+              'li',
+              null,
+              'Miriam Holder'
             ),
             React.createElement(
               'li',
@@ -2879,11 +2909,6 @@ module.exports = React.createClass({
               'li',
               null,
               'Kori Shea'
-            ),
-            React.createElement(
-              'li',
-              null,
-              'Kenneth White'
             )
           )
         )
