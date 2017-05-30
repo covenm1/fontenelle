@@ -83,6 +83,10 @@ module.exports = function(app) {
 		});
 	});
 
+  app.get('/paintandsip', function(req, res) {
+    res.redirect('https://8913.blackbaudhosting.com/8913/Paint-and-Sip');
+	});
+
   app.get('/donate', function(req, res) {
     res.redirect('https://8913.blackbaudhosting.com/8913/Operating-Individual');
 	});

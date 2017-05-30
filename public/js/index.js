@@ -744,12 +744,12 @@ module.exports=[
   {
     "name": "Gary Fischer",
     "email": "gfischer@fontenelleforest.org",
-    "title": "Director of Development and Marketing",
+    "title": "Director of Development & Marketing",
   },
   {
-    "name": "Betty Fullerton",
-    "email": "bfullerton@fontenelleforest.org",
-    "title": "Interim Director of Finance",
+    "name": "Dawn Jensen",
+    "email": "djensen@fontenelleforest.org",
+    "title": "Director of Finance & Administration",
   },
   {
     "name": "Jeanine Lackey",
@@ -5958,13 +5958,13 @@ module.exports = React.createClass({
                   React.createElement(
                     'b',
                     null,
-                    '8 AM – 5 PM every day. Raptor Woodland Refuge is open from 10 AM – 5 PM every day.'
+                    'Extended summer hours now through Labor Day! The Nature Center is open 8 AM - 7 PM on weekdays and 8 AM – 5 PM on weekends.  Raptor Woodland Refuge is open 10 AM – 5 PM every day.'
                   )
                 ),
                 React.createElement(
                   'p',
                   null,
-                  'Trails open dawn to dusk for FF members (with a Keyless Access FOB*) and visitors entering before nature center closes.'
+                  'Trails open sunrise to sunset for Fontenelle Forest members (with a keyless access FOB) and visitors entering during regular Nature Center hours.'
                 ),
                 React.createElement(
                   'p',
