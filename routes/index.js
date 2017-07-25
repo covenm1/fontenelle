@@ -83,6 +83,10 @@ module.exports = function(app) {
 		});
 	});
 
+  app.get('/trails', function(req, res) {
+    res.redirect('https://8913.blackbaudhosting.com/8913/Help-Repair-Our-Trails');
+  });
+  
   app.get('/paintandsip', function(req, res) {
     res.redirect('https://8913.blackbaudhosting.com/8913/Paint-and-Sip');
 	});
