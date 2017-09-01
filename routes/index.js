@@ -83,6 +83,10 @@ module.exports = function(app) {
 		});
 	});
 
+  app.get('/education', function(req, res) {
+    res.redirect('https://8913.blackbaudhosting.com/8913/Inspiring-students-to-learn-and-grow');
+  });
+
   app.get('/trails', function(req, res) {
     res.redirect('https://8913.blackbaudhosting.com/8913/Help-Repair-Our-Trails');
   });
