@@ -20,11 +20,6 @@
     "title": "Naturalist",
   },
   {
-    "name": "Patricia Cottrell",
-    "email": "pcottrell@fontenelleforest.org",
-    "title": "Grant Writer",
-  },
-  {
     "name": "Linda Dennis",
     "email": "LDennis@fontenelleforest.org",
     "title": "Education Assistant",
@@ -55,24 +50,9 @@
     "title": "Naturalist",
   },
   {
-    "name": "Katie Kallsen",
-    "email": "kkallsen@fontenelleforest.org",
-    "title": "Animal Care Specialist",
-  },
-  {
     "name": "Denise Lewis",
     "email": "dlewis@fontenelleforest.org",
     "title": "Raptor Volunteer Coordinator",
-  },
-  {
-  "name": "Jess McCallie",
-  "email": "jmccallie@fontenelleforest.org",
-  "title": "Finance Associate",
-  },
-  {
-    "name": "Michelle McElligott",
-    "email": "mmcelligott@fontenelleforest.org",
-    "title": "Finance Associate",
   },
   {
     "name": "Matt Miller",
@@ -88,11 +68,6 @@
     "name": "Molly Mullen",
     "email": "mmullen@fontenelleforest.org",
     "title": "Manager of Marketing and Events",
-  },
-  {
-    "name": "Barb Naughtin",
-    "email": "bnaughtin@fontenelleforest.org",
-    "title": "Development Associate",
   },
   {
     "name": "Josh Preister",
@@ -127,7 +102,7 @@
   {
     "name": "Joe Vavak",
     "email": "jvavak@fontenelleforest.org",
-    "title": "Communications Associate",
+    "title": "Database Administrator",
   },
   {
     "name": "Marykate Wray",

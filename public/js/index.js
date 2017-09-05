@@ -758,7 +758,7 @@ module.exports=[
   },
   {
     "name": "Janet Stander",
-    "email": "janet@fontenelleforest.org",
+    "email": "jstander@fontenelleforest.org",
     "title": "Director of Raptor Recovery",
   },
 ]
@@ -784,11 +784,6 @@ module.exports=[
     "name": "Lindsay Cooley",
     "email": "lcooley@fontenelleforest.org",
     "title": "Naturalist",
-  },
-  {
-    "name": "Patricia Cottrell",
-    "email": "pcottrell@fontenelleforest.org",
-    "title": "Grant Writer",
   },
   {
     "name": "Linda Dennis",
@@ -821,24 +816,9 @@ module.exports=[
     "title": "Naturalist",
   },
   {
-    "name": "Katie Kallsen",
-    "email": "kkallsen@fontenelleforest.org",
-    "title": "Animal Care Specialist",
-  },
-  {
     "name": "Denise Lewis",
     "email": "dlewis@fontenelleforest.org",
     "title": "Raptor Volunteer Coordinator",
-  },
-  {
-  "name": "Jess McCallie",
-  "email": "jmccallie@fontenelleforest.org",
-  "title": "Finance Associate",
-  },
-  {
-    "name": "Michelle McElligott",
-    "email": "mmcelligott@fontenelleforest.org",
-    "title": "Finance Associate",
   },
   {
     "name": "Matt Miller",
@@ -854,11 +834,6 @@ module.exports=[
     "name": "Molly Mullen",
     "email": "mmullen@fontenelleforest.org",
     "title": "Manager of Marketing and Events",
-  },
-  {
-    "name": "Barb Naughtin",
-    "email": "bnaughtin@fontenelleforest.org",
-    "title": "Development Associate",
   },
   {
     "name": "Josh Preister",
@@ -893,7 +868,7 @@ module.exports=[
   {
     "name": "Joe Vavak",
     "email": "jvavak@fontenelleforest.org",
-    "title": "Communications Associate",
+    "title": "Database Administrator",
   },
   {
     "name": "Marykate Wray",
@@ -2888,7 +2863,7 @@ module.exports = React.createClass({
             React.createElement(
               'li',
               null,
-              'Adam Ericson'
+              'Hannah Brandon'
             ),
             React.createElement(
               'li',
@@ -2899,16 +2874,6 @@ module.exports = React.createClass({
               'li',
               null,
               'Chelsy Kremin'
-            ),
-            React.createElement(
-              'li',
-              null,
-              'Nick Sauvageau'
-            ),
-            React.createElement(
-              'li',
-              null,
-              'Kori Shea'
             )
           )
         )
@@ -5958,7 +5923,7 @@ module.exports = React.createClass({
                   React.createElement(
                     'b',
                     null,
-                    'Extended summer hours now through Labor Day! The Nature Center is open 8 AM - 7 PM on weekdays and 8 AM – 5 PM on weekends.  Raptor Woodland Refuge is open 10 AM – 5 PM every day.'
+                    'The Fontenelle Forest Nature Center is open 8 AM – 5 PM Monday through Friday. Raptor Woodland Refuge is open 10 AM – 5 PM daily.'
                   )
                 ),
                 React.createElement(
