@@ -114,7 +114,7 @@ module.exports = React.createClass({
               </div>
               <hr />
               <div className="gi_pricing">
-                <h3 className="element_spread"><span>MEMBERSHIP<br/><em>Fully tax deductible</em></span><span>PRICE</span></h3>
+                <h3 className="element_spread"><span>MEMBERSHIP<br/></span><span>PRICE</span></h3>
                 <ul>
                   <li><span>Individual<br/><em>One Adult</em></span><span>$45</span></li>
                   <li><span>Two Individuals<br/><em>Two adults living in the same household</em></span><span>$55</span></li>
@@ -123,7 +123,7 @@ module.exports = React.createClass({
                 </ul>
               </div>
               <div className="gi_pricing">
-                <h3 className="element_spread"><span>BECOME A PATRON<br/><em>Fully tax deductible</em></span><span>PRICE</span></h3>
+                <h3 className="element_spread"><span>BECOME A PATRON<br/></span><span>PRICE</span></h3>
                 <ul>
                   <li><span>Patron<br/><em>ADDITIONAL BENEFITS: 4 guest passes, 15% gift shop discount</em></span><span>$150-249</span></li>
                   <li><span>Supporting Patron<br/><em>ADDITIONAL BENEFITS: 10 guest passes, 20% gift shop discount</em></span><span>$250-499</span></li>
@@ -184,7 +184,7 @@ module.exports = React.createClass({
               <img className="gi_break" src="/img/conservation/divider_bottom_grey.png" />
             </div>
             <div className="centered_content guild">
-              <h3>Guild Board Executive Committee & Event Chairs 2016</h3>
+              <h3>Guild Board Executive Committee &amp; Event Chairs 2017</h3>
               <hr />
               <div className="element_contain">
                 <div className="gi_half">
@@ -233,7 +233,7 @@ module.exports = React.createClass({
               <hr />
 
               <div className="element_contain">
-                <a className="gi_button marker" href="https://8913.blackbaudhosting.com/8913/Guild-Membership" target="_blank">Join the Guild</a>
+                <a className="gi_button marker" href="http://www.fontenelleforest.org/post/fontenelle-forest-guild" target="_blank">Join the Guild</a>
               </div>
 
             </div>

@@ -216,7 +216,7 @@ var Main = React.createClass({
     var content = (
       <div className="main_class">
         <h2>BIRD CLUB </h2>
-        <p>The Fontenelle Forest Bird Club (a.k.a. The Down and Dirty Birders) welcomes everyone interested in birding to join the growing number of people who find birding to be an enjoyable and relaxing hobby. We offer regular monthly field trips to local birding sites, as well as regional, national, and international destinations. To become a member, please fill out the application located at fontenelleforest.org/birdclub.pdf and return via mail or bring to a meeting along with your yearly dues. For questions about membership or activities, please contact Rick Schmid at 402.731.3140 x1018 or rschmid@fontenelleforest.org.</p>
+        <p>The Fontenelle Forest Bird Club (a.k.a. The Down and Dirty Birders) welcomes everyone interested in birding to join the growing number of people who find birding to be an enjoyable and relaxing hobby. We offer regular monthly field trips to local birding sites, as well as regional, national, and international destinations. To become a member, please fill out the application located at fontenelleforest.org/birdclub.pdf and return via mail or bring to a meeting along with your yearly dues. For questions about membership or activities, please contact Alex Wiles at awiles@fontenelleforest.org.</p>
         <h4>Club Meetings are Held</h4>
         <ul>
           <li>The first Thursday of each month at 7:00p.m.</li>
@@ -239,7 +239,7 @@ var Main = React.createClass({
     var content = (
       <div className="main_class">
         <h2>INSECT CLUB </h2>
-        <p>This is the second year of Fontenelle Forest’s newest club. If you are interested in learning more about the most numerous animals on earth, please join us. To become a member, please fill out the application located at fontenelleforest.org/insectclub.pdf and return via mail or bring to a meeting along with your yearly dues. For questions about membership or activities, please contact Rick Schmid at 402.731.3140 x1018 or rschmid@fontenelleforest.org.</p>
+        <p>This is the second year of Fontenelle Forest’s newest club. If you are interested in learning more about the most numerous animals on earth, please join us. To become a member, please fill out the application located at fontenelleforest.org/insectclub.pdf and return via mail or bring to a meeting along with your yearly dues. For questions about membership or activities, please contact Alex Wiles at awiles@fontenelleforest.org.</p>
         <h4>Club Meetings are Held</h4>
         <ul>
           <li>The fourth Thursday of February, April, June, August, & October at 7:00p.m.</li>
@@ -386,25 +386,6 @@ var Main = React.createClass({
                         </span>
                       </div>
 
-                      <div className="program_item" onClick={self.natureExplorers}>
-                        <h4 className="name">
-                          <span className="program_name">Nature Explorers</span>
-                          <span className="program_description">This is a child-only learning experience with a new topic each month to learn and explore.</span>
-                        </h4>
-                        <span className="program_arrow">
-                          <svg className="arrow_circle red right_arrow" x="0px" y="0px" viewBox="0 0 52 52" enableBackground="new 0 0 52 52" >
-                          	<path className="circle" strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"/>
-                          	<g className="arrow" >
-                          		<path strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M29.4,25.9c0,0-1,1.6-1,4.4c0,2.6-0.6,3.5-0.6,3.8c0,0.4,0.3,0.7,0.7,0.5s8.6-6.2,10.5-8.1
-                          		c0,0,0.2-0.2,0.2-0.5v-0.1c0-0.2-0.1-0.4-0.2-0.5c-1.7-1.7-10.1-7.9-10.5-8.1c-0.3-0.2-0.7-0.1-0.7,0.5c0,0.3,0.6,1.1,0.6,3.8
-                          		C28.4,24.3,29.4,25.9,29.4,25.9z"/>
-                          		<line strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' x1="27.8" y1="25.9" x2="12.7" y2="25.9"/>
-                          	</g>
-                          </svg>
-                          <span className="more_info">More Info</span>
-                        </span>
-                      </div>
-
                       <div className="program_item" onClick={self.campfire}>
                         <h4 className="name">
                           <span className="program_name">Campfire</span>
@@ -448,7 +429,7 @@ var Main = React.createClass({
                       <h2 className="marker color" id="camps" onClick={ self.camps }>Camps</h2>
                       <p>What could be more fun than spending a week in the forest? Fontenelle’s Nature Discovery Day Camps feature fun, hands-on, science-based learning through play taught by our year-round professional educators. Camps are offered in the summer and winter. We also offer special camps for grandparents and grandkids to participate in together. Registration is limited. Proof of age is required. Campers should bring their lunch. Snacks provided.</p>
 
-                      <h5><Link to="/post/summer-day-camps" className="gi_button marker">click here for more information</Link></h5>
+                      <h5><Link to="http://www.fontenelleforest.org/post/winter-day-camps" className="gi_button marker">click here for more information</Link></h5>
                     </div>
                     <div className="for_kids">
                       <img className="binoculars" src="/img/programs/binoculars.png" />
@@ -540,8 +521,8 @@ var Main = React.createClass({
 
                         <div className="program_item" onClick={self.birdClub}>
                           <h4 className="name">
-                            <span className="program_name">THE DOWN AND DIRTY BIRDERS</span>
-                            <span className="program_description">as they are known, organize monthly field trips and other activities.</span>
+                            <span className="program_name">THE BIRD CLUB</span>
+                            <span className="program_description">organize monthly field trips and other activities around birding.</span>
                           </h4>
                           <span className="program_arrow">
                             <svg className="arrow_circle red right_arrow" x="0px" y="0px" viewBox="0 0 52 52" enableBackground="new 0 0 52 52" >
@@ -650,13 +631,6 @@ var Main = React.createClass({
                       <h3>BIO-INSPIRED LEADERSHIP WORKSHOP</h3>
                       <p>We're partnering with Verdis Group to offer a new workshop for organizations who are ready to embrace the ever changing dynamic business world. This immersion experience explores lessons from nature to form adaptable, resilient, and prosperous teams and groups. Attendees will experience an immersive program unlike any other; one that combines sustainability, achieving an ecological balance, and biomimicry - the design of materials, structures, and systems that are modeled on biological entities and processes.</p>
                       <p className="p_info">For more information, contact us at <a target="_blank" href="mailto:info@fontenelleforest.org">info@fontenelleforest.org</a>.</p>
-                      <hr/>
-                      <h3>SCOUTS</h3>
-                      <p>With hands-on activities, games, and exploration, scouts will discover nature’s mysteries at Fontenelle Forest, the region’s premier nature center that encompasses forest, prairie, and wetlands along the Missouri River. With year-round programming and activities from guided hikes, live animal demonstrations, natural science exhibits, lectures, classes, and even snowshoe rentals, there’s always a reason to bring your troop. Make plans to have your Scouts join us for an exciting adventure!</p>
-                      <p className="p_info">For information about Boy and Girl Scouts programs, please contact:
-                      <br/><a target="_blank" href="mailto:kfischer@fontenelleforest.org">Kathy Fischer at kfischer@fontenelleforest.org</a>.
-                      <br/>For information about Eagle Scout programs:
-                      <br/><span className="p_num">(402) 731-3140</span></p>
                     </div>
                     <div>
                       <img className="bag" src="/img/programs/bag.png" />

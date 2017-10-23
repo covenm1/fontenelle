@@ -15,11 +15,6 @@
     "title": "Director of Operations",
   },
   {
-    "name": "Gary Fischer",
-    "email": "gfischer@fontenelleforest.org",
-    "title": "Director of Development & Marketing",
-  },
-  {
     "name": "Dawn Jensen",
     "email": "djensen@fontenelleforest.org",
     "title": "Director of Finance & Administration",
@@ -28,6 +23,11 @@
     "name": "Jeanine Lackey",
     "email": "JLackey@fontenelleforest.org",
     "title": "Director of Research & Stewardship",
+  },
+  {
+    "name": "Denise Lewis",
+    "email": "dlewis@fontenelleforest.org",
+    "title": "Interim Director of Raptor Recovery",
   },
   {
     "name": "Janet Stander",

@@ -273,7 +273,6 @@ module.exports = React.createClass({
             <ul className="name_list">
               <li>Amy Campagna</li>
               <li>Julianne Carbonell</li>
-              <li>Alysa Choquette</li>
               <li>Amanda Dague</li>
               <li>Dianne Guinn</li>
             </ul>
@@ -285,6 +284,7 @@ module.exports = React.createClass({
             </ul>
             <ul className="name_list">
               <li>Jessie Sevener</li>
+              <li>Tracy Van Zee</li>
               <li>Trish Wakefield</li>
               <li>Alex Wiles</li>
               <li>Deborah Woracek</li>

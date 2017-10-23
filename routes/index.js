@@ -136,7 +136,7 @@ module.exports = function(app) {
 	});
 
   app.get('/guild', function(req, res) {
-    res.redirect('/get-involved/guild');
+    res.redirect('http://www.fontenelleforest.org/post/fireside-friends-and-the-forest');
 	});
 
   app.get('/leaflet', function(req, res) {
