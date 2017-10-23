@@ -8327,7 +8327,7 @@ var Main = React.createClass({
       React.createElement(
         'p',
         null,
-        'The Fontenelle Forest Bird Club (a.k.a. The Down and Dirty Birders) welcomes everyone interested in birding to join the growing number of people who find birding to be an enjoyable and relaxing hobby. We offer regular monthly field trips to local birding sites, as well as regional, national, and international destinations. To become a member, please fill out the application located at fontenelleforest.org/birdclub.pdf and return via mail or bring to a meeting along with your yearly dues. For questions about membership or activities, please contact Rick Schmid at 402.731.3140 x1018 or rschmid@fontenelleforest.org.'
+        'The Fontenelle Forest Bird Club (a.k.a. The Down and Dirty Birders) welcomes everyone interested in birding to join the growing number of people who find birding to be an enjoyable and relaxing hobby. We offer regular monthly field trips to local birding sites, as well as regional, national, and international destinations. To become a member, please fill out the application located at fontenelleforest.org/birdclub.pdf and return via mail or bring to a meeting along with your yearly dues. For questions about membership or activities, please contact Alex Wiles at awiles@fontenelleforest.org.'
       ),
       React.createElement(
         'h4',
@@ -8390,7 +8390,7 @@ var Main = React.createClass({
       React.createElement(
         'p',
         null,
-        'This is the second year of Fontenelle Forest’s newest club. If you are interested in learning more about the most numerous animals on earth, please join us. To become a member, please fill out the application located at fontenelleforest.org/insectclub.pdf and return via mail or bring to a meeting along with your yearly dues. For questions about membership or activities, please contact Rick Schmid at 402.731.3140 x1018 or rschmid@fontenelleforest.org.'
+        'This is the second year of Fontenelle Forest’s newest club. If you are interested in learning more about the most numerous animals on earth, please join us. To become a member, please fill out the application located at fontenelleforest.org/insectclub.pdf and return via mail or bring to a meeting along with your yearly dues. For questions about membership or activities, please contact Alex Wiles at awiles@fontenelleforest.org.'
       ),
       React.createElement(
         'h4',
@@ -8706,44 +8706,6 @@ var Main = React.createClass({
                   ),
                   React.createElement(
                     'div',
-                    { className: 'program_item', onClick: self.natureExplorers },
-                    React.createElement(
-                      'h4',
-                      { className: 'name' },
-                      React.createElement(
-                        'span',
-                        { className: 'program_name' },
-                        'Nature Explorers'
-                      ),
-                      React.createElement(
-                        'span',
-                        { className: 'program_description' },
-                        'This is a child-only learning experience with a new topic each month to learn and explore.'
-                      )
-                    ),
-                    React.createElement(
-                      'span',
-                      { className: 'program_arrow' },
-                      React.createElement(
-                        'svg',
-                        { className: 'arrow_circle red right_arrow', x: '0px', y: '0px', viewBox: '0 0 52 52', enableBackground: 'new 0 0 52 52' },
-                        React.createElement('path', { className: 'circle', strokeWidth: '2', strokeLinecap: 'round', strokeMiterlimit: '10', d: 'M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z' }),
-                        React.createElement(
-                          'g',
-                          { className: 'arrow' },
-                          React.createElement('path', { strokeWidth: '2', strokeLinecap: 'round', strokeMiterlimit: '10', d: 'M29.4,25.9c0,0-1,1.6-1,4.4c0,2.6-0.6,3.5-0.6,3.8c0,0.4,0.3,0.7,0.7,0.5s8.6-6.2,10.5-8.1 c0,0,0.2-0.2,0.2-0.5v-0.1c0-0.2-0.1-0.4-0.2-0.5c-1.7-1.7-10.1-7.9-10.5-8.1c-0.3-0.2-0.7-0.1-0.7,0.5c0,0.3,0.6,1.1,0.6,3.8 C28.4,24.3,29.4,25.9,29.4,25.9z' }),
-                          React.createElement('line', { strokeWidth: '2', strokeLinecap: 'round', strokeMiterlimit: '10', x1: '27.8', y1: '25.9', x2: '12.7', y2: '25.9' })
-                        )
-                      ),
-                      React.createElement(
-                        'span',
-                        { className: 'more_info' },
-                        'More Info'
-                      )
-                    )
-                  ),
-                  React.createElement(
-                    'div',
                     { className: 'program_item', onClick: self.campfire },
                     React.createElement(
                       'h4',
@@ -8844,7 +8806,7 @@ var Main = React.createClass({
                     null,
                     React.createElement(
                       Link,
-                      { to: '/post/summer-day-camps', className: 'gi_button marker' },
+                      { to: '/post/winter-day-camps', className: 'gi_button marker' },
                       'click here for more information'
                     )
                   )
@@ -8978,12 +8940,12 @@ var Main = React.createClass({
                       React.createElement(
                         'span',
                         { className: 'program_name' },
-                        'THE DOWN AND DIRTY BIRDERS'
+                        'THE BIRD CLUB'
                       ),
                       React.createElement(
                         'span',
                         { className: 'program_description' },
-                        'as they are known, organize monthly field trips and other activities.'
+                        'organize monthly field trips and other activities around birding.'
                       )
                     ),
                     React.createElement(
@@ -9216,40 +9178,6 @@ var Main = React.createClass({
                         'info@fontenelleforest.org'
                       ),
                       '.'
-                    ),
-                    React.createElement('hr', null),
-                    React.createElement(
-                      'h3',
-                      null,
-                      'SCOUTS'
-                    ),
-                    React.createElement(
-                      'p',
-                      null,
-                      'With hands-on activities, games, and exploration, scouts will discover nature’s mysteries at Fontenelle Forest, the region’s premier nature center that encompasses forest, prairie, and wetlands along the Missouri River. With year-round programming and activities from guided hikes, live animal demonstrations, natural science exhibits, lectures, classes, and even snowshoe rentals, there’s always a reason to bring your troop. Make plans to have your Scouts join us for an exciting adventure!'
-                    ),
-                    '\u0003\u0003',
-                    React.createElement(
-                      'p',
-                      { className: 'p_info' },
-                      'For information about Boy and Girl Scouts programs, please contact:',
-                      React.createElement('br', null),
-                      '\u0003',
-                      React.createElement(
-                        'a',
-                        { target: '_blank', href: 'mailto:kfischer@fontenelleforest.org' },
-                        'Kathy Fischer at kfischer@fontenelleforest.org'
-                      ),
-                      '.',
-                      React.createElement('br', null),
-                      'For information about Eagle Scout programs:',
-                      React.createElement('br', null),
-                      '\u0003',
-                      React.createElement(
-                        'span',
-                        { className: 'p_num' },
-                        '(402) 731-3140'
-                      )
                     )
                   ),
                   React.createElement(
