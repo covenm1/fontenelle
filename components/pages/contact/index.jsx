@@ -173,7 +173,7 @@ module.exports = React.createClass({
                   <span className="staff_name">Media: </span>
                   <span className="title">For all media inquiries</span>
                 </h2>
-                <p className="email">jvavak@fontenelleforest.org<a href="mailto:jvavak@fontenelleforest.org">
+                <p className="email">mmullen@fontenelleforest.org<a href="mailto:mmullen@fontenelleforest.org">
                   <svg className="arrow_circle blue right_arrow" x="0px" y="0px" viewBox="0 0 52 52" enableBackground="new 0 0 52 52" >
                     <path className="circle" strokeWidth="2" strokeLinecap='round' strokeMiterlimit='10' d="M1,26c0,13.8,11.2,25,25,25c13.8,0,25-11.2,25-25S39.8,1,26,1C12.2,1,1,12.2,1,26z"/>
                     <g className="arrow" >

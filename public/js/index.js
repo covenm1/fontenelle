@@ -752,14 +752,14 @@ module.exports=[
     "title": "Director of Research & Stewardship",
   },
   {
+    "name": "Ryan Leichenauer",
+    "email": "rleichenauer@fontenelleforest.org",
+    "title": "Director of Development and Marketing",
+  },
+  {
     "name": "Denise Lewis",
     "email": "dlewis@fontenelleforest.org",
     "title": "Interim Director of Raptor Recovery",
-  },
-  {
-    "name": "Janet Stander",
-    "email": "jstander@fontenelleforest.org",
-    "title": "Director of Raptor Recovery",
   },
 ]
 
@@ -2552,10 +2552,10 @@ module.exports = React.createClass({
             React.createElement(
               'p',
               { className: 'email' },
-              'jvavak@fontenelleforest.org',
+              'mmullen@fontenelleforest.org',
               React.createElement(
                 'a',
-                { href: 'mailto:jvavak@fontenelleforest.org' },
+                { href: 'mailto:mmullen@fontenelleforest.org' },
                 React.createElement(
                   'svg',
                   { className: 'arrow_circle blue right_arrow', x: '0px', y: '0px', viewBox: '0 0 52 52', enableBackground: 'new 0 0 52 52' },
