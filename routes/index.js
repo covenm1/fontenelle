@@ -83,6 +83,10 @@ module.exports = function(app) {
 		});
 	});
 
+  app.get('/wonderland', function(req, res) {
+    res.redirect('https://8913.blackbaudhosting.com/8913/Winter-Wonderland-Exclusive-Preview');
+  });
+
   app.get('/education', function(req, res) {
     res.redirect('https://8913.blackbaudhosting.com/8913/Inspiring-students-to-learn-and-grow');
   });
