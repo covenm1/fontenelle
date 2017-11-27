@@ -83,6 +83,10 @@ module.exports = function(app) {
 		});
 	});
 
+  app.get('/giving', function(req, res) {
+    res.redirect('https://8913.blackbaudhosting.com/8913/Fontenelle-Forests-Annual-Appeal');
+  });
+
   app.get('/wonderland', function(req, res) {
     res.redirect('https://8913.blackbaudhosting.com/8913/Winter-Wonderland-Exclusive-Preview');
   });

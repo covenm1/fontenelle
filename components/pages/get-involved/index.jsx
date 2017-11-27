@@ -63,7 +63,7 @@ module.exports = React.createClass({
               <p>It is because of our many generous donors that we are able to offer such a breadth and depth of conservation initiatives, educational activities, and other programs in the forest. Your tax-deductible gifts will go toward ongoing stewardship of over 2,000 acres of natural land and programs that benefit over 80,000 visitors each year.</p>
               <img className="gi_break" src="/img/conservation/divider_bottom_grey.png" />
               <div className="element_contain">
-                <a className="gi_button marker" href="https://8913.blackbaudhosting.com/8913/Operating-Individual" target="_blank">Donate</a>
+                <a className="gi_button marker" href="https://8913.blackbaudhosting.com/8913/Fontenelle-Forests-Annual-Appeal" target="_blank">Donate</a>
               </div>
             </div>
           </div>
