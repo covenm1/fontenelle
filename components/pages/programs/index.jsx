@@ -429,7 +429,7 @@ var Main = React.createClass({
                       <h2 className="marker color" id="camps" onClick={ self.camps }>Camps</h2>
                       <p>What could be more fun than spending a week in the forest? Fontenelle’s Nature Discovery Day Camps feature fun, hands-on, science-based learning through play taught by our year-round professional educators. Camps are offered in the summer and winter. We also offer special camps for grandparents and grandkids to participate in together. Registration is limited. Proof of age is required. Campers should bring their lunch. Snacks provided.</p>
 
-                      <h5><Link to="/post/winter-day-camps" className="gi_button marker">click here for more information</Link></h5>
+                      <h5><Link to="/post/camps" className="gi_button marker">click here for more information</Link></h5>
                     </div>
                     <div className="for_kids">
                       <img className="binoculars" src="/img/programs/binoculars.png" />

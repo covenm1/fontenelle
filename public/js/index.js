@@ -759,7 +759,7 @@ module.exports=[
   {
     "name": "Denise Lewis",
     "email": "dlewis@fontenelleforest.org",
-    "title": "Interim Director of Raptor Recovery",
+    "title": "Director of Raptor Recovery",
   },
 ]
 
@@ -774,6 +774,11 @@ module.exports=[
     "name": "Jim Beebe",
     "email": "JBeebe@fontenelleforest.org",
     "title": "Chief Ranger at Neale Woods",
+  },
+  {
+    "name": "Michelle Bell",
+    "email": "mbell@fontenelleforest.org",
+    "title": "Facility Rental Associate",
   },
   {
     "name": "Madison Brandon",
@@ -821,14 +826,14 @@ module.exports=[
     "title": "Finance Associate",
   },
   {
+    "name": "Brooke Manes",
+    "email": "bmanes@fontenelleforest.org",
+    "title": "Assistant Manager of Raptor Rehabilitation",
+  },
+  {
     "name": "Matt Miller",
     "email": "mmiller@fontenelleforest.org",
     "title": "Restoration Biologist",
-  },
-  {
-    "name": "Douglas Montgomery",
-    "email": "dmontgomery@fontenelleforest.org",
-    "title": "Animal Care and Maintenance Technician",
   },
   {
     "name": "Molly Mullen",
@@ -1082,7 +1087,7 @@ module.exports = React.createClass({
                 React.createElement(
                   'li',
                   null,
-                  'Ann Christiansen | President'
+                  'Jon Hansen | President'
                 ),
                 React.createElement(
                   'li',
@@ -1096,12 +1101,12 @@ module.exports = React.createClass({
                 React.createElement(
                   'li',
                   null,
-                  'Jon Hansen | President-Elect'
+                  'Angela Athy | President-Elect'
                 ),
                 React.createElement(
                   'li',
                   null,
-                  'Sue Nemer Haddix | Secretary'
+                  'Susan Haddix | Secretary'
                 )
               ),
               React.createElement(
@@ -1110,7 +1115,7 @@ module.exports = React.createClass({
                 React.createElement(
                   'li',
                   null,
-                  'Angela Burmeister | Advisor'
+                  'Ann Christiansen | Past-President'
                 )
               )
             )
@@ -1140,7 +1145,7 @@ module.exports = React.createClass({
                 React.createElement(
                   'li',
                   null,
-                  'Angela Athy'
+                  'Alexis Boulos'
                 ),
                 React.createElement(
                   'li',
@@ -1165,12 +1170,17 @@ module.exports = React.createClass({
                 React.createElement(
                   'li',
                   null,
-                  'Hans Klein-Hewett'
+                  'Andrew Huettner'
                 )
               ),
               React.createElement(
                 'ul',
                 null,
+                React.createElement(
+                  'li',
+                  null,
+                  'Hans Klein-Hewett'
+                ),
                 React.createElement(
                   'li',
                   null,
@@ -1179,32 +1189,13 @@ module.exports = React.createClass({
                 React.createElement(
                   'li',
                   null,
-                  'Gerry Lauritzen'
+                  'Scott Marble'
                 ),
                 React.createElement(
                   'li',
                   null,
-                  'Tad Leeper'
+                  'Chris Morrow'
                 ),
-                React.createElement(
-                  'li',
-                  null,
-                  'Cynthia Lesinski'
-                ),
-                React.createElement(
-                  'li',
-                  null,
-                  'Julie Liakos'
-                ),
-                React.createElement(
-                  'li',
-                  null,
-                  'Adrienne Petsick'
-                )
-              ),
-              React.createElement(
-                'ul',
-                null,
                 React.createElement(
                   'li',
                   null,
@@ -1214,6 +1205,15 @@ module.exports = React.createClass({
                   'li',
                   null,
                   'Athena Ramos'
+                )
+              ),
+              React.createElement(
+                'ul',
+                null,
+                React.createElement(
+                  'li',
+                  null,
+                  'Brittni Redding'
                 ),
                 React.createElement(
                   'li',
@@ -1228,17 +1228,12 @@ module.exports = React.createClass({
                 React.createElement(
                   'li',
                   null,
-                  'Levi Scheppers'
-                ),
-                React.createElement(
-                  'li',
-                  null,
                   'Barbara Stratman'
                 ),
                 React.createElement(
                   'li',
                   null,
-                  'Maria Vazquez'
+                  'Ray Turkle'
                 )
               )
             )
@@ -1268,50 +1263,17 @@ module.exports = React.createClass({
                 React.createElement(
                   'li',
                   null,
-                  'Mogens Bay'
-                ),
-                React.createElement(
-                  'li',
-                  null,
-                  'Charles Gifford'
-                ),
-                React.createElement(
-                  'li',
-                  null,
-                  'George F. Haddix'
-                )
-              ),
-              React.createElement(
-                'ul',
-                null,
-                React.createElement(
-                  'li',
-                  null,
-                  'Gerry and Bruce Lauritzen'
+                  'Susan and George Haddix'
                 ),
                 React.createElement(
                   'li',
                   null,
                   'Marilyn Mammel'
-                )
-              ),
-              React.createElement(
-                'ul',
-                null,
+                ),
                 React.createElement(
                   'li',
                   null,
                   'Ann Pape'
-                ),
-                React.createElement(
-                  'li',
-                  null,
-                  'Walter Scott, Jr.'
-                ),
-                React.createElement(
-                  'li',
-                  null,
-                  'Ann and Ken Stinson'
                 )
               )
             )
@@ -8816,7 +8778,7 @@ var Main = React.createClass({
                     null,
                     React.createElement(
                       Link,
-                      { to: '/post/winter-day-camps', className: 'gi_button marker' },
+                      { to: '/post/camps', className: 'gi_button marker' },
                       'click here for more information'
                     )
                   )

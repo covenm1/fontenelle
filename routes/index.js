@@ -128,7 +128,7 @@ module.exports = function(app) {
 	});
 
   app.get('/camps', function(req, res) {
-    res.redirect('http://www.fontenelleforest.org/post/summer-day-camps');
+    res.redirect('http://www.fontenelleforest.org/post/camps');
   });
 
   app.get('/volunteer', function(req, res) {
@@ -144,7 +144,7 @@ module.exports = function(app) {
 	});
 
   app.get('/guild', function(req, res) {
-    res.redirect('http://www.fontenelleforest.org/post/fireside-friends-and-the-forest');
+    res.redirect('http://www.fontenelleforest.org/get-involved/guild');
 	});
 
   app.get('/leaflet', function(req, res) {
