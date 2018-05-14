@@ -164,8 +164,7 @@ module.exports = React.createClass({
               </ul>
               <hr />
               <div className="element_contain">
-                <a className="gi_button marker" href="http://fontenelle.flywheelsites.com/wp-content/uploads/2015/11/volunteerapplication.pdf" target="_blank">Volunteer Form</a>
-                <a className="gi_button marker" href="http://fontenelle.flywheelsites.com/wp-content/uploads/2015/11/Volunteer_Waiver_and_Release_and_Photo_Release.pdf" target="_blank">Volunteer Waiver</a>
+                <a className="gi_button marker" href="mailto:info@fontenelleforest.org" target="_blank">Contact us to learn more about volunteer opportunities</a>
               </div>
             </div>
           </div>
@@ -184,48 +183,59 @@ module.exports = React.createClass({
               <img className="gi_break" src="/img/conservation/divider_bottom_grey.png" />
             </div>
             <div className="centered_content guild">
-              <h3>Guild Board Executive Committee &amp; Event Chairs 2017</h3>
+              <h3>Guild Board Executive Committee &amp; Event Chairs 2018</h3>
               <hr />
               <div className="element_contain">
                 <div className="gi_half">
                   <h4>EXECUTIVE COMMITTEE</h4>
                   <ul>
-                    <li>President – Adrienne Petsick</li>
-                    <li>President Elect – Brittni Redding</li>
-                    <li>Vice President Education – Kareen Hickman</li>
-                    <li>Vice President Social – Kelly Jeffreys</li>
-                    <li>Vice President Technology – Cindy Vaccaro</li>
-                    <li>Technology Vice Chair – Jen Rogers</li>
-                    <li>Corresponding Secretary – Sarah Hinsley</li>
-                    <li>Recording Secretary – Traci Copple</li>
+                    <li>President – Brittni Redding</li>
+                    <li>President Elect – Jenny Doyle</li>
+                    <li>Vice President Membership – Amy Henderson</li>
+                    <li>Vice President Education – Carol Teggart</li>
+                    <li>Vice President Technology – Jen Rogers</li>
+                    <li>Vice President Public Relations – Gina Ladd</li>
+                    <li>Corresponding Secretary – Kelli Hawkins</li>
+                    <li>Recording Secretary – Kati Cramer</li>
                     <li>Treasurer – Debbie Stalnaker</li>
-                    <li>Advisor/Nominating – Alexis Boulos</li>
+                    <li>Advisor/Nominating – Adrienne Petsic</li>
                   </ul>
                 </div>
 
                 <div className="gi_half">
                   <h4>GUILD BOARD MEMBERS</h4>
                   <ul>
+                    <li>Leigh Andres</li>
                     <li>Tara Arnold</li>
-                    <li>Dana Boyle</li>
-                    <li>Sarah Caswell</li>
-                    <li>Kati Cramer</li>
-                    <li>Jenny Doyle</li>
+                    <li>Kelly Bartusek</li>
+                    <li>Allison Bickford</li>
+                    <li>Beth Boone</li>
                     <li>Megan Gilligan</li>
+                    <li>Brittany Deupree</li>
+                    <li>Carla DeVelder</li>
+                    <li>Sarah Harr</li>
                     <li>Catherine Harrington</li>
-                    <li>Kelli Hawkins</li>
+                    <li>Kareen Hickman</li>
                     <li>Bret Jaros</li>
+                    <li>Megan Jarosz</li>
+                    <li>Kelly Jeffreys</li>
+                    <li>Michelle Kankousky</li>
                     <li>Megan King</li>
-                    <li>Cassie Kohl</li>
-                    <li>Julie Kuntze</li>
-                    <li>Gina McDevitt</li>
-                    <li>Sarah Newman</li>
-                    <li>Meghan Oakes</li>
-                    <li>Kristen Papenfuss</li>
-                    <li>Megan Ringenberg</li>
-                    <li>Anne Rogers</li>
-                    <li>Carrie Strovers</li>
-                    <li>Mary Jane Tritsch</li>
+                    <li>Andrea Kinnan</li> 
+                    <li>Cassie Kohl</li> 
+                    <li>Julie Kuntze</li> 
+                    <li>Gina Ladd</li> 
+                    <li>Andrea Marshall</li> 
+                    <li>Gina McDevitt</li> 
+                    <li>Sarah Newman</li> 
+                    <li>Meghan Oakes</li> 
+                    <li>Mindell Rethwisch</li> 
+                    <li>Megan Ringenberg</li> 
+                    <li>Anne Rogers</li> 
+                    <li>Carrie Strovers</li> 
+                    <li>Kari Tauber</li> 
+                    <li>Cindy Vaccaro</li>
+                    <li>Amy Miller</li>
                   </ul>
                 </div>
               </div>

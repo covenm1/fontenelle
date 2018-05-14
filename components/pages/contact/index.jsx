@@ -149,7 +149,7 @@ module.exports = React.createClass({
             </div>
             <div className='place'>
               <h2 className="place_title">Hitchcock Wetlands Learning Center</h2>
-              <p className="address">103 Camp Gifford Road <br/>Bellevue, NE 68005</p>
+              <p className="address">695 Camp Gifford Road <br/>Bellevue, NE 68005</p>
               <p className="place_directions">From I-80, take Hwy 75 (Kennedy Freeway) South to Chandler Road. Turn left onto Chandler. Stay on Chandler approx. 1 mile until the road ends at the stop sign at Bellevue Blvd. Turn right onto Bellevue Blvd. Continue for a little over .5 of a mile and turn left onto Childs Road. Continue on Childs Road through the housing development. The road becomes Camp Gifford Road and will change into a gravel surface. Continue 1.5 miles on the gravel surface. The Wetlands Learning Center will be on your right.</p>
               <a target="_blank" href="https://www.google.com/maps/place/41%C2%B010'29.5%22N+95%C2%B053'25.5%22W/@41.1748546,-95.8913087,18z/data=!3m1!4b1!4m2!3m1!1s0x0:0x0?hl=en" className="map_link">View Map</a>
             </div>

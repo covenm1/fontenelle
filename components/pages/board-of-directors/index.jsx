@@ -86,9 +86,14 @@ module.exports = React.createClass({
               <h3>HONORARY TRUSTEES</h3>
               <div className="fb_columns">
                 <ul>
+                  <li>Mogens Bay</li>
+                  <li>Charles Gifford</li>
                   <li>Susan and George Haddix</li>
+                  <li>Gerry and Bruce Lauritzen</li>
                   <li>Marilyn Mammel</li>
                   <li>Ann Pape</li>
+                  <li>Walter Scott, Jr.</li>
+                  <li>Ann and Ken Stinson</li>
                 </ul>
               </div>
             </div>

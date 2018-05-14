@@ -732,11 +732,6 @@ module.exports=[
     "title": "Executive Director",
   },
   {
-    "name": "Elizabeth Chalen",
-    "email": "echalen@fontenelleforest.org",
-    "title": "Director of Education",
-  },
-  {
     "name": "Gene Ericson",
     "email": "gericson@fontenelleforest.org",
     "title": "Director of Operations",
@@ -806,11 +801,6 @@ module.exports=[
     "title": "Naturalist",
   },
   {
-    "name": "Lisa Formanik",
-    "email": "lformanik@fontenelleforest.org",
-    "title": "Naturalist",
-  },
-  {
     "name": "Michelle Foss",
     "email": "mfoss@fontenelleforest.org",
     "title": "Restoration Biologist",
@@ -868,7 +858,7 @@ module.exports=[
   {
     "name": "Joe Vavak",
     "email": "jvavak@fontenelleforest.org",
-    "title": "Database Administrator",
+    "title": "Development Associate",
   },
   {
     "name": "Kenneth White",
@@ -1263,7 +1253,22 @@ module.exports = React.createClass({
                 React.createElement(
                   'li',
                   null,
+                  'Mogens Bay'
+                ),
+                React.createElement(
+                  'li',
+                  null,
+                  'Charles Gifford'
+                ),
+                React.createElement(
+                  'li',
+                  null,
                   'Susan and George Haddix'
+                ),
+                React.createElement(
+                  'li',
+                  null,
+                  'Gerry and Bruce Lauritzen'
                 ),
                 React.createElement(
                   'li',
@@ -1274,6 +1279,16 @@ module.exports = React.createClass({
                   'li',
                   null,
                   'Ann Pape'
+                ),
+                React.createElement(
+                  'li',
+                  null,
+                  'Walter Scott, Jr.'
+                ),
+                React.createElement(
+                  'li',
+                  null,
+                  'Ann and Ken Stinson'
                 )
               )
             )
@@ -2423,7 +2438,7 @@ module.exports = React.createClass({
             React.createElement(
               'p',
               { className: 'address' },
-              '103 Camp Gifford Road ',
+              '695 Camp Gifford Road ',
               React.createElement('br', null),
               'Bellevue, NE 68005'
             ),
@@ -4598,7 +4613,7 @@ module.exports = React.createClass({
               '|',
               React.createElement(
                 'a',
-                { target: '_blank', href: 'http://fontenelle.flywheelsites.com/wp-content/uploads/2016/03/NWTrailMap.pdf' },
+                { target: '_blank', href: 'http://fontenelle.flywheelsites.com/wp-content/uploads/2018/05/Neale-Woods-Map-2018.pdf' },
                 'Neale Woods'
               )
             ),
@@ -5550,13 +5565,8 @@ module.exports = React.createClass({
               { className: 'element_contain' },
               React.createElement(
                 'a',
-                { className: 'gi_button marker', href: 'http://fontenelle.flywheelsites.com/wp-content/uploads/2015/11/volunteerapplication.pdf', target: '_blank' },
-                'Volunteer Form'
-              ),
-              React.createElement(
-                'a',
-                { className: 'gi_button marker', href: 'http://fontenelle.flywheelsites.com/wp-content/uploads/2015/11/Volunteer_Waiver_and_Release_and_Photo_Release.pdf', target: '_blank' },
-                'Volunteer Waiver'
+                { className: 'gi_button marker', href: 'mailto:info@fontenelleforest.org', target: '_blank' },
+                'Contact us to learn more about volunteer opportunities'
               )
             )
           )
@@ -5595,7 +5605,7 @@ module.exports = React.createClass({
             React.createElement(
               'h3',
               null,
-              'Guild Board Executive Committee & Event Chairs 2017'
+              'Guild Board Executive Committee & Event Chairs 2018'
             ),
             React.createElement('hr', null),
             React.createElement(
@@ -5615,42 +5625,42 @@ module.exports = React.createClass({
                   React.createElement(
                     'li',
                     null,
-                    'President – Adrienne Petsick'
+                    'President – Brittni Redding'
                   ),
                   React.createElement(
                     'li',
                     null,
-                    'President Elect – Brittni Redding'
+                    'President Elect – Jenny Doyle'
                   ),
                   React.createElement(
                     'li',
                     null,
-                    'Vice President Education – Kareen Hickman'
+                    'Vice President Membership – Amy Henderson'
                   ),
                   React.createElement(
                     'li',
                     null,
-                    'Vice President Social – Kelly Jeffreys'
+                    'Vice President Education – Carol Teggart'
                   ),
                   React.createElement(
                     'li',
                     null,
-                    'Vice President Technology – Cindy Vaccaro'
+                    'Vice President Technology – Jen Rogers'
                   ),
                   React.createElement(
                     'li',
                     null,
-                    'Technology Vice Chair – Jen Rogers'
+                    'Vice President Public Relations – Gina Ladd'
                   ),
                   React.createElement(
                     'li',
                     null,
-                    'Corresponding Secretary – Sarah Hinsley'
+                    'Corresponding Secretary – Kelli Hawkins'
                   ),
                   React.createElement(
                     'li',
                     null,
-                    'Recording Secretary – Traci Copple'
+                    'Recording Secretary – Kati Cramer'
                   ),
                   React.createElement(
                     'li',
@@ -5660,7 +5670,7 @@ module.exports = React.createClass({
                   React.createElement(
                     'li',
                     null,
-                    'Advisor/Nominating – Alexis Boulos'
+                    'Advisor/Nominating – Adrienne Petsic'
                   )
                 )
               ),
@@ -5678,27 +5688,27 @@ module.exports = React.createClass({
                   React.createElement(
                     'li',
                     null,
+                    'Leigh Andres'
+                  ),
+                  React.createElement(
+                    'li',
+                    null,
                     'Tara Arnold'
                   ),
                   React.createElement(
                     'li',
                     null,
-                    'Dana Boyle'
+                    'Kelly Bartusek'
                   ),
                   React.createElement(
                     'li',
                     null,
-                    'Sarah Caswell'
+                    'Allison Bickford'
                   ),
                   React.createElement(
                     'li',
                     null,
-                    'Kati Cramer'
-                  ),
-                  React.createElement(
-                    'li',
-                    null,
-                    'Jenny Doyle'
+                    'Beth Boone'
                   ),
                   React.createElement(
                     'li',
@@ -5708,12 +5718,27 @@ module.exports = React.createClass({
                   React.createElement(
                     'li',
                     null,
+                    'Brittany Deupree'
+                  ),
+                  React.createElement(
+                    'li',
+                    null,
+                    'Carla DeVelder'
+                  ),
+                  React.createElement(
+                    'li',
+                    null,
+                    'Sarah Harr'
+                  ),
+                  React.createElement(
+                    'li',
+                    null,
                     'Catherine Harrington'
                   ),
                   React.createElement(
                     'li',
                     null,
-                    'Kelli Hawkins'
+                    'Kareen Hickman'
                   ),
                   React.createElement(
                     'li',
@@ -5723,7 +5748,27 @@ module.exports = React.createClass({
                   React.createElement(
                     'li',
                     null,
+                    'Megan Jarosz'
+                  ),
+                  React.createElement(
+                    'li',
+                    null,
+                    'Kelly Jeffreys'
+                  ),
+                  React.createElement(
+                    'li',
+                    null,
+                    'Michelle Kankousky'
+                  ),
+                  React.createElement(
+                    'li',
+                    null,
                     'Megan King'
+                  ),
+                  React.createElement(
+                    'li',
+                    null,
+                    'Andrea Kinnan'
                   ),
                   React.createElement(
                     'li',
@@ -5734,6 +5779,16 @@ module.exports = React.createClass({
                     'li',
                     null,
                     'Julie Kuntze'
+                  ),
+                  React.createElement(
+                    'li',
+                    null,
+                    'Gina Ladd'
+                  ),
+                  React.createElement(
+                    'li',
+                    null,
+                    'Andrea Marshall'
                   ),
                   React.createElement(
                     'li',
@@ -5753,7 +5808,7 @@ module.exports = React.createClass({
                   React.createElement(
                     'li',
                     null,
-                    'Kristen Papenfuss'
+                    'Mindell Rethwisch'
                   ),
                   React.createElement(
                     'li',
@@ -5773,7 +5828,17 @@ module.exports = React.createClass({
                   React.createElement(
                     'li',
                     null,
-                    'Mary Jane Tritsch'
+                    'Kari Tauber'
+                  ),
+                  React.createElement(
+                    'li',
+                    null,
+                    'Cindy Vaccaro'
+                  ),
+                  React.createElement(
+                    'li',
+                    null,
+                    'Amy Miller'
                   )
                 )
               )
