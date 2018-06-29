@@ -36,9 +36,9 @@ module.exports = React.createClass({
                   <div>
                     <h3>ADMISSION</h3>
                     <p><b>Free for FF Members - Become a member today!</b>
-                      <br/>$9.50 per adult
-                      <br/>$8.50 per senior (62+)
-                      <br/>$7.50 per child/student (2-17)
+                      <br/>$11.00 per adult (18+)
+                      <br/>$10.00 per senior (62+)
+                      <br/>$8.00 per child/student (2-17)
                       <br/>Free for children under age 2
                     </p>
                     <p>Purchase admission online. <a className="notwhiteeither" href="https://8913.blackbaudhosting.com/8913/tickets?tab=3&txobjid=1b87ef14-b89d-4a5c-803f-79124cc2bcd8" target="_blank">Click here</a></p>

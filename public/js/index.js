@@ -5981,11 +5981,11 @@ module.exports = React.createClass({
                     'Free for FF Members - Become a member today!'
                   ),
                   React.createElement('br', null),
-                  '$9.50 per adult',
+                  '$11.00 per adult (18+)',
                   React.createElement('br', null),
-                  '$8.50 per senior (62+)',
+                  '$10.00 per senior (62+)',
                   React.createElement('br', null),
-                  '$7.50 per child/student (2-17)',
+                  '$8.00 per child/student (2-17)',
                   React.createElement('br', null),
                   'Free for children under age 2'
                 ),
