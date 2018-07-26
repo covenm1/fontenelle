@@ -84,7 +84,7 @@ module.exports = function(app) {
 	});
 
   app.get('/donateraptorrecovery', function(req, res) {
-    res.redirect('8913.blackbaudhosting.com/8913/Raptor-Recovery-Individual');
+    res.redirect('https://8913.blackbaudhosting.com/8913/Raptor-Recovery-Individual');
   });
 
   app.get('/giving', function(req, res) {
